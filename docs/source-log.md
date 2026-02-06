@@ -13,3 +13,4 @@ Use this log to capture all external sources referenced in reports.
 | 2026-02-06 | CB | Local Data Snapshot | companies/CB/data | Ingested CSVs and filings for analysis |
 | 2026-02-06 | CB | SEC Filing | companies/CB/data/10-K-2025-02-27-0000896159-25-000004.md | Business, segment, competitive, and risk disclosures |
 | 2026-02-06 | CB | Website | https://stockanalysis.com/stocks/cb/forecast/ | Analyst revenue forecast table |
+| 2026-02-06 | CB | SEC Filing | companies/CB/data/10-K-2025-02-27-0000896159-25-000004.md | Business, risk, and MD&A disclosures |

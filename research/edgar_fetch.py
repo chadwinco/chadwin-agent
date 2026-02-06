@@ -387,28 +387,82 @@ def _period_columns(df) -> Tuple[object, List[str], dict]:
     return df, [], {}
 
 
+def _series_has_values(series, period_cols) -> bool:
+    pd = _require_pandas()
+    if series is None:
+        return False
+    if isinstance(series, pd.DataFrame):
+        if series.empty:
+            return False
+        series = series.iloc[0]
+    for col in period_cols:
+        value = series.get(col)
+        if value is None:
+            continue
+        if not pd.isna(value):
+            return True
+    return False
+
+
+def _combine_rows(rows, period_cols):
+    pd = _require_pandas()
+    if rows is None or rows.empty:
+        return None
+    if len(rows) == 1:
+        return rows.iloc[0]
+
+    combined = rows.iloc[0].copy()
+    for idx in range(1, len(rows)):
+        row = rows.iloc[idx]
+        for col in period_cols:
+            if col not in row.index:
+                continue
+            current = combined.get(col)
+            if current is None or pd.isna(current):
+                candidate = row.get(col)
+                if candidate is not None and not pd.isna(candidate):
+                    combined[col] = candidate
+    return combined
+
+
+_PERIOD_COL_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def _period_cols_from_df(df) -> list[str]:
+    return [col for col in df.columns if _PERIOD_COL_RE.match(str(col))]
+
+
 def _find_row(df, concepts: Iterable[str] = (), labels: Iterable[str] = ()):
     pd = _require_pandas()
     if df is None or getattr(df, "empty", False):
         return None
 
+    period_cols = _period_cols_from_df(df)
+
     if "concept" in df.columns:
         concept_series = df["concept"].astype(str).str.lower()
+        concept_rows = []
         for cand in concepts:
-            row = df[concept_series == cand.lower()]
-            if not row.empty:
-                return row.iloc[0]
+            rows = df[concept_series == cand.lower()]
+            if not rows.empty:
+                concept_rows.append(rows)
+        if concept_rows:
+            return _combine_rows(pd.concat(concept_rows, ignore_index=True), period_cols)
 
     if "label" in df.columns:
         label_series = df["label"].astype(str)
+        label_rows = []
         for cand in labels:
-            row = df[label_series.str.lower() == cand.lower()]
-            if not row.empty:
-                return row.iloc[0]
-        for cand in labels:
-            row = df[label_series.str.contains(cand, case=False, na=False)]
-            if not row.empty:
-                return row.iloc[0]
+            rows = df[label_series.str.lower() == cand.lower()]
+            if not rows.empty:
+                label_rows.append(rows)
+        if not label_rows:
+            for cand in labels:
+                rows = df[label_series.str.contains(cand, case=False, na=False, regex=False)]
+                if not rows.empty:
+                    label_rows.append(rows)
+        if label_rows:
+            return _combine_rows(pd.concat(label_rows, ignore_index=True), period_cols)
 
     labels_idx = [str(i).strip() for i in df.index]
     for cand in labels:
@@ -481,11 +535,6 @@ def _build_income_statement(financials, ticker: str, period_label: str, currency
         concepts=["us-gaap_GrossProfit"],
         labels=["Gross Profit"],
     )
-    operating_income = _find_row(
-        df,
-        concepts=["us-gaap_OperatingIncomeLoss"],
-        labels=["Operating Income", "Operating Income (Loss)", "Operating Income Loss"],
-    )
     income_before_tax = _find_row(
         df,
         concepts=[
@@ -494,6 +543,13 @@ def _build_income_statement(financials, ticker: str, period_label: str, currency
         ],
         labels=["Income Before Tax", "Income Before Taxes", "Income (Loss) Before Income Taxes"],
     )
+    operating_income = _find_row(
+        df,
+        concepts=["us-gaap_OperatingIncomeLoss"],
+        labels=["Operating Income", "Operating Income (Loss)", "Operating Income Loss"],
+    )
+    if operating_income is None or not _series_has_values(operating_income, period_cols):
+        operating_income = income_before_tax
     income_tax = _find_row(
         df,
         concepts=["us-gaap_IncomeTaxExpenseBenefit"],

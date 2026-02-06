@@ -55,7 +55,7 @@ def _find_row(df, concepts, labels):
                 return matches.iloc[0]
     if "label" in df.columns:
         for label in labels:
-            matches = df[df["label"].str.contains(label, case=False, na=False)]
+            matches = df[df["label"].str.contains(label, case=False, na=False, regex=False)]
             if not matches.empty:
                 return matches.iloc[0]
     return None

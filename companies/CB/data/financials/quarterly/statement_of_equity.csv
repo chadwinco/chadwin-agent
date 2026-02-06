@@ -29,5 +29,5 @@ Dividends declared on Common Shares,us-gaap_DividendsCommonStockCash,385000000.0
 Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-306000000.0,-31000000.0,-12000000.0,-166000000.0,14000000.0,-151000000.0,3000000.0,,,,,
 "Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Noncontrolling Interest",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToNoncontrollingInterest,80000000.0,17000000.0,-5000000.0,21000000.0,-43000000.0,-28000000.0,-76000000.0,,,,,
 Other,cb_OtherIncreaseDecreaseInNoncontrollingInterest,0.0,0.0,,0.0,-6000000.0,,,,,,,
-CB_Par value reduction,cb_CB_ParValueReduction,,,,,,,0.0,-9759000000.0,,,,
 Par value reduction,cb_CB_ParValueReduction,,,,0.0,0.0,,,,,,,
+CB_Par value reduction,cb_CB_ParValueReduction,,,,,,,0.0,-9759000000.0,,,,

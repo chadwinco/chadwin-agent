@@ -26,8 +26,16 @@ def _get_latest_row(df):
 def _get_shares_outstanding(income_df):
     latest = _get_latest_row(income_df)
     for col in ("weightedAverageShsOutDil", "weightedAverageShsOut"):
-        if col in income_df.columns and latest.get(col):
-            return float(latest[col])
+        if col not in income_df.columns:
+            continue
+        value = latest.get(col)
+        if value is None:
+            continue
+        try:
+            if value == value:
+                return float(value)
+        except Exception:
+            continue
     return None
 
 

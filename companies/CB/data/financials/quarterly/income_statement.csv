@@ -32,26 +32,26 @@ Net Income,us-gaap_NetIncomeLoss,2801000000.0,2968000000.0,1331000000.0,23240000
 Profit or Loss,us-gaap_ProfitLoss,3107000000.0,2999000000.0,1343000000.0,2490000000.0,2216000000.0,2294000000.0,2040000000.0,,,,,
 Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-306000000.0,-31000000.0,-12000000.0,-166000000.0,14000000.0,-151000000.0,3000000.0,,,,,
 "Net realized gains (losses) (includes $(442), $12, $(578), and $36 reclassified from AOCI)",us-gaap_RealizedInvestmentGainsLosses,,,,,,,,,,,-504000000.0,
-"Policy benefits (includes remeasurement gains of $26, $25, $4 and $21)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,-1099000000.0,,,,,,,,
-"Policy benefits (includes remeasurement gains of $25, $17, $21, and $11)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,-938000000.0,,,,,
-"Policy benefits (includes remeasurement losses of $5, nil, $4, and $6)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,-830000000.0,,,,
-Policy benefits (includes remeasurement gains (losses) of $1 and $(5)),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,,-797000000.0,,,
 "Policy benefits (includes remeasurement losses of $2, $3, $5 and $22)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,1406000000.0,,,,,,,,,,
-Policy benefits (includes remeasurement gains (losses) of $(19) and $1),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,-1180000000.0,,,,,,
-Policy benefits,us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,,,-486000000.0,-159000000.0,-145000000.0
+"Policy benefits (includes remeasurement gains of $26, $25, $4 and $21)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,-1099000000.0,,,,,,,,
 Policy benefits (includes remeasurement losses of $3 and $19),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,1227000000.0,,,,,,,,,
 "Policy benefits (includes remeasurement losses of $3, $5, $22 and $4)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,-1219000000.0,,,,,,,
+Policy benefits (includes remeasurement gains (losses) of $(19) and $1),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,-1180000000.0,,,,,,
+"Policy benefits (includes remeasurement gains of $25, $17, $21, and $11)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,-938000000.0,,,,,
+Policy benefits (includes remeasurement gains (losses) of $1 and $(5)),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,,-797000000.0,,,
+Policy benefits,us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,,,-486000000.0,-159000000.0,-145000000.0
+"Policy benefits (includes remeasurement losses of $5, nil, $4, and $6)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,-830000000.0,,,,
 Unrealized appreciation (depreciation),us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,986000000.0,901000000.0,3459000000.0,,,,,,,-4786000000.0,
-Change in unrealized depreciation,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,,,-2170000000.0,-1194000000.0,1786000000.0,-3045000000.0,,
 Change in unrealized appreciation (depreciation),us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,-489000000.0,-677000000.0,,,,,,
+Change in unrealized depreciation,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,,,-2170000000.0,-1194000000.0,1786000000.0,-3045000000.0,,
 Unrealized appreciation (depreciation) after reclassification adjustment,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,,,,,,,-4344000000.0,-4652000000.0
 Change in Cumulative foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,,,,,,,,,,-966000000.0,,
 "Change in Other, including postretirement benefit liability adjustment",cb_OtherComprehensiveIncomeLossDefinedBenefitPlanAndOtherAfterReclassificationAdjustmentBeforeTax,,,,,,,,,,-59000000.0,,
 Income tax benefit related to OCI items,us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,,165000000.0,,812000000.0
+"Other comprehensive income (loss), before income tax",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,1627000000.0,1047000000.0,3205000000.0,-990000000.0,-614000000.0,,-955000000.0,1422000000.0,,-5116000000.0,
 Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,,1594000000.0,1004000000.0,3055000000.0,-961000000.0,-605000000.0,,-927000000.0,1290000000.0,,-4871000000.0,
 "Other comprehensive loss, before income tax",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,,,,,,-1772000000.0,,,-4070000000.0,,-4566000000.0
 Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,,,,,-1772000000.0,,,-3905000000.0,,-3754000000.0
-"Other comprehensive income (loss), before income tax",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,1627000000.0,1047000000.0,3205000000.0,-990000000.0,-614000000.0,,-955000000.0,1422000000.0,,-5116000000.0,
 Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,,,,268000000.0,866000000.0,3182000000.0,-3093000000.0,-3656000000.0,-1780000000.0
 Comprehensive income (loss) attributable to Chubb,us-gaap_ComprehensiveIncomeNetOfTax,,,,,,,347000000.0,,,,,
 Cigna integration expenses,us-gaap_BusinessCombinationIntegrationRelatedCosts,,,,,-7000000.0,-7000000.0,-14000000.0,-15000000.0,-22000000.0,-23000000.0,-3000000.0,

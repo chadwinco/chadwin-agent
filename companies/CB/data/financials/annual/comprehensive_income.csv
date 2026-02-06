@@ -37,7 +37,6 @@ Comprehensive loss attributable to noncontrolling interests,us-gaap_Comprehensiv
 Net realized gains (losses) excluding OTTI losses,cb_NetrealizedgainslossesexcludingOTTI,,,,1152000000.0,,
 Net OTTI losses recognized in income,us-gaap_OtherThanTemporaryImpairmentLossDebtSecuritiesPortionRecognizedInEarnings,,,,,,-58000000.0
 Portion of OTTI losses recognized in other comprehensive income (OCI),us-gaap_OtherThanTemporaryImpairmentLossesInvestmentsPortionInOtherComprehensiveIncomeLossBeforeTaxIncludingPortionAttributableToNoncontrollingInterest,,,,0.0,0.0,32000000.0
-Other-than-temporary impairment (OTTI) losses gross,us-gaap_ImpairmentOfInvestments,,,,,,-90000000.0
 "Net realized gains (losses) (includes $3, $(281), and $(31) reclassified from AOCI)",us-gaap_RealizedInvestmentGainsLosses,,,,1152000000.0,,
 Policy benefits,us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,-1492000000.0,-699000000.0,-784000000.0,740000000.0
 Chubb integration expenses,us-gaap_BusinessCombinationIntegrationRelatedCosts,,,,0.0,0.0,23000000.0
@@ -52,6 +51,7 @@ Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,22.7,21.8,12.55,19.
 Postretirement benefit liability adjustment,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentBeforeTax,,,,-522000000.0,232000000.0,76000000.0
 Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,,,,6020000000.0,5783000000.0,7521000000.0
 Realized Investment Gains (Losses),us-gaap_RealizedInvestmentGainsLosses,,,,,-498000000.0,
-"Net realized, Gain (Loss), Excluding Other-than-temporary Impairment Loss",cb_NetrealizedgainslossesexcludingOTTI,,,,,-498000000.0,-472000000.0
 Policy Acquisition Costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,,,,,-6547000000.0,6153000000.0
 "Total net realized gains (losses) (includes $(31), $(302), and $(15) reclassified from AOCI)",cb_NetRealizedGainsLosses,,,,,,-530000000.0
+"Net realized, Gain (Loss), Excluding Other-than-temporary Impairment Loss",cb_NetrealizedgainslossesexcludingOTTI,,,,,-498000000.0,-472000000.0
+Other-than-temporary impairment (OTTI) losses gross,us-gaap_ImpairmentOfInvestments,,,,,,-90000000.0

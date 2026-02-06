@@ -20,7 +20,9 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 ## Workflow
 1. Confirm inputs.
 2. Run the analysis script.
-3. Review outputs and logs.
+3. Prepare the LLM context pack.
+4. Run the LLM analysis (assistant step).
+5. Review outputs and logs.
 
 ### 1. Confirm inputs
 - If data is missing, use `$fetch-company-data` first.
@@ -34,7 +36,26 @@ Execute the pipeline from the repo root:
 python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
-### 3. Review outputs and logs
+
+### 3. Prepare the LLM context pack
+Generate a deterministic context bundle for the LLM to use:
+
+```bash
+python3 scripts/prepare_llm_context.py --ticker <TICKER> --asof <YYYY-MM-DD>
+```
+
+This writes:
+- `companies/<TICKER>/analysis/<YYYY-MM-DD>-llm-context.md`
+
+### 4. Run the LLM analysis (assistant step)
+- Read the prompt files in `prompts/`.
+- Read the context pack generated in step 3.
+- Produce:
+  - `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
+  - `companies/<TICKER>/analysis/<YYYY-MM-DD>-appendix.md`
+- Cite sources from the context pack and log any external sources in `docs/source-log.md`.
+
+### 5. Review outputs and logs
 Validate the generated artifacts:
 - `companies/<TICKER>/model/outputs.json`
 - `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`

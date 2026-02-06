@@ -40,13 +40,11 @@ Net Income,us-gaap_NetIncomeLoss,9272000000.0,9028000000.0,5313000000.0,85390000
 Profit or Loss,us-gaap_ProfitLoss,9640000000.0,9015000000.0,,,,
 Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-368000000.0,13000000.0,,,,
 Net OTTI losses recognized in income,us-gaap_OtherThanTemporaryImpairmentLossDebtSecuritiesPortionRecognizedInEarnings,,,,,,-58000000.0
-Other-than-temporary impairment (OTTI) losses gross,us-gaap_ImpairmentOfInvestments,,,,,,-90000000.0
-"Net realized, Gain (Loss), Excluding Other-than-temporary Impairment Loss",cb_NetrealizedgainslossesexcludingOTTI,,,,,-498000000.0,-472000000.0
 "Policy benefits (includes remeasurement gains of $19, $3, and nil)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,-3628000000.0,,,,
 Cigna integration expenses,us-gaap_BusinessCombinationIntegrationRelatedCosts,,69000000.0,48000000.0,,,
 Comprehensive loss attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,,28000000.0,,,,
-Other comprehensive income (loss) after reclassification for net realized gains included in net income,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,-2938000000.0,2592000000.0,3735000000.0
 Reclassification adjustment for net realized (gains) losses included in net income,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesBeforeTax,,,,-3000000.0,281000000.0,31000000.0
+Other comprehensive income (loss) after reclassification for net realized gains included in net income,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,-2938000000.0,2592000000.0,3735000000.0
 Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,22.94,21.97,12.66,19.41,7.82,9.77
 Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,22.7,21.8,12.55,19.27,7.79,9.71
 ,,,,,,,
@@ -55,3 +53,5 @@ Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,,,,6020000000.0,5783000
 Realized Investment Gains (Losses),us-gaap_RealizedInvestmentGainsLosses,,,,,-498000000.0,
 Policy Acquisition Costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,,,,,-6547000000.0,6153000000.0
 "Total net realized gains (losses) (includes $(31), $(302), and $(15) reclassified from AOCI)",cb_NetRealizedGainsLosses,,,,,,-530000000.0
+"Net realized, Gain (Loss), Excluding Other-than-temporary Impairment Loss",cb_NetrealizedgainslossesexcludingOTTI,,,,,-498000000.0,-472000000.0
+Other-than-temporary impairment (OTTI) losses gross,us-gaap_ImpairmentOfInvestments,,,,,,-90000000.0

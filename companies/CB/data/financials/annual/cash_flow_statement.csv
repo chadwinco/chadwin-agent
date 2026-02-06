@@ -53,8 +53,8 @@ Profit or Loss,us-gaap_ProfitLoss,9640000000.0,9015000000.0,,,,
 Amortization of premiums/discounts on fixed maturities,us-gaap_AmortizationOfFinancingCostsAndDiscounts,,,,,367000000.0,395000000.0
 Purchases of fixed maturities available for sale,us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt,,,-27844000000.0,-30222000000.0,-26298000000.0,-25846000000.0
 Purchases of fixed maturities held to maturity,us-gaap_PaymentsToAcquireHeldToMaturitySecurities,,-208000000.0,-618000000.0,-594000000.0,-202000000.0,-229000000.0
-Sales of to be announced mortgage-backed securities,cb_ProceedsFromSalesToBeAnnouncedMortgageBackedSecurities,,,,0.0,0.0,6000000.0
 Purchases of to be announced mortgage-backed securities,cb_PaymentsToAcquireToBeAnnouncedMortgageBackedSecurities,,,,,-0.0,-0.0
+Sales of to be announced mortgage-backed securities,cb_ProceedsFromSalesToBeAnnouncedMortgageBackedSecurities,,,,0.0,0.0,6000000.0
 Maturities and redemptions of fixed maturities held to maturity,us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfHeldToMaturitySecurities,,708000000.0,1712000000.0,1964000000.0,995000000.0,946000000.0
 Net Income,us-gaap_NetIncomeLoss,,,5313000000.0,8539000000.0,3533000000.0,4454000000.0
 Income taxes payable,us-gaap_IncreaseDecreaseInAccruedIncomeTaxesPayable,,,-149000000.0,48000000.0,46000000.0,-7000000.0
