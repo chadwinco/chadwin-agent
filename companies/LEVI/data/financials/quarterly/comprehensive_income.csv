@@ -14,18 +14,18 @@ Income tax expense related to items of other comprehensive income,us-gaap_OtherC
 Income tax benefit (expense) related to items of other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossTax,,,-2200000.0,,,,,,,,,
 Income tax benefit (expense) related to items of other comprehensive (loss) income,us-gaap_OtherComprehensiveIncomeLossTax,,,,900000.0,,,5000000.0,1900000.0,,,,
 Income tax (expense) benefit related to items of other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,-3100000.0,,,
-Net Income,us-gaap_NetIncomeLoss,,,135000000.0,,,,,,,,,
-Derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationBeforeTax,,,14500000.0,-12700000.0,4000000.0,13800000.0,-14600000.0,-26700000.0,-24800000.0,45631000.0,34030000.0,-4168000.0
 Income tax expense related to items of other comprehensive (loss) income,us-gaap_OtherComprehensiveIncomeLossTax,,,,,-1900000.0,,,,,,,
 Income tax expense related to items of other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossTax,,,,,,-1900000.0,,,,,,
 Unrealized (losses) gains on marketable securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,,,,,0.0,,-2938000.0,-4415000.0,-5994000.0
-Income tax expense related to items of other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,,,,2079000.0
 Income tax benefit related to items of other comprehensive (loss) income,us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,,-7503000.0,,
+Income tax expense related to items of other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,,,,2079000.0
 Income tax (benefit) expense related to items of other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,,,-415000.0,
 "Comprehensive income (loss), net of taxes",us-gaap_ComprehensiveIncomeNetOfTax,225900000.0,,142300000.0,,26600000.0,,,,,,,
 "Total other comprehensive income, before related income taxes",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,15700000.0,,,,9500000.0,,,,,,
 "Comprehensive income, net of taxes",us-gaap_ComprehensiveIncomeNetOfTax,,81100000.0,,,,,33200000.0,,,,,
-"Comprehensive (loss) income, net of income taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,,,,,-4800000.0,,,,
 "Comprehensive (loss) income, net of taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,-23100000.0,,-3000000.0,,,,,,
 "Comprehensive income, net of income taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,,,,,,117900000.0,157846000.0,66934000.0,178856000.0
 Foreign currency translation losses,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,,,,,,,,,-52441000.0,,
+"Comprehensive (loss) income, net of income taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,,,,,-4800000.0,,,,
+Net Income,us-gaap_NetIncomeLoss,,,135000000.0,,,,,,,,,
+Derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationBeforeTax,,,14500000.0,-12700000.0,4000000.0,13800000.0,-14600000.0,-26700000.0,-24800000.0,45631000.0,34030000.0,-4168000.0

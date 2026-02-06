@@ -1,0 +1,47 @@
+{
+  "inputs": {
+    "latest_revenue": 55753000000.0,
+    "net_debt": NaN,
+    "shares_outstanding": NaN,
+    "current_price": 332.73
+  },
+  "scenarios": {
+    "base": {
+      "enterprise_value": 93052362271.14702,
+      "equity_value": NaN,
+      "per_share_value": NaN,
+      "margin_of_safety": NaN,
+      "assumptions": {
+        "revenue_growth": -0.011815559308003931,
+        "fcf_margin": 0.15,
+        "discount_rate": 0.1,
+        "terminal_growth": 0.02
+      }
+    },
+    "bull": {
+      "enterprise_value": 137006209169.09726,
+      "equity_value": NaN,
+      "per_share_value": NaN,
+      "margin_of_safety": NaN,
+      "assumptions": {
+        "revenue_growth": 0.0050385726818780174,
+        "fcf_margin": 0.16999999999999998,
+        "discount_rate": 0.09,
+        "terminal_growth": 0.025
+      }
+    },
+    "bear": {
+      "enterprise_value": 56645837147.060814,
+      "equity_value": NaN,
+      "per_share_value": NaN,
+      "margin_of_safety": NaN,
+      "assumptions": {
+        "revenue_growth": -0.04017315428379453,
+        "fcf_margin": 0.12,
+        "discount_rate": 0.11,
+        "terminal_growth": 0.015
+      }
+    }
+  },
+  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $nan | nan% |\n| Bull | $nan | nan% |\n| Bear | $nan | nan% |"
+}

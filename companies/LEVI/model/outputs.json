@@ -3,45 +3,45 @@
     "latest_revenue": 6282000000.0,
     "net_debt": 281300000.0,
     "shares_outstanding": 399749260.0,
-    "current_price": 20.36
+    "current_price": 20.53
   },
   "scenarios": {
     "base": {
-      "enterprise_value": 5795651007.7917,
-      "equity_value": 5514351007.7917,
-      "per_share_value": 13.794524617235565,
-      "margin_of_safety": -0.475947926075046,
+      "enterprise_value": 5313618720.512321,
+      "equity_value": 5032318720.512321,
+      "per_share_value": 12.588688020366371,
+      "margin_of_safety": -0.6308291989432043,
       "assumptions": {
-        "revenue_growth": 0.07667963039898376,
+        "revenue_growth": 0.05560163441038779,
         "fcf_margin": 0.057141920494980646,
         "discount_rate": 0.1,
         "terminal_growth": 0.02
       }
     },
     "bull": {
-      "enterprise_value": 10346833508.264496,
-      "equity_value": 10065533508.264496,
-      "per_share_value": 25.179617613962552,
-      "margin_of_safety": 0.19140948396650742,
+      "enterprise_value": 10176024333.385313,
+      "equity_value": 9894724333.385313,
+      "per_share_value": 24.75232682953638,
+      "margin_of_safety": 0.17058302674389275,
       "assumptions": {
-        "revenue_growth": 0.09667963039898377,
+        "revenue_growth": 0.09265149843816145,
         "fcf_margin": 0.07714192049498064,
         "discount_rate": 0.09,
         "terminal_growth": 0.025
       }
     },
     "bear": {
-      "enterprise_value": 2957869519.070959,
-      "equity_value": 2676569519.070959,
-      "per_share_value": 6.695620947668444,
-      "margin_of_safety": -2.040793402005497,
+      "enterprise_value": 2598258563.6290607,
+      "equity_value": 2316958563.6290607,
+      "per_share_value": 5.796029650258917,
+      "margin_of_safety": -2.5420798786084364,
       "assumptions": {
-        "revenue_growth": 0.05667963039898376,
+        "revenue_growth": 0.024997961653807632,
         "fcf_margin": 0.03714192049498065,
         "discount_rate": 0.11,
         "terminal_growth": 0.015
       }
     }
   },
-  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $13.79 | -47.6% |\n| Bull | $25.18 | 19.1% |\n| Bear | $6.70 | -204.1% |"
+  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $12.59 | -63.1% |\n| Bull | $24.75 | 17.1% |\n| Bear | $5.80 | -254.2% |"
 }

@@ -11,6 +11,7 @@ import sys
 sys.path.insert(0, str(BASE_DIR))
 
 from research.edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
+from research.forecast_fetch import fetch_analyst_forecasts  # noqa: E402
 from research.loaders import load_company_data  # noqa: E402
 from research.metrics import compute_metrics  # noqa: E402
 from research.transcript_fetch import fetch_latest_transcript  # noqa: E402
@@ -29,19 +30,125 @@ def _clamp(value: float, low: float, high: float) -> float:
     return max(low, min(high, value))
 
 
-def _build_assumptions(metrics: dict) -> dict:
+def _analyst_revenue_growth(metrics: dict, analyst_estimates):
+    if analyst_estimates is None or getattr(analyst_estimates, "empty", True):
+        return None
+    try:
+        import pandas as pd  # type: ignore
+    except ImportError:
+        return None
+
+    df = analyst_estimates.copy()
+    df.columns = [str(c).strip() for c in df.columns]
+
+    if "metric" in df.columns:
+        df = df[df["metric"].astype(str).str.contains("revenue", case=False, na=False)]
+    if df.empty:
+        return None
+
+    year_col = None
+    for candidate in ("fiscalYear", "year", "fiscal_year"):
+        if candidate in df.columns:
+            year_col = candidate
+            break
+    if not year_col:
+        return None
+
+    df[year_col] = pd.to_numeric(df[year_col], errors="coerce")
+    df = df.dropna(subset=[year_col])
+    if df.empty:
+        return None
+    df[year_col] = df[year_col].astype(int)
+
+    for col in ("high", "avg", "low"):
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    latest_year = int(metrics.get("latest_year") or 0)
+    df = df[df[year_col] > latest_year]
+    if df.empty:
+        return None
+
+    df = df.sort_values(year_col)
+    last = df.iloc[-1]
+    years_forward = int(last[year_col]) - latest_year
+    if years_forward <= 0:
+        return None
+
+    latest_revenue = float(metrics.get("latest_revenue") or 0)
+    if latest_revenue <= 0:
+        return None
+
+    def _cagr(value):
+        if value is None or value != value or value <= 0:
+            return None
+        return (float(value) / latest_revenue) ** (1 / years_forward) - 1
+
+    return {
+        "avg": _cagr(last.get("avg")),
+        "high": _cagr(last.get("high")),
+        "low": _cagr(last.get("low")),
+        "forecast_year": int(last[year_col]),
+        "years_forward": years_forward,
+    }
+
+
+def _coalesce(*values):
+    for value in values:
+        if value is None:
+            continue
+        if value != value:
+            continue
+        return float(value)
+    return None
+
+
+def _build_assumptions(metrics: dict, analyst_estimates=None) -> dict:
     base_growth = _clamp(metrics.get("avg_revenue_growth", 0.02), -0.02, 0.08)
     base_margin = _clamp(metrics.get("avg_fcf_margin", 0.05), 0.02, 0.15)
 
-    bull_growth = _clamp(base_growth + 0.02, -0.01, 0.12)
-    bull_margin = _clamp(base_margin + 0.02, 0.03, 0.18)
+    notes = "Auto-generated from recent financial averages. Review and adjust before making decisions."
 
-    bear_growth = _clamp(base_growth - 0.02, -0.05, 0.06)
+    analyst_growth = _analyst_revenue_growth(metrics, analyst_estimates)
+    if analyst_growth:
+        avg_growth = _coalesce(analyst_growth.get("avg"))
+        high_growth = _coalesce(analyst_growth.get("high"))
+        low_growth = _coalesce(analyst_growth.get("low"))
+
+        candidate_base = avg_growth
+        if candidate_base is None and high_growth is not None and low_growth is not None:
+            candidate_base = (high_growth + low_growth) / 2
+        if candidate_base is None:
+            candidate_base = _coalesce(high_growth, low_growth)
+
+        if candidate_base is not None:
+            base_growth = candidate_base
+        notes = (
+            "Auto-generated using analyst revenue forecasts (StockAnalysis) "
+            f"for FY{analyst_growth['forecast_year']} "
+            f"(CAGR from FY{metrics.get('latest_year')} over {analyst_growth['years_forward']} years) "
+            "and recent financial averages. "
+            "Review and adjust before making decisions."
+        )
+
+    bull_growth = high_growth if analyst_growth else None
+    bear_growth = low_growth if analyst_growth else None
+
+    if bull_growth is None:
+        bull_growth = base_growth + 0.02
+    if bear_growth is None:
+        bear_growth = base_growth - 0.02
+
+    bull_growth = _clamp(bull_growth, -0.01, 0.12)
+    bear_growth = _clamp(bear_growth, -0.05, 0.06)
+    base_growth = _clamp(base_growth, -0.02, 0.08)
+
+    bull_margin = _clamp(base_margin + 0.02, 0.03, 0.18)
     bear_margin = _clamp(base_margin - 0.02, 0.01, 0.12)
 
     return {
         "forecast_years": 5,
-        "notes": "Auto-generated from recent financial averages. Review and adjust before making decisions.",
+        "notes": notes,
         "scenarios": {
             "base": {
                 "revenue_growth": float(base_growth),
@@ -107,6 +214,13 @@ def main() -> None:
     print(f"Fetching financial statements for {ticker}...")
     fetch_company_financials(ticker, data_dir, identity=args.identity)
 
+    print(f"Fetching analyst revenue forecasts for {ticker}...")
+    forecast = fetch_analyst_forecasts(ticker, data_dir)
+    if forecast:
+        print(f"Saved analyst forecasts to {forecast.path}")
+    else:
+        print("No analyst revenue forecast found.")
+
     data = load_company_data(base_dir, ticker)
     metrics = compute_metrics(data)
 
@@ -128,7 +242,7 @@ def main() -> None:
         print("No earnings call transcript found.")
 
     assumptions_path = company_dir / "model" / "assumptions.yaml"
-    assumptions = _build_assumptions(metrics)
+    assumptions = _build_assumptions(metrics, data.analyst_estimates)
     _write_assumptions(assumptions_path, assumptions, overwrite=args.overwrite_assumptions)
 
     if args.skip_analysis:

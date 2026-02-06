@@ -1,19 +1,20 @@
 forecast_years: 5
-notes: Auto-generated from recent financial averages. Review and adjust before making
-  decisions.
+notes: Auto-generated using analyst revenue forecasts (StockAnalysis) for FY2027 (CAGR
+  from FY2025 over 2 years) and recent financial averages. Review and adjust before
+  making decisions.
 scenarios:
   base:
-    revenue_growth: 0.07667963039898376
+    revenue_growth: 0.05560163441038779
     fcf_margin: 0.057141920494980646
     discount_rate: 0.1
     terminal_growth: 0.02
   bull:
-    revenue_growth: 0.09667963039898377
+    revenue_growth: 0.09265149843816145
     fcf_margin: 0.07714192049498064
     discount_rate: 0.09
     terminal_growth: 0.025
   bear:
-    revenue_growth: 0.05667963039898376
+    revenue_growth: 0.024997961653807632
     fcf_margin: 0.03714192049498065
     discount_rate: 0.11
     terminal_growth: 0.015

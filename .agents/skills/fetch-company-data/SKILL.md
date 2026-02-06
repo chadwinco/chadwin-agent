@@ -6,7 +6,7 @@ description: Fetch EDGAR filings, XBRL-based financial statements, and earnings 
 # Fetch Company Data
 
 ## Overview
-Fetch filings, financials, and transcripts into `companies/<TICKER>/data` and optionally bootstrap model assumptions for a new or refreshed ticker.
+Fetch filings, financials, analyst forecasts, and transcripts into `companies/<TICKER>/data` and optionally bootstrap model assumptions for a new or refreshed ticker.
 
 ## Quick Start
 1. Activate the repo virtual environment and install dependencies if needed.
@@ -19,14 +19,21 @@ python3 scripts/add_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 
 ## Workflow
 1. Confirm prerequisites.
-2. Bootstrap or refresh company data.
+2. Confirm the ticker and as-of date (do not infer from open files or prior context).
+3. Bootstrap or refresh company data.
 3. Verify outputs and source logging.
 
 ### 1. Confirm prerequisites
 - Follow `docs/python-setup.md` if the virtual environment or dependencies are missing.
 - Ensure `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) is set in `.env`, or pass `--identity`.
 
-### 2. Bootstrap or refresh company data
+### 2. Confirm ticker and as-of date
+- Only proceed if the user explicitly provided a ticker in the current request.
+- If no ticker is specified, stop and ask: "Which ticker should I fetch?"
+- If multiple tickers are mentioned, ask which one to run first.
+- Echo back the ticker and as-of date before running the command.
+
+### 3. Bootstrap or refresh company data
 Run the data fetcher from the repo root:
 
 ```bash
@@ -45,6 +52,7 @@ Check that these files exist:
 - `companies/<TICKER>/data/financials/annual/cash_flow_statement.csv`
 - `companies/<TICKER>/data/10-K-*.md` or `companies/<TICKER>/data/20-F-*.md`
 - `companies/<TICKER>/data/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
+- `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
 - `companies/<TICKER>/model/assumptions.yaml`
 - `docs/source-log.md` updated with transcript and data snapshot entries
 

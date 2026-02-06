@@ -16,7 +16,7 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 - `cash_flow_statement_annual.csv` (derived summary)
 - `key_metrics.csv`
 - `ratios.csv`
-- `analyst_estimates.csv`
+- `analyst_estimates.csv` (analyst revenue forecasts)
 - Transcripts, filings, and other markdown files
 
 ## Core Columns (Required)
@@ -53,6 +53,13 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 - `isEtf`, `isAdr`, `isActivelyTrading`
 
 Values may be blank when the source data is unavailable, but the column set should be present.
+
+### `analyst_estimates.csv`
+- `metric` (currently `revenue`)
+- `fiscalYear`
+- `high`, `avg`, `low` (forecast values in absolute dollars)
+- `source` (URL)
+- `retrieved` (YYYY-MM-DD)
 
 ## Derived Metrics (Definitions)
 - Revenue growth: year-over-year % change.

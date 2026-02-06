@@ -36,13 +36,13 @@ Loss on early extinguishment of debt,lvis_GainLossOnExtinguishmentOfDebtIncludin
 "Other financing, net",us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,,,7000000.0,6200000.0,-2760000.0,-17631000.0
 Deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,-104300000.0,-59800000.0,-87945000.0,-95244000.0
 Asset impairment charges,us-gaap_AssetImpairmentCharges,,,,37800000.0,21871000.0,
+Payments for underwriter commission and other offering costs,us-gaap_PaymentOfFinancingAndStockIssuanceCosts,,,,,-0.0,-0.0
+Asset Impairment Charges,us-gaap_AssetImpairmentCharges,,,,,,66987000.0
+"Other investing, net",us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,,,-1200000.0,,
 Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,,,,,,502500000.0
 Proceeds from Issuance of Common Stock,us-gaap_ProceedsFromIssuanceOfCommonStock,,,,,7674000.0,8050000.0
 Payment of debt issuance costs,us-gaap_PaymentsOfDebtIssuanceCosts,,,,,,-6459000.0
-Payments for underwriter commission and other offering costs,us-gaap_PaymentOfFinancingAndStockIssuanceCosts,,,,,-0.0,-0.0
-Asset Impairment Charges,us-gaap_AssetImpairmentCharges,,,,,,66987000.0
 "Short-term credit facilities and borrowings, net",us-gaap_ProceedsFromRepaymentsOfShortTermDebt,,,,,-12180000.0,10045000.0
-"Other investing, net",us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,,,-1200000.0,,
 "Proceeds (repayments) of short-term credit facilities and other short-term borrowings, net",us-gaap_ProceedsFromRepaymentsOfShortTermDebt,,,,7400000.0,,
 "Right-of use operating lease assets and current and non-current operating lease liabilities, net",lvis_IncreaseDecreaseInOperatingLeaseRightOfUseAssetAndOperatingLeaseLiabilityNoncurrent,,,,,-5870000.0,
 Other current and long-term liabilities,us-gaap_IncreaseDecreaseInOtherOperatingCapitalNet,,,,,24479000.0,-192202000.0
@@ -53,6 +53,6 @@ Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEqu
 "Property, plant and equipment acquired and not yet paid at end of period",us-gaap_CapitalExpendituresIncurredButNotYetPaid,51400000.0,65400000.0,59600000.0,93300000.0,72326000.0,35994000.0
 Cash paid for interest during the period,us-gaap_InterestPaidNet,37000000.0,38200000.0,42800000.0,37500000.0,54350000.0,
 Income taxes,us-gaap_IncomeTaxesPaid,159800000.0,102300000.0,89300000.0,129300000.0,109568000.0,50068000.0
+Employee benefit plan settlement losses,lvis_EmployeeBenefitPlansAmortizationFromAccumulatedOtherComprehensiveLoss,,,,,,14700000.0
 Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,,,,,150507000.0,12507000.0
 "Accrued salaries, wages and employee benefits and long-term employee related benefits",us-gaap_IncreaseDecreaseInEmployeeRelatedLiabilities,,,,,101647000.0,-71137000.0
-Employee benefit plan settlement losses,lvis_EmployeeBenefitPlansAmortizationFromAccumulatedOtherComprehensiveLoss,,,,,,14700000.0
