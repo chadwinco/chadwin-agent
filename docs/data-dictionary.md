@@ -9,6 +9,7 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 - `company_profile.csv`
 
 ## Optional Files
+- `financials/annual/` and `financials/quarterly/` (full EDGAR statement exports)
 - `key_metrics.csv`
 - `ratios.csv`
 - `analyst_estimates.csv`
@@ -55,6 +56,20 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
   - `Invested Capital = totalDebt + totalEquity - cashAndCashEquivalents`.
 - Reinvestment rate: `abs(capitalExpenditure) / revenue`.
 - Leverage: `netDebt / ebitda`.
+
+## EDGAR Financial Statement Exports
+When EDGAR data is fetched, the pipeline stores full statements in:
+- `companies/<TICKER>/data/financials/annual/`
+- `companies/<TICKER>/data/financials/quarterly/`
+
+Each directory contains:
+- `income_statement.csv`
+- `balance_sheet.csv`
+- `cash_flow_statement.csv`
+- `statement_of_equity.csv`
+- `comprehensive_income.csv`
+
+These are the canonical statement sources. The `*_annual.csv` and `*_quarterly.csv` files in the root `data/` folder are derived summaries used by the analysis workflow.
 
 ## Date Alignment
 For each fiscal year, income, balance sheet, and cash flow rows should align on `fiscalYear` and be within the same `date` range. The quality checker flags mismatches.

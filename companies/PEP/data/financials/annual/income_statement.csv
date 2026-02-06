@@ -1,0 +1,21 @@
+label,concept,2025-12-27,2024-12-28,2023-12-30,2022-12-31,2021-12-25,2020-12-26
+Revenue,us-gaap_Revenues,93925000000.0,91854000000.0,91471000000.0,86392000000.0,79474000000.0,70372000000.0
+Impairment of Intangible Assets (Excluding Goodwill),us-gaap_ImpairmentOfIntangibleAssetsExcludingGoodwill,-1993000000.0,-33000000.0,-927000000.0,-3166000000.0,,
+Other pension and retiree medical benefits (expense)/income,us-gaap_NetPeriodicDefinedBenefitsExpenseReversalOfExpenseExcludingServiceCostComponent,-133000000.0,-22000000.0,,,,
+Other pension and retiree medical benefits income,us-gaap_NetPeriodicDefinedBenefitsExpenseReversalOfExpenseExcludingServiceCostComponent,,,250000000.0,132000000.0,,
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,-43066000000.0,-41744000000.0,-41881000000.0,-40576000000.0,-37075000000.0,-31797000000.0
+Gross Profit,us-gaap_GrossProfit,50859000000.0,50110000000.0,49590000000.0,45816000000.0,42399000000.0,38575000000.0
+"Selling, General and Administrative Expense",us-gaap_SellingGeneralAndAdministrativeExpense,-37368000000.0,-37190000000.0,-36677000000.0,-34459000000.0,-31237000000.0,-28495000000.0
+Operating Income,us-gaap_OperatingIncomeLoss,11498000000.0,12887000000.0,11986000000.0,11512000000.0,11162000000.0,10080000000.0
+Interest Expense,us-gaap_InterestExpense,-1121000000.0,-919000000.0,-819000000.0,-939000000.0,-1863000000.0,-1128000000.0
+Other pension and retiree medical benefits income/(expense),us-gaap_NetPeriodicDefinedBenefitsExpenseReversalOfExpenseExcludingServiceCostComponent,,,,,522000000.0,117000000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,10244000000.0,11946000000.0,11417000000.0,10705000000.0,9821000000.0,9069000000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,1949000000.0,2320000000.0,2262000000.0,1727000000.0,2142000000.0,1894000000.0
+Net Income,us-gaap_NetIncomeLoss,8240000000.0,9578000000.0,9074000000.0,8910000000.0,7618000000.0,7120000000.0
+Profit or Loss,us-gaap_ProfitLoss,8295000000.0,9626000000.0,9155000000.0,8978000000.0,7679000000.0,7175000000.0
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-55000000.0,-48000000.0,-81000000.0,-68000000.0,-61000000.0,-55000000.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,6.02,6.97,6.59,6.45,5.51,5.14
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,6.0,6.95,6.56,6.42,5.49,5.12
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,1369000000.0,1373000000.0,1376000000.0,1380000000.0,1382000000.0,1385000000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,1373000000.0,1378000000.0,1383000000.0,1387000000.0,1389000000.0,1392000000.0
+Gain associated with the Juice Transaction,us-gaap_GainLossOnSaleOfBusiness,,0.0,0.0,3321000000.0,,

@@ -337,6 +337,8 @@ def _prepare_statement_df(df):
         return None
     if hasattr(df, "to_dataframe"):
         try:
+            df = df.to_dataframe(standard=False)
+        except TypeError:
             df = df.to_dataframe()
         except Exception:
             pass
@@ -347,7 +349,6 @@ def _prepare_statement_df(df):
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = [" ".join([str(c) for c in col if c]) for col in df.columns]
     df.columns = [str(c) for c in df.columns]
-    df.index = [str(i) for i in df.index]
     return df
 
 
@@ -378,16 +379,38 @@ def _period_columns(df) -> Tuple[object, List[str], dict]:
     return df, [], {}
 
 
-def _find_row(df, candidates: Iterable[str]):
-    labels = [str(i).strip() for i in df.index]
-    for cand in candidates:
+def _find_row(df, concepts: Iterable[str] = (), labels: Iterable[str] = ()):
+    pd = _require_pandas()
+    if df is None or getattr(df, "empty", False):
+        return None
+
+    if "concept" in df.columns:
+        concept_series = df["concept"].astype(str).str.lower()
+        for cand in concepts:
+            row = df[concept_series == cand.lower()]
+            if not row.empty:
+                return row.iloc[0]
+
+    if "label" in df.columns:
+        label_series = df["label"].astype(str)
+        for cand in labels:
+            row = df[label_series.str.lower() == cand.lower()]
+            if not row.empty:
+                return row.iloc[0]
+        for cand in labels:
+            row = df[label_series.str.contains(cand, case=False, na=False)]
+            if not row.empty:
+                return row.iloc[0]
+
+    labels_idx = [str(i).strip() for i in df.index]
+    for cand in labels:
         cand_lower = cand.lower()
-        for idx, label in enumerate(labels):
+        for idx, label in enumerate(labels_idx):
             if label.lower() == cand_lower:
                 return df.iloc[idx]
-    for cand in candidates:
+    for cand in labels:
         cand_lower = cand.lower()
-        for idx, label in enumerate(labels):
+        for idx, label in enumerate(labels_idx):
             if cand_lower in label.lower():
                 return df.iloc[idx]
     return None
@@ -413,6 +436,11 @@ def _attach_metric(df, series, name, period_cols):
     if series is None:
         df[name] = pd.NA
         return
+    if isinstance(series, pd.DataFrame):
+        if series.empty:
+            df[name] = pd.NA
+            return
+        series = series.iloc[0]
     values = [series.get(col) for col in period_cols]
     df[name] = pd.to_numeric(values, errors="coerce")
 
@@ -429,14 +457,55 @@ def _build_income_statement(financials, ticker: str, period_label: str, currency
 
     out = _build_base_frame(period_cols, date_map, ticker, period_label, currency)
 
-    revenue = _find_row(df, ["Revenue", "Revenues", "Total Revenue", "Sales"])
-    gross_profit = _find_row(df, ["Gross Profit"])
-    operating_income = _find_row(df, ["Operating Income", "Operating Income (Loss)", "Operating Income Loss"])
-    income_before_tax = _find_row(df, ["Income Before Tax", "Income (Loss) Before Income Taxes"])
-    income_tax = _find_row(df, ["Income Tax Expense", "Provision for Income Taxes"])
-    net_income = _find_row(df, ["Net Income", "Net Income (Loss)"])
-    shares_basic = _find_row(df, ["Weighted Average Shares Basic", "Weighted Average Shares"])
-    shares_dil = _find_row(df, ["Weighted Average Shares Diluted", "Weighted Average Shares Diluted Shares"])
+    revenue = _find_row(
+        df,
+        concepts=[
+            "us-gaap_Revenues",
+            "us-gaap_SalesRevenueNet",
+            "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+            "us-gaap_SalesRevenueGoodsNet",
+            "us-gaap_SalesRevenueServicesNet",
+        ],
+        labels=["Revenue", "Revenues", "Total Revenue", "Net Revenue", "Sales"],
+    )
+    gross_profit = _find_row(
+        df,
+        concepts=["us-gaap_GrossProfit"],
+        labels=["Gross Profit"],
+    )
+    operating_income = _find_row(
+        df,
+        concepts=["us-gaap_OperatingIncomeLoss"],
+        labels=["Operating Income", "Operating Income (Loss)", "Operating Income Loss"],
+    )
+    income_before_tax = _find_row(
+        df,
+        concepts=[
+            "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+            "us-gaap_IncomeLossBeforeIncomeTaxes",
+        ],
+        labels=["Income Before Tax", "Income Before Taxes", "Income (Loss) Before Income Taxes"],
+    )
+    income_tax = _find_row(
+        df,
+        concepts=["us-gaap_IncomeTaxExpenseBenefit"],
+        labels=["Income Tax Expense", "Provision for Income Taxes"],
+    )
+    net_income = _find_row(
+        df,
+        concepts=["us-gaap_NetIncomeLoss"],
+        labels=["Net Income", "Net Income (Loss)", "Profit or Loss"],
+    )
+    shares_basic = _find_row(
+        df,
+        concepts=["us-gaap_WeightedAverageNumberOfSharesOutstandingBasic"],
+        labels=["Weighted Average Shares Basic", "Shares Outstanding (Basic)"],
+    )
+    shares_dil = _find_row(
+        df,
+        concepts=["us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding"],
+        labels=["Weighted Average Shares Diluted", "Shares Outstanding (Diluted)"],
+    )
 
     _attach_metric(out, revenue, "revenue", period_cols)
     _attach_metric(out, gross_profit, "grossProfit", period_cols)
@@ -463,12 +532,47 @@ def _build_balance_sheet(financials, ticker: str, period_label: str, currency: s
 
     out = _build_base_frame(period_cols, date_map, ticker, period_label, currency)
 
-    cash = _find_row(df, ["Cash and Cash Equivalents", "Cash & Cash Equivalents"])
-    total_assets = _find_row(df, ["Total Assets"])
-    total_equity = _find_row(df, ["Total Stockholders' Equity", "Total Stockholders Equity", "Total Equity"])
-    total_debt = _find_row(df, ["Total Debt"])
-    short_debt = _find_row(df, ["Short-Term Debt", "Short Term Debt", "Current Portion of Long-Term Debt"])
-    long_debt = _find_row(df, ["Long-Term Debt", "Long Term Debt"])
+    cash = _find_row(
+        df,
+        concepts=[
+            "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+            "us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+        ],
+        labels=["Cash and Cash Equivalents", "Cash & Cash Equivalents"],
+    )
+    total_assets = _find_row(
+        df,
+        concepts=["us-gaap_Assets"],
+        labels=["Total Assets"],
+    )
+    total_equity = _find_row(
+        df,
+        concepts=[
+            "us-gaap_StockholdersEquity",
+            "us-gaap_StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+            "us-gaap_StockholdersEquityIncludingPortionAttributableToParent",
+        ],
+        labels=["Total Stockholders' Equity", "Total Stockholders Equity", "Total Equity"],
+    )
+    total_debt = _find_row(
+        df,
+        concepts=[
+            "us-gaap_Debt",
+            "us-gaap_LongTermDebt",
+            "us-gaap_LongTermDebtAndCapitalLeaseObligations",
+        ],
+        labels=["Total Debt"],
+    )
+    short_debt = _find_row(
+        df,
+        concepts=["us-gaap_DebtCurrent", "us-gaap_ShortTermBorrowings"],
+        labels=["Short-Term Debt", "Short Term Debt", "Current Portion of Long-Term Debt"],
+    )
+    long_debt = _find_row(
+        df,
+        concepts=["us-gaap_LongTermDebtNoncurrent", "us-gaap_LongTermDebt"],
+        labels=["Long-Term Debt", "Long Term Debt"],
+    )
 
     _attach_metric(out, cash, "cashAndCashEquivalents", period_cols)
     _attach_metric(out, total_assets, "totalAssets", period_cols)
@@ -504,25 +608,32 @@ def _build_cash_flow(financials, ticker: str, period_label: str, currency: str):
 
     ocf = _find_row(
         df,
-        [
+        concepts=["us-gaap_NetCashProvidedByUsedInOperatingActivities"],
+        labels=[
+            "Net Cash from Operating Activities",
             "Net Cash Provided by Operating Activities",
-            "Net Cash Provided by Operating Activities (Continuing Operations)",
         ],
     )
     capex = _find_row(
         df,
-        [
+        concepts=[
+            "us-gaap_PaymentsToAcquirePropertyPlantAndEquipment",
+            "us-gaap_PaymentsToAcquireProductiveAssets",
+        ],
+        labels=[
             "Payments to Acquire Property, Plant, and Equipment",
             "Capital Expenditures",
+            "Capital spending",
             "Purchases of Property and Equipment",
         ],
     )
     depreciation = _find_row(
         df,
-        [
+        concepts=["us-gaap_DepreciationDepletionAndAmortization"],
+        labels=[
             "Depreciation and Amortization",
+            "Depreciation and amortization",
             "Depreciation",
-            "Depreciation and Amortization of Property, Plant and Equipment",
         ],
     )
 
@@ -556,6 +667,33 @@ def _get_statement(financials, names: Iterable[str]):
         except Exception:
             continue
     return None
+
+
+def _normalize_filings(filings) -> List:
+    if filings is None:
+        return []
+    if isinstance(filings, list):
+        return filings
+    try:
+        return list(filings)
+    except TypeError:
+        return [filings]
+
+
+def _statement_df_from_xbrls(xbrls, method_name: str, max_periods: int):
+    if xbrls is None:
+        return None
+    stmt_getter = getattr(xbrls.statements, method_name, None)
+    if stmt_getter is None:
+        return None
+    try:
+        statement = stmt_getter(max_periods=max_periods, standardize=True)
+    except TypeError:
+        statement = stmt_getter()
+    if statement is None:
+        return None
+    df = statement.to_dataframe()
+    return _prepare_statement_df(df)
 
 
 def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
@@ -634,6 +772,7 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
 def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str] = None) -> None:
     ensure_edgar_identity(identity)
     from edgar import Company  # type: ignore
+    from edgar.xbrl import XBRLS  # type: ignore
 
     pd = _require_pandas()
     company = Company(ticker)
@@ -641,34 +780,46 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
 
     _write_company_profile(company, data_dir, ticker, currency)
 
-    financials = company.get_financials()
-    if financials is None:
-        raise RuntimeError("No annual financials found for company.")
+    try:
+        is_fpi = len(company.get_filings(form="20-F")) > 0
+    except Exception:
+        is_fpi = False
 
-    income_stmt = _get_statement(financials, ["income", "income_statement"])
-    balance_stmt = _get_statement(financials, ["balance_sheet"])
-    cash_stmt = _get_statement(financials, ["cash_flow", "cashflow_statement", "cash_flow_statement"])
+    annual_form = "20-F" if is_fpi else "10-K"
+    annual_filings = _normalize_filings(company.latest(annual_form, n=6))
+    if not annual_filings:
+        raise RuntimeError(f"No {annual_form} filings found for {ticker}.")
 
-    income_annual = _build_income_statement(income_stmt, ticker, "FY", currency)
-    balance_annual = _build_balance_sheet(balance_stmt, ticker, "FY", currency)
-    cash_annual = _build_cash_flow(cash_stmt, ticker, "FY", currency)
+    annual_xbrls = XBRLS.from_filings(annual_filings)
 
-    raw_dir = data_dir / "edgar_raw"
-    raw_dir.mkdir(exist_ok=True)
-    raw_income = _prepare_statement_df(income_stmt)
-    raw_balance = _prepare_statement_df(balance_stmt)
-    raw_cash = _prepare_statement_df(cash_stmt)
-    if raw_income is not None:
-        raw_income.to_csv(raw_dir / "income_statement_raw.csv")
-    if raw_balance is not None:
-        raw_balance.to_csv(raw_dir / "balance_sheet_raw.csv")
-    if raw_cash is not None:
-        raw_cash.to_csv(raw_dir / "cash_flow_statement_raw.csv")
+    annual_dir = data_dir / "financials" / "annual"
+    annual_dir.mkdir(parents=True, exist_ok=True)
+
+    annual_income_full = _statement_df_from_xbrls(annual_xbrls, "income_statement", max_periods=8)
+    annual_balance_full = _statement_df_from_xbrls(annual_xbrls, "balance_sheet", max_periods=8)
+    annual_cash_full = _statement_df_from_xbrls(annual_xbrls, "cashflow_statement", max_periods=8)
+    annual_equity_full = _statement_df_from_xbrls(annual_xbrls, "statement_of_equity", max_periods=8)
+    annual_comp_full = _statement_df_from_xbrls(annual_xbrls, "comprehensive_income", max_periods=8)
+
+    if annual_income_full is not None:
+        annual_income_full.to_csv(annual_dir / "income_statement.csv", index=False)
+    if annual_balance_full is not None:
+        annual_balance_full.to_csv(annual_dir / "balance_sheet.csv", index=False)
+    if annual_cash_full is not None:
+        annual_cash_full.to_csv(annual_dir / "cash_flow_statement.csv", index=False)
+    if annual_equity_full is not None:
+        annual_equity_full.to_csv(annual_dir / "statement_of_equity.csv", index=False)
+    if annual_comp_full is not None:
+        annual_comp_full.to_csv(annual_dir / "comprehensive_income.csv", index=False)
+
+    income_annual = _build_income_statement(annual_income_full, ticker, "FY", currency)
+    balance_annual = _build_balance_sheet(annual_balance_full, ticker, "FY", currency)
+    cash_annual = _build_cash_flow(annual_cash_full, ticker, "FY", currency)
 
     if income_annual.empty or balance_annual.empty or cash_annual.empty:
         raise RuntimeError(
             "Unable to parse annual financial statements from EDGAR. "
-            "Check the raw statement files under data/edgar_raw."
+            "Check data/financials/annual for full statements."
         )
 
     if not income_annual.empty and not cash_annual.empty:
@@ -683,15 +834,36 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
     balance_annual.to_csv(data_dir / "balance_sheet_annual.csv", index=False)
     cash_annual.to_csv(data_dir / "cash_flow_statement_annual.csv", index=False)
 
-    quarterly = company.get_quarterly_financials()
-    if quarterly is not None:
-        income_q_stmt = _get_statement(quarterly, ["income", "income_statement"])
-        balance_q_stmt = _get_statement(quarterly, ["balance_sheet"])
-        cash_q_stmt = _get_statement(quarterly, ["cash_flow", "cashflow_statement", "cash_flow_statement"])
+    if not is_fpi:
+        quarterly_filings = _normalize_filings(company.latest("10-Q", n=12))
+    else:
+        quarterly_filings = []
 
-        income_q = _build_income_statement(income_q_stmt, ticker, "Q", currency)
-        balance_q = _build_balance_sheet(balance_q_stmt, ticker, "Q", currency)
-        cash_q = _build_cash_flow(cash_q_stmt, ticker, "Q", currency)
+    quarterly_dir = data_dir / "financials" / "quarterly"
+    quarterly_dir.mkdir(parents=True, exist_ok=True)
+
+    if quarterly_filings:
+        quarterly_xbrls = XBRLS.from_filings(quarterly_filings)
+        quarterly_income_full = _statement_df_from_xbrls(quarterly_xbrls, "income_statement", max_periods=12)
+        quarterly_balance_full = _statement_df_from_xbrls(quarterly_xbrls, "balance_sheet", max_periods=12)
+        quarterly_cash_full = _statement_df_from_xbrls(quarterly_xbrls, "cashflow_statement", max_periods=12)
+        quarterly_equity_full = _statement_df_from_xbrls(quarterly_xbrls, "statement_of_equity", max_periods=12)
+        quarterly_comp_full = _statement_df_from_xbrls(quarterly_xbrls, "comprehensive_income", max_periods=12)
+
+        if quarterly_income_full is not None:
+            quarterly_income_full.to_csv(quarterly_dir / "income_statement.csv", index=False)
+        if quarterly_balance_full is not None:
+            quarterly_balance_full.to_csv(quarterly_dir / "balance_sheet.csv", index=False)
+        if quarterly_cash_full is not None:
+            quarterly_cash_full.to_csv(quarterly_dir / "cash_flow_statement.csv", index=False)
+        if quarterly_equity_full is not None:
+            quarterly_equity_full.to_csv(quarterly_dir / "statement_of_equity.csv", index=False)
+        if quarterly_comp_full is not None:
+            quarterly_comp_full.to_csv(quarterly_dir / "comprehensive_income.csv", index=False)
+
+        income_q = _build_income_statement(quarterly_income_full, ticker, "Q", currency)
+        balance_q = _build_balance_sheet(quarterly_balance_full, ticker, "Q", currency)
+        cash_q = _build_cash_flow(quarterly_cash_full, ticker, "Q", currency)
     else:
         income_q = pd.DataFrame()
         balance_q = pd.DataFrame()

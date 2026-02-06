@@ -9,7 +9,7 @@ Prerequisite: set up the Python virtual environment described in `docs/python-se
 
 ## End-to-End Flow
 0. Activate the Python virtual environment in `.venv/` and set `EDGAR_IDENTITY` in `.env` if fetching filings.
-1. Ingest data from `companies/<TICKER>/data`.
+1. Ingest data from `companies/<TICKER>/data` (EDGAR exports land in `data/financials/annual` and `data/financials/quarterly`).
 2. Run quality checks for missing files, inconsistent dates, and obvious data errors.
 3. Compute core metrics (growth, margins, ROIC, leverage, FCF).
 4. Build a base/bull/bear FCF DCF model.

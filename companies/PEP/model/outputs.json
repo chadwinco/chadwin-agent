@@ -1,15 +1,15 @@
 {
   "inputs": {
-    "latest_revenue": NaN,
-    "net_debt": NaN,
-    "shares_outstanding": NaN,
+    "latest_revenue": 93925000000.0,
+    "net_debt": 40023000000.0,
+    "shares_outstanding": 1373000000.0,
     "current_price": null
   },
   "scenarios": {
     "base": {
-      "enterprise_value": NaN,
-      "equity_value": NaN,
-      "per_share_value": NaN,
+      "enterprise_value": 230577796205.45038,
+      "equity_value": 190554796205.45038,
+      "per_share_value": 138.7871785910054,
       "margin_of_safety": null,
       "assumptions": {
         "revenue_growth": 0.08,
@@ -19,9 +19,9 @@
       }
     },
     "bull": {
-      "enterprise_value": NaN,
-      "equity_value": NaN,
-      "per_share_value": NaN,
+      "enterprise_value": 345615830458.44934,
+      "equity_value": 305592830458.44934,
+      "per_share_value": 222.57307389544744,
       "margin_of_safety": null,
       "assumptions": {
         "revenue_growth": 0.1,
@@ -31,9 +31,9 @@
       }
     },
     "bear": {
-      "enterprise_value": NaN,
-      "equity_value": NaN,
-      "per_share_value": NaN,
+      "enterprise_value": 144817214290.08643,
+      "equity_value": 104794214290.08643,
+      "per_share_value": 76.32499219962595,
       "margin_of_safety": null,
       "assumptions": {
         "revenue_growth": 0.06,
@@ -43,5 +43,5 @@
       }
     }
   },
-  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $nan | n/a |\n| Bull | $nan | n/a |\n| Bear | $nan | n/a |"
+  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $138.79 | n/a |\n| Bull | $222.57 | n/a |\n| Bear | $76.32 | n/a |"
 }

@@ -1,0 +1,30 @@
+label,concept,2025-09-06,2025-06-14,2025-03-22,2024-09-07,2024-06-15,2024-03-23,2023-09-09,2023-06-17,2023-03-25,2022-09-03,2022-06-11,2022-03-19
+"Common stock, dividends, declared (in USD per share)",us-gaap_CommonStockDividendsPerShareDeclared,1.4225,1.4225,1.355,1.355,1.355,1.265,1.265,1.265,1.15,1.15,,
+"Common Stock, Dividends, Per Share, Declared",us-gaap_CommonStockDividendsPerShareDeclared,,,,,,,,,,,1.15,1.075
+"Treasury Stock, Value, Acquired, Cost Method",us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,,,,,,,0.0,0.0
+"Stock Issued During Period, Value, Stock Options Exercised",us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,,,,,,,,,,36000000.0,156000000.0
+"Stock option exercises, shares",us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,,,,,,,,,,0.0,2000000.0
+"Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Parent",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,,,,,,927000000.0,-445000000.0
+"Stock Repurchased During Period, Value",us-gaap_StockRepurchasedDuringPeriodValue,,,,,,,,,,,518000000.0,213000000.0
+"Stock Repurchased During Period, Shares",us-gaap_StockRepurchasedDuringPeriodShares,,,,,,,,,,,3000000.0,-1000000.0
+"Noncontrolling Interest, Decrease from Distributions to Noncontrolling Interest Holders",us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,,,,,,,,,,,-14000000.0,
+Changes in repurchased common stock (in shares),us-gaap_StockRepurchasedDuringPeriodShares,2000000.0,2000000.0,1000000.0,1000000.0,1000000.0,-1000000.0,2000000.0,1000000.0,-1000000.0,2000000.0,,
+Change in repurchased common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,
+Share-based compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,75000000.0,53000000.0,76000000.0,76000000.0,87000000.0,92000000.0,88000000.0,85000000.0,94000000.0,77000000.0,76000000.0,83000000.0
+"Stock option exercises, RSUs and PSUs converted",us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,4000000.0,-2000000.0,-98000000.0,9000000.0,9000000.0,-113000000.0,3000000.0,5000000.0,162000000.0,1000000.0,,
+Withholding tax on RSUs and PSUs converted,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,1000000.0,22000000.0,89000000.0,1000000.0,23000000.0,108000000.0,16000000.0,3000000.0,116000000.0,10000000.0,2000000.0,85000000.0
+Net Income,us-gaap_NetIncomeLoss,2603000000.0,1263000000.0,1834000000.0,2930000000.0,3083000000.0,2042000000.0,3092000000.0,2748000000.0,1932000000.0,2702000000.0,1429000000.0,4261000000.0
+Cash dividends declared - common,us-gaap_DividendsCommonStockCash,1953000000.0,1954000000.0,1862000000.0,1868000000.0,1869000000.0,1746000000.0,1748000000.0,1755000000.0,1590000000.0,1593000000.0,1600000000.0,1492000000.0
+Other comprehensive income/(loss) attributable to PepsiCo,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,493000000.0,988000000.0,,,,355000000.0,,,,,,
+"Stock option exercises, RSUs and PSUs converted (in shares)",us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,0.0,0.0,2000000.0,1000000.0,1000000.0,2000000.0,0.0,1000000.0,2000000.0,1000000.0,,
+Other (in shares),us-gaap_StockholdersEquityOtherShares,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,0.0,,
+Share repurchases,us-gaap_StockRepurchasedDuringPeriodValue,263000000.0,302000000.0,195000000.0,294000000.0,310000000.0,158000000.0,293000000.0,292000000.0,174000000.0,448000000.0,,
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-15000000.0,-16000000.0,-9000000.0,-15000000.0,-11000000.0,-11000000.0,-24000000.0,-23000000.0,-12000000.0,-22000000.0,-17000000.0,-12000000.0
+Distributions to noncontrolling interests,us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,0.0,14000000.0,1000000.0,0.0,-16000000.0,-1000000.0,0.0,-14000000.0,-1000000.0,-6000000.0,,
+"Other, net",us-gaap_StockholdersEquityOther,0.0,0.0,0.0,-4000000.0,0.0,-1000000.0,-1000000.0,2000000.0,2000000.0,0.0,,
+"Adjustments to Additional Paid in Capital, Other",us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,-3000000.0,-4000000.0,,,,,,,,,,
+Other comprehensive income attributable to PepsiCo,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,534000000.0,,,,,,,,,
+Other comprehensive loss attributable to PepsiCo,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,-866000000.0,-607000000.0,,,,-299000000.0,,,
+Other comprehensive (loss)/income attributable to PepsiCo,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,,-14000000.0,-179000000.0,,-327000000.0,,
+Other,us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,,,,-6000000.0,-2000000.0,,-3000000.0,-1000000.0,,-2000000.0,0.0,-2000000.0
+Acquisitions,pep_AcquisitionsAndDivestituresToNoncontrollingInterest,,,,,,,0.0,,,21000000.0,,

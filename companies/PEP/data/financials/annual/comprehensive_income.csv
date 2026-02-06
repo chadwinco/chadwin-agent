@@ -1,0 +1,11 @@
+label,concept,2025-12-27,2024-12-28,2023-12-30,2022-12-31,2021-12-25,2020-12-26
+Profit or Loss,us-gaap_ProfitLoss,8295000000.0,9626000000.0,9155000000.0,8978000000.0,7679000000.0,7175000000.0
+"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Gain (Loss) Arising During Period, Net of Tax",us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,1723000000.0,-1962000000.0,-307000000.0,-643000000.0,-369000000.0,-650000000.0
+"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), after Reclassification and Tax",us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,44000000.0,113000000.0,-32000000.0,-158000000.0,155000000.0,
+"Other Comprehensive (Income) Loss, Defined Benefit Plan, after Reclassification Adjustment, after Tax",us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentNetOfTax,452000000.0,5000000.0,-358000000.0,389000000.0,770000000.0,-532000000.0
+"Other Comprehensive Income, Other, Net of Tax",us-gaap_OtherComprehensiveIncomeOtherNetOfTax,369000000.0,-234000000.0,465000000.0,4000000.0,22000000.0,-1000000.0
+"Other Comprehensive Income/(Loss), after-tax amount",us-gaap_OtherComprehensiveIncomeLossNetOfTax,2588000000.0,-2078000000.0,-232000000.0,-408000000.0,578000000.0,-1176000000.0
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,10883000000.0,7548000000.0,8923000000.0,8570000000.0,8257000000.0,5999000000.0
+"Other Comprehensive Income (Loss), Derivatives Qualifying as Hedges, Net of Tax",us-gaap_OtherComprehensiveIncomeLossDerivativesQualifyingAsHedgesNetOfTax,,,,,,7000000.0
+Comprehensive income attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,-55000000.0,-48000000.0,-81000000.0,-64000000.0,-61000000.0,-55000000.0
+Comprehensive Income Attributable to PepsiCo,us-gaap_ComprehensiveIncomeNetOfTax,10828000000.0,7500000000.0,8842000000.0,8506000000.0,8196000000.0,5944000000.0
