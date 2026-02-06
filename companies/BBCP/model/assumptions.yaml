@@ -1,0 +1,20 @@
+forecast_years: 5
+notes: |
+  Base-case assumes normalization of FCF margin above the 4-year average (~4%).
+  Review assumptions against business cyclicality and leverage.
+scenarios:
+  base:
+    revenue_growth: 0.03
+    fcf_margin: 0.12
+    discount_rate: 0.09
+    terminal_growth: 0.02
+  bull:
+    revenue_growth: 0.05
+    fcf_margin: 0.14
+    discount_rate: 0.085
+    terminal_growth: 0.025
+  bear:
+    revenue_growth: 0.00
+    fcf_margin: 0.08
+    discount_rate: 0.10
+    terminal_growth: 0.015

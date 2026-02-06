@@ -1,0 +1,47 @@
+{
+  "inputs": {
+    "latest_revenue": 392867000.0,
+    "net_debt": 397007000.0,
+    "shares_outstanding": 53314654.0,
+    "current_price": 5.78
+  },
+  "scenarios": {
+    "base": {
+      "enterprise_value": 717121576.5721328,
+      "equity_value": 320114576.5721328,
+      "per_share_value": 6.004251224665789,
+      "margin_of_safety": 0.03734874112937724,
+      "assumptions": {
+        "revenue_growth": 0.03,
+        "fcf_margin": 0.12,
+        "discount_rate": 0.09,
+        "terminal_growth": 0.02
+      }
+    },
+    "bull": {
+      "enterprise_value": 1047035109.4013025,
+      "equity_value": 650028109.4013025,
+      "per_share_value": 12.192297250982863,
+      "margin_of_safety": 0.5259301933822148,
+      "assumptions": {
+        "revenue_growth": 0.05,
+        "fcf_margin": 0.14,
+        "discount_rate": 0.085,
+        "terminal_growth": 0.025
+      }
+    },
+    "bear": {
+      "enterprise_value": 352175969.01208115,
+      "equity_value": -44831030.987918854,
+      "per_share_value": -0.840876337449716,
+      "margin_of_safety": null,
+      "assumptions": {
+        "revenue_growth": 0.0,
+        "fcf_margin": 0.08,
+        "discount_rate": 0.1,
+        "terminal_growth": 0.015
+      }
+    }
+  },
+  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $6.00 | 3.7% |\n| Bull | $12.19 | 52.6% |\n| Bear | $-0.84 | n/a |"
+}
