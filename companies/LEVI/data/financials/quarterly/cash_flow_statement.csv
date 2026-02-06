@@ -1,0 +1,44 @@
+label,concept,2025-08-31,2025-06-01,2025-03-02,2024-08-25,2024-05-26,2024-02-25,2023-08-27,2023-05-28,2023-02-26,2022-08-28,2022-05-29,2022-02-27
+Profit or Loss,us-gaap_ProfitLoss,218100000.0,67000000.0,,20700000.0,18000000.0,-10600000.0,9600000.0,-1600000.0,114700000.0,172957000.0,49742000.0,195843000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,,,49200000.0,,,44600000.0,,,39600000.0,,,38933000.0
+Goodwill and intangible asset impairment,us-gaap_GoodwillAndIntangibleAssetImpairment,0.0,,,,,,,,,,,
+"Property, plant, and equipment impairment, and early lease terminations, net",lvis_AssetImpairmentChargesNetOfGoodwill,,,2500000.0,,,,,,,,,
+"Gain on sale of business, prior to costs to sell",us-gaap_GainLossOnSaleOfBusiness,-139000000.0,,,,,,,,,,,
+Gain on sale of assets,us-gaap_GainLossOnSaleOfOtherAssets,,-9300000.0,,,,,,,,,,
+Stock-based compensation,us-gaap_ShareBasedCompensation,,,19300000.0,,,18700000.0,,,17600000.0,,,14089000.0
+Deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,-5700000.0,,,-32700000.0,,,,,,
+"Other, net",us-gaap_OtherOperatingActivitiesCashFlowStatement,,,14500000.0,,,3400000.0,,,-2800000.0,,,172000.0
+Net change in operating assets and liabilities,us-gaap_IncreaseDecreaseInOperatingCapital,,,-164800000.0,,,257100000.0,,,-336900000.0,,,-181934000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,52500000.0,,,286000000.0,,,-160800000.0,,,86135000.0
+Proceeds from sale of business,us-gaap_ProceedsFromDivestitureOfBusinesses,194700000.0,,,,,,,,,,,
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-66600000.0,,,-71600000.0,,,-110900000.0,,,-73591000.0
+"Proceeds on settlement of forward foreign exchange contracts not designated for hedge accounting, net",us-gaap_PaymentsForProceedsFromDerivativeInstrumentInvestingActivities,,,,,,800000.0,,,,,,
+Payments to acquire short-term investments,us-gaap_PaymentsToAcquireShortTermInvestments,,,-4000000.0,,,,,,-0.0,,,-27983000.0
+"Other investing activities, net",us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,,-500000.0,,,,,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-71100000.0,,,-71700000.0,,,-19100000.0,,,-78204000.0
+"Proceeds from issuance of long-term debt, net of issuance costs",us-gaap_ProceedsFromDebtNetOfIssuanceCosts,,,,,,,,,,,,0.0
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-30000000.0,,,-25000000.0,,,-8100000.0,,,-74191000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,,,-18300000.0,,,-15300000.0,,,-18600000.0,,,-25825000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,-55400000.0,-51400000.0,-51400000.0,-51500000.0,-47700000.0,-47900000.0,-47700000.0,-47600000.0,-47600000.0,-47500000.0,-39600000.0,-39864000.0
+"Other financing activities, net",us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,,,2200000.0,,,-6300000.0,,,,,,1814000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-97500000.0,,,-94500000.0,,,77800000.0,,,-139429000.0
+Effect of exchange rate changes on cash and cash equivalents and restricted cash,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,,,500000.0,,,-1900000.0,,,-5700000.0,,,-443000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,-115600000.0,,,117900000.0,,,-107800000.0,,,-131941000.0
+(Benefit from) provision for deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,,,,,,,-7900000.0,,,
+Cash paid for interest during the period,us-gaap_InterestPaidNet,,,,,,,,,,,,712000.0
+Loss on early extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,,,,,,,,,-0.0,-0.0,
+Provision for (benefit from) deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,,,,,,,,,,19032000.0
+Proceeds on settlement of forward foreign exchange contracts not designated for hedge accounting,us-gaap_PaymentsForProceedsFromDerivativeInstrumentInvestingActivities,,,,,,,,,21000000.0,,,3093000.0
+"Other financing, net",us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,,,,,,,,,2100000.0,,,
+"Other short-term borrowings, net",lvis_ProceedsfromRepaymentsofofOtherShorttermDebt,,,,,,,,,,,,-1363000.0
+"Property, plant and equipment acquired and not yet paid at end of period",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,36300000.0,,,26300000.0,,,39300000.0,,,25717000.0
+"Property, plant, equipment, right-of-use asset, and goodwill impairments",us-gaap_AssetImpairmentCharges,,,,,,,,,,,51100000.0,
+Goodwill impairment,us-gaap_GoodwillAndIntangibleAssetImpairment,,,2500000.0,,,5500000.0,,,,,,
+Goodwill and other intangible asset impairment charges,us-gaap_GoodwillAndIntangibleAssetImpairment,,,,111400000.0,,,,,,,,
+Goodwill and other intangible asset impairment,us-gaap_GoodwillAndIntangibleAssetImpairment,,,,,,,90200000.0,,,,,
+"Property, plant, equipment impairment, and early lease terminations, net",lvis_AssetImpairmentChargesNetOfGoodwill,,,,,,0.0,,,14900000.0,,,
+Net Income,us-gaap_NetIncomeLoss,,,135000000.0,,,,,,,,,
+Proceeds from senior revolving credit facility,us-gaap_ProceedsFromLongTermLinesOfCredit,,,,,,0.0,,,150000000.0,,,
+"Proceeds from sale, maturity and collection of short-term investments",us-gaap_ProceedsFromSaleMaturityAndCollectionOfShorttermInvestments,,,,,,0.0,,,70800000.0,,,20277000.0
+"Other investing, net",us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,,,,,-900000.0,,,,,,
+Income Tax Expense,us-gaap_IncomeTaxesPaidNet,,,18700000.0,,,17400000.0,,,1700000.0,,,6499000.0

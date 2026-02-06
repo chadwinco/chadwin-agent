@@ -1,0 +1,23 @@
+label,concept,2025-11-30,2024-12-01,2023-11-26,2022-11-27,2021-11-28,2020-11-29
+Profit or Loss,us-gaap_ProfitLoss,578100000.0,210600000.0,249600000.0,569100000.0,553541000.0,-127141000.0
+Pension and postretirement benefits,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentBeforeTax,5800000.0,15300000.0,34600000.0,22100000.0,35059000.0,60915000.0
+Derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationBeforeTax,-82900000.0,42200000.0,-61000000.0,36100000.0,69735000.0,-55242000.0
+Foreign currency translation gains (losses),us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,114900000.0,,66200000.0,,,10493000.0
+Foreign currency translation (losses) gains,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,-99400000.0,,-65000000.0,-51016000.0,
+Unrealized gains (losses) on marketable securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,200000.0,0.0,800000.0,,,9758000.0
+Unrealized (losses) gains on marketable securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,-700000.0,,
+Unrealized gains on marketable securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,,5662000.0,
+"Total other comprehensive income (loss), before related income taxes",us-gaap_OtherComprehensiveIncomeLossBeforeTax,38000000.0,,40600000.0,,,25924000.0
+"Total other comprehensive income, before related income taxes",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,,,,59440000.0,
+"Total other comprehensive (loss) income, before related income taxes",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,-41900000.0,,-27400000.0,,
+Income tax (expense) benefit related to items of other comprehensive (loss) income,us-gaap_OtherComprehensiveIncomeLossTax,-10700000.0,-1700000.0,,,,
+Income tax (expense) benefit related to items of other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossTax,,,-9800000.0,,,
+Income tax expense related to items of other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossTax,,,,3000000.0,-12381000.0,-7940000.0
+Comprehensive income attributable to noncontrolling interest,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,,,,,-0.0,-0.0
+Comprehensive income (loss) attributable to Levi Strauss & Co.,us-gaap_ComprehensiveIncomeNetOfTax,,,,,600600000.0,
+Comprehensive (loss) income attributable to Levi Strauss & Co.,us-gaap_ComprehensiveIncomeNetOfTax,,,,,,-109157000.0
+"Comprehensive income, net of income taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,605400000.0,167000000.0,280400000.0,,,
+"Comprehensive income (loss), net of income taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,544700000.0,600600000.0,
+"Comprehensive (loss) income, net of income taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,,,-109157000.0
+Available-for-sale security adjustments,lvis_OCIEquitySecuritiesAdjustmentsBeforeReclassificationAdjustmentBeforeTax,,0.0,0.0,,,
+"OCI, Debt Securities, Available-For-Sale, Adjustments, Before Reclassification Adjustment, Before Tax",lvis_OCIEquitySecuritiesAdjustmentsBeforeReclassificationAdjustmentBeforeTax,,,,-19900000.0,,
