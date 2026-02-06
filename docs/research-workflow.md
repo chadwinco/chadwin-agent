@@ -17,7 +17,7 @@ Prerequisite: set up the Python virtual environment described in `docs/python-se
 6. Log sources and update the improvement log.
 
 ## New Company Bootstrap
-Use `scripts/add_company.py` to create directories, fetch EDGAR filings and financials, and run the analysis.
+Use `scripts/add_company.py` to create directories, fetch EDGAR filings and financials, pull the latest earnings call transcript, and run the analysis.
 
 ## Improvement Loop
 - After each report, note gaps or errors in `docs/improvement-log.md`.
@@ -29,3 +29,4 @@ Use `scripts/add_company.py` to create directories, fetch EDGAR filings and fina
 - Appendix: `companies/<TICKER>/analysis/<YYYY-MM-DD>-appendix.md`
 - Model inputs: `companies/<TICKER>/model/assumptions.yaml`
 - Model outputs: `companies/<TICKER>/model/outputs.json`
+- Transcript: `companies/<TICKER>/data/earnings-call-<YYYY-MM-DD>-<source>.md`

@@ -13,6 +13,7 @@ sys.path.insert(0, str(BASE_DIR))
 from research.edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
 from research.loaders import load_company_data  # noqa: E402
 from research.metrics import compute_metrics  # noqa: E402
+from research.transcript_fetch import fetch_latest_transcript  # noqa: E402
 from scripts.run_company import run_company  # noqa: E402
 
 
@@ -72,6 +73,18 @@ def _write_assumptions(path: Path, assumptions: dict, overwrite: bool) -> None:
     path.write_text(yaml.safe_dump(assumptions, sort_keys=False))
 
 
+def _append_source_log(base_dir: Path, ticker: str, asof_date: str, source: str, notes: str) -> None:
+    log_path = base_dir / "docs" / "source-log.md"
+    if not log_path.exists():
+        return
+    entry = f"| {asof_date} | {ticker} | Earnings Call Transcript | {source} | {notes} |\n"
+    content = log_path.read_text()
+    if entry in content:
+        return
+    with log_path.open("a") as f:
+        f.write(entry)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Create a new company, fetch EDGAR data, and run analysis")
     parser.add_argument("--ticker", required=True)
@@ -96,6 +109,23 @@ def main() -> None:
 
     data = load_company_data(base_dir, ticker)
     metrics = compute_metrics(data)
+
+    company_name = None
+    if not data.profile.empty and "companyName" in data.profile.columns:
+        company_name = str(data.profile.iloc[0].get("companyName"))
+
+    print(f"Fetching latest earnings call transcript for {ticker}...")
+    transcript = fetch_latest_transcript(ticker, data_dir, company_name=company_name, asof=args.asof)
+    if transcript:
+        _append_source_log(
+            base_dir,
+            ticker,
+            args.asof,
+            transcript.source_url,
+            f"Saved to companies/{ticker}/data/{transcript.path.name}",
+        )
+    else:
+        print("No earnings call transcript found.")
 
     assumptions_path = company_dir / "model" / "assumptions.yaml"
     assumptions = _build_assumptions(metrics)

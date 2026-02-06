@@ -10,6 +10,7 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 
 ## Optional Files
 - `financials/annual/` and `financials/quarterly/` (full EDGAR statement exports)
+- `earnings-call-*.md` (latest earnings call transcript)
 - `key_metrics.csv`
 - `ratios.csv`
 - `analyst_estimates.csv`
@@ -41,9 +42,14 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 
 ### `company_profile.csv`
 - `symbol`, `companyName`, `currency`
-- `price`, `marketCap`
-- `industry`, `sector`
-- `description`, `website`
+- `price`, `marketCap`, `beta`, `lastDividend`, `range`, `change`, `changePercentage`, `volume`
+- `cik`, `isin`, `cusip`
+- `exchange`, `exchangeFullName`
+- `industry`, `sector`, `country`, `fullTimeEmployees`, `ceo`
+- `website`, `phone`, `address`, `city`, `state`, `zip`
+- `isEtf`, `isAdr`, `isActivelyTrading`
+
+Values may be blank when the source data is unavailable, but the column set should be present.
 
 ## Derived Metrics (Definitions)
 - Revenue growth: year-over-year % change.

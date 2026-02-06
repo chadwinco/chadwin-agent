@@ -1,16 +1,24 @@
 from __future__ import annotations
 
+import json
 import os
 import re
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Iterable, List, Optional, Set, Tuple
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 try:
     from dotenv import load_dotenv  # type: ignore
 except Exception:  # pragma: no cover - optional dependency
     load_dotenv = None
+
+try:
+    from bs4 import BeautifulSoup  # type: ignore
+except Exception:  # pragma: no cover - optional dependency
+    BeautifulSoup = None
 
 from .loaders import _require_pandas
 
@@ -695,24 +703,258 @@ def _statement_df_from_xbrls(xbrls, method_name: str, max_periods: int):
     df = statement.to_dataframe()
     return _prepare_statement_df(df)
 
+def _fetch_url(url: str) -> Optional[str]:
+    try:
+        req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urlopen(req, timeout=30) as resp:
+            return resp.read().decode("utf-8", "ignore")
+    except (HTTPError, URLError, ValueError):
+        return None
+
+
+def _parse_table_rows(html: str) -> dict:
+    if not html or BeautifulSoup is None:
+        return {}
+    soup = BeautifulSoup(html, "html.parser")
+    rows: dict = {}
+    for row in soup.find_all("tr"):
+        tds = row.find_all("td")
+        if len(tds) < 2:
+            continue
+        label = tds[0].get_text(" ", strip=True)
+        value = tds[1].get_text(" ", strip=True)
+        label = " ".join(label.split())
+        value = " ".join(value.split())
+        if label and value:
+            rows[label] = value
+    return rows
+
+
+def _parse_float(value: Optional[str]) -> Optional[float]:
+    if not value:
+        return None
+    cleaned = value.replace(",", "")
+    match = re.search(r"[-+]?\d*\.?\d+", cleaned)
+    if not match:
+        return None
+    try:
+        return float(match.group(0))
+    except ValueError:
+        return None
+
+
+def _parse_compact_number(value: Optional[str]) -> Optional[float]:
+    if not value:
+        return None
+    token = value.replace(",", "").strip().split()[0]
+    match = re.match(r"([-+]?\d*\.?\d+)([KMBT])?", token, re.IGNORECASE)
+    if not match:
+        return None
+    number = float(match.group(1))
+    suffix = match.group(2)
+    multiplier = {"K": 1e3, "M": 1e6, "B": 1e9, "T": 1e12}
+    if suffix:
+        number *= multiplier.get(suffix.upper(), 1)
+    return number
+
+
+def _normalize_phone(value: Optional[str]) -> Optional[str]:
+    if not value:
+        return None
+    digits = re.sub(r"\D", "", value)
+    if len(digits) == 10:
+        return f"{digits[:3]}-{digits[3:6]}-{digits[6:]}"
+    return value.strip()
+
+
+def _normalize_website(value: Optional[str]) -> Optional[str]:
+    if not value:
+        return None
+    value = value.strip()
+    if value.startswith("http://") or value.startswith("https://"):
+        return value
+    return f"https://{value}"
+
+
+def _parse_address_lines(value: Optional[str]) -> Tuple[str, str, str, str]:
+    if not value:
+        return "", "", "", ""
+    lines = [line.strip() for line in str(value).splitlines() if line.strip()]
+    address = lines[0].title() if lines else ""
+    city = ""
+    state = ""
+    postal = ""
+    if len(lines) > 1:
+        match = re.match(r"(.+),\s*([A-Z]{2})\s*(\\d{5}(?:-\\d{4})?)?", lines[1].strip())
+        if match:
+            city = match.group(1).title()
+            state = match.group(2)
+            postal = match.group(3) or ""
+        else:
+            city = lines[1].title()
+    return address, city, state, postal
+
+
+def _stockanalysis_company_data(ticker: str) -> dict:
+    html = _fetch_url(f"https://stockanalysis.com/stocks/{ticker.lower()}/company/")
+    rows = _parse_table_rows(html or "")
+    return rows
+
+
+def _stockanalysis_market_data(ticker: str) -> dict:
+    html = _fetch_url(f"https://stockanalysis.com/stocks/{ticker.lower()}/")
+    if not html or BeautifulSoup is None:
+        return {}
+    soup = BeautifulSoup(html, "html.parser")
+    rows = _parse_table_rows(html)
+
+    price = None
+    price_tag = soup.find("div", class_=re.compile(r"text-4xl"))
+    if price_tag:
+        price = _parse_float(price_tag.get_text(" ", strip=True))
+
+    change = None
+    change_pct = None
+    change_tag = soup.find("div", class_=re.compile(r"text-(green|red)-vivid"))
+    if change_tag:
+        text = change_tag.get_text(" ", strip=True)
+        match = re.search(r"([-+]?\d*\.?\d+)\s*\\(([-+]?\d*\.?\d+)%\\)", text)
+        if match:
+            change = _parse_float(match.group(1))
+            change_pct = _parse_float(match.group(2))
+
+    market_cap = _parse_compact_number(rows.get("Market Cap"))
+    volume = _parse_float(rows.get("Volume"))
+    beta = _parse_float(rows.get("Beta"))
+    dividend = rows.get("Dividend")
+    last_dividend = _parse_float(dividend)
+    week_range = rows.get("52-Week Range") or rows.get("52 Week Range")
+
+    return {
+        "price": price,
+        "marketCap": market_cap,
+        "beta": beta,
+        "lastDividend": last_dividend,
+        "range": week_range,
+        "change": change,
+        "changePercentage": change_pct,
+        "volume": volume,
+    }
+
+
+def _yahoo_quote(ticker: str) -> dict:
+    html = _fetch_url(f"https://query1.finance.yahoo.com/v7/finance/quote?symbols={ticker}")
+    if not html:
+        return {}
+    try:
+        data = json.loads(html)
+        result = data.get("quoteResponse", {}).get("result", [])
+        if not result:
+            return {}
+        quote = result[0]
+    except Exception:
+        return {}
+
+    low = quote.get("fiftyTwoWeekLow")
+    high = quote.get("fiftyTwoWeekHigh")
+    week_range = None
+    if low is not None and high is not None:
+        week_range = f"{float(low):.2f}-{float(high):.2f}"
+
+    change_pct = quote.get("regularMarketChangePercent")
+    if change_pct is not None:
+        try:
+            change_pct = float(change_pct) * 100.0
+        except Exception:
+            change_pct = None
+
+    return {
+        "price": quote.get("regularMarketPrice"),
+        "marketCap": quote.get("marketCap"),
+        "beta": quote.get("beta"),
+        "lastDividend": quote.get("trailingAnnualDividendRate"),
+        "range": week_range,
+        "change": quote.get("regularMarketChange"),
+        "changePercentage": change_pct,
+        "volume": quote.get("regularMarketVolume"),
+        "companyName": quote.get("longName") or quote.get("shortName"),
+        "currency": quote.get("currency"),
+        "exchange": quote.get("exchange"),
+        "exchangeFullName": quote.get("fullExchangeName"),
+    }
+
 
 def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
     pd = _require_pandas()
+    if BeautifulSoup is None:
+        raise ImportError(
+            "beautifulsoup4 is required to build company_profile.csv. "
+            "Install dependencies with `python -m pip install -r requirements.txt`."
+        )
+
     data = getattr(company, "data", None)
     name = None
     cik = None
-    industry = None
-    sector = None
-    country = None
+    website = None
+    phone = None
+    business_address = None
     if data is not None:
         name = getattr(data, "name", None) or getattr(data, "company_name", None)
         cik = getattr(data, "cik", None)
-        industry = getattr(data, "industry", None)
-        sector = getattr(data, "sector", None)
-        country = getattr(data, "country", None)
+        website = getattr(data, "website", None)
+        phone = getattr(data, "phone", None)
+        business_address = getattr(data, "business_address", None)
 
     if not name:
         name = getattr(company, "name", None) or getattr(company, "company_name", None)
+
+    if name and name.isupper():
+        name = name.title()
+
+    address, city, state, postal = _parse_address_lines(business_address)
+
+    company_rows = _stockanalysis_company_data(ticker)
+    market_rows = _stockanalysis_market_data(ticker)
+    yahoo_rows = _yahoo_quote(ticker)
+
+    def _fill_missing(target: dict, source: dict, keys: Iterable[str]) -> dict:
+        for key in keys:
+            if target.get(key) in (None, "") and source.get(key) not in (None, ""):
+                target[key] = source[key]
+        return target
+
+    market_rows = _fill_missing(
+        market_rows or {},
+        yahoo_rows,
+        [
+            "price",
+            "marketCap",
+            "beta",
+            "lastDividend",
+            "range",
+            "change",
+            "changePercentage",
+            "volume",
+        ],
+    )
+
+    reporting_currency = company_rows.get("Reporting Currency") or yahoo_rows.get("currency")
+    if reporting_currency:
+        currency = reporting_currency
+
+    exchange = company_rows.get("Exchange") or yahoo_rows.get("exchange")
+    exchange_full_map = {
+        "NASDAQ": "Nasdaq Global Select Market",
+        "NYSE": "New York Stock Exchange",
+    }
+    exchange_full = yahoo_rows.get("exchangeFullName") or exchange_full_map.get(exchange, exchange or "")
+
+    stock_type = (company_rows.get("Stock Type") or "").lower()
+    is_etf = "etf" in stock_type
+    is_adr = "adr" in stock_type or "depositary" in stock_type
+    is_actively_trading = bool(exchange)
+
+    company_rows_norm = {k: v for k, v in company_rows.items()}
 
     columns = [
         "symbol",
@@ -724,7 +966,6 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
         "change",
         "changePercentage",
         "volume",
-        "averageVolume",
         "companyName",
         "currency",
         "cik",
@@ -734,7 +975,6 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
         "exchange",
         "industry",
         "website",
-        "description",
         "ceo",
         "sector",
         "country",
@@ -744,26 +984,59 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
         "city",
         "state",
         "zip",
-        "image",
         "ipoDate",
-        "defaultImage",
         "isEtf",
         "isActivelyTrading",
         "isAdr",
-        "isFund",
     ]
     row = {col: "" for col in columns}
     row["symbol"] = ticker
+    if not name:
+        name = yahoo_rows.get("companyName")
     row["companyName"] = name or ticker
     row["currency"] = currency
-    if cik:
-        row["cik"] = str(cik)
-    if industry:
-        row["industry"] = industry
-    if sector:
-        row["sector"] = sector
-    if country:
-        row["country"] = country
+
+    cik_value = company_rows_norm.get("CIK Code") or cik
+    if cik_value is not None:
+        try:
+            cik_int = int(str(cik_value).strip())
+            row["cik"] = f"{cik_int:010d}"
+        except ValueError:
+            row["cik"] = str(cik_value)
+
+    row["isin"] = company_rows_norm.get("ISIN Number", "")
+    row["cusip"] = company_rows_norm.get("CUSIP Number", "")
+    row["exchange"] = exchange or ""
+    row["exchangeFullName"] = exchange_full
+    row["industry"] = company_rows_norm.get("Industry", "")
+    row["sector"] = company_rows_norm.get("Sector", "")
+    row["country"] = company_rows_norm.get("Country", "")
+    row["ceo"] = company_rows_norm.get("CEO", "")
+
+    employees = company_rows_norm.get("Employees")
+    if employees:
+        row["fullTimeEmployees"] = re.sub(r"[^\d]", "", employees)
+
+    row["website"] = _normalize_website(company_rows_norm.get("Website") or website) or ""
+    row["phone"] = _normalize_phone(company_rows_norm.get("Phone") or phone) or ""
+
+    row["address"] = address
+    row["city"] = city
+    row["state"] = state
+    row["zip"] = postal
+
+    row["price"] = market_rows.get("price") if market_rows else ""
+    row["marketCap"] = market_rows.get("marketCap") if market_rows else ""
+    row["beta"] = market_rows.get("beta") if market_rows else ""
+    row["lastDividend"] = market_rows.get("lastDividend") if market_rows else ""
+    row["range"] = market_rows.get("range") if market_rows else ""
+    row["change"] = market_rows.get("change") if market_rows else ""
+    row["changePercentage"] = market_rows.get("changePercentage") if market_rows else ""
+    row["volume"] = market_rows.get("volume") if market_rows else ""
+
+    row["isEtf"] = "true" if is_etf else "false"
+    row["isAdr"] = "true" if is_adr else "false"
+    row["isActivelyTrading"] = "true" if is_actively_trading else "false"
 
     df = pd.DataFrame([row])
     df.to_csv(data_dir / "company_profile.csv", index=False)

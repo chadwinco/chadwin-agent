@@ -23,5 +23,5 @@ If you already use `SEC_IDENTITY_EMAIL`, it will be accepted as a fallback.
 
 ## Run Workflow
 ```
-python /Users/chad/source/chadwin-codex/scripts/run_company.py --ticker BBCP --asof 2026-02-06
+python /Users/chad/source/chadwin-codex/scripts/run_company.py --ticker PEP --asof 2026-02-06
 ```
