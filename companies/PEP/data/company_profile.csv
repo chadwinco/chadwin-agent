@@ -1,2 +1,2 @@
-symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,averageVolume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,description,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,image,ipoDate,defaultImage,isEtf,isActivelyTrading,isAdr,isFund
-PEP,,,,,,,,,,PEPSICO INC,USD,77476,,,,,Beverages,,,,,,,,,,,,,,,,,,
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+PEP,167.53,228950000000,0.42,5.69,127.60-168.01,1.35,0.81,11038416,"PepsiCo, Inc.",USD,0000077476,US7134481081,713448108,Nasdaq Global Select Market,NASDAQ,Beverages - Non-Alcoholic,https://www.pepsico.com,Ramon Laguarta,Consumer Staples,United States,306000,914-253-2000,700 Anderson Hill Road,Purchase,NY,10577,,false,true,false
