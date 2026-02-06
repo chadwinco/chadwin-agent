@@ -26,6 +26,9 @@ _As of {asof_date}_
 ## Valuation
 {valuation_summary}
 
+## Assumptions Summary
+{assumptions_summary}
+
 ## Margin of Safety
 {margin_of_safety}
 

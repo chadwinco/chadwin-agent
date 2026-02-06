@@ -26,7 +26,6 @@ Use `scripts/add_company.py` to create directories, fetch EDGAR filings and fina
 
 ## Output Locations
 - Report: `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
-- Appendix: `companies/<TICKER>/analysis/<YYYY-MM-DD>-appendix.md`
 - Model inputs: `companies/<TICKER>/model/assumptions.yaml`
 - Model outputs: `companies/<TICKER>/model/outputs.json`
 - Transcript: `companies/<TICKER>/data/earnings-call-<YYYY-MM-DD>-<source>.md`

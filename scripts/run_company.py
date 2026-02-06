@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -17,211 +16,11 @@ from research.quality import run_quality_checks  # noqa: E402
 from research.valuation import load_assumptions, run_valuation  # noqa: E402
 
 
-def _strip_html(text: str) -> str:
-    return re.sub(r"<[^>]+>", "", text)
-
-
-def _truncate_words(text: str, max_words: int = 120) -> str:
-    words = text.split()
-    if len(words) <= max_words:
-        return text.strip()
-    return " ".join(words[:max_words]).strip() + "..."
-
-
-def _paragraphs(text: str) -> list[str]:
-    if not text:
-        return []
-    chunks = re.split(r"\n\s*\n", text)
-    paragraphs = []
-    for chunk in chunks:
-        lines = []
-        for line in chunk.splitlines():
-            line = _strip_html(line).strip()
-            if not line:
-                continue
-            if line.startswith("#"):
-                stripped = re.sub(r"^#+", "", line).strip()
-                if stripped and not stripped.lower().startswith(("item ", "part ")):
-                    if lines:
-                        paragraph = " ".join(lines).strip()
-                        if len(paragraph) >= 40:
-                            paragraphs.append(paragraph)
-                    lines = []
-                continue
-            if line.lower().startswith("item ") or line.lower().startswith("part "):
-                continue
-            lines.append(line)
-        if not lines:
-            continue
-        if lines:
-            paragraph = " ".join(lines).strip()
-            if len(paragraph) >= 40:
-                paragraphs.append(paragraph)
-
-    merged = []
-    idx = 0
-    while idx < len(paragraphs):
-        paragraph = paragraphs[idx]
-        while (
-            idx + 1 < len(paragraphs)
-            and not paragraph.strip().endswith((".", "!", "?"))
-            and len(paragraph.split()) < 80
-        ):
-            paragraph = f"{paragraph} {paragraphs[idx + 1]}"
-            idx += 1
-        merged.append(paragraph)
-        idx += 1
-    return merged
-
-
-def _find_section(text: str, start_patterns: list[str], end_patterns: list[str]) -> str:
-    if not text:
-        return ""
-    start_positions = []
-    for pattern in start_patterns:
-        match = re.search(pattern, text, flags=re.IGNORECASE | re.MULTILINE)
-        if match:
-            start_positions.append(match.start())
-    if not start_positions:
-        return ""
-    start = min(start_positions)
-    tail = text[start:]
-    end_positions = []
-    for pattern in end_patterns:
-        match = re.search(pattern, tail, flags=re.IGNORECASE | re.MULTILINE)
-        if match:
-            end_positions.append(match.start())
-    end = len(tail)
-    if end_positions:
-        end = min(end_positions)
-    return tail[:end]
-
-
-def _latest_filing(data_dir: Path) -> str:
-    filings = sorted(data_dir.glob("10-K-*.md")) + sorted(data_dir.glob("20-F-*.md"))
-    if not filings:
-        return ""
-    return filings[-1].read_text()
-
-
-def _latest_transcript(data_dir: Path) -> str:
-    transcripts = sorted(data_dir.glob("earnings-call-*.md"))
-    if not transcripts:
-        return ""
-    text = transcripts[-1].read_text()
-    lines = []
-    for line in text.splitlines():
-        stripped = line.strip()
-        if not stripped:
-            if lines:
-                lines.append("")
-            continue
-        if stripped.startswith("#"):
-            continue
-        lower = stripped.lower()
-        if lower.startswith("- source") or lower.startswith("- published") or lower.startswith("- retrieved"):
-            continue
-        if any(token in lower for token in ("image source", "motley fool", "call participants", "nasdaq :", "date ")):
-            continue
-        lines.append(stripped)
-    return "\n".join(lines).strip()
-
-
-def _extract_business_text(filing_text: str) -> str:
-    return _find_section(
-        filing_text,
-        start_patterns=[
-            r"^##\s*Business\b",
-            r"^##\s*Item\s*1\.?\s*Business\b",
-            r"^##\s*ITEM\s*1\.?\s*Business\b",
-        ],
-        end_patterns=[
-            r"^##\s*Item\s*1A\b",
-            r"^##\s*Risk\s*Factors\b",
-            r"^##\s*Item\s*2\b",
-        ],
-    )
-
-
-def _extract_risk_text(filing_text: str) -> str:
-    return _find_section(
-        filing_text,
-        start_patterns=[
-            r"^##\s*Item\s*1A\.?\s*Risk\s*Factors\b",
-            r"^##\s*Risk\s*Factors\b",
-        ],
-        end_patterns=[
-            r"^##\s*Item\s*1B\b",
-            r"^##\s*Item\s*2\b",
-            r"^##\s*Unresolved\s*Staff\s*Comments\b",
-        ],
-    )
-
-
-def _keyword_paragraphs(paragraphs: list[str], keywords: list[str], limit: int = 2) -> list[str]:
-    hits = []
-    for paragraph in paragraphs:
-        lower = paragraph.lower()
-        if any(keyword in lower for keyword in keywords):
-            hits.append(paragraph)
-        if len(hits) >= limit:
-            break
-    return hits
-
-
-def _risk_bullets(risk_text: str, limit: int = 5) -> list[str]:
-    if not risk_text:
-        return []
-    cleaned = _strip_html(risk_text)
-    cleaned = re.sub(r"^\\s*Risk Factors\\s*$", "", cleaned, flags=re.IGNORECASE | re.MULTILINE)
-    cleaned = re.sub(r"^\\s*#+\\s*.*$", "", cleaned, flags=re.MULTILINE)
-    sentences = re.split(r"(?<=[.!?])\s+", cleaned)
-    bullets = []
-    for sentence in sentences:
-        sentence = sentence.strip()
-        if len(sentence) < 40:
-            continue
-        sentence = re.sub(r"^#+\s*", "", sentence).strip()
-        sentence = re.sub(
-            r"^(business risks|risks related to [^.:]+):?\\s*",
-            "",
-            sentence,
-            flags=re.IGNORECASE,
-        ).strip()
-        lower = sentence.lower()
-        if (
-            "risk factors" in lower
-            or "following risks" in lower
-            or "risks related" in lower
-            or "other risks" in lower
-            or lower.startswith("in that case")
-            or lower.startswith("in that event")
-            or lower.startswith("business risks")
-        ):
-            continue
-        if lower.endswith("risks"):
-            continue
-        if not sentence.endswith("."):
-            sentence += "."
-        bullets.append(sentence)
-        if len(bullets) >= limit:
-            break
-    return bullets
-
-
-def _extract_transcript_section(text: str, heading: str) -> str:
-    if not text:
-        return ""
-    return _find_section(
-        text,
-        start_patterns=[rf"^{re.escape(heading)}\s*$"],
-        end_patterns=[
-            r"^Risks\s*$",
-            r"^Summary\s*$",
-            r"^Industry glossary\s*$",
-            r"^Full Conference Call Transcript\s*$",
-        ],
-    )
+def _llm_placeholder(section: str, ticker: str, extra: str | None = None) -> str:
+    note = f"LLM_REQUIRED: Use prompts/{section}.md and search companies/{ticker}/data for evidence."
+    if extra:
+        note = f"{note} {extra}"
+    return note
 
 
 def _read_template(path: Path) -> str:
@@ -317,46 +116,6 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
             return "n/a"
         return f"{value:.1f}x"
 
-    data_dir = base_dir / "companies" / ticker / "data"
-    filing_text = _latest_filing(data_dir)
-    business_text = _extract_business_text(filing_text)
-    risk_text = _extract_risk_text(filing_text)
-
-    business_paragraphs = _paragraphs(business_text)
-    business_summary = []
-    business_candidates = [
-        p for p in business_paragraphs
-        if not any(keyword in p.lower() for keyword in ("competition", "competitive", "risk", "regulation"))
-        and not p.strip().endswith(":")
-    ]
-    for paragraph in (business_candidates or business_paragraphs)[:3]:
-        business_summary.append(_truncate_words(paragraph, 120))
-
-    if not business_summary:
-        industry = profile.get("industry", "")
-        sector = profile.get("sector", "")
-        hq = ", ".join([str(profile.get("city", "")).strip(), str(profile.get("state", "")).strip()]).strip(", ")
-        business_summary = [
-            _truncate_words(
-                f"{company_name} operates in the {industry or 'industries'} space within the {sector or 'sector'} sector. "
-                f"The company is headquartered in {hq or 'its primary operating region'} and reports in {profile.get('currency','')}."
-            )
-        ]
-
-    competition_paragraphs = _keyword_paragraphs(
-        business_paragraphs,
-        ["competition", "competitive", "competitors"],
-        limit=2,
-    )
-    competitive_notes = [ _truncate_words(p, 120) for p in competition_paragraphs ]
-    competitive_notes.append(
-        _truncate_words(
-            f"Over the last four fiscal years, average EBIT margin was {_fmt_pct(metrics['avg_ebit_margin'])}, "
-            f"FCF margin {_fmt_pct(metrics['avg_fcf_margin'])}, and ROIC {_fmt_pct(metrics['avg_roic'])}. "
-            "These economics provide a data-backed view of competitive strength, but still require qualitative validation."
-        )
-    )
-
     annual = metrics["annual"].sort_values("fiscalYear")
     latest = annual.iloc[-1]
     earliest = annual.iloc[0]
@@ -370,36 +129,33 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
         "over the same period, indicating how much of cash generation has gone to balance-sheet management."
     )
 
-    transcript_text = _latest_transcript(data_dir)
-    takeaways_text = _extract_transcript_section(transcript_text, "Takeaways")
-    summary_text = _extract_transcript_section(transcript_text, "Summary")
-    takeaways_paragraphs = _paragraphs(takeaways_text)
-    summary_paragraphs = _paragraphs(summary_text)
-
-    if takeaways_paragraphs:
-        growth_summary = [f"- {_truncate_words(p, 80)}" for p in takeaways_paragraphs[:4]]
-    elif summary_paragraphs:
-        growth_summary = [f"- {_truncate_words(p, 80)}" for p in summary_paragraphs[:3]]
-    else:
-        growth_fallback = (
-            f"Revenue growth averaged {_fmt_pct(metrics['avg_revenue_growth'])} over the last four fiscal years. "
-            "Future growth should be triangulated using segment disclosures in the 10-K and management commentary."
-        )
-        growth_summary = [f"- {_truncate_words(growth_fallback, 80)}"]
-
-    risk_bullets = _risk_bullets(risk_text)
-    if not risk_bullets:
-        risk_bullets = [
-            "Key risks are documented in the latest 10-K; include competitive intensity, execution, and macro sensitivity.",
-        ]
-    risk_section = "\n".join([f"- {bullet}" for bullet in risk_bullets])
+    business_overview = _llm_placeholder(
+        "business-overview",
+        ticker,
+        "Summarize products, customers, and geographies using filings and profile data.",
+    )
+    competitive_position = _llm_placeholder(
+        "competitive-position",
+        ticker,
+        "Use margins and ROIC to support the moat discussion.",
+    )
+    growth_opportunities = _llm_placeholder(
+        "growth-opportunities",
+        ticker,
+        f"Recent average revenue growth: {_fmt_pct(metrics['avg_revenue_growth'])}.",
+    )
+    key_risks = _llm_placeholder(
+        "key-risks",
+        ticker,
+        "Prioritize risks that impact cash generation and underwriting outcomes.",
+    )
 
     exec_bullets = [
         f"{company_name} generated {_fmt_bn(metrics['latest_revenue'])} in FY{metrics['latest_year']} revenue.",
         f"Average EBIT margin {_fmt_pct(metrics['avg_ebit_margin'])} and ROIC {_fmt_pct(metrics['avg_roic'])} indicate strong operating leverage and capital efficiency.",
         f"Net debt stands at {_fmt_bn(metrics['latest_net_debt'])}, with leverage averaging {_fmt_ratio(metrics['avg_leverage'])} when measured against EBITDA.",
         f"Base-case DCF implies {_fmt_money(base_value)} per share vs. current price {_fmt_money(price)}, for a margin of safety of {_fmt_pct(base_mos)}.",
-        f"Top risks include {risk_bullets[0].rstrip('.')}.",
+        "Top risks and qualitative drivers require LLM synthesis from filings and transcripts.",
     ]
     executive_summary = "\n".join([f"- {item}" for item in exec_bullets])
 
@@ -408,8 +164,8 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
         "ticker": ticker,
         "asof_date": asof,
         "executive_summary": executive_summary,
-        "business_overview": "\n\n".join(business_summary),
-        "competitive_position": "\n\n".join(competitive_notes),
+        "business_overview": business_overview,
+        "competitive_position": competitive_position,
         "financial_quality": (
             "Key metrics show average revenue growth of {rev_growth:.1%}, "
             "EBIT margin of {ebit_margin:.1%}, FCF margin of {fcf_margin:.1%}, "
@@ -423,11 +179,11 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
             leverage=_fmt_ratio(metrics["avg_leverage"]),
         ),
         "capital_allocation": capital_allocation,
-        "growth_opportunities": "\n".join(growth_summary),
-        "key_risks": risk_section,
+        "growth_opportunities": growth_opportunities,
+        "key_risks": key_risks,
         "valuation_summary": (
             "Base-case DCF implies {value} per share versus current price {price}. "
-            "Assumptions are in the appendix."
+            "Assumptions are summarized below."
         ).format(
             value=_fmt_money(base_value),
             price=_fmt_money(price),
@@ -436,11 +192,11 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
             "Base-case margin of safety is {mos}. "
             "Interpret alongside leverage and cyclicality risks."
         ).format(mos=_fmt_pct(base_mos)),
-        "conclusion": (
-            "The base-case valuation implies a margin of safety of {mos}. "
-            "Next steps: validate competitive positioning with segment and peer data, "
-            "stress-test the margin assumptions in the DCF, and review the latest earnings call for guidance deltas."
-        ).format(mos=_fmt_pct(base_mos)),
+        "conclusion": _llm_placeholder(
+            "conclusion",
+            ticker,
+            "State the recommendation and list 2-3 next research steps.",
+        ),
         "data_coverage": (
             f"Annual statements through fiscal year {metrics['latest_year']}. "
             "Source files: data/financials/annual/income_statement.csv, "
@@ -454,23 +210,17 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     }
 
     report_template = _read_template(base_dir / "templates" / "report.md")
-    appendix_template = _read_template(base_dir / "templates" / "appendix.md")
-
     report = _render_template(report_template, context)
-    appendix = _render_template(appendix_template, context)
 
     analysis_dir = base_dir / "companies" / ticker / "analysis"
     analysis_dir.mkdir(parents=True, exist_ok=True)
 
     report_path = analysis_dir / f"{asof}-report.md"
-    appendix_path = analysis_dir / f"{asof}-appendix.md"
     report_path.write_text(report)
-    appendix_path.write_text(appendix)
 
     _append_source_log(base_dir, ticker, asof)
 
     print(f"Report written to {report_path}")
-    print(f"Appendix written to {appendix_path}")
 
 
 def main():
