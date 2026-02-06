@@ -81,6 +81,14 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     company_name = profile.get("companyName", ticker)
     price = valuation["inputs"].get("current_price")
 
+    data_dir = base_dir / "companies" / ticker / "data"
+    transcript_files = sorted(data_dir.glob("earnings-call-*.md"))
+    transcript_note = (
+        f"Earnings call transcript: {transcript_files[-1].name}."
+        if transcript_files
+        else "Earnings call transcript: not found."
+    )
+
     base_case = valuation["scenarios"].get("base", {})
     base_value = base_case.get("per_share_value")
     base_mos = base_case.get("margin_of_safety")
@@ -125,7 +133,10 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
         "conclusion": "TODO: State recommendation and next research steps.",
         "data_coverage": (
             f"Annual statements through fiscal year {metrics['latest_year']}. "
-            "Source files: income_statement_annual.csv, balance_sheet_annual.csv, cash_flow_statement_annual.csv."
+            "Source files: data/financials/annual/income_statement.csv, "
+            "data/financials/annual/balance_sheet.csv, "
+            "data/financials/annual/cash_flow_statement.csv. "
+            f"{transcript_note}"
         ),
         "financial_table": metrics["financial_table"],
         "valuation_table": valuation["valuation_table"],

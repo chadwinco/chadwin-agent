@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from pathlib import Path
 from typing import Dict
 
@@ -35,15 +36,305 @@ def _load_csv(path: Path):
     return df
 
 
+_DATE_COL_RE = re.compile(r"^\\d{4}-\\d{2}-\\d{2}$")
+
+
+def _period_columns(df):
+    cols = []
+    for col in df.columns:
+        if _DATE_COL_RE.match(str(col)):
+            cols.append(col)
+    return cols
+
+
+def _find_row(df, concepts, labels):
+    if "concept" in df.columns:
+        for concept in concepts:
+            matches = df[df["concept"].str.lower() == concept.lower()]
+            if not matches.empty:
+                return matches.iloc[0]
+    if "label" in df.columns:
+        for label in labels:
+            matches = df[df["label"].str.contains(label, case=False, na=False)]
+            if not matches.empty:
+                return matches.iloc[0]
+    return None
+
+
+def _attach_metric(df, series, name, period_cols):
+    pd = _require_pandas()
+    if series is None:
+        df[name] = pd.NA
+        return
+    values = [series.get(col) for col in period_cols]
+    df[name] = pd.to_numeric(values, errors="coerce")
+
+
+def _build_base_frame(period_cols, ticker, period_label, currency):
+    pd = _require_pandas()
+    dates = [pd.to_datetime(col, errors="coerce").date() for col in period_cols]
+    return pd.DataFrame(
+        {
+            "date": [d.isoformat() if d is not None else "" for d in dates],
+            "symbol": ticker,
+            "reportedCurrency": currency or "",
+            "fiscalYear": [d.year if d is not None else None for d in dates],
+            "period": period_label,
+        }
+    )
+
+
+def _build_income_from_financials(df, ticker: str, period_label: str, currency: str):
+    pd = _require_pandas()
+    period_cols = _period_columns(df)
+    if not period_cols:
+        return pd.DataFrame()
+
+    out = _build_base_frame(period_cols, ticker, period_label, currency)
+
+    revenue = _find_row(
+        df,
+        concepts=[
+            "us-gaap_Revenues",
+            "us-gaap_SalesRevenueNet",
+            "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
+            "us-gaap_SalesRevenueGoodsNet",
+            "us-gaap_SalesRevenueServicesNet",
+        ],
+        labels=["Revenue", "Revenues", "Total Revenue", "Net Revenue", "Sales"],
+    )
+    gross_profit = _find_row(
+        df,
+        concepts=["us-gaap_GrossProfit"],
+        labels=["Gross Profit"],
+    )
+    operating_income = _find_row(
+        df,
+        concepts=["us-gaap_OperatingIncomeLoss"],
+        labels=["Operating Income", "Operating Income (Loss)", "Operating Income Loss"],
+    )
+    income_before_tax = _find_row(
+        df,
+        concepts=[
+            "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+            "us-gaap_IncomeLossBeforeIncomeTaxes",
+        ],
+        labels=["Income Before Tax", "Income Before Taxes", "Income (Loss) Before Income Taxes"],
+    )
+    income_tax = _find_row(
+        df,
+        concepts=["us-gaap_IncomeTaxExpenseBenefit"],
+        labels=["Income Tax Expense", "Provision for Income Taxes"],
+    )
+    net_income = _find_row(
+        df,
+        concepts=["us-gaap_NetIncomeLoss"],
+        labels=["Net Income", "Net Income (Loss)", "Profit or Loss"],
+    )
+    shares_basic = _find_row(
+        df,
+        concepts=["us-gaap_WeightedAverageNumberOfSharesOutstandingBasic"],
+        labels=["Weighted Average Shares Basic", "Shares Outstanding (Basic)"],
+    )
+    shares_dil = _find_row(
+        df,
+        concepts=["us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding"],
+        labels=["Weighted Average Shares Diluted", "Shares Outstanding (Diluted)"],
+    )
+
+    _attach_metric(out, revenue, "revenue", period_cols)
+    _attach_metric(out, gross_profit, "grossProfit", period_cols)
+    _attach_metric(out, operating_income, "ebit", period_cols)
+    _attach_metric(out, income_before_tax, "incomeBeforeTax", period_cols)
+    _attach_metric(out, income_tax, "incomeTaxExpense", period_cols)
+    _attach_metric(out, net_income, "netIncome", period_cols)
+    _attach_metric(out, shares_basic, "weightedAverageShsOut", period_cols)
+    _attach_metric(out, shares_dil, "weightedAverageShsOutDil", period_cols)
+
+    out["ebitda"] = pd.NA
+    out["date"] = pd.to_datetime(out["date"], errors="coerce")
+    return out
+
+
+def _build_balance_from_financials(df, ticker: str, period_label: str, currency: str):
+    pd = _require_pandas()
+    period_cols = _period_columns(df)
+    if not period_cols:
+        return pd.DataFrame()
+
+    out = _build_base_frame(period_cols, ticker, period_label, currency)
+
+    cash = _find_row(
+        df,
+        concepts=[
+            "us-gaap_CashAndCashEquivalentsAtCarryingValue",
+            "us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+        ],
+        labels=["Cash and Cash Equivalents", "Cash & Cash Equivalents"],
+    )
+    total_assets = _find_row(
+        df,
+        concepts=["us-gaap_Assets"],
+        labels=["Total Assets"],
+    )
+    total_equity = _find_row(
+        df,
+        concepts=[
+            "us-gaap_StockholdersEquity",
+            "us-gaap_StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+            "us-gaap_StockholdersEquityIncludingPortionAttributableToParent",
+        ],
+        labels=["Total Stockholders' Equity", "Total Stockholders Equity", "Total Equity"],
+    )
+    total_debt = _find_row(
+        df,
+        concepts=[
+            "us-gaap_Debt",
+            "us-gaap_LongTermDebt",
+            "us-gaap_LongTermDebtAndCapitalLeaseObligations",
+        ],
+        labels=["Total Debt"],
+    )
+    short_debt = _find_row(
+        df,
+        concepts=["us-gaap_DebtCurrent", "us-gaap_ShortTermBorrowings"],
+        labels=["Short-Term Debt", "Short Term Debt", "Current Portion of Long-Term Debt"],
+    )
+    long_debt = _find_row(
+        df,
+        concepts=["us-gaap_LongTermDebtNoncurrent", "us-gaap_LongTermDebt"],
+        labels=["Long-Term Debt", "Long Term Debt"],
+    )
+
+    _attach_metric(out, cash, "cashAndCashEquivalents", period_cols)
+    _attach_metric(out, total_assets, "totalAssets", period_cols)
+    _attach_metric(out, total_equity, "totalEquity", period_cols)
+
+    if total_debt is not None:
+        _attach_metric(out, total_debt, "totalDebt", period_cols)
+    else:
+        debt_series = None
+        if short_debt is not None and long_debt is not None:
+            debt_series = short_debt.add(long_debt, fill_value=0)
+        elif short_debt is not None:
+            debt_series = short_debt
+        elif long_debt is not None:
+            debt_series = long_debt
+        _attach_metric(out, debt_series, "totalDebt", period_cols)
+
+    out["netDebt"] = out["totalDebt"] - out["cashAndCashEquivalents"]
+    out["date"] = pd.to_datetime(out["date"], errors="coerce")
+    return out
+
+
+def _build_cash_from_financials(df, ticker: str, period_label: str, currency: str):
+    pd = _require_pandas()
+    period_cols = _period_columns(df)
+    if not period_cols:
+        return pd.DataFrame()
+
+    out = _build_base_frame(period_cols, ticker, period_label, currency)
+
+    ocf = _find_row(
+        df,
+        concepts=["us-gaap_NetCashProvidedByUsedInOperatingActivities"],
+        labels=[
+            "Net Cash from Operating Activities",
+            "Net Cash Provided by Operating Activities",
+        ],
+    )
+    capex = _find_row(
+        df,
+        concepts=[
+            "us-gaap_PaymentsToAcquirePropertyPlantAndEquipment",
+            "us-gaap_PaymentsToAcquireProductiveAssets",
+        ],
+        labels=[
+            "Payments to Acquire Property, Plant, and Equipment",
+            "Capital Expenditures",
+            "Capital spending",
+            "Purchases of Property and Equipment",
+        ],
+    )
+    depreciation = _find_row(
+        df,
+        concepts=["us-gaap_DepreciationDepletionAndAmortization"],
+        labels=[
+            "Depreciation and Amortization",
+            "Depreciation and amortization",
+            "Depreciation",
+        ],
+    )
+
+    _attach_metric(out, ocf, "operatingCashFlow", period_cols)
+    _attach_metric(out, capex, "capitalExpenditure", period_cols)
+    _attach_metric(out, depreciation, "depreciationAndAmortization", period_cols)
+
+    if "operatingCashFlow" in out.columns and "capitalExpenditure" in out.columns:
+        capex_values = out["capitalExpenditure"].fillna(0)
+        ocf_values = out["operatingCashFlow"].fillna(0)
+        fcf = ocf_values + capex_values
+        if (capex_values > 0).any():
+            fcf = ocf_values - capex_values.abs()
+        out["freeCashFlow"] = fcf
+    else:
+        out["freeCashFlow"] = pd.NA
+
+    out["date"] = pd.to_datetime(out["date"], errors="coerce")
+    return out
+
+
 def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
     data_dir = base_dir / "companies" / ticker / "data"
     if not data_dir.exists():
         raise FileNotFoundError(f"Missing data directory: {data_dir}")
 
-    income = _load_csv(data_dir / "income_statement_annual.csv")
-    balance = _load_csv(data_dir / "balance_sheet_annual.csv")
-    cashflow = _load_csv(data_dir / "cash_flow_statement_annual.csv")
     profile = _load_csv(data_dir / "company_profile.csv")
+    currency = ""
+    if not profile.empty and "currency" in profile.columns:
+        currency = str(profile.iloc[0].get("currency") or "")
+
+    financials_annual_dir = data_dir / "financials" / "annual"
+    income = None
+    balance = None
+    cashflow = None
+
+    if financials_annual_dir.exists():
+        income_path = financials_annual_dir / "income_statement.csv"
+        balance_path = financials_annual_dir / "balance_sheet.csv"
+        cash_path = financials_annual_dir / "cash_flow_statement.csv"
+
+        if income_path.exists():
+            income_df = _load_csv(income_path)
+            income = _build_income_from_financials(income_df, ticker, "FY", currency)
+        if balance_path.exists():
+            balance_df = _load_csv(balance_path)
+            balance = _build_balance_from_financials(balance_df, ticker, "FY", currency)
+        if cash_path.exists():
+            cash_df = _load_csv(cash_path)
+            cashflow = _build_cash_from_financials(cash_df, ticker, "FY", currency)
+
+    income_path = data_dir / "income_statement_annual.csv"
+    balance_path = data_dir / "balance_sheet_annual.csv"
+    cashflow_path = data_dir / "cash_flow_statement_annual.csv"
+
+    if income is None or income.empty:
+        income = _load_csv(income_path)
+    if balance is None or balance.empty:
+        balance = _load_csv(balance_path)
+    if cashflow is None or cashflow.empty:
+        cashflow = _load_csv(cashflow_path)
+
+    if not income.empty and not cashflow.empty and "depreciationAndAmortization" in cashflow.columns:
+        try:
+            merged = income.merge(
+                cashflow[["date", "depreciationAndAmortization"]],
+                on="date",
+                how="left",
+            )
+            income["ebitda"] = merged["ebit"] + merged["depreciationAndAmortization"].fillna(0)
+        except Exception:
+            pass
 
     key_metrics_path = data_dir / "key_metrics.csv"
     ratios_path = data_dir / "ratios.csv"
