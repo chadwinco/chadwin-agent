@@ -58,16 +58,7 @@ def _assumptions_summary(assumptions: dict) -> str:
     return "\n".join(lines)
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Run research workflow for a company")
-    parser.add_argument("--ticker", required=True)
-    parser.add_argument("--asof", default=str(date.today()))
-    parser.add_argument("--base-dir", default=str(BASE_DIR))
-
-    args = parser.parse_args()
-    base_dir = Path(args.base_dir)
-    ticker = args.ticker.upper()
-
+def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     data = load_company_data(base_dir, ticker)
     issues = run_quality_checks(data)
     errors = [i for i in issues if i.severity == "error"]
@@ -103,7 +94,7 @@ def main():
     context = {
         "company_name": company_name,
         "ticker": ticker,
-        "asof_date": args.asof,
+        "asof_date": asof,
         "executive_summary": "- TODO: Summarize thesis, valuation, and key risks.\n",
         "business_overview": "TODO: Summarize business model and segments using 10-K and profile.",
         "competitive_position": "TODO: Assess moat and competitive dynamics.",
@@ -150,15 +141,28 @@ def main():
     analysis_dir = base_dir / "companies" / ticker / "analysis"
     analysis_dir.mkdir(parents=True, exist_ok=True)
 
-    report_path = analysis_dir / f"{args.asof}-report.md"
-    appendix_path = analysis_dir / f"{args.asof}-appendix.md"
+    report_path = analysis_dir / f"{asof}-report.md"
+    appendix_path = analysis_dir / f"{asof}-appendix.md"
     report_path.write_text(report)
     appendix_path.write_text(appendix)
 
-    _append_source_log(base_dir, ticker, args.asof)
+    _append_source_log(base_dir, ticker, asof)
 
     print(f"Report written to {report_path}")
     print(f"Appendix written to {appendix_path}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Run research workflow for a company")
+    parser.add_argument("--ticker", required=True)
+    parser.add_argument("--asof", default=str(date.today()))
+    parser.add_argument("--base-dir", default=str(BASE_DIR))
+
+    args = parser.parse_args()
+    base_dir = Path(args.base_dir)
+    ticker = args.ticker.upper()
+
+    run_company(base_dir, ticker, args.asof)
 
 
 if __name__ == "__main__":

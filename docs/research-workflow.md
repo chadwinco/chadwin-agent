@@ -8,13 +8,16 @@ Build repeatable company research that outputs:
 Prerequisite: set up the Python virtual environment described in `docs/python-setup.md`.
 
 ## End-to-End Flow
-0. Activate the Python virtual environment in `.venv/`.
+0. Activate the Python virtual environment in `.venv/` and set `EDGAR_IDENTITY` in `.env` if fetching filings.
 1. Ingest data from `companies/<TICKER>/data`.
 2. Run quality checks for missing files, inconsistent dates, and obvious data errors.
 3. Compute core metrics (growth, margins, ROIC, leverage, FCF).
 4. Build a base/bull/bear FCF DCF model.
 5. Draft the report using templates and prompts.
 6. Log sources and update the improvement log.
+
+## New Company Bootstrap
+Use `scripts/add_company.py` to create directories, fetch EDGAR filings and financials, and run the analysis.
 
 ## Improvement Loop
 - After each report, note gaps or errors in `docs/improvement-log.md`.

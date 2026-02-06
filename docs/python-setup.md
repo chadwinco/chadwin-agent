@@ -13,6 +13,14 @@ source /Users/chad/source/chadwin-codex/.venv/bin/activate
 python -m pip install -r /Users/chad/source/chadwin-codex/requirements.txt
 ```
 
+## SEC Identity (Required for EDGAR Fetching)
+Create a `.env` file in the repo root with your EDGAR identity (name + email):
+```
+EDGAR_IDENTITY="Your Name your.email@example.com"
+```
+
+If you already use `SEC_IDENTITY_EMAIL`, it will be accepted as a fallback.
+
 ## Run Workflow
 ```
 python /Users/chad/source/chadwin-codex/scripts/run_company.py --ticker BBCP --asof 2026-02-06

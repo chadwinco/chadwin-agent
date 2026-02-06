@@ -7,6 +7,10 @@ These are manual validation steps for the research workflow.
    - `source /Users/chad/source/chadwin-codex/.venv/bin/activate`
    - `python -m pip install -r /Users/chad/source/chadwin-codex/requirements.txt`
    - `python /Users/chad/source/chadwin-codex/scripts/run_company.py --ticker BBCP --asof 2026-02-06`
+
+2. Create a new company from EDGAR
+   - Add `EDGAR_IDENTITY` to `/Users/chad/source/chadwin-codex/.env`
+   - `python /Users/chad/source/chadwin-codex/scripts/add_company.py --ticker AAPL --asof 2026-02-06`
    - Confirm report and appendix files are created.
 
 2. Missing data scenario
