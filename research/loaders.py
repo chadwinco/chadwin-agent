@@ -284,6 +284,34 @@ def _build_cash_from_financials(df, ticker: str, period_label: str, currency: st
     return out
 
 
+def _normalize_share_counts(df):
+    pd = _require_pandas()
+    for col in ("weightedAverageShsOut", "weightedAverageShsOutDil"):
+        if col not in df.columns:
+            continue
+        series = pd.to_numeric(df[col], errors="coerce")
+        values = series.dropna()
+        values = values[values > 0]
+        if len(values) < 2:
+            continue
+        median = values.median()
+        if median <= 0:
+            continue
+
+        adjusted = series.copy()
+        for idx, value in series.items():
+            if pd.isna(value) or value <= 0:
+                continue
+            ratio = value / median
+            if ratio <= 5:
+                continue
+            while ratio > 5 and value >= 1_000_000:
+                value /= 10
+                ratio = value / median
+            adjusted.loc[idx] = value
+        df[col] = adjusted
+
+
 def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
     data_dir = base_dir / "companies" / ticker / "data"
     if not data_dir.exists():
@@ -335,6 +363,9 @@ def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
             income["ebitda"] = merged["ebit"] + merged["depreciationAndAmortization"].fillna(0)
         except Exception:
             pass
+
+    if not income.empty:
+        _normalize_share_counts(income)
 
     key_metrics_path = data_dir / "key_metrics.csv"
     ratios_path = data_dir / "ratios.csv"

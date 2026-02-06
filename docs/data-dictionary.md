@@ -3,14 +3,17 @@
 This repo expects company financial data under `companies/<TICKER>/data`. The pipeline uses these files and columns.
 
 ## Required Files
-- `income_statement_annual.csv`
-- `balance_sheet_annual.csv`
-- `cash_flow_statement_annual.csv`
 - `company_profile.csv`
+- `financials/annual/income_statement.csv`
+- `financials/annual/balance_sheet.csv`
+- `financials/annual/cash_flow_statement.csv`
 
 ## Optional Files
-- `financials/annual/` and `financials/quarterly/` (full EDGAR statement exports)
+- `financials/quarterly/` (full EDGAR statement exports)
 - `earnings-call-*.md` (latest earnings call transcript)
+- `income_statement_annual.csv` (derived summary)
+- `balance_sheet_annual.csv` (derived summary)
+- `cash_flow_statement_annual.csv` (derived summary)
 - `key_metrics.csv`
 - `ratios.csv`
 - `analyst_estimates.csv`
