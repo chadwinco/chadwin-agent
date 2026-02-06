@@ -5,17 +5,26 @@
 - [ ] Fiscal years align across income, balance sheet, and cash flow.
 - [ ] No missing or obviously incorrect values in key fields.
 
+## Evidence Discipline
+- [ ] No verbatim copying from filings or transcripts.
+- [ ] All factual claims cite local file paths (or external sources in `docs/source-log.md`).
+- [ ] Claims are supported by the latest available filings or transcripts.
+
 ## Financial Quality
 - [ ] Revenue growth trend is quantified (CAGR + year-over-year).
-- [ ] Gross and EBIT margins are stable or improving.
-- [ ] FCF margin and conversion are analyzed.
+- [ ] EBIT margin trend is described with data.
+- [ ] FCF margin and cash conversion are analyzed.
 - [ ] ROIC is calculated and compared to cost of capital.
-- [ ] Leverage and liquidity are evaluated.
+- [ ] Leverage and liquidity are evaluated (net debt, net debt/EBITDA).
 
 ## Business Quality
 - [ ] Competitive position described with evidence.
 - [ ] Unit economics or operational drivers are identified.
 - [ ] Capital allocation history is documented.
+
+## Growth & Risks
+- [ ] Growth drivers separated into organic, pricing, mix, and M&A.
+- [ ] Top 3–5 risks prioritized by impact on cash generation.
 
 ## Valuation
 - [ ] Base/bull/bear assumptions are explicit and defensible.
@@ -24,6 +33,6 @@
 
 ## Output
 - [ ] Executive summary is concise and decision-oriented.
-- [ ] Appendix includes key tables and model outputs.
-- [ ] Sources are logged in `docs/source-log.md`.
+- [ ] Assumptions summary is included and matches `assumptions.yaml`.
+- [ ] Sources are logged in `docs/source-log.md` when external data is used.
 - [ ] Improvement notes added to `docs/improvement-log.md`.

@@ -21,7 +21,8 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 1. Confirm inputs.
 2. Run the analysis script.
 3. Run the LLM analysis (assistant step).
-4. Review outputs and logs.
+4. Validate against the checklist.
+5. Review outputs and logs.
 
 ### 1. Confirm inputs
 - If data is missing, use `$fetch-company-data` first.
@@ -37,7 +38,7 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 
 
 ### 3. Run the LLM analysis (assistant step)
-- Read the prompt files in `prompts/`.
+- Read the prompt files in `prompts/` and the workflow docs in `docs/research-workflow.md`.
 - **Agentic search:** use `grep` (or `rg` if available) against the raw files in `companies/<TICKER>/data` to find relevant sections in real time.
   - Examples: search for `## Business`, `Segment Information`, `Risk Factors`, `Management's Discussion`, `catastrophe`, `combined ratio`, `net premiums`, `reserve`, `reinsurance`, `dividend`, `buyback`.
   - Iterate queries until you have coverage for each prompt section (don’t settle for the first match).
@@ -45,7 +46,11 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
   - `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
 - Cite sources inline with file paths and log any external sources in `docs/source-log.md` if needed.
 
-### 4. Review outputs and logs
+### 4. Validate against the checklist
+- Use `docs/research-checklist.md` as a quality gate before finalizing the report.
+- Fix any checklist gaps before delivering the final report.
+
+### 5. Review outputs and logs
 Validate the generated artifacts:
 - `companies/<TICKER>/model/outputs.json`
 - `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
