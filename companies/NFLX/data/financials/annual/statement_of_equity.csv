@@ -1,0 +1,16 @@
+label,concept,2025-12-31,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,-176811000.0,-84893000.0,67919000.0
+Net Income,us-gaap_NetIncomeLoss,10981201000.0,8711631000.0,5407990000.0,4491924000.0,5116228000.0,2761395000.0
+Other comprehensive (loss) income,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,-942544000.0,586107000.0,,,,
+Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,-6639000.0,,,
+Issuance of common stock (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,30638245.0,4846048.0,,,,
+Issuance of common stock upon exercise of options (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,,1926598.0,1383669.0,2632324.0,4088612.0
+Issuance of common stock,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,665835000.0,834366000.0,,,,
+Issuance of common stock upon exercise of options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,,168203000.0,37588000.0,173643000.0,238589000.0
+Repurchases of common stock (in shares),us-gaap_TreasuryStockSharesAcquired,86536215.0,9861935.0,14513790.0,,1182410.0,
+Repurchases of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,9154855000.0,6241153000.0,6098010000.0,,600022000.0,
+Shares withheld related to net share settlement of equity awards (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,470330.0,13257.0,,,,
+Shares withheld related to net share settlement of equity awards,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,46165000.0,8285000.0,,,,
+Shares withheld related to net share settlement,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,,,,,224168000.0,
+Shares withheld related to net share settlement (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,,,,,382068.0,
+Stock-based compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,368449000.0,272588000.0,339368000.0,575452000.0,403220000.0,415180000.0

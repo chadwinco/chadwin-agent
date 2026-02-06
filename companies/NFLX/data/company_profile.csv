@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+NFLX,81.86,345630000000.0,1.71,,79.23 - 134.12,,,3477552.0,Netflix Inc,USD,0001065280,US64110L1061,64110L106,Nasdaq Global Select Market,NASDAQ,Entertainment,https://netflix.com,,Communication Services,United States,16000,408-540-3700,121 Albright Way,Los Gatos,CA,,,false,true,false
