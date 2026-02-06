@@ -1,0 +1,53 @@
+,concept,label,2025-12-27,2024-12-28,2023-12-30,level,abstract,dimension
+0,us-gaap_NetCashProvidedByUsedInOperatingActivitiesAbstract,Operating Activities,,,,3,False,False
+1,us-gaap_ProfitLoss,Profit or Loss,8295000000.0,9626000000.0,9155000000.0,4,False,False
+2,us-gaap_DepreciationDepletionAndAmortization,Depreciation and amortization,3451000000.0,3160000000.0,2948000000.0,4,False,False
+3,pep_ImpairmentAndOtherCharges,Impairment and other charges,1946000000.0,714000000.0,1230000000.0,4,False,False
+4,pep_ProductRecallRelatedImpact,Product recall-related impact,0.0,187000000.0,136000000.0,4,False,False
+5,pep_PaymentsForProductRecallRelatedImpact,Payments for product recall-related impact,-6000000.0,-148000000.0,-0.0,4,False,False
+6,us-gaap_OperatingLeaseRightOfUseAssetAmortizationExpense,Operating lease right-of-use asset amortization,727000000.0,655000000.0,570000000.0,4,False,False
+7,us-gaap_ShareBasedCompensation,Share-based compensation expense,288000000.0,362000000.0,380000000.0,4,False,False
+8,us-gaap_RestructuringCostsAndAssetImpairmentCharges,Restructuring Charges,983000000.0,727000000.0,445000000.0,4,False,False
+9,us-gaap_PaymentsForRestructuring,Cash payments for restructuring charges,-796000000.0,-436000000.0,-434000000.0,4,False,False
+10,us-gaap_PensionAndOtherPostretirementBenefitExpense,Pension and retiree medical plan expenses,504000000.0,414000000.0,150000000.0,4,False,False
+11,us-gaap_PensionAndOtherPostretirementBenefitContributions,Pension and retiree medical plan contributions,-472000000.0,-348000000.0,-410000000.0,4,False,False
+12,us-gaap_DeferredIncomeTaxesAndTaxCredits,Deferred income taxes and other tax charges and credits,71000000.0,-42000000.0,-271000000.0,4,False,False
+13,pep_TaxpaymentsrelatedtotheTCJAct,Tax payments related to the TCJ Act,-772000000.0,-579000000.0,-309000000.0,4,False,False
+14,us-gaap_IncreaseDecreaseInAccountsAndNotesReceivable,Accounts and notes receivable,-580000000.0,-138000000.0,-793000000.0,5,False,False
+15,us-gaap_IncreaseDecreaseInInventories,Inventories,-150000000.0,-314000000.0,-261000000.0,5,False,False
+16,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,Prepaid expenses and other current assets,195000000.0,40000000.0,-13000000.0,5,False,False
+17,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,Accounts payable and other current liabilities,-677000000.0,-943000000.0,420000000.0,5,False,False
+18,us-gaap_IncreaseDecreaseInAccruedIncomeTaxesPayable,Income taxes payable,-433000000.0,-123000000.0,310000000.0,5,False,False
+19,us-gaap_OtherOperatingActivitiesCashFlowStatement,"Other, net",-712000000.0,-311000000.0,189000000.0,4,False,False
+20,us-gaap_NetCashProvidedByUsedInOperatingActivities,Net Cash from Operating Activities,12087000000.0,12507000000.0,13442000000.0,4,False,False
+21,us-gaap_NetCashProvidedByUsedInInvestingActivitiesAbstract,Investing Activities,,,,3,False,False
+22,us-gaap_PaymentsToAcquireProductiveAssets,Capital spending,-4415000000.0,-5318000000.0,-5518000000.0,4,False,False
+23,us-gaap_ProceedsFromSaleOfProductiveAssets,"Sales of property, plant and equipment",528000000.0,342000000.0,198000000.0,4,False,False
+24,us-gaap_PaymentsToAcquireBusinessesAndInterestInAffiliates,"Acquisitions, net of cash acquired, investments in noncontrolled affiliates and purchases of intangible and other assets",-3391000000.0,-256000000.0,-314000000.0,4,False,False
+25,us-gaap_ProceedsFromDivestitureOfBusinessesAndInterestsInAffiliates,"Divestitures, sales of investments in noncontrolled affiliates and other assets",39000000.0,166000000.0,75000000.0,4,False,False
+26,us-gaap_PaymentsForProceedsFromShortTermInvestmentsAlternativeAbstract,"Short-term investments, by original maturity:",,,,4,False,False
+27,us-gaap_PaymentsToAcquireShortTermInvestments,More than three months - purchases,-190000000.0,-425000000.0,-555000000.0,5,False,False
+28,us-gaap_ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities,More than three months - maturities,605000000.0,0.0,556000000.0,5,False,False
+29,pep_ProceedsFromSaleOfInvestmentsMoreThanThreeMonthsSales,More than three months - Sales,0.0,0.0,12000000.0,5,False,False
+30,pep_PaymentsForProceedsFromShortTermInvestmentsThreeMonthsOrLessNet,"Three months or less, net",45000000.0,5000000.0,3000000.0,5,False,False
+31,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,"Other investing, net",-100000000.0,14000000.0,48000000.0,4,False,False
+32,us-gaap_NetCashProvidedByUsedInInvestingActivities,Net Cash from Investing Activities,-6879000000.0,-5472000000.0,-5495000000.0,4,False,False
+33,us-gaap_NetCashProvidedByUsedInFinancingActivitiesAbstract,Financing Activities,,,,3,False,False
+34,us-gaap_ProceedsFromIssuanceOfLongTermDebt,Proceeds from Issuance of Long-Term Debt,8189000000.0,4042000000.0,5482000000.0,4,False,False
+35,us-gaap_RepaymentsOfLongTermDebt,Payments of long-term debt,-4082000000.0,-3886000000.0,-3005000000.0,4,False,False
+36,us-gaap_ProceedsFromRepaymentsOfShortTermDebtAbstract,"Short-term borrowings, by original maturity",,,,4,False,False
+37,us-gaap_ProceedsFromShortTermDebtMaturingInMoreThanThreeMonths,More than three months - proceeds,6391000000.0,5786000000.0,5428000000.0,5,False,False
+38,us-gaap_RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths,More than three months - payments,-7920000000.0,-5639000000.0,-3106000000.0,5,False,False
+39,us-gaap_ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess,"Three months or less, net",1170000000.0,392000000.0,-29000000.0,5,False,False
+40,us-gaap_PaymentsOfDividends,Payments of Dividends,-7638000000.0,-7229000000.0,-6682000000.0,4,False,False
+41,us-gaap_PaymentsForRepurchaseOfCommonStock,Share repurchases - common,-1000000000.0,-1000000000.0,-1000000000.0,4,False,False
+42,us-gaap_ProceedsFromStockOptionsExercised,Proceeds from exercises of stock options,97000000.0,166000000.0,116000000.0,4,False,False
+43,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,Tax Withholding for Share-Based Compensation,-113000000.0,-135000000.0,-140000000.0,4,False,False
+44,us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,Other financing,-73000000.0,-53000000.0,-73000000.0,4,False,False
+45,us-gaap_NetCashProvidedByUsedInFinancingActivities,Net Cash from Financing Activities,-4979000000.0,-7556000000.0,-3009000000.0,4,False,False
+46,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,Effect of exchange rate changes on cash and cash equivalents and restricted cash,422000000.0,-687000000.0,-277000000.0,3,False,False
+47,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,Net Change in Cash,651000000.0,-1208000000.0,4661000000.0,3,False,False
+48,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,Cash and cash equivalents and restricted cash,,,,3,False,False
+49,dei_SecurityExchangeName,Security Exchange Name,NASDAQ,,,3,False,False
+50,us-gaap_BusinessCombinationSeparatelyRecognizedTransactionsNetGainsAndLosses,Acquisition and divestiture-related charges,453000000.0,22000000.0,41000000.0,3,False,False
+51,us-gaap_PaymentsForMergerRelatedCosts,Payments for Merger Related Costs,-228000000.0,-18000000.0,-41000000.0,3,False,False

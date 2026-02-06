@@ -335,6 +335,11 @@ def _prepare_statement_df(df):
     pd = _require_pandas()
     if df is None:
         return None
+    if hasattr(df, "to_dataframe"):
+        try:
+            df = df.to_dataframe()
+        except Exception:
+            pass
     if hasattr(df, "copy"):
         df = df.copy()
     if df is None:
@@ -539,6 +544,20 @@ def _build_cash_flow(financials, ticker: str, period_label: str, currency: str):
     return out
 
 
+def _get_statement(financials, names: Iterable[str]):
+    if financials is None:
+        return None
+    for name in names:
+        attr = getattr(financials, name, None)
+        if attr is None:
+            continue
+        try:
+            return attr() if callable(attr) else attr
+        except Exception:
+            continue
+    return None
+
+
 def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
     pd = _require_pandas()
     data = getattr(company, "data", None)
@@ -623,15 +642,22 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
     _write_company_profile(company, data_dir, ticker, currency)
 
     financials = company.get_financials()
-    income_annual = _build_income_statement(financials.income, ticker, "FY", currency)
-    balance_annual = _build_balance_sheet(financials.balance_sheet, ticker, "FY", currency)
-    cash_annual = _build_cash_flow(financials.cash_flow, ticker, "FY", currency)
+    if financials is None:
+        raise RuntimeError("No annual financials found for company.")
+
+    income_stmt = _get_statement(financials, ["income", "income_statement"])
+    balance_stmt = _get_statement(financials, ["balance_sheet"])
+    cash_stmt = _get_statement(financials, ["cash_flow", "cashflow_statement", "cash_flow_statement"])
+
+    income_annual = _build_income_statement(income_stmt, ticker, "FY", currency)
+    balance_annual = _build_balance_sheet(balance_stmt, ticker, "FY", currency)
+    cash_annual = _build_cash_flow(cash_stmt, ticker, "FY", currency)
 
     raw_dir = data_dir / "edgar_raw"
     raw_dir.mkdir(exist_ok=True)
-    raw_income = _prepare_statement_df(financials.income)
-    raw_balance = _prepare_statement_df(financials.balance_sheet)
-    raw_cash = _prepare_statement_df(financials.cash_flow)
+    raw_income = _prepare_statement_df(income_stmt)
+    raw_balance = _prepare_statement_df(balance_stmt)
+    raw_cash = _prepare_statement_df(cash_stmt)
     if raw_income is not None:
         raw_income.to_csv(raw_dir / "income_statement_raw.csv")
     if raw_balance is not None:
@@ -658,9 +684,18 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
     cash_annual.to_csv(data_dir / "cash_flow_statement_annual.csv", index=False)
 
     quarterly = company.get_quarterly_financials()
-    income_q = _build_income_statement(quarterly.income, ticker, "Q", currency)
-    balance_q = _build_balance_sheet(quarterly.balance_sheet, ticker, "Q", currency)
-    cash_q = _build_cash_flow(quarterly.cash_flow, ticker, "Q", currency)
+    if quarterly is not None:
+        income_q_stmt = _get_statement(quarterly, ["income", "income_statement"])
+        balance_q_stmt = _get_statement(quarterly, ["balance_sheet"])
+        cash_q_stmt = _get_statement(quarterly, ["cash_flow", "cashflow_statement", "cash_flow_statement"])
+
+        income_q = _build_income_statement(income_q_stmt, ticker, "Q", currency)
+        balance_q = _build_balance_sheet(balance_q_stmt, ticker, "Q", currency)
+        cash_q = _build_cash_flow(cash_q_stmt, ticker, "Q", currency)
+    else:
+        income_q = pd.DataFrame()
+        balance_q = pd.DataFrame()
+        cash_q = pd.DataFrame()
 
     if not income_q.empty and not cash_q.empty:
         merged_q = income_q.merge(
@@ -670,6 +705,9 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
         )
         income_q["ebitda"] = merged_q["ebit"] + merged_q["depreciationAndAmortization"].fillna(0)
 
-    income_q.to_csv(data_dir / "income_statement_quarterly.csv", index=False)
-    balance_q.to_csv(data_dir / "balance_sheet_quarterly.csv", index=False)
-    cash_q.to_csv(data_dir / "cash_flow_statement_quarterly.csv", index=False)
+    if not income_q.empty:
+        income_q.to_csv(data_dir / "income_statement_quarterly.csv", index=False)
+    if not balance_q.empty:
+        balance_q.to_csv(data_dir / "balance_sheet_quarterly.csv", index=False)
+    if not cash_q.empty:
+        cash_q.to_csv(data_dir / "cash_flow_statement_quarterly.csv", index=False)
