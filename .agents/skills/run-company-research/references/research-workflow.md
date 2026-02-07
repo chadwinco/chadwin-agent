@@ -17,6 +17,14 @@ Legacy fallback paths:
 - `companies/<TICKER>/data/balance_sheet_annual.csv`
 - `companies/<TICKER>/data/cash_flow_statement_annual.csv`
 
+Drafting prompts:
+- `.agents/skills/run-company-research/prompts/investment-summary.md`
+- `.agents/skills/run-company-research/prompts/business-and-competitive-position.md`
+- `.agents/skills/run-company-research/prompts/financial-quality.md`
+- `.agents/skills/run-company-research/prompts/valuation.md`
+- `.agents/skills/run-company-research/prompts/key-risks-and-disconfirming-signals.md`
+- `.agents/skills/run-company-research/prompts/conclusion.md`
+
 ## Step 1: Confirm Scope
 - Confirm ticker and as-of date explicitly.
 - Use filings/transcripts dated on or before the as-of date.

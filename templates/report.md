@@ -1,36 +1,32 @@
-# {company_name} ({ticker}) Research Report
+# {company_name} ({ticker}) Investment Snapshot
 
 _As of {asof_date}_
 
-## Executive Summary
+## Investment Summary
 {executive_summary}
 
-## Business Overview
+## Business and Competitive Position
 {business_overview}
 
-## Competitive Position
 {competitive_position}
 
 ## Financial Quality
 {financial_quality}
 
-## Capital Allocation
-{capital_allocation}
-
-## Growth Opportunities
-{growth_opportunities}
-
-## Key Risks
-{key_risks}
+### Financial Data Table
+{financial_table}
 
 ## Valuation
 {valuation_summary}
 
-## Assumptions Summary
+### Scenario Output Table
+{valuation_table}
+
+### Scenario Assumptions
 {assumptions_summary}
 
-## Margin of Safety
-{margin_of_safety}
+## Key Risks and Disconfirming Signals
+{key_risks}
 
 ## Conclusion
 {conclusion}

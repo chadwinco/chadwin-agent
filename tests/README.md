@@ -29,4 +29,4 @@ These are manual validation steps for the research workflow.
    - Adjust discount rates in `valuation/inputs.yaml` and confirm value-per-share shifts as expected.
 
 6. Checklist gate
-   - Run through `docs/research-checklist.md` and confirm all items pass before finalizing.
+   - Run through `.agents/skills/run-company-research/references/research-checklist.md` and confirm all items pass before finalizing.

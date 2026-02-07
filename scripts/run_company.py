@@ -18,7 +18,10 @@ from research.valuation import load_assumptions, run_valuation  # noqa: E402
 
 
 def _llm_placeholder(section: str, ticker: str, extra: str | None = None) -> str:
-    note = f"LLM_REQUIRED: Use prompts/{section}.md and search companies/{ticker}/data for evidence."
+    note = (
+        f"LLM_REQUIRED: Use .agents/skills/run-company-research/prompts/{section}.md "
+        f"and search companies/{ticker}/data for evidence."
+    )
     if extra:
         note = f"{note} {extra}"
     return note
@@ -162,22 +165,17 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     )
 
     business_overview = _llm_placeholder(
-        "business-overview",
+        "business-and-competitive-position",
         ticker,
         "Summarize products, customers, and geographies using filings and profile data.",
     )
     competitive_position = _llm_placeholder(
-        "competitive-position",
+        "business-and-competitive-position",
         ticker,
         "Use margins and ROIC to support the moat discussion.",
     )
-    growth_opportunities = _llm_placeholder(
-        "growth-opportunities",
-        ticker,
-        f"Recent average revenue growth: {_fmt_pct(metrics['avg_revenue_growth'])}.",
-    )
     key_risks = _llm_placeholder(
-        "key-risks",
+        "key-risks-and-disconfirming-signals",
         ticker,
         "Prioritize risks that impact cash generation and underwriting outcomes.",
     )
@@ -211,7 +209,6 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
             leverage=_fmt_ratio(metrics["avg_leverage"]),
         ),
         "capital_allocation": capital_allocation,
-        "growth_opportunities": growth_opportunities,
         "key_risks": key_risks,
         "valuation_summary": (
             "Base-case DCF implies {value} per share versus current price {price}. "
