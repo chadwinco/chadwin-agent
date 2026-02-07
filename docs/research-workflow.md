@@ -15,7 +15,7 @@ Prerequisite: set up the Python virtual environment described in `docs/python-se
 - `docs/research-checklist.md` as the quality gate.
 
 ## Deterministic Pipeline (Run First)
-1. If data is missing, run `scripts/add_company.py` to fetch filings, financials, transcripts, and analyst estimates.
+1. If data is missing, run `.agents/skills/fetch-company-data/scripts/add_company.py` to fetch filings, financials, transcripts, and analyst estimates.
 2. Run `scripts/run_company.py` to refresh metrics, valuation outputs, and the report scaffold.
 
 ## LLM Report Workflow

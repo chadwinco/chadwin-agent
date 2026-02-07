@@ -10,7 +10,7 @@ These are manual validation steps for the research workflow.
 
 2. Create a new company from EDGAR
    - Add `EDGAR_IDENTITY` to `/Users/chad/source/chadwin-codex/.env`
-   - `python /Users/chad/source/chadwin-codex/scripts/add_company.py --ticker AAPL --asof 2026-02-06`
+   - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker AAPL --asof 2026-02-06`
    - Confirm the report file is created.
    - Confirm `companies/<TICKER>/data/filings/earnings-call-*.md` exists.
 

@@ -86,7 +86,7 @@ def _assumptions_path(base_dir: Path, ticker: str, asof: str) -> Path:
     if not candidates:
         raise FileNotFoundError(
             f"Missing valuation inputs for {ticker} as of {asof}: "
-            f"{assumptions_path}. Run scripts/add_company.py first or create this file."
+            f"{assumptions_path}. Run .agents/skills/fetch-company-data/scripts/add_company.py first or create this file."
         )
 
     latest = sorted(candidates, key=lambda p: p.parent.parent.name)[-1]

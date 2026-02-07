@@ -6,47 +6,63 @@ description: Fetch EDGAR filings, XBRL-based financial statements, and earnings 
 # Fetch Company Data
 
 ## Overview
-Fetch filings, financials, analyst forecasts, and transcripts into `companies/<TICKER>/data` and optionally bootstrap model assumptions for a new or refreshed ticker.
+Fetch filings, financials, analyst forecasts, and transcripts into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
-## Quick Start
-1. Activate the repo virtual environment and install dependencies if needed.
-2. Set `EDGAR_IDENTITY` in `.env`, or plan to pass `--identity`.
-3. Run the bootstrap script from the repo root.
+This skill keeps fetch logic inside the skill package (`scripts/` + `src/`) so it is easier to share and update independently from the main codebase.
+
+## Skill Path (set once)
+Repo-local:
 
 ```bash
-python3 scripts/add_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
+export FETCH_COMPANY_DATA_ROOT=".agents/skills/fetch-company-data"
+export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
+```
+
+Installed skill:
+
+```bash
+export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+export FETCH_COMPANY_DATA_ROOT="$CODEX_HOME/skills/fetch-company-data"
+export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
+```
+
+## Quick Start
+1. Follow `references/python-setup.md`.
+2. Confirm ticker and as-of date with the user.
+3. Run the skill script from the repo root:
+
+```bash
+python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
 ## Workflow
 1. Confirm prerequisites.
-2. Confirm the ticker and as-of date (do not infer from open files or prior context).
-3. Bootstrap or refresh company data.
-3. Verify outputs and source logging.
+2. Confirm ticker and as-of date (do not infer from open files or prior context).
+3. Run fetch/bootstrap.
+4. Verify outputs and source logging.
 
 ### 1. Confirm prerequisites
-- Follow `docs/python-setup.md` if the virtual environment or dependencies are missing.
+- Use `references/python-setup.md` for environment setup and dependencies.
 - Ensure `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) is set in `.env`, or pass `--identity`.
 
 ### 2. Confirm ticker and as-of date
 - Only proceed if the user explicitly provided a ticker in the current request.
-- If no ticker is specified, stop and ask: "Which ticker should I fetch?"
+- If no ticker is specified, ask: `Which ticker should I fetch?`
 - If multiple tickers are mentioned, ask which one to run first.
-- Echo back the ticker and as-of date before running the command.
+- Echo back ticker and as-of date before execution.
 
-### 3. Bootstrap or refresh company data
-Run the data fetcher from the repo root:
-
+### 3. Run fetch/bootstrap
 ```bash
-python3 scripts/add_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
 Optional flags:
-- `--identity "Name email@domain.com"` to override `.env`.
-- `--skip-analysis` to fetch data only.
-- `--overwrite-assumptions` to replace `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- `--identity "Name email@domain.com"` overrides `.env`.
+- `--skip-analysis` fetches data only.
+- `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
-### 3. Verify outputs and source logging
-Check that these files exist:
+### 4. Verify outputs and source logging
+Validate outputs described in `references/data-outputs.md`, including:
 - `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
 - `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
@@ -54,13 +70,14 @@ Check that these files exist:
 - `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
 - `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-- `docs/source-log.md` updated with transcript and data snapshot entries
+- `docs/source-log.md` updated per `references/source-log-format.md`
 
 ## Troubleshooting
 - If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.
-- If annual statements fail to parse, inspect `companies/<TICKER>/data/financial_statements/annual/*.csv` and review `docs/data-dictionary.md`.
+- If annual statements fail to parse, inspect `companies/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-outputs.md`.
 
 ## Related References
-- `docs/research-workflow.md` for the end-to-end pipeline.
-- `docs/data-dictionary.md` for required data files and columns.
+- `references/python-setup.md`
+- `references/data-outputs.md`
+- `references/source-log-format.md`

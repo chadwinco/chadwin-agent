@@ -5,16 +5,26 @@ import argparse
 from datetime import date
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[1]
-
 import sys
-sys.path.insert(0, str(BASE_DIR))
 
-from research.edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
-from research.forecast_fetch import fetch_analyst_forecasts  # noqa: E402
-from research.loaders import load_company_data  # noqa: E402
-from research.metrics import compute_metrics  # noqa: E402
-from research.transcript_fetch import fetch_latest_transcript  # noqa: E402
+
+def _default_base_dir() -> Path:
+    for parent in Path(__file__).resolve().parents:
+        if (parent / "companies").exists() and (parent / "research").exists():
+            return parent
+    return Path.cwd()
+
+
+BASE_DIR = _default_base_dir()
+
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from fetch_company_data.edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
+from fetch_company_data.forecast_fetch import fetch_analyst_forecasts  # noqa: E402
+from fetch_company_data.loaders import load_company_data  # noqa: E402
+from fetch_company_data.metrics import compute_metrics  # noqa: E402
+from fetch_company_data.transcript_fetch import fetch_latest_transcript  # noqa: E402
 from scripts.run_company import run_company  # noqa: E402
 
 
