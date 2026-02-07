@@ -1,6 +1,6 @@
 ---
 name: fetch-company-data
-description: Fetch EDGAR filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a new ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/model/assumptions.yaml` before running analysis.
+description: Fetch EDGAR filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a new ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before running analysis.
 ---
 
 # Fetch Company Data
@@ -43,23 +43,23 @@ python3 scripts/add_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 Optional flags:
 - `--identity "Name email@domain.com"` to override `.env`.
 - `--skip-analysis` to fetch data only.
-- `--overwrite-assumptions` to replace `companies/<TICKER>/model/assumptions.yaml`.
+- `--overwrite-assumptions` to replace `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 ### 3. Verify outputs and source logging
 Check that these files exist:
-- `companies/<TICKER>/data/financials/annual/income_statement.csv`
-- `companies/<TICKER>/data/financials/annual/balance_sheet.csv`
-- `companies/<TICKER>/data/financials/annual/cash_flow_statement.csv`
-- `companies/<TICKER>/data/10-K-*.md` or `companies/<TICKER>/data/20-F-*.md`
-- `companies/<TICKER>/data/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
+- `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
+- `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
+- `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
+- `companies/<TICKER>/data/filings/10-K-*.md` or `companies/<TICKER>/data/filings/20-F-*.md`
+- `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
 - `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
-- `companies/<TICKER>/model/assumptions.yaml`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 - `docs/source-log.md` updated with transcript and data snapshot entries
 
 ## Troubleshooting
 - If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.
-- If annual statements fail to parse, inspect `companies/<TICKER>/data/financials/annual/*.csv` and review `docs/data-dictionary.md`.
+- If annual statements fail to parse, inspect `companies/<TICKER>/data/financial_statements/annual/*.csv` and review `docs/data-dictionary.md`.
 
 ## Related References
 - `docs/research-workflow.md` for the end-to-end pipeline.

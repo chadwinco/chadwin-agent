@@ -3,8 +3,8 @@
 Goal: Explain valuation approach, assumptions, and sensitivity.
 
 Inputs:
-- `companies/<TICKER>/model/assumptions.yaml`
-- `companies/<TICKER>/model/outputs.json`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
 
 Instructions:
 - Summarize base/bull/bear assumptions in plain language.

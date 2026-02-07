@@ -4,44 +4,14 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 
 ## Required Files
 - `company_profile.csv`
-- `financials/annual/income_statement.csv`
-- `financials/annual/balance_sheet.csv`
-- `financials/annual/cash_flow_statement.csv`
+- `financial_statements/annual/income_statement.csv`
+- `financial_statements/annual/balance_sheet.csv`
+- `financial_statements/annual/cash_flow_statement.csv`
 
 ## Optional Files
-- `financials/quarterly/` (full EDGAR statement exports)
-- `earnings-call-*.md` (latest earnings call transcript)
-- `income_statement_annual.csv` (derived summary)
-- `balance_sheet_annual.csv` (derived summary)
-- `cash_flow_statement_annual.csv` (derived summary)
-- `key_metrics.csv`
-- `ratios.csv`
+- `financial_statements/quarterly/` (full EDGAR statement exports)
+- `filings/` (10-K/10-Q/8-K markdown + earnings call transcripts)
 - `analyst_estimates.csv` (analyst revenue forecasts)
-- Transcripts, filings, and other markdown files
-
-## Core Columns (Required)
-### `income_statement_annual.csv`
-- `date`, `fiscalYear`, `period`
-- `revenue`
-- `grossProfit` (for gross margin)
-- `ebit`, `ebitda`
-- `incomeBeforeTax`, `incomeTaxExpense`
-- `netIncome`
-- `weightedAverageShsOut`, `weightedAverageShsOutDil`
-
-### `balance_sheet_annual.csv`
-- `date`, `fiscalYear`, `period`
-- `cashAndCashEquivalents`
-- `totalAssets`
-- `totalDebt`
-- `totalEquity`
-- `netDebt` (preferred; otherwise computed)
-
-### `cash_flow_statement_annual.csv`
-- `date`, `fiscalYear`, `period`
-- `operatingCashFlow`
-- `capitalExpenditure`
-- `freeCashFlow` (preferred; otherwise computed)
 
 ### `company_profile.csv`
 - `symbol`, `companyName`, `currency`
@@ -61,6 +31,32 @@ Values may be blank when the source data is unavailable, but the column set shou
 - `source` (URL)
 - `retrieved` (YYYY-MM-DD)
 
+## Normalized Annual Frames (Pipeline Internal)
+The loader derives normalized annual frames from `financial_statements/annual/*.csv` with these columns:
+
+### Income Frame
+- `date`, `fiscalYear`, `period`
+- `revenue`
+- `grossProfit`
+- `ebit`, `ebitda`
+- `incomeBeforeTax`, `incomeTaxExpense`
+- `netIncome`
+- `weightedAverageShsOut`, `weightedAverageShsOutDil`
+
+### Balance Sheet Frame
+- `date`, `fiscalYear`, `period`
+- `cashAndCashEquivalents`
+- `totalAssets`
+- `totalDebt`
+- `totalEquity`
+- `netDebt` (computed when source does not provide it)
+
+### Cash Flow Frame
+- `date`, `fiscalYear`, `period`
+- `operatingCashFlow`
+- `capitalExpenditure`
+- `freeCashFlow` (computed when source does not provide it)
+
 ## Derived Metrics (Definitions)
 - Revenue growth: year-over-year % change.
 - Gross margin: `grossProfit / revenue`.
@@ -75,8 +71,8 @@ Values may be blank when the source data is unavailable, but the column set shou
 
 ## EDGAR Financial Statement Exports
 When EDGAR data is fetched, the pipeline stores full statements in:
-- `companies/<TICKER>/data/financials/annual/`
-- `companies/<TICKER>/data/financials/quarterly/`
+- `companies/<TICKER>/data/financial_statements/annual/`
+- `companies/<TICKER>/data/financial_statements/quarterly/`
 
 Each directory contains:
 - `income_statement.csv`
@@ -85,7 +81,11 @@ Each directory contains:
 - `statement_of_equity.csv`
 - `comprehensive_income.csv`
 
-These are the canonical statement sources. The `*_annual.csv` and `*_quarterly.csv` files in the root `data/` folder are derived summaries used by the analysis workflow.
+These are the canonical statement sources used by the analysis workflow.
+
+## Filings and Transcripts
+Filings and transcript markdown files are stored under:
+- `companies/<TICKER>/data/filings/`
 
 ## Date Alignment
 For each fiscal year, income, balance sheet, and cash flow rows should align on `fiscalYear` and be within the same `date` range. The quality checker flags mismatches.

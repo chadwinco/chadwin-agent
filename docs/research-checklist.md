@@ -33,6 +33,6 @@
 
 ## Output
 - [ ] Executive summary is concise and decision-oriented.
-- [ ] Assumptions summary is included and matches `assumptions.yaml`.
+- [ ] Assumptions summary is included and matches `reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - [ ] Sources are logged in `docs/source-log.md` when external data is used.
 - [ ] Improvement notes added to `docs/improvement-log.md`.

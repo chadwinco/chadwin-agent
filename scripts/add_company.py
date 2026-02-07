@@ -21,9 +21,16 @@ from scripts.run_company import run_company  # noqa: E402
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
     company_dir = base_dir / "companies" / ticker
     (company_dir / "data").mkdir(parents=True, exist_ok=True)
-    (company_dir / "analysis").mkdir(parents=True, exist_ok=True)
-    (company_dir / "model").mkdir(parents=True, exist_ok=True)
+    (company_dir / "data" / "filings").mkdir(parents=True, exist_ok=True)
+    (company_dir / "data" / "financial_statements").mkdir(parents=True, exist_ok=True)
+    (company_dir / "reports").mkdir(parents=True, exist_ok=True)
     return company_dir
+
+
+def _valuation_inputs_path(company_dir: Path, asof: str) -> Path:
+    path = company_dir / "reports" / asof / "valuation" / "inputs.yaml"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def _clamp(value: float, low: float, high: float) -> float:
@@ -231,17 +238,21 @@ def main() -> None:
     print(f"Fetching latest earnings call transcript for {ticker}...")
     transcript = fetch_latest_transcript(ticker, data_dir, company_name=company_name, asof=args.asof)
     if transcript:
+        try:
+            transcript_rel = transcript.path.relative_to(base_dir)
+        except ValueError:
+            transcript_rel = transcript.path
         _append_source_log(
             base_dir,
             ticker,
             args.asof,
             transcript.source_url,
-            f"Saved to companies/{ticker}/data/{transcript.path.name}",
+            f"Saved to {transcript_rel}",
         )
     else:
         print("No earnings call transcript found.")
 
-    assumptions_path = company_dir / "model" / "assumptions.yaml"
+    assumptions_path = _valuation_inputs_path(company_dir, args.asof)
     assumptions = _build_assumptions(metrics, data.analyst_estimates)
     _write_assumptions(assumptions_path, assumptions, overwrite=args.overwrite_assumptions)
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 from datetime import date
 from pathlib import Path
@@ -65,6 +66,35 @@ def _assumptions_summary(assumptions: dict) -> str:
     return "\n".join(lines)
 
 
+def _report_dir(base_dir: Path, ticker: str, asof: str) -> Path:
+    return base_dir / "companies" / ticker / "reports" / asof
+
+
+def _assumptions_path(base_dir: Path, ticker: str, asof: str) -> Path:
+    report_dir = _report_dir(base_dir, ticker, asof)
+    assumptions_path = report_dir / "valuation" / "inputs.yaml"
+    if assumptions_path.exists():
+        return assumptions_path
+
+    reports_dir = base_dir / "companies" / ticker / "reports"
+    candidates = []
+    for path in reports_dir.glob("*/valuation/inputs.yaml"):
+        if path.parent.parent.name == asof:
+            continue
+        candidates.append(path)
+
+    if not candidates:
+        raise FileNotFoundError(
+            f"Missing valuation inputs for {ticker} as of {asof}: "
+            f"{assumptions_path}. Run scripts/add_company.py first or create this file."
+        )
+
+    latest = sorted(candidates, key=lambda p: p.parent.parent.name)[-1]
+    assumptions_path.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(latest, assumptions_path)
+    return assumptions_path
+
+
 def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     data = load_company_data(base_dir, ticker)
     issues = run_quality_checks(data)
@@ -76,11 +106,11 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
 
     metrics = compute_metrics(data)
 
-    assumptions_path = base_dir / "companies" / ticker / "model" / "assumptions.yaml"
+    assumptions_path = _assumptions_path(base_dir, ticker, asof)
     assumptions = load_assumptions(assumptions_path)
     valuation = run_valuation(data, assumptions, metrics)
 
-    outputs_path = base_dir / "companies" / ticker / "model" / "outputs.json"
+    outputs_path = _report_dir(base_dir, ticker, asof) / "valuation" / "outputs.json"
     outputs_path.parent.mkdir(parents=True, exist_ok=True)
     outputs_path.write_text(json.dumps(valuation, indent=2))
 
@@ -89,7 +119,9 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     price = valuation["inputs"].get("current_price")
 
     data_dir = base_dir / "companies" / ticker / "data"
-    transcript_files = sorted(data_dir.glob("earnings-call-*.md"))
+    transcript_files = sorted((data_dir / "filings").glob("earnings-call-*.md"))
+    if not transcript_files:
+        transcript_files = sorted(data_dir.glob("earnings-call-*.md"))
     transcript_note = (
         f"Earnings call transcript: {transcript_files[-1].name}."
         if transcript_files
@@ -199,9 +231,9 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
         ),
         "data_coverage": (
             f"Annual statements through fiscal year {metrics['latest_year']}. "
-            "Source files: data/financials/annual/income_statement.csv, "
-            "data/financials/annual/balance_sheet.csv, "
-            "data/financials/annual/cash_flow_statement.csv. "
+            "Source files: data/financial_statements/annual/income_statement.csv, "
+            "data/financial_statements/annual/balance_sheet.csv, "
+            "data/financial_statements/annual/cash_flow_statement.csv. "
             f"{transcript_note}"
         ),
         "financial_table": metrics["financial_table"],
@@ -212,10 +244,9 @@ def run_company(base_dir: Path, ticker: str, asof: str) -> None:
     report_template = _read_template(base_dir / "templates" / "report.md")
     report = _render_template(report_template, context)
 
-    analysis_dir = base_dir / "companies" / ticker / "analysis"
-    analysis_dir.mkdir(parents=True, exist_ok=True)
-
-    report_path = analysis_dir / f"{asof}-report.md"
+    report_dir = _report_dir(base_dir, ticker, asof)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    report_path = report_dir / "report.md"
     report_path.write_text(report)
 
     _append_source_log(base_dir, ticker, asof)

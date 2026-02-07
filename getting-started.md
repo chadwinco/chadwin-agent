@@ -11,7 +11,7 @@
 # DATA
 - In the `companies` directory, there are sub-directories which contain relevant data for a given company
 - This data should be the foundation of the research process, with web search used to fill in any missing gaps
-- All reports on a given company should be placed in the `analysis` directory for that company. The reports should be written in well-structured markdown
+- All reports on a given company should be placed in `reports/<YYYY-MM-DD>/report.md` for that company. The reports should be written in well-structured markdown
 
 # PROCESS
 - You are responsible for boostrapping the research workflow from stratch, aiming toward the goals described above

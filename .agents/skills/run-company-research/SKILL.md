@@ -1,6 +1,6 @@
 ---
 name: run-company-research
-description: Run the company research pipeline for this repo, including quality checks, metrics, valuation, and report generation. Use when regenerating `companies/TICKER/analysis/*`, updating `companies/TICKER/model/outputs.json`, or validating data after edits to assumptions or source files.
+description: Run the company research pipeline for this repo, including quality checks, metrics, valuation, and report generation. Use when regenerating `companies/TICKER/reports/<DATE>/report.md`, updating `companies/TICKER/reports/<DATE>/valuation/outputs.json`, or validating data after edits to assumptions or source files.
 ---
 
 # Run Company Research
@@ -10,7 +10,7 @@ Run the analysis workflow that validates data, computes metrics, values the busi
 
 ## Quick Start
 1. Ensure `companies/<TICKER>/data` is populated.
-2. Update `companies/<TICKER>/model/assumptions.yaml` if needed.
+2. Update `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` if needed.
 3. Run the pipeline from the repo root.
 
 ```bash
@@ -27,7 +27,7 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 ### 1. Confirm inputs
 - If data is missing, use `$fetch-company-data` first.
 - Ensure required files exist per `docs/data-dictionary.md`.
-- Edit `companies/<TICKER>/model/assumptions.yaml` for scenario changes.
+- Edit `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` for scenario changes.
 
 ### 2. Run the analysis script
 Execute the pipeline from the repo root:
@@ -43,7 +43,7 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
   - Examples: search for `## Business`, `Segment Information`, `Risk Factors`, `Management's Discussion`, `catastrophe`, `combined ratio`, `net premiums`, `reserve`, `reinsurance`, `dividend`, `buyback`.
   - Iterate queries until you have coverage for each prompt section (don’t settle for the first match).
 - Produce:
-  - `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
+  - `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
 - Cite sources inline with file paths and log any external sources in `docs/source-log.md` if needed.
 
 ### 4. Validate against the checklist
@@ -52,8 +52,8 @@ python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
 
 ### 5. Review outputs and logs
 Validate the generated artifacts:
-- `companies/<TICKER>/model/outputs.json`
-- `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
 - `docs/source-log.md` updated with a data snapshot entry
 
 ## Troubleshooting

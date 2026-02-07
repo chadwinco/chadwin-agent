@@ -9,7 +9,7 @@ Prerequisite: set up the Python virtual environment described in `docs/python-se
 
 ## Inputs (LLM Must Use)
 - `companies/<TICKER>/data/*` (filings, transcripts, analyst estimates, profiles).
-- `companies/<TICKER>/model/assumptions.yaml` and `companies/<TICKER>/model/outputs.json`.
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` and `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`.
 - `prompts/*.md` for section-by-section guidance.
 - `docs/data-dictionary.md` for metric definitions.
 - `docs/research-checklist.md` as the quality gate.
@@ -21,17 +21,17 @@ Prerequisite: set up the Python virtual environment described in `docs/python-se
 ## LLM Report Workflow
 1. Read all prompt files in `prompts/` before drafting.
 2. Use agentic search (`rg`/`grep`) directly against `companies/<TICKER>/data` for each section; do not rely on pre-sliced context.
-3. Draft the report in `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`, following the report template structure.
+3. Draft the report in `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`, following the report template structure.
 4. Apply the checklist in `docs/research-checklist.md` and fix any gaps before finalizing.
 5. Log any external sources in `docs/source-log.md` and record process improvements in `docs/improvement-log.md`.
 
 ## Quality Gates
 - No verbatim copying from filings; paraphrase and synthesize.
 - Cite file paths inline for all factual claims from local data.
-- Ensure valuation narrative aligns with `assumptions.yaml` and `outputs.json`.
+- Ensure valuation narrative aligns with `valuation/inputs.yaml` and `valuation/outputs.json` for the selected report date.
 
 ## Output Locations
-- Report: `companies/<TICKER>/analysis/<YYYY-MM-DD>-report.md`
-- Model inputs: `companies/<TICKER>/model/assumptions.yaml`
-- Model outputs: `companies/<TICKER>/model/outputs.json`
-- Transcript: `companies/<TICKER>/data/earnings-call-<YYYY-MM-DD>-<source>.md`
+- Report: `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
+- Valuation inputs: `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- Valuation outputs: `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- Transcript: `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md`

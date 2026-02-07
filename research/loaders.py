@@ -36,7 +36,7 @@ def _load_csv(path: Path):
     return df
 
 
-_DATE_COL_RE = re.compile(r"^\\d{4}-\\d{2}-\\d{2}$")
+_DATE_COL_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def _period_columns(df):
@@ -271,8 +271,8 @@ def _build_cash_from_financials(df, ticker: str, period_label: str, currency: st
     _attach_metric(out, depreciation, "depreciationAndAmortization", period_cols)
 
     if "operatingCashFlow" in out.columns and "capitalExpenditure" in out.columns:
-        capex_values = out["capitalExpenditure"].fillna(0)
-        ocf_values = out["operatingCashFlow"].fillna(0)
+        capex_values = pd.to_numeric(out["capitalExpenditure"], errors="coerce").fillna(0.0)
+        ocf_values = pd.to_numeric(out["operatingCashFlow"], errors="coerce").fillna(0.0)
         fcf = ocf_values + capex_values
         if (capex_values > 0).any():
             fcf = ocf_values - capex_values.abs()
@@ -322,7 +322,9 @@ def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
     if not profile.empty and "currency" in profile.columns:
         currency = str(profile.iloc[0].get("currency") or "")
 
-    financials_annual_dir = data_dir / "financials" / "annual"
+    financials_annual_dir = data_dir / "financial_statements" / "annual"
+    if not financials_annual_dir.exists():
+        financials_annual_dir = data_dir / "financials" / "annual"
     income = None
     balance = None
     cashflow = None
@@ -342,25 +344,44 @@ def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
             cash_df = _load_csv(cash_path)
             cashflow = _build_cash_from_financials(cash_df, ticker, "FY", currency)
 
-    income_path = data_dir / "income_statement_annual.csv"
-    balance_path = data_dir / "balance_sheet_annual.csv"
-    cashflow_path = data_dir / "cash_flow_statement_annual.csv"
+    legacy_income_path = data_dir / "income_statement_annual.csv"
+    legacy_balance_path = data_dir / "balance_sheet_annual.csv"
+    legacy_cashflow_path = data_dir / "cash_flow_statement_annual.csv"
+
+    if (income is None or income.empty) and legacy_income_path.exists():
+        income = _load_csv(legacy_income_path)
+    if (balance is None or balance.empty) and legacy_balance_path.exists():
+        balance = _load_csv(legacy_balance_path)
+    if (cashflow is None or cashflow.empty) and legacy_cashflow_path.exists():
+        cashflow = _load_csv(legacy_cashflow_path)
 
     if income is None or income.empty:
-        income = _load_csv(income_path)
+        raise FileNotFoundError(
+            f"Missing parseable annual income statement for {ticker}. "
+            "Expected data/financial_statements/annual/income_statement.csv."
+        )
     if balance is None or balance.empty:
-        balance = _load_csv(balance_path)
+        raise FileNotFoundError(
+            f"Missing parseable annual balance sheet for {ticker}. "
+            "Expected data/financial_statements/annual/balance_sheet.csv."
+        )
     if cashflow is None or cashflow.empty:
-        cashflow = _load_csv(cashflow_path)
+        raise FileNotFoundError(
+            f"Missing parseable annual cash flow for {ticker}. "
+            "Expected data/financial_statements/annual/cash_flow_statement.csv."
+        )
 
     if not income.empty and not cashflow.empty and "depreciationAndAmortization" in cashflow.columns:
         try:
+            pd = _require_pandas()
             merged = income.merge(
                 cashflow[["date", "depreciationAndAmortization"]],
                 on="date",
                 how="left",
             )
-            income["ebitda"] = merged["ebit"] + merged["depreciationAndAmortization"].fillna(0)
+            ebit = pd.to_numeric(merged["ebit"], errors="coerce")
+            da = pd.to_numeric(merged["depreciationAndAmortization"], errors="coerce").fillna(0.0)
+            income["ebitda"] = ebit + da
         except Exception:
             pass
 

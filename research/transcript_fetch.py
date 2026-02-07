@@ -213,7 +213,9 @@ def fetch_latest_transcript(
     date_value = best_date or (date.fromisoformat(asof) if asof else date.today())
     source_slug = urlparse(best).netloc.replace("www.", "")
     filename = f"earnings-call-{date_value.isoformat()}-{source_slug}.md"
-    path = data_dir / filename
+    filings_dir = data_dir / "filings"
+    filings_dir.mkdir(parents=True, exist_ok=True)
+    path = filings_dir / filename
 
     header = [
         f"# {best_title or 'Earnings Call Transcript'}",

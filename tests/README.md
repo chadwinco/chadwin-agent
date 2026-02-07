@@ -12,7 +12,7 @@ These are manual validation steps for the research workflow.
    - Add `EDGAR_IDENTITY` to `/Users/chad/source/chadwin-codex/.env`
    - `python /Users/chad/source/chadwin-codex/scripts/add_company.py --ticker AAPL --asof 2026-02-06`
    - Confirm the report file is created.
-   - Confirm `companies/<TICKER>/data/earnings-call-*.md` exists.
+   - Confirm `companies/<TICKER>/data/filings/earnings-call-*.md` exists.
 
 2. Missing data scenario
    - Temporarily rename one CSV and re-run to confirm clear error output.

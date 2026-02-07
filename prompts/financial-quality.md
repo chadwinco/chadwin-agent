@@ -3,7 +3,7 @@
 Goal: Assess earnings quality, margins, and capital efficiency.
 
 Inputs:
-- `companies/<TICKER>/data/financials/annual/*.csv`.
+- `companies/<TICKER>/data/financial_statements/annual/*.csv`.
 - `docs/data-dictionary.md` for metric definitions.
 
 Instructions:

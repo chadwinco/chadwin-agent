@@ -230,8 +230,11 @@ def _write_filing_markdown(
     include_attachments: bool = False,
     attachment_forms: Optional[Set[str]] = None,
 ) -> Optional[FilingSummary]:
+    filings_dir = data_dir / "filings"
+    filings_dir.mkdir(parents=True, exist_ok=True)
+
     filename = _filing_filename(filing)
-    path = data_dir / filename
+    path = filings_dir / filename
     if not path.exists():
         markdown = filing_markdown(
             filing,
@@ -1121,7 +1124,7 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
 
     annual_xbrls = XBRLS.from_filings(annual_filings)
 
-    annual_dir = data_dir / "financials" / "annual"
+    annual_dir = data_dir / "financial_statements" / "annual"
     annual_dir.mkdir(parents=True, exist_ok=True)
 
     annual_income_full = _statement_df_from_xbrls(annual_xbrls, "income_statement", max_periods=8)
@@ -1148,7 +1151,7 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
     if income_annual.empty or balance_annual.empty or cash_annual.empty:
         raise RuntimeError(
             "Unable to parse annual financial statements from EDGAR. "
-            "Check data/financials/annual for full statements."
+            "Check data/financial_statements/annual for full statements."
         )
 
     if not income_annual.empty and not cash_annual.empty:
@@ -1159,16 +1162,12 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
         )
         income_annual["ebitda"] = merged["ebit"] + merged["depreciationAndAmortization"].fillna(0)
 
-    income_annual.to_csv(data_dir / "income_statement_annual.csv", index=False)
-    balance_annual.to_csv(data_dir / "balance_sheet_annual.csv", index=False)
-    cash_annual.to_csv(data_dir / "cash_flow_statement_annual.csv", index=False)
-
     if not is_fpi:
         quarterly_filings = _normalize_filings(company.latest("10-Q", n=12))
     else:
         quarterly_filings = []
 
-    quarterly_dir = data_dir / "financials" / "quarterly"
+    quarterly_dir = data_dir / "financial_statements" / "quarterly"
     quarterly_dir.mkdir(parents=True, exist_ok=True)
 
     if quarterly_filings:
@@ -1205,10 +1204,3 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
             how="left",
         )
         income_q["ebitda"] = merged_q["ebit"] + merged_q["depreciationAndAmortization"].fillna(0)
-
-    if not income_q.empty:
-        income_q.to_csv(data_dir / "income_statement_quarterly.csv", index=False)
-    if not balance_q.empty:
-        balance_q.to_csv(data_dir / "balance_sheet_quarterly.csv", index=False)
-    if not cash_q.empty:
-        cash_q.to_csv(data_dir / "cash_flow_statement_quarterly.csv", index=False)
