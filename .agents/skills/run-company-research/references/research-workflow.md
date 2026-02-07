@@ -69,7 +69,6 @@ Scope and data:
 Evidence discipline:
 - [ ] No verbatim copying from filings or transcripts.
 - [ ] Every factual claim cites local file paths.
-- [ ] External sources are logged in `docs/source-log.md`.
 
 Thesis quality:
 - [ ] Thesis explains why returns can persist and what can break the thesis.
@@ -94,5 +93,4 @@ Output quality:
 - [ ] Improvement notes are added to `docs/improvement-log.md`.
 
 ## Step 7: Log and Improve
-- External sources: append rows to `docs/source-log.md` using `references/source-log-format.md`.
 - Process improvements: append rows to `docs/improvement-log.md` using `references/improvement-loop.md`.

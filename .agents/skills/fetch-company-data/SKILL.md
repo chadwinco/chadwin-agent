@@ -39,7 +39,7 @@ python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 1. Confirm prerequisites.
 2. Confirm ticker and as-of date (do not infer from open files or prior context).
 3. Run fetch/bootstrap.
-4. Verify outputs and source logging.
+4. Verify outputs.
 
 ### 1. Confirm prerequisites
 - Use `references/python-setup.md` for environment setup and dependencies.
@@ -60,7 +60,7 @@ Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
-### 4. Verify outputs and source logging
+### 4. Verify outputs
 Validate outputs described in `references/data-outputs.md`, including:
 - `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
 - `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
@@ -69,7 +69,6 @@ Validate outputs described in `references/data-outputs.md`, including:
 - `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
 - `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-- `docs/source-log.md` updated per `references/source-log-format.md`
 
 ## Troubleshooting
 - If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
@@ -79,4 +78,3 @@ Validate outputs described in `references/data-outputs.md`, including:
 ## Related References
 - `references/python-setup.md`
 - `references/data-outputs.md`
-- `references/source-log-format.md`

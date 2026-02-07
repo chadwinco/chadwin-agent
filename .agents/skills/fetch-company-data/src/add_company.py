@@ -196,18 +196,6 @@ def _write_assumptions(path: Path, assumptions: dict, overwrite: bool) -> None:
     path.write_text(yaml.safe_dump(assumptions, sort_keys=False))
 
 
-def _append_source_log(base_dir: Path, ticker: str, asof_date: str, source: str, notes: str) -> None:
-    log_path = base_dir / "docs" / "source-log.md"
-    if not log_path.exists():
-        return
-    entry = f"| {asof_date} | {ticker} | Earnings Call Transcript | {source} | {notes} |\n"
-    content = log_path.read_text()
-    if entry in content:
-        return
-    with log_path.open("a") as f:
-        f.write(entry)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Create or refresh a company data package and bootstrap valuation assumptions"
@@ -252,13 +240,7 @@ def main() -> None:
             transcript_rel = transcript.path.relative_to(base_dir)
         except ValueError:
             transcript_rel = transcript.path
-        _append_source_log(
-            base_dir,
-            ticker,
-            args.asof,
-            transcript.source_url,
-            f"Saved to {transcript_rel}",
-        )
+        print(f"Saved transcript to {transcript_rel} ({transcript.source_url})")
     else:
         print("No earnings call transcript found.")
 

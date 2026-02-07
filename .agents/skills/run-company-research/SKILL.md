@@ -38,7 +38,6 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 - Keep the report concise and decision-oriented.
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs a local file citation.
-- Log external sources in `docs/source-log.md`.
 
 ## Troubleshooting
 - If required data is missing, run `$fetch-company-data` for that ticker/date.
@@ -50,4 +49,3 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 - `references/report-format.md`
 - `references/valuation-method.md`
 - `references/improvement-loop.md`
-- `references/source-log-format.md`
