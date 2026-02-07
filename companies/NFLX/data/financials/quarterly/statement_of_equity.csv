@@ -1,9 +1,0 @@
-label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
-Issuance of common stock,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,66511000.0,174497000.0,353366000.0,142192000.0,121445000.0,268333000.0,,,,,,
-Issuance of common stock upon exercise of options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,,,,,,57499000.0,33783000.0,25695000.0,5030000.0,10898000.0,11810000.0
-Stock-based compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,80986000.0,80862000.0,71977000.0,65650000.0,68766000.0,76345000.0,79720000.0,78030000.0,99099000.0,152062000.0,150392000.0,119209000.0
-Repurchases of common stock to be held as treasury stock,us-gaap_TreasuryStockValueAcquiredCostMethod,1877689000.0,1638013000.0,3583291000.0,1707800000.0,1612999000.0,2011856000.0,2500000000.0,645000000.0,400000000.0,,,
-Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,185412000.0,-818933000.0,-447897000.0,-255508000.0,,,-16305000.0,52429000.0,25611000.0,,,
-Other comprehensive income,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,22765000.0,112066000.0,,,,,,
-Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,,,,,-103167000.0,-70306000.0,-33675000.0
-Net Income,us-gaap_NetIncomeLoss,2546916000.0,3125413000.0,2890351000.0,2363509000.0,2147306000.0,2332209000.0,1677422000.0,1487610000.0,1305120000.0,1398242000.0,1440951000.0,1597447000.0
