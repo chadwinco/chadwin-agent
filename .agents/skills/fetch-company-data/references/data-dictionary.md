@@ -11,6 +11,7 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 ## Optional Files
 - `financial_statements/quarterly/` (full EDGAR statement exports)
 - `filings/` (10-K/10-Q/8-K markdown + earnings call transcripts)
+  - For recent IPOs without annual reports, registration forms such as `S-1`/`S-1-A` and `F-1`/`F-1-A` may be present instead.
 - `analyst_estimates.csv` (analyst revenue forecasts)
 
 ### `company_profile.csv`

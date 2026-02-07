@@ -1,0 +1,20 @@
+forecast_years: 5
+notes: Auto-generated using analyst revenue forecasts (StockAnalysis) for FY2029 (CAGR
+  from FY2025 over 4 years) and recent financial averages. Review and adjust before
+  making decisions.
+scenarios:
+  base:
+    revenue_growth: 0.08
+    fcf_margin: 0.02
+    discount_rate: 0.1
+    terminal_growth: 0.02
+  bull:
+    revenue_growth: 0.1
+    fcf_margin: 0.04
+    discount_rate: 0.09
+    terminal_growth: 0.025
+  bear:
+    revenue_growth: 0.06
+    fcf_margin: 0.01
+    discount_rate: 0.11
+    terminal_growth: 0.015

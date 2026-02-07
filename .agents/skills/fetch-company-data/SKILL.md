@@ -69,6 +69,7 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `companies/<TICKER>/data/filings/10-K-*.md` or `companies/<TICKER>/data/filings/20-F-*.md`
+  - If no annual filing exists yet (common for recent IPOs), expect registration-form fallback files such as `companies/<TICKER>/data/filings/S-1-*.md` or `companies/<TICKER>/data/filings/S-1-A-*.md`
 - `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
 - `companies/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json` containing URL attempts and failure reasons
 - `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available

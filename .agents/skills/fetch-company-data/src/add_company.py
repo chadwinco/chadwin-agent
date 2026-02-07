@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from collections import Counter
 from datetime import date
@@ -212,6 +213,36 @@ def _write_assumptions(path: Path, assumptions: dict, overwrite: bool) -> None:
     path.write_text(yaml.safe_dump(assumptions, sort_keys=False))
 
 
+def _company_name_from_profile(data_dir: Path) -> str | None:
+    profile_path = data_dir / "company_profile.csv"
+    if not profile_path.exists():
+        return None
+    try:
+        with profile_path.open("r", newline="") as fp:
+            reader = csv.DictReader(fp)
+            row = next(reader, None)
+    except Exception:
+        return None
+    if not row:
+        return None
+    name = str(row.get("companyName") or "").strip()
+    return name or None
+
+
+def _load_analyst_estimates(data_dir: Path):
+    path = data_dir / "analyst_estimates.csv"
+    if not path.exists():
+        return None
+    try:
+        import pandas as pd  # type: ignore
+    except ImportError:
+        return None
+    try:
+        return pd.read_csv(path)
+    except Exception:
+        return None
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Create or refresh a company data package and bootstrap valuation assumptions"
@@ -258,12 +289,22 @@ def main() -> None:
     else:
         print("No analyst revenue forecast found.")
 
-    data = load_company_data(base_dir, ticker)
-    metrics = compute_metrics(data)
-
-    company_name = None
-    if not data.profile.empty and "companyName" in data.profile.columns:
-        company_name = str(data.profile.iloc[0].get("companyName"))
+    data = None
+    metrics = {}
+    analyst_estimates = None
+    company_name = _company_name_from_profile(data_dir)
+    try:
+        data = load_company_data(base_dir, ticker)
+        metrics = compute_metrics(data)
+        analyst_estimates = data.analyst_estimates
+        if not data.profile.empty and "companyName" in data.profile.columns:
+            company_name = str(data.profile.iloc[0].get("companyName"))
+    except Exception as exc:
+        print(
+            "Warning: unable to load normalized financial statements for "
+            f"{ticker}; using conservative default valuation assumptions. ({exc})"
+        )
+        analyst_estimates = _load_analyst_estimates(data_dir)
 
     print(f"Fetching latest earnings call transcript for {ticker}...")
     report = fetch_latest_transcript_with_report(
@@ -297,7 +338,7 @@ def main() -> None:
         print("No earnings call transcript found.")
 
     assumptions_path = _valuation_inputs_path(company_dir, args.asof)
-    assumptions = _build_assumptions(metrics, data.analyst_estimates)
+    assumptions = _build_assumptions(metrics, analyst_estimates)
     _write_assumptions(assumptions_path, assumptions, overwrite=args.overwrite_assumptions)
 
 

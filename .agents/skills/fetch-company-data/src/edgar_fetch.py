@@ -280,7 +280,10 @@ def fetch_company_filings(
         if not is_fpi and form == "10-Q":
             continue
 
-        latest_filing = _latest_filing(company.get_filings(form=form))
+        try:
+            latest_filing = _latest_filing(company.get_filings(form=form))
+        except Exception:
+            latest_filing = None
         if not latest_filing:
             continue
 
@@ -325,7 +328,27 @@ def fetch_company_filings(
             if summary:
                 summaries.append(summary)
 
-    events = _list_filings(company.get_filings(form=current_form))
+    if latest_10k_date is None:
+        for form in ("S-1/A", "S-1", "F-1/A", "F-1"):
+            try:
+                latest_registration = _latest_filing(company.get_filings(form=form))
+            except Exception:
+                latest_registration = None
+            if not latest_registration:
+                continue
+            summary = _write_filing_markdown(latest_registration, data_dir)
+            if summary:
+                summaries.append(summary)
+                filing_date_dt = to_datetime(_get_filing_date(latest_registration))
+                if filing_date_dt and (
+                    latest_periodic_date is None or filing_date_dt > latest_periodic_date
+                ):
+                    latest_periodic_date = filing_date_dt
+
+    try:
+        events = _list_filings(company.get_filings(form=current_form))
+    except Exception:
+        events = []
     for filing in events:
         filing_date_dt = to_datetime(_get_filing_date(filing))
         if latest_periodic_date and filing_date_dt and filing_date_dt <= latest_periodic_date:
@@ -747,6 +770,13 @@ def _normalize_filings(filings) -> List:
         return [filings]
 
 
+def _latest_n_filings(company, form: str, n: int) -> List:
+    try:
+        return _normalize_filings(company.latest(form, n=n))
+    except Exception:
+        return []
+
+
 def _statement_df_from_xbrls(xbrls, method_name: str, max_periods: int):
     if xbrls is None:
         return None
@@ -1126,20 +1156,71 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
         is_fpi = False
 
     annual_form = "20-F" if is_fpi else "10-K"
-    annual_filings = _normalize_filings(company.latest(annual_form, n=6))
-    if not annual_filings:
-        raise RuntimeError(f"No {annual_form} filings found for {ticker}.")
-
-    annual_xbrls = XBRLS.from_filings(annual_filings)
+    candidate_forms: List[Tuple[str, int]] = [(annual_form, 6)]
+    candidate_forms.append(("6-K", 12) if is_fpi else ("10-Q", 12))
+    candidate_forms.extend(
+        [
+            ("S-1/A", 6),
+            ("S-1", 6),
+            ("F-1/A", 6),
+            ("F-1", 6),
+        ]
+    )
 
     annual_dir = data_dir / "financial_statements" / "annual"
     annual_dir.mkdir(parents=True, exist_ok=True)
 
-    annual_income_full = _statement_df_from_xbrls(annual_xbrls, "income_statement", max_periods=8)
-    annual_balance_full = _statement_df_from_xbrls(annual_xbrls, "balance_sheet", max_periods=8)
-    annual_cash_full = _statement_df_from_xbrls(annual_xbrls, "cashflow_statement", max_periods=8)
-    annual_equity_full = _statement_df_from_xbrls(annual_xbrls, "statement_of_equity", max_periods=8)
-    annual_comp_full = _statement_df_from_xbrls(annual_xbrls, "comprehensive_income", max_periods=8)
+    annual_source_form = None
+    annual_income_full = None
+    annual_balance_full = None
+    annual_cash_full = None
+    annual_equity_full = None
+    annual_comp_full = None
+
+    for form, max_filings in candidate_forms:
+        annual_filings = _latest_n_filings(company, form=form, n=max_filings)
+        if not annual_filings:
+            continue
+        try:
+            annual_xbrls = XBRLS.from_filings(annual_filings)
+        except Exception as exc:
+            print(f"Warning: unable to read XBRL from {form} filings for {ticker}: {exc}")
+            continue
+
+        candidate_income = _statement_df_from_xbrls(annual_xbrls, "income_statement", max_periods=8)
+        candidate_balance = _statement_df_from_xbrls(annual_xbrls, "balance_sheet", max_periods=8)
+        candidate_cash = _statement_df_from_xbrls(annual_xbrls, "cashflow_statement", max_periods=8)
+        candidate_equity = _statement_df_from_xbrls(annual_xbrls, "statement_of_equity", max_periods=8)
+        candidate_comp = _statement_df_from_xbrls(annual_xbrls, "comprehensive_income", max_periods=8)
+
+        if all(
+            stmt is None
+            for stmt in (
+                candidate_income,
+                candidate_balance,
+                candidate_cash,
+                candidate_equity,
+                candidate_comp,
+            )
+        ):
+            print(f"Warning: no statement tables found in {form} filings for {ticker}.")
+            continue
+
+        annual_source_form = form
+        annual_income_full = candidate_income
+        annual_balance_full = candidate_balance
+        annual_cash_full = candidate_cash
+        annual_equity_full = candidate_equity
+        annual_comp_full = candidate_comp
+        break
+
+    if annual_source_form and annual_source_form != annual_form:
+        print(
+            f"Warning: using {annual_source_form} filings as annual financial source because {annual_form} is unavailable for {ticker}."
+        )
+    if annual_source_form is None:
+        forms_display = ", ".join(form for form, _ in candidate_forms)
+        print(f"Warning: no XBRL financial statements available for {ticker} from forms: {forms_display}")
 
     if annual_income_full is not None:
         annual_income_full.to_csv(annual_dir / "income_statement.csv", index=False)
@@ -1157,9 +1238,9 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
     cash_annual = _build_cash_flow(annual_cash_full, ticker, "FY", currency)
 
     if income_annual.empty or balance_annual.empty or cash_annual.empty:
-        raise RuntimeError(
-            "Unable to parse annual financial statements from EDGAR. "
-            "Check data/financial_statements/annual for full statements."
+        print(
+            "Warning: unable to parse complete annual financial statements from EDGAR. "
+            "Continuing with available filings/profile data."
         )
 
     if not income_annual.empty and not cash_annual.empty:
@@ -1171,7 +1252,7 @@ def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str
         income_annual["ebitda"] = merged["ebit"] + merged["depreciationAndAmortization"].fillna(0)
 
     if not is_fpi:
-        quarterly_filings = _normalize_filings(company.latest("10-Q", n=12))
+        quarterly_filings = _latest_n_filings(company, "10-Q", n=12)
     else:
         quarterly_filings = []
 
