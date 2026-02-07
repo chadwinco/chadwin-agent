@@ -48,6 +48,8 @@ Drafting assets:
 - Create `valuation/inputs.yaml` using `references/valuation-method.md`.
 - Keep assumptions explicit for base, bull, and bear.
 - Ensure base assumptions align with observed history.
+- Explicitly set and justify competitive-advantage period (`stage1_years`) and fade length.
+- If the company has durable advantages, do not default to a five-year horizon.
 
 ## Step 4: Compute Valuation Outputs
 - Compute scenario values with the DCF method in `references/valuation-method.md`.
@@ -85,6 +87,8 @@ Valuation quality:
 - [ ] Assumptions are written to `valuation/inputs.yaml`.
 - [ ] Valuation outputs are written to `valuation/outputs.json`.
 - [ ] Margin of safety reconciles with current price and value per share.
+- [ ] Competitive-advantage period and fade assumptions are justified with filing evidence.
+- [ ] Terminal growth and terminal margin are explicit and economically plausible.
 
 Output quality:
 - [ ] Report is concise (target: 500-900 words) and decision-oriented.
