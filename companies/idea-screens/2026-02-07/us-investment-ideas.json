@@ -1,0 +1,499 @@
+{
+  "generated_at_utc": "2026-02-07T18:50:11+00:00",
+  "source": "finviz_screener",
+  "universe": {
+    "country": "USA",
+    "exchanges": [
+      "NASDAQ",
+      "NYSE",
+      "AMEX"
+    ]
+  },
+  "filters": {
+    "min_market_cap_b": 2.0,
+    "max_pe": 25.0,
+    "min_roe_pct": 15.0,
+    "min_roic_pct": 10.0,
+    "min_operating_margin_pct": 10.0,
+    "min_profit_margin_pct": 10.0,
+    "max_debt_to_equity": 1.0,
+    "max_pages_per_exchange": 4
+  },
+  "ideas": [
+    {
+      "ticker": "BYD",
+      "company": "Boyd Gaming Corp",
+      "exchange": "NYSE",
+      "score": 94.88,
+      "thesis": "Possible value-quality setup: trades near 3.7x P/E (forward 10.2x) while generating ROE 87.2%, ROIC 36.0%, operating margin 21.4% and Debt/Equity 0.79.",
+      "metrics": {
+        "market_cap_usd": 6500000000,
+        "pe": 3.66,
+        "forward_pe": 10.16,
+        "price_to_book": 2.46,
+        "roe_pct": 87.17,
+        "roic_pct": 35.95,
+        "operating_margin_pct": 21.43,
+        "profit_margin_pct": 45.05,
+        "debt_to_equity": 0.79,
+        "eps_next_5y_pct": 12.51
+      }
+    },
+    {
+      "ticker": "CALM",
+      "company": "Cal-Maine Foods, Inc",
+      "exchange": "NASDAQ",
+      "score": 87.25,
+      "thesis": "Possible value-quality setup: trades near 3.5x P/E (forward 18.4x) while generating ROE 48.7%, ROIC 42.8%, operating margin 34.4% and Debt/Equity 0.00.",
+      "metrics": {
+        "market_cap_usd": 3930000000,
+        "pe": 3.49,
+        "forward_pe": 18.41,
+        "price_to_book": 1.46,
+        "roe_pct": 48.69,
+        "roic_pct": 42.84,
+        "operating_margin_pct": 34.4,
+        "profit_margin_pct": 27.37,
+        "debt_to_equity": 0.0,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "LNC",
+      "company": "Lincoln National Corp",
+      "exchange": "NYSE",
+      "score": 86.31,
+      "thesis": "Possible value-quality setup: trades near 3.6x P/E (forward 5.0x) while generating ROE 21.7%, ROIC 12.4%, operating margin 13.9% and Debt/Equity 0.55.",
+      "metrics": {
+        "market_cap_usd": 7660000000,
+        "pe": 3.62,
+        "forward_pe": 5.0,
+        "price_to_book": 0.81,
+        "roe_pct": 21.66,
+        "roic_pct": 12.44,
+        "operating_margin_pct": 13.9,
+        "profit_margin_pct": 10.19,
+        "debt_to_equity": 0.55,
+        "eps_next_5y_pct": 7.35
+      }
+    },
+    {
+      "ticker": "ALL",
+      "company": "Allstate Corp",
+      "exchange": "NYSE",
+      "score": 85.89,
+      "thesis": "Possible value-quality setup: trades near 5.4x P/E (forward 8.2x) while generating ROE 39.5%, ROIC 26.7%, operating margin 16.8% and Debt/Equity 0.24.",
+      "metrics": {
+        "market_cap_usd": 54310000000,
+        "pe": 5.44,
+        "forward_pe": 8.23,
+        "price_to_book": 1.89,
+        "roe_pct": 39.51,
+        "roic_pct": 26.68,
+        "operating_margin_pct": 16.82,
+        "profit_margin_pct": 15.19,
+        "debt_to_equity": 0.24,
+        "eps_next_5y_pct": -10.19
+      }
+    },
+    {
+      "ticker": "SM",
+      "company": "SM Energy Co",
+      "exchange": "NYSE",
+      "score": 85.83,
+      "thesis": "Possible value-quality setup: trades near 3.3x P/E (forward 6.0x) while generating ROE 16.6%, ROIC 10.4%, operating margin 30.9% and Debt/Equity 0.58.",
+      "metrics": {
+        "market_cap_usd": 5020000000,
+        "pe": 3.33,
+        "forward_pe": 5.96,
+        "price_to_book": 0.51,
+        "roe_pct": 16.58,
+        "roic_pct": 10.38,
+        "operating_margin_pct": 30.85,
+        "profit_margin_pct": 22.03,
+        "debt_to_equity": 0.58,
+        "eps_next_5y_pct": -12.43
+      }
+    },
+    {
+      "ticker": "FHI",
+      "company": "Federated Hermes Inc",
+      "exchange": "NYSE",
+      "score": 85.01,
+      "thesis": "Possible value-quality setup: trades near 10.0x P/E (forward 9.1x) while generating ROE 34.1%, ROIC 25.2%, operating margin 29.5% and Debt/Equity 0.29.",
+      "metrics": {
+        "market_cap_usd": 4040000000,
+        "pe": 10.03,
+        "forward_pe": 9.06,
+        "price_to_book": 3.4,
+        "roe_pct": 34.09,
+        "roic_pct": 25.24,
+        "operating_margin_pct": 29.54,
+        "profit_margin_pct": 21.58,
+        "debt_to_equity": 0.29,
+        "eps_next_5y_pct": 8.14
+      }
+    },
+    {
+      "ticker": "HRMY",
+      "company": "Harmony Biosciences Holdings Inc",
+      "exchange": "NASDAQ",
+      "score": 84.41,
+      "thesis": "Possible value-quality setup: trades near 11.7x P/E (forward 9.2x) while generating ROE 25.9%, ROIC 18.9%, operating margin 27.3% and Debt/Equity 0.27.",
+      "metrics": {
+        "market_cap_usd": 2150000000,
+        "pe": 11.74,
+        "forward_pe": 9.21,
+        "price_to_book": 2.57,
+        "roe_pct": 25.93,
+        "roic_pct": 18.87,
+        "operating_margin_pct": 27.32,
+        "profit_margin_pct": 22.48,
+        "debt_to_equity": 0.27,
+        "eps_next_5y_pct": 23.31
+      }
+    },
+    {
+      "ticker": "SLDE",
+      "company": "Slide Insurance Holdings Inc",
+      "exchange": "NASDAQ",
+      "score": 83.37,
+      "thesis": "Possible value-quality setup: trades near 1.6x P/E (forward n/a) while generating ROE 52.3%, ROIC 34.6%, operating margin 45.0% and Debt/Equity 0.05.",
+      "metrics": {
+        "market_cap_usd": 2190000000,
+        "pe": 1.62,
+        "forward_pe": null,
+        "price_to_book": 2.27,
+        "roe_pct": 52.29,
+        "roic_pct": 34.6,
+        "operating_margin_pct": 45.03,
+        "profit_margin_pct": 33.28,
+        "debt_to_equity": 0.05,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "PYPL",
+      "company": "PayPal Holdings Inc",
+      "exchange": "NASDAQ",
+      "score": 83.33,
+      "thesis": "Possible value-quality setup: trades near 7.5x P/E (forward 6.8x) while generating ROE 25.7%, ROIC 17.0%, operating margin 19.7% and Debt/Equity 0.60.",
+      "metrics": {
+        "market_cap_usd": 37210000000,
+        "pe": 7.47,
+        "forward_pe": 6.85,
+        "price_to_book": 1.84,
+        "roe_pct": 25.73,
+        "roic_pct": 16.99,
+        "operating_margin_pct": 19.69,
+        "profit_margin_pct": 15.7,
+        "debt_to_equity": 0.6,
+        "eps_next_5y_pct": 6.98
+      }
+    },
+    {
+      "ticker": "NMIH",
+      "company": "NMI Holdings Inc",
+      "exchange": "NASDAQ",
+      "score": 81.99,
+      "thesis": "Possible value-quality setup: trades near 8.6x P/E (forward 8.0x) while generating ROE 16.2%, ROIC 13.0%, operating margin 74.8% and Debt/Equity 0.17.",
+      "metrics": {
+        "market_cap_usd": 3160000000,
+        "pe": 8.58,
+        "forward_pe": 8.0,
+        "price_to_book": 1.26,
+        "roe_pct": 16.17,
+        "roic_pct": 12.99,
+        "operating_margin_pct": 74.83,
+        "profit_margin_pct": 55.02,
+        "debt_to_equity": 0.17,
+        "eps_next_5y_pct": 6.73
+      }
+    },
+    {
+      "ticker": "SYF",
+      "company": "Synchrony Financial",
+      "exchange": "NYSE",
+      "score": 80.85,
+      "thesis": "Possible value-quality setup: trades near 8.1x P/E (forward 7.2x) while generating ROE 21.3%, ROIC 11.7%, operating margin 28.4% and Debt/Equity 0.91.",
+      "metrics": {
+        "market_cap_usd": 27070000000,
+        "pe": 8.1,
+        "forward_pe": 7.22,
+        "price_to_book": 1.68,
+        "roe_pct": 21.3,
+        "roic_pct": 11.68,
+        "operating_margin_pct": 28.38,
+        "profit_margin_pct": 18.15,
+        "debt_to_equity": 0.91,
+        "eps_next_5y_pct": 8.44
+      }
+    },
+    {
+      "ticker": "UPWK",
+      "company": "Upwork Inc",
+      "exchange": "NASDAQ",
+      "score": 78.43,
+      "thesis": "Possible value-quality setup: trades near 10.8x P/E (forward 13.2x) while generating ROE 47.5%, ROIC 38.7%, operating margin 14.7% and Debt/Equity 0.59.",
+      "metrics": {
+        "market_cap_usd": 2470000000,
+        "pe": 10.81,
+        "forward_pe": 13.25,
+        "price_to_book": 3.96,
+        "roe_pct": 47.52,
+        "roic_pct": 38.69,
+        "operating_margin_pct": 14.68,
+        "profit_margin_pct": 31.63,
+        "debt_to_equity": 0.59,
+        "eps_next_5y_pct": 16.76
+      }
+    },
+    {
+      "ticker": "GL",
+      "company": "Globe Life Inc",
+      "exchange": "NYSE",
+      "score": 78.08,
+      "thesis": "Possible value-quality setup: trades near 10.4x P/E (forward 8.9x) while generating ROE 22.3%, ROIC 14.5%, operating margin 26.6% and Debt/Equity 0.48.",
+      "metrics": {
+        "market_cap_usd": 11660000000,
+        "pe": 10.4,
+        "forward_pe": 8.9,
+        "price_to_book": 2.07,
+        "roe_pct": 22.28,
+        "roic_pct": 14.5,
+        "operating_margin_pct": 26.65,
+        "profit_margin_pct": 19.37,
+        "debt_to_equity": 0.48,
+        "eps_next_5y_pct": 6.93
+      }
+    },
+    {
+      "ticker": "CPRX",
+      "company": "Catalyst Pharmaceuticals Inc",
+      "exchange": "NASDAQ",
+      "score": 77.32,
+      "thesis": "Possible value-quality setup: trades near 14.3x P/E (forward 13.9x) while generating ROE 27.5%, ROIC 23.6%, operating margin 44.8% and Debt/Equity 0.00.",
+      "metrics": {
+        "market_cap_usd": 3000000000,
+        "pe": 14.26,
+        "forward_pe": 13.93,
+        "price_to_book": 3.27,
+        "roe_pct": 27.52,
+        "roic_pct": 23.58,
+        "operating_margin_pct": 44.76,
+        "profit_margin_pct": 37.63,
+        "debt_to_equity": 0.0,
+        "eps_next_5y_pct": 12.19
+      }
+    },
+    {
+      "ticker": "APA",
+      "company": "APA Corporation",
+      "exchange": "NASDAQ",
+      "score": 77.16,
+      "thesis": "Possible value-quality setup: trades near 6.6x P/E (forward 12.0x) while generating ROE 27.2%, ROIC 14.7%, operating margin 30.5% and Debt/Equity 0.77.",
+      "metrics": {
+        "market_cap_usd": 9740000000,
+        "pe": 6.61,
+        "forward_pe": 11.96,
+        "price_to_book": 1.64,
+        "roe_pct": 27.24,
+        "roic_pct": 14.74,
+        "operating_margin_pct": 30.51,
+        "profit_margin_pct": 15.65,
+        "debt_to_equity": 0.77,
+        "eps_next_5y_pct": -11.32
+      }
+    },
+    {
+      "ticker": "SEIC",
+      "company": "SEI Investments Co",
+      "exchange": "NASDAQ",
+      "score": 77.07,
+      "thesis": "Possible value-quality setup: trades near 15.0x P/E (forward 13.1x) while generating ROE 30.4%, ROIC 29.6%, operating margin 27.6% and Debt/Equity 0.00.",
+      "metrics": {
+        "market_cap_usd": 10340000000,
+        "pe": 14.99,
+        "forward_pe": 13.07,
+        "price_to_book": 4.22,
+        "roe_pct": 30.44,
+        "roic_pct": 29.56,
+        "operating_margin_pct": 27.58,
+        "profit_margin_pct": 31.09,
+        "debt_to_equity": 0.0,
+        "eps_next_5y_pct": 12.81
+      }
+    },
+    {
+      "ticker": "TROW",
+      "company": "T. Rowe Price Group Inc",
+      "exchange": "NASDAQ",
+      "score": 76.97,
+      "thesis": "Possible value-quality setup: trades near 10.2x P/E (forward 9.3x) while generating ROE 19.2%, ROIC 18.0%, operating margin 35.2% and Debt/Equity 0.05.",
+      "metrics": {
+        "market_cap_usd": 20640000000,
+        "pe": 10.23,
+        "forward_pe": 9.33,
+        "price_to_book": 1.9,
+        "roe_pct": 19.21,
+        "roic_pct": 18.02,
+        "operating_margin_pct": 35.21,
+        "profit_margin_pct": 27.84,
+        "debt_to_equity": 0.05,
+        "eps_next_5y_pct": 0.91
+      }
+    },
+    {
+      "ticker": "CASH",
+      "company": "Pathward Financial Inc",
+      "exchange": "NASDAQ",
+      "score": 75.82,
+      "thesis": "Possible value-quality setup: trades near 11.4x P/E (forward 9.8x) while generating ROE 23.6%, ROIC 21.0%, operating margin 28.1% and Debt/Equity 0.07.",
+      "metrics": {
+        "market_cap_usd": 2040000000,
+        "pe": 11.4,
+        "forward_pe": 9.75,
+        "price_to_book": 2.43,
+        "roe_pct": 23.62,
+        "roic_pct": 20.96,
+        "operating_margin_pct": 28.12,
+        "profit_margin_pct": 22.62,
+        "debt_to_equity": 0.07,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "ARLP",
+      "company": "Alliance Resource Partners, LP",
+      "exchange": "NASDAQ",
+      "score": 75.35,
+      "thesis": "Possible value-quality setup: trades near 10.1x P/E (forward 8.8x) while generating ROE 16.8%, ROIC 13.5%, operating margin 17.6% and Debt/Equity 0.25.",
+      "metrics": {
+        "market_cap_usd": 3130000000,
+        "pe": 10.13,
+        "forward_pe": 8.82,
+        "price_to_book": 1.7,
+        "roe_pct": 16.8,
+        "roic_pct": 13.52,
+        "operating_margin_pct": 17.56,
+        "profit_margin_pct": 14.07,
+        "debt_to_equity": 0.25,
+        "eps_next_5y_pct": 9.22
+      }
+    },
+    {
+      "ticker": "TBBK",
+      "company": "Bancorp Inc",
+      "exchange": "NASDAQ",
+      "score": 74.69,
+      "thesis": "Possible value-quality setup: trades near 12.6x P/E (forward 7.7x) while generating ROE 30.9%, ROIC 25.0%, operating margin 36.9% and Debt/Equity 0.61.",
+      "metrics": {
+        "market_cap_usd": 2720000000,
+        "pe": 12.6,
+        "forward_pe": 7.73,
+        "price_to_book": 3.55,
+        "roe_pct": 30.85,
+        "roic_pct": 24.99,
+        "operating_margin_pct": 36.88,
+        "profit_margin_pct": 27.18,
+        "debt_to_equity": 0.61,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "TGTX",
+      "company": "TG Therapeutics Inc",
+      "exchange": "NASDAQ",
+      "score": 74.12,
+      "thesis": "Possible value-quality setup: trades near 10.4x P/E (forward 18.6x) while generating ROE 112.0%, ROIC 52.0%, operating margin 19.3% and Debt/Equity 0.42.",
+      "metrics": {
+        "market_cap_usd": 4580000000,
+        "pe": 10.39,
+        "forward_pe": 18.6,
+        "price_to_book": 7.38,
+        "roe_pct": 111.96,
+        "roic_pct": 52.04,
+        "operating_margin_pct": 19.32,
+        "profit_margin_pct": 84.13,
+        "debt_to_equity": 0.42,
+        "eps_next_5y_pct": 149.15
+      }
+    },
+    {
+      "ticker": "FBP",
+      "company": "First Bancorp PR",
+      "exchange": "NYSE",
+      "score": 73.39,
+      "thesis": "Possible value-quality setup: trades near 10.8x P/E (forward 9.8x) while generating ROE 19.0%, ROIC 15.3%, operating margin 33.2% and Debt/Equity 0.15.",
+      "metrics": {
+        "market_cap_usd": 3670000000,
+        "pe": 10.83,
+        "forward_pe": 9.85,
+        "price_to_book": 1.85,
+        "roe_pct": 18.97,
+        "roic_pct": 15.28,
+        "operating_margin_pct": 33.16,
+        "profit_margin_pct": 27.45,
+        "debt_to_equity": 0.15,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "PRI",
+      "company": "Primerica Inc",
+      "exchange": "NYSE",
+      "score": 73.27,
+      "thesis": "Possible value-quality setup: trades near 12.7x P/E (forward 11.6x) while generating ROE 33.9%, ROIC 17.2%, operating margin 31.3% and Debt/Equity 0.82.",
+      "metrics": {
+        "market_cap_usd": 8800000000,
+        "pe": 12.66,
+        "forward_pe": 11.55,
+        "price_to_book": 3.85,
+        "roe_pct": 33.92,
+        "roic_pct": 17.2,
+        "operating_margin_pct": 31.33,
+        "profit_margin_pct": 21.9,
+        "debt_to_equity": 0.82,
+        "eps_next_5y_pct": 9.6
+      }
+    },
+    {
+      "ticker": "HIG",
+      "company": "Hartford Insurance Group Inc.(The)",
+      "exchange": "NYSE",
+      "score": 72.97,
+      "thesis": "Possible value-quality setup: trades near 10.7x P/E (forward 9.8x) while generating ROE 21.7%, ROIC 16.3%, operating margin 17.4% and Debt/Equity 0.23.",
+      "metrics": {
+        "market_cap_usd": 39720000000,
+        "pe": 10.68,
+        "forward_pe": 9.85,
+        "price_to_book": 2.2,
+        "roe_pct": 21.66,
+        "roic_pct": 16.34,
+        "operating_margin_pct": 17.4,
+        "profit_margin_pct": 13.46,
+        "debt_to_equity": 0.23,
+        "eps_next_5y_pct": 5.51
+      }
+    },
+    {
+      "ticker": "PAYC",
+      "company": "Paycom Software Inc",
+      "exchange": "NYSE",
+      "score": 72.86,
+      "thesis": "Possible value-quality setup: trades near 16.3x P/E (forward 13.1x) while generating ROE 28.6%, ROIC 25.6%, operating margin 27.9% and Debt/Equity 0.05.",
+      "metrics": {
+        "market_cap_usd": 7370000000,
+        "pe": 16.28,
+        "forward_pe": 13.08,
+        "price_to_book": 4.24,
+        "roe_pct": 28.56,
+        "roic_pct": 25.6,
+        "operating_margin_pct": 27.91,
+        "profit_margin_pct": 22.65,
+        "debt_to_equity": 0.05,
+        "eps_next_5y_pct": 10.76
+      }
+    }
+  ]
+}
