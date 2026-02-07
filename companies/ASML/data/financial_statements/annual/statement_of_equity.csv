@@ -1,0 +1,23 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Share of OCI from equity method investments,asml_OtherComprehensiveIncomeLossEquityMethodInvestments,,,,22000000.0,-1300000.0,
+Foreign currency translation,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,,,93300000.0,,
+Net Income,us-gaap_NetIncomeLoss,7571600000.0,7839000000.0,5624200000.0,5883200000.0,3553700000.0,2592300000.0
+Proportionate share of OCI from equity method investments,asml_OtherComprehensiveIncomeLossEquityMethodInvestments,-12100000.0,200000.0,37700000.0,,,-19800000.0
+Gain (loss) on foreign currency translation,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,91900000.0,-68300000.0,66000000.0,,,
+Gain (loss) on financial instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,29300000.0,-15200000.0,-8900000.0,38800000.0,-23300000.0,
+Total comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,7680700000.0,7755700000.0,5719000000.0,,,
+Purchase of treasury shares (in shares),us-gaap_TreasuryStockSharesAcquired,574925.0,1620128.0,8538787.0,14358838.0,3908429.0,
+Purchase of treasury shares,us-gaap_TreasuryStockValueAcquiredCostMethod,500000000.0,1000000000.0,4639700000.0,8560300000.0,1207500000.0,410000000.0
+Cancellation of treasury shares,us-gaap_TreasuryStockRetiredCostMethodAmount,0.0,0.0,0.0,0.0,0.0,0.0
+Share-based payments,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,172600000.0,134800000.0,68900000.0,117500000.0,53900000.0,74600000.0
+Issuance of shares (in shares),us-gaap_StockIssuedDuringPeriodSharesNewIssues,400000.0,500000.0,500000.0,500000.0,600000.0,
+Issuance of shares,us-gaap_StockIssuedDuringPeriodValueNewIssues,124000000.0,99400000.0,81800000.0,49000000.0,37900000.0,27200000.0
+Dividend paid,us-gaap_DividendsCommonStockCash,2452900000.0,2348300000.0,2559800000.0,1368300000.0,1066400000.0,1325700000.0
+Attributable to equity holders,us-gaap_ComprehensiveIncomeNetOfTax,,,,6037300000.0,3455300000.0,
+Foreign currency translation and effective portion of hedges,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,,,,-73800000.0,
+Foreign currency translation and effective portion of hedges on net investments,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,,,,,20100000.0
+"Gain (loss) on financial instruments, net of taxes",us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,,,,,,-7500000.0
+,,,,,,,
+"Purchase of treasury shares, shares",us-gaap_TreasuryStockSharesAcquired,,,,,,1948808.0
+"Issuance of shares, shares",us-gaap_StockIssuedDuringPeriodSharesNewIssues,,,,,,600000.0
+"Total comprehensive income, attributable to equity holders",us-gaap_ComprehensiveIncomeNetOfTax,,,,,,2585100000.0
