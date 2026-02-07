@@ -4,7 +4,7 @@ Goal: Quantify financial quality and cash generation durability.
 
 Inputs:
 - `companies/<TICKER>/data/financial_statements/annual/*.csv`.
-- `docs/data-dictionary.md` for metric definitions.
+- `.agents/skills/fetch-company-data/references/data-dictionary.md` for metric definitions.
 
 Instructions:
 - Quantify revenue trend (CAGR plus latest year-over-year).

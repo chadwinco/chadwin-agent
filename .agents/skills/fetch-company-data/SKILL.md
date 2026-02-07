@@ -61,7 +61,7 @@ Optional flags:
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 ### 4. Verify outputs
-Validate outputs described in `references/data-outputs.md`, including:
+Validate outputs described in `references/data-outputs.md` and `references/data-dictionary.md`, including:
 - `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
 - `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
@@ -78,3 +78,4 @@ Validate outputs described in `references/data-outputs.md`, including:
 ## Related References
 - `references/python-setup.md`
 - `references/data-outputs.md`
+- `references/data-dictionary.md`
