@@ -2,36 +2,30 @@
 
 ## Objective
 Build repeatable, LLM-driven company research that outputs:
-- A fair-value estimate grounded in long-term economics.
-- A concise report explaining competitive position and margin of safety.
+- A concise investment summary.
+- A transparent base/bull/bear valuation.
 
-Prerequisite: set up the Python virtual environment described in `docs/python-setup.md`.
+Canonical workflow details are maintained in:
+- `.agents/skills/run-company-research/SKILL.md`
+- `.agents/skills/run-company-research/references/research-workflow.md`
+- `.agents/skills/run-company-research/references/research-checklist.md`
 
-## Inputs (LLM Must Use)
-- `companies/<TICKER>/data/*` (filings, transcripts, analyst estimates, profiles).
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` and `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`.
-- `prompts/*.md` for section-by-section guidance.
-- `docs/data-dictionary.md` for metric definitions.
-- `docs/research-checklist.md` as the quality gate.
+## Inputs
+- `companies/<TICKER>/data/*` (filings, statements, transcript, profile, optional analyst estimates)
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
 
-## Deterministic Pipeline (Run First)
-1. If data is missing, run `.agents/skills/fetch-company-data/scripts/add_company.py` to fetch filings, financials, transcripts, and analyst estimates.
-2. Run `scripts/run_company.py` to refresh metrics, valuation outputs, and the report scaffold.
+## Process
+1. If data is missing, run `$fetch-company-data`.
+2. Run `$run-company-research` to produce:
+   - `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
+   - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+   - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+3. Apply the checklist in `.agents/skills/run-company-research/references/research-checklist.md`.
+4. Log external sources in `docs/source-log.md`.
+5. Log process improvements in `docs/improvement-log.md`.
 
-## LLM Report Workflow
-1. Read all prompt files in `prompts/` before drafting.
-2. Use agentic search (`rg`/`grep`) directly against `companies/<TICKER>/data` for each section; do not rely on pre-sliced context.
-3. Draft the report in `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`, following the report template structure.
-4. Apply the checklist in `docs/research-checklist.md` and fix any gaps before finalizing.
-5. Log any external sources in `docs/source-log.md` and record process improvements in `docs/improvement-log.md`.
-
-## Quality Gates
-- No verbatim copying from filings; paraphrase and synthesize.
-- Cite file paths inline for all factual claims from local data.
-- Ensure valuation narrative aligns with `valuation/inputs.yaml` and `valuation/outputs.json` for the selected report date.
-
-## Output Locations
-- Report: `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
-- Valuation inputs: `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-- Valuation outputs: `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
-- Transcript: `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md`
+## Guardrails
+- Do not run `scripts/run_company.py` for the research workflow.
+- Keep report output concise and decision-oriented.
+- Cite local file paths for factual claims.

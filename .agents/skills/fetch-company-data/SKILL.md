@@ -32,7 +32,7 @@ export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
 3. Run the skill script from the repo root:
 
 ```bash
-python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD> --skip-analysis
 ```
 
 ## Workflow
@@ -53,12 +53,12 @@ python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 
 ### 3. Run fetch/bootstrap
 ```bash
-python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD> --skip-analysis
 ```
 
 Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
-- `--skip-analysis` fetches data only.
+- Omit `--skip-analysis` only if you intentionally want to run the legacy `scripts/run_company.py` pipeline.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 ### 4. Verify outputs and source logging

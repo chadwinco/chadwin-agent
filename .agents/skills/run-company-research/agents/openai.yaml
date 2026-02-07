@@ -1,4 +1,4 @@
 interface:
   display_name: "Run Company Research"
-  short_description: "Run quality checks, valuation, and reports"
-  default_prompt: "Use $run-company-research to run the analysis pipeline and generate the report for a ticker."
+  short_description: "Write a concise investment report and valuation"
+  default_prompt: "Use $run-company-research for <TICKER> as of <YYYY-MM-DD> using local company data and produce report.md plus valuation inputs/outputs."

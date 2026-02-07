@@ -1,66 +1,54 @@
 ---
 name: run-company-research
-description: Run the company research pipeline for this repo, including quality checks, metrics, valuation, and report generation. Use when regenerating `companies/TICKER/reports/<DATE>/report.md`, updating `companies/TICKER/reports/<DATE>/valuation/outputs.json`, or validating data after edits to assumptions or source files.
+description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/TICKER/data`. Use after `$fetch-company-data` when creating or refreshing `companies/TICKER/reports/<DATE>/report.md` and valuation files.
 ---
 
 # Run Company Research
 
 ## Overview
-Run the analysis workflow that validates data, computes metrics, values the business, and writes the report for a ticker.
+This is an LLM-first research workflow. The target output is intentionally simple:
+1. A short investment summary for a company.
+2. A transparent base/bull/bear valuation.
+
+Do not use `scripts/run_company.py` for this skill.
 
 ## Quick Start
-1. Ensure `companies/<TICKER>/data` is populated.
-2. Update `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` if needed.
-3. Run the pipeline from the repo root.
+1. Confirm ticker and as-of date with the user.
+2. Ensure `companies/<TICKER>/data` is populated. If not, run `$fetch-company-data` first.
+3. Create the output directory from the repo root:
 
 ```bash
-python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
+mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 ```
+4. Follow `references/research-workflow.md`.
+
+## Required Outputs
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
 
 ## Workflow
-1. Confirm inputs.
-2. Run the analysis script.
-3. Run the LLM analysis (assistant step).
-4. Validate against the checklist.
-5. Review outputs and logs.
+1. Run the end-to-end process in `references/research-workflow.md`.
+2. Build valuation assumptions and outputs using `references/valuation-method.md`.
+3. Draft the report using `references/report-format.md`.
+4. Check all gates in `references/research-checklist.md` before finalizing.
+5. Record learnings using `references/improvement-loop.md`.
 
-### 1. Confirm inputs
-- If data is missing, use `$fetch-company-data` first.
-- Ensure required files exist per `docs/data-dictionary.md`.
-- Edit `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` for scenario changes.
-
-### 2. Run the analysis script
-Execute the pipeline from the repo root:
-
-```bash
-python3 scripts/run_company.py --ticker <TICKER> --asof <YYYY-MM-DD>
-```
-
-
-### 3. Run the LLM analysis (assistant step)
-- Read the prompt files in `prompts/` and the workflow docs in `docs/research-workflow.md`.
-- **Agentic search:** use `grep` (or `rg` if available) against the raw files in `companies/<TICKER>/data` to find relevant sections in real time.
-  - Examples: search for `## Business`, `Segment Information`, `Risk Factors`, `Management's Discussion`, `catastrophe`, `combined ratio`, `net premiums`, `reserve`, `reinsurance`, `dividend`, `buyback`.
-  - Iterate queries until you have coverage for each prompt section (don’t settle for the first match).
-- Produce:
-  - `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
-- Cite sources inline with file paths and log any external sources in `docs/source-log.md` if needed.
-
-### 4. Validate against the checklist
-- Use `docs/research-checklist.md` as a quality gate before finalizing the report.
-- Fix any checklist gaps before delivering the final report.
-
-### 5. Review outputs and logs
-Validate the generated artifacts:
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
-- `docs/source-log.md` updated with a data snapshot entry
+## Constraints
+- Keep the report concise and decision-oriented.
+- Paraphrase source text; no verbatim copying from filings or transcripts.
+- Every factual claim needs a local file citation.
+- Log external sources in `docs/source-log.md`.
 
 ## Troubleshooting
-- If quality checks fail, fix missing columns or dates in the CSVs and rerun.
-- Use `docs/research-checklist.md` to confirm data integrity, financial quality, and valuation coverage.
-- If narrative sections look thin, update inputs in `companies/<TICKER>/data` or edit templates in `templates/report.md`.
+- If required data is missing, run `$fetch-company-data` for that ticker/date.
+- If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
+- If the write-up is weak, rerun the checklist and fix every unchecked item.
 
 ## Related References
-- `docs/research-workflow.md` for the end-to-end pipeline.
-- `docs/data-dictionary.md` for required data files and columns.
+- `references/research-workflow.md`
+- `references/report-format.md`
+- `references/valuation-method.md`
+- `references/research-checklist.md`
+- `references/improvement-loop.md`
+- `references/source-log-format.md`

@@ -1,7 +1,5 @@
 # Research Checklist
 
-Canonical version: `.agents/skills/run-company-research/references/research-checklist.md`
-
 ## Scope and Data
 - [ ] Ticker and as-of date are explicit.
 - [ ] Required local files exist and load without errors.
