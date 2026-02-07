@@ -756,10 +756,18 @@ def _statement_df_from_xbrls(xbrls, method_name: str, max_periods: int):
     try:
         statement = stmt_getter(max_periods=max_periods, standardize=True)
     except TypeError:
-        statement = stmt_getter()
+        try:
+            statement = stmt_getter()
+        except Exception:
+            return None
+    except Exception:
+        return None
     if statement is None:
         return None
-    df = statement.to_dataframe()
+    try:
+        df = statement.to_dataframe()
+    except Exception:
+        return None
     return _prepare_statement_df(df)
 
 def _fetch_url(url: str) -> Optional[str]:
