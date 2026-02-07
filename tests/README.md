@@ -6,7 +6,7 @@ These are manual validation steps for the research workflow.
    - `python3 -m venv /Users/chad/source/chadwin-codex/.venv`
    - `source /Users/chad/source/chadwin-codex/.venv/bin/activate`
    - `python -m pip install -r /Users/chad/source/chadwin-codex/requirements.txt`
-   - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker PEP --asof 2026-02-06 --skip-analysis`
+   - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker PEP --asof 2026-02-06`
    - Run `$run-company-research` for `PEP` as of `2026-02-06`.
    - Confirm these artifacts exist:
      - `companies/PEP/reports/2026-02-06/report.md`
@@ -15,7 +15,7 @@ These are manual validation steps for the research workflow.
 
 2. Create a new company from EDGAR
    - Add `EDGAR_IDENTITY` to `/Users/chad/source/chadwin-codex/.env`
-   - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker AAPL --asof 2026-02-06 --skip-analysis`
+   - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker AAPL --asof 2026-02-06`
    - Confirm data files are created in `companies/AAPL/data/`.
    - Confirm `companies/<TICKER>/data/filings/earnings-call-*.md` exists.
 

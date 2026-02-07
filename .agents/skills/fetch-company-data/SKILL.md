@@ -1,6 +1,6 @@
 ---
 name: fetch-company-data
-description: Fetch EDGAR filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a new ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before running analysis.
+description: Fetch EDGAR filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a new ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
 ---
 
 # Fetch Company Data
@@ -32,7 +32,7 @@ export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
 3. Run the skill script from the repo root:
 
 ```bash
-python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD> --skip-analysis
+python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
 ## Workflow
@@ -53,12 +53,11 @@ python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD> --skip-a
 
 ### 3. Run fetch/bootstrap
 ```bash
-python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD> --skip-analysis
+python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
 Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
-- Omit `--skip-analysis` only if you intentionally want to run the legacy `scripts/run_company.py` pipeline.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 ### 4. Verify outputs and source logging

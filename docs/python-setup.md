@@ -23,7 +23,7 @@ If you already use `SEC_IDENTITY_EMAIL`, it will be accepted as a fallback.
 
 ## Run Workflow
 ```
-python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker PEP --asof 2026-02-06 --skip-analysis
+python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker PEP --asof 2026-02-06
 ```
 
-Research generation is now LLM-first via `$run-company-research` and does not require running `scripts/run_company.py`.
+Research generation is LLM-first via `$run-company-research`.

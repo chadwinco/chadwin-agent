@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from .loaders import CompanyData, _require_pandas
+from loaders import CompanyData, _require_pandas
 
 
 def _to_numeric(df, columns, pd):

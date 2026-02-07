@@ -10,7 +10,7 @@ import sys
 
 def _default_base_dir() -> Path:
     for parent in Path(__file__).resolve().parents:
-        if (parent / "companies").exists() and (parent / "research").exists():
+        if (parent / "companies").exists() and (parent / ".agents" / "skills").exists():
             return parent
     return Path.cwd()
 
@@ -20,12 +20,11 @@ BASE_DIR = _default_base_dir()
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from fetch_company_data.edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
-from fetch_company_data.forecast_fetch import fetch_analyst_forecasts  # noqa: E402
-from fetch_company_data.loaders import load_company_data  # noqa: E402
-from fetch_company_data.metrics import compute_metrics  # noqa: E402
-from fetch_company_data.transcript_fetch import fetch_latest_transcript  # noqa: E402
-from scripts.run_company import run_company  # noqa: E402
+from edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
+from forecast_fetch import fetch_analyst_forecasts  # noqa: E402
+from loaders import load_company_data  # noqa: E402
+from metrics import compute_metrics  # noqa: E402
+from transcript_fetch import fetch_latest_transcript  # noqa: E402
 
 
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
@@ -210,12 +209,13 @@ def _append_source_log(base_dir: Path, ticker: str, asof_date: str, source: str,
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Create a new company, fetch EDGAR data, and run analysis")
+    parser = argparse.ArgumentParser(
+        description="Create or refresh a company data package and bootstrap valuation assumptions"
+    )
     parser.add_argument("--ticker", required=True)
     parser.add_argument("--identity", help="EDGAR identity string: 'Name email@domain.com'")
     parser.add_argument("--base-dir", default=str(BASE_DIR))
     parser.add_argument("--asof", default=str(date.today()))
-    parser.add_argument("--skip-analysis", action="store_true")
     parser.add_argument("--overwrite-assumptions", action="store_true")
 
     args = parser.parse_args()
@@ -265,12 +265,6 @@ def main() -> None:
     assumptions_path = _valuation_inputs_path(company_dir, args.asof)
     assumptions = _build_assumptions(metrics, data.analyst_estimates)
     _write_assumptions(assumptions_path, assumptions, overwrite=args.overwrite_assumptions)
-
-    if args.skip_analysis:
-        print("Skipping analysis run.")
-        return
-
-    run_company(base_dir, ticker, args.asof)
 
 
 if __name__ == "__main__":

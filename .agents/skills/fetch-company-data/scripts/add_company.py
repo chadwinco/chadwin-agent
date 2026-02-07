@@ -10,7 +10,7 @@ SKILL_SRC = SKILL_DIR / "src"
 if str(SKILL_SRC) not in sys.path:
     sys.path.insert(0, str(SKILL_SRC))
 
-from fetch_company_data.add_company import main  # noqa: E402
+from add_company import main  # noqa: E402
 
 
 if __name__ == "__main__":

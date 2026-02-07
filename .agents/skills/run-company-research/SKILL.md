@@ -10,7 +10,7 @@ This is an LLM-first research workflow. The target output is intentionally simpl
 1. A short investment summary for a company.
 2. A transparent base/bull/bear valuation.
 
-Do not use `scripts/run_company.py` for this skill.
+Do not use a deterministic end-to-end analysis script for this skill.
 
 ## Quick Start
 1. Confirm ticker and as-of date with the user.

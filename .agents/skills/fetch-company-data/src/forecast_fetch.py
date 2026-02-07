@@ -12,7 +12,7 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     BeautifulSoup = None
 
-from .loaders import _require_pandas
+from loaders import _require_pandas
 
 
 @dataclass
