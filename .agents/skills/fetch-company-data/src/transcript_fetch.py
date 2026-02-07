@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Iterable, Optional, Tuple
+from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, unquote, urlparse
 from urllib.request import Request, urlopen
 
@@ -21,19 +22,109 @@ class TranscriptResult:
     published_date: Optional[date]
 
 
-def _fetch_url(url: str) -> Optional[str]:
+@dataclass
+class FetchResponse:
+    html: Optional[str]
+    http_status: Optional[int]
+    error_kind: Optional[str]
+    error_detail: Optional[str]
+
+
+@dataclass
+class TranscriptAttempt:
+    url: str
+    status: str
+    http_status: Optional[int] = None
+    body_length: int = 0
+    published_date: Optional[date] = None
+    message: Optional[str] = None
+
+    def to_dict(self) -> dict:
+        return {
+            "url": self.url,
+            "status": self.status,
+            "http_status": self.http_status,
+            "body_length": self.body_length,
+            "published_date": self.published_date.isoformat() if self.published_date else None,
+            "message": self.message,
+        }
+
+
+@dataclass
+class TranscriptSearchReport:
+    query: str
+    candidate_urls: list[str]
+    attempts: list[TranscriptAttempt]
+    transcript: Optional[TranscriptResult] = None
+    manual_url: Optional[str] = None
+
+    def to_dict(self) -> dict:
+        return {
+            "query": self.query,
+            "manual_url": self.manual_url,
+            "candidate_urls": self.candidate_urls,
+            "selected_transcript": (
+                {
+                    "path": str(self.transcript.path),
+                    "source_url": self.transcript.source_url,
+                    "published_date": self.transcript.published_date.isoformat()
+                    if self.transcript.published_date
+                    else None,
+                }
+                if self.transcript
+                else None
+            ),
+            "attempts": [attempt.to_dict() for attempt in self.attempts],
+        }
+
+
+@dataclass
+class ParsedTranscript:
+    title: str
+    published_date: Optional[date]
+    body: str
+
+
+def _fetch_url(url: str) -> FetchResponse:
     try:
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urlopen(req, timeout=30) as resp:
-            return resp.read().decode("utf-8", "ignore")
-    except Exception:
-        return None
+            status = getattr(resp, "status", None)
+            return FetchResponse(
+                html=resp.read().decode("utf-8", "ignore"),
+                http_status=status,
+                error_kind=None,
+                error_detail=None,
+            )
+    except HTTPError as exc:
+        return FetchResponse(
+            html=None,
+            http_status=exc.code,
+            error_kind="http_error",
+            error_detail=str(exc),
+        )
+    except URLError as exc:
+        return FetchResponse(
+            html=None,
+            http_status=None,
+            error_kind="network_error",
+            error_detail=str(exc.reason),
+        )
+    except Exception as exc:
+        return FetchResponse(
+            html=None,
+            http_status=None,
+            error_kind="unknown_error",
+            error_detail=str(exc),
+        )
 
 
 def _search_duckduckgo(query: str, max_results: int = 8) -> list[str]:
-    html = _fetch_url(f"https://duckduckgo.com/html/?q={quote(query)}")
-    if not html:
+    response = _fetch_url(f"https://duckduckgo.com/html/?q={quote(query)}")
+    if not response.html:
         return []
+
+    html = response.html
     urls = []
     for match in re.finditer(r'class="result__a" href="([^"]+)"', html):
         link = match.group(1)
@@ -48,7 +139,7 @@ def _search_duckduckgo(query: str, max_results: int = 8) -> list[str]:
             urls.append(link)
         if len(urls) >= max_results:
             break
-    # de-dup while preserving order
+
     seen = set()
     deduped = []
     for url in urls:
@@ -130,7 +221,7 @@ def _extract_body(soup) -> str:
         text = node.get_text(" ", strip=True)
         if text:
             parts.append(text)
-    # remove duplicates while preserving order
+
     seen = set()
     cleaned = []
     for part in parts:
@@ -159,17 +250,160 @@ def _candidate_filter(urls: Iterable[str]) -> list[str]:
     return filtered
 
 
-def _fetch_transcript(url: str) -> Tuple[Optional[str], Optional[date], str]:
-    html = _fetch_url(url)
-    if not html:
-        return None, None, ""
-    soup = BeautifulSoup(html, "html.parser") if BeautifulSoup else None
+def _resolve_date(asof: Optional[str]) -> date:
+    if asof:
+        try:
+            return date.fromisoformat(asof)
+        except ValueError:
+            pass
+    return date.today()
+
+
+def _fetch_transcript_with_attempt(
+    url: str,
+    min_body_chars: int = 1000,
+) -> Tuple[Optional[ParsedTranscript], TranscriptAttempt]:
+    response = _fetch_url(url)
+    if not response.html:
+        if response.error_kind == "http_error":
+            status = "http_error"
+        elif response.error_kind == "network_error":
+            status = "network_error"
+        else:
+            status = "fetch_error"
+        return None, TranscriptAttempt(
+            url=url,
+            status=status,
+            http_status=response.http_status,
+            message=response.error_detail,
+        )
+
+    soup = BeautifulSoup(response.html, "html.parser") if BeautifulSoup else None
     body = _extract_body(soup)
-    if len(body) < 1000:
+    if not body:
+        return None, TranscriptAttempt(
+            url=url,
+            status="parse_empty",
+            http_status=response.http_status,
+            body_length=0,
+            message="No supported content container found in HTML.",
+        )
+    if len(body) < min_body_chars:
+        return None, TranscriptAttempt(
+            url=url,
+            status="body_too_short",
+            http_status=response.http_status,
+            body_length=len(body),
+            message=f"Extracted body shorter than {min_body_chars} characters.",
+        )
+
+    title = _extract_title(response.html, soup)
+    published = _extract_published_date(response.html, soup)
+    attempt = TranscriptAttempt(
+        url=url,
+        status="success",
+        http_status=response.http_status,
+        body_length=len(body),
+        published_date=published,
+    )
+    return ParsedTranscript(title=title, published_date=published, body=body), attempt
+
+
+def _fetch_transcript(url: str) -> Tuple[Optional[str], Optional[date], str]:
+    parsed, _ = _fetch_transcript_with_attempt(url)
+    if not parsed:
         return None, None, ""
-    title = _extract_title(html, soup)
-    published = _extract_published_date(html, soup)
-    return title, published, body
+    return parsed.title, parsed.published_date, parsed.body
+
+
+def fetch_latest_transcript_with_report(
+    ticker: str,
+    data_dir: Path,
+    company_name: Optional[str] = None,
+    asof: Optional[str] = None,
+    transcript_url: Optional[str] = None,
+    max_results: int = 20,
+    min_body_chars: int = 1000,
+) -> TranscriptSearchReport:
+    query = f"{company_name or ticker} earnings call transcript"
+
+    if BeautifulSoup is None:
+        report = TranscriptSearchReport(
+            query=query,
+            candidate_urls=[],
+            attempts=[],
+            manual_url=transcript_url,
+        )
+        report.attempts.append(
+            TranscriptAttempt(
+                url=transcript_url or "",
+                status="dependency_missing",
+                message="beautifulsoup4 is required for transcript extraction.",
+            )
+        )
+        return report
+
+    if transcript_url:
+        urls = [transcript_url]
+    else:
+        urls = _candidate_filter(_search_duckduckgo(query, max_results=max_results))
+
+    report = TranscriptSearchReport(
+        query=query,
+        candidate_urls=urls,
+        attempts=[],
+        manual_url=transcript_url,
+    )
+    if not urls:
+        report.attempts.append(
+            TranscriptAttempt(
+                url="",
+                status="no_candidates",
+                message="No candidate URLs were returned by search/filter.",
+            )
+        )
+        return report
+
+    best_url = None
+    best_date = None
+    best_payload: Optional[ParsedTranscript] = None
+
+    for url in urls:
+        payload, attempt = _fetch_transcript_with_attempt(url, min_body_chars=min_body_chars)
+        report.attempts.append(attempt)
+        if not payload:
+            continue
+        if best_url is None:
+            best_url = url
+            best_date = payload.published_date
+            best_payload = payload
+            continue
+        if payload.published_date and (best_date is None or payload.published_date > best_date):
+            best_url = url
+            best_date = payload.published_date
+            best_payload = payload
+
+    if not best_url or not best_payload:
+        return report
+
+    date_value = best_date or _resolve_date(asof)
+    source_slug = urlparse(best_url).netloc.replace("www.", "")
+    filename = f"earnings-call-{date_value.isoformat()}-{source_slug}.md"
+    filings_dir = data_dir / "filings"
+    filings_dir.mkdir(parents=True, exist_ok=True)
+    path = filings_dir / filename
+
+    header = [
+        f"# {best_payload.title or 'Earnings Call Transcript'}",
+        "",
+        f"- Source: {best_url}",
+        f"- Published: {best_date.isoformat() if best_date else 'Unknown'}",
+        f"- Retrieved: {date.today().isoformat()}",
+        "",
+    ]
+    path.write_text("\n".join(header) + best_payload.body + "\n")
+    report.transcript = TranscriptResult(path=path, source_url=best_url, published_date=best_date)
+    return report
 
 
 def fetch_latest_transcript(
@@ -177,54 +411,17 @@ def fetch_latest_transcript(
     data_dir: Path,
     company_name: Optional[str] = None,
     asof: Optional[str] = None,
+    transcript_url: Optional[str] = None,
+    max_results: int = 20,
+    min_body_chars: int = 1000,
 ) -> Optional[TranscriptResult]:
-    if BeautifulSoup is None:
-        return None
-
-    query = f"{company_name or ticker} earnings call transcript"
-    urls = _candidate_filter(_search_duckduckgo(query))
-    if not urls:
-        return None
-
-    best = None
-    best_date = None
-    best_title = None
-    best_body = None
-
-    for url in urls:
-        title, published, body = _fetch_transcript(url)
-        if not body:
-            continue
-        if best is None:
-            best = url
-            best_date = published
-            best_title = title
-            best_body = body
-            continue
-        if published and (best_date is None or published > best_date):
-            best = url
-            best_date = published
-            best_title = title
-            best_body = body
-
-    if not best or not best_body:
-        return None
-
-    date_value = best_date or (date.fromisoformat(asof) if asof else date.today())
-    source_slug = urlparse(best).netloc.replace("www.", "")
-    filename = f"earnings-call-{date_value.isoformat()}-{source_slug}.md"
-    filings_dir = data_dir / "filings"
-    filings_dir.mkdir(parents=True, exist_ok=True)
-    path = filings_dir / filename
-
-    header = [
-        f"# {best_title or 'Earnings Call Transcript'}",
-        "",
-        f"- Source: {best}",
-        f"- Published: {best_date.isoformat() if best_date else 'Unknown'}",
-        f"- Retrieved: {date.today().isoformat()}",
-        "",
-    ]
-    path.write_text("\n".join(header) + best_body + "\n")
-
-    return TranscriptResult(path=path, source_url=best, published_date=best_date)
+    report = fetch_latest_transcript_with_report(
+        ticker=ticker,
+        data_dir=data_dir,
+        company_name=company_name,
+        asof=asof,
+        transcript_url=transcript_url,
+        max_results=max_results,
+        min_body_chars=min_body_chars,
+    )
+    return report.transcript

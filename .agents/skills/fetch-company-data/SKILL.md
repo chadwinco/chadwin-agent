@@ -59,6 +59,9 @@ python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
+- `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
+- `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).
 
 ### 4. Verify outputs
 Validate outputs described in `references/data-outputs.md` and `references/data-dictionary.md`, including:
@@ -67,6 +70,7 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `companies/<TICKER>/data/filings/10-K-*.md` or `companies/<TICKER>/data/filings/20-F-*.md`
 - `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
+- `companies/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json` containing URL attempts and failure reasons
 - `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 

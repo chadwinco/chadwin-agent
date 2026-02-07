@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import argparse
+import json
+from collections import Counter
 from datetime import date
 from pathlib import Path
 
@@ -24,7 +26,7 @@ from edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa:
 from forecast_fetch import fetch_analyst_forecasts  # noqa: E402
 from loaders import load_company_data  # noqa: E402
 from metrics import compute_metrics  # noqa: E402
-from transcript_fetch import fetch_latest_transcript  # noqa: E402
+from transcript_fetch import fetch_latest_transcript_with_report  # noqa: E402
 
 
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
@@ -40,6 +42,20 @@ def _valuation_inputs_path(company_dir: Path, asof: str) -> Path:
     path = company_dir / "reports" / asof / "valuation" / "inputs.yaml"
     path.parent.mkdir(parents=True, exist_ok=True)
     return path
+
+
+def _transcript_report_path(data_dir: Path, asof: str) -> Path:
+    filings_dir = data_dir / "filings"
+    filings_dir.mkdir(parents=True, exist_ok=True)
+    return filings_dir / f"earnings-call-fetch-report-{asof}.json"
+
+
+def _summarize_failures(statuses: list[str]) -> str:
+    if not statuses:
+        return ""
+    counts = Counter(statuses)
+    parts = [f"{status}={count}" for status, count in counts.most_common()]
+    return ", ".join(parts)
 
 
 def _clamp(value: float, low: float, high: float) -> float:
@@ -205,6 +221,22 @@ def main() -> None:
     parser.add_argument("--base-dir", default=str(BASE_DIR))
     parser.add_argument("--asof", default=str(date.today()))
     parser.add_argument("--overwrite-assumptions", action="store_true")
+    parser.add_argument(
+        "--transcript-url",
+        help="Fetch transcript from this specific URL instead of running search discovery",
+    )
+    parser.add_argument(
+        "--transcript-max-results",
+        type=int,
+        default=20,
+        help="Maximum DuckDuckGo results to scan for transcript candidates",
+    )
+    parser.add_argument(
+        "--transcript-min-body-chars",
+        type=int,
+        default=1000,
+        help="Minimum extracted body length required to accept a transcript",
+    )
 
     args = parser.parse_args()
     base_dir = Path(args.base_dir)
@@ -234,7 +266,24 @@ def main() -> None:
         company_name = str(data.profile.iloc[0].get("companyName"))
 
     print(f"Fetching latest earnings call transcript for {ticker}...")
-    transcript = fetch_latest_transcript(ticker, data_dir, company_name=company_name, asof=args.asof)
+    report = fetch_latest_transcript_with_report(
+        ticker=ticker,
+        data_dir=data_dir,
+        company_name=company_name,
+        asof=args.asof,
+        transcript_url=args.transcript_url,
+        max_results=args.transcript_max_results,
+        min_body_chars=args.transcript_min_body_chars,
+    )
+    report_path = _transcript_report_path(data_dir, args.asof)
+    report_path.write_text(json.dumps(report.to_dict(), indent=2))
+    transcript = report.transcript
+    try:
+        report_rel = report_path.relative_to(base_dir)
+    except ValueError:
+        report_rel = report_path
+    print(f"Wrote transcript fetch report to {report_rel}")
+
     if transcript:
         try:
             transcript_rel = transcript.path.relative_to(base_dir)
@@ -242,6 +291,9 @@ def main() -> None:
             transcript_rel = transcript.path
         print(f"Saved transcript to {transcript_rel} ({transcript.source_url})")
     else:
+        failed = [attempt.status for attempt in report.attempts if attempt.status != "success"]
+        if failed:
+            print(f"Transcript fetch failures: {_summarize_failures(failed)}")
         print("No earnings call transcript found.")
 
     assumptions_path = _valuation_inputs_path(company_dir, args.asof)
