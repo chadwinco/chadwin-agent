@@ -31,7 +31,7 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 1. Run the end-to-end process in `references/research-workflow.md`.
 2. Build valuation assumptions and outputs using `references/valuation-method.md`.
 3. Draft the report using `references/report-format.md`.
-4. Check all gates in `references/research-checklist.md` before finalizing.
+4. Check all quality gates in `references/research-workflow.md` (Step 6) before finalizing.
 5. Record learnings using `references/improvement-loop.md`.
 
 ## Constraints
@@ -43,12 +43,11 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 ## Troubleshooting
 - If required data is missing, run `$fetch-company-data` for that ticker/date.
 - If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
-- If the write-up is weak, rerun the checklist and fix every unchecked item.
+- If the write-up is weak, rerun the Step 6 quality gate in `references/research-workflow.md` and fix every unchecked item.
 
 ## Related References
 - `references/research-workflow.md`
 - `references/report-format.md`
 - `references/valuation-method.md`
-- `references/research-checklist.md`
 - `references/improvement-loop.md`
 - `references/source-log-format.md`

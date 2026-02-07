@@ -18,7 +18,7 @@ If the same issue appears twice, update one of:
 - `references/research-workflow.md`
 - `references/report-format.md`
 - `references/valuation-method.md`
-- `references/research-checklist.md`
+- `references/source-log-format.md`
 
 Keep changes concrete and minimal.
 

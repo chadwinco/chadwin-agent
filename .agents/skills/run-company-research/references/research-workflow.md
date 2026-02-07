@@ -17,13 +17,13 @@ Legacy fallback paths:
 - `companies/<TICKER>/data/balance_sheet_annual.csv`
 - `companies/<TICKER>/data/cash_flow_statement_annual.csv`
 
-Drafting prompts:
-- `.agents/skills/run-company-research/prompts/investment-summary.md`
-- `.agents/skills/run-company-research/prompts/business-and-competitive-position.md`
-- `.agents/skills/run-company-research/prompts/financial-quality.md`
-- `.agents/skills/run-company-research/prompts/valuation.md`
-- `.agents/skills/run-company-research/prompts/key-risks-and-disconfirming-signals.md`
-- `.agents/skills/run-company-research/prompts/conclusion.md`
+Drafting assets:
+- `.agents/skills/run-company-research/assets/investment-summary.md`
+- `.agents/skills/run-company-research/assets/business-and-competitive-position.md`
+- `.agents/skills/run-company-research/assets/financial-quality.md`
+- `.agents/skills/run-company-research/assets/valuation.md`
+- `.agents/skills/run-company-research/assets/key-risks-and-disconfirming-signals.md`
+- `.agents/skills/run-company-research/assets/conclusion.md`
 
 ## Step 1: Confirm Scope
 - Confirm ticker and as-of date explicitly.
@@ -59,8 +59,39 @@ Drafting prompts:
 - State intrinsic value versus current price and margin of safety clearly.
 
 ## Step 6: Run the Quality Gate
-- Apply `references/research-checklist.md`.
-- Fix all unchecked items before finalizing.
+All checks below must pass before finalizing.
+
+Scope and data:
+- [ ] Ticker and as-of date are explicit.
+- [ ] Required local files exist and load without errors.
+- [ ] Latest filing/transcript evidence used is dated on or before the as-of date.
+
+Evidence discipline:
+- [ ] No verbatim copying from filings or transcripts.
+- [ ] Every factual claim cites local file paths.
+- [ ] External sources are logged in `docs/source-log.md`.
+
+Thesis quality:
+- [ ] Thesis explains why returns can persist and what can break the thesis.
+- [ ] Competitive position is described with evidence.
+- [ ] Capital allocation quality is assessed.
+
+Financial quality:
+- [ ] Revenue trend is quantified (CAGR plus recent year-over-year change).
+- [ ] EBIT and FCF margin trends are quantified.
+- [ ] ROIC proxy and leverage are evaluated.
+
+Valuation quality:
+- [ ] Base/bull/bear assumptions are explicit and defensible.
+- [ ] Assumptions are written to `valuation/inputs.yaml`.
+- [ ] Valuation outputs are written to `valuation/outputs.json`.
+- [ ] Margin of safety reconciles with current price and value per share.
+
+Output quality:
+- [ ] Report is concise (target: 500-900 words) and decision-oriented.
+- [ ] Top 3-5 risks are prioritized by cash-flow impact.
+- [ ] Conclusion states a clear action at current price.
+- [ ] Improvement notes are added to `docs/improvement-log.md`.
 
 ## Step 7: Log and Improve
 - External sources: append rows to `docs/source-log.md` using `references/source-log-format.md`.

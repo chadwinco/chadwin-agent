@@ -19,7 +19,7 @@ from research.valuation import load_assumptions, run_valuation  # noqa: E402
 
 def _llm_placeholder(section: str, ticker: str, extra: str | None = None) -> str:
     note = (
-        f"LLM_REQUIRED: Use .agents/skills/run-company-research/prompts/{section}.md "
+        f"LLM_REQUIRED: Use .agents/skills/run-company-research/assets/{section}.md "
         f"and search companies/{ticker}/data for evidence."
     )
     if extra:
