@@ -1,0 +1,58 @@
+{
+  "query": "Upwork, Inc earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://finance.yahoo.com/quote/UPWK/earnings/UPWK-Q3-2025-earnings_call-371563.html",
+    "https://www.fool.com/earnings/call-transcripts/2025/11/03/upwork-upwk-q3-2025-earnings-call-transcript/",
+    "https://www.msn.com/en-us/money/companies/upwork-inc-nasdaq-upwk-q3-2025-earnings-call-transcript/ar-AA1PRjG6",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-upwork-beats-q3-2025-forecasts-stock-rises-93CH-4328887",
+    "https://seekingalpha.com/article/4837195-upwork-inc-upwk-q3-2025-earnings-call-transcript"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/UPWK/data/filings/earnings-call-2025-11-03-fool.com.md",
+    "source_url": "https://www.fool.com/earnings/call-transcripts/2025/11/03/upwork-upwk-q3-2025-earnings-call-transcript/",
+    "published_date": "2025-11-03"
+  },
+  "attempts": [
+    {
+      "url": "https://finance.yahoo.com/quote/UPWK/earnings/UPWK-Q3-2025-earnings_call-371563.html",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.fool.com/earnings/call-transcripts/2025/11/03/upwork-upwk-q3-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 47081,
+      "published_date": "2025-11-03",
+      "message": null
+    },
+    {
+      "url": "https://www.msn.com/en-us/money/companies/upwork-inc-nasdaq-upwk-q3-2025-earnings-call-transcript/ar-AA1PRjG6",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-upwork-beats-q3-2025-forecasts-stock-rises-93CH-4328887",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4837195-upwork-inc-upwk-q3-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
+}
