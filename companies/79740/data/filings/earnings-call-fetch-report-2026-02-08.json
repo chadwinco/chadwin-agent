@@ -1,18 +1,22 @@
 {
-  "query": "Nintendo Co., Ltd. earnings call transcript",
-  "manual_url": null,
+  "query": "Nintendo official IR documents",
+  "manual_url": "https://www.nintendo.co.jp/ir/pdf/2026/260204e.pdf",
   "candidate_urls": [
-    "https://finance.yahoo.com/quote/7974.T/earnings-calls/"
+    "https://www.nintendo.co.jp/ir/pdf/2026/260204e.pdf"
   ],
-  "selected_transcript": null,
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/earnings-call-2026-02-03-nintendo-co-jp.md",
+    "source_url": "https://www.nintendo.co.jp/ir/pdf/2026/260204e.pdf",
+    "published_date": "2026-02-03"
+  },
   "attempts": [
     {
-      "url": "https://finance.yahoo.com/quote/7974.T/earnings-calls/",
-      "status": "http_error",
-      "http_status": 404,
+      "url": "https://www.nintendo.co.jp/ir/pdf/2026/260204e.pdf",
+      "status": "success",
+      "http_status": 200,
       "body_length": 0,
-      "published_date": null,
-      "message": "HTTP Error 404: Not Found"
+      "published_date": "2026-02-03",
+      "message": "Nintendo official IR feed"
     }
   ]
 }

@@ -8,7 +8,8 @@ description: Fetch Japanese listed company data (profile, annual statements, tra
 ## Overview
 Fetch Japanese company profile data and annual financial statements into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
-Primary source is Yahoo Finance (`yfinance`) for Japan tickers (for example `7974.T`).
+Primary market/profile source is Yahoo Finance (`yfinance`) for Japan tickers (for example `7974.T`).
+For Nintendo, this skill also pulls official IR PDFs from Nintendo's own website feed and extracts local markdown files.
 
 ## Skill Path (set once)
 Repo-local:
@@ -73,12 +74,15 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `companies/<TICKER>/data/source-metadata.json`
+- `companies/<TICKER>/data/filings/official-ir-fetch-report-<YYYY-MM-DD>.json` (Nintendo)
+- `companies/<TICKER>/data/filings/ir-document-<YYYY-MM-DD>-*.md` (Nintendo)
+- `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-nintendo-co-jp.md` (Nintendo Q&A)
 - `companies/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Current Limits
 - This skill currently does not pull Japanese statutory filings from EDINET yet.
-- Earnings call transcripts are best-effort and may be unavailable for some issuers.
+- Official IR PDF extraction is currently implemented for Nintendo as the first high-quality path; other issuers currently use generic transcript discovery only.
 
 ## Related References
 - `references/python-setup.md`

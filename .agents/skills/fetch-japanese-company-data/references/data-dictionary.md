@@ -10,6 +10,7 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 
 ## Optional Files
 - `filings/` (earnings call transcript markdown + fetch report)
+- `filings/official-ir-fetch-report-<YYYY-MM-DD>.json` and `filings/ir-document-*.md` (official company IR document captures; Nintendo path available)
 - `analyst_estimates.csv` (if another process populates analyst forecasts)
 
 ### `company_profile.csv`
@@ -29,6 +30,7 @@ Each annual statement CSV is stored in wide format with:
 - Fiscal period columns: `YYYY-MM-DD`
 
 Concept and label mappings are normalized to the same schema used by the US fetch flow so downstream loaders can compute metrics consistently.
+Rows include both required mapped metrics and additional source rows to preserve available financial detail.
 
 ## Normalized Annual Frames (Pipeline Internal)
 The loader derives normalized annual frames from `financial_statements/annual/*.csv` with these columns:

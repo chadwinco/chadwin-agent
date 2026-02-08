@@ -434,13 +434,31 @@ def _values_from_series(series, date_columns: list[tuple[object, str]]) -> list:
     return values
 
 
-def _build_statement_frame(raw_df, specs: list[StatementSpec]):
+def _iter_source_rows(raw_df):
+    pd = _require_pandas()
+    if raw_df is None or getattr(raw_df, "empty", True):
+        return
+
+    for idx in range(len(raw_df)):
+        label = str(raw_df.index[idx]).strip()
+        if not label:
+            continue
+        row = raw_df.iloc[idx]
+        if isinstance(row, pd.DataFrame):
+            if row.empty:
+                continue
+            row = row.iloc[0]
+        yield label, row
+
+
+def _build_statement_frame(raw_df, specs: list[StatementSpec], include_all_rows: bool = True):
     pd = _require_pandas()
     date_columns = _extract_date_columns(raw_df)
     if not date_columns:
         return pd.DataFrame()
 
     records = []
+    seen_labels = set()
     for spec in specs:
         series = _find_series(raw_df, spec.aliases)
         values = _values_from_series(series, date_columns)
@@ -454,6 +472,28 @@ def _build_statement_frame(raw_df, specs: list[StatementSpec]):
         for (_, iso_column), value in zip(date_columns, values):
             row[iso_column] = value
         records.append(row)
+        seen_labels.add(_normalize_metric_name(spec.label))
+        for alias in spec.aliases:
+            seen_labels.add(_normalize_metric_name(alias))
+
+    if include_all_rows:
+        for label, series in _iter_source_rows(raw_df):
+            normalized_label = _normalize_metric_name(label)
+            if not normalized_label or normalized_label in seen_labels:
+                continue
+
+            values = _values_from_series(series, date_columns)
+            if not any((value is not None) and (not pd.isna(value)) for value in values):
+                continue
+
+            row = {
+                "concept": f"yahoo_{normalized_label}",
+                "label": label,
+            }
+            for (_, iso_column), value in zip(date_columns, values):
+                row[iso_column] = value
+            records.append(row)
+            seen_labels.add(normalized_label)
 
     ordered_columns = ["concept", "label"] + [iso for _, iso in date_columns]
     statement_df = pd.DataFrame(records, columns=ordered_columns)

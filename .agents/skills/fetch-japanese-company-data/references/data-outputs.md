@@ -11,6 +11,8 @@ The fetch step writes data under `companies/<TICKER>/data`.
 ## Optional outputs
 - `filings/earnings-call-<YYYY-MM-DD>-<source>.md`
 - `filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
+- `filings/official-ir-fetch-report-<YYYY-MM-DD>.json`
+- `filings/ir-document-<YYYY-MM-DD>-*.md`
 - `analyst_estimates.csv`
 
 ## Metadata output

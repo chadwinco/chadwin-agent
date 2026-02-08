@@ -11,6 +11,7 @@ from pathlib import Path
 from japan_fetch import fetch_japanese_company_data, resolve_japanese_identifier
 from loaders import load_company_data
 from metrics import compute_metrics
+from official_ir_fetch import fetch_nintendo_official_ir_documents
 from transcript_fetch import fetch_latest_transcript_with_report
 
 
@@ -189,37 +190,62 @@ def main() -> None:
             f"{ticker}; using conservative default valuation assumptions. ({exc})"
         )
 
-    print(f"Fetching latest earnings call transcript for {ticker}...")
-    report = fetch_latest_transcript_with_report(
-        ticker=ticker,
-        data_dir=data_dir,
-        company_name=company_name,
-        asof=args.asof,
-        transcript_url=args.transcript_url,
-        max_results=args.transcript_max_results,
-        min_body_chars=args.transcript_min_body_chars,
-    )
+    official_ir = None
+    # Nintendo provides a high-quality official IR feed with PDF links for earnings releases and Q&A.
+    if resolved.local_code == "7974":
+        print(f"Fetching official IR documents from Nintendo website for {ticker}...")
+        official_ir = fetch_nintendo_official_ir_documents(
+            data_dir=data_dir,
+            asof=args.asof,
+            max_documents=14,
+        )
+        try:
+            official_rel = official_ir.report_path.relative_to(base_dir)
+        except ValueError:
+            official_rel = official_ir.report_path
+        print(
+            f"Saved Nintendo official IR fetch report to {official_rel} "
+            f"({official_ir.documents_written} documents)"
+        )
+
     report_path = _transcript_report_path(data_dir, args.asof)
-    report_path.write_text(json.dumps(report.to_dict(), indent=2))
+    if official_ir and official_ir.transcript_path and official_ir.transcript_url:
+        report_path.write_text(json.dumps(official_ir.transcript_report_payload(), indent=2))
+        try:
+            transcript_rel = official_ir.transcript_path.relative_to(base_dir)
+        except ValueError:
+            transcript_rel = official_ir.transcript_path
+        print(f"Saved transcript to {transcript_rel} ({official_ir.transcript_url})")
+    else:
+        print(f"Fetching latest earnings call transcript for {ticker}...")
+        report = fetch_latest_transcript_with_report(
+            ticker=ticker,
+            data_dir=data_dir,
+            company_name=company_name,
+            asof=args.asof,
+            transcript_url=args.transcript_url,
+            max_results=args.transcript_max_results,
+            min_body_chars=args.transcript_min_body_chars,
+        )
+        report_path.write_text(json.dumps(report.to_dict(), indent=2))
+        transcript = report.transcript
+        if transcript:
+            try:
+                transcript_rel = transcript.path.relative_to(base_dir)
+            except ValueError:
+                transcript_rel = transcript.path
+            print(f"Saved transcript to {transcript_rel} ({transcript.source_url})")
+        else:
+            failed = [attempt.status for attempt in report.attempts if attempt.status != "success"]
+            if failed:
+                print(f"Transcript fetch failures: {_summarize_failures(failed)}")
+            print("No earnings call transcript found.")
 
     try:
         report_rel = report_path.relative_to(base_dir)
     except ValueError:
         report_rel = report_path
     print(f"Wrote transcript fetch report to {report_rel}")
-
-    transcript = report.transcript
-    if transcript:
-        try:
-            transcript_rel = transcript.path.relative_to(base_dir)
-        except ValueError:
-            transcript_rel = transcript.path
-        print(f"Saved transcript to {transcript_rel} ({transcript.source_url})")
-    else:
-        failed = [attempt.status for attempt in report.attempts if attempt.status != "success"]
-        if failed:
-            print(f"Transcript fetch failures: {_summarize_failures(failed)}")
-        print("No earnings call transcript found.")
 
     assumptions_path = _valuation_inputs_path(company_dir, args.asof)
     assumptions = _build_assumptions(metrics)
