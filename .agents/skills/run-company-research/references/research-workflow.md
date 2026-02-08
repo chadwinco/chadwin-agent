@@ -37,22 +37,32 @@ Drafting assets:
   - capital allocation behavior
   - growth drivers and risk factors
 - Extract key financial trends from annual statements:
-  - revenue CAGR (3-5 years)
-  - EBIT margin trend
-  - FCF margin trend
-  - leverage (net debt, net debt/EBITDA)
-  - ROIC proxy
+  - For most non-financial businesses:
+    - revenue CAGR (3-5 years)
+    - EBIT margin trend
+    - FCF margin trend
+    - leverage (net debt, net debt/EBITDA)
+    - ROIC proxy
+  - For financials (insurers, banks, brokers, asset managers):
+    - premium/fee or revenue growth trend
+    - operating profitability proxy (typically pre-tax or operating income margin)
+    - ROE trend and book value per share trend
+    - capital and liquidity sensitivity (RBC disclosures, ratings triggers, funding sources)
+    - debt-to-equity or other capital-structure measures (avoid net debt/EBITDA if not meaningful)
 - Track source file paths for every factual claim.
 
 ## Step 3: Build Valuation Inputs
 - Create `valuation/inputs.yaml` using `references/valuation-method.md`.
+- Choose a valuation model that matches business economics:
+  - `three-stage-dcf-fade` for businesses where FCF is decision-useful.
+  - `two-stage-residual-income` for financials where book value and ROE are more reliable anchors than FCF.
 - Keep assumptions explicit for base, bull, and bear.
 - Ensure base assumptions align with observed history.
-- Explicitly set and justify competitive-advantage period (`stage1_years`) and fade length.
+- For DCF runs, explicitly set and justify competitive-advantage period (`stage1_years`) and fade length.
 - If the company has durable advantages, do not default to a five-year horizon.
 
 ## Step 4: Compute Valuation Outputs
-- Compute scenario values with the DCF method in `references/valuation-method.md`.
+- Compute scenario values with the selected method in `references/valuation-method.md`.
 - Write results to `valuation/outputs.json`.
 
 ## Step 5: Draft the Report
@@ -79,16 +89,18 @@ Thesis quality:
 
 Financial quality:
 - [ ] Revenue trend is quantified (CAGR plus recent year-over-year change).
-- [ ] EBIT and FCF margin trends are quantified.
-- [ ] ROIC proxy and leverage are evaluated.
+- [ ] For non-financials: EBIT and FCF margin trends are quantified.
+- [ ] For financials: ROE/book-value trend and capital/liquidity sensitivity are quantified.
+- [ ] A returns metric (ROIC or ROE, depending on business model) and leverage/capital structure are evaluated.
 
 Valuation quality:
 - [ ] Base/bull/bear assumptions are explicit and defensible.
 - [ ] Assumptions are written to `valuation/inputs.yaml`.
 - [ ] Valuation outputs are written to `valuation/outputs.json`.
 - [ ] Margin of safety reconciles with current price and value per share.
-- [ ] Competitive-advantage period and fade assumptions are justified with filing evidence.
-- [ ] Terminal growth and terminal margin are explicit and economically plausible.
+- [ ] Valuation method matches business model economics (DCF vs. residual income).
+- [ ] If using DCF: competitive-advantage period/fade and terminal margin assumptions are explicit and justified.
+- [ ] If using residual income: ROE, cost of equity, payout, and terminal assumptions are explicit and justified.
 
 Output quality:
 - [ ] Report is concise (target: 500-900 words) and decision-oriented.

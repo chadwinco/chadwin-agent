@@ -1,0 +1,55 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
+Net Income,us-gaap_NetIncomeLoss,3275000000.0,-752000000.0,-2241000000.0,1405000000.0,499000000.0
+Realized (gain) loss,us-gaap_DebtAndEquitySecuritiesRealizedGainLoss,269000000.0,-4311000000.0,345000000.0,-212000000.0,-513000000.0
+Market risk benefit (gain) loss,us-gaap_MarketRiskBenefitChangeInFairValueGainLoss,2677000000.0,2264000000.0,,,
+"Sales and maturities (purchases) of trading securities, net",us-gaap_ProceedsFromPaymentsForTradingSecurities,343000000.0,1301000000.0,300000000.0,,
+Impairment of intangibles,us-gaap_GoodwillAndIntangibleAssetImpairment,0.0,0.0,634000000.0,,
+Net operating cash payments related to closing Fortitude Re reinsurance transaction,us-gaap_IncreaseDecreaseInPrepaidReinsurancePremiums,-0.0,-1438000000.0,,,
+"Deferred acquisition costs, value of business acquired, deferred ales inducements and deferred front-end loads",lnc_DeferredAcquisitionCostsValueOfBusinessAcquiredDeferredSalesInducementsAndDeferredFrontEndLoadsDeferralsAndInterestNetOfAmortization,689000000.0,637000000.0,,,
+Accrued investment income,us-gaap_IncreaseDecreaseInAccruedInvestmentIncomeReceivable,-39000000.0,4000000.0,-67000000.0,16000000.0,-84000000.0
+Insurance liabilities and reinsurance-related balances,lnc_ChangeInInsuranceLiabilitiesAndReinsuranceRelatedBalance,-3322000000.0,-3681000000.0,5958000000.0,-1954000000.0,-699000000.0
+Accrued expenses,us-gaap_IncreaseDecreaseInAccruedLiabilities,251000000.0,109000000.0,-89000000.0,389000000.0,-18000000.0
+Federal income tax accruals,us-gaap_IncreaseDecreaseInIncomeTaxes,747000000.0,-396000000.0,-535000000.0,232000000.0,-98000000.0
+Other,us-gaap_OtherNoncashIncomeExpense,0.0,0.0,-2000000.0,-60000000.0,-6000000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,-2007000000.0,-2074000000.0,4036000000.0,151000000.0,534000000.0
+Purchases of available-for-sale securities and equity securities,us-gaap_PaymentsToAcquireInvestments,-11442000000.0,-11131000000.0,-14813000000.0,-16893000000.0,-16761000000.0
+Sales of available-for-sale securities and equity securities,lnc_ProceedsFromSaleOfDebtSecuritiesAvailableForSaleAndEquitySecurities,1965000000.0,4013000000.0,2297000000.0,2268000000.0,1426000000.0
+"Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,9442000000.0,5670000000.0,5453000000.0,9621000000.0,5354000000.0
+Purchases of alternative investments,lnc_PaymentsToAcquireAlternativeInvestments,-1390000000.0,-630000000.0,-664000000.0,-757000000.0,-396000000.0
+Sales and repayments of alternative investments,lnc_ProceedsFromSaleAndRepaymentOfAlternativeInvestments,352000000.0,111000000.0,446000000.0,377000000.0,171000000.0
+Issuance of mortgage loans on real estate,lnc_IssuanceOfMortgageLoansOnRealEstate,-4146000000.0,-1946000000.0,-2507000000.0,-3084000000.0,-1800000000.0
+Repayment and maturities of mortgage loans on real estate,lnc_RepaymentAndMaturitiesOfMortgageLoansOnRealEstate,1673000000.0,1268000000.0,2255000000.0,1881000000.0,1154000000.0
+"Repayment (issuance) of policy loans, net",us-gaap_PaymentsForProceedsFromPolicyLoans,-0.0,-119000000.0,5000000.0,,
+"Net change in collateral on investments, certain derivatives and related settlements",lnc_NetChangeInCollateralOnInvestmentsDerivativesAndRelatedSettlements,4052000000.0,-260000000.0,,,
+"Cash received from disposition, net of cash transferred",us-gaap_ProceedsFromDivestitureOfBusinessesNetOfCashDivested,619000000.0,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,821000000.0,-3334000000.0,-11646000000.0,-3567000000.0,-9481000000.0
+"Payment of long-term debt, including current maturities",us-gaap_RepaymentsOfLongTermDebt,-100000000.0,-500000000.0,-300000000.0,,-1096000000.0
+Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,346000000.0,0.0,296000000.0,,1289000000.0
+Payment related to sale-leaseback transactions,lnc_PaymentsOfSaleLeasebackTransactions,-17000000.0,-79000000.0,-70000000.0,-59000000.0,-47000000.0
+Proceeds from certain financing arrangements,lnc_ProceedsFromFinancingLeasesAndOtherFinancingActivities,53000000.0,86000000.0,186000000.0,159000000.0,109000000.0
+Payment related to certain financing arrangements,lnc_PaymentsForFinancingLeasesAndOtherFinancingActivities,-137000000.0,-49000000.0,,,
+Net financing cash proceeds related to closing Fortitude Re reinsurance transaction,lnc_ProceedsFromReinsuranceAgreementsFinancingActivities,0.0,1246000000.0,,,
+Deposits of fixed account balances,lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,16060000000.0,16404000000.0,,,
+Withdrawals of fixed account balances,lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,-12153000000.0,-10660000000.0,,,
+"Transfers from (to) separate accounts, net",lnc_TransfersToAndFromSeparateAccountsNet,-27000000.0,-624000000.0,-195000000.0,,
+Common stock issued for benefit plans,lnc_CommonStockIssuedForBenefitPlans,-5000000.0,-7000000.0,-16000000.0,20000000.0,-7000000.0
+"Issuance of preferred stock, net of issuance costs",us-gaap_ProceedsFromIssuanceOfPreferredStockAndPreferenceStock,0.0,0.0,986000000.0,,
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-0.0,-0.0,-550000000.0,-1105000000.0,-275000000.0
+Dividends paid to preferred stockholders,us-gaap_PaymentsOfDividendsPreferredStockAndPreferenceStock,-91000000.0,-82000000.0,,,
+Dividends paid to common stockholders,us-gaap_PaymentsOfDividendsCommonStock,-307000000.0,-305000000.0,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,3622000000.0,5430000000.0,8341000000.0,4320000000.0,8092000000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,2436000000.0,22000000.0,,,
+"Net change in collateral on investments, derivatives and related settlements",lnc_NetChangeInCollateralOnInvestmentsDerivativesAndRelatedSettlements,,,-4070000000.0,3261000000.0,1474000000.0
+Payment related to modification or early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,-0.0,,-8000000.0,
+"Withdrawals of fixed account values, including the fixed portion of variable",lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,-6913000000.0,-6607000000.0,-6113000000.0
+"Deposits of fixed account values, including the fixed portion of variable",lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,15229000000.0,12639000000.0,14034000000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,,,-310000000.0,-319000000.0,-311000000.0
+"Net increase (decrease) in cash, invested cash and restricted cash",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,,,731000000.0,904000000.0,-855000000.0
+"Trading securities purchases, sales and maturities, net",us-gaap_ProceedsFromPaymentsForTradingSecurities,,,,-108000000.0,266000000.0
+"Issuance (repayment) of policy loans, net",us-gaap_PaymentsForProceedsFromPolicyLoans,,,,62000000.0,50000000.0
+Payment related to early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,,,,-13000000.0
+"Transfers to and from separate accounts, net",lnc_TransfersToAndFromSeparateAccountsNet,,,,-340000000.0,528000000.0
+Amortization of deferred gain (loss) on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,-38000000.0,,,
+Amortization of deferred gain on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,-42000000.0,-46000000.0,-41000000.0
+"Deferred acquisition costs, value of business acquired, deferred sales inducements and deferred front-end loads deferrals and interest, net of amortization",lnc_DeferredAcquisitionCostsValueOfBusinessAcquiredDeferredSalesInducementsAndDeferredFrontEndLoadsDeferralsAndInterestNetOfAmortization,,,118000000.0,315000000.0,48000000.0
+Premiums and fees receivable,us-gaap_IncreaseDecreaseInPremiumsReceivable,,,-54000000.0,-93000000.0,-21000000.0

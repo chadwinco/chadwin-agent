@@ -1,0 +1,132 @@
+{
+  "ticker": "LNC",
+  "asof_date": "2026-02-08",
+  "currency": "USD",
+  "price": 40.31,
+  "method": "two-stage-residual-income",
+  "scenarios": {
+    "base": {
+      "equity_value": 8012641168.150119,
+      "value_per_share": 42.16573961986048,
+      "margin_of_safety": 0.046036706024819685,
+      "book_value_per_share_start": 55.002626631853786,
+      "book_value_per_share_end_stage1": 77.14402917555245,
+      "pv_residual_income_stage1": -648545400.7353925,
+      "pv_continuing_value": -1790813431.1144893,
+      "yearly_projection": [
+        {
+          "year": 1,
+          "opening_book_value": 10452000000.0,
+          "residual_income": -156780000.0,
+          "pv_residual_income": -140609865.47085202
+        },
+        {
+          "year": 2,
+          "opening_book_value": 11183640000.0,
+          "residual_income": -167754600.0,
+          "pv_residual_income": -134935027.85095215
+        },
+        {
+          "year": 3,
+          "opening_book_value": 11966494800.0,
+          "residual_income": -179497422.0,
+          "pv_residual_income": -129489219.5520348
+        },
+        {
+          "year": 4,
+          "opening_book_value": 12804149436.0,
+          "residual_income": -192062241.54,
+          "pv_residual_income": -124263197.23827556
+        },
+        {
+          "year": 5,
+          "opening_book_value": 13700439896.52,
+          "residual_income": -205506598.4478,
+          "pv_residual_income": -119248090.62327789
+        }
+      ]
+    },
+    "bull": {
+      "equity_value": 11876739045.221567,
+      "value_per_share": 62.50017635938399,
+      "margin_of_safety": 0.5504881260080374,
+      "book_value_per_share_start": 55.002626631853786,
+      "book_value_per_share_end_stage1": 92.24491122082813,
+      "pv_residual_income_stage1": 822921648.2363377,
+      "pv_continuing_value": 601817396.9852296,
+      "yearly_projection": [
+        {
+          "year": 1,
+          "opening_book_value": 10452000000.0,
+          "residual_income": 156780000.0,
+          "pv_residual_income": 141882352.94117647
+        },
+        {
+          "year": 2,
+          "opening_book_value": 11392680000.0,
+          "residual_income": 170890200.0,
+          "pv_residual_income": 139956348.15011978
+        },
+        {
+          "year": 3,
+          "opening_book_value": 12418021200.0,
+          "residual_income": 186270318.0,
+          "pv_residual_income": 138056488.22048014
+        },
+        {
+          "year": 4,
+          "opening_book_value": 13535643108.0,
+          "residual_income": 203034646.62,
+          "pv_residual_income": 136182418.24463654
+        },
+        {
+          "year": 5,
+          "opening_book_value": 14753850987.72,
+          "residual_income": 221307764.81579998,
+          "pv_residual_income": 134333788.13271838
+        },
+        {
+          "year": 6,
+          "opening_book_value": 16081697576.6148,
+          "residual_income": 241225463.649222,
+          "pv_residual_income": 132510252.54720637
+        }
+      ]
+    },
+    "bear": {
+      "equity_value": 5599562359.351953,
+      "value_per_share": 29.467148656067522,
+      "margin_of_safety": -0.26898663716031956,
+      "book_value_per_share_start": 55.002626631853786,
+      "book_value_per_share_end_stage1": 65.59165534171764,
+      "pv_residual_income_stage1": -1669161591.3496113,
+      "pv_continuing_value": -3183276049.298436,
+      "yearly_projection": [
+        {
+          "year": 1,
+          "opening_book_value": 10452000000.0,
+          "residual_income": -522600000.0,
+          "pv_residual_income": -464533333.3333333
+        },
+        {
+          "year": 2,
+          "opening_book_value": 10922340000.0,
+          "residual_income": -546117000.0,
+          "pv_residual_income": -431499851.8518519
+        },
+        {
+          "year": 3,
+          "opening_book_value": 11413845300.0,
+          "residual_income": -570692265.0,
+          "pv_residual_income": -400815417.9423868
+        },
+        {
+          "year": 4,
+          "opening_book_value": 11927468338.5,
+          "residual_income": -596373416.9250001,
+          "pv_residual_income": -372312988.22203934
+        }
+      ]
+    }
+  }
+}

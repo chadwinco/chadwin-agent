@@ -1,15 +1,31 @@
-# Valuation Method (Scenario DCF with Competitive-Advantage Fade)
+# Valuation Method (Scenario-Based, Business-Model Aware)
 
-Use a three-stage DCF for base/bull/bear scenarios so durable businesses are not forced into a "five years then inflation" shape.
+Use one of two methods depending on business economics:
 
-## Model Structure
+1. `three-stage-dcf-fade`
+   - Use for non-financial companies where free cash flow is decision-useful.
+2. `two-stage-residual-income`
+   - Use for insurers, banks, and other financials where book value, ROE, and capital constraints are more informative than FCF.
+
+## Model Selection Rules
+- Prefer `three-stage-dcf-fade` when revenue and FCF margins are stable enough to forecast.
+- Prefer `two-stage-residual-income` when:
+  - balance-sheet leverage is structural to the business model;
+  - statutory/regulatory capital constraints drive value; and
+  - reported operating cash flow is noisy as a valuation anchor.
+
+---
+
+## Model A: Three-Stage DCF with Competitive-Advantage Fade
+
+### Model Structure
 1. Stage 1 (competitive-advantage period): explicit growth and FCF margin for `stage1_years`.
 2. Stage 2 (fade): linearly converge growth and margin to terminal levels over `fade_years`.
 3. Terminal stage: steady-state perpetuity.
 
-## Inputs Required
+### Inputs Required
 From local files:
-- `revenue_0`: latest reliable annual revenue (if a more recent annual figure is only in a filing, cite it explicitly in `notes`)
+- `revenue_0`: latest reliable annual revenue
 - `net_debt`: latest net debt (`totalDebt - cashAndCashEquivalents`, or `netDebt` if present)
 - `diluted_shares`: latest `weightedAverageShsOutDil` (fallback `weightedAverageShsOut`)
 - `current_price`: `company_profile.csv` `price`
@@ -23,7 +39,7 @@ Per scenario:
 - `stage1_years`
 - `fade_years`
 
-## Formulas
+### Formulas
 For Stage 1 (`t = 1..stage1_years`):
 - `revenue_t = revenue_(t-1) * (1 + g_stage1)`
 - `fcf_t = revenue_t * margin_stage1`
@@ -47,15 +63,62 @@ Scenario outputs:
 - `value_per_share = equity_value / diluted_shares`
 - `margin_of_safety = (value_per_share / current_price) - 1`
 
-## Guardrails
+### Guardrails
 - `discount_rate` must be greater than `terminal_growth`.
 - Use one unit system across all inputs (do not mix dollars and millions).
 - If `net_debt` is negative, treat it as net cash (subtracting a negative increases equity value).
 - Do not default `stage1_years` to 5 for durable businesses; typically use 8-15 years when evidence supports persistence.
-- `terminal_growth` should represent stable long-run growth and be explicitly justified (not auto-set to inflation).
+
+---
+
+## Model B: Two-Stage Residual Income (Financials / Insurers)
+
+Residual income values equity directly from current book value plus discounted future excess returns.
+
+### Inputs Required
+From local files:
+- `common_equity_0`: latest common equity (or stockholders' equity if common-equity split is unavailable)
+- `shares_outstanding`: current diluted/common share count proxy used for per-share conversion
+- `current_price`: `company_profile.csv` `price`
+
+Per scenario:
+- `roe_stage1`
+- `payout_ratio`
+- `cost_of_equity`
+- `terminal_roe`
+- `terminal_growth`
+- `stage1_years`
+
+### Formulas
+At `t = 1..stage1_years`:
+- `net_income_t = roe_stage1 * book_value_(t-1)`
+- `dividends_t = payout_ratio * net_income_t`
+- `book_value_t = book_value_(t-1) + net_income_t - dividends_t`
+- `residual_income_t = (roe_stage1 - cost_of_equity) * book_value_(t-1)`
+- `pv_residual_income_t = residual_income_t / (1 + cost_of_equity)^t`
+
+Terminal residual income:
+- `residual_income_(n+1) = (terminal_roe - cost_of_equity) * book_value_n`
+- `continuing_value_n = residual_income_(n+1) / (cost_of_equity - terminal_growth)`
+- `pv_continuing_value = continuing_value_n / (1 + cost_of_equity)^n`
+
+Scenario outputs:
+- `equity_value = common_equity_0 + sum(pv_residual_income) + pv_continuing_value`
+- `value_per_share = equity_value / shares_outstanding`
+- `margin_of_safety = (value_per_share / current_price) - 1`
+
+### Guardrails
+- `cost_of_equity` must be greater than `terminal_growth`.
+- `payout_ratio` should be in `[0, 1]`.
+- Keep `roe_stage1`, `terminal_roe`, and `cost_of_equity` in decimal form (for example `0.10` for 10%).
+- Use a share-count denominator consistent with the price source date.
+- Enterprise value is not the primary decision metric for this model.
+
+---
 
 ## Write `valuation/inputs.yaml`
-Include all assumptions used:
+
+For DCF:
 
 ```yaml
 asof_date: YYYY-MM-DD
@@ -64,7 +127,7 @@ price: 123.45
 model:
   type: three-stage-dcf-fade
 base_year:
-  year: YYYY-MM-DD
+  period_end: YYYY-MM-DD
   revenue: 0
   net_debt: 0
   diluted_shares: 0
@@ -77,25 +140,32 @@ scenarios:
     fcf_margin_terminal: 0.16
     stage1_years: 10
     fade_years: 5
-  bull:
-    revenue_growth_stage1: 0.13
-    fcf_margin_stage1: 0.24
-    discount_rate: 0.08
-    terminal_growth: 0.035
-    fcf_margin_terminal: 0.19
-    stage1_years: 12
-    fade_years: 5
-  bear:
-    revenue_growth_stage1: 0.06
-    fcf_margin_stage1: 0.14
-    discount_rate: 0.10
+```
+
+For residual income:
+
+```yaml
+asof_date: YYYY-MM-DD
+currency: USD
+price: 123.45
+model:
+  type: two-stage-residual-income
+base_year:
+  period_end: YYYY-MM-DD
+  common_equity: 0
+  shares_outstanding: 0
+scenarios:
+  base:
+    roe_stage1: 0.10
+    payout_ratio: 0.30
+    cost_of_equity: 0.115
+    terminal_roe: 0.095
     terminal_growth: 0.02
-    fcf_margin_terminal: 0.12
-    stage1_years: 8
-    fade_years: 5
+    stage1_years: 5
 ```
 
 ## Write `valuation/outputs.json`
+
 Minimum schema:
 
 ```json
@@ -104,10 +174,9 @@ Minimum schema:
   "asof_date": "YYYY-MM-DD",
   "currency": "USD",
   "price": 123.45,
-  "method": "three-stage-dcf-fade",
+  "method": "three-stage-dcf-fade or two-stage-residual-income",
   "scenarios": {
     "base": {
-      "enterprise_value": 0,
       "equity_value": 0,
       "value_per_share": 0,
       "margin_of_safety": 0
@@ -118,11 +187,13 @@ Minimum schema:
 }
 ```
 
+For DCF runs, include `enterprise_value` in each scenario.
+
 ## Sanity Checks
 - Base value should usually be between bull and bear.
-- If results look nonsensical, verify:
+- Recalculate one scenario manually to check arithmetic.
+- If outputs look nonsensical, verify:
   - units
-  - net debt sign
   - share count denominator
-  - stage-1 duration versus competitive evidence
-  - implied terminal economics (growth and margin) versus business maturity
+  - price date alignment
+  - model choice versus business economics

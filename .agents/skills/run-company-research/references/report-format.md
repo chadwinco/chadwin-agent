@@ -22,20 +22,20 @@ _As of {YYYY-MM-DD}_
 ## Financial Quality
 | Metric | Latest | 3-5Y Trend | Comment |
 | --- | --- | --- | --- |
-| Revenue growth | | | |
-| EBIT margin | | | |
-| FCF margin | | | |
-| ROIC (proxy) | | | |
-| Net debt / EBITDA | | | |
+| Revenue / premium / fee growth | | | |
+| Operating profitability (EBIT or pre-tax margin) | | | |
+| Cash generation (FCF or operating-cash proxy) | | | |
+| Returns metric (ROIC or ROE proxy) | | | |
+| Leverage / capital adequacy | | | |
 
 ## Valuation
-| Scenario | Revenue CAGR | FCF Margin | Discount Rate | Terminal Growth | Value/Share | MOS vs Price |
-| --- | --- | --- | --- | --- | --- | --- |
-| Base | | | | | | |
-| Bull | | | | | | |
-| Bear | | | | | | |
+| Scenario | Core Assumptions | Discount / Cost of Equity | Terminal Assumption | Value/Share | MOS vs Price |
+| --- | --- | --- | --- | --- | --- |
+| Base | | | | | |
+| Bull | | | | | |
+| Bear | | | | | |
 
-One short paragraph on what must happen for bull case and what drives bear case.
+One short paragraph on what must happen for bull case and what drives bear case. If using DCF, call out growth/margin durability and fade. If using residual income, call out ROE sustainability versus cost of equity and capital constraints.
 
 ## Key Risks and Disconfirming Signals
 List top 3-5 risks by impact on cash generation.

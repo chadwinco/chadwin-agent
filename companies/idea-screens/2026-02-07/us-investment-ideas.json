@@ -21,63 +21,6 @@
   },
   "ideas": [
     {
-      "ticker": "BYD",
-      "company": "Boyd Gaming Corp",
-      "exchange": "NYSE",
-      "score": 94.88,
-      "thesis": "Possible value-quality setup: trades near 3.7x P/E (forward 10.2x) while generating ROE 87.2%, ROIC 36.0%, operating margin 21.4% and Debt/Equity 0.79.",
-      "metrics": {
-        "market_cap_usd": 6500000000,
-        "pe": 3.66,
-        "forward_pe": 10.16,
-        "price_to_book": 2.46,
-        "roe_pct": 87.17,
-        "roic_pct": 35.95,
-        "operating_margin_pct": 21.43,
-        "profit_margin_pct": 45.05,
-        "debt_to_equity": 0.79,
-        "eps_next_5y_pct": 12.51
-      }
-    },
-    {
-      "ticker": "CALM",
-      "company": "Cal-Maine Foods, Inc",
-      "exchange": "NASDAQ",
-      "score": 87.25,
-      "thesis": "Possible value-quality setup: trades near 3.5x P/E (forward 18.4x) while generating ROE 48.7%, ROIC 42.8%, operating margin 34.4% and Debt/Equity 0.00.",
-      "metrics": {
-        "market_cap_usd": 3930000000,
-        "pe": 3.49,
-        "forward_pe": 18.41,
-        "price_to_book": 1.46,
-        "roe_pct": 48.69,
-        "roic_pct": 42.84,
-        "operating_margin_pct": 34.4,
-        "profit_margin_pct": 27.37,
-        "debt_to_equity": 0.0,
-        "eps_next_5y_pct": null
-      }
-    },
-    {
-      "ticker": "LNC",
-      "company": "Lincoln National Corp",
-      "exchange": "NYSE",
-      "score": 86.31,
-      "thesis": "Possible value-quality setup: trades near 3.6x P/E (forward 5.0x) while generating ROE 21.7%, ROIC 12.4%, operating margin 13.9% and Debt/Equity 0.55.",
-      "metrics": {
-        "market_cap_usd": 7660000000,
-        "pe": 3.62,
-        "forward_pe": 5.0,
-        "price_to_book": 0.81,
-        "roe_pct": 21.66,
-        "roic_pct": 12.44,
-        "operating_margin_pct": 13.9,
-        "profit_margin_pct": 10.19,
-        "debt_to_equity": 0.55,
-        "eps_next_5y_pct": 7.35
-      }
-    },
-    {
       "ticker": "ALL",
       "company": "Allstate Corp",
       "exchange": "NYSE",

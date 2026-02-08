@@ -1,0 +1,9 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Profit or Loss,us-gaap_ProfitLoss,1438836000.0,150354000.0,110882000.0,,,,,,,,,
+Fair value adjustments to available-for-sale securities,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,292000.0,-211000.0,411000.0,504000.0,-394000.0,250000.0,-119000.0,112000.0,474000.0,-151000.0,-619000.0,-184000.0
+Foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-125000.0,249000.0,15000.0,159000.0,-138000.0,-318000.0,-254000.0,196000.0,4000.0,,,
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,1439003000.0,150392000.0,111308000.0,131791000.0,139313000.0,136405000.0,134860000.0,192762000.0,200209000.0,156851000.0,146144000.0,162744000.0
+Net Income,us-gaap_NetIncomeLoss,,,,131128000.0,139845000.0,136473000.0,135233000.0,192454000.0,199731000.0,157002000.0,146763000.0,162928000.0
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,1157000.0,1104000.0,537000.0,,,,,,,,,
+Comprehensive loss attributable to noncontrolling interest,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,1157000.0,1104000.0,537000.0,,,,,,,,,
+Comprehensive income attributable to Boyd Gaming,us-gaap_ComprehensiveIncomeNetOfTax,1440160000.0,151496000.0,111845000.0,,,,,,,,,
