@@ -3,6 +3,12 @@
 ## Objective
 Generate a concise investment write-up and a scenario valuation from local company data.
 
+## Execution Mode (Read First)
+- This workflow is intentionally LLM-first and non-scripted.
+- Do not treat this as a one-command pipeline.
+- Use shell/Python snippets only as helpers for extraction or arithmetic.
+- Completion requires writing all required outputs and passing Step 6 quality gates.
+
 ## Inputs
 Primary local inputs:
 - `companies/<TICKER>/data/company_profile.csv`
@@ -77,6 +83,7 @@ Scope and data:
 - [ ] Ticker and as-of date are explicit.
 - [ ] Required local files exist and load without errors.
 - [ ] Latest filing/transcript evidence used is dated on or before the as-of date.
+- [ ] Workflow was executed as an LLM task, not delegated to a deterministic end-to-end script.
 
 Evidence discipline:
 - [ ] No verbatim copying from filings or transcripts.

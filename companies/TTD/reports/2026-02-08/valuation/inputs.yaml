@@ -1,0 +1,41 @@
+asof_date: 2026-02-08
+ticker: TTD
+currency: USD
+price: 27.04
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2024-12-31
+  revenue: 2444831000.0
+  net_debt: -1921489000.0
+  diluted_shares: 501924000.0
+notes: |
+  Revenue and diluted shares are from FY2024 annual financial statements.
+  Net debt is treated as net cash using cash and cash equivalents plus short-term investments.
+  The normalized annual balance sheet export does not present a separate debt line,
+  and filings indicate no outstanding balance on the revolving credit facility at period end.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.10
+    fcf_margin_stage1: 0.23
+    discount_rate: 0.095
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.18
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.12
+    fcf_margin_stage1: 0.25
+    discount_rate: 0.09
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.20
+    stage1_years: 10
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.06
+    fcf_margin_stage1: 0.19
+    discount_rate: 0.105
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.15
+    stage1_years: 8
+    fade_years: 5
