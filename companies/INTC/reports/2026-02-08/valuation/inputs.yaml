@@ -1,0 +1,40 @@
+asof_date: 2026-02-08
+ticker: INTC
+currency: USD
+price: 50.59
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2025-12-27
+  revenue: 52853000000.0
+  net_debt: 9169000000.0
+  diluted_shares: 4530000000.0
+notes: |
+  Revenue and diluted shares are from FY2025 annual statements.
+  Net debt is calculated as total debt less cash and current marketable securities
+  from the FY2025 balance sheet to reflect near-cash liquidity available for funding.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.03
+    fcf_margin_stage1: 0.1
+    discount_rate: 0.1025
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.12
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.07
+    fcf_margin_stage1: 0.18
+    discount_rate: 0.09
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.18
+    stage1_years: 12
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.01
+    fcf_margin_stage1: 0.05
+    discount_rate: 0.1125
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.08
+    stage1_years: 8
+    fade_years: 5
