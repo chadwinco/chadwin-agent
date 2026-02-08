@@ -13,7 +13,7 @@ source /Users/chad/source/chadwin-codex/.venv/bin/activate
 python -m pip install -r /Users/chad/source/chadwin-codex/requirements.txt
 ```
 
-## SEC Identity (Required for EDGAR Fetching)
+## SEC Identity (Required for US / EDGAR Fetching)
 Create a `.env` file in the repo root with your EDGAR identity (name + email):
 ```
 EDGAR_IDENTITY="Your Name your.email@example.com"
@@ -23,7 +23,8 @@ If you already use `SEC_IDENTITY_EMAIL`, it will be accepted as a fallback.
 
 ## Run Workflow
 ```
-python /Users/chad/source/chadwin-codex/.agents/skills/fetch-company-data/scripts/add_company.py --ticker PEP --asof 2026-02-06
+python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --ticker PEP --asof 2026-02-06
+python /Users/chad/source/chadwin-codex/.agents/skills/fetch-japanese-company-data/scripts/add_company.py --ticker 79740 --asof 2026-02-08
 ```
 
 Research generation is LLM-first via `$run-company-research`.

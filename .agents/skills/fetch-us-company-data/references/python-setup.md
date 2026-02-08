@@ -1,4 +1,4 @@
-# Python Setup (Fetch Company Data)
+# Python Setup (Fetch US Company Data)
 
 Use a local virtual environment in the repository root (`.venv/`).
 

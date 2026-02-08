@@ -1,0 +1,19 @@
+forecast_years: 5
+notes: Auto-generated from Yahoo Finance annual statements and recent financial averages.
+  Review and adjust before making decisions.
+scenarios:
+  base:
+    revenue_growth: -0.03
+    fcf_margin: 0.15372218235140164
+    discount_rate: 0.1
+    terminal_growth: 0.02
+  bull:
+    revenue_growth: -0.009999999999999998
+    fcf_margin: 0.17372218235140163
+    discount_rate: 0.09
+    terminal_growth: 0.025
+  bear:
+    revenue_growth: -0.05
+    fcf_margin: 0.12
+    discount_rate: 0.11
+    terminal_growth: 0.015

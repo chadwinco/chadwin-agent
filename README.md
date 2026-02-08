@@ -10,13 +10,14 @@ For a given ticker, it:
 The main goal is repeatable, evidence-backed analysis with clear assumptions and traceable artifacts.
 
 ## How Work Is Organized
-The workflow is split into two skills:
-- Data fetch/bootstrap: `.agents/skills/fetch-company-data/SKILL.md`
+The workflow is split into fetch skills by market plus one research skill:
+- US data fetch/bootstrap: `.agents/skills/fetch-us-company-data/SKILL.md`
+- Japan data fetch/bootstrap: `.agents/skills/fetch-japanese-company-data/SKILL.md`
 - Research + valuation write-up: `.agents/skills/run-company-research/SKILL.md`
 
-Use them in that order:
-1. `$fetch-company-data`
-2. `$run-company-research`
+Use them in this order:
+1. Run the country-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`)
+2. Run `$run-company-research`
 
 ## Repository Structure
 - `companies/<TICKER>/data/`
@@ -26,7 +27,7 @@ Use them in that order:
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/`
   - Assumptions and computed valuation outputs.
 - `docs/`
-  - Setup and process-level notes.
+- Setup and process-level notes.
 - `tests/`
   - Manual validation scenarios.
 - `.agents/skills/`
@@ -57,8 +58,10 @@ Authoritative method details live in:
 ## Setup and Operational References
 - Python/venv setup: `docs/python-setup.md`
 - Fetch outputs and data definitions:
-  - `.agents/skills/fetch-company-data/references/data-outputs.md`
-  - `.agents/skills/fetch-company-data/references/data-dictionary.md`
+  - `.agents/skills/fetch-us-company-data/references/data-outputs.md`
+  - `.agents/skills/fetch-us-company-data/references/data-dictionary.md`
+  - `.agents/skills/fetch-japanese-company-data/references/data-outputs.md`
+  - `.agents/skills/fetch-japanese-company-data/references/data-dictionary.md`
 - Research workflow and quality gate:
   - `.agents/skills/run-company-research/references/research-workflow.md`
   - `.agents/skills/run-company-research/references/report-format.md`

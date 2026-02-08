@@ -4,3 +4,4 @@ edgartools>=4.6.3
 hishel<1.0.0
 python-dotenv>=1.0.0
 beautifulsoup4>=4.12
+yfinance>=0.2.66

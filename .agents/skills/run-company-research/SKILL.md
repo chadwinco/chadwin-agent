@@ -1,6 +1,6 @@
 ---
 name: run-company-research
-description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/TICKER/data`. Use after `$fetch-company-data` when creating or refreshing `companies/TICKER/reports/<DATE>/report.md` and valuation files.
+description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/TICKER/data`. Use after running the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`) when creating or refreshing `companies/TICKER/reports/<DATE>/report.md` and valuation files.
 ---
 
 # Run Company Research
@@ -14,7 +14,7 @@ Do not use a deterministic end-to-end analysis script for this skill.
 
 ## Quick Start
 1. Confirm ticker and as-of date with the user.
-2. Ensure `companies/<TICKER>/data` is populated. If not, run `$fetch-company-data` first.
+2. Ensure `companies/<TICKER>/data` is populated. If not, run the appropriate fetch skill first (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 3. Create the output directory from the repo root:
 
 ```bash
@@ -40,7 +40,7 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 - Every factual claim needs a local file citation.
 
 ## Troubleshooting
-- If required data is missing, run `$fetch-company-data` for that ticker/date.
+- If required data is missing, run the appropriate fetch skill for that ticker/date (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 - If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
 - If the write-up is weak, rerun the Step 6 quality gate in `references/research-workflow.md` and fix every unchecked item.
 

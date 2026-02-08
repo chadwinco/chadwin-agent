@@ -1,9 +1,9 @@
 ---
-name: fetch-company-data
-description: Fetch EDGAR filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a new ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
+name: fetch-us-company-data
+description: Fetch US/SEC-available filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a US ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
 ---
 
-# Fetch Company Data
+# Fetch US Company Data
 
 ## Overview
 Fetch filings, financials, analyst forecasts, and transcripts into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
@@ -14,16 +14,16 @@ This skill keeps fetch logic inside the skill package (`scripts/` + `src/`) so i
 Repo-local:
 
 ```bash
-export FETCH_COMPANY_DATA_ROOT=".agents/skills/fetch-company-data"
-export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
+export FETCH_US_COMPANY_DATA_ROOT=".agents/skills/fetch-us-company-data"
+export FETCH_US_COMPANY_DATA_CLI="$FETCH_US_COMPANY_DATA_ROOT/scripts/add_company.py"
 ```
 
 Installed skill:
 
 ```bash
 export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
-export FETCH_COMPANY_DATA_ROOT="$CODEX_HOME/skills/fetch-company-data"
-export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
+export FETCH_US_COMPANY_DATA_ROOT="$CODEX_HOME/skills/fetch-us-company-data"
+export FETCH_US_COMPANY_DATA_CLI="$FETCH_US_COMPANY_DATA_ROOT/scripts/add_company.py"
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ export FETCH_COMPANY_DATA_CLI="$FETCH_COMPANY_DATA_ROOT/scripts/add_company.py"
 3. Run the skill script from the repo root:
 
 ```bash
-python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_US_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
 ## Workflow
@@ -53,7 +53,7 @@ python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 
 ### 3. Run fetch/bootstrap
 ```bash
-python3 "$FETCH_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_US_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 ```
 
 Optional flags:

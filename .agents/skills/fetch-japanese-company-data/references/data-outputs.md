@@ -1,4 +1,4 @@
-# Fetch Output Contract
+# Fetch Output Contract (Japan / Yahoo Finance)
 
 The fetch step writes data under `companies/<TICKER>/data`.
 
@@ -9,12 +9,12 @@ The fetch step writes data under `companies/<TICKER>/data`.
 - `financial_statements/annual/cash_flow_statement.csv`
 
 ## Optional outputs
-- `filings/10-K-*.md` or `filings/20-F-*.md`
-- `filings/10-Q-*.md`, `filings/8-K-*.md`, `filings/6-K-*.md`
-- `filings/S-1-*.md`, `filings/S-1-A-*.md`, `filings/F-1-*.md`, `filings/F-1-A-*.md`
 - `filings/earnings-call-<YYYY-MM-DD>-<source>.md`
-- `financial_statements/quarterly/*.csv`
+- `filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
 - `analyst_estimates.csv`
+
+## Metadata output
+- `source-metadata.json`
 
 ## Bootstrap output
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`

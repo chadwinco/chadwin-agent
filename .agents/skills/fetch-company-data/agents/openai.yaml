@@ -1,4 +1,0 @@
-interface:
-  display_name: "Fetch Company Data"
-  short_description: "Fetch EDGAR filings and transcripts for a ticker"
-  default_prompt: "Use $fetch-company-data to pull EDGAR filings, financials, and the latest earnings call transcript for a ticker."

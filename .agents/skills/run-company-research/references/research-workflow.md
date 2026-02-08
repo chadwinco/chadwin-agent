@@ -28,7 +28,7 @@ Drafting assets:
 ## Step 1: Confirm Scope
 - Confirm ticker and as-of date explicitly.
 - Use filings/transcripts dated on or before the as-of date.
-- If local data is missing, stop and run `$fetch-company-data`.
+- If local data is missing, stop and run the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 
 ## Step 2: Build the Fact Base
 - Use `grep` against `companies/<TICKER>/data/filings/*.md` for:

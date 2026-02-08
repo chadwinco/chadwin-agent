@@ -1,4 +1,4 @@
-# Data Dictionary
+# Data Dictionary (US / EDGAR)
 
 This repo expects company financial data under `companies/<TICKER>/data`. The pipeline uses these files and columns.
 
