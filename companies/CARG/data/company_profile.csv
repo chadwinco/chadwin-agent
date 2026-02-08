@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+CARG,28.61,2730000000.0,1.37,,24.65 - 40.37,,,1355829.0,"CarGurus, Inc.",USD,0001494259,US1417881091,141788109,Nasdaq Global Select Market,NASDAQ,Auto & Truck Dealerships,https://cargurus.com,Jason Trevisan,Consumer Discretionary,United States,1282,617-354-0068,1001 Boylston Street,16Th Floor,,,,false,true,false

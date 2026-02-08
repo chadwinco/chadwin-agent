@@ -1,0 +1,67 @@
+{
+  "query": "CarGurus, Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://finance.yahoo.com/quote/CARG/earnings/CARG-Q3-2025-earnings_call-372633.html",
+    "https://seekingalpha.com/article/4839864-cargurus-inc-carg-q3-2025-earnings-call-transcript",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-cargurus-beats-q3-2025-earnings-estimates-93CH-4340910",
+    "https://www.gurufocus.com/news/3194127/q3-2025-cargurus-inc-earnings-call-transcript",
+    "https://www.insidermonkey.com/blog/cargurus-inc-nasdaqcarg-q3-2025-earnings-call-transcript-1642541/",
+    "https://www.insidermonkey.com/blog/cargurus-inc-nasdaqcarg-q1-2025-earnings-call-transcript-1530149/"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/CARG/data/filings/earnings-call-2026-02-08-insidermonkey.com.md",
+    "source_url": "https://www.insidermonkey.com/blog/cargurus-inc-nasdaqcarg-q3-2025-earnings-call-transcript-1642541/",
+    "published_date": null
+  },
+  "attempts": [
+    {
+      "url": "https://finance.yahoo.com/quote/CARG/earnings/CARG-Q3-2025-earnings_call-372633.html",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4839864-cargurus-inc-carg-q3-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-cargurus-beats-q3-2025-earnings-estimates-93CH-4340910",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.gurufocus.com/news/3194127/q3-2025-cargurus-inc-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/cargurus-inc-nasdaqcarg-q3-2025-earnings-call-transcript-1642541/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 60053,
+      "published_date": null,
+      "message": null
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/cargurus-inc-nasdaqcarg-q1-2025-earnings-call-transcript-1530149/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 40524,
+      "published_date": null,
+      "message": null
+    }
+  ]
+}

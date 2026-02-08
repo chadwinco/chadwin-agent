@@ -1,0 +1,21 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net Income,us-gaap_NetIncomeLoss,44717000.0,22343000.0,39045000.0,22511000.0,-68721000.0,21301000.0,22302000.0,16413000.0,16132000.0,20400000.0,19284000.0,19910000.0
+"Redeemable Noncontrolling Interest, Net income (loss)",us-gaap_TemporaryEquityNetIncome,,,,,,,-3329000.0,-2596000.0,-4266000.0,-1576000.0,-1223000.0,-1072000.0
+Stock–based compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,14365000.0,14883000.0,14538000.0,16994000.0,17198000.0,17649000.0,15668000.0,15895000.0,16049000.0,14910000.0,14697000.0,15353000.0
+Issuance of common stock upon exercise of stock options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,25000.0,10000.0,394000.0,49000.0,15000.0,11000.0,45000.0,10000.0,19000.0,14000.0,25000.0,680000.0
+"Issuance of common stock upon exercise of stock options, Shares",us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,3720.0,1500.0,16426.0,58922.0,54382.0,36455.0,6654.0,1480.0,7700.0,21600.0,23240.0,74163.0
+Issuance of common stock upon vesting of restricted stock units,us-gaap_StockIssuedDuringPeriodValueRestrictedStockAwardNetOfForfeitures,,-1000.0,,-1000.0,-1000.0,-1000.0,-1000.0,,,-1000.0,,
+"Issuance of common stock upon vesting of restricted stock units, Shares",us-gaap_StockIssuedDuringPeriodSharesRestrictedStockAwardNetOfForfeitures,623078.0,630591.0,715951.0,676910.0,803405.0,615383.0,615273.0,697879.0,959935.0,643989.0,447555.0,451084.0
+Payment of withholding taxes on net share settlements of restricted stock units,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,7526000.0,6343000.0,8987000.0,5986000.0,6291000.0,5097000.0,3915000.0,5196000.0,5652000.0,,,
+"Payment of withholding taxes on net share settlements of restricted stock units, Shares",us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,223102.0,216786.0,251366.0,236722.0,273422.0,213042.0,214187.0,240674.0,335448.0,,,
+"Payment of withholding taxes on net share settlements of equity awards, Shares",us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,,,,,,,,,,228049.0,147533.0,155736.0
+Payment of withholding taxes on net share settlements of equity awards,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,,,,,,,,,,4273000.0,5830000.0,5430000.0
+Repurchase of common stock,us-gaap_StockRepurchasedAndRetiredDuringPeriodValue,111629000.0,145000.0,185867000.0,3550000.0,61794000.0,81755000.0,17182000.0,21964000.0,65764000.0,,,
+"Repurchase of common stock, Shares",us-gaap_StockRepurchasedDuringPeriodShares,3233649.0,11004.0,5919435.0,164301.0,2654807.0,3538194.0,956248.0,1311387.0,3989861.0,,,
+Conversion of common stock,us-gaap_StockIssuedDuringPeriodValueConversionOfConvertibleSecuritiesNetOfAdjustments,,,1000.0,,,,,,,,,
+"Conversion of common stock, shares issued",us-gaap_StockIssuedDuringPeriodSharesConversionOfConvertibleSecurities,,,770495.0,241935.0,,,,,,,,
+Other (Note 6),us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,,,,,3507000.0,,,,,,,
+Foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,20000.0,2679000.0,1238000.0,1382000.0,-203000.0,-599000.0,-778000.0,-112000.0,415000.0,-1519000.0,-1586000.0,-489000.0
+"Redeemable noncontrolling interest , accretion to redemption value",us-gaap_MinorityInterestChangeInRedemptionValue,,,,,,,,,,-86564000.0,29620000.0,82000000.0
+Accretion of redeemable noncontrolling interest to redemption value,carg_RedeemableNoncontrollingInterestAccretionToRedemptionValue,,,,,,,,,,86564000.0,-29620000.0,-82000000.0
+Tax distribution to redeemable noncontrolling interest holders,carg_TaxDistributionToRedeemableNoncontrollingInterestHolders,,,,,,,,-14000.0,-8000.0,-3753000.0,-3642000.0,-3986000.0
