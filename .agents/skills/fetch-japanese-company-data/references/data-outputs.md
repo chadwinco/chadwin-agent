@@ -11,8 +11,8 @@ The fetch step writes data under `companies/<TICKER>/data`.
 ## Optional outputs
 - `filings/earnings-call-<YYYY-MM-DD>-<source>.md`
 - `filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
-- `filings/official-ir-fetch-report-<YYYY-MM-DD>.json`
-- `filings/ir-document-<YYYY-MM-DD>-*.md`
+- `filings/official-ir-fetch-report-<YYYY-MM-DD>.json` (supported issuers: Nintendo, Fast Retailing)
+- `filings/ir-document-<YYYY-MM-DD>-*.md` (supported issuers: Nintendo, Fast Retailing)
 - `analyst_estimates.csv`
 
 ## Metadata output

@@ -10,7 +10,7 @@ This repo expects company financial data under `companies/<TICKER>/data`. The pi
 
 ## Optional Files
 - `filings/` (earnings call transcript markdown + fetch report)
-- `filings/official-ir-fetch-report-<YYYY-MM-DD>.json` and `filings/ir-document-*.md` (official company IR document captures; Nintendo path available)
+- `filings/official-ir-fetch-report-<YYYY-MM-DD>.json` and `filings/ir-document-*.md` (official company IR document captures; currently Nintendo and Fast Retailing paths are available)
 - `analyst_estimates.csv` (if another process populates analyst forecasts)
 
 ### `company_profile.csv`

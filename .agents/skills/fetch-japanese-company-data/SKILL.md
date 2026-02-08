@@ -9,7 +9,14 @@ description: Fetch Japanese listed company data (profile, annual statements, tra
 Fetch Japanese company profile data and annual financial statements into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 Primary market/profile source is Yahoo Finance (`yfinance`) for Japan tickers (for example `7974.T`).
-For Nintendo, this skill also pulls official IR PDFs from Nintendo's own website feed and extracts local markdown files.
+For selected issuers, this skill also pulls official IR PDFs and extracts local markdown files:
+- Nintendo (`7974` / `79740`) from Nintendo's IR news feed.
+- Fast Retailing (`9983` / `99830`) from Fast Retailing's English IR library and IR news pages.
+
+Fast Retailing deep-search sources currently used:
+- `https://www.fastretailing.com/eng/ir/library/earning.html`
+- `https://www.fastretailing.com/eng/ir/library/annual.html`
+- `https://www.fastretailing.com/eng/ir/news/`
 
 ## Skill Path (set once)
 Repo-local:
@@ -74,15 +81,16 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `companies/<TICKER>/data/source-metadata.json`
-- `companies/<TICKER>/data/filings/official-ir-fetch-report-<YYYY-MM-DD>.json` (Nintendo)
-- `companies/<TICKER>/data/filings/ir-document-<YYYY-MM-DD>-*.md` (Nintendo)
+- `companies/<TICKER>/data/filings/official-ir-fetch-report-<YYYY-MM-DD>.json` (supported issuers)
+- `companies/<TICKER>/data/filings/ir-document-<YYYY-MM-DD>-*.md` (supported issuers)
 - `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-nintendo-co-jp.md` (Nintendo Q&A)
 - `companies/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Current Limits
 - This skill currently does not pull Japanese statutory filings from EDINET yet.
-- Official IR PDF extraction is currently implemented for Nintendo as the first high-quality path; other issuers currently use generic transcript discovery only.
+- Official IR PDF extraction is currently implemented for Nintendo and Fast Retailing.
+- For other issuers, transcript discovery remains generic and official-IR collection may require manual operator-led search and capture.
 
 ## Related References
 - `references/python-setup.md`

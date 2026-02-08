@@ -1,0 +1,38 @@
+concept,label,2025-08-31,2024-08-31,2023-08-31,2022-08-31
+us-gaap_Revenues,Total Revenue,3400539000000.0,3103836000000.0,2766557000000.0,2301122000000.0
+us-gaap_GrossProfit,Gross Profit,1828858000000.0,1673071000000.0,1436360000000.0,1206859000000.0
+us-gaap_OperatingIncomeLoss,Operating Income,562561000000.0,499486000000.0,379951000000.0,296265000000.0
+us-gaap_IncomeLossBeforeIncomeTaxes,Income Before Tax,650574000000.0,557201000000.0,437918000000.0,413584000000.0
+us-gaap_IncomeTaxExpenseBenefit,Income Tax Expense,191421000000.0,163596000000.0,122746000000.0,128834000000.0
+us-gaap_NetIncomeLoss,Net Income,433009000000.0,371999000000.0,296229000000.0,273335000000.0
+us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,Weighted Average Shares Basic,306785269.0,306707176.0,306628124.0,306510285.0
+us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,Weighted Average Shares Diluted,307246757.0,307231523.0,307138562.0,306969666.0
+yahoo_taxeffectofunusualitems,Tax Effect Of Unusual Items,0.0,0.0,0.0,0.0
+yahoo_taxrateforcalcs,Tax Rate For Calcs,0.294234,0.293603,0.280294,0.116
+yahoo_normalizedebitda,Normalized EBITDA,879900000000.0,772690000000.0,634678000000.0,601419000000.0
+yahoo_reconcileddepreciation,Reconciled Depreciation,216492000000.0,204388000000.0,186872000000.0,180275000000.0
+yahoo_reconciledcostofrevenue,Reconciled Cost Of Revenue,1571681000000.0,1430764000000.0,1330196000000.0,1094263000000.0
+yahoo_ebitda,EBITDA,879900000000.0,772690000000.0,634678000000.0,601419000000.0
+yahoo_netinterestincome,Net Interest Income,86309000000.0,56298000000.0,56828000000.0,116260000000.0
+yahoo_interestexpense,Interest Expense,12834000000.0,11101000000.0,9888000000.0,7560000000.0
+yahoo_interestincome,Interest Income,99143000000.0,67399000000.0,66716000000.0,123820000000.0
+yahoo_normalizedincome,Normalized Income,433010000000.0,372000000000.0,296230000000.0,273335000000.0
+yahoo_netincomefromcontinuinganddiscontinuedoperation,Net Income From Continuing And Discontinued Operation,433010000000.0,372000000000.0,296230000000.0,273335000000.0
+yahoo_totalexpenses,Total Expenses,2837978000000.0,2604349000000.0,2386605000000.0,2004857000000.0
+yahoo_totaloperatingincomeasreported,Total Operating Income As Reported,564265000000.0,500904000000.0,381090000000.0,297325000000.0
+yahoo_dilutedeps,Diluted EPS,1409.32,1210.81,964.48,890.43
+yahoo_basiceps,Basic EPS,1411.44,1212.88,966.09,891.77
+yahoo_dilutedniavailtocomstockholders,Diluted NI Availto Com Stockholders,433009000000.0,371999000000.0,296229000000.0,273335000000.0
+yahoo_otherunderpreferredstockdividend,Otherunder Preferred Stock Dividend,1000000.0,1000000.0,1000000.0,0.0
+yahoo_minorityinterests,Minority Interests,-26143000000.0,-21605000000.0,-18941000000.0,-11415000000.0
+yahoo_netincomeincludingnoncontrollinginterests,Net Income Including Noncontrolling Interests,459153000000.0,393605000000.0,315171000000.0,284750000000.0
+yahoo_netincomecontinuousoperations,Net Income Continuous Operations,459153000000.0,393605000000.0,315172000000.0,284750000000.0
+yahoo_netnonoperatinginterestincomeexpense,Net Non Operating Interest Income Expense,86309000000.0,56298000000.0,56828000000.0,116260000000.0
+yahoo_interestexpensenonoperating,Interest Expense Non Operating,12834000000.0,11101000000.0,9888000000.0,7560000000.0
+yahoo_interestincomenonoperating,Interest Income Non Operating,99143000000.0,67399000000.0,66716000000.0,123820000000.0
+yahoo_operatingexpense,Operating Expense,1266297000000.0,1173585000000.0,1056409000000.0,910594000000.0
+yahoo_otheroperatingexpenses,Other Operating Expenses,8087000000.0,6256000000.0,14238000000.0,27391000000.0
+yahoo_sellinggeneralandadministration,Selling General And Administration,1277701000000.0,1187713000000.0,1054368000000.0,900154000000.0
+yahoo_generalandadministrativeexpense,General And Administrative Expense,1277701000000.0,1187713000000.0,1054368000000.0,900154000000.0
+yahoo_costofrevenue,Cost Of Revenue,1571681000000.0,1430764000000.0,1330196000000.0,1094263000000.0
+yahoo_operatingrevenue,Operating Revenue,3400539000000.0,3103836000000.0,2766557000000.0,2301122000000.0

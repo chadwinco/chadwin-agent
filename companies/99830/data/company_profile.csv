@@ -1,0 +1,2 @@
+symbol,companyName,currency,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,cik,isin,cusip,exchange,exchangeFullName,industry,sector,country,fullTimeEmployees,ceo,website,phone,address,city,state,zip,isEtf,isAdr,isActivelyTrading
+99830,"Fast Retailing Co., Ltd.",JPY,63500.0,19483689222144.0,0.206,270.0,41650.0-66500.0,180.0,0.28427038,1074400.0,,,,JPX,Tokyo,Apparel Retail,Consumer Cyclical,Japan,59522.0,Mr. Tadashi  Yanai,https://www.fastretailing.com,,10717-1 Sayama,Yamaguchi,,754-0894,False,False,True

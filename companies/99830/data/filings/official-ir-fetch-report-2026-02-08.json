@@ -1,0 +1,106 @@
+{
+  "source_pages": {
+    "earnings_library": "https://www.fastretailing.com/eng/ir/library/earning.html",
+    "annual_report_library": "https://www.fastretailing.com/eng/ir/library/annual.html",
+    "ir_news": "https://www.fastretailing.com/eng/ir/news/"
+  },
+  "asof": "2026-02-08",
+  "attempts": [
+    {
+      "title": "Announcements and Notices - [Dividend or Distribution / Other - Miscellaneous] [PDF: 193KB]",
+      "source_url": "https://www.fastretailing.com/eng/ir/news/pdf/2602061300_InterimDividend_eng.pdf",
+      "released_date": "2026-02-06",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2026-02-06-announcements-and-notices-dividend-or-distribution-other-miscellaneous-p-2602061300-interimdivide.md"
+    },
+    {
+      "title": "FAST RETAILING Results for September to November 2025 and Estimates for FY2026 (1.7MB)",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/20260108_results_en.pdf",
+      "released_date": "2026-01-08",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2026-01-08-fast-retailing-results-for-september-to-november-2025-and-estimates-for--20260108-results-en.md"
+    },
+    {
+      "title": "Faq20260108 En",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/faq20260108_en.pdf",
+      "released_date": "2026-01-08",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2026-01-08-faq20260108-en-faq20260108-en.md"
+    },
+    {
+      "title": "Fr Ir E N20260108 1Q Summary",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/fr_ir_e_n20260108_1q_summary.pdf",
+      "released_date": "2026-01-08",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2026-01-08-fr-ir-e-n20260108-1q-summary-fr-ir-e-n20260108-1q-sum.md"
+    },
+    {
+      "title": "Overseas Regulatory Announcement - [Company's Revision to its Dividend Estimate for the Year Ending August 31, 2026] [PDF:164KB]",
+      "source_url": "https://www.fastretailing.com/eng/ir/news/pdf/ir_202601081540-DividendEstimate_eng.pdf",
+      "released_date": "2026-01-08",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2026-01-08-overseas-regulatory-announcement-company-s-revision-to-its-dividend-esti-ir-202601081540-dividend.md"
+    },
+    {
+      "title": "Fast Retailing Announcements and Notices - [Trading Halt / Inside Information][PDF:84KB]",
+      "source_url": "https://www.fastretailing.com/eng/ir/news/pdf/2601081300_TradingHalt_eng.pdf",
+      "released_date": "2026-01-08",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2026-01-08-fast-retailing-announcements-and-notices-trading-halt-inside-information-2601081300-tradinghalt-e.md"
+    },
+    {
+      "title": "Ar2024 En",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/ar2024_en.pdf",
+      "released_date": "2024-12-31",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2024-12-31-ar2024-en-ar2024-en.md"
+    },
+    {
+      "title": "Ar2024 En Financial",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/ar2024_en_financial.pdf",
+      "released_date": "2024-12-31",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2024-12-31-ar2024-en-financial-ar2024-en-financial.md"
+    },
+    {
+      "title": "Ar2023 En",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/ar2023_en.pdf",
+      "released_date": "2023-12-31",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2023-12-31-ar2023-en-ar2023-en.md"
+    },
+    {
+      "title": "Ar2023 En Financial",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/ar2023_en_financial.pdf",
+      "released_date": "2023-12-31",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2023-12-31-ar2023-en-financial-ar2023-en-financial.md"
+    },
+    {
+      "title": "Ar2022 En",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/ar2022_en.pdf",
+      "released_date": "2022-12-31",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2022-12-31-ar2022-en-ar2022-en.md"
+    },
+    {
+      "title": "Ar2022 En Financial",
+      "source_url": "https://www.fastretailing.com/eng/ir/library/pdf/ar2022_en_financial.pdf",
+      "released_date": "2022-12-31",
+      "status": "success",
+      "message": null,
+      "output_path": "/Users/chad/source/chadwin-codex/companies/99830/data/filings/ir-document-2022-12-31-ar2022-en-financial-ar2022-en-financial.md"
+    }
+  ]
+}

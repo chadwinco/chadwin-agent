@@ -60,6 +60,19 @@ _SEEDED_COMPANIES = [
             "NINTENDO CO LTD",
         ],
     },
+    {
+        "canonical_ticker": "99830",
+        "local_code": "9983",
+        "yahoo_symbol": "9983.T",
+        "company_name": "Fast Retailing Co., Ltd.",
+        "aliases": [
+            "9983",
+            "99830",
+            "9983.T",
+            "FAST RETAILING",
+            "FAST RETAILING CO LTD",
+        ],
+    },
 ]
 
 

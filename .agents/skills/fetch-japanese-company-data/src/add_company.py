@@ -11,7 +11,10 @@ from pathlib import Path
 from japan_fetch import fetch_japanese_company_data, resolve_japanese_identifier
 from loaders import load_company_data
 from metrics import compute_metrics
-from official_ir_fetch import fetch_nintendo_official_ir_documents
+from official_ir_fetch import (
+    fetch_fast_retailing_official_ir_documents,
+    fetch_nintendo_official_ir_documents,
+)
 from transcript_fetch import fetch_latest_transcript_with_report
 
 
@@ -199,12 +202,22 @@ def main() -> None:
             asof=args.asof,
             max_documents=14,
         )
+    # Fast Retailing has an English IR library with earnings and annual report PDFs.
+    elif resolved.local_code == "9983":
+        print(f"Fetching official IR documents from Fast Retailing website for {ticker}...")
+        official_ir = fetch_fast_retailing_official_ir_documents(
+            data_dir=data_dir,
+            asof=args.asof,
+            max_documents=12,
+        )
+
+    if official_ir:
         try:
             official_rel = official_ir.report_path.relative_to(base_dir)
         except ValueError:
             official_rel = official_ir.report_path
         print(
-            f"Saved Nintendo official IR fetch report to {official_rel} "
+            f"Saved official IR fetch report to {official_rel} "
             f"({official_ir.documents_written} documents)"
         )
 

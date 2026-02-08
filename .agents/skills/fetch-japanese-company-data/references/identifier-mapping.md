@@ -12,6 +12,10 @@
   - TSE code: `7974`
   - Yahoo symbol: `7974.T`
   - ISIN: `JP3756600007`
+- Fast Retailing:
+  - Canonical repo ticker: `99830`
+  - TSE code: `9983`
+  - Yahoo symbol: `9983.T`
 
 ## Extending The Map
 Update `_SEEDED_COMPANIES` in `src/japan_fetch.py` when adding ISIN-first workflows or fixed canonical ticker aliases.

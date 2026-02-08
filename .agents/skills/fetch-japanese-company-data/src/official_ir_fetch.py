@@ -17,6 +17,11 @@ from urllib.request import Request, urlopen
 
 _NINTENDO_NEWS_FEED_URL = "https://www.nintendo.co.jp/corporate/common/data/news_en.xml"
 _NINTENDO_BASE_URL = "https://www.nintendo.co.jp"
+_FAST_RETAILING_IR_SOURCES = {
+    "earnings_library": "https://www.fastretailing.com/eng/ir/library/earning.html",
+    "annual_report_library": "https://www.fastretailing.com/eng/ir/library/annual.html",
+    "ir_news": "https://www.fastretailing.com/eng/ir/news/",
+}
 
 
 @dataclass
@@ -182,6 +187,141 @@ def _is_relevant_nintendo_ir_item(title: str, page: str, category: str) -> bool:
 def _is_qa_title(title: str) -> bool:
     lowered = title.lower()
     return "q & a" in lowered or "q&a" in lowered
+
+
+def _fetch_html(url: str) -> tuple[Optional[str], Optional[int], Optional[str]]:
+    payload, status_code, error = _fetch_bytes(url)
+    if not payload:
+        return None, status_code, error
+    try:
+        return payload.decode("utf-8", "ignore"), status_code, None
+    except Exception as exc:
+        return None, status_code, str(exc)
+
+
+def _strip_html_tags(value: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", value or "")
+    text = unescape(text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+
+
+def _extract_pdf_anchors(html: str, page_url: str) -> list[tuple[str, str]]:
+    anchors: list[tuple[str, str]] = []
+    pattern = re.compile(
+        r'<a[^>]+href="([^"]+\.pdf(?:\?[^"]*)?)"[^>]*>(.*?)</a>',
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    for match in pattern.finditer(html or ""):
+        href = (match.group(1) or "").strip()
+        if not href:
+            continue
+        source_url = urljoin(page_url, href)
+        title = _strip_html_tags(match.group(2) or "")
+        anchors.append((source_url, title))
+    return anchors
+
+
+def _parse_yymmdd_token(token: str) -> Optional[date]:
+    if len(token) != 6 or not token.isdigit():
+        return None
+    year = int(token[0:2])
+    month = int(token[2:4])
+    day = int(token[4:6])
+    year += 2000 if year < 80 else 1900
+    try:
+        return date(year, month, day)
+    except ValueError:
+        return None
+
+
+def _parse_fast_retailing_release_date(source_url: str) -> Optional[date]:
+    lower = source_url.lower()
+
+    yyyymmdd = re.search(r"(20\d{6})", lower)
+    if yyyymmdd:
+        token = yyyymmdd.group(1)
+        try:
+            return date(int(token[0:4]), int(token[4:6]), int(token[6:8]))
+        except ValueError:
+            pass
+
+    yymmddhhmm = re.search(r"/(\d{10})_", lower)
+    if yymmddhhmm:
+        parsed = _parse_yymmdd_token(yymmddhhmm.group(1)[:6])
+        if parsed:
+            return parsed
+
+    tanshin = re.search(r"tanshin(20\d{2})(\d{2})", lower)
+    if tanshin:
+        year = int(tanshin.group(1))
+        month = int(tanshin.group(2))
+        try:
+            return date(year, month, 1)
+        except ValueError:
+            pass
+
+    annual = re.search(r"ar(20\d{2})_en", lower)
+    if annual:
+        try:
+            return date(int(annual.group(1)), 12, 31)
+        except ValueError:
+            pass
+
+    return None
+
+
+def _is_relevant_fast_retailing_pdf(source_url: str, title: str, source_label: str) -> bool:
+    lowered = f"{source_url} {title}".lower()
+    source_lower = source_url.lower()
+
+    if source_label == "annual_report_library":
+        return bool(re.search(r"/ar20\d{2}_en(?:_financial)?\.pdf(?:\?|$)", source_lower))
+
+    if source_label == "earnings_library":
+        keywords = ("results", "tanshin", "summary", "faq", "factbook", "earnings")
+        return any(keyword in lowered for keyword in keywords)
+
+    if source_label == "ir_news":
+        keywords = ("dividend", "earning", "results", "financial", "trading halt", "notice")
+        return any(keyword in lowered for keyword in keywords)
+
+    return False
+
+
+def _fast_retailing_priority(source_url: str, title: str, source_label: str) -> int:
+    lowered = f"{source_url} {title}".lower()
+    source_lower = source_url.lower()
+    score = 0
+    if source_label == "earnings_library":
+        score += 60
+    elif source_label == "annual_report_library":
+        score += 40
+    elif source_label == "ir_news":
+        score += 20
+
+    if "results" in lowered or "tanshin" in lowered:
+        score += 50
+    if re.search(r"/ar20\d{2}_en\.pdf(?:\?|$)", source_lower):
+        score += 45
+    if "_financial" in lowered:
+        score += 30
+    if "faq" in lowered:
+        score += 15
+    if "factbook" in lowered:
+        score += 10
+    if "dividend" in lowered:
+        score += 5
+    return score
+
+
+def _fast_retailing_display_title(source_url: str, fallback_title: str) -> str:
+    cleaned_fallback = (fallback_title or "").strip()
+    if cleaned_fallback and not re.fullmatch(r"\(?\d[\d.,]*\s*(kb|mb)\)?", cleaned_fallback.lower()):
+        return fallback_title
+    stem = Path(urlparse(source_url).path).stem.replace("_", " ").replace("-", " ")
+    stem = re.sub(r"\s+", " ", stem).strip()
+    return stem.title() if stem else "Fast Retailing IR Document"
 
 
 def _extract_pdf_text(
@@ -494,3 +634,187 @@ def fetch_nintendo_official_ir_documents(
         transcript_url=transcript_url,
         transcript_date=transcript_date,
     )
+
+
+def fetch_fast_retailing_official_ir_documents(
+    data_dir: Path,
+    asof: Optional[str] = None,
+    max_documents: int = 10,
+) -> OfficialIRFetchResult:
+    filings_dir = data_dir / "filings"
+    filings_dir.mkdir(parents=True, exist_ok=True)
+
+    # Keep generated official-IR artifacts deterministic across re-runs.
+    for stale in filings_dir.glob("ir-document-*.md"):
+        stale.unlink(missing_ok=True)
+
+    asof_date = _resolve_asof(asof)
+    report_path = filings_dir / f"official-ir-fetch-report-{asof_date.isoformat()}.json"
+
+    attempts: list[OfficialIRAttempt] = []
+    deduped_candidates: dict[str, dict] = {}
+
+    for source_label, source_page in _FAST_RETAILING_IR_SOURCES.items():
+        html, http_status, error = _fetch_html(source_page)
+        if not html:
+            attempts.append(
+                OfficialIRAttempt(
+                    title=f"Fast Retailing {source_label}",
+                    source_url=source_page,
+                    released_date=None,
+                    status="page_fetch_error",
+                    message=f"status={http_status} error={error}",
+                )
+            )
+            continue
+
+        anchors = _extract_pdf_anchors(html, source_page)
+        if not anchors:
+            attempts.append(
+                OfficialIRAttempt(
+                    title=f"Fast Retailing {source_label}",
+                    source_url=source_page,
+                    released_date=None,
+                    status="page_no_pdf_links",
+                )
+            )
+            continue
+
+        for source_url, anchor_title in anchors:
+            if not _is_relevant_fast_retailing_pdf(source_url, anchor_title, source_label):
+                continue
+
+            released = _parse_fast_retailing_release_date(source_url)
+            if released and released > asof_date:
+                continue
+
+            priority = _fast_retailing_priority(source_url, anchor_title, source_label)
+            existing = deduped_candidates.get(source_url)
+            if existing is None or priority > existing.get("priority", -1):
+                deduped_candidates[source_url] = {
+                    "title": _fast_retailing_display_title(source_url, anchor_title),
+                    "source_url": source_url,
+                    "released_date": released,
+                    "source_page": source_page,
+                    "source_label": source_label,
+                    "priority": priority,
+                }
+
+    candidates = list(deduped_candidates.values())
+    candidates.sort(
+        key=lambda item: (
+            item.get("released_date") or date.min,
+            item.get("priority", 0),
+            item.get("source_url", ""),
+        ),
+        reverse=True,
+    )
+    candidates = candidates[:max_documents]
+
+    if not candidates:
+        attempts.append(
+            OfficialIRAttempt(
+                title="Fast Retailing official IR pages",
+                source_url="; ".join(_FAST_RETAILING_IR_SOURCES.values()),
+                released_date=None,
+                status="no_relevant_documents",
+            )
+        )
+        report_path.write_text(
+            json.dumps(
+                {
+                    "source_pages": _FAST_RETAILING_IR_SOURCES,
+                    "asof": asof_date.isoformat(),
+                    "attempts": [attempt.to_dict() for attempt in attempts],
+                },
+                indent=2,
+            )
+        )
+        return OfficialIRFetchResult(report_path=report_path, attempts=attempts)
+
+    for item in candidates:
+        title = item.get("title") or "Fast Retailing IR Document"
+        source_url = item.get("source_url") or ""
+        source_page = item.get("source_page") or ""
+        released = item.get("released_date")
+
+        payload, status_code, error_detail = _fetch_bytes(source_url)
+        if not payload:
+            attempts.append(
+                OfficialIRAttempt(
+                    title=title,
+                    source_url=source_url,
+                    released_date=released,
+                    status="document_fetch_error",
+                    message=f"status={status_code} error={error_detail}",
+                )
+            )
+            continue
+
+        try:
+            body, total_pages, pages_processed, truncated = _extract_pdf_text(payload)
+        except Exception as exc:
+            attempts.append(
+                OfficialIRAttempt(
+                    title=title,
+                    source_url=source_url,
+                    released_date=released,
+                    status="pdf_extract_error",
+                    message=str(exc),
+                )
+            )
+            continue
+
+        if not body:
+            attempts.append(
+                OfficialIRAttempt(
+                    title=title,
+                    source_url=source_url,
+                    released_date=released,
+                    status="pdf_empty",
+                    message="No text extracted from PDF.",
+                )
+            )
+            continue
+
+        release_date = released or asof_date
+        title_slug = _slugify(title)[:72]
+        filename = f"ir-document-{release_date.isoformat()}-{title_slug}-{_source_stem(source_url)}.md"
+        out_path = filings_dir / filename
+
+        header = [
+            f"# {title}",
+            "",
+            "- Source: Fast Retailing official IR site",
+            f"- URL: {source_url}",
+            f"- Source Page: {source_page}",
+            f"- Released: {release_date.isoformat()}",
+            f"- Retrieved: {date.today().isoformat()}",
+            f"- Pages: {pages_processed}/{total_pages}",
+            f"- Truncated: {'yes' if truncated else 'no'}",
+            "",
+        ]
+        out_path.write_text("\n".join(header) + body + "\n")
+
+        attempts.append(
+            OfficialIRAttempt(
+                title=title,
+                source_url=source_url,
+                released_date=release_date,
+                status="success",
+                output_path=out_path,
+            )
+        )
+
+    report_path.write_text(
+        json.dumps(
+            {
+                "source_pages": _FAST_RETAILING_IR_SOURCES,
+                "asof": asof_date.isoformat(),
+                "attempts": [attempt.to_dict() for attempt in attempts],
+            },
+            indent=2,
+        )
+    )
+
+    return OfficialIRFetchResult(report_path=report_path, attempts=attempts)
