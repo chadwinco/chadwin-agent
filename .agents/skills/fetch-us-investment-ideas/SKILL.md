@@ -23,7 +23,7 @@ export FETCH_US_INVESTMENT_IDEAS_CLI="$FETCH_US_INVESTMENT_IDEAS_ROOT/scripts/fe
 ```bash
 python3 "$FETCH_US_INVESTMENT_IDEAS_CLI" \
   --limit 25 \
-  --output companies/idea-screens/$(date +%F)/us-investment-ideas.json
+  --output idea-screens/$(date +%F)/us-investment-ideas.json
 ```
 
 3. Consume `ideas[]` in the output JSON for `ticker` + short `thesis`.
