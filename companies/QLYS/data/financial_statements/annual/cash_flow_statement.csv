@@ -1,0 +1,58 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,173680000.0,151595000.0,107992000.0,70960000.0,91572000.0,69336000.0
+Depreciation and amortization expense,us-gaap_DepreciationDepletionAndAmortization,18513000.0,26991000.0,34622000.0,35897000.0,32845000.0,31201000.0
+Provision for credit losses,us-gaap_ProvisionForDoubtfulAccounts,764000.0,547000.0,590000.0,,,
+Loss on disposal of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,-0.0,-0.0,6000.0,12000.0,106000.0,202000.0
+Loss on non-marketable securities,us-gaap_EquitySecuritiesFvNiUnrealizedGainLoss,-0.0,533000.0,,,,
+"Stock-based compensation, net of amounts capitalized",us-gaap_ShareBasedCompensation,77133000.0,69079000.0,,,,
+"Amortization (accretion) of premiums (discount) on marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,-6735000.0,-5712000.0,,,,
+Deferred income taxes,us-gaap_DeferredIncomeTaxesAndTaxCredits,-19465000.0,-16636000.0,-20251000.0,-9723000.0,3512000.0,7095000.0
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,-19089000.0,-24978000.0,-13387000.0,-9221000.0,-22631000.0,-2456000.0
+Prepaid expenses and other assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,-14655000.0,-3407000.0,3878000.0,-15665000.0,-2329000.0,-6012000.0
+Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayable,219000.0,-1578000.0,2107000.0,-32000.0,-389000.0,-1076000.0
+Accrued liabilities and other noncurrent liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities,2945000.0,451000.0,3867000.0,9322000.0,,
+Deferred revenues,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,30784000.0,47720000.0,25189000.0,46591000.0,30927000.0,
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,244094000.0,244605000.0,198854000.0,200616000.0,180086000.0,160607000.0
+Purchases of marketable securities,us-gaap_PaymentsToAcquireMarketableSecurities,-368277000.0,-306812000.0,-178788000.0,-368450000.0,-391693000.0,
+Sales and maturities of marketable securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,309184000.0,242432000.0,347837000.0,363941000.0,341879000.0,
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-12334000.0,-8786000.0,-15361000.0,-24424000.0,-30037000.0,-27573000.0
+Purchases of intangible assets,us-gaap_PaymentsToAcquireBusinessesGross,-0.0,-0.0,-8620000.0,-1230000.0,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-71427000.0,-73166000.0,145068000.0,-29532000.0,-80932000.0,-35029000.0
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-139875000.0,-170800000.0,-317344000.0,-129977000.0,-126729000.0,
+Proceeds from exercise of stock options,us-gaap_ProceedsFromStockOptionsExercised,17269000.0,45576000.0,24483000.0,49994000.0,34461000.0,24831000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,-28416000.0,-22346000.0,-17615000.0,-27815000.0,-20199000.0,-15743000.0
+Proceeds from Issuance of Common Stock,us-gaap_ProceedsFromIssuanceOfCommonStock,6872000.0,6077000.0,4445000.0,,,
+Payment of acquisition-related holdback,us-gaap_PaymentForContingentConsiderationLiabilityFinancingActivities,-1500000.0,,,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-145650000.0,-141493000.0,-306031000.0,-107888000.0,-112581000.0,-79045000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,27017000.0,29946000.0,37891000.0,63196000.0,-13427000.0,46533000.0
+Income Tax Expense,us-gaap_IncomeTaxesPaidNet,60554000.0,34920000.0,39739000.0,35080000.0,8058000.0,3031000.0
+Amortization of premiums and (accretion of discounts) on marketable securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,826000.0,
+Accrued liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilities,,,,,5126000.0,715000.0
+Other noncurrent liabilities,us-gaap_IncreaseDecreaseInOtherNoncurrentLiabilities,,,,,0.0,0.0
+Stock-based compensation,us-gaap_ShareBasedCompensation,,,53408000.0,67579000.0,40035000.0,34892000.0
+Amortization of premiums on marketable securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,833000.0,,,
+Amortization of premiums (accretion of discounts) on marketable securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,3869000.0,,
+Maturity (purchase) of note receivable,qlys_PaymentsToAcquireMaturitiesOfNotesReceivable,,,,625000.0,,
+"Acquisition of businesses, net of cash acquired, and purchases of intangible assets",us-gaap_PaymentsToAcquireBusinessesGross,,,,,-1500000.0,
+Purchase of privately-held investment,qlys_PaymentsToAcquirePrivatelyheldInvestments,,,,,0.0,
+Purchases of intangible assets recorded in accrued liabilities,us-gaap_NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,,,,120000.0,,
+Payments to Acquire Marketable Securities,us-gaap_PaymentsToAcquireMarketableSecurities,,,,,,-331131000.0
+Proceeds from Sale and Maturity of Marketable Securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,,,,,,328350000.0
+"Payments to Acquire Businesses, Gross",us-gaap_PaymentsToAcquireBusinessesGross,,,,,,-4050000.0
+Payments to Acquire Investments,us-gaap_PaymentsToAcquireInvestments,,,,,,-625000.0
+Payments for Repurchase of Common Stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,-86424000.0
+Amortization of premiums and accretion of discounts on investments,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,,-1597000.0
+"Increase (Decrease) in Contract with Customer, Liability",us-gaap_IncreaseDecreaseInContractWithCustomerLiability,,,,,,28060000.0
+Business acquisitions recorded in Intangible Assets and Accrued liabilities,us-gaap_NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,,,,,,1650000.0
+"Interest Paid, Excluding Capitalized Interest, Operating Activities",us-gaap_InterestPaidNet,,,,,,107000.0
+Business acquisitions recorded in accrued liabilities and deferred tax liability,us-gaap_NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,,,,,150000.0,
+Bad debt expense,us-gaap_ProvisionForDoubtfulAccounts,,,,402000.0,486000.0,247000.0
+Cash paid for interest expense,us-gaap_InterestPaidNet,,,0.0,0.0,9000.0,
+Proceeds from disposal of property and equipment,us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,,0.0,0.0,6000.0,419000.0,
+Maturity of note receivable,qlys_PaymentsToAcquireMaturitiesOfNotesReceivable,,-0.0,0.0,,,
+Purchases of intangible assets recorded in accrued liabilities and other noncurrent liabilities,us-gaap_NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,0.0,0.0,2110000.0,,,
+Purchases of property and equipment recorded in accounts payable and accrued liabilities,us-gaap_CapitalExpendituresIncurredButNotYetPaid,843000.0,144000.0,470000.0,2086000.0,1054000.0,235000.0
+Accrual for repurchase of common stock,qlys_AccrualForRepurchaseOfCommonStock,802000.0,,,,,
+Write off of noncurrent asset,us-gaap_OtherAssetImpairmentCharges,,0.0,0.0,625000.0,,
+Repayments of Long-term Capital Lease Obligations,us-gaap_RepaymentsOfLongTermCapitalLeaseObligations,,,,,,-1709000.0
+Principal payments under finance lease obligations,us-gaap_FinanceLeasePrincipalPayments,,-0.0,0.0,-90000.0,-114000.0,

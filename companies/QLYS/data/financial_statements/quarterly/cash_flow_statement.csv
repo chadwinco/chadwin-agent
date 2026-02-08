@@ -1,0 +1,32 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net Income,us-gaap_NetIncomeLoss,50346000.0,47290000.0,47534000.0,46212000.0,43772000.0,39731000.0,46515000.0,35382000.0,29105000.0,27660000.0,26596000.0,25410000.0
+Depreciation and amortization expense,us-gaap_DepreciationDepletionAndAmortization,,,4177000.0,,,5239000.0,,,7444000.0,,,8982000.0
+Provision for credit losses,us-gaap_ProvisionForDoubtfulAccounts,,,206000.0,,,193000.0,,,119000.0,,,
+"Stock-based compensation, net of amounts capitalized",us-gaap_ShareBasedCompensation,19447000.0,18046000.0,18820000.0,,,19031000.0,,,,,,
+"Accretion of discount on marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,-1107000.0,,,-1915000.0,,,,,,
+Deferred income taxes,us-gaap_DeferredIncomeTaxesAndTaxCredits,,,-4360000.0,,,-4111000.0,,,-4241000.0,,,-5095000.0
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,,,42782000.0,,,30404000.0,,,19890000.0,,,19563000.0
+Prepaid expenses and other assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,162000.0,,,-10126000.0,,,-1289000.0,,,6067000.0
+Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayable,,,-66000.0,,,-335000.0,,,-1215000.0,,,599000.0
+Accrued liabilities and other noncurrent liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities,,,8265000.0,,,8892000.0,,,-2000.0,,,
+Deferred revenues,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,,,-6825000.0,,,-1498000.0,,,1228000.0,,,7426000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,109588000.0,,,85505000.0,,,66813000.0,,,79040000.0
+Purchases of marketable securities,us-gaap_PaymentsToAcquireMarketableSecurities,,,-55525000.0,,,-61340000.0,,,-46010000.0,,,-81800000.0
+Sales and maturities of marketable securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,,,50532000.0,,,71463000.0,,,69709000.0,,,84915000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-2038000.0,,,-2051000.0,,,-4037000.0,,,-7639000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-7031000.0,,,8072000.0,,,19662000.0,,,-4524000.0
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-39653000.0,,,-18029000.0,,,-66551000.0,,,
+Proceeds from exercise of stock options,us-gaap_ProceedsFromStockOptionsExercised,,,2599000.0,,,2770000.0,,,2328000.0,,,2569000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,,,-10831000.0,,,-11808000.0,,,-5105000.0,,,-3631000.0
+Proceeds from Issuance of Common Stock,us-gaap_ProceedsFromIssuanceOfCommonStock,,,3817000.0,,,3608000.0,,,2988000.0,,,
+Payment of acquisition-related holdback,us-gaap_PaymentForContingentConsiderationLiabilityFinancingActivities,,,-0.0,,,-1500000.0,,,,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-44068000.0,,,-24959000.0,,,-66340000.0,,,-45557000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,58489000.0,,,68618000.0,,,20135000.0,,,28959000.0
+"Amortization (accretion) of premiums (discount) on marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,,,,,-259000.0,,,
+Stock-based compensation,us-gaap_ShareBasedCompensation,,,,,,,,,16033000.0,,,11745000.0
+Amortization of premiums on marketable securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,,,,,,,,762000.0
+Accrued liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilities,,,,,,,,,,,,3435000.0
+Repurchases of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,,,,,,,-46581000.0
+Proceeds from issuance of common stock through employee stock purchase plan,qlys_ProceedsFromIssuanceOfStockEmployeeStockPurchasePlan,,,,,,,,,,,,2086000.0
+Loss on disposal of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,,,,,,0.0,,,5000.0
+Bad debt expense,us-gaap_ProvisionForDoubtfulAccounts,,,,,,,,,,,,141000.0
