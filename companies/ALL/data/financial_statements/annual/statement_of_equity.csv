@@ -1,0 +1,25 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,,,,,5576000000.0,4847000000.0
+Payments,us-gaap_StockIssuedDuringPeriodValueEmployeeStockOwnershipPlan,,,,0.0,0.0,3000000.0
+"Preferred stock issuance, net of issuance costs",us-gaap_StockIssuedDuringPeriodValueNewIssues,0.0,587000000.0,,0.0,0.0,1414000000.0
+Preferred stock redemption,us-gaap_StockRedeemedOrCalledDuringPeriodValue,0.0,556000000.0,0.0,450000000.0,278000000.0,1096000000.0
+"Equity incentive plans activity, net",us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,175000000.0,66000000.0,,,,
+Equity incentive plans activity,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,,,66000000.0,111000000.0,73000000.0,78000000.0
+Forward contract on accelerated share repurchase agreement,all_AdjustmentsToAdditionalPaidInCapitalForwardContractOnAcceleratedShareRepurchaseAgreement,,0.0,0.0,-113000000.0,38000000.0,-75000000.0
+Profit or Loss,us-gaap_ProfitLoss,4599000000.0,-213000000.0,-1364000000.0,1566000000.0,,
+"Dividends on common stock (declared per share of $3.68, $3.56 and $3.40)",us-gaap_DividendsCommonStockCash,978000000.0,,,,,
+"Dividends on common stock (declared per share of $3.56, $3.40 and $3.24)",us-gaap_DividendsCommonStockCash,,938000000.0,,,,
+"Dividends on common stock (declared per share of $3.24, $2.16 and $2.00)",us-gaap_DividendsCommonStockCash,,,,958000000.0,,
+"Dividends on common stock (declared per share of $2.16, $2.00 and $1.84)",us-gaap_DividendsCommonStockCash,,,,,680000000.0,
+"Dividends on common stock (declared per share of $3.40, $3.24 and $2.16)",us-gaap_DividendsCommonStockCash,,,924000000.0,,,
+Dividends on preferred stock,us-gaap_DividendsPreferredStockCash,117000000.0,128000000.0,105000000.0,114000000.0,115000000.0,169000000.0
+Shares acquired,us-gaap_TreasuryStockValueAcquiredCostMethod,0.0,332000000.0,2496000000.0,3262000000.0,1700000000.0,1810000000.0
+"Shares reissued under equity incentive plans, net",us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,114000000.0,79000000.0,110000000.0,122000000.0,115000000.0,149000000.0
+Change in unrealized net capital gains and losses,all_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesIncludingOtherThanTemporaryImpairmentLossesAdjustmentAttributableToNoncontrollingInterestsNetOfTax,-167000000.0,1651000000.0,-2851000000.0,-2582000000.0,1293000000.0,1889000000.0
+Change in unrealized foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-47000000.0,67000000.0,-150000000.0,-8000000.0,52000000.0,-10000000.0
+Change in unamortized pension and other postretirement prior service credit,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentNetOfTax,-2000000.0,-16000000.0,-43000000.0,-59000000.0,9000000.0,-47000000.0
+Change in discount rate for reserve for future policy benefits,us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentAndTax,27000000.0,-10000000.0,,,,
+Capital transaction for noncontrolling interest,all_NoncontrollingInterestIncreaseFromCapitalTransaction,123000000.0,,,,,
+"Dividends on common stock (declared per share of $2.00, $1.84 and $1.48)",us-gaap_DividendsCommonStockCash,,,,,,658000000.0
+Acquisition,us-gaap_StockIssuedDuringPeriodValueAcquisitions,,0.0,0.0,450000000.0,,
+Reclassification of tax effects due to change in accounting principle,us-gaap_TaxCutsAndJobsActOf2017ReclassificationFromAociToRetainedEarningsTaxEffect,,,,,,0.0

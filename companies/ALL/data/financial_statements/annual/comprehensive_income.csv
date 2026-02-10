@@ -1,0 +1,16 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Profit or Loss,us-gaap_ProfitLoss,4599000000.0,-213000000.0,-1364000000.0,1566000000.0,,
+"Other comprehensive (loss) income, after-tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPeriodIncreaseDecreaseAbstract,-189000000.0,,-3044000000.0,-2649000000.0,,
+,,,,,,,
+Unrealized net capital gains and losses,all_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesIncludingOtherThanTemporaryImpairmentLossesAdjustmentAttributableToNoncontrollingInterestsNetOfTax,-167000000.0,1651000000.0,-2851000000.0,-2582000000.0,1293000000.0,1889000000.0
+Unrealized foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-47000000.0,67000000.0,-150000000.0,-8000000.0,52000000.0,-10000000.0
+Unamortized pension and other postretirement prior service credit,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentNetOfTax,-2000000.0,-16000000.0,-43000000.0,-59000000.0,9000000.0,-47000000.0
+Discount rate for reserve for future policy benefits,us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentAndTax,27000000.0,-10000000.0,,,,
+Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,4410000000.0,1479000000.0,,,,
+"Other comprehensive income (loss), after-tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPeriodIncreaseDecreaseAbstract,,1692000000.0,,,1354000000.0,1832000000.0
+Comprehensive (loss) income attributable to Allstate,us-gaap_ComprehensiveIncomeNetOfTax,,,-4335000000.0,-1047000000.0,,
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,,,,,6930000000.0,6679000000.0
+Comprehensive (loss) income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,-4408000000.0,-1083000000.0,,
+Net Income,us-gaap_NetIncomeLoss,,,,,5576000000.0,4847000000.0
+Less: Comprehensive loss attributable to noncontrolling interest,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,58000000.0,15000000.0,73000000.0,36000000.0,,
+Comprehensive income (loss) attributable to Allstate,us-gaap_ComprehensiveIncomeNetOfTax,4468000000.0,1494000000.0,,,,

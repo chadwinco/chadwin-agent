@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+ALL,199.94,52010000000.0,0.24,4.32,176.00 - 216.75,,,2159421.0,Allstate Corp,USD,0000899051,US0200021014,020002101,New York Stock Exchange,NYSE,Insurance - Property & Casualty,https://allstate.com,Thomas Wilson,Financials,United States,55400,847-402-2800,3100 Sanders Road,Northbrook,IL,,,false,true,false
