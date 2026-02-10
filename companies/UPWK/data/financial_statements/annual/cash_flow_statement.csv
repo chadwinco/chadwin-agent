@@ -34,28 +34,28 @@ Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEqu
 Cash paid for income taxes,us-gaap_IncomeTaxesPaid,4590000.0,1982000.0,,,,42000.0
 Cash paid for interest,us-gaap_InterestPaidNet,920000.0,1321000.0,1541000.0,373000.0,764000.0,1291000.0
 Payment of debt issuance costs,us-gaap_PaymentsOfDebtIssuanceCosts,,-0.0,-0.0,-14855000.0,,-0.0
-Proceeds from issuance of convertible senior notes,us-gaap_ProceedsFromConvertibleDebt,,0.0,0.0,575000000.0,,
-Purchases of capped calls related to convertible senior notes,upwk_PaymentsForPurchaseOfCappedCallsOnConvertibleNotes,,-0.0,-0.0,-49393000.0,,
+Net cash paid for early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,-171327000.0,,,,
 Repayment of debt,us-gaap_RepaymentsOfDebt,,-0.0,-0.0,-10750000.0,-25621000.0,-55679000.0
 Changes in escrow funds payable,upwk_ChangesInEscrowFundsPayable,,50930000.0,645000.0,25771000.0,26321000.0,10535000.0
-Net cash paid for early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,-171327000.0,,,,
+Purchases of capped calls related to convertible senior notes,upwk_PaymentsForPurchaseOfCappedCallsOnConvertibleNotes,,-0.0,-0.0,-49393000.0,,
+Proceeds from issuance of convertible senior notes,us-gaap_ProceedsFromConvertibleDebt,,0.0,0.0,575000000.0,,
 Right-of-use asset recognized,us-gaap_RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,4436000.0,,,,,
 Property and equipment purchased but not yet paid,us-gaap_CapitalExpendituresIncurredButNotYetPaid,26000.0,27000.0,0.0,22000.0,37000.0,161000.0
 Internal-use software and platform development costs incurred but not yet paid,upwk_InternalUseSoftwareAndPlatformDevelopmentCostsIncurredButNotPaid,400000.0,215000.0,73000.0,106000.0,286000.0,684000.0
 Impairment expense,us-gaap_AssetImpairmentCharges,,0.0,0.0,8741000.0,,
-"Amortization of premium (accretion of discount) of purchases of marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,-14430000.0,-1486000.0,298000.0,,
 Gain on early extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,-38945000.0,,,,
+"Amortization of premium (accretion of discount) of purchases of marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,-14430000.0,-1486000.0,298000.0,,
 Loss on disposal of fixed assets,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,-0.0,-0.0,44000.0,14000.0
 Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,,,,,-0.0,-0.0
+Unpaid deferred offering costs,upwk_DeferredOfferingCostsIncurredButNotYetPaid,,,,,,0.0
 Proceeds from maturities of marketable securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,,,521152000.0,102500000.0,117500000.0,84500000.0
 Proceeds from borrowings on debt,us-gaap_ProceedsFromIssuanceOfDebt,,,0.0,0.0,18000000.0,50000000.0
 Amortization of discount on purchases of marketable securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,-320000.0,-1158000.0
-"Proceeds from the initial public offering, net of discounts and commissions",us-gaap_ProceedsFromIssuanceInitialPublicOffering,,,,,0.0,0.0
-Payments of costs related to the initial public offering,upwk_PaymentsOfDeferredOfferingCosts,,,,,-0.0,-0.0
-Repurchase of redeemable convertible preferred stock,us-gaap_PaymentsForRepurchaseOfRedeemableConvertiblePreferredStock,,,,,,-0.0
-Proceeds from exercise of redeemable convertible preferred stock warrant,us-gaap_ProceedsFromIssuanceOfRedeemableConvertiblePreferredStock,,,,,,0.0
-Unpaid deferred offering costs,upwk_DeferredOfferingCostsIncurredButNotYetPaid,,,,,,0.0
 Change in fair value of redeemable convertible preferred stock warrant liability,upwk_ChangeInFairValueOfTemporaryEquity,,,,,0.0,0.0
+"Proceeds from the initial public offering, net of discounts and commissions",us-gaap_ProceedsFromIssuanceInitialPublicOffering,,,,,0.0,0.0
+Repurchase of redeemable convertible preferred stock,us-gaap_PaymentsForRepurchaseOfRedeemableConvertiblePreferredStock,,,,,,-0.0
 Conversion of redeemable convertible preferred stock warrant in connection with the initial public offering,us-gaap_AdjustmentsToAdditionalPaidInCapitalWarrantIssued,,,,,0.0,0.0
-Reclassification of redeemable convertible preferred stock warrant liability to redeemable convertible preferred stock,upwk_NoncashInvestingAndFinancingReclassificationOfRedeemableConvertiblePreferredStockWarrantLiabilityToRedeemableConvertiblePreferredStock,,,,,,0.0
+Proceeds from exercise of redeemable convertible preferred stock warrant,us-gaap_ProceedsFromIssuanceOfRedeemableConvertiblePreferredStock,,,,,,0.0
 Conversion of redeemable convertible preferred stock in connection with the initial public offering,us-gaap_TemporaryEquityEliminationAsPartofReorganization,,,,,0.0,0.0
+Payments of costs related to the initial public offering,upwk_PaymentsOfDeferredOfferingCosts,,,,,-0.0,-0.0
+Reclassification of redeemable convertible preferred stock warrant liability to redeemable convertible preferred stock,upwk_NoncashInvestingAndFinancingReclassificationOfRedeemableConvertiblePreferredStockWarrantLiabilityToRedeemableConvertiblePreferredStock,,,,,,0.0

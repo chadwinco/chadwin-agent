@@ -1,0 +1,27 @@
+{
+  "ticker": "UPWK",
+  "asof_date": "2026-02-10",
+  "currency": "USD",
+  "price": 18.79,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 1797970270.878174,
+      "equity_value": 1745799270.878174,
+      "value_per_share": 12.19542354195662,
+      "margin_of_safety": -0.350962025441372
+    },
+    "bull": {
+      "enterprise_value": 3782806537.8530607,
+      "equity_value": 3730635537.8530607,
+      "value_per_share": 26.06065956363209,
+      "margin_of_safety": 0.3869430315929798
+    },
+    "bear": {
+      "enterprise_value": 620393675.3651088,
+      "equity_value": 568222675.3651088,
+      "value_per_share": 3.9693659562221195,
+      "margin_of_safety": -0.7887511465555019
+    }
+  }
+}

@@ -13,17 +13,17 @@ Selling Expense,us-gaap_SellingAndMarketingExpense,-185211000.0,220681000.0,2468
 Operating Expenses,us-gaap_OperatingExpenses,-530025000.0,-529946000.0,-550540000.0,-421506000.0,-291769000.0,-231150000.0
 Operating Income,us-gaap_OperatingIncomeLoss,65206000.0,-11260000.0,-92624000.0,-54217000.0,-22408000.0,-18732000.0
 Interest Expense,us-gaap_InterestExpense,,,-4483000.0,-2180000.0,-778000.0,-1306000.0
-"Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,,60137000.0,,,,
 "Other income, net",us-gaap_OtherNonoperatingIncomeExpense,25221000.0,,7758000.0,279000.0,,
+"Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,,60137000.0,,,,
 "Other (income) expense, net",us-gaap_OtherNonoperatingIncomeExpense,,,,,469000.0,3407000.0
 Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,90427000.0,48877000.0,-89349000.0,-56118000.0,-22717000.0,-16631000.0
 Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,125159000.0,1990000.0,536000.0,122000.0,150000.0,28000.0
 Net Income,us-gaap_NetIncomeLoss,215586000.0,46887000.0,-89885000.0,-56240000.0,-22867000.0,-16659000.0
 Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,,,,,,-16659000.0
-"Weighted-average shares used to compute net loss per share attributable to common stockholders, basic and diluted (in shares)",us-gaap_WeightedAverageNumberOfShareOutstandingBasicAndDiluted,,,,,,109815000.0
 Net loss per share basic and diluted (in dollars per share),us-gaap_EarningsPerShareBasicAndDiluted,,,,,-0.19,
 "Net loss per share attributable to common stockholders, basic and diluted (in dollars per share)",us-gaap_EarningsPerShareBasicAndDiluted,,,,,,-0.15
 "Weighted-average shares used to compute net loss per share, basic and diluted",us-gaap_WeightedAverageNumberOfShareOutstandingBasicAndDiluted,,,,,118699000.0,
+"Weighted-average shares used to compute net loss per share attributable to common stockholders, basic and diluted (in shares)",us-gaap_WeightedAverageNumberOfShareOutstandingBasicAndDiluted,,,,,,109815000.0
 Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,1.61,0.35,-0.69,-0.44,,
 Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,1.52,0.06,-0.69,-0.44,,
 Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,133621000.0,134774000.0,130518000.0,127164000.0,,

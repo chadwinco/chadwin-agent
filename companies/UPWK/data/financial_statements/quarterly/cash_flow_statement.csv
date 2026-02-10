@@ -30,11 +30,11 @@ Changes in escrow funds payable,upwk_ChangesInEscrowFundsPayable,,,,,,10550000.0
 Proceeds from exercises of stock options,us-gaap_ProceedsFromStockOptionsExercised,,,,,,106000.0,,,758000.0,,,488000.0
 Property and equipment purchased but not yet paid,us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,875000.0,,,160000.0,,,79000.0,,,302000.0
 Internal-use software and platform development costs incurred but not yet paid,upwk_InternalUseSoftwareAndPlatformDevelopmentCostsIncurredButNotPaid,,,227000.0,,,30000.0,,,,,,
+"Amortization of premium of purchases of marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,,,,,,,,537000.0
 Depreciation,upwk_DepreciationAndAmortizationExcludingAmortizationOfFinancingCosts,,,,,,,,,2024000.0,,,
 "Amortization of premium (accretion of discount) of purchases of marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,,,,,-3487000.0,,,
-"Amortization of premium of purchases of marketable securities, net",us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,,,,,,,,,,537000.0
-Net cash paid for early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,,,,,-0.0,,,-170752000.0,,,
 Gain on early extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,,,,,-0.0,,,-38945000.0,,,
-Proceeds from maturities of marketable securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,,,,,,,,,,,,106634000.0
+Net cash paid for early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,,,,,-0.0,,,-170752000.0,,,
 Repayment of debt,us-gaap_RepaymentsOfDebt,,,,,,,,,,,,-0.0
+Proceeds from maturities of marketable securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,,,,,,,,,,,,106634000.0
 Marketable securities purchased but not yet paid,upwk_MarketableSecuritiesPurchasesNotYetPaid,,,,,,,,,0.0,,,3985000.0
