@@ -1,0 +1,27 @@
+{
+  "ticker": "QLYS",
+  "asof_date": "2026-02-10",
+  "currency": "USD",
+  "price": 109.15,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 4373303055.943638,
+      "equity_value": 4605485055.943638,
+      "value_per_share": 123.29625614926881,
+      "margin_of_safety": 0.1296038126364527
+    },
+    "bull": {
+      "enterprise_value": 6355817489.868474,
+      "equity_value": 6587999489.868474,
+      "value_per_share": 176.371362136066,
+      "margin_of_safety": 0.6158622275406871
+    },
+    "bear": {
+      "enterprise_value": 2344876372.3654037,
+      "equity_value": 2577058372.3654037,
+      "value_per_share": 68.99200525701828,
+      "margin_of_safety": -0.36791566415924626
+    }
+  }
+}

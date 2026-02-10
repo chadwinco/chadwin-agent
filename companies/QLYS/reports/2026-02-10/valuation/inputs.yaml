@@ -1,0 +1,41 @@
+asof_date: 2026-02-10
+ticker: QLYS
+currency: USD
+price: 109.15
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2024-12-31
+  revenue: 607571000.0
+  net_debt: -232182000.0
+  diluted_shares: 37353000.0
+notes: |
+  Revenue and diluted shares are from FY2024 annual financial statements.
+  Net debt follows the skill method default (total debt minus cash and cash equivalents);
+  with no meaningful debt line in the normalized annual export, this remains a net-cash
+  setup anchored to cash and cash equivalents.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.085
+    fcf_margin_stage1: 0.33
+    discount_rate: 0.10
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.27
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.10
+    fcf_margin_stage1: 0.36
+    discount_rate: 0.095
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.29
+    stage1_years: 12
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.06
+    fcf_margin_stage1: 0.28
+    discount_rate: 0.11
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.22
+    stage1_years: 8
+    fade_years: 5

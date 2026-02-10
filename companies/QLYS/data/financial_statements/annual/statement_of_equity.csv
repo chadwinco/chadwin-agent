@@ -1,9 +1,9 @@
 label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
 Issuance of common stock upon vesting of restricted stock units,qlys_StockIssuedDuringPeriodValueRestrictedStockAwardVested,,,0.0,0.0,0.0,
+Taxes from release of the restricted share units,us-gaap_AdjustmentsToAdditionalPaidInCapitalShareBasedCompensationRestrictedStockUnitsRequisiteServicePeriodRecognition,,,,,,-15743000.0
 "Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Parent",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,1748000.0
 Issuance of common stock upon exercise of stock options (shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,,,,,901290.0
 "Stock Repurchased During Period, Shares",us-gaap_StockRepurchasedDuringPeriodShares,,,,,,1026455.0
-Taxes from release of the restricted share units,us-gaap_AdjustmentsToAdditionalPaidInCapitalShareBasedCompensationRestrictedStockUnitsRequisiteServicePeriodRecognition,,,,,,-15743000.0
 "Taxes related to net share settlement of equity awards, shares",qlys_AdjustmentstoAdditionalPaidinCapitalSharebasedCompensationRestrictedStockUnitorRestrictedStockAwardRequisiteServicePeriodRecognitionShares,,,,,,182489.0
 Net Income,us-gaap_NetIncomeLoss,173680000.0,151595000.0,107992000.0,70960000.0,91572000.0,69336000.0
 "Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,3121000.0,243000.0,-2954000.0,1491000.0,-1646000.0,

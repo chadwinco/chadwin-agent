@@ -1,8 +1,8 @@
 label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
 Conversion of preferred and common stock,us-gaap_StockIssuedDuringPeriodValueConversionOfConvertibleSecuritiesNetOfAdjustments,,,,,,1000.0
-"Conversion of preferred and common stock, value",carg_ConvertibleStockConvertedValue,,,,,,1000.0
 "Conversion of preferred and common stock, shares issued",us-gaap_StockIssuedDuringPeriodSharesConversionOfConvertibleSecurities,,,,,,387440.0
 "Conversion of preferred and common stock, shares converted",carg_ConvertibleStockSharesConverted,,,,,,387440.0
+"Conversion of preferred and common stock, value",carg_ConvertibleStockConvertedValue,,,,,,1000.0
 Net Income,us-gaap_NetIncomeLoss,20972000.0,36942000.0,84387000.0,109244000.0,77553000.0,42146000.0
 "Redeemable noncontrolling interest, net income",us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,,,-1129000.0,,
 "Redeemable noncontrolling interest, net (loss) income",us-gaap_TemporaryEquityNetIncome,,-14889000.0,-5433000.0,,,

@@ -18,16 +18,16 @@ Interest income,us-gaap_InvestmentIncomeInterest,12189000.0,18430000.0,3845000.0
 "Other (expense) income, net",us-gaap_OtherNonoperatingIncomeExpense,-944000.0,,-961000.0,,,
 Nonoperating Income/Expense,us-gaap_NonoperatingIncomeExpense,11245000.0,19060000.0,2884000.0,1092000.0,1354000.0,4383000.0
 Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,24657000.0,51687000.0,111362000.0,149360000.0,99110000.0,38705000.0
-Net income attributable to redeemable noncontrolling interest,us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,,,-1129000.0,,
 Net (loss) income attributable to redeemable noncontrolling interest,us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,14889000.0,5433000.0,,,
 "Other income, net",us-gaap_OtherNonoperatingIncomeExpense,,,,972000.0,279000.0,
+Net income attributable to redeemable noncontrolling interest,us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,,,-1129000.0,,
 Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,3685000.0,29634000.0,32408000.0,38987000.0,21557000.0,-3441000.0
 Net Income,us-gaap_NetIncomeLoss,20972000.0,36942000.0,84387000.0,109244000.0,77553000.0,42146000.0
 Profit or Loss,us-gaap_ProfitLoss,20972000.0,22053000.0,78954000.0,110373000.0,,
+,,,,,,,
 Diluted Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersDiluted,,,,,,42146000.0
 Basic,us-gaap_WeightedAverageBasicSharesOutstandingProForma,,,,,,111450443.0
 Diluted,us-gaap_ProFormaWeightedAverageSharesOutstandingDiluted,,,,,,113431850.0
-,,,,,,,
 Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,0.2,0.27,1.64,0.0,0.69,0.38
 Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,0.2,0.19,0.62,0.0,0.68,0.37
 "Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,,630000.0,,,,1399000.0

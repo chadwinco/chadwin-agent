@@ -44,19 +44,19 @@ Obtaining a right-of-use asset in exchange for an operating lease liability,carg
 Provision (Recoveries) for doubtful accounts,us-gaap_ProvisionForDoubtfulAccounts,,,,,,290000.0,,,,,,
 Impairment of long-lived assets,us-gaap_ImpairmentOfLongLivedAssetsToBeDisposedOf,,,,,,,,,175000.0,,,
 Receivable from sale of property and equipment,carg_ReceivableFromSaleOfPropertyAndEquipment,,,,,,,,,460000.0,,,
+Maturities of certificates of deposit,us-gaap_ProceedsFromSaleMaturityAndCollectionsOfInvestments,,,,,,,,,,,,30000000.0
 Sales of short-term investments,carg_SalesOfShortTermInvestments,,,,,,21218000.0,,,,,,
 Proceeds from exercise of stock options,us-gaap_ProceedsFromStockOptionsExercised,,,,,,,,,,,,680000.0
 Payment of withholding taxes on net share settlement of equity awards,carg_PaymentOfWithholdingTaxesAndOptionCostsOnNetShareSettlementOfRestrictedStockUnitsAndStockOptions,,,,,,,,,,-2911000.0,-5830000.0,
 Payment of withholding taxes and option costs on net share settlement of restricted stock units and stock options,carg_PaymentOfWithholdingTaxesAndOptionCostsOnNetShareSettlementOfRestrictedStockUnitsAndStockOptions,,,,,,,,,,,,-5430000.0
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,,,,-69024000.0,,,
 Payment of tax distributions to redeemable noncontrolling interest holders,carg_PaymentOfTaxDistributionToRedeemableNoncontrollingInterestHolders,,,,,,,,,-28000.0,,,-8519000.0
+Accretion of Redeemable Noncontrolling Interest to Redemption Value,carg_AccretionOfRedeemableNoncontrollingInterestToRedemptionValue,,,,,,,,,,,,82000000.0
+Accrued tax (refunds from) distributions to redeemable noncontrolling interest holders,carg_AccruedTaxRefundsFromDistributionsToRedeemableNoncontrollingInterestHolders,,,,,,,,,-4000.0,,,
+"Accounts receivable, net",us-gaap_IncreaseDecreaseInAccountsReceivable,,,,,,,,,,,,39973000.0
 Accrued tax distributions to redeemable noncontrolling interest holders,carg_AccruedTaxDistributionsToRedeemableNoncontrollingInterestHolders,,,,,,,,,,,,4168000.0
 Currency loss (gain) on foreign denominated transactions,us-gaap_ForeignCurrencyTransactionGainLossUnrealized,,,,,,384000.0,,,,,,84000.0
 Realized gain on short-term investments,us-gaap_GainOnSaleOfInvestments,,,,,-0.0,,,,,,,
 Unrealized gain on short-term investments,us-gaap_UnrealizedGainLossOnInvestments,,,,,-0.0,,,,,,,
-Accretion of Redeemable Noncontrolling Interest to Redemption Value,carg_AccretionOfRedeemableNoncontrollingInterestToRedemptionValue,,,,,,,,,,,,82000000.0
-Accrued tax (refunds from) distributions to redeemable noncontrolling interest holders,carg_AccruedTaxRefundsFromDistributionsToRedeemableNoncontrollingInterestHolders,,,,,,,,,-4000.0,,,
-"Accounts receivable, net",us-gaap_IncreaseDecreaseInAccountsReceivable,,,,,,,,,,,,39973000.0
-Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,,,,-69024000.0,,,
 Payments received in advance from (payment made to) third party payment processor,carg_PaymentsReceivedInAdvanceFromPaymentMadeToThirdPartyPaymentProcessor,,,,,,,,,,,,-23606000.0
 "Unpaid purchases of property and equipment, capitalized website development, capitalized internal-use software and capitalized hosting arrangements",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,,,,1822000.0,,,269000.0
-Maturities of certificates of deposit,us-gaap_ProceedsFromSaleMaturityAndCollectionsOfInvestments,,,,,,,,,,,,30000000.0
