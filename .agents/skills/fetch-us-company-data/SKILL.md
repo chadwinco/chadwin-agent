@@ -59,7 +59,7 @@ python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
-- `--ideas-log "<PATH>"` overrides the shared queue log path (default `idea-screens/company-ideas-log.jsonl`).
+- `--ideas-log "<PATH>"` overrides the central queue log path (default `idea-screens/company-ideas-log.jsonl`).
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
 - `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).

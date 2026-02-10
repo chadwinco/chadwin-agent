@@ -71,7 +71,7 @@ python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <JP_IDE
 Optional flags:
 - `--isin <ISIN>` adds an explicit ISIN for identifier resolution.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
-- `--ideas-log "<PATH>"` overrides the shared queue log path (default `idea-screens/company-ideas-log.jsonl`).
+- `--ideas-log "<PATH>"` overrides the central queue log path (default `idea-screens/company-ideas-log.jsonl`).
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
 - `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).

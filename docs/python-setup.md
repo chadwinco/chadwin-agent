@@ -27,4 +27,4 @@ python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/scr
 python /Users/chad/source/chadwin-codex/.agents/skills/fetch-japanese-company-data/scripts/add_company.py --ticker 79740 --asof 2026-02-08
 ```
 
-Research generation is LLM-first via `$run-company-research`.
+Research generation is LLM-first via `$run-llm-workflow`.

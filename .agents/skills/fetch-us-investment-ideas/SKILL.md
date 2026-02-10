@@ -8,7 +8,7 @@ description: Fetch a structured list of possible US stock investment ideas with 
 ## Overview
 Screen US exchange-listed stocks with a value + quality filter and output structured JSON that is easy for other app components to consume.
 
-Each run also appends newly discovered companies to the shared queue log at `idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
+Each run also appends newly discovered companies to the central queue log at `idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
 
 ## Skill Path (set once)
 Repo-local:
@@ -70,7 +70,7 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 - `--min-roe`, `--min-roic`, `--min-operating-margin`, `--min-profit-margin`, `--max-debt-to-equity`: quality gates.
 - `--output`: write JSON to file.
 - `--compact`: emit minified JSON.
-- `--ideas-log`: override shared queue log path (defaults to `idea-screens/company-ideas-log.jsonl`).
+- `--ideas-log`: override central queue log path (defaults to `idea-screens/company-ideas-log.jsonl`).
 - `--base-dir`: override repo root used for queue log resolution.
 
 ## Troubleshooting

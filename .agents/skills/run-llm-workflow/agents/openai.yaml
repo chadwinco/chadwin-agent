@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run LLM Workflow"
+  short_description: "LLM-first report + valuation workflow (no one-shot script)"
+  default_prompt: "Use $run-llm-workflow for <TICKER> as of <YYYY-MM-DD> (or omit ticker to auto-pick from the shared ideas log). Work through the LLM research workflow end-to-end and produce report.md plus valuation inputs/outputs, then remove the completed ticker from the queue."

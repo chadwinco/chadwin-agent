@@ -15,9 +15,9 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 
-SHARED_SRC = Path(__file__).resolve().parents[2] / "shared" / "src"
-if str(SHARED_SRC) not in sys.path:
-    sys.path.insert(0, str(SHARED_SRC))
+QUEUE_SRC = Path(__file__).resolve().parents[2] / "research" / "src"
+if str(QUEUE_SRC) not in sys.path:
+    sys.path.insert(0, str(QUEUE_SRC))
 
 from company_idea_queue import append_new_ideas, default_base_dir  # noqa: E402
 
@@ -130,7 +130,7 @@ def parse_args() -> argparse.Namespace:
         "--base-dir",
         default=str(default_base_dir()),
         help=(
-            "Repository root used for the shared company ideas log "
+            "Repository root used for the central company ideas log "
             "(default: auto-detected)."
         ),
     )

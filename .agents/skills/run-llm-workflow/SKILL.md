@@ -1,9 +1,9 @@
 ---
-name: run-company-research
+name: run-llm-workflow
 description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/TICKER/data`. Use after running the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`) when creating or refreshing `companies/TICKER/reports/YYYY-MM-DD/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
 ---
 
-# Run Company Research
+# Run LLM Workflow
 
 ## Overview
 This is an LLM-first research workflow. The target output is intentionally simple:
@@ -29,12 +29,12 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 4. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
 5. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
 
-## Shared Queue Helpers
-Use the shared queue CLI from repo root:
+## Queue Helpers
+Use the queue CLI owned by the `$research` skill from repo root:
 
 ```bash
-python3 .agents/skills/shared/scripts/company_idea_queue.py pick --task run-company-research
-python3 .agents/skills/shared/scripts/company_idea_queue.py remove --ticker <TICKER>
+python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-llm-workflow
+python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>
 ```
 
 - If ticker is omitted, the `pick` command above is the default selection source.
@@ -60,7 +60,7 @@ python3 .agents/skills/shared/scripts/company_idea_queue.py remove --ticker <TIC
 
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.
-- If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-company-research`) and confirm the log has candidates.
+- If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-llm-workflow`) and confirm the log has candidates.
 - If required data is missing, run the appropriate fetch skill for that ticker/date (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 - If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
 - If the write-up is weak, rerun the Step 6 quality gate in `references/research-workflow.md` and fix every unchecked item.

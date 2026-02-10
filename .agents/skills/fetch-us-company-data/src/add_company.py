@@ -19,12 +19,12 @@ def _default_base_dir() -> Path:
 
 
 BASE_DIR = _default_base_dir()
-SHARED_SRC = Path(__file__).resolve().parents[2] / "shared" / "src"
+QUEUE_SRC = Path(__file__).resolve().parents[2] / "research" / "src"
 
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
-if str(SHARED_SRC) not in sys.path:
-    sys.path.insert(0, str(SHARED_SRC))
+if str(QUEUE_SRC) not in sys.path:
+    sys.path.insert(0, str(QUEUE_SRC))
 
 from edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
 from forecast_fetch import fetch_analyst_forecasts  # noqa: E402

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research"
+  short_description: "Orchestrate fetch + report research runs"
+  default_prompt: "Use $research to select a company, fetch the right market data, and run research only when data is fresh or missing."

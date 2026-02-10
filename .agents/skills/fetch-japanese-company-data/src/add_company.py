@@ -9,9 +9,9 @@ from collections import Counter
 from datetime import date
 from pathlib import Path
 
-SHARED_SRC = Path(__file__).resolve().parents[2] / "shared" / "src"
-if str(SHARED_SRC) not in sys.path:
-    sys.path.insert(0, str(SHARED_SRC))
+QUEUE_SRC = Path(__file__).resolve().parents[2] / "research" / "src"
+if str(QUEUE_SRC) not in sys.path:
+    sys.path.insert(0, str(QUEUE_SRC))
 
 from company_idea_queue import TASK_FETCH_JP, pick_next_company
 from japan_fetch import fetch_japanese_company_data, resolve_japanese_identifier

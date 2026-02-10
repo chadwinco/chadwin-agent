@@ -9,7 +9,7 @@ DEFAULT_LOG_RELATIVE_PATH = Path("idea-screens") / "company-ideas-log.jsonl"
 
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_JP = "fetch-japanese-company-data"
-TASK_RESEARCH = "run-company-research"
+TASK_RESEARCH = "run-llm-workflow"
 
 TASK_ALIASES = {
     TASK_FETCH_US: TASK_FETCH_US,
@@ -20,7 +20,9 @@ TASK_ALIASES = {
     "jp": TASK_FETCH_JP,
     "japan": TASK_FETCH_JP,
     TASK_RESEARCH: TASK_RESEARCH,
+    "run-company-research": TASK_RESEARCH,
     "run_company_research": TASK_RESEARCH,
+    "run_llm_workflow": TASK_RESEARCH,
     "research": TASK_RESEARCH,
 }
 

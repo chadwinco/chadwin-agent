@@ -13,12 +13,12 @@ The main goal is repeatable, evidence-backed analysis with clear assumptions and
 The workflow is split into fetch skills by market plus one research skill:
 - US data fetch/bootstrap: `.agents/skills/fetch-us-company-data/SKILL.md`
 - Japan data fetch/bootstrap: `.agents/skills/fetch-japanese-company-data/SKILL.md`
-- Research + valuation write-up: `.agents/skills/run-company-research/SKILL.md`
+- Research + valuation write-up: `.agents/skills/run-llm-workflow/SKILL.md`
 
 Use them in this order:
-0. (Optional but recommended) Run `$fetch-us-investment-ideas` to seed the shared queue log at `idea-screens/company-ideas-log.jsonl`.
+0. (Optional but recommended) Run `$fetch-us-investment-ideas` to seed the central queue log at `idea-screens/company-ideas-log.jsonl`.
 1. Run the country-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`)
-2. Run `$run-company-research`
+2. Run `$run-llm-workflow`
 
 If ticker/identifier is omitted when running a fetch or research skill, the workflow now selects from `idea-screens/company-ideas-log.jsonl` when a matching candidate exists.
 
@@ -49,7 +49,7 @@ The active method is a three-stage DCF with:
 - Terminal period
 
 Authoritative method details live in:
-- `.agents/skills/run-company-research/references/valuation-method.md`
+- `.agents/skills/run-llm-workflow/references/valuation-method.md`
 
 ## Agent Notes (Important)
 - Treat local files under `companies/<TICKER>/data` as primary evidence.
@@ -66,8 +66,8 @@ Authoritative method details live in:
   - `.agents/skills/fetch-japanese-company-data/references/data-outputs.md`
   - `.agents/skills/fetch-japanese-company-data/references/data-dictionary.md`
 - Research workflow and quality gate:
-  - `.agents/skills/run-company-research/references/research-workflow.md`
-  - `.agents/skills/run-company-research/references/report-format.md`
+  - `.agents/skills/run-llm-workflow/references/research-workflow.md`
+  - `.agents/skills/run-llm-workflow/references/report-format.md`
 - Manual validation scenarios:
   - `tests/README.md`
 - Process learning history:

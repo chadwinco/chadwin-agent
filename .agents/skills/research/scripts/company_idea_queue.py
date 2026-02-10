@@ -6,11 +6,11 @@ import json
 import sys
 from pathlib import Path
 
-SHARED_DIR = Path(__file__).resolve().parents[1]
-SHARED_SRC = SHARED_DIR / "src"
+QUEUE_SKILL_DIR = Path(__file__).resolve().parents[1]
+QUEUE_SRC = QUEUE_SKILL_DIR / "src"
 
-if str(SHARED_SRC) not in sys.path:
-    sys.path.insert(0, str(SHARED_SRC))
+if str(QUEUE_SRC) not in sys.path:
+    sys.path.insert(0, str(QUEUE_SRC))
 
 from company_idea_queue import (  # noqa: E402
     TASK_FETCH_JP,
@@ -27,7 +27,7 @@ from company_idea_queue import (  # noqa: E402
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Manage the shared company-ideas queue used by fetch and research skills."
+            "Manage the central company-ideas queue used by fetch and research skills."
         )
     )
     parser.add_argument("--base-dir", default=str(default_base_dir()))
@@ -54,7 +54,9 @@ def _build_parser() -> argparse.ArgumentParser:
             "research",
             "fetch_us_company_data",
             "fetch_japanese_company_data",
+            "run-company-research",
             "run_company_research",
+            "run_llm_workflow",
         ],
     )
 
@@ -78,7 +80,9 @@ def _build_parser() -> argparse.ArgumentParser:
             "research",
             "fetch_us_company_data",
             "fetch_japanese_company_data",
+            "run-company-research",
             "run_company_research",
+            "run_llm_workflow",
         ],
         help="Optional task filter.",
     )
