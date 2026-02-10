@@ -33,6 +33,8 @@ Drafting assets:
 
 ## Step 1: Confirm Scope
 - Confirm ticker and as-of date explicitly.
+- If ticker is not provided, pick the next candidate from the shared queue:
+  - `python3 .agents/skills/shared/scripts/company_idea_queue.py pick --task run-company-research`
 - Use filings/transcripts dated on or before the as-of date.
 - If local data is missing, stop and run the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 
@@ -116,4 +118,6 @@ Output quality:
 - [ ] Improvement notes are added to `docs/improvement-log.md`.
 
 ## Step 7: Log and Improve
+- If all required outputs are complete, remove the researched ticker from the shared queue:
+  - `python3 .agents/skills/shared/scripts/company_idea_queue.py remove --ticker <TICKER>`
 - Process improvements: append rows to `docs/improvement-log.md` using `references/improvement-loop.md`.

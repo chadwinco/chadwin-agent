@@ -39,3 +39,10 @@ These are manual validation steps for the research workflow.
 
 7. Checklist gate
    - Run through Step 6 in `.agents/skills/run-company-research/references/research-workflow.md` and confirm all items pass before finalizing.
+
+8. Queue fallback behavior
+   - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-investment-ideas/scripts/fetch_us_investment_ideas.py --limit 5 --output /Users/chad/source/chadwin-codex/idea-screens/<YYYY-MM-DD>/ideas.json`
+   - Confirm `idea-screens/company-ideas-log.jsonl` exists and includes appended entries.
+   - Run `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --asof <YYYY-MM-DD>` with no `--ticker`.
+   - Confirm it selects the next US ticker from the queue.
+   - After completing `$run-company-research`, run `python /Users/chad/source/chadwin-codex/.agents/skills/shared/scripts/company_idea_queue.py remove --ticker <TICKER>` and confirm the ticker is removed from `idea-screens/company-ideas-log.jsonl`.

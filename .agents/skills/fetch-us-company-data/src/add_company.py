@@ -19,15 +19,19 @@ def _default_base_dir() -> Path:
 
 
 BASE_DIR = _default_base_dir()
+SHARED_SRC = Path(__file__).resolve().parents[2] / "shared" / "src"
 
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
+if str(SHARED_SRC) not in sys.path:
+    sys.path.insert(0, str(SHARED_SRC))
 
 from edgar_fetch import fetch_company_filings, fetch_company_financials  # noqa: E402
 from forecast_fetch import fetch_analyst_forecasts  # noqa: E402
 from loaders import load_company_data  # noqa: E402
 from metrics import compute_metrics  # noqa: E402
 from transcript_fetch import fetch_latest_transcript_with_report  # noqa: E402
+from company_idea_queue import TASK_FETCH_US, pick_next_company  # noqa: E402
 
 
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
@@ -247,10 +251,17 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Create or refresh a company data package and bootstrap valuation assumptions"
     )
-    parser.add_argument("--ticker", required=True)
+    parser.add_argument(
+        "--ticker",
+        help="US ticker symbol. If omitted, pick the next US company from the ideas log.",
+    )
     parser.add_argument("--identity", help="EDGAR identity string: 'Name email@domain.com'")
     parser.add_argument("--base-dir", default=str(BASE_DIR))
     parser.add_argument("--asof", default=str(date.today()))
+    parser.add_argument(
+        "--ideas-log",
+        help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
+    )
     parser.add_argument("--overwrite-assumptions", action="store_true")
     parser.add_argument(
         "--transcript-url",
@@ -271,7 +282,22 @@ def main() -> None:
 
     args = parser.parse_args()
     base_dir = Path(args.base_dir)
-    ticker = args.ticker.upper()
+    ticker = (args.ticker or "").strip().upper()
+
+    if not ticker:
+        selected = pick_next_company(
+            base_dir=base_dir,
+            task=TASK_FETCH_US,
+            ideas_log=args.ideas_log,
+        )
+        if not selected:
+            raise SystemExit(
+                "No US company found in idea-screens/company-ideas-log.jsonl. "
+                "Run fetch-us-investment-ideas first or pass --ticker."
+            )
+        ticker = str(selected["ticker"]).upper()
+        queued_at = selected.get("queued_at_utc") or "unknown"
+        print(f"No --ticker provided. Selected {ticker} from ideas log (queued_at_utc={queued_at}).")
 
     company_dir = _ensure_dirs(base_dir, ticker)
     data_dir = company_dir / "data"

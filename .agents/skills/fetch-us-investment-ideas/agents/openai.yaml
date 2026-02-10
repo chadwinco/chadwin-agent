@@ -1,4 +1,4 @@
 interface:
   display_name: "Fetch US Investment Ideas"
   short_description: "Generate US ticker ideas with short value-quality theses"
-  default_prompt: "Use $fetch-us-investment-ideas to produce structured JSON of NASDAQ/NYSE/AMEX ticker ideas with `ticker` and concise undervaluation-quality rationale."
+  default_prompt: "Use $fetch-us-investment-ideas to produce structured JSON of NASDAQ/NYSE/AMEX ticker ideas with `ticker` and concise undervaluation-quality rationale, then append new tickers to the shared ideas log."

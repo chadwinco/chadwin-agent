@@ -16,8 +16,11 @@ The workflow is split into fetch skills by market plus one research skill:
 - Research + valuation write-up: `.agents/skills/run-company-research/SKILL.md`
 
 Use them in this order:
+0. (Optional but recommended) Run `$fetch-us-investment-ideas` to seed the shared queue log at `idea-screens/company-ideas-log.jsonl`.
 1. Run the country-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`)
 2. Run `$run-company-research`
+
+If ticker/identifier is omitted when running a fetch or research skill, the workflow now selects from `idea-screens/company-ideas-log.jsonl` when a matching candidate exists.
 
 ## Repository Structure
 - `companies/<TICKER>/data/`

@@ -8,6 +8,8 @@ description: Fetch a structured list of possible US stock investment ideas with 
 ## Overview
 Screen US exchange-listed stocks with a value + quality filter and output structured JSON that is easy for other app components to consume.
 
+Each run also appends newly discovered companies to the shared queue log at `idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
+
 ## Skill Path (set once)
 Repo-local:
 
@@ -27,6 +29,7 @@ python3 "$FETCH_US_INVESTMENT_IDEAS_CLI" \
 ```
 
 3. Consume `ideas[]` in the output JSON for `ticker` + short `thesis`.
+4. Check `idea-screens/company-ideas-log.jsonl` for appended queue entries.
 
 ## Required Output Shape
 The script emits JSON with this top-level structure:
@@ -57,6 +60,7 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 2. Keep default exchange scope (NASDAQ/NYSE/AMEX only) unless explicitly asked to broaden.
 3. Use `--output` for deterministic handoff to other app components.
 4. Verify the result contains non-empty `ideas` and each idea has `ticker` + `thesis`.
+5. Confirm new tickers were appended to `idea-screens/company-ideas-log.jsonl`.
 
 ## Key Flags
 - `--limit`: max number of returned ideas.
@@ -66,6 +70,8 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 - `--min-roe`, `--min-roic`, `--min-operating-margin`, `--min-profit-margin`, `--max-debt-to-equity`: quality gates.
 - `--output`: write JSON to file.
 - `--compact`: emit minified JSON.
+- `--ideas-log`: override shared queue log path (defaults to `idea-screens/company-ideas-log.jsonl`).
+- `--base-dir`: override repo root used for queue log resolution.
 
 ## Troubleshooting
 - If output is empty, loosen thresholds (for example raise `--max-pe` or lower `--min-roic`).

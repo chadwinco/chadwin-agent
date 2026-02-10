@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -13,6 +14,12 @@ from pathlib import Path
 from typing import Any
 
 from bs4 import BeautifulSoup
+
+SHARED_SRC = Path(__file__).resolve().parents[2] / "shared" / "src"
+if str(SHARED_SRC) not in sys.path:
+    sys.path.insert(0, str(SHARED_SRC))
+
+from company_idea_queue import append_new_ideas, default_base_dir  # noqa: E402
 
 FINVIZ_BASE_URL = "https://finviz.com/screener.ashx"
 USER_AGENT = (
@@ -118,6 +125,18 @@ def parse_args() -> argparse.Namespace:
         "--compact",
         action="store_true",
         help="Emit compact JSON (no indentation).",
+    )
+    parser.add_argument(
+        "--base-dir",
+        default=str(default_base_dir()),
+        help=(
+            "Repository root used for the shared company ideas log "
+            "(default: auto-detected)."
+        ),
+    )
+    parser.add_argument(
+        "--ideas-log",
+        help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
     )
     args = parser.parse_args()
 
@@ -448,6 +467,7 @@ def build_payload(ideas: list[dict[str, Any]], args: argparse.Namespace) -> dict
 
 def main() -> int:
     args = parse_args()
+    base_dir = Path(args.base_dir)
 
     raw_rows: list[dict[str, str]] = []
     for exchange_name, exchange_filter in EXCHANGES.items():
@@ -469,6 +489,15 @@ def main() -> int:
         args.output.write_text(output_text + "\n", encoding="utf-8")
     else:
         print(output_text)
+
+    append_new_ideas(
+        base_dir=base_dir,
+        ideas=ideas,
+        source="fetch-us-investment-ideas",
+        generated_at_utc=payload.get("generated_at_utc"),
+        source_output=str(args.output) if args.output else "",
+        ideas_log=args.ideas_log,
+    )
 
     return 0
 

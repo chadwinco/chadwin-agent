@@ -36,40 +36,42 @@ export FETCH_JAPANESE_COMPANY_DATA_CLI="$FETCH_JAPANESE_COMPANY_DATA_ROOT/script
 
 ## Quick Start
 1. Follow `references/python-setup.md`.
-2. Confirm identifier and as-of date with the user.
+2. Confirm as-of date with the user. Identifier is optional.
 3. Run the skill script from the repo root:
 
 ```bash
-python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --ticker <JP_IDENTIFIER> --asof <YYYY-MM-DD>
+python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <JP_IDENTIFIER>]
 ```
 
 ## Workflow
 1. Confirm prerequisites.
-2. Confirm identifier and as-of date (do not infer from open files or prior context).
+2. Resolve identifier and as-of date.
 3. Run fetch/bootstrap.
 4. Verify outputs.
 
 ### 1. Confirm prerequisites
 - Use `references/python-setup.md` for environment setup and dependencies.
 
-### 2. Confirm identifier and as-of date
-- Only proceed if the user explicitly provided a ticker/identifier in the current request.
+### 2. Resolve identifier and as-of date
 - Acceptable identifiers:
   - 4-digit TSE code (example: `7974`)
   - 5-digit JP code ending in `0` (example: `79740`)
   - Yahoo Japan symbol (example: `7974.T`)
   - Seeded ISINs (example: `JP3756600007` for Nintendo)
-- If no identifier is specified, ask: `Which Japanese ticker should I fetch?`
-- Echo back identifier and as-of date before execution.
+- If `--ticker` is provided, use it.
+- If `--ticker` is omitted, select the next JP candidate from `idea-screens/company-ideas-log.jsonl`.
+- If the queue log has no JP candidate, stop and ask for a ticker.
+- Echo back the resolved identifier and as-of date before execution.
 
 ### 3. Run fetch/bootstrap
 ```bash
-python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --ticker <JP_IDENTIFIER> --asof <YYYY-MM-DD>
+python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <JP_IDENTIFIER>]
 ```
 
 Optional flags:
 - `--isin <ISIN>` adds an explicit ISIN for identifier resolution.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- `--ideas-log "<PATH>"` overrides the shared queue log path (default `idea-screens/company-ideas-log.jsonl`).
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
 - `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).

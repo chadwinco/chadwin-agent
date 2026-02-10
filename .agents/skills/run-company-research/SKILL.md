@@ -19,7 +19,7 @@ Do not use a deterministic end-to-end analysis script for this skill.
 - The task is complete only when all required output files are written and the quality gate passes.
 
 ## Quick Start
-1. Confirm ticker and as-of date with the user.
+1. Resolve ticker and confirm as-of date with the user.
 2. Ensure `companies/<TICKER>/data` is populated. If not, run the appropriate fetch skill first (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 3. Create the output directory from the repo root:
 
@@ -27,6 +27,18 @@ Do not use a deterministic end-to-end analysis script for this skill.
 mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 ```
 4. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
+5. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
+
+## Shared Queue Helpers
+Use the shared queue CLI from repo root:
+
+```bash
+python3 .agents/skills/shared/scripts/company_idea_queue.py pick --task run-company-research
+python3 .agents/skills/shared/scripts/company_idea_queue.py remove --ticker <TICKER>
+```
+
+- If ticker is omitted, the `pick` command above is the default selection source.
+- The `remove` command should run only after required outputs are finalized and Step 6 quality gates pass.
 
 ## Required Outputs
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
@@ -38,7 +50,8 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 2. Build valuation assumptions and outputs using `references/valuation-method.md`.
 3. Draft the report using `references/report-format.md`.
 4. Check all quality gates in `references/research-workflow.md` (Step 6) before finalizing.
-5. Record learnings using `references/improvement-loop.md`.
+5. Remove the completed ticker from `idea-screens/company-ideas-log.jsonl`.
+6. Record learnings using `references/improvement-loop.md`.
 
 ## Constraints
 - Keep the report concise and decision-oriented.
@@ -47,6 +60,7 @@ mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
 
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.
+- If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-company-research`) and confirm the log has candidates.
 - If required data is missing, run the appropriate fetch skill for that ticker/date (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 - If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
 - If the write-up is weak, rerun the Step 6 quality gate in `references/research-workflow.md` and fix every unchecked item.

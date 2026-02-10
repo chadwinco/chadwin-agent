@@ -1,4 +1,4 @@
 interface:
   display_name: "Fetch Japanese Company Data"
   short_description: "Fetch profile and annual statements for TSE-listed companies"
-  default_prompt: "Use $fetch-japanese-company-data to pull profile, annual statements, and transcript attempts for a Japanese listed company."
+  default_prompt: "Use $fetch-japanese-company-data to pull profile, annual statements, and transcript attempts for a Japanese listed company (or omit ticker to auto-pick from the shared ideas log)."

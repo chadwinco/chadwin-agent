@@ -28,16 +28,16 @@ export FETCH_US_COMPANY_DATA_CLI="$FETCH_US_COMPANY_DATA_ROOT/scripts/add_compan
 
 ## Quick Start
 1. Follow `references/python-setup.md`.
-2. Confirm ticker and as-of date with the user.
+2. Confirm as-of date with the user. Ticker is optional.
 3. Run the skill script from the repo root:
 
 ```bash
-python3 "$FETCH_US_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 ```
 
 ## Workflow
 1. Confirm prerequisites.
-2. Confirm ticker and as-of date (do not infer from open files or prior context).
+2. Resolve ticker and as-of date.
 3. Run fetch/bootstrap.
 4. Verify outputs.
 
@@ -45,20 +45,21 @@ python3 "$FETCH_US_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
 - Use `references/python-setup.md` for environment setup and dependencies.
 - Ensure `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) is set in `.env`, or pass `--identity`.
 
-### 2. Confirm ticker and as-of date
-- Only proceed if the user explicitly provided a ticker in the current request.
-- If no ticker is specified, ask: `Which ticker should I fetch?`
-- If multiple tickers are mentioned, ask which one to run first.
-- Echo back ticker and as-of date before execution.
+### 2. Resolve ticker and as-of date
+- If `--ticker` is provided, use it.
+- If `--ticker` is omitted, select the next US candidate from `idea-screens/company-ideas-log.jsonl`.
+- If the queue log has no US candidate, stop and ask for a ticker or run `$fetch-us-investment-ideas`.
+- Echo back the resolved ticker and as-of date before execution.
 
 ### 3. Run fetch/bootstrap
 ```bash
-python3 "$FETCH_US_COMPANY_DATA_CLI" --ticker <TICKER> --asof <YYYY-MM-DD>
+python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 ```
 
 Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
 - `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- `--ideas-log "<PATH>"` overrides the shared queue log path (default `idea-screens/company-ideas-log.jsonl`).
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
 - `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).
@@ -77,6 +78,7 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 
 ## Troubleshooting
 - If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
+- If `--ticker` is omitted and no US queue candidate exists, run `$fetch-us-investment-ideas` first or pass a ticker explicitly.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.
 - If annual statements fail to parse, inspect `companies/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-outputs.md`.
 

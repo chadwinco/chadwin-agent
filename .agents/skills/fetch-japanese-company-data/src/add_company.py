@@ -4,10 +4,16 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 from collections import Counter
 from datetime import date
 from pathlib import Path
 
+SHARED_SRC = Path(__file__).resolve().parents[2] / "shared" / "src"
+if str(SHARED_SRC) not in sys.path:
+    sys.path.insert(0, str(SHARED_SRC))
+
+from company_idea_queue import TASK_FETCH_JP, pick_next_company
 from japan_fetch import fetch_japanese_company_data, resolve_japanese_identifier
 from loaders import load_company_data
 from metrics import compute_metrics
@@ -133,10 +139,20 @@ def main() -> None:
             "from Yahoo Finance annual statements"
         )
     )
-    parser.add_argument("--ticker", required=True, help="JP identifier (e.g., 7974, 79740, 7974.T, or seeded ISIN)")
+    parser.add_argument(
+        "--ticker",
+        help=(
+            "JP identifier (e.g., 7974, 79740, 7974.T, or seeded ISIN). "
+            "If omitted, pick the next JP company from the ideas log."
+        ),
+    )
     parser.add_argument("--isin", help="Optional ISIN to help resolve the company mapping")
     parser.add_argument("--base-dir", default=str(BASE_DIR))
     parser.add_argument("--asof", default=str(date.today()))
+    parser.add_argument(
+        "--ideas-log",
+        help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
+    )
     parser.add_argument("--overwrite-assumptions", action="store_true")
     parser.add_argument(
         "--transcript-url",
@@ -157,8 +173,26 @@ def main() -> None:
 
     args = parser.parse_args()
     base_dir = Path(args.base_dir)
+    ticker_input = (args.ticker or "").strip()
+    if not ticker_input:
+        selected = pick_next_company(
+            base_dir=base_dir,
+            task=TASK_FETCH_JP,
+            ideas_log=args.ideas_log,
+        )
+        if not selected:
+            raise SystemExit(
+                "No Japanese company found in idea-screens/company-ideas-log.jsonl. "
+                "Pass --ticker explicitly or append JP entries to the ideas log."
+            )
+        ticker_input = str(selected["ticker"])
+        queued_at = selected.get("queued_at_utc") or "unknown"
+        print(
+            "No --ticker provided. Selected "
+            f"{ticker_input} from ideas log (queued_at_utc={queued_at})."
+        )
 
-    resolved = resolve_japanese_identifier(args.ticker, isin=args.isin)
+    resolved = resolve_japanese_identifier(ticker_input, isin=args.isin)
     ticker = resolved.canonical_ticker
 
     company_dir = _ensure_dirs(base_dir, ticker)
@@ -166,7 +200,7 @@ def main() -> None:
 
     print(
         "Resolved identifier "
-        f"{args.ticker} -> local code {resolved.local_code}, Yahoo symbol {resolved.yahoo_symbol}, "
+        f"{ticker_input} -> local code {resolved.local_code}, Yahoo symbol {resolved.yahoo_symbol}, "
         f"repo ticker {resolved.canonical_ticker}"
     )
 
