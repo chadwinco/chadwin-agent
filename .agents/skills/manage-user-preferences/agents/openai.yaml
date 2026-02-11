@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage User Preferences"
+  short_description: "Create or update the persistent preferences profile"
+  default_prompt: "Use $manage-user-preferences to capture my market, sector/industry, strategy, and report-content preferences into preferences/user_preferences.json."

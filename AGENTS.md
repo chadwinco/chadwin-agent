@@ -39,6 +39,7 @@ Use one of these modes explicitly:
    - `$fetch-us-company-data`
    - `$fetch-japanese-company-data`
    - `$run-llm-workflow`
+   - `$manage-user-preferences`
    - Choosing these directly indicates the user wants finer-grained process control.
 
 If no specific lower-level control is requested, prefer `$research`.

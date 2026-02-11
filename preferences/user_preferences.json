@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "updated_at_utc": null,
+  "markets": {
+    "included_countries": []
+  },
+  "sector_and_industry_preferences": {
+    "preferred_sectors": [],
+    "preferred_industries": [],
+    "excluded_sectors": [],
+    "excluded_industries": [],
+    "notes": ""
+  },
+  "investment_strategy_preferences": {
+    "preferred_strategies": [],
+    "excluded_strategies": [],
+    "notes": ""
+  },
+  "report_preferences": {
+    "must_include": [],
+    "nice_to_have": [],
+    "exclude": [],
+    "notes": ""
+  }
+}

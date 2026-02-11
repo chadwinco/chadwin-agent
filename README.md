@@ -39,11 +39,13 @@ Use one of these Skill-level requests in Codex:
 - Advanced manual control: `$fetch-us-company-data`
 - Advanced manual control: `$fetch-japanese-company-data`
 - Advanced manual control: `$run-llm-workflow`
+- Preferences setup/update: `$manage-user-preferences`
 
 Example requests you can give Codex:
 - `Run $research for AAPL as-of 2026-02-11.`
 - `Run $fetch-us-investment-ideas, then use $research with no ticker.`
 - `Run $fetch-japanese-company-data for 79740 as-of 2026-02-11, then run $run-llm-workflow.`
+- `Run $manage-user-preferences and ask me questions to build my profile.`
 
 ## Required Outputs Per Completed Run
 For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`, a run is complete only when these exist:
@@ -61,12 +63,14 @@ Primary Skill docs:
 - `/Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/fetch-japanese-company-data/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`
+- `/Users/chad/source/chadwin-codex/.agents/skills/manage-user-preferences/SKILL.md`
 
 ## Repository Layout
 - `companies/US/<TICKER>/` and `companies/Japan/<TICKER>/`: exchange-country roots for company packages
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/`: local evidence inputs
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`: report and valuation outputs
 - `idea-screens/`: idea queue and generated idea files
+- `preferences/user_preferences.json`: persistent user preference profile
 - `docs/`: supporting docs and improvement log
 - `.agents/skills/`: Skill definitions, scripts, references, and assets
 
