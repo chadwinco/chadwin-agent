@@ -91,27 +91,4 @@ def compute_metrics(data: CompanyData) -> Dict:
         "avg_leverage": float(annual["leverage"].mean()),
     }
 
-    # Build markdown table for the last 4 years
-    recent = annual.tail(4)
-    lines = [
-        "| Fiscal Year | Revenue ($m) | EBIT ($m) | EBIT Margin | FCF ($m) | FCF Margin | Net Debt ($m) | ROIC |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
-    ]
-    for _, row in recent.iterrows():
-        lines.append(
-            "| {year} | {rev:.1f} | {ebit:.1f} | {ebit_margin:.1%} | {fcf:.1f} | {fcf_margin:.1%} | {net_debt:.1f} | {roic:.1%} |".format(
-                year=int(row["fiscalYear"]),
-                rev=row["revenue"] / 1e6,
-                ebit=row["ebit"] / 1e6,
-                ebit_margin=row["ebit_margin"],
-                fcf=row["freeCashFlow"] / 1e6,
-                fcf_margin=row["fcf_margin"],
-                net_debt=row["net_debt"] / 1e6,
-                roic=row["roic"],
-            )
-        )
-
-    metrics["financial_table"] = "\n".join(lines)
-    metrics["annual"] = annual
-
     return metrics

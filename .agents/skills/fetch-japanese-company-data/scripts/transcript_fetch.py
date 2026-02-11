@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
-from typing import Iterable, Optional, Tuple
+from typing import Iterable, Optional
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, unquote, urlparse
 from urllib.request import Request, urlopen
@@ -13,6 +13,24 @@ try:
     from bs4 import BeautifulSoup  # type: ignore
 except Exception:  # pragma: no cover - optional dependency
     BeautifulSoup = None
+
+
+_ALLOWED_DOMAINS = (
+    "fool.com",
+    "nasdaq.com",
+    "insidermonkey.com",
+    "investing.com",
+    "finance.yahoo.com",
+)
+_BODY_SELECTORS = (
+    "article",
+    "main",
+    "div.article-body",
+    "div.body__content",
+    "div.post-content",
+    "div.post-body",
+    "div.article-content",
+)
 
 
 @dataclass
@@ -161,7 +179,7 @@ def _extract_published_date(html: str, soup) -> Optional[date]:
         if time_tag and time_tag.get("datetime"):
             return _parse_date(time_tag["datetime"])
 
-    for match in re.finditer(r'"datePublished"\\s*:\\s*"([^"]+)"', html):
+    for match in re.finditer(r'"datePublished"\s*:\s*"([^"]+)"', html):
         parsed = _parse_date(match.group(1))
         if parsed:
             return parsed
@@ -177,7 +195,7 @@ def _parse_date(value: str) -> Optional[date]:
         return datetime.fromisoformat(text).date()
     except ValueError:
         pass
-    match = re.search(r"(\\d{4}-\\d{2}-\\d{2})", text)
+    match = re.search(r"(\d{4}-\d{2}-\d{2})", text)
     if match:
         try:
             return datetime.fromisoformat(match.group(1)).date()
@@ -200,15 +218,7 @@ def _extract_body(soup) -> str:
     if soup is None:
         return ""
     candidates = []
-    for selector in [
-        "article",
-        "main",
-        "div.article-body",
-        "div.body__content",
-        "div.post-content",
-        "div.post-body",
-        "div.article-content",
-    ]:
+    for selector in _BODY_SELECTORS:
         node = soup.select_one(selector)
         if node is not None:
             candidates.append(node)
@@ -233,17 +243,10 @@ def _extract_body(soup) -> str:
 
 
 def _candidate_filter(urls: Iterable[str]) -> list[str]:
-    allowed_domains = (
-        "fool.com",
-        "nasdaq.com",
-        "insidermonkey.com",
-        "investing.com",
-        "finance.yahoo.com",
-    )
     filtered = []
     for url in urls:
         netloc = urlparse(url).netloc.lower()
-        if any(domain in netloc for domain in allowed_domains):
+        if any(domain in netloc for domain in _ALLOWED_DOMAINS):
             filtered.append(url)
         elif "earnings-call-transcript" in url.lower() or "earnings call transcript" in url.lower():
             filtered.append(url)
@@ -262,15 +265,13 @@ def _resolve_date(asof: Optional[str]) -> date:
 def _fetch_transcript_with_attempt(
     url: str,
     min_body_chars: int = 1000,
-) -> Tuple[Optional[ParsedTranscript], TranscriptAttempt]:
+) -> tuple[Optional[ParsedTranscript], TranscriptAttempt]:
     response = _fetch_url(url)
     if not response.html:
-        if response.error_kind == "http_error":
-            status = "http_error"
-        elif response.error_kind == "network_error":
-            status = "network_error"
-        else:
-            status = "fetch_error"
+        status = {
+            "http_error": "http_error",
+            "network_error": "network_error",
+        }.get(response.error_kind, "fetch_error")
         return None, TranscriptAttempt(
             url=url,
             status=status,
@@ -307,13 +308,6 @@ def _fetch_transcript_with_attempt(
         published_date=published,
     )
     return ParsedTranscript(title=title, published_date=published, body=body), attempt
-
-
-def _fetch_transcript(url: str) -> Tuple[Optional[str], Optional[date], str]:
-    parsed, _ = _fetch_transcript_with_attempt(url)
-    if not parsed:
-        return None, None, ""
-    return parsed.title, parsed.published_date, parsed.body
 
 
 def fetch_latest_transcript_with_report(
@@ -364,27 +358,22 @@ def fetch_latest_transcript_with_report(
         )
         return report
 
-    best_url = None
-    best_date = None
-    best_payload: Optional[ParsedTranscript] = None
+    successes: list[tuple[str, ParsedTranscript]] = []
 
     for url in urls:
         payload, attempt = _fetch_transcript_with_attempt(url, min_body_chars=min_body_chars)
         report.attempts.append(attempt)
-        if not payload:
-            continue
-        if best_url is None:
-            best_url = url
-            best_date = payload.published_date
-            best_payload = payload
-            continue
-        if payload.published_date and (best_date is None or payload.published_date > best_date):
-            best_url = url
-            best_date = payload.published_date
-            best_payload = payload
+        if payload:
+            successes.append((url, payload))
 
-    if not best_url or not best_payload:
+    if not successes:
         return report
+
+    best_url, best_payload = max(
+        successes,
+        key=lambda item: item[1].published_date or date.min,
+    )
+    best_date = best_payload.published_date
 
     date_value = best_date or _resolve_date(asof)
     source_slug = urlparse(best_url).netloc.replace("www.", "")
