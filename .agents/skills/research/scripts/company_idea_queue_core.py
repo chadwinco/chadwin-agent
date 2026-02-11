@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -86,6 +87,72 @@ def _normalized_token_set(value: Any) -> set[str]:
     return {item.lower() for item in _string_list(value)}
 
 
+_TAXONOMY_ALIASES: dict[str, set[str]] = {
+    "biotech": {"biotech", "biotechnology"},
+    "biotechnology": {"biotech", "biotechnology"},
+    "bank": {"bank", "banks", "banking"},
+    "banks": {"bank", "banks", "banking"},
+    "banking": {"bank", "banks", "banking"},
+    "pharma": {"pharma", "pharmaceutical", "pharmaceuticals"},
+    "pharmaceutical": {"pharma", "pharmaceutical", "pharmaceuticals"},
+    "pharmaceuticals": {"pharma", "pharmaceutical", "pharmaceuticals"},
+}
+
+
+def _normalize_taxonomy_text(value: Any) -> str:
+    text = _clean_text(value).lower()
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    text = " ".join(text.split())
+    return text
+
+
+def _expand_taxonomy_term(term: str) -> set[str]:
+    normalized = _normalize_taxonomy_text(term)
+    if not normalized:
+        return set()
+    expanded = {normalized}
+    expanded.update(_TAXONOMY_ALIASES.get(normalized, set()))
+    return expanded
+
+
+def _taxonomy_matches(candidate: str, preference: str) -> bool:
+    candidate_norm = _normalize_taxonomy_text(candidate)
+    preference_norm = _normalize_taxonomy_text(preference)
+    if not candidate_norm or not preference_norm:
+        return False
+
+    candidate_terms = _expand_taxonomy_term(candidate_norm)
+    preference_terms = _expand_taxonomy_term(preference_norm)
+    if candidate_terms & preference_terms:
+        return True
+
+    for preference_term in preference_terms:
+        pattern = rf"\b{re.escape(preference_term)}\b"
+        if re.search(pattern, candidate_norm) is not None:
+            return True
+    for candidate_term in candidate_terms:
+        pattern = rf"\b{re.escape(candidate_term)}\b"
+        if re.search(pattern, preference_norm) is not None:
+            return True
+
+    # Allow short-form taxonomy labels (e.g., "biotech" vs "biotechnology").
+    if len(preference_norm) >= 5 and candidate_norm.startswith(preference_norm):
+        return True
+    if len(candidate_norm) >= 5 and preference_norm.startswith(candidate_norm):
+        return True
+    return False
+
+
+def _matches_any_taxonomy_preference(candidate: str, preferences: set[str]) -> bool:
+    candidate_norm = _normalize_taxonomy_text(candidate)
+    if not candidate_norm:
+        return False
+    for raw_preference in preferences:
+        if _taxonomy_matches(candidate_norm, raw_preference):
+            return True
+    return False
+
+
 def normalize_ticker(value: Any) -> str:
     return _clean_text(value).upper()
 
@@ -167,13 +234,17 @@ def matches_sector_industry_preferences(
     sector = _clean_text(candidate.get("sector")).lower()
     industry = _clean_text(candidate.get("industry")).lower()
 
-    if sector and sector in excluded_sectors:
+    if sector and _matches_any_taxonomy_preference(sector, excluded_sectors):
         return False
-    if industry and industry in excluded_industries:
+    if industry and _matches_any_taxonomy_preference(industry, excluded_industries):
         return False
-    if preferred_sectors and sector and sector not in preferred_sectors:
+    if preferred_sectors and sector and not _matches_any_taxonomy_preference(
+        sector, preferred_sectors
+    ):
         return False
-    if preferred_industries and industry and industry not in preferred_industries:
+    if preferred_industries and industry and not _matches_any_taxonomy_preference(
+        industry, preferred_industries
+    ):
         return False
     return True
 

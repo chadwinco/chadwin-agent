@@ -48,3 +48,11 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Run `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --asof <YYYY-MM-DD>` with no `--ticker`.
 - Confirm it selects the next US ticker from the queue.
 - After completing `$run-llm-workflow`, run `python /Users/chad/source/chadwin-codex/.agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>` and confirm the ticker is removed from `idea-screens/company-ideas-log.jsonl`.
+
+## 9. Preference synonym filtering
+- Create a temporary JSONL queue with at least:
+  - one US entry with `industry` set to `Biotechnology`
+  - one US non-biotech entry (for example, `Consumer Electronics`)
+- Ensure `preferences/user_preferences.json` has `excluded_industries` including `biotech`.
+- Run `python /Users/chad/source/chadwin-codex/.agents/skills/research/scripts/run_research.py --asof <YYYY-MM-DD> --dry-run --ideas-log <TEMP_JSONL_PATH>`.
+- Confirm the selected ticker is the non-biotech candidate.
