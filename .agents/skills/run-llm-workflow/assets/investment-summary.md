@@ -3,9 +3,9 @@
 Goal: Produce a concise, decision-oriented summary for the current price.
 
 Inputs:
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
-- Local filing and transcript evidence from `companies/<TICKER>/data/filings/*.md`
-- Current price from `companies/<TICKER>/data/company_profile.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- Local filing and transcript evidence from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+- Current price from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
 
 Instructions:
 - Lead with a clear verdict: `Attractive`, `Watch`, or `Avoid`.

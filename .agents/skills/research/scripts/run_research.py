@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from company_idea_queue_core import (
+    COUNTRY_DIR_BY_MARKET,
     TASK_RESEARCH,
     detect_market,
     pick_next_company,
@@ -119,9 +120,20 @@ def _matching_company_dirs(base_dir: Path, ticker: str) -> list[Path]:
     key = queue_key(ticker)
     exact = ticker.upper()
     matches: list[Path] = []
-    for candidate in companies_dir.iterdir():
-        if not candidate.is_dir():
+    candidates: list[Path] = []
+    for entry in companies_dir.iterdir():
+        if not entry.is_dir():
             continue
+        if (entry / "data").exists() or (entry / "reports").exists():
+            candidates.append(entry)
+            continue
+        for nested in entry.iterdir():
+            if not nested.is_dir():
+                continue
+            if (nested / "data").exists() or (nested / "reports").exists():
+                candidates.append(nested)
+
+    for candidate in candidates:
         name = candidate.name.upper()
         if name == exact:
             matches.insert(0, candidate)
@@ -129,6 +141,11 @@ def _matching_company_dirs(base_dir: Path, ticker: str) -> list[Path]:
         if queue_key(name) == key:
             matches.append(candidate)
     return matches
+
+
+def _default_company_dir(base_dir: Path, ticker: str, market: str) -> Path:
+    country_dir = COUNTRY_DIR_BY_MARKET.get(market, "US")
+    return base_dir / "companies" / country_dir / ticker
 
 
 def _queue_market(base_dir: Path, ticker: str, ideas_log: str | None) -> str | None:
@@ -262,7 +279,11 @@ def main() -> int:
         )
 
     before_matches = _matching_company_dirs(base_dir, ticker_input)
-    before_company_dir = before_matches[0] if before_matches else base_dir / "companies" / ticker_input
+    before_company_dir = (
+        before_matches[0]
+        if before_matches
+        else _default_company_dir(base_dir, ticker_input, market)
+    )
     before_data_mtime = _max_mtime(before_company_dir / "data")
 
     fetch_return_code = 0

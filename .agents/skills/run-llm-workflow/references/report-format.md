@@ -1,6 +1,6 @@
 # Report Format
 
-Use this structure for `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`. Keep it concise and decision-oriented.
+Use this structure for `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.md`. Keep it concise and decision-oriented.
 
 ```markdown
 # {Company Name} ({TICKER}) Investment Snapshot

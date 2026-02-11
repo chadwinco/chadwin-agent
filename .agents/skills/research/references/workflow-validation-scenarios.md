@@ -11,23 +11,23 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --ticker PEP --asof <YYYY-MM-DD>`
 - Run `$run-llm-workflow` for `PEP` as of `<YYYY-MM-DD>`.
 - Confirm these artifacts exist:
-  - `companies/PEP/reports/<YYYY-MM-DD>/report.md`
-  - `companies/PEP/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-  - `companies/PEP/reports/<YYYY-MM-DD>/valuation/outputs.json`
+  - `companies/US/PEP/reports/<YYYY-MM-DD>/report.md`
+  - `companies/US/PEP/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+  - `companies/US/PEP/reports/<YYYY-MM-DD>/valuation/outputs.json`
 
 ## 2. Create a new company from EDGAR
 - Add `EDGAR_IDENTITY` to `/Users/chad/source/chadwin-codex/.env`
 - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --ticker AAPL --asof <YYYY-MM-DD>`
-- Confirm data files are created in `companies/AAPL/data/`.
-- Confirm `companies/AAPL/data/filings/earnings-call-*.md` exists.
+- Confirm data files are created in `companies/US/AAPL/data/`.
+- Confirm `companies/US/AAPL/data/filings/earnings-call-*.md` exists.
 
 ## 3. Create a Japanese company package
 - `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-japanese-company-data/scripts/add_company.py --ticker 79740 --asof <YYYY-MM-DD>`
-- Confirm data files are created in `companies/79740/data/`.
-- Confirm `companies/79740/reports/<YYYY-MM-DD>/valuation/inputs.yaml` exists.
+- Confirm data files are created in `companies/Japan/79740/data/`.
+- Confirm `companies/Japan/79740/reports/<YYYY-MM-DD>/valuation/inputs.yaml` exists.
 
 ## 4. Missing data scenario
-- Temporarily rename one required CSV in `companies/<TICKER>/data/financial_statements/annual/`.
+- Temporarily rename one required CSV in `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/`.
 - Run `$run-llm-workflow` for that ticker/date.
 - Confirm the workflow blocks and indicates the missing local data before report generation.
 
@@ -35,9 +35,9 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Verify fiscal years align across income, balance sheet, and cash flow.
 
 ## 6. Valuation sanity
-- Adjust discount rates in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- Adjust discount rates in `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - Re-run `$run-llm-workflow` for the same ticker/date.
-- Confirm value-per-share shifts in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`.
+- Confirm value-per-share shifts in `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`.
 
 ## 7. Checklist gate
 - Run through Step 6 in `.agents/skills/run-llm-workflow/references/research-workflow.md` and confirm all items pass before finalizing.

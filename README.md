@@ -46,7 +46,7 @@ Example requests you can give Codex:
 - `Run $fetch-japanese-company-data for 79740 as-of 2026-02-11, then run $run-llm-workflow.`
 
 ## Required Outputs Per Completed Run
-For `companies/<TICKER>/reports/<YYYY-MM-DD>/`, a run is complete only when these exist:
+For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`, a run is complete only when these exist:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
@@ -63,8 +63,9 @@ Primary Skill docs:
 - `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`
 
 ## Repository Layout
-- `companies/<TICKER>/data/`: local evidence inputs
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/`: report and valuation outputs
+- `companies/US/<TICKER>/` and `companies/Japan/<TICKER>/`: exchange-country roots for company packages
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/`: local evidence inputs
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`: report and valuation outputs
 - `idea-screens/`: idea queue and generated idea files
 - `docs/`: supporting docs and improvement log
 - `.agents/skills/`: Skill definitions, scripts, references, and assets

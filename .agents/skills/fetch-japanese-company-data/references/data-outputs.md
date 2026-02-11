@@ -1,6 +1,6 @@
 # Fetch Output Contract (Japan / Yahoo Finance)
 
-The fetch step writes data under `companies/<TICKER>/data`.
+The fetch step writes data under `companies/Japan/<TICKER>/data`.
 
 ## Required outputs
 - `company_profile.csv`
@@ -19,7 +19,7 @@ The fetch step writes data under `companies/<TICKER>/data`.
 - `source-metadata.json`
 
 ## Bootstrap output
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/Japan/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## `company_profile.csv` columns
 - `symbol`, `companyName`, `currency`

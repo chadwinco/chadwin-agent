@@ -54,7 +54,7 @@ If no specific lower-level control is requested, prefer `$research`.
 6. Record repeatable process improvements in `docs/improvement-log.md`
 
 ## Required Outputs Per Completed Run
-For `companies/<TICKER>/reports/<YYYY-MM-DD>/`:
+For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
@@ -78,7 +78,7 @@ For each major step:
 Do not defer known issues to a later run when they block correctness now.
 
 ## Evidence and Citation Discipline
-- Local files under `companies/<TICKER>/data/` are the primary evidence base.
+- Local files under `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/` are the primary evidence base.
 - Use only evidence dated on or before the selected as-of date.
 - Every factual claim in final write-ups must cite local file paths.
 - Prefer filings for core financial/forecast claims; use transcripts for supporting qualitative color.
@@ -104,6 +104,7 @@ Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
 - Work from repo root: `/Users/chad/source/chadwin-codex`
+- Store company packages by exchange country (for example `companies/US/<TICKER>/...` and `companies/Japan/<TICKER>/...`).
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.

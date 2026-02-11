@@ -1,12 +1,12 @@
 ---
 name: fetch-us-company-data
-description: Fetch US/SEC-available filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a US ticker, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
+description: Fetch US/SEC-available filings, XBRL-based financial statements, and earnings call transcripts for this repo's company research pipeline. Use when adding a US ticker, refreshing `companies/US/<TICKER>/data`, or regenerating `companies/US/<TICKER>/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
 ---
 
 # Fetch US Company Data
 
 ## Overview
-Fetch filings, financials, analyst forecasts, and transcripts into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+Fetch filings, financials, analyst forecasts, and transcripts into `companies/US/<TICKER>/data` and bootstrap valuation assumptions in `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 This skill keeps fetch logic inside the skill package (`scripts/`) so it is easier to share and update independently from the main codebase.
 
@@ -58,7 +58,7 @@ python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 
 Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
-- `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- `--overwrite-assumptions` replaces `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - `--ideas-log "<PATH>"` overrides the central queue log path (default `idea-screens/company-ideas-log.jsonl`).
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
@@ -66,21 +66,21 @@ Optional flags:
 
 ### 4. Verify outputs
 Validate outputs described in `references/data-outputs.md` and `references/data-dictionary.md`, including:
-- `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
-- `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
-- `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
-- `companies/<TICKER>/data/filings/10-K-*.md` or `companies/<TICKER>/data/filings/20-F-*.md`
-  - If no annual filing exists yet (common for recent IPOs), expect registration-form fallback files such as `companies/<TICKER>/data/filings/S-1-*.md` or `companies/<TICKER>/data/filings/S-1-A-*.md`
-- `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
-- `companies/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json` containing URL attempts and failure reasons
-- `companies/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/US/<TICKER>/data/financial_statements/annual/income_statement.csv`
+- `companies/US/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
+- `companies/US/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
+- `companies/US/<TICKER>/data/filings/10-K-*.md` or `companies/US/<TICKER>/data/filings/20-F-*.md`
+  - If no annual filing exists yet (common for recent IPOs), expect registration-form fallback files such as `companies/US/<TICKER>/data/filings/S-1-*.md` or `companies/US/<TICKER>/data/filings/S-1-A-*.md`
+- `companies/US/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
+- `companies/US/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json` containing URL attempts and failure reasons
+- `companies/US/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
+- `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Troubleshooting
 - If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
 - If `--ticker` is omitted and no US queue candidate exists, run `$fetch-us-investment-ideas` first or pass a ticker explicitly.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.
-- If annual statements fail to parse, inspect `companies/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-outputs.md`.
+- If annual statements fail to parse, inspect `companies/US/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-outputs.md`.
 
 ## Related References
 - `references/python-setup.md`

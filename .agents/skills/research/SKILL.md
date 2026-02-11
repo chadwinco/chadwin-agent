@@ -12,6 +12,8 @@ Use this as the default entrypoint for autonomous runs. It delegates to:
 - `$fetch-japanese-company-data`
 - `$run-llm-workflow`
 
+Company packages are organized by exchange country under `companies/US/<TICKER>/...` and `companies/Japan/<TICKER>/...`.
+
 ## Workflow
 
 1. Run the router script from repo root:

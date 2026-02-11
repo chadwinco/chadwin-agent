@@ -312,10 +312,44 @@ def _normalize_share_counts(df):
         df[col] = adjusted
 
 
+def _resolve_data_dir(base_dir: Path, ticker: str) -> Path:
+    companies_dir = base_dir / "companies"
+    normalized = ticker.upper()
+
+    direct_candidates = [
+        companies_dir / "US" / ticker / "data",
+        companies_dir / "Japan" / ticker / "data",
+        companies_dir / ticker / "data",  # legacy flat layout fallback
+    ]
+    for candidate in direct_candidates:
+        if candidate.exists():
+            return candidate
+
+    if not companies_dir.exists():
+        raise FileNotFoundError(f"Missing companies directory: {companies_dir}")
+
+    for country_dir in companies_dir.iterdir():
+        if not country_dir.is_dir():
+            continue
+        for candidate in country_dir.iterdir():
+            if not candidate.is_dir():
+                continue
+            if candidate.name.upper() != normalized:
+                continue
+            data_dir = candidate / "data"
+            if data_dir.exists():
+                return data_dir
+
+    raise FileNotFoundError(
+        "Missing data directory for "
+        f"{ticker}. Expected one of: "
+        f"{companies_dir / 'US' / ticker / 'data'}, "
+        f"{companies_dir / 'Japan' / ticker / 'data'}."
+    )
+
+
 def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
-    data_dir = base_dir / "companies" / ticker / "data"
-    if not data_dir.exists():
-        raise FileNotFoundError(f"Missing data directory: {data_dir}")
+    data_dir = _resolve_data_dir(base_dir, ticker)
 
     profile = _load_csv(data_dir / "company_profile.csv")
     currency = ""

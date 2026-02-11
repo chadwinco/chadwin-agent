@@ -1,6 +1,6 @@
 # Fetch Output Contract (US / EDGAR)
 
-The fetch step writes data under `companies/<TICKER>/data`.
+The fetch step writes data under `companies/US/<TICKER>/data`.
 
 ## Required outputs
 - `company_profile.csv`
@@ -17,7 +17,7 @@ The fetch step writes data under `companies/<TICKER>/data`.
 - `analyst_estimates.csv`
 
 ## Bootstrap output
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## `company_profile.csv` columns
 - `symbol`, `companyName`, `currency`

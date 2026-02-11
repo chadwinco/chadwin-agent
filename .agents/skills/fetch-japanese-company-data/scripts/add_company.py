@@ -23,6 +23,8 @@ from official_ir_fetch import (
 )
 from transcript_fetch import fetch_latest_transcript_with_report
 
+COUNTRY_DIR = "Japan"
+
 
 def _default_base_dir() -> Path:
     for parent in Path(__file__).resolve().parents:
@@ -35,7 +37,7 @@ BASE_DIR = _default_base_dir()
 
 
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
-    company_dir = base_dir / "companies" / ticker
+    company_dir = base_dir / "companies" / COUNTRY_DIR / ticker
     (company_dir / "data").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "filings").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "financial_statements").mkdir(parents=True, exist_ok=True)

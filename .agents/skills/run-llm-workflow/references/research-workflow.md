@@ -11,17 +11,17 @@ Generate a concise investment write-up and a scenario valuation from local compa
 
 ## Inputs
 Primary local inputs:
-- `companies/<TICKER>/data/company_profile.csv`
-- `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
-- `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
-- `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
-- `companies/<TICKER>/data/filings/*.md`
-- `companies/<TICKER>/data/analyst_estimates.csv` (optional)
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/income_statement.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_estimates.csv` (optional)
 
 Legacy fallback paths:
-- `companies/<TICKER>/data/income_statement_annual.csv`
-- `companies/<TICKER>/data/balance_sheet_annual.csv`
-- `companies/<TICKER>/data/cash_flow_statement_annual.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/income_statement_annual.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/balance_sheet_annual.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/cash_flow_statement_annual.csv`
 
 Drafting assets:
 - `.agents/skills/run-llm-workflow/assets/investment-summary.md`
@@ -39,7 +39,7 @@ Drafting assets:
 - If local data is missing, stop and run the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 
 ## Step 2: Build the Fact Base
-- Use `grep` against `companies/<TICKER>/data/filings/*.md` for:
+- Use `grep` against `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md` for:
   - business model and segment mix
   - competitive strengths and weak points
   - capital allocation behavior

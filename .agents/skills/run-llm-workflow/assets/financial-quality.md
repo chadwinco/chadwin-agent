@@ -3,7 +3,7 @@
 Goal: Quantify financial quality and cash generation durability.
 
 Inputs:
-- `companies/<TICKER>/data/financial_statements/annual/*.csv`.
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`.
 - `.agents/skills/fetch-us-company-data/references/data-dictionary.md` or `.agents/skills/fetch-japanese-company-data/references/data-dictionary.md` for metric definitions.
 
 Instructions:

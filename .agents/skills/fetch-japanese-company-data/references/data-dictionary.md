@@ -1,6 +1,6 @@
 # Data Dictionary (Japan / Yahoo Finance)
 
-This repo expects company financial data under `companies/<TICKER>/data`. The pipeline uses these files and columns.
+This repo expects company financial data under `companies/Japan/<TICKER>/data`. The pipeline uses these files and columns.
 
 ## Required Files
 - `company_profile.csv`

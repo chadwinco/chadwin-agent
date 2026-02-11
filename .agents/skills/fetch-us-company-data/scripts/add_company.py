@@ -34,8 +34,11 @@ from transcript_fetch import fetch_latest_transcript_with_report  # noqa: E402
 from company_idea_queue import TASK_FETCH_US, pick_next_company  # noqa: E402
 
 
+COUNTRY_DIR = "US"
+
+
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
-    company_dir = base_dir / "companies" / ticker
+    company_dir = base_dir / "companies" / COUNTRY_DIR / ticker
     (company_dir / "data").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "filings").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "financial_statements").mkdir(parents=True, exist_ok=True)

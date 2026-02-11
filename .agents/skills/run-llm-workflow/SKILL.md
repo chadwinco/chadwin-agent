@@ -1,6 +1,6 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/TICKER/data`. Use after running the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`) when creating or refreshing `companies/TICKER/reports/YYYY-MM-DD/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
+description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data`. Use after running the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/YYYY-MM-DD/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
 ---
 
 # Run LLM Workflow
@@ -20,11 +20,11 @@ Do not use a deterministic end-to-end analysis script for this skill.
 
 ## Quick Start
 1. Resolve ticker and confirm as-of date with the user.
-2. Ensure `companies/<TICKER>/data` is populated. If not, run the appropriate fetch skill first (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
+2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate fetch skill first (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 3. Create the output directory from the repo root:
 
 ```bash
-mkdir -p companies/<TICKER>/reports/<YYYY-MM-DD>/valuation
+mkdir -p companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation
 ```
 4. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
 5. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
@@ -41,9 +41,9 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <T
 - The `remove` command should run only after required outputs are finalized and Step 6 quality gates pass.
 
 ## Required Outputs
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/report.md`
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
 
 ## Workflow
 1. Work through the end-to-end process in `references/research-workflow.md` manually as an LLM workflow.

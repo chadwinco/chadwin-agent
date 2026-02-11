@@ -1,12 +1,12 @@
 ---
 name: fetch-japanese-company-data
-description: Fetch Japanese listed company data (profile, annual statements, transcript attempts) for this repo's research pipeline. Use when adding a TSE-listed company, refreshing `companies/TICKER/data`, or regenerating `companies/TICKER/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
+description: Fetch Japanese listed company data (profile, annual statements, transcript attempts) for this repo's research pipeline. Use when adding a TSE-listed company, refreshing `companies/Japan/<TICKER>/data`, or regenerating `companies/Japan/<TICKER>/reports/<DATE>/valuation/inputs.yaml` before LLM-driven research.
 ---
 
 # Fetch Japanese Company Data
 
 ## Overview
-Fetch Japanese company profile data and annual financial statements into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+Fetch Japanese company profile data and annual financial statements into `companies/Japan/<TICKER>/data` and bootstrap valuation assumptions in `companies/Japan/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
 Primary market/profile source is Yahoo Finance (`yfinance`) for Japan tickers (for example `7974.T`).
 For selected issuers, this skill also pulls official IR PDFs and extracts local markdown files:
@@ -70,7 +70,7 @@ python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <JP_IDE
 
 Optional flags:
 - `--isin <ISIN>` adds an explicit ISIN for identifier resolution.
-- `--overwrite-assumptions` replaces `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+- `--overwrite-assumptions` replaces `companies/Japan/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - `--ideas-log "<PATH>"` overrides the central queue log path (default `idea-screens/company-ideas-log.jsonl`).
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
@@ -78,16 +78,16 @@ Optional flags:
 
 ### 4. Verify outputs
 Validate outputs described in `references/data-outputs.md` and `references/data-dictionary.md`, including:
-- `companies/<TICKER>/data/company_profile.csv`
-- `companies/<TICKER>/data/financial_statements/annual/income_statement.csv`
-- `companies/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
-- `companies/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
-- `companies/<TICKER>/data/source-metadata.json`
-- `companies/<TICKER>/data/filings/official-ir-fetch-report-<YYYY-MM-DD>.json` (supported issuers)
-- `companies/<TICKER>/data/filings/ir-document-<YYYY-MM-DD>-*.md` (supported issuers)
-- `companies/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-nintendo-co-jp.md` (Nintendo Q&A)
-- `companies/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/Japan/<TICKER>/data/company_profile.csv`
+- `companies/Japan/<TICKER>/data/financial_statements/annual/income_statement.csv`
+- `companies/Japan/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
+- `companies/Japan/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
+- `companies/Japan/<TICKER>/data/source-metadata.json`
+- `companies/Japan/<TICKER>/data/filings/official-ir-fetch-report-<YYYY-MM-DD>.json` (supported issuers)
+- `companies/Japan/<TICKER>/data/filings/ir-document-<YYYY-MM-DD>-*.md` (supported issuers)
+- `companies/Japan/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-nintendo-co-jp.md` (Nintendo Q&A)
+- `companies/Japan/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json`
+- `companies/Japan/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Current Limits
 - This skill currently does not pull Japanese statutory filings from EDINET yet.

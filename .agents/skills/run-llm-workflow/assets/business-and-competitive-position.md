@@ -3,9 +3,9 @@
 Goal: Explain how the company makes money, why returns may persist, and what could weaken the model.
 
 Inputs:
-- `companies/<TICKER>/data/filings/10-K-*.md` or `20-F-*.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/10-K-*.md` or `20-F-*.md`
 - Latest `10-Q-*.md` and earnings call transcript, if available
-- `companies/<TICKER>/data/company_profile.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
 
 Instructions:
 - Write 1-2 short paragraphs.

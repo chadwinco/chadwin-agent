@@ -1,6 +1,6 @@
 # Data Dictionary (US / EDGAR)
 
-This repo expects company financial data under `companies/<TICKER>/data`. The pipeline uses these files and columns.
+This repo expects company financial data under `companies/US/<TICKER>/data`. The pipeline uses these files and columns.
 
 ## Required Files
 - `company_profile.csv`
@@ -72,8 +72,8 @@ The loader derives normalized annual frames from `financial_statements/annual/*.
 
 ## EDGAR Financial Statement Exports
 When EDGAR data is fetched, the pipeline stores full statements in:
-- `companies/<TICKER>/data/financial_statements/annual/`
-- `companies/<TICKER>/data/financial_statements/quarterly/`
+- `companies/US/<TICKER>/data/financial_statements/annual/`
+- `companies/US/<TICKER>/data/financial_statements/quarterly/`
 
 Each directory contains:
 - `income_statement.csv`
@@ -86,7 +86,7 @@ These are the canonical statement sources used by the analysis workflow.
 
 ## Filings and Transcripts
 Filings and transcript markdown files are stored under:
-- `companies/<TICKER>/data/filings/`
+- `companies/US/<TICKER>/data/filings/`
 
 ## Date Alignment
 For each fiscal year, income, balance sheet, and cash flow rows should align on `fiscalYear` and be within the same `date` range. The quality checker flags mismatches.

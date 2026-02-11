@@ -10,6 +10,7 @@ DEFAULT_LOG_RELATIVE_PATH = Path("idea-screens") / "company-ideas-log.jsonl"
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_JP = "fetch-japanese-company-data"
 TASK_RESEARCH = "run-llm-workflow"
+COUNTRY_DIR_BY_MARKET = {"us": "US", "jp": "Japan"}
 
 TASK_ALIASES = {
     TASK_FETCH_US: TASK_FETCH_US,
@@ -208,6 +209,47 @@ def _task_market(task: str) -> str | None:
     return None
 
 
+def _company_data_exists(base_dir: Path, ticker: str, market: str | None = None) -> bool:
+    companies_dir = base_dir / "companies"
+    if not companies_dir.exists():
+        return False
+
+    normalized_ticker = normalize_ticker(ticker)
+    normalized_market = normalize_market(market)
+    candidates: list[Path] = []
+
+    if normalized_market:
+        country_dir = COUNTRY_DIR_BY_MARKET.get(normalized_market)
+        if country_dir:
+            candidates.append(companies_dir / country_dir / normalized_ticker / "data")
+
+    candidates.extend(
+        [
+            companies_dir / "US" / normalized_ticker / "data",
+            companies_dir / "Japan" / normalized_ticker / "data",
+            companies_dir / normalized_ticker / "data",  # legacy flat layout fallback
+        ]
+    )
+
+    for candidate in candidates:
+        if candidate.exists():
+            return True
+
+    for entry in companies_dir.iterdir():
+        if not entry.is_dir():
+            continue
+        if entry.name.upper() == normalized_ticker and (entry / "data").exists():
+            return True
+        for nested in entry.iterdir():
+            if (
+                nested.is_dir()
+                and nested.name.upper() == normalized_ticker
+                and (nested / "data").exists()
+            ):
+                return True
+    return False
+
+
 def pick_next_company(
     *,
     base_dir: Path,
@@ -228,7 +270,9 @@ def pick_next_company(
 
     if normalized_task == TASK_RESEARCH:
         candidates_with_data = [
-            entry for entry in candidates if (base_dir / "companies" / entry["ticker"] / "data").exists()
+            entry
+            for entry in candidates
+            if _company_data_exists(base_dir, str(entry.get("ticker") or ""), entry.get("market"))
         ]
         if candidates_with_data:
             return candidates_with_data[0]

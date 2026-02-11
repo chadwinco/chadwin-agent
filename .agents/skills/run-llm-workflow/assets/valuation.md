@@ -3,8 +3,8 @@
 Goal: Explain scenario DCF outputs and the implied margin of safety.
 
 Inputs:
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-- `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
 
 Instructions:
 - Present base, bull, and bear assumptions clearly.
