@@ -19,7 +19,7 @@ export FETCH_US_INVESTMENT_IDEAS_CLI="$FETCH_US_INVESTMENT_IDEAS_ROOT/scripts/fe
 ```
 
 ## Quick Start
-1. Ensure dependencies are installed (`pip install -r requirements.txt`) from the repo root.
+1. Follow `references/python-setup.md`.
 2. Run the screener:
 
 ```bash
@@ -77,3 +77,6 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 - If output is empty, loosen thresholds (for example raise `--max-pe` or lower `--min-roic`).
 - If requests fail intermittently, raise `--request-delay` and retry.
 - If `beautifulsoup4` is missing, install dependencies from `requirements.txt`.
+
+## Related References
+- `references/python-setup.md`

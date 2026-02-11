@@ -9,6 +9,21 @@ For a given ticker, it:
 
 The main goal is repeatable, evidence-backed analysis with clear assumptions and traceable artifacts.
 
+## Quick Start (Humans)
+Run from repo root (`/Users/chad/source/chadwin-codex`):
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+If you plan to run US/EDGAR fetches, configure identity in `.env`:
+
+```bash
+EDGAR_IDENTITY="Your Name your.email@example.com"
+```
+
 ## How Work Is Organized
 The workflow is split into an orchestration skill, market-specific fetch skills, and an LLM report skill:
 - Orchestration wrapper: `.agents/skills/research/SKILL.md`
@@ -32,7 +47,7 @@ If ticker/identifier is omitted when running a fetch or research skill, the work
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/`
   - Assumptions and computed valuation outputs.
 - `docs/`
-  - Setup and process-level notes.
+  - Process-level notes and logs.
 - `.agents/skills/`
   - The authoritative workflow instructions and templates.
 
@@ -59,12 +74,15 @@ Authoritative method details live in:
 - Do not duplicate workflow logic in ad hoc docs; update skill references when process changes are needed.
 
 ## Setup and Operational References
-- Python/venv setup: `docs/python-setup.md`
 - Fetch outputs and data definitions:
   - `.agents/skills/fetch-us-company-data/references/data-outputs.md`
   - `.agents/skills/fetch-us-company-data/references/data-dictionary.md`
   - `.agents/skills/fetch-japanese-company-data/references/data-outputs.md`
   - `.agents/skills/fetch-japanese-company-data/references/data-dictionary.md`
+- Skill-level Python setup:
+  - `.agents/skills/fetch-us-company-data/references/python-setup.md`
+  - `.agents/skills/fetch-japanese-company-data/references/python-setup.md`
+  - `.agents/skills/fetch-us-investment-ideas/references/python-setup.md`
 - Research workflow and quality gate:
   - `.agents/skills/run-llm-workflow/references/research-workflow.md`
   - `.agents/skills/run-llm-workflow/references/report-format.md`
