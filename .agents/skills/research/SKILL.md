@@ -60,3 +60,8 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <R
 - `--ideas-log <PATH>`: Override queue log path.
 - `--overwrite-assumptions`: Pass through to fetch scripts.
 - `--dry-run`: Emit decision without running fetch.
+
+## Validation Reference
+
+- For end-to-end manual checks (fetch, research, valuation artifacts, queue behavior), use:
+  - `references/workflow-validation-scenarios.md`

@@ -10,15 +10,17 @@ For a given ticker, it:
 The main goal is repeatable, evidence-backed analysis with clear assumptions and traceable artifacts.
 
 ## How Work Is Organized
-The workflow is split into fetch skills by market plus one research skill:
+The workflow is split into an orchestration skill, market-specific fetch skills, and an LLM report skill:
+- Orchestration wrapper: `.agents/skills/research/SKILL.md`
 - US data fetch/bootstrap: `.agents/skills/fetch-us-company-data/SKILL.md`
 - Japan data fetch/bootstrap: `.agents/skills/fetch-japanese-company-data/SKILL.md`
 - Research + valuation write-up: `.agents/skills/run-llm-workflow/SKILL.md`
 
 Use them in this order:
 0. (Optional but recommended) Run `$fetch-us-investment-ideas` to seed the central queue log at `idea-screens/company-ideas-log.jsonl`.
-1. Run the country-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`)
-2. Run `$run-llm-workflow`
+1. Run `$research` (or run fetch skills manually if tighter control is needed).
+2. If using manual flow, run the country-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
+3. Run `$run-llm-workflow`.
 
 If ticker/identifier is omitted when running a fetch or research skill, the workflow now selects from `idea-screens/company-ideas-log.jsonl` when a matching candidate exists.
 
@@ -30,9 +32,7 @@ If ticker/identifier is omitted when running a fetch or research skill, the work
 - `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/`
   - Assumptions and computed valuation outputs.
 - `docs/`
-- Setup and process-level notes.
-- `tests/`
-  - Manual validation scenarios.
+  - Setup and process-level notes.
 - `.agents/skills/`
   - The authoritative workflow instructions and templates.
 
@@ -69,7 +69,7 @@ Authoritative method details live in:
   - `.agents/skills/run-llm-workflow/references/research-workflow.md`
   - `.agents/skills/run-llm-workflow/references/report-format.md`
 - Manual validation scenarios:
-  - `tests/README.md`
+  - `.agents/skills/research/references/workflow-validation-scenarios.md`
 - Process learning history:
   - `docs/improvement-log.md`
 
