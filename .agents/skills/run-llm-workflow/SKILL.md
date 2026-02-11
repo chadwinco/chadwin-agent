@@ -21,13 +21,16 @@ Do not use a deterministic end-to-end analysis script for this skill.
 ## Quick Start
 1. Resolve ticker and confirm as-of date with the user.
 2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate fetch skill first (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
-3. Create the output directory from the repo root:
+3. Load `preferences/user_preferences.json` when present and apply:
+   - strategy preferences to framing and valuation emphasis
+   - report preferences to section emphasis/content inclusion
+4. Create the output directory from the repo root:
 
 ```bash
 mkdir -p companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation
 ```
-4. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
-5. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
+5. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
+6. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
 Use the queue CLI owned by the `$research` skill from repo root:
@@ -47,8 +50,8 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <T
 
 ## Workflow
 1. Work through the end-to-end process in `references/research-workflow.md` manually as an LLM workflow.
-2. Build valuation assumptions and outputs using `references/valuation-method.md`.
-3. Draft the report using `references/report-format.md`.
+2. Build valuation assumptions and outputs using `references/valuation-method.md`, aligned with user strategy preferences where applicable.
+3. Draft the report using `references/report-format.md`, honoring report-content preferences.
 4. Check all quality gates in `references/research-workflow.md` (Step 6) before finalizing.
 5. Remove the completed ticker from `idea-screens/company-ideas-log.jsonl`.
 6. Record learnings using `references/improvement-loop.md`.
@@ -57,6 +60,7 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <T
 - Keep the report concise and decision-oriented.
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs a local file citation.
+- Do not violate explicit user exclusions in `preferences/user_preferences.json` unless the user explicitly asks to override.
 
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.

@@ -20,6 +20,12 @@ if str(QUEUE_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(QUEUE_SCRIPTS))
 
 from company_idea_queue import append_new_ideas, default_base_dir  # noqa: E402
+from company_idea_queue_core import (  # noqa: E402
+    load_user_preferences,
+    market_is_allowed,
+    matches_sector_industry_preferences,
+    resolve_preferences_path,
+)
 
 FINVIZ_BASE_URL = "https://finviz.com/screener.ashx"
 USER_AGENT = (
@@ -137,6 +143,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--ideas-log",
         help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
+    )
+    parser.add_argument(
+        "--preferences-path",
+        help="Override preferences path (default: preferences/user_preferences.json).",
+    )
+    parser.add_argument(
+        "--ignore-preferences",
+        action="store_true",
+        help="Ignore preference-based filters and market guardrails.",
     )
     args = parser.parse_args()
 
@@ -368,7 +383,12 @@ def merge_exchange_rows(
     return list(merged.values())
 
 
-def select_ideas(raw_rows: list[dict[str, str]], args: argparse.Namespace) -> list[dict[str, Any]]:
+def select_ideas(
+    raw_rows: list[dict[str, str]],
+    args: argparse.Namespace,
+    *,
+    preferences: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
     ideas: list[dict[str, Any]] = []
     min_market_cap = args.min_market_cap_b * 1_000_000_000.0
 
@@ -387,6 +407,8 @@ def select_ideas(raw_rows: list[dict[str, str]], args: argparse.Namespace) -> li
         profit_margin = parse_percent(row.get("Profit M"))
         debt_to_equity = parse_float(row.get("Debt/Eq"))
         eps_next_5y = parse_percent(row.get("EPS Next 5Y"))
+        sector = row.get("Sector")
+        industry = row.get("Industry")
 
         if market_cap is None or market_cap < min_market_cap:
             continue
@@ -401,6 +423,11 @@ def select_ideas(raw_rows: list[dict[str, str]], args: argparse.Namespace) -> li
         if profit_margin is None or profit_margin < args.min_profit_margin:
             continue
         if debt_to_equity is None or debt_to_equity > args.max_debt_to_equity:
+            continue
+        if preferences and not matches_sector_industry_preferences(
+            {"sector": sector, "industry": industry},
+            preferences,
+        ):
             continue
 
         score = score_candidate(
@@ -421,6 +448,8 @@ def select_ideas(raw_rows: list[dict[str, str]], args: argparse.Namespace) -> li
             "ticker": ticker,
             "company": row.get("Company"),
             "exchange": row.get("Exchange"),
+            "sector": sector,
+            "industry": industry,
             "score": score,
             "thesis": "",
             "metrics": {
@@ -443,7 +472,13 @@ def select_ideas(raw_rows: list[dict[str, str]], args: argparse.Namespace) -> li
     return ideas[: args.limit]
 
 
-def build_payload(ideas: list[dict[str, Any]], args: argparse.Namespace) -> dict[str, Any]:
+def build_payload(
+    ideas: list[dict[str, Any]],
+    args: argparse.Namespace,
+    *,
+    preferences_applied: bool,
+    preferences_path: str | None,
+) -> dict[str, Any]:
     return {
         "generated_at_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "source": "finviz_screener",
@@ -461,6 +496,10 @@ def build_payload(ideas: list[dict[str, Any]], args: argparse.Namespace) -> dict
             "max_debt_to_equity": args.max_debt_to_equity,
             "max_pages_per_exchange": args.max_pages_per_exchange,
         },
+        "preferences": {
+            "applied": preferences_applied,
+            "path": preferences_path,
+        },
         "ideas": ideas,
     }
 
@@ -468,6 +507,21 @@ def build_payload(ideas: list[dict[str, Any]], args: argparse.Namespace) -> dict
 def main() -> int:
     args = parse_args()
     base_dir = Path(args.base_dir)
+    preferences_applied = not args.ignore_preferences
+    resolved_preferences_path = resolve_preferences_path(
+        base_dir=base_dir,
+        preferences_path=args.preferences_path,
+    )
+    preferences = (
+        load_user_preferences(base_dir=base_dir, preferences_path=args.preferences_path)
+        if preferences_applied
+        else {}
+    )
+    if preferences_applied and not market_is_allowed("us", preferences):
+        raise SystemExit(
+            "Preferences currently exclude US market. "
+            f"Update {resolved_preferences_path} or rerun with --ignore-preferences."
+        )
 
     raw_rows: list[dict[str, str]] = []
     for exchange_name, exchange_filter in EXCHANGES.items():
@@ -480,8 +534,17 @@ def main() -> int:
             )
         )
 
-    ideas = select_ideas(raw_rows, args)
-    payload = build_payload(ideas, args)
+    ideas = select_ideas(
+        raw_rows,
+        args,
+        preferences=preferences if preferences_applied else None,
+    )
+    payload = build_payload(
+        ideas,
+        args,
+        preferences_applied=preferences_applied,
+        preferences_path=(str(resolved_preferences_path) if preferences_applied else None),
+    )
     output_text = json.dumps(payload, indent=None if args.compact else 2)
 
     if args.output:

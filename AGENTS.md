@@ -106,6 +106,7 @@ Do not only patch a single report output when the issue is systemic.
 ## Practical Conventions
 - Work from repo root: `/Users/chad/source/chadwin-codex`
 - Store company packages by exchange country (for example `companies/US/<TICKER>/...` and `companies/Japan/<TICKER>/...`).
+- Honor `preferences/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.

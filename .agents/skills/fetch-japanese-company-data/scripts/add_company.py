@@ -14,6 +14,11 @@ if str(QUEUE_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(QUEUE_SCRIPTS))
 
 from company_idea_queue import TASK_FETCH_JP, pick_next_company
+from company_idea_queue_core import (
+    load_user_preferences,
+    market_is_allowed,
+    resolve_preferences_path,
+)
 from japan_fetch import fetch_japanese_company_data, resolve_japanese_identifier
 from loaders import load_company_data
 from metrics import compute_metrics
@@ -172,20 +177,47 @@ def main() -> None:
         default=1000,
         help="Minimum extracted body length required to accept a transcript",
     )
+    parser.add_argument(
+        "--preferences-path",
+        help="Override preferences path (default: preferences/user_preferences.json).",
+    )
+    parser.add_argument(
+        "--ignore-preferences",
+        action="store_true",
+        help="Ignore preference-based queue filtering and market guardrails.",
+    )
 
     args = parser.parse_args()
     base_dir = Path(args.base_dir)
+    preferences_applied = not args.ignore_preferences
+    resolved_preferences_path = resolve_preferences_path(
+        base_dir=base_dir,
+        preferences_path=args.preferences_path,
+    )
+    preferences = (
+        load_user_preferences(base_dir=base_dir, preferences_path=args.preferences_path)
+        if preferences_applied
+        else {}
+    )
+    if preferences_applied and not market_is_allowed("jp", preferences):
+        raise SystemExit(
+            "Preferences currently exclude Japan market. "
+            f"Update {resolved_preferences_path} or rerun with --ignore-preferences."
+        )
+
     ticker_input = (args.ticker or "").strip()
     if not ticker_input:
         selected = pick_next_company(
             base_dir=base_dir,
             task=TASK_FETCH_JP,
             ideas_log=args.ideas_log,
+            preferences_path=args.preferences_path,
+            respect_preferences=preferences_applied,
         )
         if not selected:
             raise SystemExit(
                 "No Japanese company found in idea-screens/company-ideas-log.jsonl. "
-                "Pass --ticker explicitly or append JP entries to the ideas log."
+                "Pass --ticker explicitly, append JP entries to the ideas log, or relax preferences."
             )
         ticker_input = str(selected["ticker"])
         queued_at = selected.get("queued_at_utc") or "unknown"

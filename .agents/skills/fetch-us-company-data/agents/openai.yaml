@@ -1,4 +1,4 @@
 interface:
   display_name: "Fetch US Company Data"
   short_description: "Fetch EDGAR filings and transcripts for US tickers"
-  default_prompt: "Use $fetch-us-company-data to pull EDGAR filings, financials, and the latest earnings call transcript for a US ticker (or omit ticker to auto-pick from the shared ideas log)."
+  default_prompt: "Use $fetch-us-company-data to pull EDGAR filings, financials, and the latest earnings call transcript for a US ticker (or omit ticker to auto-pick from the shared ideas log), respecting preferences/user_preferences.json by default."

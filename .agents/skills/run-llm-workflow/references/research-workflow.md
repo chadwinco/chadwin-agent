@@ -17,6 +17,7 @@ Primary local inputs:
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_estimates.csv` (optional)
+- `preferences/user_preferences.json` (optional, for strategy/report customization)
 
 Legacy fallback paths:
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/income_statement_annual.csv`
@@ -35,6 +36,7 @@ Drafting assets:
 - Confirm ticker and as-of date explicitly.
 - If ticker is not provided, pick the next candidate from the central queue:
   - `python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-llm-workflow`
+- Load `preferences/user_preferences.json` when present and honor exclusions/preferences for strategy framing and report contents.
 - Use filings/transcripts dated on or before the as-of date.
 - If local data is missing, stop and run the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
 
@@ -66,6 +68,7 @@ Drafting assets:
   - `two-stage-residual-income` for financials where book value and ROE are more reliable anchors than FCF.
 - Keep assumptions explicit for base, bull, and bear.
 - Ensure base assumptions align with observed history.
+- If strategy preferences are provided, reflect them in assumption framing where it does not conflict with evidence.
 - For DCF runs, explicitly set and justify competitive-advantage period (`stage1_years`) and fade length.
 - If the company has durable advantages, do not default to a five-year horizon.
 
@@ -76,6 +79,7 @@ Drafting assets:
 ## Step 5: Draft the Report
 - Use `references/report-format.md`.
 - Keep the report in the 500-900 word range.
+- Apply `report_preferences` from `preferences/user_preferences.json` when present (must include, nice to have, exclude).
 - State intrinsic value versus current price and margin of safety clearly.
 
 ## Step 6: Run the Quality Gate
@@ -113,6 +117,7 @@ Valuation quality:
 
 Output quality:
 - [ ] Report is concise (target: 500-900 words) and decision-oriented.
+- [ ] User report-content preferences were applied when `preferences/user_preferences.json` is present.
 - [ ] Top 3-5 risks are prioritized by cash-flow impact.
 - [ ] Conclusion states a clear action at current price.
 - [ ] Improvement notes are added to `docs/improvement-log.md`.

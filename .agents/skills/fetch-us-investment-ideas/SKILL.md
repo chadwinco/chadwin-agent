@@ -9,6 +9,9 @@ description: Fetch a structured list of possible US stock investment ideas with 
 Screen US exchange-listed stocks with a value + quality filter and output structured JSON that is easy for other app components to consume.
 
 Each run also appends newly discovered companies to the central queue log at `idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
+When present, `preferences/user_preferences.json` is applied by default:
+- US market guardrail (skip/fail if US is excluded)
+- sector/industry include/exclude filtering
 
 ## Skill Path (set once)
 Repo-local:
@@ -45,6 +48,8 @@ The script emits JSON with this top-level structure:
       "ticker": "EXAMPLE",
       "company": "Example Inc.",
       "exchange": "NASDAQ",
+      "sector": "Technology",
+      "industry": "Software - Application",
       "score": 87.5,
       "thesis": "Possible value-quality setup: ...",
       "metrics": {...}
@@ -58,9 +63,10 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 ## Workflow
 1. Run `scripts/fetch_us_investment_ideas.py` with the desired thresholds.
 2. Keep default exchange scope (NASDAQ/NYSE/AMEX only) unless explicitly asked to broaden.
-3. Use `--output` for deterministic handoff to other app components.
-4. Verify the result contains non-empty `ideas` and each idea has `ticker` + `thesis`.
-5. Confirm new tickers were appended to `idea-screens/company-ideas-log.jsonl`.
+3. By default, apply `preferences/user_preferences.json` for market + sector/industry filtering.
+4. Use `--output` for deterministic handoff to other app components.
+5. Verify the result contains non-empty `ideas` and each idea has `ticker` + `thesis`.
+6. Confirm new tickers were appended to `idea-screens/company-ideas-log.jsonl`.
 
 ## Key Flags
 - `--limit`: max number of returned ideas.
@@ -72,9 +78,12 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 - `--compact`: emit minified JSON.
 - `--ideas-log`: override central queue log path (defaults to `idea-screens/company-ideas-log.jsonl`).
 - `--base-dir`: override repo root used for queue log resolution.
+- `--preferences-path`: override preferences path (default `preferences/user_preferences.json`).
+- `--ignore-preferences`: ignore preference-based market/sector filters.
 
 ## Troubleshooting
 - If output is empty, loosen thresholds (for example raise `--max-pe` or lower `--min-roic`).
+- If preferences exclude US market, update `preferences/user_preferences.json` or rerun with `--ignore-preferences`.
 - If requests fail intermittently, raise `--request-delay` and retry.
 - If `beautifulsoup4` is missing, install dependencies from `requirements.txt`.
 

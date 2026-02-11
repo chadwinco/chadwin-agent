@@ -32,6 +32,11 @@ from loaders import load_company_data  # noqa: E402
 from metrics import compute_metrics  # noqa: E402
 from transcript_fetch import fetch_latest_transcript_with_report  # noqa: E402
 from company_idea_queue import TASK_FETCH_US, pick_next_company  # noqa: E402
+from company_idea_queue_core import (  # noqa: E402
+    load_user_preferences,
+    market_is_allowed,
+    resolve_preferences_path,
+)
 
 
 COUNTRY_DIR = "US"
@@ -282,21 +287,47 @@ def main() -> None:
         default=1000,
         help="Minimum extracted body length required to accept a transcript",
     )
+    parser.add_argument(
+        "--preferences-path",
+        help="Override preferences path (default: preferences/user_preferences.json).",
+    )
+    parser.add_argument(
+        "--ignore-preferences",
+        action="store_true",
+        help="Ignore preference-based queue filtering and market guardrails.",
+    )
 
     args = parser.parse_args()
     base_dir = Path(args.base_dir)
     ticker = (args.ticker or "").strip().upper()
+    preferences_applied = not args.ignore_preferences
+    resolved_preferences_path = resolve_preferences_path(
+        base_dir=base_dir,
+        preferences_path=args.preferences_path,
+    )
+    preferences = (
+        load_user_preferences(base_dir=base_dir, preferences_path=args.preferences_path)
+        if preferences_applied
+        else {}
+    )
+    if preferences_applied and not market_is_allowed("us", preferences):
+        raise SystemExit(
+            "Preferences currently exclude US market. "
+            f"Update {resolved_preferences_path} or rerun with --ignore-preferences."
+        )
 
     if not ticker:
         selected = pick_next_company(
             base_dir=base_dir,
             task=TASK_FETCH_US,
             ideas_log=args.ideas_log,
+            preferences_path=args.preferences_path,
+            respect_preferences=preferences_applied,
         )
         if not selected:
             raise SystemExit(
                 "No US company found in idea-screens/company-ideas-log.jsonl. "
-                "Run fetch-us-investment-ideas first or pass --ticker."
+                "Run fetch-us-investment-ideas first, relax preferences, or pass --ticker."
             )
         ticker = str(selected["ticker"]).upper()
         queued_at = selected.get("queued_at_utc") or "unknown"

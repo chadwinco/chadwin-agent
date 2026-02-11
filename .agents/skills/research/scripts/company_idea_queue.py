@@ -29,6 +29,15 @@ def _build_parser() -> argparse.ArgumentParser:
         "--ideas-log",
         help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
     )
+    parser.add_argument(
+        "--preferences-path",
+        help="Override preferences path (default: preferences/user_preferences.json).",
+    )
+    parser.add_argument(
+        "--ignore-preferences",
+        action="store_true",
+        help="Ignore preference-based filtering when selecting queue entries.",
+    )
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -102,6 +111,8 @@ def main() -> int:
             base_dir=base_dir,
             task=args.task,
             ideas_log=args.ideas_log,
+            preferences_path=args.preferences_path,
+            respect_preferences=not args.ignore_preferences,
         )
         if not entry:
             print("No matching company found in the ideas log.", file=sys.stderr)
@@ -125,6 +136,8 @@ def main() -> int:
                 base_dir=base_dir,
                 task=args.task,
                 ideas_log=args.ideas_log,
+                preferences_path=args.preferences_path,
+                respect_preferences=not args.ignore_preferences,
             )
             entries = [entry] if entry else []
         print(json.dumps({"entries": entries}, indent=2))

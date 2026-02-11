@@ -7,6 +7,7 @@ description: Fetch Japanese listed company data (profile, annual statements, tra
 
 ## Overview
 Fetch Japanese company profile data and annual financial statements into `companies/Japan/<TICKER>/data` and bootstrap valuation assumptions in `companies/Japan/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
+When present, `preferences/user_preferences.json` is respected by default for queue selection and Japan market guardrails.
 
 Primary market/profile source is Yahoo Finance (`yfinance`) for Japan tickers (for example `7974.T`).
 For selected issuers, this skill also pulls official IR PDFs and extracts local markdown files:
@@ -59,8 +60,9 @@ python3 "$FETCH_JAPANESE_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <JP_IDE
   - Yahoo Japan symbol (example: `7974.T`)
   - Seeded ISINs (example: `JP3756600007` for Nintendo)
 - If `--ticker` is provided, use it.
-- If `--ticker` is omitted, select the next JP candidate from `idea-screens/company-ideas-log.jsonl`.
+- If `--ticker` is omitted, select the next JP candidate from `idea-screens/company-ideas-log.jsonl`, filtered by preferences when present.
 - If the queue log has no JP candidate, stop and ask for a ticker.
+- If preferences exclude Japan market, stop and ask to update preferences or rerun with `--ignore-preferences`.
 - Echo back the resolved identifier and as-of date before execution.
 
 ### 3. Run fetch/bootstrap
@@ -72,6 +74,8 @@ Optional flags:
 - `--isin <ISIN>` adds an explicit ISIN for identifier resolution.
 - `--overwrite-assumptions` replaces `companies/Japan/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - `--ideas-log "<PATH>"` overrides the central queue log path (default `idea-screens/company-ideas-log.jsonl`).
+- `--preferences-path "<PATH>"` overrides preferences path (default `preferences/user_preferences.json`).
+- `--ignore-preferences` disables preference-based queue filtering and market guardrails.
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
 - `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).

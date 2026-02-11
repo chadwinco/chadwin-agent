@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_LOG_RELATIVE_PATH = Path("idea-screens") / "company-ideas-log.jsonl"
+DEFAULT_PREFERENCES_RELATIVE_PATH = Path("preferences") / "user_preferences.json"
 
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_JP = "fetch-japanese-company-data"
@@ -44,10 +45,45 @@ def resolve_log_path(base_dir: Path, ideas_log: str | Path | None = None) -> Pat
     return base_dir / path
 
 
+def resolve_preferences_path(
+    base_dir: Path, preferences_path: str | Path | None = None
+) -> Path:
+    if preferences_path is None:
+        return base_dir / DEFAULT_PREFERENCES_RELATIVE_PATH
+    path = Path(preferences_path)
+    if path.is_absolute():
+        return path
+    return base_dir / path
+
+
 def _clean_text(value: Any) -> str:
     if value is None:
         return ""
     return str(value).strip()
+
+
+def _string_list(value: Any) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        values = value
+    else:
+        values = [value]
+
+    items: list[str] = []
+    for raw in values:
+        if raw is None:
+            continue
+        text = str(raw)
+        for piece in text.replace(";", ",").replace("\n", ",").split(","):
+            cleaned = piece.strip()
+            if cleaned:
+                items.append(cleaned)
+    return items
+
+
+def _normalized_token_set(value: Any) -> set[str]:
+    return {item.lower() for item in _string_list(value)}
 
 
 def normalize_ticker(value: Any) -> str:
@@ -70,6 +106,76 @@ def normalize_market(value: Any) -> str | None:
     if normalized in {"jp", "japan", "tse", "jpx"}:
         return "jp"
     return None
+
+
+def load_user_preferences(
+    *,
+    base_dir: Path,
+    preferences_path: str | Path | None = None,
+) -> dict[str, Any]:
+    path = resolve_preferences_path(base_dir=base_dir, preferences_path=preferences_path)
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    if isinstance(payload, dict):
+        return payload
+    return {}
+
+
+def preferred_markets(preferences: dict[str, Any] | None) -> set[str]:
+    if not isinstance(preferences, dict):
+        return set()
+    markets = preferences.get("markets")
+    if not isinstance(markets, dict):
+        return set()
+
+    selected: set[str] = set()
+    for country in _string_list(markets.get("included_countries")):
+        normalized = normalize_market(country)
+        if normalized in {"us", "jp"}:
+            selected.add(normalized)
+    return selected
+
+
+def market_is_allowed(market: Any, preferences: dict[str, Any] | None) -> bool:
+    selected = preferred_markets(preferences)
+    if not selected:
+        return True
+    normalized = normalize_market(market)
+    if normalized is None:
+        return True
+    return normalized in selected
+
+
+def matches_sector_industry_preferences(
+    candidate: dict[str, Any], preferences: dict[str, Any] | None
+) -> bool:
+    if not isinstance(preferences, dict):
+        return True
+    block = preferences.get("sector_and_industry_preferences")
+    if not isinstance(block, dict):
+        return True
+
+    preferred_sectors = _normalized_token_set(block.get("preferred_sectors"))
+    preferred_industries = _normalized_token_set(block.get("preferred_industries"))
+    excluded_sectors = _normalized_token_set(block.get("excluded_sectors"))
+    excluded_industries = _normalized_token_set(block.get("excluded_industries"))
+
+    sector = _clean_text(candidate.get("sector")).lower()
+    industry = _clean_text(candidate.get("industry")).lower()
+
+    if sector and sector in excluded_sectors:
+        return False
+    if industry and industry in excluded_industries:
+        return False
+    if preferred_sectors and sector and sector not in preferred_sectors:
+        return False
+    if preferred_industries and industry and industry not in preferred_industries:
+        return False
+    return True
 
 
 def _jp_root_code(ticker: str) -> str | None:
@@ -128,6 +234,8 @@ def read_queue_entries(base_dir: Path, ideas_log: str | Path | None = None) -> l
             continue
 
         payload["ticker"] = ticker
+        payload["sector"] = _clean_text(payload.get("sector"))
+        payload["industry"] = _clean_text(payload.get("industry"))
         payload["market"] = normalize_market(payload.get("market")) or detect_market(
             ticker=ticker,
             exchange=payload.get("exchange"),
@@ -180,6 +288,8 @@ def append_new_ideas(
             "ticker": ticker,
             "company": _clean_text(idea.get("company")),
             "exchange": _clean_text(idea.get("exchange")),
+            "sector": _clean_text(idea.get("sector")),
+            "industry": _clean_text(idea.get("industry")),
             "market": market,
             "thesis": _clean_text(idea.get("thesis")),
             "source": _clean_text(source),
@@ -255,16 +365,30 @@ def pick_next_company(
     base_dir: Path,
     task: str,
     ideas_log: str | Path | None = None,
+    preferences_path: str | Path | None = None,
+    respect_preferences: bool = True,
 ) -> dict[str, Any] | None:
     normalized_task = normalize_task(task)
     entries = read_queue_entries(base_dir, ideas_log)
     required_market = _task_market(normalized_task)
+    preferences = (
+        load_user_preferences(base_dir=base_dir, preferences_path=preferences_path)
+        if respect_preferences
+        else {}
+    )
 
     candidates = [
         entry
         for entry in entries
         if required_market is None or entry.get("market") == required_market
     ]
+    if respect_preferences:
+        candidates = [
+            entry
+            for entry in candidates
+            if market_is_allowed(entry.get("market"), preferences)
+            and matches_sector_industry_preferences(entry, preferences)
+        ]
     if not candidates:
         return None
 

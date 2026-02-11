@@ -41,6 +41,8 @@ Use one of these Skill-level requests in Codex:
 - Advanced manual control: `$run-llm-workflow`
 - Preferences setup/update: `$manage-user-preferences`
 
+Most skills now read `preferences/user_preferences.json` by default (market guardrails plus sector/industry and report-style preferences where applicable).
+
 Example requests you can give Codex:
 - `Run $research for AAPL as-of 2026-02-11.`
 - `Run $fetch-us-investment-ideas, then use $research with no ticker.`

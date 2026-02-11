@@ -14,9 +14,12 @@ from company_idea_queue_core import (
     COUNTRY_DIR_BY_MARKET,
     TASK_RESEARCH,
     detect_market,
+    load_user_preferences,
+    market_is_allowed,
     pick_next_company,
     queue_key,
     read_queue_entries,
+    resolve_preferences_path,
 )
 
 
@@ -59,6 +62,15 @@ def _parse_args() -> argparse.Namespace:
         "--dry-run",
         action="store_true",
         help="Do not execute fetch script; emit decision only.",
+    )
+    parser.add_argument(
+        "--preferences-path",
+        help="Override preferences path (default: preferences/user_preferences.json).",
+    )
+    parser.add_argument(
+        "--ignore-preferences",
+        action="store_true",
+        help="Ignore preference-based filtering and market guards.",
     )
     return parser.parse_args()
 
@@ -208,6 +220,8 @@ def _run_fetch(
     identity: str | None,
     isin: str | None,
     overwrite_assumptions: bool,
+    preferences_path: str | None,
+    ignore_preferences: bool,
 ) -> tuple[int, list[str]]:
     script = _fetch_script(base_dir, market)
     command = [
@@ -222,6 +236,10 @@ def _run_fetch(
     ]
     if ideas_log:
         command.extend(["--ideas-log", ideas_log])
+    if preferences_path:
+        command.extend(["--preferences-path", preferences_path])
+    if ignore_preferences:
+        command.append("--ignore-preferences")
     if overwrite_assumptions:
         command.append("--overwrite-assumptions")
     if market == "us" and identity:
@@ -233,12 +251,24 @@ def _run_fetch(
     return completed.returncode, command
 
 
-def _pick_from_queue(base_dir: Path, ideas_log: str | None) -> dict[str, Any]:
-    selected = pick_next_company(base_dir=base_dir, task=TASK_RESEARCH, ideas_log=ideas_log)
+def _pick_from_queue(
+    *,
+    base_dir: Path,
+    ideas_log: str | None,
+    preferences_path: str | None,
+    respect_preferences: bool,
+) -> dict[str, Any]:
+    selected = pick_next_company(
+        base_dir=base_dir,
+        task=TASK_RESEARCH,
+        ideas_log=ideas_log,
+        preferences_path=preferences_path,
+        respect_preferences=respect_preferences,
+    )
     if not selected:
         raise SystemExit(
             "No company available in idea-screens/company-ideas-log.jsonl. "
-            "Run fetch-us-investment-ideas first or pass --ticker."
+            "Run fetch-us-investment-ideas first, relax preferences, or pass --ticker."
         )
     return selected
 
@@ -254,9 +284,27 @@ def main() -> int:
     base_dir = Path(args.base_dir).resolve()
     explicit_ticker = bool(args.ticker)
     ticker_input = (args.ticker or "").strip().upper()
+    preferences_applied = not args.ignore_preferences
+    resolved_preferences_path = resolve_preferences_path(
+        base_dir=base_dir,
+        preferences_path=args.preferences_path,
+    )
+    preferences = (
+        load_user_preferences(
+            base_dir=base_dir,
+            preferences_path=args.preferences_path,
+        )
+        if preferences_applied
+        else {}
+    )
 
     if not ticker_input:
-        queued = _pick_from_queue(base_dir, args.ideas_log)
+        queued = _pick_from_queue(
+            base_dir=base_dir,
+            ideas_log=args.ideas_log,
+            preferences_path=args.preferences_path,
+            respect_preferences=preferences_applied,
+        )
         ticker_input = str(queued["ticker"]).strip().upper()
         market = str(queued.get("market") or "").strip().lower()
         if market not in {"us", "jp"}:
@@ -277,6 +325,18 @@ def main() -> int:
             ideas_log=args.ideas_log,
             override=args.market,
         )
+
+    if preferences_applied and not market_is_allowed(market, preferences):
+        result = {
+            "status": "error",
+            "reason": "market_excluded_by_preferences",
+            "market": market,
+            "ticker_input": ticker_input,
+            "preferences_applied": True,
+            "preferences_path": str(resolved_preferences_path),
+        }
+        print(json.dumps(result, indent=2))
+        return 2
 
     before_matches = _matching_company_dirs(base_dir, ticker_input)
     before_company_dir = (
@@ -300,6 +360,8 @@ def main() -> int:
             identity=args.identity,
             isin=args.isin,
             overwrite_assumptions=args.overwrite_assumptions,
+            preferences_path=args.preferences_path,
+            ignore_preferences=args.ignore_preferences,
         )
         if fetch_return_code != 0:
             result = {
@@ -366,6 +428,10 @@ def main() -> int:
         "fetch_command": fetch_command,
         "next_action": next_action,
         "reason": reason,
+        "preferences_applied": preferences_applied,
+        "preferences_path": (
+            str(resolved_preferences_path) if preferences_applied else None
+        ),
     }
     print(json.dumps(result, indent=2))
     return 0
