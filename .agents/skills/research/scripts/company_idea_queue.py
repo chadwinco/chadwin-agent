@@ -6,13 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-QUEUE_SKILL_DIR = Path(__file__).resolve().parents[1]
-QUEUE_SRC = QUEUE_SKILL_DIR / "src"
-
-if str(QUEUE_SRC) not in sys.path:
-    sys.path.insert(0, str(QUEUE_SRC))
-
-from company_idea_queue import (  # noqa: E402
+from company_idea_queue_core import (  # noqa: E402
     TASK_FETCH_JP,
     TASK_FETCH_US,
     TASK_RESEARCH,

@@ -8,7 +8,7 @@ description: Fetch US/SEC-available filings, XBRL-based financial statements, an
 ## Overview
 Fetch filings, financials, analyst forecasts, and transcripts into `companies/<TICKER>/data` and bootstrap valuation assumptions in `companies/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 
-This skill keeps fetch logic inside the skill package (`scripts/` + `src/`) so it is easier to share and update independently from the main codebase.
+This skill keeps fetch logic inside the skill package (`scripts/`) so it is easier to share and update independently from the main codebase.
 
 ## Skill Path (set once)
 Repo-local:

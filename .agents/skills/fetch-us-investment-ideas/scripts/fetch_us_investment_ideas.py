@@ -15,9 +15,9 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 
-QUEUE_SRC = Path(__file__).resolve().parents[2] / "research" / "src"
-if str(QUEUE_SRC) not in sys.path:
-    sys.path.insert(0, str(QUEUE_SRC))
+QUEUE_SCRIPTS = Path(__file__).resolve().parents[2] / "research" / "scripts"
+if str(QUEUE_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(QUEUE_SCRIPTS))
 
 from company_idea_queue import append_new_ideas, default_base_dir  # noqa: E402
 

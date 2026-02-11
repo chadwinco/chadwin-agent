@@ -5,18 +5,12 @@ import argparse
 import csv
 import json
 import subprocess
-import sys
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
-SKILL_DIR = Path(__file__).resolve().parents[1]
-QUEUE_SRC = SKILL_DIR / "src"
-if str(QUEUE_SRC) not in sys.path:
-    sys.path.insert(0, str(QUEUE_SRC))
-
-from company_idea_queue import (  # noqa: E402
+from company_idea_queue_core import (
     TASK_RESEARCH,
     detect_market,
     pick_next_company,

@@ -18,4 +18,4 @@
   - Yahoo symbol: `9983.T`
 
 ## Extending The Map
-Update `_SEEDED_COMPANIES` in `src/japan_fetch.py` when adding ISIN-first workflows or fixed canonical ticker aliases.
+Update `_SEEDED_COMPANIES` in `scripts/japan_fetch.py` when adding ISIN-first workflows or fixed canonical ticker aliases.
