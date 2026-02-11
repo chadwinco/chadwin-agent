@@ -1,25 +1,40 @@
 {
   "schema_version": 1,
-  "updated_at_utc": null,
+  "updated_at_utc": "2026-02-11T12:00:42+00:00",
   "markets": {
-    "included_countries": []
+    "included_countries": [
+      "US",
+      "Japan",
+      "Sweden"
+    ]
   },
   "sector_and_industry_preferences": {
     "preferred_sectors": [],
     "preferred_industries": [],
     "excluded_sectors": [],
-    "excluded_industries": [],
+    "excluded_industries": [
+      "biotech",
+      "banks"
+    ],
     "notes": ""
   },
   "investment_strategy_preferences": {
-    "preferred_strategies": [],
+    "preferred_strategies": [
+      "long-term compounders"
+    ],
     "excluded_strategies": [],
     "notes": ""
   },
   "report_preferences": {
-    "must_include": [],
+    "must_include": [
+      "key business levers driving valuation",
+      "revenue growth by market",
+      "revenue growth by product line"
+    ],
     "nice_to_have": [],
-    "exclude": [],
-    "notes": ""
+    "exclude": [
+      "long-form narrative"
+    ],
+    "notes": "Keep reports concise."
   }
 }

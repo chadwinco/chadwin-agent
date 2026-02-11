@@ -86,6 +86,31 @@ def _string_list(value: Any) -> list[str]:
     return _dedupe(cleaned)
 
 
+def _normalize_country_token(value: str) -> str:
+    normalized = re.sub(r"\s+", " ", value.strip().lower())
+    country_map = {
+        "us": "US",
+        "usa": "US",
+        "united states": "US",
+        "united states of america": "US",
+        "jp": "Japan",
+        "japan": "Japan",
+        "uk": "UK",
+        "united kingdom": "UK",
+        "ca": "Canada",
+        "canada": "Canada",
+        "eu": "Europe",
+        "europe": "Europe",
+        "global": "Global",
+        "all": "Global",
+    }
+    return country_map.get(normalized, value.strip())
+
+
+def _normalize_country_list(values: list[str]) -> list[str]:
+    return _dedupe([_normalize_country_token(value) for value in values if value.strip()])
+
+
 def _deep_merge(base: dict[str, Any], patch: dict[str, Any]) -> dict[str, Any]:
     merged = deepcopy(base)
     for key, value in patch.items():
@@ -124,7 +149,9 @@ def normalize_preferences(payload: dict[str, Any]) -> dict[str, Any]:
         schema_version = 1
     normalized["schema_version"] = max(schema_version, 1)
     normalized["updated_at_utc"] = merged.get("updated_at_utc")
-    normalized["markets"]["included_countries"] = _string_list(markets.get("included_countries"))
+    normalized["markets"]["included_countries"] = _normalize_country_list(
+        _string_list(markets.get("included_countries"))
+    )
 
     normalized["sector_and_industry_preferences"]["preferred_sectors"] = _string_list(
         sector.get("preferred_sectors")
@@ -188,97 +215,227 @@ def _render_list(values: list[str]) -> str:
     return ", ".join(values)
 
 
-def _prompt_list(label: str, current: list[str]) -> list[str]:
-    print(f"\n{label}")
-    print(f"Current: {_render_list(current)}")
-    raw = input("Enter comma-separated values (`none` to clear, Enter to keep current): ").strip()
-    if not raw:
-        return current
-    if raw.lower() in CLEAR_TOKENS:
-        return []
-    return _string_list(raw)
+def _normalize_label(text: str) -> str:
+    return re.sub(r"[^a-z]", "", text.lower())
 
 
-def _prompt_text(label: str, current: str) -> str:
-    print(f"\n{label}")
-    print(f"Current: {current or '(none)'}")
-    raw = input("Enter text (`none` to clear, Enter to keep current): ").strip()
+def _alias_set(*aliases: str) -> set[str]:
+    return {_normalize_label(alias) for alias in aliases}
+
+
+def _section_header(number: int, title: str) -> None:
+    print(f"\nSection {number}/4 - {title}")
+
+
+def _section_prompt(prompt: str) -> str:
+    print(prompt)
+    return input("Your response (Enter to keep current, `none` to clear this section): ").strip()
+
+
+def _parse_labeled_section(
+    *,
+    raw: str,
+    current: dict[str, Any],
+    list_field_aliases: dict[str, set[str]],
+    notes_aliases: set[str],
+) -> dict[str, Any]:
+    result = deepcopy(current)
     if not raw:
-        return current
+        return result
     if raw.lower() in CLEAR_TOKENS:
-        return ""
-    return raw
+        for field in list_field_aliases:
+            result[field] = []
+        result["notes"] = ""
+        return result
+
+    note_chunks: list[str] = []
+    parts = [piece.strip() for piece in re.split(r"[|\n]+", raw) if piece.strip()]
+    for part in parts:
+        if ":" not in part:
+            note_chunks.append(part)
+            continue
+
+        key, value = part.split(":", 1)
+        key_norm = _normalize_label(key)
+        value = value.strip()
+        matched = False
+        for field, aliases in list_field_aliases.items():
+            if key_norm in aliases:
+                result[field] = [] if value.lower() in CLEAR_TOKENS else _string_list(value)
+                matched = True
+                break
+
+        if matched:
+            continue
+        if key_norm in notes_aliases:
+            result["notes"] = "" if value.lower() in CLEAR_TOKENS else value
+            continue
+
+        note_chunks.append(part)
+
+    if note_chunks:
+        extra = " ".join(note_chunks).strip()
+        if extra:
+            result["notes"] = " ".join([result.get("notes", "").strip(), extra]).strip()
+
+    return result
+
+
+def _render_section_values(section: dict[str, Any]) -> None:
+    for key, value in section.items():
+        label = key.replace("_", " ")
+        if isinstance(value, list):
+            print(f"- {label}: {_render_list(value)}")
+        else:
+            print(f"- {label}: {str(value).strip() or '(none)'}")
+
+
+def _update_markets_section(current: dict[str, Any]) -> None:
+    _section_header(1, "Country Markets")
+    print("Current:")
+    print(f"- included countries: {_render_list(current['included_countries'])}")
+    raw = _section_prompt(
+        "Which country markets are you interested in? "
+        "(example: US, Japan)"
+    )
+    if not raw:
+        return
+    if raw.lower() in CLEAR_TOKENS:
+        current["included_countries"] = []
+    else:
+        current["included_countries"] = _normalize_country_list(_string_list(raw))
+
+    print("Normalized Section 1:")
+    print(f"- included countries: {_render_list(current['included_countries'])}")
+
+
+def _update_sector_industry_section(current: dict[str, Any]) -> None:
+    _section_header(2, "Sector and Industry Preferences")
+    print("Current:")
+    _render_section_values(current)
+    raw = _section_prompt(
+        "Describe preferred/excluded sectors and industries. "
+        "Use labels when possible, for example: "
+        "`preferred sectors: software, industrials | excluded industries: biotech | notes: avoid heavy regulation`"
+    )
+    parsed = _parse_labeled_section(
+        raw=raw,
+        current=current,
+        list_field_aliases={
+            "preferred_sectors": _alias_set(
+                "preferred sectors",
+                "preferred sector",
+                "include sectors",
+                "included sectors",
+            ),
+            "preferred_industries": _alias_set(
+                "preferred industries",
+                "preferred industry",
+                "include industries",
+                "included industries",
+            ),
+            "excluded_sectors": _alias_set(
+                "excluded sectors",
+                "excluded sector",
+                "avoid sectors",
+                "blocked sectors",
+            ),
+            "excluded_industries": _alias_set(
+                "excluded industries",
+                "excluded industry",
+                "avoid industries",
+                "blocked industries",
+            ),
+        },
+        notes_aliases=_alias_set("notes", "note", "comments", "comment"),
+    )
+    current.update(parsed)
+
+    print("Normalized Section 2:")
+    _render_section_values(current)
+
+
+def _update_strategy_section(current: dict[str, Any]) -> None:
+    _section_header(3, "Investment Strategy Preferences")
+    print("Current:")
+    _render_section_values(current)
+    raw = _section_prompt(
+        "Describe preferred and excluded strategy styles. "
+        "Use labels when possible, for example: "
+        "`preferred strategies: value long, sum of the parts | excluded strategies: technical trading | notes: long-term horizon`"
+    )
+    parsed = _parse_labeled_section(
+        raw=raw,
+        current=current,
+        list_field_aliases={
+            "preferred_strategies": _alias_set(
+                "preferred strategies",
+                "preferred strategy",
+                "include strategies",
+                "included strategies",
+            ),
+            "excluded_strategies": _alias_set(
+                "excluded strategies",
+                "excluded strategy",
+                "avoid strategies",
+                "blocked strategies",
+            ),
+        },
+        notes_aliases=_alias_set("notes", "note", "comments", "comment"),
+    )
+    current.update(parsed)
+
+    print("Normalized Section 3:")
+    _render_section_values(current)
+
+
+def _update_report_section(current: dict[str, Any]) -> None:
+    _section_header(4, "Report Content Preferences")
+    print("Current:")
+    _render_section_values(current)
+    raw = _section_prompt(
+        "Describe report content preferences. "
+        "Use labels when possible, for example: "
+        "`must include: moat, valuation table | nice to have: catalyst timeline | exclude: long macro commentary | notes: keep concise`"
+    )
+    parsed = _parse_labeled_section(
+        raw=raw,
+        current=current,
+        list_field_aliases={
+            "must_include": _alias_set("must include", "required", "required items"),
+            "nice_to_have": _alias_set("nice to have", "optional", "good to have"),
+            "exclude": _alias_set("exclude", "excluded", "avoid"),
+        },
+        notes_aliases=_alias_set("notes", "note", "comments", "comment"),
+    )
+    current.update(parsed)
+
+    print("Normalized Section 4:")
+    _render_section_values(current)
 
 
 def run_interactive(path: Path) -> int:
     current = _load_existing(path)
     print(f"Updating preferences at: {path}")
-    print("Answer each prompt. Press Enter to keep existing values.")
+    print("Guided interview: 4 sections, one at a time.")
+    print("I will normalize each section after your response.")
 
     markets = current["markets"]
     sector = current["sector_and_industry_preferences"]
     strategy = current["investment_strategy_preferences"]
     report = current["report_preferences"]
 
-    markets["included_countries"] = _prompt_list(
-        "Which country markets are you interested in?",
-        markets["included_countries"],
-    )
+    _update_markets_section(markets)
+    _update_sector_industry_section(sector)
+    _update_strategy_section(strategy)
+    _update_report_section(report)
 
-    sector["preferred_sectors"] = _prompt_list(
-        "Which sectors should be prioritized?",
-        sector["preferred_sectors"],
-    )
-    sector["preferred_industries"] = _prompt_list(
-        "Which industries should be prioritized?",
-        sector["preferred_industries"],
-    )
-    sector["excluded_sectors"] = _prompt_list(
-        "Which sectors should be excluded?",
-        sector["excluded_sectors"],
-    )
-    sector["excluded_industries"] = _prompt_list(
-        "Which industries should be excluded?",
-        sector["excluded_industries"],
-    )
-    sector["notes"] = _prompt_text(
-        "Any additional notes for sector/industry preferences?",
-        sector["notes"],
-    )
-
-    strategy["preferred_strategies"] = _prompt_list(
-        "Preferred investment strategy styles? (for example: value long, sum of the parts)",
-        strategy["preferred_strategies"],
-    )
-    strategy["excluded_strategies"] = _prompt_list(
-        "Any strategy styles to avoid?",
-        strategy["excluded_strategies"],
-    )
-    strategy["notes"] = _prompt_text(
-        "Any additional strategy notes?",
-        strategy["notes"],
-    )
-
-    report["must_include"] = _prompt_list(
-        "What information must always be in reports?",
-        report["must_include"],
-    )
-    report["nice_to_have"] = _prompt_list(
-        "What information is nice to have in reports?",
-        report["nice_to_have"],
-    )
-    report["exclude"] = _prompt_list(
-        "What information should be excluded or minimized in reports?",
-        report["exclude"],
-    )
-    report["notes"] = _prompt_text(
-        "Any additional notes for report preferences?",
-        report["notes"],
-    )
-
-    current["updated_at_utc"] = _timestamp()
-    _save(path, normalize_preferences(current))
-    print(f"\nSaved preferences to {path}")
+    normalized = normalize_preferences(current)
+    normalized["updated_at_utc"] = _timestamp()
+    _save(path, normalized)
+    print("\nPreferences update complete.")
+    print(f"Saved preferences to {path}")
+    print(json.dumps(normalized, indent=2, ensure_ascii=True))
     return 0
 
 
