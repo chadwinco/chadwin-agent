@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run LLM Deep Dive"
+  short_description: "Falsification-first deep research with revised valuation and explicit deltas"
+  default_prompt: "Use $run-llm-deep-dive for <TICKER> as of <YYYY-MM-DD> using baseline report date <YYYY-MM-DD>. Build a downside-focused original research plan, execute local plus targeted high-quality third-party checks (and older SEC pulls if useful), then deliver revised report.md, revised valuation inputs/outputs, deep-dive-plan.md, deep-dive-changes.md, and third-party-sources.md."
