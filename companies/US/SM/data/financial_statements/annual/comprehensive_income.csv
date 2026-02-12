@@ -1,0 +1,8 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,770293000.0,817880000.0,1111952000.0,36229000.0,-764614000.0,-187001000.0
+Pension liability adjustment,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansAdjustmentNetOfTaxPortionAttributableToParent,,,,,-2279000.0,1061000.0
+"Total other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,8827000.0,749000.0,-2279000.0,
+Total comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,,,1120779000.0,36978000.0,-766893000.0,-185940000.0
+Pension liability adjustment (1),us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansAdjustmentNetOfTaxPortionAttributableToParent,1446000.0,1415000.0,8827000.0,749000.0,,
+"Total other comprehensive income, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,1446000.0,1415000.0,,,,1061000.0
+Total comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,771739000.0,819295000.0,,,,

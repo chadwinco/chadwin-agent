@@ -1,0 +1,34 @@
+{
+  "ticker": "ACIW",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 40.33,
+  "method": "three-stage-dcf-fade",
+  "base_year": {
+    "period_end": "2024-12-31",
+    "revenue": 1594288000.0,
+    "net_debt": 708183000.0,
+    "diluted_shares": 106493000.0
+  },
+  "scenarios": {
+    "base": {
+      "enterprise_value": 5738791132.35,
+      "equity_value": 5030608132.35,
+      "value_per_share": 47.24,
+      "margin_of_safety": 0.1713
+    },
+    "bull": {
+      "enterprise_value": 8711732447.7,
+      "equity_value": 8003549447.7,
+      "value_per_share": 75.16,
+      "margin_of_safety": 0.8635
+    },
+    "bear": {
+      "enterprise_value": 3659015817.3,
+      "equity_value": 2950832817.3,
+      "value_per_share": 27.71,
+      "margin_of_safety": -0.3129
+    }
+  },
+  "calculation_notes": "Three-stage DCF with explicit advantage period and linear fade. Discount rates exceed terminal growth in all scenarios."
+}

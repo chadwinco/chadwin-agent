@@ -1,0 +1,27 @@
+{
+  "ticker": "SM",
+  "asof_date": "2026-02-10",
+  "currency": "USD",
+  "price": 21.24,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 5206517559.894193,
+      "equity_value": 2429774559.8941927,
+      "value_per_share": 21.031000319339,
+      "margin_of_safety": -0.009839909635640187
+    },
+    "bull": {
+      "enterprise_value": 7182588623.721298,
+      "equity_value": 4405845623.721298,
+      "value_per_share": 38.13495385492715,
+      "margin_of_safety": 0.7954309724541972
+    },
+    "bear": {
+      "enterprise_value": 3711171279.655696,
+      "equity_value": 934428279.6556959,
+      "value_per_share": 8.087977284894324,
+      "margin_of_safety": -0.6192101089974424
+    }
+  }
+}

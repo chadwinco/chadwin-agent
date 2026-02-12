@@ -1,0 +1,31 @@
+label,concept,2025-09-30,2025-06-30
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,340485000.0,621619000.0
+Current Marketable Securities,us-gaap_MarketableSecuritiesCurrent,1237048000.0,971719000.0
+"Property, Plant and Equipment",us-gaap_PropertyPlantAndEquipmentNet,17946000.0,16593000.0
+Goodwill,us-gaap_Goodwill,24541000.0,24541000.0
+Intangible Assets,us-gaap_FiniteLivedIntangibleAssetsNet,16044000.0,13227000.0
+Digital assets,us-gaap_CryptoAssetFairValueCurrent,30320000.0,30136000.0
+Accounts Receivable,us-gaap_AccountsReceivableNetCurrent,156004000.0,124721000.0
+Accounts Payable,us-gaap_AccountsPayableCurrent,13364000.0,12029000.0
+Prepaid Expenses,us-gaap_PrepaidExpenseAndOtherAssetsCurrent,79904000.0,60059000.0
+Total Current Liabilities,us-gaap_LiabilitiesCurrent,622479000.0,546562000.0
+Other Non Current Assets,us-gaap_OtherAssetsNoncurrent,100406000.0,97988000.0
+Total Current Assets,us-gaap_AssetsCurrent,1843761000.0,1808254000.0
+Total Assets,us-gaap_Assets,2073225000.0,2034663000.0
+Operating lease right-of-use assets,us-gaap_OperatingLeaseRightOfUseAsset,60728000.0,64261000.0
+Restricted cash,us-gaap_RestrictedCashNoncurrent,9799000.0,9799000.0
+Other Non Current Liabilities,us-gaap_OtherLiabilitiesNoncurrent,5667000.0,5589000.0
+Total Liabilities,us-gaap_Liabilities,684705000.0,607449000.0
+Accrued Liabilities,us-gaap_AccruedLiabilitiesCurrent,79031000.0,39225000.0
+Deferred revenue,us-gaap_ContractWithCustomerLiabilityCurrent,473567000.0,
+"Operating lease liabilities, current",us-gaap_OperatingLeaseLiabilityCurrent,4677000.0,9400000.0
+"Operating lease liabilities, non-current",us-gaap_OperatingLeaseLiabilityNoncurrent,56559000.0,55298000.0
+Commitments and contingencies (Note 8),us-gaap_CommitmentsAndContingencies,,
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,2073225000.0,2034663000.0
+Preferred Stock,us-gaap_PreferredStockValue,0.0,329441000.0
+Common Stock,us-gaap_CommonStockValue,0.0,1000.0
+Additional paid-in capital,us-gaap_AdditionalPaidInCapital,2601900000.0,1215071000.0
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,-1216816000.0,-119801000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,3432000.0,2502000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,1388520000.0,1427214000.0
+Customer deposits,us-gaap_ContractWithCustomerLiabilityCurrent,,433147000.0

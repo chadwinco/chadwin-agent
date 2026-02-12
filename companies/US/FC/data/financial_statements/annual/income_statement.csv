@@ -1,0 +1,33 @@
+label,concept,2025-08-31,2024-08-31,2023-08-31,2022-08-31,2021-08-31,2020-08-31
+Revenue,us-gaap_Revenues,267067000.0,287233000.0,280521000.0,262841000.0,224168000.0,198456000.0
+Restructuring costs,us-gaap_RestructuringCharges,-6723000.0,-3008000.0,,,,-1636000.0
+Impaired asset,us-gaap_AssetImpairmentCharges,,-928000.0,,,,
+Depreciation and Amortization,us-gaap_Depreciation,-4066000.0,-3905000.0,-4271000.0,-4903000.0,-6190000.0,-6664000.0
+Amortization,us-gaap_AdjustmentForAmortization,-4392000.0,-4248000.0,-4342000.0,-5266000.0,-5006000.0,-4606000.0
+,,,,,,,
+,,,,,,,
+"Foreign currency translation adjustments, net of income tax provision of $(21), $(11), and $(80)",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-264000.0,,,,,
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,2804000.0,23621000.0,17336000.0,,,
+Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,,,,17179000.0,13691000.0,
+Comprehensive loss,us-gaap_ComprehensiveIncomeNetOfTax,,,,,,-9063000.0
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,-63498000.0,-66161000.0,-67031000.0,-60929000.0,-51266000.0,-53086000.0
+Gross Profit,us-gaap_GrossProfit,203569000.0,221072000.0,213490000.0,201912000.0,172902000.0,145370000.0
+"Selling, General and Administrative Expense",us-gaap_SellingGeneralAndAdministrativeExpense,-182684000.0,-175941000.0,-178516000.0,-159783000.0,-144988000.0,-129979000.0
+Operating Income,us-gaap_OperatingIncomeLoss,5704000.0,33042000.0,26361000.0,23674000.0,8101000.0,3058000.0
+Interest Expense,us-gaap_InterestExpense,-565000.0,-1119000.0,-1583000.0,-1675000.0,-2099000.0,-2318000.0
+Interest income,us-gaap_InvestmentIncomeInterest,928000.0,1123000.0,1091000.0,65000.0,73000.0,56000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,6067000.0,33046000.0,25869000.0,22064000.0,6075000.0,796000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,2999000.0,9644000.0,8088000.0,3634000.0,-7548000.0,10231000.0
+Net Income,us-gaap_NetIncomeLoss,3068000.0,23402000.0,17781000.0,18430000.0,13623000.0,-9435000.0
+"Foreign currency translation adjustments, net of income tax benefit (provision) of $(11), $(80), and $176",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,219000.0,,,,
+"Foreign currency translation adjustments, net of income tax benefit (provision) of $(80), $176, and $11",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,,-445000.0,,,
+,,,,,,,
+"Foreign currency translation adjustments, net of income tax benefits of $176, $11, and $16",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,,,-1251000.0,,
+"Foreign currency translation adjustments, net of income tax benefit (provision) of $11, $16, and $(5)",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,,,,68000.0,
+"Foreign currency translation adjustments, net of income tax benefit (provision) of $16, $(5), and $(75)",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,,,,,372000.0
+Basic and diluted,us-gaap_EarningsPerShareBasicAndDiluted,,,,,,13892000.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,0.24,1.78,1.3,1.3,0.97,
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,0.24,1.74,1.24,1.27,0.96,
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,12927000.0,13171000.0,13640000.0,14147000.0,14090000.0,
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,13053000.0,13472000.0,14299000.0,14555000.0,14143000.0,
+Stock-based compensation,us-gaap_AllocatedShareBasedCompensationExpense,,,,-8286000.0,-8617000.0,573000.0

@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+SKYW,104.57,4190000000.0000005,1.6,,74.70 - 123.94,,,198785.0,Skywest Inc,USD,0000793733,US8308791024,830879102,Nasdaq Global Select Market,NASDAQ,Airlines,https://skywest.com,Russell Childs,Industrials,United States,14610,435-634-3000,444 S River Rd,St George,UT,,,false,true,false

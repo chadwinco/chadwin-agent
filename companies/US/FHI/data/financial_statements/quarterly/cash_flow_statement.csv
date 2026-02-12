@@ -1,0 +1,33 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Profit or Loss,us-gaap_ProfitLoss,106095000.0,96691000.0,103876000.0,90341000.0,19225000.0,75010000.0,74266000.0,73002000.0,71466000.0,67574000.0,50758000.0,54597000.0
+Depreciation and Amortization,us-gaap_OtherDepreciationAndAmortization,,,5416000.0,,,5625000.0,,,8022000.0,,,7462000.0
+Share-Based Compensation Expense,us-gaap_ShareBasedCompensation,,,11117000.0,,,10269000.0,,,10680000.0,,,9288000.0
+(Gain) Loss on Disposal of Assets,us-gaap_GainLossOnDispositionOfAssets1,,,-1530000.0,,,-278000.0,,,481000.0,,,-150000.0
+Provision (Benefit) for Deferred Income Taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,531000.0,,,2650000.0,,,-76000.0,,,2342000.0
+Consolidation/(Deconsolidation) of Other Entities,fhi_ConsolidationDeconsolidationOfInvestmentCompanies,,,0.0,,,409000.0,,,-2176000.0,,,-20000.0
+Net Unrealized (Gain) Loss on Investments,us-gaap_UnrealizedGainLossOnInvestments,1149000.0,6380000.0,-568000.0,4433000.0,-2130000.0,1334000.0,-1680000.0,641000.0,5974000.0,-3248000.0,-12395000.0,11847000.0
+Net Sales (Purchases) of Investments—Consolidated Investment Companies,fhi_ProceedsfromPaymentsforInvestmentsConsolidatedinvestmentcompanies,,,-15141000.0,,,1257000.0,,,-8383000.0,,,-30937000.0
+Impairment of Intangible Asset,us-gaap_ImpairmentOfIntangibleAssetsIndefinitelivedExcludingGoodwill,,,,0.0,66300000.0,,,,,,,
+"(Increase) Decrease in Receivables, net",us-gaap_IncreaseDecreaseInReceivables,,,-10955000.0,,,2978000.0,,,-15232000.0,,,9843000.0
+(Increase) Decrease in Prepaid Expenses and Other Assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,1280000.0,,,7921000.0,,,1324000.0,,,-2892000.0
+Increase (Decrease) in Accounts Payable and Accrued Expenses,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,,,-101218000.0,,,-93731000.0,,,-61621000.0,,,-88206000.0
+Increase (Decrease) in Other Liabilities,us-gaap_IncreaseDecreaseInOtherOperatingLiabilities,,,20355000.0,,,3255000.0,,,6909000.0,,,6872000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,14299000.0,,,14031000.0,,,5420000.0,,,-19247000.0
+Purchases of Investments—Affiliates and Other,fhi_PurchasesofinvestmentsAffiliatesandother,,,-1758000.0,,,-25718000.0,,,-1583000.0,,,-2008000.0
+Proceeds from Redemptions of Investments—Affiliates and Other,fhi_Proceedsfromredemptionsofinvestmentsaffiliatesother,,,1230000.0,,,53874000.0,,,4160000.0,,,1321000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-972000.0,,,-569000.0,,,-739000.0,,,-1853000.0
+Other Investing Activities,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,,-28000.0,,,,,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-1528000.0,,,27587000.0,,,1838000.0,,,-2540000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,,,-25305000.0,,,,,,,,,
+Purchases of Treasury Stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-120131000.0,,,-39026000.0,,,-6562000.0,,,-113338000.0
+Distributions to Noncontrolling Interests in Subsidiaries,us-gaap_PaymentsOfDistributionsToAffiliates,,,-8367000.0,,,-3410000.0,,,-3224000.0,,,-4339000.0
+Contributions from Noncontrolling Interests in Subsidiaries,us-gaap_ProceedsFromMinorityShareholders,,,16235000.0,,,2724000.0,,,12776000.0,,,30340000.0
+Other Financing Activities,us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,,,0.0,,,38000.0,,,0.0,,,-9499000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-137568000.0,,,-63526000.0,,,-22016000.0,,,54861000.0
+"Effect of Exchange Rates on Cash, Cash Equivalents, Restricted Cash and Restricted Cash Equivalents",us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,,,5266000.0,,,-1412000.0,,,2047000.0,,,-4505000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,-119531000.0,,,-23320000.0,,,-12711000.0,,,28569000.0
+Cash paid for Business Acquisitions,fhi_CashPaidForBusinessAcquisitions,,,-0.0,,,-118000.0,,,-857000.0,,,
+Dividends Paid,us-gaap_PaymentsOfDividendsCommonStock,,,,,,-23734000.0,,,-24149000.0,,,-24953000.0
+Subsidiary Share-Based Compensation Expense,fhi_ShareBasedCompensationRelatedParty,,,,,,,,,0.0,,,707000.0
+Payments on Debt,us-gaap_RepaymentsOfLinesOfCredit,,,,,,,,,-0.0,,,-311650000.0
+Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,,,,,,,,,0.0,,,488300000.0

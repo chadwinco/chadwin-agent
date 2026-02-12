@@ -1,0 +1,27 @@
+{
+  "ticker": "CALM",
+  "asof_date": "2026-02-07",
+  "currency": "USD",
+  "price": 82.53,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 4552013376.998489,
+      "equity_value": 5051405376.998489,
+      "value_per_share": 103.31973935895132,
+      "margin_of_safety": 0.25190523880953974
+    },
+    "bull": {
+      "enterprise_value": 8505899470.933235,
+      "equity_value": 9005291470.933235,
+      "value_per_share": 184.19119001315653,
+      "margin_of_safety": 1.2318089181286385
+    },
+    "bear": {
+      "enterprise_value": 2034596802.1158085,
+      "equity_value": 2533988802.1158085,
+      "value_per_share": 51.82935104857353,
+      "margin_of_safety": -0.37199380772357293
+    }
+  }
+}

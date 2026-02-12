@@ -1,0 +1,47 @@
+{
+  "inputs": {
+    "latest_revenue": 55753000000.0,
+    "net_debt": 11830000000.0,
+    "shares_outstanding": 391093434.5716955,
+    "current_price": 331.89
+  },
+  "scenarios": {
+    "base": {
+      "enterprise_value": 93052362271.14702,
+      "equity_value": 81222362271.14702,
+      "per_share_value": 207.68019887650985,
+      "margin_of_safety": -0.598082059798813,
+      "assumptions": {
+        "revenue_growth": -0.011815559308003931,
+        "fcf_margin": 0.15,
+        "discount_rate": 0.1,
+        "terminal_growth": 0.02
+      }
+    },
+    "bull": {
+      "enterprise_value": 137006209169.09726,
+      "equity_value": 125176209169.09726,
+      "per_share_value": 320.067273198241,
+      "margin_of_safety": -0.03693825577236159,
+      "assumptions": {
+        "revenue_growth": 0.0050385726818780174,
+        "fcf_margin": 0.16999999999999998,
+        "discount_rate": 0.09,
+        "terminal_growth": 0.025
+      }
+    },
+    "bear": {
+      "enterprise_value": 56645837147.060814,
+      "equity_value": 44815837147.060814,
+      "per_share_value": 114.5911262768722,
+      "margin_of_safety": -1.8962975649449128,
+      "assumptions": {
+        "revenue_growth": -0.04017315428379453,
+        "fcf_margin": 0.12,
+        "discount_rate": 0.11,
+        "terminal_growth": 0.015
+      }
+    }
+  },
+  "valuation_table": "| Scenario | Implied Value/Share | Margin of Safety |\n| --- | --- | --- |\n| Base | $207.68 | -59.8% |\n| Bull | $320.07 | -3.7% |\n| Bear | $114.59 | -189.6% |"
+}

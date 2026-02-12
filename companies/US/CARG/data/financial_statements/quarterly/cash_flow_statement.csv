@@ -1,0 +1,62 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Profit or Loss,us-gaap_ProfitLoss,44717000.0,22343000.0,39045000.0,22511000.0,-68721000.0,21301000.0,18973000.0,13817000.0,11866000.0,18824000.0,18061000.0,18838000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,,,6554000.0,,,7481000.0,,,11576000.0,,,11185000.0
+Gain on sale of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,,,,,,-460000.0,,,
+Deferred taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,-3389000.0,,,-9052000.0,,,-11921000.0,,,-13091000.0
+Provision for doubtful accounts,us-gaap_ProvisionForDoubtfulAccounts,,,424000.0,,,,,,-300000.0,,,150000.0
+Stock-based compensation expense,us-gaap_ShareBasedCompensation,,,12900000.0,,,15822000.0,,,14904000.0,,,14147000.0
+Amortization of deferred financing costs,us-gaap_AmortizationOfFinancingCosts,,,129000.0,,,129000.0,129000.0,129000.0,129000.0,,,
+Amortization of deferred contract costs,us-gaap_CapitalizedContractCostAmortization,,,3810000.0,,,3258000.0,,,2737000.0,,,2806000.0
+Impairment,us-gaap_AssetImpairmentCharges,,32552000.0,,,,,,,,,,
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,,,3070000.0,,,-4182000.0,,,6858000.0,,,
+Inventory,us-gaap_IncreaseDecreaseInInventories,,,-353000.0,,,-319000.0,,,3645000.0,,,-1336000.0
+"Prepaid expenses, prepaid income taxes, and other assets",us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,6801000.0,,,5974000.0,,,4652000.0,,,-2127000.0
+Deferred contract costs,us-gaap_IncreaseDecreaseInContractWithCustomerAsset,,,-4744000.0,,,-3326000.0,,,-5138000.0,,,-2997000.0
+Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayable,,,4075000.0,,,707000.0,,,10268000.0,,,-4062000.0
+"Accrued expenses, accrued income taxes, and other liabilities",carg_IncreaseDecreaseInAccruedLiabilitiesAccruedIncomeTaxesAndOtherLiabilities,,,-5592000.0,,,681000.0,,,4542000.0,,,30087000.0
+Deferred revenue,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,,,731000.0,,,120000.0,,,8557000.0,,,-5000.0
+Lease obligations,carg_IncreaseDecreaseInLeaseObligations,,,4583000.0,,,12696000.0,,,4453000.0,,,-592000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,67879000.0,,,51964000.0,,,66345000.0,,,93060000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-2240000.0,,,-28665000.0,,,-2398000.0,,,-1230000.0
+Capitalization of website development costs,us-gaap_PaymentsToDevelopSoftware,,,-5391000.0,,,-5465000.0,,,-3489000.0,,,-2506000.0
+Purchases of short-term investments,us-gaap_PaymentsToAcquireShortTermInvestments,,,-0.0,,,-494000.0,,,,,,
+Sale of short-term investments,carg_SalesOfShortTermInvestments,,,0.0,,,,,,,,,
+"Advance payments to customers, net of collections",carg_AdvancePaymentsToCustomerNetOfCollections,,,-0.0,,,259000.0,,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-7631000.0,,,-13147000.0,,,-5887000.0,,,26264000.0
+Proceeds from issuance of common stock upon exercise of stock options,us-gaap_ProceedsFromStockOptionsExercised,,,394000.0,,,11000.0,,,19000.0,,,
+Payment of withholding taxes on net share settlements of restricted stock units,carg_PaymentOfWithholdingTaxesOnNetShareSettlementsOfRestrictedStockUnits,,,-8985000.0,,,-5115000.0,-886000.0,-4828000.0,-2066000.0,,,
+Repurchases of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-182828000.0,,,-77442000.0,,,,,,
+Payment of finance lease obligations,us-gaap_FinanceLeasePrincipalPayments,,,-20000.0,,,-18000.0,,,-17000.0,,,-19000.0
+Change in gross advance payments received from third-party transaction processor,carg_ChangeInGrossAdvancePaymentsReceivedFromThirdPartyPaymentProcessor,,,-38000.0,,,-474000.0,,,-2122000.0,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-191477000.0,,,-83038000.0,,,-73238000.0,,,-36894000.0
+"Impact of foreign currency on cash, cash equivalents, and restricted cash",us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations,,,710000.0,,,-577000.0,,,329000.0,,,-212000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,-130519000.0,,,-44798000.0,,,-12451000.0,,,82218000.0
+Cash paid for income taxes,us-gaap_IncomeTaxesPaid,,,700000.0,,,1132000.0,,,2410000.0,,,1066000.0
+Cash paid for operating lease liabilities,us-gaap_OperatingLeasePayments,,,2558000.0,,,4788000.0,,,4129000.0,,,4737000.0
+Cash paid for interest,us-gaap_InterestPaidNet,,,34000.0,,,143000.0,,,144000.0,,,
+Currency (gain) loss on foreign denominated transactions,us-gaap_ForeignCurrencyTransactionGainLossUnrealized,,,-165000.0,,,,,,-198000.0,,,
+Unpaid purchases of property and equipment and capitalized hosting arrangements,us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,778000.0,,,16329000.0,,,,,,
+Capitalized stock-based compensation expense in website development and internal-use software costs and hosting arrangements,us-gaap_EmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsCapitalizedAmount,1738000.0,1858000.0,1638000.0,1539000.0,1861000.0,1827000.0,1406000.0,1292000.0,1145000.0,939000.0,1265000.0,1206000.0
+Unpaid withholding taxes on net share settlement of restricted stock units,carg_UnpaidWithholdingTaxesOnNetShareSettlementOfRestrictedStockUnits,,,125000.0,,,119000.0,3029000.0,368000.0,3590000.0,,,
+Unpaid repurchases of common stock,carg_UnpaidRepurchasesOfCommonStock,,,1451000.0,,,3658000.0,,,1030000.0,,,
+Unpaid excise tax on repurchases of common stock,carg_UnpaidExciseTaxOnRepurchasesOfShares,,,2268000.0,,,2239000.0,,,,,,
+Obtaining a right-of-use asset in exchange for an operating lease liability,carg_RightOfUseAssetIncreaseDecreaseObtainedInExchangeForOperatingLeaseLiability,,,217000.0,,,-3536000.0,,,144556000.0,,,
+Provision (Recoveries) for doubtful accounts,us-gaap_ProvisionForDoubtfulAccounts,,,,,,290000.0,,,,,,
+Impairment of long-lived assets,us-gaap_ImpairmentOfLongLivedAssetsToBeDisposedOf,,,,,,,,,175000.0,,,
+Receivable from sale of property and equipment,carg_ReceivableFromSaleOfPropertyAndEquipment,,,,,,,,,460000.0,,,
+Maturities of certificates of deposit,us-gaap_ProceedsFromSaleMaturityAndCollectionsOfInvestments,,,,,,,,,,,,30000000.0
+Sales of short-term investments,carg_SalesOfShortTermInvestments,,,,,,21218000.0,,,,,,
+Proceeds from exercise of stock options,us-gaap_ProceedsFromStockOptionsExercised,,,,,,,,,,,,680000.0
+Payment of withholding taxes on net share settlement of equity awards,carg_PaymentOfWithholdingTaxesAndOptionCostsOnNetShareSettlementOfRestrictedStockUnitsAndStockOptions,,,,,,,,,,-2911000.0,-5830000.0,
+Payment of withholding taxes and option costs on net share settlement of restricted stock units and stock options,carg_PaymentOfWithholdingTaxesAndOptionCostsOnNetShareSettlementOfRestrictedStockUnitsAndStockOptions,,,,,,,,,,,,-5430000.0
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,,,,-69024000.0,,,
+Payment of tax distributions to redeemable noncontrolling interest holders,carg_PaymentOfTaxDistributionToRedeemableNoncontrollingInterestHolders,,,,,,,,,-28000.0,,,-8519000.0
+Accretion of Redeemable Noncontrolling Interest to Redemption Value,carg_AccretionOfRedeemableNoncontrollingInterestToRedemptionValue,,,,,,,,,,,,82000000.0
+Accrued tax (refunds from) distributions to redeemable noncontrolling interest holders,carg_AccruedTaxRefundsFromDistributionsToRedeemableNoncontrollingInterestHolders,,,,,,,,,-4000.0,,,
+"Accounts receivable, net",us-gaap_IncreaseDecreaseInAccountsReceivable,,,,,,,,,,,,39973000.0
+Accrued tax distributions to redeemable noncontrolling interest holders,carg_AccruedTaxDistributionsToRedeemableNoncontrollingInterestHolders,,,,,,,,,,,,4168000.0
+Currency loss (gain) on foreign denominated transactions,us-gaap_ForeignCurrencyTransactionGainLossUnrealized,,,,,,384000.0,,,,,,84000.0
+Realized gain on short-term investments,us-gaap_GainOnSaleOfInvestments,,,,,-0.0,,,,,,,
+Unrealized gain on short-term investments,us-gaap_UnrealizedGainLossOnInvestments,,,,,-0.0,,,,,,,
+Payments received in advance from (payment made to) third party payment processor,carg_PaymentsReceivedInAdvanceFromPaymentMadeToThirdPartyPaymentProcessor,,,,,,,,,,,,-23606000.0
+"Unpaid purchases of property and equipment, capitalized website development, capitalized internal-use software and capitalized hosting arrangements",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,,,,1822000.0,,,269000.0

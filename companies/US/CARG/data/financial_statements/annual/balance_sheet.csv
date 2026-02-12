@@ -1,0 +1,40 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,304193000.0,291363000.0,469517000.0,231944000.0,190299000.0,59920000.0
+Inventory,us-gaap_InventoryNet,338000.0,331000.0,5282000.0,19656000.0,,
+"Property, Plant and Equipment",us-gaap_PropertyPlantAndEquipmentNet,130010000.0,83370000.0,40128000.0,32210000.0,27483000.0,27950000.0
+Goodwill,us-gaap_Goodwill,46167000.0,157898000.0,157467000.0,158287000.0,29129000.0,15207000.0
+Intangible Assets,us-gaap_FiniteLivedIntangibleAssetsNet,11767000.0,23056000.0,53054000.0,83915000.0,10862000.0,3920000.0
+Short-term investments,us-gaap_ShortTermInvestments,0.0,20724000.0,,,,
+Accounts Receivable,us-gaap_AccountsReceivableNetCurrent,44248000.0,39963000.0,46817000.0,189324000.0,18235000.0,22124000.0
+Accounts Payable,us-gaap_AccountsPayableCurrent,26410000.0,47854000.0,32529000.0,66153000.0,21563000.0,36731000.0
+Prepaid Expenses,us-gaap_PrepaidExpenseAndOtherAssetsCurrent,27868000.0,25152000.0,21972000.0,16430000.0,12385000.0,10452000.0
+Other Non Current Liabilities,us-gaap_OtherLiabilitiesNoncurrent,6031000.0,4733000.0,5301000.0,23639000.0,3075000.0,1908000.0
+Total Current Liabilities,us-gaap_LiabilitiesCurrent,93051000.0,115178000.0,98733000.0,170709000.0,66536000.0,73758000.0
+Deferred revenue,us-gaap_ContractWithCustomerLiabilityCurrent,21661000.0,21322000.0,12249000.0,12784000.0,9137000.0,9984000.0
+"Accrued expenses, accrued income taxes and other current liabilities",carg_AccruedLiabilitiesAccruedIncomeTaxesAndOtherLiabilitiesCurrent,35975000.0,33718000.0,39193000.0,78586000.0,24751000.0,18262000.0
+Operating lease liabilities,us-gaap_OperatingLeaseLiabilityCurrent,183739000.0,182106000.0,51656000.0,57519000.0,58810000.0,60818000.0
+Other Non Current Assets,us-gaap_OtherAssetsNoncurrent,4034000.0,7376000.0,8499000.0,4573000.0,2673000.0,3826000.0
+Total Current Assets,us-gaap_AssetsCurrent,391206000.0,391191000.0,557366000.0,563108000.0,331976000.0,218954000.0
+Investments,us-gaap_HeldToMaturitySecuritiesCurrent,,,,90000000.0,100000000.0,111692000.0
+Deferred contract costs,us-gaap_ContractWithCustomerAssetNetCurrent,12523000.0,11095000.0,8541000.0,9045000.0,10807000.0,9544000.0
+Restricted cash,us-gaap_RestrictedCashCurrent,2036000.0,2563000.0,9378000.0,9627000.0,10377000.0,10553000.0
+Total Assets,us-gaap_Assets,824536000.0,918927000.0,927102000.0,931574000.0,502298000.0,393623000.0
+Operating lease right-of-use assets,us-gaap_OperatingLeaseRightOfUseAsset,121484000.0,169682000.0,56869000.0,60609000.0,60835000.0,59986000.0
+"Deferred contract costs, net of current portion",us-gaap_ContractWithCustomerAssetNetNoncurrent,13196000.0,12998000.0,8853000.0,5867000.0,9189000.0,10514000.0
+Deferred Tax Assets,us-gaap_DeferredIncomeTaxAssetsNet,106672000.0,73356000.0,35488000.0,13378000.0,19774000.0,
+,,,,,,,
+Total Liabilities,us-gaap_Liabilities,282847000.0,302075000.0,155744000.0,251925000.0,128712000.0,136768000.0
+Commitments and contingencies (Note 10),us-gaap_CommitmentsAndContingencies,,,,,,
+Commitments and contingencies (Note 9),us-gaap_CommitmentsAndContingencies,,,,,,
+Other Current Assets,us-gaap_OtherAssetsCurrent,,,,,,4972000.0
+Commitments and contingencies (Note 8),us-gaap_CommitmentsAndContingencies,,,,,,
+Deferred tax liabilities,us-gaap_DeferredIncomeTaxLiabilitiesNet,26000.0,58000.0,54000.0,58000.0,291000.0,284000.0
+Deferred tax assets,us-gaap_DeferredTaxAssetsNetNoncurrent,,,,,,42713000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,824536000.0,918927000.0,927102000.0,931574000.0,502298000.0,393623000.0
+Preferred Stock,us-gaap_PreferredStockValue,,,,,,
+Common Stock,us-gaap_CommonStockValue,89000.0,16000.0,102000.0,102000.0,94000.0,92000.0
+Additional paid–in capital,us-gaap_AdditionalPaidInCapitalCommonStock,169013000.0,263498000.0,413092000.0,387868000.0,242181000.0,205234000.0
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,375119000.0,354147000.0,323043000.0,129258000.0,129412000.0,51859000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-2547000.0,-901000.0,-1644000.0,-403000.0,1880000.0,-350000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,541689000.0,616852000.0,734609000.0,516841000.0,373586000.0,256855000.0
+Redeemable noncontrolling interest,us-gaap_RedeemableNoncontrollingInterestEquityCarryingAmount,,0.0,36749000.0,162808000.0,,

@@ -1,0 +1,29 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Preferred stock redemption,us-gaap_StockRedeemedOrCalledDuringPeriodValue,,,,0.0,0.0,,0.0,556000000.0,,0.0,0.0,0.0
+"Preferred stock issuance, net of issuance costs",us-gaap_StockIssuedDuringPeriodValueNewIssues,,,,0.0,0.0,,0.0,587000000.0,,,,
+Capital transaction for noncontrolling interest,all_NoncontrollingInterestIncreaseFromCapitalTransaction,,,,0.0,123000000.0,,,,,,,
+"Equity incentive plans activity, net",us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,33000000.0,36000000.0,19000000.0,60000000.0,33000000.0,40000000.0,25000000.0,,,,,
+Equity incentive plans activity,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,,,,,,,,6000000.0,-8000000.0,25000000.0,34000000.0,-16000000.0
+Forward contract on accelerated share repurchase agreement,all_AdjustmentsToAdditionalPaidInCapitalForwardContractOnAcceleratedShareRepurchaseAgreement,,,,,,,,,,0.0,0.0,0.0
+Profit or Loss,us-gaap_ProfitLoss,3744000000.0,2099000000.0,596000000.0,1164000000.0,347000000.0,1198000000.0,-4000000.0,-1375000000.0,-321000000.0,-683000000.0,-1024000000.0,646000000.0
+"Dividends on common stock (declared per share of $1.00, $0.92, $3.00, and $2.76)",us-gaap_DividendsCommonStockCash,264000000.0,,,,,,,,,,,
+"Dividends on common stock (declared per share of $1.00, $0.92, $2.00, and $1.84)",us-gaap_DividendsCommonStockCash,,265000000.0,,,,,,,,,,
+Dividends on common stock (declared per share of $0.92 and $0.89),us-gaap_DividendsCommonStockCash,,,,,,243000000.0,,,,,,
+"Dividends on common stock (declared per share of $0.85, $0.81, $2.55 and $2.43)",us-gaap_DividendsCommonStockCash,,,,,,,,,,228000000.0,,
+Dividends on common stock (declared per share of $1.00 and $0.92),us-gaap_DividendsCommonStockCash,,,268000000.0,,,,,,,,,
+Dividends on common stock (declared per share of $0.89 and $0.85),us-gaap_DividendsCommonStockCash,,,,,,,,,236000000.0,,,
+"Dividends on common stock (declared per share of $0.85, $0.81, $1.70 and $1.62)",us-gaap_DividendsCommonStockCash,,,,,,,,,,,234000000.0,
+"Dividends on common stock (declared per share of $0.92, $0.89, $1.84, and $1.78 )",us-gaap_DividendsCommonStockCash,,,,,245000000.0,,,,,,,
+Dividends on common stock (declared per share of $0.85 and $0.81),us-gaap_DividendsCommonStockCash,,,,,,,,,,,,236000000.0
+"Dividends on common stock (declared per share of $0.92, $0.89, $2.76, and $2.67 )",us-gaap_DividendsCommonStockCash,,,,244000000.0,,,,,,,,
+"Dividends on common stock (declared per share of $0.89, $0.85, $1.78 and $1.70)",us-gaap_DividendsCommonStockCash,,,,,,,,233000000.0,,,,
+"Dividends on common stock (declared per share of $0.89, $0.85, $2.67 and $2.55)",us-gaap_DividendsCommonStockCash,,,,,,,234000000.0,,,,,
+Dividends on preferred stock,us-gaap_DividendsPreferredStockCash,29000000.0,30000000.0,29000000.0,29000000.0,30000000.0,29000000.0,36000000.0,37000000.0,26000000.0,26000000.0,27000000.0,26000000.0
+Shares acquired,us-gaap_TreasuryStockValueAcquiredCostMethod,363000000.0,344000000.0,105000000.0,0.0,0.0,0.0,26000000.0,154000000.0,153000000.0,665000000.0,683000000.0,794000000.0
+"Shares reissued under equity incentive plans, net",us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,8000000.0,6000000.0,21000000.0,30000000.0,8000000.0,66000000.0,8000000.0,3000000.0,30000000.0,5000000.0,33000000.0,57000000.0
+Change in unrealized net capital gains and losses,all_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesIncludingOtherThanTemporaryImpairmentLossesAdjustmentNetOfTax,315000000.0,387000000.0,420000000.0,1299000000.0,-119000000.0,-215000000.0,-667000000.0,-272000000.0,682000000.0,-789000000.0,-1143000000.0,-1593000000.0
+Change in unrealized foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,40000000.0,84000000.0,-45000000.0,14000000.0,-23000000.0,8000000.0,-14000000.0,28000000.0,50000000.0,-88000000.0,-47000000.0,0.0
+Change in unamortized pension and other postretirement prior service credit,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentNetOfTax,-1000000.0,-0.0,-0.0,-0.0,-0.0,-1000000.0,-5000000.0,-5000000.0,-4000000.0,-8000000.0,-15000000.0,-15000000.0
+Change in discount rate for reserve for future policy benefits,us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentAndTax,1000000.0,-19000000.0,5000000.0,-36000000.0,-1000000.0,25000000.0,30000000.0,8000000.0,-9000000.0,,,
+Capital transactions for noncontrolling interest,all_NoncontrollingInterestIncreaseFromCapitalTransaction,,0.0,67000000.0,,,,,,,,,
+Acquisition,us-gaap_StockIssuedDuringPeriodValueAcquisitions,,,,,,,,,,0.0,0.0,0.0

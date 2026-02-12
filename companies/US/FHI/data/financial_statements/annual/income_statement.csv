@@ -1,0 +1,29 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Contract Revenue,us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax,1632093000.0,1609574000.0,1445814000.0,1300447000.0,1448268000.0,1326894000.0
+Compensation and Related,us-gaap_LaborAndRelatedExpense,540486000.0,563388000.0,512713000.0,532492000.0,503400000.0,442147000.0
+Distribution,us-gaap_OtherCostAndExpenseOperating,382327000.0,371198000.0,314554000.0,160884000.0,318343000.0,
+Systems and Communications,us-gaap_CommunicationsAndInformationTechnology,92515000.0,84203000.0,77783000.0,75429000.0,64698000.0,52988000.0
+Professional Service Fees,us-gaap_ProfessionalFees,78353000.0,69514000.0,57747000.0,60331000.0,55123000.0,43714000.0
+Office and Occupancy,us-gaap_OccupancyNet,39946000.0,45069000.0,43361000.0,44573000.0,38975000.0,44926000.0
+Advertising and Promotional,us-gaap_MarketingAndAdvertisingExpense,24090000.0,22992000.0,20931000.0,21600000.0,15834000.0,17774000.0
+Travel and Related,us-gaap_TravelAndEntertainmentExpense,15399000.0,15409000.0,12456000.0,5337000.0,4566000.0,16645000.0
+Intangible Asset Related,fhi_ImpairmentAndAmortizationOfIntangibleAssets,79361000.0,13870000.0,44066000.0,,,
+Other,us-gaap_OtherOperatingIncomeExpenseNet,18149000.0,36382000.0,25407000.0,33529000.0,29178000.0,20110000.0
+"Investment Income, net",us-gaap_InvestmentIncomeInterestAndDividend,26065000.0,22559000.0,8973000.0,3171000.0,4119000.0,4450000.0
+"Gain (Loss) on Securities, net",us-gaap_GainLossOnInvestments,6603000.0,13181000.0,-28696000.0,9532000.0,18067000.0,4966000.0
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,,,,,,340663000.0
+Operating Expenses,us-gaap_CostsAndExpensesAbstract,-1270626000.0,-1222025000.0,-1109018000.0,-934175000.0,-1030117000.0,-978967000.0
+Operating Income,us-gaap_OperatingIncomeLoss,361467000.0,387549000.0,336796000.0,366272000.0,418151000.0,347927000.0
+Interest Expense,us-gaap_InterestAndDebtExpense,-12665000.0,-12519000.0,-11073000.0,-1785000.0,-2678000.0,-5037000.0
+"Other, net",us-gaap_OtherNonoperatingIncomeExpense,139000.0,562000.0,222000.0,-900000.0,8398000.0,12965000.0
+Nonoperating Income/Expense,us-gaap_NonoperatingIncomeExpense,20142000.0,23783000.0,-30574000.0,10018000.0,27906000.0,17344000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,381609000.0,411332000.0,306222000.0,376290000.0,446057000.0,365271000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,113179000.0,106551000.0,71658000.0,103982000.0,110035000.0,88146000.0
+Net Income,us-gaap_NetIncomeLoss,268314000.0,298980000.0,239496000.0,270293000.0,326364000.0,272339000.0
+Profit or Loss,us-gaap_ProfitLoss,268430000.0,304781000.0,234564000.0,272308000.0,336022000.0,277125000.0
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-116000.0,-5801000.0,4932000.0,-2015000.0,-9658000.0,-4786000.0
+Cash Dividends Per Share (usd per share),us-gaap_CommonStockDividendsPerShareDeclared,,,,,,1.08
+Earnings Per Common Share—Basic and Diluted (usd per share),us-gaap_EarningsPerShareBasicAndDiluted,,,,,,2.69
+Cash dividends per share (usd per share),us-gaap_CommonStockDividendsPerShareDeclared,2.21,1.11,1.08,1.08,2.08,
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,3.23,3.4,2.65,2.77,3.25,
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,3.23,3.4,2.65,2.75,3.23,

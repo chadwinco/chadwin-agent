@@ -1,0 +1,2 @@
+symbol,companyName,currency,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,cik,isin,cusip,exchange,exchangeFullName,industry,sector,country,fullTimeEmployees,ceo,website,phone,address,city,state,zip,isEtf,isAdr,isActivelyTrading
+79740,"Nintendo Co., Ltd.",JPY,8441.0,9827510124544.0,0.278,139.0,8326.0-14795.0,-341.0,-3.8829424,21426900.0,,JP3756600007,,JPX,Tokyo,Electronic Gaming & Multimedia,Communication Services,Japan,8205.0,Mr. Shuntaro  Furukawa,https://www.nintendo.co.jp,81 7 5662 9600,11-1 Hokotate-cho,Kyoto,,601-8501,False,False,True

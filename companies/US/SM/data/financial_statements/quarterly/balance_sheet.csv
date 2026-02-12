@@ -1,0 +1,52 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,162251000.0,101877000.0,54000.0,1735313000.0,487869000.0,506252000.0,401980000.0,378238000.0,477869000.0,498435000.0,267089000.0
+"Property, Plant and Equipment",us-gaap_PropertyPlantAndEquipmentNet,8264913000.0,8260768000.0,8161602000.0,5754270000.0,5661533000.0,5513597000.0,5292294000.0,5231227000.0,5029552000.0,4746855000.0,4651980000.0
+Accounts Receivable,us-gaap_AccountsReceivableNetCurrent,367688000.0,364296000.0,382955000.0,226604000.0,239095000.0,241731000.0,264511000.0,217794000.0,187810000.0,258003000.0,333944000.0
+Prepaid Expenses,us-gaap_PrepaidExpenseAndOtherAssetsCurrent,34452000.0,30413000.0,28173000.0,10224000.0,20056000.0,11149000.0,10537000.0,8815000.0,9535000.0,9133000.0,13792000.0
+Total Current Assets,us-gaap_AssetsCurrent,632958000.0,575090000.0,471822000.0,2044428000.0,774228000.0,793045000.0,702552000.0,678985000.0,756276000.0,807778000.0,633133000.0
+Derivative assets,us-gaap_DerivativeAssetsCurrent,4677000.0,4871000.0,3533000.0,11584000.0,7878000.0,7198000.0,5294000.0,12077000.0,15373000.0,36048000.0,8236000.0
+Other Non Current Assets,us-gaap_OtherAssetsNoncurrent,186952000.0,152506000.0,150708000.0,115490000.0,111372000.0,84618000.0,78430000.0,70337000.0,68957000.0,60832000.0,45775000.0
+Total noncurrent assets,us-gaap_AssetsNoncurrentOtherThanNoncurrentInvestmentsAndPropertyPlantAndEquipment,191629000.0,157377000.0,154241000.0,229074000.0,221250000.0,91816000.0,83724000.0,82414000.0,84330000.0,96880000.0,54011000.0
+Total Assets,us-gaap_Assets,9089500000.0,8993235000.0,8787665000.0,8027772000.0,6657011000.0,6398458000.0,6078570000.0,5992626000.0,5870158000.0,5651513000.0,5339124000.0
+Proved oil and gas properties,us-gaap_ProvedOilAndGasPropertySuccessfulEffortMethod,15653507000.0,15378464000.0,14688382000.0,12501494000.0,12164196000.0,11756523000.0,11169443000.0,10824717000.0,10483159000.0,9914261000.0,9694929000.0
+"Accumulated depletion, depreciation, and amortization",us-gaap_OilAndGasPropertySuccessfulEffortMethodAccumulatedDepreciationDepletionAndAmortization,-8477647000.0,-8157601000.0,-7869420000.0,-7370881000.0,-7171277000.0,-6994005000.0,-6680485000.0,-6494068000.0,-6339303000.0,-6054796000.0,-5944409000.0
+"Unproved oil and gas properties, net of valuation allowance of $12,334 and $32,680, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,592493000.0,,,,,,,,,,
+Wells in progress,sm_WellsInProgress,424891000.0,395532000.0,537457000.0,291197000.0,336900000.0,380419000.0,236234000.0,332609000.0,342875000.0,276298000.0,290407000.0
+"Other property and equipment, net of accumulated depreciation of $64,658 and $61,737, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,71669000.0,,,,,,,,,,
+Other Non Current Liabilities,us-gaap_OtherLiabilitiesNoncurrent,101544000.0,101711000.0,79224000.0,85193000.0,65771000.0,65258000.0,56334000.0,61443000.0,59642000.0,73705000.0,70809000.0
+Total Non Current Liabilities,us-gaap_LiabilitiesNoncurrent,3241087000.0,3565190000.0,3561209000.0,3385127000.0,2211286000.0,2164123000.0,2075193000.0,2130171000.0,2077217000.0,1969834000.0,1880471000.0
+Revolving credit facility,us-gaap_LongTermLineOfCredit,0.0,0.0,37500000.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Asset retirement obligations,us-gaap_AssetRetirementObligationsNoncurrent,150127000.0,150095000.0,147929000.0,125327000.0,124499000.0,124085000.0,115271000.0,113999000.0,110163000.0,97724000.0,100296000.0
+Net deferred tax liabilities,us-gaap_DeferredIncomeTaxLiabilitiesNet,690446000.0,589756000.0,569551000.0,467459000.0,440815000.0,397296000.0,,,,,
+Other Current Liabilities,us-gaap_OtherLiabilitiesCurrent,32688000.0,24942000.0,24527000.0,17859000.0,17469000.0,15615000.0,15473000.0,11319000.0,10144000.0,7316000.0,5476000.0
+Total Current Liabilities,us-gaap_LiabilitiesCurrent,1135326000.0,837947000.0,822723000.0,581099000.0,601785000.0,536084000.0,599084000.0,563988000.0,563146000.0,814017000.0,1013753000.0
+Accounts payable and accrued expenses,us-gaap_AccountsPayableAndAccruedLiabilitiesCurrent,674157000.0,794002000.0,764773000.0,560839000.0,563764000.0,496361000.0,540459000.0,530459000.0,522279000.0,631984000.0,583236000.0
+"Senior Notes, net",us-gaap_SeniorNotesCurrent,2294118000.0,2711148000.0,2709584000.0,2706700000.0,1576896000.0,1576115000.0,1574553000.0,1573772000.0,1572991000.0,1571429000.0,1570648000.0
+Derivative liabilities,us-gaap_DerivativeLiabilitiesCurrent,4852000.0,12480000.0,17421000.0,448000.0,3305000.0,1369000.0,4595000.0,5894000.0,3639000.0,14506000.0,36347000.0
+Commitments and contingencies (note 6),us-gaap_CommitmentsAndContingencies,,,,,,,,,,,
+"Unproved oil and gas properties, net of valuation allowance of $26,680 and $32,680, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,589842000.0,,,,,,,,,
+"Other property and equipment, net of accumulated depreciation of $63,685 and $61,737, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,54531000.0,,,,,,,,,
+"Unproved oil and gas properties, net of valuation allowance of $32,680 and $32,680, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,760128000.0,,,,,,,,
+"Other property and equipment, net of accumulated depreciation of $62,709 and $61,737, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,45055000.0,,,,,,,,
+"Unproved oil and gas properties, net of valuation allowance of $33,095 and $35,362, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,,287311000.0,,,,,,,
+"Other property and equipment, net of accumulated depreciation of $62,435 and $59,669, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,45149000.0,,,,,,,
+"Unproved oil and gas properties, net of valuation allowance of $34,123 and $35,362, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,,,286312000.0,,,,,,
+"Other property and equipment, net of accumulated depreciation of $61,547 and $59,669, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,45402000.0,,,,,,
+"Unproved oil and gas properties, net of valuation allowance of $34,934 and $35,362, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,,,,335755000.0,,,,,
+"Other property and equipment, net of accumulated depreciation of $60,606 and $59,669, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,,34905000.0,,,,,
+"Unproved oil and gas properties, net of valuation allowance of $36,286 and $38,008, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,,,,,526085000.0,,,,
+"Other property and equipment, net of accumulated depreciation of $59,133 and $56,512, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,,,41017000.0,,,,
+"Unproved oil and gas properties, net of valuation allowance of $37,904 and $38,008, respectively",us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,,,,,,524693000.0,497127000.0,,
+"Other property and equipment, net of accumulated depreciation of $58,203 and $56,512, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,,,,43276000.0,,,
+"Other property and equipment, net of accumulated depreciation of $57,338 and $56,512, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,,,,,45694000.0,,
+Unproved oil and gas properties,us-gaap_UnprovedOilAndGasPropertySuccessfulEffortMethod,,,,,,,,,,579261000.0,577854000.0
+"Other property and equipment, net of accumulated depreciation of $62,950 and $62,359, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,,,,,,31831000.0,
+"Other property and equipment, net of accumulated depreciation of $62,203 and $62,359, respectively",us-gaap_PropertyPlantAndEquipmentOtherNet,,,,,,,,,,,33199000.0
+Deferred income taxes,us-gaap_DeferredIncomeTaxLiabilitiesNet,,,,,,,324440000.0,375063000.0,330782000.0,212470000.0,102371000.0
+Common Stock,us-gaap_CommonStockValue,1146000.0,1146000.0,1145000.0,1144000.0,1141000.0,1150000.0,1163000.0,1181000.0,1205000.0,1228000.0,1220000.0
+Additional paid-in capital,us-gaap_AdditionalPaidInCapitalCommonStock,1507875000.0,1516542000.0,1508865000.0,1492778000.0,1492859000.0,1536929000.0,1581110000.0,1680080000.0,1743567000.0,1810352000.0,1850601000.0
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,3205190000.0,3073545000.0,2894870000.0,2570108000.0,2352532000.0,2162771000.0,1826002000.0,1621202000.0,1489032000.0,1068385000.0,605564000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-1124000.0,-1135000.0,-1147000.0,-2484000.0,-2592000.0,-2599000.0,-3982000.0,-3996000.0,-4009000.0,-12303000.0,-12485000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,9089500000.0,8993235000.0,8787665000.0,8027772000.0,6657011000.0,6398458000.0,6078570000.0,5992626000.0,5870158000.0,5651513000.0,5339124000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,4713087000.0,4590098000.0,4403733000.0,4061546000.0,3843940000.0,3698251000.0,3404293000.0,3298467000.0,3229795000.0,2867662000.0,2444900000.0
+Acquisition deposit held in escrow,us-gaap_EscrowDeposit,,,,102000000.0,102000000.0,,,,,,

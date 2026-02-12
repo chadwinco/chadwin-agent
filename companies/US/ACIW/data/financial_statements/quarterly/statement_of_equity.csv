@@ -1,0 +1,11 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Repurchase of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,,,14408000.0,,,,,,,,,
+Net Income,us-gaap_NetIncomeLoss,91250000.0,12202000.0,58870000.0,81427000.0,30887000.0,-7751000.0,37911000.0,-6710000.0,-32308000.0,23117000.0,13342000.0,15490000.0
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,-4318000.0,14651000.0,7879000.0,9109000.0,-2208000.0,-2404000.0,-6310000.0,2990000.0,3618000.0,,-12620000.0,
+Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,,,,,-13459000.0,,-2100000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,17381000.0,16411000.0,11627000.0,11346000.0,10720000.0,8099000.0,6822000.0,5414000.0,5301000.0,7126000.0,6800000.0,7958000.0
+"Shares issued and forfeited, net, under stock plans",us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,1318000.0,1038000.0,1375000.0,1928000.0,969000.0,1179000.0,969000.0,3524000.0,830000.0,1313000.0,1287000.0,1939000.0
+Repurchase of shares of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,16319000.0,120248000.0,,7976000.0,57628000.0,,,,,28227000.0,24847000.0,
+"Repurchase of 2,060,433 shares of common stock",us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,,63065000.0,,,,,,
+Repurchase of — shares of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,,,,,,,,37860000.0
+Repurchase of stock-based compensation awards for tax withholdings,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,3628000.0,13156000.0,7070000.0,2960000.0,3037000.0,3302000.0,883000.0,319000.0,3001000.0,18000.0,265000.0,5537000.0

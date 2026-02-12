@@ -1,0 +1,19 @@
+label,concept,2025-05-31,2024-06-01,2023-06-03,2022-05-28,2021-05-29,2020-05-30
+Restricted stock compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalShareBasedCompensationRestrictedStockUnitsRequisiteServicePeriodRecognition,,,,,,3617000.0
+"Restricted stock grant, net of forfeitures",us-gaap_StockGrantedDuringPeriodValueSharebasedCompensation,,,,,,0.0
+Stock compensation plan transactions,calm_StockCompensationPlanTransactions,574000.0,2670000.0,2562000.0,2931000.0,2823000.0,
+Stock compensation plan transactions (in shares),calm_StockCompensationPlanTransactionsShares,7000.0,55000.0,44000.0,81000.0,85000.0,
+Conversion of Class A Shares,us-gaap_StockIssuedDuringPeriodValueConversionOfUnits,48000.0,,,,,
+Conversion of Class A Shares (in shares),us-gaap_StockIssuedDuringPeriodSharesConversionOfUnits,4800000.0,,,,,
+Repurchase of Shares,us-gaap_TreasuryStockValueAcquiredCostMethod,50396000.0,,,,,
+Repurchase of Shares (in shares),us-gaap_TreasuryStockSharesAcquired,552000.0,,,,,
+Contributions to Crepini Foods LLC,us-gaap_NoncontrollingInterestIncreaseFromSubsidiaryEquityIssuance,6485000.0,,,,,
+Contributions,us-gaap_NoncontrollingInterestIncreaseFromSubsidiaryEquityIssuance,,,,3000.0,5000.0,
+Acquisition of noncontrolling interest in MeadowCreek Foods LLC,us-gaap_MinorityInterestChangeInRedemptionValue,3826000.0,,,,,
+"Acquisition of noncontrolling interest in Texas Egg Products, LLC",us-gaap_MinorityInterestDecreaseFromRedemptions,,,,,,-135000.0
+Distributions to noncontrolling interest partners,us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,,,,,,755000.0
+Dividends,us-gaap_Dividends,378062000.0,83565000.0,227993000.0,42773000.0,1652000.0,0.0
+Profit or Loss,us-gaap_ProfitLoss,1218232000.0,276282000.0,756732000.0,132441000.0,2060000.0,18328000.0
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,766000.0,1113000.0,,,-637000.0,-276000.0
+"Other comprehensive loss, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,-1290000.0,-1038000.0,,
+Purchase of company stock - shares withheld to satisfy withholding obligation in connection with the vesting of restricted stock,us-gaap_StockIssuedDuringPeriodValueRestrictedStockAwardNetOfForfeitures,,,,,,-910000.0

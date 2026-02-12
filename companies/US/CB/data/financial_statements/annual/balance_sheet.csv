@@ -1,0 +1,104 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,,,2012000000.0,1659000000.0,1747000000.0,1537000000.0
+"Other investments (includes VIE balances of $3,773 and nil)",us-gaap_OtherLongTermInvestments,,5527000000.0,,,,
+"Short-term investments, at fair value (amortized cost – $4,962 and $3,147)",us-gaap_OtherShortTermInvestments,,,4960000000.0,,,
+Total investments,us-gaap_Investments,150650000000.0,136735000000.0,113551000000.0,122323000000.0,118669000000.0,109234000000.0
+"Other investments (includes VIE balances of $4,538 and $3,773)",us-gaap_OtherLongTermInvestments,8597000000.0,,,,,
+Other Assets,us-gaap_OtherAssets,7503000000.0,7317000000.0,12736000000.0,11792000000.0,8822000000.0,7581000000.0
+Total Assets,us-gaap_Assets,246548000000.0,230682000000.0,199144000000.0,200054000000.0,190774000000.0,176943000000.0
+Goodwill,us-gaap_Goodwill,19579000000.0,19686000000.0,16287000000.0,15213000000.0,15400000000.0,15296000000.0
+Intangible Assets,us-gaap_IntangibleAssetsNetExcludingGoodwill,6377000000.0,6775000000.0,5441000000.0,5455000000.0,5811000000.0,6063000000.0
+"Short-term investments, at fair value (amortized cost – $5,143 and $4,551) (includes variable interest entities (VIE) balances of $57 and $217)",us-gaap_OtherShortTermInvestments,5142000000.0,,,,,
+"Fixed maturities available-for-sale, at fair value, net of valuation allowance – $70 and $156 (amortized cost – $115,083 and $111,128)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,110363000000.0,,,,,
+"Private debt held-for-investment, at amortized cost, net of valuation allowance – $4 and $4",us-gaap_FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLoss,2628000000.0,,,,,
+"Equity securities, at fair value (includes VIE balances of $1,289 and $1,078)",us-gaap_EquitySecuritiesFvNi,9151000000.0,,,,,
+Private equities (includes VIE balances of $22 and $21),us-gaap_AlternativeInvestment,14769000000.0,,,,,
+"Cash, including restricted cash $261 and $172 (includes VIE balances of $114 and $117)",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,2549000000.0,,,,,
+Securities lending collateral,cb_Securitieslendingcollateral,1445000000.0,1299000000.0,1523000000.0,1831000000.0,1844000000.0,994000000.0
+Accrued investment income,us-gaap_AccruedInvestmentIncomeReceivable,1160000000.0,1086000000.0,941000000.0,821000000.0,867000000.0,867000000.0
+"Insurance and reinsurance balances receivable, net of valuation allowance – $59 and $53",us-gaap_PremiumsReceivableAtCarryingValue,14426000000.0,,,,,
+"Reinsurance recoverable on losses and loss expenses, net of valuation allowance – $310 and $367",us-gaap_ReinsuranceRecoverablesOnPaidAndUnpaidLosses,19777000000.0,,,,,
+Reinsurance recoverable on policy benefits,us-gaap_LiabilityForFuturePolicyBenefitReinsuranceRecoverableAfterAllowance,289000000.0,280000000.0,303000000.0,213000000.0,206000000.0,197000000.0
+Deferred policy acquisition costs,us-gaap_DeferredPolicyAcquisitionCosts,8358000000.0,7152000000.0,5788000000.0,5513000000.0,5402000000.0,5242000000.0
+Value of business acquired,us-gaap_ValueOfBusinessAcquiredVOBA,3223000000.0,3674000000.0,3596000000.0,236000000.0,263000000.0,306000000.0
+Prepaid reinsurance premiums,us-gaap_PrepaidReinsurancePremiums,3378000000.0,3221000000.0,3140000000.0,3028000000.0,2769000000.0,2647000000.0
+Separate account assets,us-gaap_SeparateAccountAssets,6231000000.0,5573000000.0,,,,
+Unpaid losses and loss expenses,us-gaap_LiabilityForClaimsAndClaimsAdjustmentExpense,84004000000.0,80122000000.0,76323000000.0,72943000000.0,67811000000.0,62690000000.0
+Unearned premiums,us-gaap_UnearnedPremiums,23504000000.0,22051000000.0,20360000000.0,19101000000.0,17652000000.0,16771000000.0
+Future policy benefits,us-gaap_LiabilityForFuturePolicyBenefits,16121000000.0,13888000000.0,10120000000.0,5947000000.0,5713000000.0,5814000000.0
+Market risk benefits,us-gaap_MarketRiskBenefitLiabilityAmount,607000000.0,771000000.0,,,,
+Policyholders' account balances,us-gaap_PolicyholderFunds,8016000000.0,7462000000.0,,,,
+Insurance and reinsurance balances payable,us-gaap_ReinsurancePayable,8121000000.0,8302000000.0,7795000000.0,7243000000.0,6708000000.0,6184000000.0
+Securities lending payable,us-gaap_ObligationToReturnSecuritiesReceivedAsCollateral,1445000000.0,1299000000.0,1523000000.0,1831000000.0,1844000000.0,994000000.0
+"Accounts payable, accrued expenses, and other liabilities (includes VIE balances of $183 and $18)",us-gaap_AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent,10192000000.0,,,,,
+"Repurchase agreements (includes VIE balances of $815 and $1,009)",us-gaap_SecuredDebtRepurchaseAgreements,2731000000.0,,,,,
+Hybrid debt,us-gaap_OtherBorrowings,419000000.0,,,,,
+Commitments and contingencies (refer to Note 14),us-gaap_CommitmentsAndContingencies,,,,,,
+Treasury Stock Common Value,us-gaap_TreasuryStockValue,-3524000000.0,-4400000000.0,-5113000000.0,-7464000000.0,-3644000000.0,-3754000000.0
+Minority Interest,us-gaap_MinorityInterest,4373000000.0,4184000000.0,,,,
+"Short-term investments, at fair value (amortized cost – $4,551 and $4,962) (includes variable interest entities (VIE) balances of $217 and nil)",us-gaap_OtherShortTermInvestments,,4551000000.0,,,,
+"Fixed maturities available-for-sale, at fair value, net of valuation allowance – $156 and $169 (amortized cost – $111,128 and $93,355)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,106571000000.0,,,,
+"Fixed maturities held to maturity, at amortized cost, net of valuation allowance – nil and $34 (fair value – nil and $8,439)",cb_Debtsecuritiesheldtomaturitynetcarryingvalue,,0.0,,,,
+Private equities (includes VIE balances of $21 and nil),us-gaap_AlternativeInvestment,,14078000000.0,,,,
+"Cash, including restricted cash $172 and $115 (includes VIE balances of $117 and nil)",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,,2621000000.0,,,,
+"Insurance and reinsurance balances receivable, net of valuation allowance – $53 and $52",us-gaap_PremiumsReceivableAtCarryingValue,,13379000000.0,,,,
+"Reinsurance recoverable on losses and loss expenses, net of valuation allowance – $367 and $351",us-gaap_ReinsuranceRecoverablesOnPaidAndUnpaidLosses,,19952000000.0,,,,
+Investments in partially-owned insurance companies,cb_Investmentsinpartiallyownedinsurancecompanies,,191000000.0,2877000000.0,3130000000.0,2813000000.0,1332000000.0
+"Accounts payable, accrued expenses, and other liabilities (includes VIE balances of $18 and nil)",us-gaap_AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent,,8332000000.0,,,,
+"Repurchase agreements (includes VIE balances of $1,009 and nil)",us-gaap_SecuredDebtRepurchaseAgreements,,2833000000.0,,,,
+Trust preferred securities,cb_Trustpreferredsecurities,,308000000.0,308000000.0,308000000.0,308000000.0,308000000.0
+"Fixed maturities available for sale, at fair value, net of valuation allowance - $169 and $14 (amortized cost – $93,355 and $90,493)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,85220000000.0,,,
+"Fixed maturities held to maturity, at amortized cost, net of valuation allowance - $34 and $35 (fair value – $8,439 and $10,647)",cb_Debtsecuritiesheldtomaturitynetcarryingvalue,,,8848000000.0,,,
+"Other investments, at fair value",us-gaap_OtherLongTermInvestments,,,13696000000.0,11169000000.0,7945000000.0,6062000000.0
+Restricted cash,us-gaap_RestrictedCash,,,115000000.0,152000000.0,,
+"Insurance and reinsurance balances receivable, net of valuation allowance - $52 and $46",us-gaap_PremiumsReceivableAtCarryingValue,,,11933000000.0,,,
+"Reinsurance recoverable on losses and loss expenses, net of valuation allowance - $351 and $329",us-gaap_ReinsuranceRecoverablesOnPaidAndUnpaidLosses,,,18901000000.0,,,
+"Accounts payable, accrued expenses, and other liabilities",us-gaap_AccountsPayableAndAccruedLiabilitiesCurrentAndNoncurrent,,,15587000000.0,15004000000.0,14052000000.0,11773000000.0
+Repurchase agreements,us-gaap_SecuredDebtRepurchaseAgreements,,,1419000000.0,1406000000.0,1405000000.0,1416000000.0
+Commitments and contingencies (refer to Note 10),us-gaap_CommitmentsAndContingencies,,,,,,
+"Short-term investments, at fair value (amortized cost - $4,349 and $4,291)",us-gaap_OtherShortTermInvestments,,,,,4345000000.0,
+"Short-term investments, at fair value (amortized cost – $3,147 and $4,349)",us-gaap_OtherShortTermInvestments,,,,3146000000.0,,
+short-term investments amortized cost,cb_Shortterminvestmentsamortizedcost,,,,,4349000000.0,
+"Fixed maturities available for sale, at fair value, net of valuation allowance - $14 and $20 (amortized cost – $90,493 and $85,188)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,93108000000.0,,
+"Fixed maturities held to maturity, at amortized cost, net of valuation allowance - $35 and $44 (fair value – $10,647 and $12,510)",cb_Debtsecuritiesheldtomaturitynetcarryingvalue,,,,10118000000.0,,
+"Insurance and reinsurance balances receivable, net of valuation allowance - $46 and $44",us-gaap_PremiumsReceivableAtCarryingValue,,,,11322000000.0,,
+"Reinsurance recoverable on losses and loss expenses, net of valuation allowance - $329 and $314",us-gaap_ReinsuranceRecoverablesOnPaidAndUnpaidLosses,,,,17366000000.0,,
+"Fixed maturities available for sale, at fair value, net of valuatuon allowance - $20 at December 31, 2010 (amortized cost – $85,188 and $82,580)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,90699000000.0,
+Restricted Cash,us-gaap_RestrictedCash,,,,,89000000.0,109000000.0
+"Premium Receivable, Allowance for Credit Loss",us-gaap_PremiumsReceivableAllowanceForDoubtfulAccounts,,,,,44000000.0,
+"Insurance and reinsurance balances receivable, net of valuation allowance - $44 and $44",us-gaap_PremiumsReceivableAtCarryingValue,,,,,10480000000.0,
+"Reinsurance Recoverable, Allowance for Credit Loss",us-gaap_ReinsuranceRecoverablesAllowance,,,,,314000000.0,
+"Reinsurance recoverable on losses and loss expenses, net of valuation allowance - $314 and $316",us-gaap_ReinsuranceRecoverablesOnPaidAndUnpaidLosses,,,,,15592000000.0,
+"Fixed maturities available for sale, at amortized cost",us-gaap_AvailableForSaleDebtSecuritiesAmortizedCostBasis,,,,,85188000000.0,
+"Fixed maturities available for sale, at fair value (amortized cost – $82,580 and $79,323)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,85488000000.0
+"Fixed maturities held to maturity, at amortized cost (fair value – $13,005 and $13,259)",us-gaap_HeldToMaturitySecurities,,,,,,12581000000.0
+"Short-term investments, at fair value and amortized cost",us-gaap_OtherShortTermInvestments,,,,,,4291000000.0
+Insurance and reinsurance balances receivable,us-gaap_PremiumsReceivableAtCarryingValue,,,,,,10357000000.0
+Reinsurance recoverable on losses and loss expenses,cb_ReinsuranceRecoverableLossesAndLossExpenses,,,,,,15181000000.0
+Short Term Debt,us-gaap_ShortTermBorrowings,800000000.0,1460000000.0,475000000.0,999000000.0,0.0,1299000000.0
+Separate account liabilities,us-gaap_SeparateAccountsLiability,6231000000.0,5573000000.0,,,,
+Total Liabilities,us-gaap_Liabilities,178154000000.0,166991000000.0,148604000000.0,140340000000.0,131333000000.0,121612000000.0
+Long Term Debt,us-gaap_LongTermDebt,14379000000.0,13035000000.0,14402000000.0,15169000000.0,14948000000.0,13559000000.0
+Deferred tax liabilities,us-gaap_DeferredIncomeTaxLiabilitiesNet,1584000000.0,1555000000.0,292000000.0,389000000.0,,
+Deferred Income Tax Liabilities,us-gaap_DeferredIncomeTaxLiabilitiesNet,,,,,892000000.0,804000000.0
+Deferred Tax Assets,us-gaap_DeferredIncomeTaxAssetsNet,1603000000.0,1741000000.0,,,,
+Additional Paid in Capital,us-gaap_AdditionalPaidInCapitalCommonStock,,,,,9815000000.0,11203000000.0
+"Treasury Stock, Shares",us-gaap_TreasuryStockShares,,,,,26872639.0,
+Common Stock,us-gaap_CommonStockValue,235000000.0,241000000.0,10346000000.0,10985000000.0,11064000000.0,11121000000.0
+Additional paid-in capital,us-gaap_AdditionalPaidInCapitalCommonStock,14393000000.0,15665000000.0,7166000000.0,8478000000.0,,
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,61561000000.0,54810000000.0,48334000000.0,47365000000.0,39337000000.0,36142000000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-8644000000.0,-6809000000.0,-10193000000.0,350000000.0,2869000000.0,619000000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,246548000000.0,230682000000.0,199144000000.0,200054000000.0,190774000000.0,176943000000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,68394000000.0,63691000000.0,50540000000.0,59714000000.0,59441000000.0,55331000000.0
+"Private debt held-for-investment, at amortized cost, net of valuation allowance – $4 and nil",us-gaap_LoansAndLeasesReceivableNetReportedAmount,,2553000000.0,,,,
+"Equity securities, at fair value",us-gaap_EquitySecuritiesFvNi,,,827000000.0,4782000000.0,,
+"Equity securities, at fair value (includes VIE balances of $1,078 and nil)",us-gaap_EquitySecuritiesFvNi,,3455000000.0,,,,
+"Debt Securities, Held-to-maturity",us-gaap_HeldToMaturitySecurities,,,,,11697000000.0,
+"Debt Securities, Available-for-sale, Allowance for Credit Loss",us-gaap_DebtSecuritiesAvailableForSaleAllowanceForCreditLoss,,,,,-20000000.0,
+"Debt securities, held to maturity, net carrying value",cb_Debtsecuritiesheldtomaturitynetcarryingvalue,,,,,11653000000.0,
+"Debt Securities, Held-to-maturity, Fair Value",us-gaap_HeldToMaturitySecuritiesFairValue,,,,,12510000000.0,
+"Debt Securities, Held-to-maturity, Allowance for Credit Loss",us-gaap_DebtSecuritiesHeldToMaturityAllowanceForCreditLoss,,,,,-44000000.0,
+"Equity Securities, at fair value",us-gaap_EquitySecuritiesFvNi,,,,,4027000000.0,812000000.0
+Common Stock Shares Outstanding,us-gaap_CommonStockSharesOutstanding,,,,,450732625.0,
+Common Stock Shares Issued,us-gaap_CommonStockSharesIssued,,,,,477605264.0,
+"Common Shares, par value",us-gaap_CommonStockParOrStatedValuePerShare,,,,,24.15,

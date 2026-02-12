@@ -1,0 +1,43 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Profit or Loss,us-gaap_ProfitLoss,393076000.0,178940000.0,53385000.0,137762000.0,242317000.0,108318000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,87490000.0,80418000.0,54425000.0,42219000.0,28632000.0,21662000.0
+Stock-based compensation,us-gaap_ShareBasedCompensation,494699000.0,491621000.0,498642000.0,337413000.0,111775000.0,80758000.0
+Deferred income taxes,us-gaap_DeferredIncomeTaxesAndTaxCredits,-76903000.0,-61597000.0,-11507000.0,-16777000.0,-31218000.0,-10490000.0
+Noncash lease expense,ttd_NoncashLeaseExpense,57403000.0,48955000.0,44115000.0,40315000.0,33269000.0,21894000.0
+Provision for expected credit losses on accounts receivable,us-gaap_ProvisionForDoubtfulAccounts,853000.0,2960000.0,,,,
+Other,us-gaap_OtherNoncashIncomeExpense,-7881000.0,-20379000.0,622000.0,5803000.0,2190000.0,-1939000.0
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,-474227000.0,-554012000.0,-291747000.0,-444342000.0,-418054000.0,-331369000.0
+Prepaid expenses and other current and non-current assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,-38783000.0,-26815000.0,50655000.0,,,
+Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayable,298919000.0,475463000.0,187119000.0,309410000.0,481313000.0,191763000.0
+Accrued expenses and other current and non-current liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities,46564000.0,35681000.0,8168000.0,,,
+Operating lease liabilities,ttd_IncreaseDecreaseInOperatingLeaseLiabilities,-41754000.0,-52913000.0,-48346000.0,-43990000.0,-17095000.0,-10342000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,739456000.0,598322000.0,548734000.0,378513000.0,405069000.0,60205000.0
+Purchases of investments,us-gaap_PaymentsToAcquireInvestments,-679539000.0,-608379000.0,-553295000.0,-278387000.0,-230759000.0,-212776000.0
+Sales of investments,ttd_ProceedsFromSalesOfInvestments,0.0,0.0,1977000.0,4539000.0,,
+Maturities of investments,us-gaap_ProceedsFromSaleMaturityAndCollectionsOfInvestments,629088000.0,555806000.0,338829000.0,253444000.0,167602000.0,89539000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-98238000.0,-46790000.0,-84160000.0,-54804000.0,-74061000.0,-35693000.0
+Capitalized software development costs,us-gaap_PaymentsToDevelopSoftware,-8824000.0,-8230000.0,-7725000.0,-5169000.0,-6053000.0,-4911000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-157513000.0,-107593000.0,-304374000.0,-93638000.0,-143271000.0,-163841000.0
+Repurchases of Class A common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-234784000.0,-646597000.0,,,,
+Proceeds from exercise of stock options,us-gaap_ProceedsFromStockOptionsExercised,216281000.0,60525000.0,47525000.0,61476000.0,76146000.0,29874000.0
+Proceeds from employee stock purchase plan,us-gaap_ProceedsFromStockPlans,49989000.0,38482000.0,33062000.0,29229000.0,21671000.0,16746000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,-139095000.0,-78516000.0,-48595000.0,-56855000.0,-53138000.0,-19334000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-107609000.0,-626106000.0,31992000.0,31926000.0,44679000.0,27280000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,474334000.0,-135377000.0,276352000.0,316801000.0,306477000.0,-76356000.0
+Business acquisition,us-gaap_PaymentsToAcquireBusinessesGross,,-0.0,-0.0,-13261000.0,,
+Proceeds from line of credit,us-gaap_ProceedsFromLinesOfCredit,,,0.0,,143000000.0,
+Repayment on line of credit,us-gaap_RepaymentsOfLongTermLinesOfCredit,,,-0.0,,-143000000.0,
+Prepaid expenses and other assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,,1648000.0,-66655000.0,-19597000.0
+Accrued expenses and other liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilities,,,,7596000.0,35446000.0,6845000.0
+Income Tax Expense,us-gaap_IncomeTaxesPaidNet,158579000.0,151899000.0,4211000.0,3608000.0,4983000.0,19727000.0
+Cash paid for interest,us-gaap_InterestPaidNet,986000.0,967000.0,995000.0,518000.0,1554000.0,412000.0
+Cash paid for operating lease liabilities,us-gaap_OperatingLeasePayments,68378000.0,63256000.0,57862000.0,52974000.0,,
+Cash paid for amounts included in the measurement of lease liabilities included in operating cash flows,us-gaap_OperatingLeasePayments,,,,,27448000.0,16923000.0
+Bad debt expense,us-gaap_ProvisionForDoubtfulAccounts,,,,,,2702000.0
+Operating lease assets obtained in exchange for operating lease liabilities,us-gaap_RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,132050000.0,27237000.0,29881000.0,25356000.0,106833000.0,150467000.0
+Capitalized assets financed by accounts payable,us-gaap_CapitalExpendituresIncurredButNotYetPaid,20508000.0,4684000.0,2166000.0,5907000.0,6766000.0,9252000.0
+Tenant improvements paid by lessor,ttd_TenantImprovementsPaidByLessorValue,6869000.0,0.0,1453000.0,,,
+Stock-based compensation included in capitalized software development costs,us-gaap_EmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsCapitalizedAmount,5623000.0,5328000.0,4014000.0,3320000.0,2245000.0,1588000.0
+Asset retirement obligation,us-gaap_AssetRetirementObligationPeriodIncreaseDecrease,,1076000.0,438000.0,1705000.0,2049000.0,3543000.0
+Allowance for credit losses on accounts receivable,us-gaap_ProvisionForDoubtfulAccounts,,,3203000.0,1456000.0,3149000.0,
+Payment of debt financing costs,us-gaap_PaymentsOfDebtIssuanceCosts,,-0.0,-0.0,-1924000.0,,-6000.0

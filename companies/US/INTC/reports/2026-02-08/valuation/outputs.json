@@ -1,0 +1,27 @@
+{
+  "ticker": "INTC",
+  "asof_date": "2026-02-08",
+  "currency": "USD",
+  "price": 50.59,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 78044680132.82495,
+      "equity_value": 68875680132.82495,
+      "value_per_share": 15.204344400182109,
+      "margin_of_safety": -0.6994594900141904
+    },
+    "bull": {
+      "enterprise_value": 244410973345.7334,
+      "equity_value": 235241973345.7334,
+      "value_per_share": 51.929795440559246,
+      "margin_of_safety": 0.02648340463647436
+    },
+    "bear": {
+      "enterprise_value": 32740540264.246483,
+      "equity_value": 23571540264.246483,
+      "value_per_share": 5.203430521908716,
+      "margin_of_safety": -0.8971450776456075
+    }
+  }
+}

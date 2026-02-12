@@ -1,0 +1,36 @@
+asof_date: 2026-02-10
+ticker: ALL
+currency: USD
+price: 199.94
+model:
+  type: two-stage-residual-income
+base_year:
+  period_end: 2024-12-31
+  common_equity: 21367000000.0
+  shares_outstanding: 265000000.0
+notes: |
+  Allstate is a P&C-focused financial company where book value and ROE are more decision-useful
+  than FCF. Common equity is proxied by total stockholders' equity from annual statements,
+  and shares outstanding uses the year-end common shares outstanding base.
+scenarios:
+  base:
+    roe_stage1: 0.16
+    payout_ratio: 0.55
+    cost_of_equity: 0.105
+    terminal_roe: 0.13
+    terminal_growth: 0.03
+    stage1_years: 6
+  bull:
+    roe_stage1: 0.20
+    payout_ratio: 0.50
+    cost_of_equity: 0.095
+    terminal_roe: 0.15
+    terminal_growth: 0.03
+    stage1_years: 7
+  bear:
+    roe_stage1: 0.11
+    payout_ratio: 0.65
+    cost_of_equity: 0.115
+    terminal_roe: 0.10
+    terminal_growth: 0.025
+    stage1_years: 5

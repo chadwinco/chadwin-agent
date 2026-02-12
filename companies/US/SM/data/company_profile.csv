@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+SM,21.24,5120000000.0,1.06,0.8,17.45 - 41.29,,,6947373.0,SM Energy Co,USD,0000893538,US78454L1008,78454L100,New York Stock Exchange,NYSE,Oil & Gas Exploration & Production,https://sm-energy.com,Elizabeth McDonald,Energy,United States,663,303-861-8140,1700 Lincoln Street,Suite 3200,,,,false,true,false

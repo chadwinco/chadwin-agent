@@ -1,0 +1,35 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Contract Revenue,us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax,894384000.0,914242000.0,1655035000.0,951373000.0,551451000.0,588916000.0
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,155439000.0,-262788000.0,-997482000.0,-294015000.0,-42706000.0,
+Impairment,carg_ImpairmentInOperatingExpense,134501000.0,,,,,
+Depreciation and Amortization,us-gaap_DepreciationAndAmortization,12285000.0,15831000.0,15482000.0,14415000.0,6118000.0,4554000.0
+Net loss attributable to redeemable noncontrolling interest,us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,-0.0,,,,,
+Deemed dividend on redemption of noncontrolling interest,carg_DeemedDividendOnRedemptionOfNoncontrollingInterest,-0.0,-5838000.0,,,,
+Accretion of redeemable noncontrolling interest to redemption value,us-gaap_TemporaryEquityAccretionToRedemptionValueAdjustment,-0.0,,109398000.0,-109398000.0,,
+Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,20972000.0,31104000.0,193785000.0,-154000.0,,42146000.0
+Cost of Goods and Services Excluding Depreciation,us-gaap_CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization,,,,,,-36300000.0
+Gross Profit,us-gaap_GrossProfit,738945000.0,651454000.0,657553000.0,657358000.0,508745000.0,552616000.0
+Research and Development Expense,us-gaap_ResearchAndDevelopmentExpense,144432000.0,146169000.0,123768000.0,106423000.0,85726000.0,69462000.0
+General and Administrative Expense,us-gaap_GeneralAndAdministrativeExpense,112066000.0,152757000.0,73117000.0,97678000.0,62166000.0,50434000.0
+Selling Expense,us-gaap_SellingAndMarketingExpense,322249000.0,304070000.0,336708000.0,290574000.0,256979000.0,393844000.0
+Operating Expenses,us-gaap_OperatingExpenses,725533000.0,-618827000.0,-549075000.0,-509090000.0,-410989000.0,-518294000.0
+Operating Income,us-gaap_OperatingIncomeLoss,13412000.0,32627000.0,108478000.0,148268000.0,97756000.0,34322000.0
+Interest income,us-gaap_InvestmentIncomeInterest,12189000.0,18430000.0,3845000.0,120000.0,1075000.0,2984000.0
+"Other (expense) income, net",us-gaap_OtherNonoperatingIncomeExpense,-944000.0,,-961000.0,,,
+Nonoperating Income/Expense,us-gaap_NonoperatingIncomeExpense,11245000.0,19060000.0,2884000.0,1092000.0,1354000.0,4383000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,24657000.0,51687000.0,111362000.0,149360000.0,99110000.0,38705000.0
+Net (loss) income attributable to redeemable noncontrolling interest,us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,14889000.0,5433000.0,,,
+"Other income, net",us-gaap_OtherNonoperatingIncomeExpense,,,,972000.0,279000.0,
+Net income attributable to redeemable noncontrolling interest,us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,,,-1129000.0,,
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,3685000.0,29634000.0,32408000.0,38987000.0,21557000.0,-3441000.0
+Net Income,us-gaap_NetIncomeLoss,20972000.0,36942000.0,84387000.0,109244000.0,77553000.0,42146000.0
+Profit or Loss,us-gaap_ProfitLoss,20972000.0,22053000.0,78954000.0,110373000.0,,
+,,,,,,,
+Diluted Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersDiluted,,,,,,42146000.0
+Basic,us-gaap_WeightedAverageBasicSharesOutstandingProForma,,,,,,111450443.0
+Diluted,us-gaap_ProFormaWeightedAverageSharesOutstandingDiluted,,,,,,113431850.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,0.2,0.27,1.64,0.0,0.69,0.38
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,0.2,0.19,0.62,0.0,0.68,0.37
+"Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,,630000.0,,,,1399000.0
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,104535572.0,113240139.0,118474991.0,117142062.0,112854524.0,
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,106263886.0,114188834.0,128150974.0,117142062.0,113849815.0,

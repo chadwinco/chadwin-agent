@@ -1,0 +1,45 @@
+{
+  "query": "Covista Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://seekingalpha.com/earnings/earnings-call-transcripts",
+    "https://www.fool.com/earnings-call-transcripts/",
+    "https://www.investing.com/news/transcripts",
+    "https://www.gurufocus.com/earnings/earnings-call-transcripts"
+  ],
+  "selected_transcript": null,
+  "attempts": [
+    {
+      "url": "https://seekingalpha.com/earnings/earnings-call-transcripts",
+      "status": "body_too_short",
+      "http_status": 200,
+      "body_length": 927,
+      "published_date": null,
+      "message": "Extracted body shorter than 1000 characters."
+    },
+    {
+      "url": "https://www.fool.com/earnings-call-transcripts/",
+      "status": "body_too_short",
+      "http_status": 200,
+      "body_length": 177,
+      "published_date": null,
+      "message": "Extracted body shorter than 1000 characters."
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.gurufocus.com/earnings/earnings-call-transcripts",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

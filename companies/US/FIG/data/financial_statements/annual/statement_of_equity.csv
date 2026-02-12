@@ -1,0 +1,18 @@
+label,concept,2025-09-30,2025-06-30
+Exercise of stock options and warrants (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,1948000.0,
+Exercise of stock options (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,893000.0
+Exercise of stock options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,20311000.0
+Exercise of stock options and warrants,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,26936000.0,
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,1139699000.0,7345000.0
+Conversion of preferred stock (in shares),us-gaap_StockIssuedDuringPeriodSharesConversionOfConvertibleSecurities,245999000.0,
+Conversion of preferred stock,us-gaap_StockIssuedDuringPeriodValueConversionOfConvertibleSecurities,0.0,
+"Proceeds from issuance of Class A common stock in connection with initial public offering, net (in shares)",us-gaap_StockIssuedDuringPeriodSharesNewIssues,12473000.0,
+"Proceeds from issuance of Class A common stock in connection with initial public offering, net",us-gaap_StockIssuedDuringPeriodValueNewIssues,385405000.0,
+Issuance of common stock upon release of restricted stock units (in shares),us-gaap_StockIssuedDuringPeriodSharesRestrictedStockAwardNetOfForfeitures,28793000.0,
+Shares withheld for taxes upon release of restricted stock units (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,13207000.0,
+Shares withheld for taxes upon release of restricted stock units,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,494649000.0,
+Other comprehensive income,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,930000.0,
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,367000.0
+Stock issued in connection with business combination (in shares),us-gaap_StockIssuedDuringPeriodSharesAcquisitions,,700000.0
+Stock issued in connection with business combination,us-gaap_StockIssuedDuringPeriodValueAcquisitions,,600000.0
+Net Income,us-gaap_NetIncomeLoss,-1097015000.0,28227000.0

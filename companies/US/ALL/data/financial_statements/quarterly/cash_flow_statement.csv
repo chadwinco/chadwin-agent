@@ -1,0 +1,45 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Profit or Loss,us-gaap_ProfitLoss,3744000000.0,2099000000.0,596000000.0,1164000000.0,347000000.0,1198000000.0,-4000000.0,-1375000000.0,-321000000.0,-683000000.0,-1024000000.0,646000000.0
+"Depreciation, amortization and other non-cash items",us-gaap_DepreciationAmortizationAndAccretionNet,,,132000000.0,,,132000000.0,,,177000000.0,,,236000000.0
+Net (gains) losses on investments and derivatives,us-gaap_RealizedInvestmentGainsLosses,-252000000.0,144000000.0,349000000.0,,,164000000.0,,,-14000000.0,,,267000000.0
+Pension and other postretirement remeasurement (gains) losses,all_DefinedBenefitPlanRemeasurementGainLoss,,,78000000.0,,,-2000000.0,,,-53000000.0,,,-247000000.0
+Gain on disposition of operations,us-gaap_DisposalGroupNotDiscontinuedOperationGainLossOnDisposal,720000000.0,890000000.0,,,,,,,,,,
+Unearned premiums,us-gaap_IncreaseDecreaseInUnearnedPremiums,,,259000000.0,,,267000000.0,,,199000000.0,,,392000000.0
+Deferred policy acquisition costs,us-gaap_IncreaseDecreaseInDeferredPolicyAcquisitionCosts,,,-14000000.0,,,-12000000.0,,,-29000000.0,,,-99000000.0
+"Premium installment receivables, net",us-gaap_IncreaseDecreaseInPremiumsReceivable,,,-442000000.0,,,-549000000.0,,,-317000000.0,,,-502000000.0
+"Reinsurance recoverables, net",us-gaap_IncreaseDecreaseInReinsuranceRecoverable,,,-1216000000.0,,,82000000.0,,,91000000.0,,,334000000.0
+Income taxes,us-gaap_IncreaseDecreaseInIncomeTaxesPayableNetOfIncomeTaxesReceivable,,,14000000.0,,,217000000.0,,,-125000000.0,,,92000000.0
+Other operating assets and liabilities,us-gaap_IncreaseDecreaseInOtherOperatingCapitalNet,,,278000000.0,,,-154000000.0,,,-87000000.0,,,-574000000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,1964000000.0,,,1666000000.0,,,601000000.0,,,432000000.0
+,,,,,,,,,,,,,
+"Proceeds from Sale of Debt Securities, ",us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt,,,11718000000.0,,,6719000000.0,,,7008000000.0,,,12400000000.0
+Equity securities,us-gaap_ProceedsFromSaleOfEquitySecuritiesFvNi,,,-1653000000.0,,,-430000000.0,,,-1187000000.0,,,-3624000000.0
+Limited partnership interests,all_ProceedsFromDivestitureOfInterestInLimitedPartnershipInterest,,,-355000000.0,,,-237000000.0,,,-226000000.0,,,-216000000.0
+Other investments,all_PaymentsForProceedsFromOtherInvestments,,,-97000000.0,,,-40000000.0,,,-73000000.0,,,-186000000.0
+,,,,,,,,,,,,,
+"Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,,,141000000.0,,,538000000.0,,,646000000.0,,,104000000.0
+Mortgage loans,all_ProceedsFromCollectionOfMortgageLoans,,,-29000000.0,,,-0.0,,,-41000000.0,,,-37000000.0
+Fixed income securities,us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt,,,-10504000000.0,,,-9592000000.0,,,-8424000000.0,,,-13220000000.0
+"Change in short-term and other investments, net",us-gaap_PaymentsForProceedsFromShortTermInvestments,,,-2095000000.0,,,966000000.0,,,-2675000000.0,,,114000000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-92000000.0,,,-41000000.0,,,-79000000.0,,,-130000000.0
+Proceeds from sale of property and equipment,us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,,,0.0,,,18000000.0,,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-1293000000.0,,,-1372000000.0,,,-796000000.0,,,981000000.0
+Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,,,,,,0.0,,,744000000.0,,,
+Redemption and repayment of debt,us-gaap_RepaymentsOfLongTermDebt,,,,,,-0.0,,,-250000000.0,,,
+Contractholder fund deposits,us-gaap_AdditionsToContractHoldersFunds,,,30000000.0,,,34000000.0,,,33000000.0,,,34000000.0
+Contractholder fund withdrawals,us-gaap_WithdrawalFromContractHoldersFunds,,,-15000000.0,,,-8000000.0,,,-9000000.0,,,-9000000.0
+Dividends paid on common stock,us-gaap_PaymentsOfDividendsCommonStock,,,-244000000.0,,,-233000000.0,,,-224000000.0,,,-230000000.0
+Dividends paid on preferred stock,us-gaap_PaymentsOfDividendsPreferredStockAndPreferenceStock,,,-29000000.0,,,-29000000.0,,,-26000000.0,,,-26000000.0
+Treasury stock purchases,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-99000000.0,,,-0.0,,,-153000000.0,,,-802000000.0
+"Shares reissued under equity incentive plans, net",us-gaap_ProceedsFromIssuanceOfSharesUnderIncentiveAndShareBasedCompensationPlansIncludingStockOptions,,,15000000.0,,,80000000.0,,,6000000.0,,,17000000.0
+Other,us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,,,8000000.0,,,-10000000.0,,,0.0,,,-30000000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-334000000.0,,,-166000000.0,,,121000000.0,,,-1046000000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,337000000.0,,,128000000.0,,,-74000000.0,,,367000000.0
+"Loss on disposition of operations, net of tax",us-gaap_GainOrLossOnSaleOfStockInSubsidiary,,,,,,,,,,,,-0.0
+"Acquisition of operations, net of cash acquired",all_PaymentsToAcquireOperations,,,,,,,,,,,,-0.0
+Redemption of preferred stock,us-gaap_ProceedsFromRepurchaseOfRedeemablePreferredStock,,,,,,,,,,,,0.0
+Redemption and repayment of long-term debt,us-gaap_RepaymentsOfLongTermDebt,,,,,,,,,,,,-0.0
+Policy benefits and other insurance reserves,us-gaap_IncreaseDecreaseInFuturePolicyBenefitReservesAndOtherInsuranceLiabilities,,,1930000000.0,,,323000000.0,,,1080000000.0,,,
+Interest credited to contractholder funds,all_PolicyholderAccountBalanceInterestExpenseContinuingAndDiscontinuedOperations,,,,,,,,,,,,8000000.0
+"Accident, health and other policy benefits",us-gaap_IncreaseDecreaseInFuturePolicyBenefitReservesAndOtherInsuranceLiabilities,,,,,,,,,,,,-121000000.0
+Amortization of deferred gain on reinsurance,all_AmortizationOfDeferredGainOnReinsurance,,,,,,,,,,,,-0.0

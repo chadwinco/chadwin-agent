@@ -34,6 +34,7 @@ Drafting assets:
 
 ## Step 1: Confirm Scope
 - Confirm ticker and as-of date explicitly.
+- Check recent local 8-K files for announced corporate name or ticker changes; keep file paths on the current ticker unless already effective, and disclose pending changes in the report when relevant.
 - If ticker is not provided, pick the next candidate from the central queue:
   - `python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-llm-workflow`
 - Load `preferences/user_preferences.json` when present and honor exclusions/preferences for strategy framing and report contents.

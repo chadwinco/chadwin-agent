@@ -1,0 +1,35 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Conversion of preferred and common stock,us-gaap_StockIssuedDuringPeriodValueConversionOfConvertibleSecuritiesNetOfAdjustments,,,,,,1000.0
+"Conversion of preferred and common stock, shares issued",us-gaap_StockIssuedDuringPeriodSharesConversionOfConvertibleSecurities,,,,,,387440.0
+"Conversion of preferred and common stock, shares converted",carg_ConvertibleStockSharesConverted,,,,,,387440.0
+"Conversion of preferred and common stock, value",carg_ConvertibleStockConvertedValue,,,,,,1000.0
+Net Income,us-gaap_NetIncomeLoss,20972000.0,36942000.0,84387000.0,109244000.0,77553000.0,42146000.0
+"Redeemable noncontrolling interest, net income",us-gaap_NetIncomeLossAttributableToRedeemableNoncontrollingInterest,,,,-1129000.0,,
+"Redeemable noncontrolling interest, net (loss) income",us-gaap_TemporaryEquityNetIncome,,-14889000.0,-5433000.0,,,
+Stock–based compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,68818000.0,63312000.0,59245000.0,56772000.0,46996000.0,35682000.0
+Issuance of common stock upon exercise of stock options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,4923000.0,74000.0,721000.0,663000.0,1136000.0,1807000.0
+"Issuance of common stock upon exercise of stock options, Shares",us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,345721.0,15834.0,131061.0,222147.0,352212.0,838928.0
+Issuance of common stock upon vesting of restricted stock units,us-gaap_StockIssuedDuringPeriodValueRestrictedStockAwardNetOfForfeitures,-3000.0,-1000.0,-1000.0,-2000.0,-1000.0,-1000.0
+"Issuance of common stock upon vesting of restricted stock units, Shares",us-gaap_StockIssuedDuringPeriodSharesRestrictedStockAwardNetOfForfeitures,2793920.0,2440510.0,1649294.0,1575206.0,1347464.0,1317736.0
+Payment of withholding taxes on net share settlements of restricted stock units,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,24877000.0,15729000.0,16025000.0,,,
+"Payment of withholding taxes on net share settlements of restricted stock units, Shares",us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,967439.0,840995.0,566267.0,,,
+"Payment of withholding taxes and option costs on net share settlement of restricted stock units and stock options, Shares",us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,,,,527237.0,447160.0,452678.0
+Payment of withholding taxes and option costs on net share settlement of restricted stock units and stock options,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,,,,15388000.0,11184000.0,16470000.0
+Conversion of common stock,us-gaap_StockIssuedDuringPeriodValueConversionOfConvertibleSecuritiesNetOfAdjustments,-1000.0,,,3000.0,1000.0,
+"Conversion of common stock, shares issued",us-gaap_StockIssuedDuringPeriodSharesConversionOfConvertibleSecurities,-1012428.0,,,3077327.0,1238144.0,
+"Conversion of common stock, shares converted",carg_ConvertibleStockSharesConverted,,,,3077327.0,1238144.0,
+"Conversion of common stock, value",carg_ConvertibleStockConvertedValue,,,,3000.0,1000.0,
+Issuance of common stock upon for acquisition,us-gaap_StockIssuedDuringPeriodValueAcquisitions,,,,103645000.0,,
+"Issuance of common stock upon for acquisition, Shares",us-gaap_StockIssuedDuringPeriodSharesAcquisitions,,,,3115282.0,,
+"Acquisition of interest in CarOffer, LLC",carg_AcquisitionOfRedeemableNoncontrollingInterest,,-21838000.0,,,,
+"Acquisition of a 51% interest in CarOffer, LLC",carg_AcquisitionOfRedeemableNoncontrollingInterest,,,,60982000.0,,
+"Acquisition of remaining interest in CarOffer, LLC",carg_AcquisitionOfRemainingInterest,,2720000.0,,,,
+Repurchase of common stock,us-gaap_StockRepurchasedDuringPeriodValue,146860000.0,205819000.0,18717000.0,,,
+"Repurchase of common stock, Shares",us-gaap_StockRepurchasedDuringPeriodShares,6357302.0,11076755.0,1350473.0,,,
+"Redeemable noncontrolling interest, accretion to redemption value",us-gaap_MinorityInterestChangeInRedemptionValue,,,-109398000.0,109398000.0,,
+Accretion to redeemable noncontrolling interest redemption value,carg_RedeemableNoncontrollingInterestAccretionToRedemptionValue,,,-109398000.0,109398000.0,,
+Tax distributions to redeemable noncontrolling interest holders,us-gaap_MinorityInterestDecreaseFromRedemptions,,22000.0,11228000.0,,,
+Distribution to redeemable noncontrolling interest holders,us-gaap_MinorityInterestDecreaseFromRedemptions,,,,8701000.0,,
+Other (Note 6),us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,3507000.0,,,,,
+Foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-1646000.0,743000.0,-1241000.0,-2283000.0,2230000.0,-421000.0
+Cumulative adjustment from adoption of revenue recognition standard,us-gaap_CumulativeEffectOnRetainedEarningsNetOfTax1,,,,,,0.0

@@ -1,0 +1,14 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,7571600000.0,7839000000.0,5624200000.0,5883200000.0,3553700000.0,2592300000.0
+Proportionate share of OCI from equity method investments,asml_OtherComprehensiveIncomeLossEquityMethodInvestments,-12100000.0,200000.0,37700000.0,22000000.0,-1300000.0,
+Gain (loss) on foreign currency translation,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,91900000.0,-68300000.0,66000000.0,,,
+Gain (loss) on derivative financial instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,38200000.0,-15800000.0,57600000.0,16600000.0,-21000000.0,3200000.0
+Transfers to net income,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,-8900000.0,600000.0,-66500000.0,22200000.0,-2300000.0,-10700000.0
+"Other comprehensive income, net of taxes",us-gaap_OtherComprehensiveIncomeLossNetOfTax,109100000.0,-83300000.0,94800000.0,154100000.0,-98400000.0,-7200000.0
+Gain (loss) on foreign currency translation and effective portion of hedges,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,,,93300000.0,-73800000.0,
+"Total comprehensive income, net of taxes",us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,7680700000.0,7755700000.0,5719000000.0,6037300000.0,3455300000.0,2585100000.0
+Total comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,7680700000.0,7755700000.0,5719000000.0,,,
+Attributable to equity holders,us-gaap_ComprehensiveIncomeNetOfTax,,,,6037300000.0,3455300000.0,
+Proportionate share of other comprehensive income from equity method investments,asml_OtherComprehensiveIncomeLossEquityMethodInvestments,,,,,,-19800000.0
+Gain (loss) on foreign currency translation and effective portion of hedges on net investments,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,,,,,20100000.0
+"Total comprehensive income, attributable to equity holders",us-gaap_ComprehensiveIncomeNetOfTax,,,,,,2585100000.0

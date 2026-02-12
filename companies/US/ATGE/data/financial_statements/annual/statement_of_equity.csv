@@ -1,0 +1,22 @@
+label,concept,2025-06-30,2024-06-30,2023-06-30,2022-06-30,2021-06-30,2020-06-30
+Net Income,us-gaap_NetIncomeLoss,237065000.0,136777000.0,93358000.0,317705000.0,76909000.0,-85334000.0
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeOtherNetOfTax,,,,,1816000.0,-165125000.0
+"Other comprehensive income, net of tax",us-gaap_OtherComprehensiveIncomeOtherNetOfTax,,,,59000.0,,
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,41590000.0,25947000.0,14299000.0,23247000.0,13880000.0,14713000.0
+Net activity from stock-based compensation awards,atge_StockIssuedDuringPeriodValueShareBasedPaymentArrangementNetActivity,-4173000.0,9357000.0,-1967000.0,6045000.0,-2749000.0,-1853000.0
+Net activity from stock-based compensation awards (in shares),atge_StockIssuedDuringPeriodSharesShareBasedPaymentArrangementNetActivity,748000.0,494314.0,93021.0,416045.0,72673.0,
+Proceeds from stock issued under Colleague Stock Purchase Plan,us-gaap_StockIssuedDuringPeriodValueEmployeeStockPurchasePlan,1425000.0,901000.0,676000.0,595000.0,291000.0,19000.0
+Proceeds from stock issued under Colleague Stock Purchase Plan (in shares),us-gaap_StockIssuedDuringPeriodSharesEmployeeStockPurchasePlans,17148.0,19666.0,18463.0,18328.0,8857.0,
+Settlement of equity forward contract,atge_AdjustmentsToAdditionalPaidInCapitalEquityForwardContractSettlementIncludingTreasuryStock,,,-13162000.0,,,
+Repurchases of common stock for treasury,us-gaap_TreasuryStockValueAcquiredCostMethod,211417000.0,261183000.0,127254000.0,120000000.0,,
+Repurchases of common shares for treasury,us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,100000000.0,
+Repurchases of common shares for treasury (in shares),us-gaap_TreasuryStockSharesAcquired,,,,,2929906.0,
+Repurchase of common shares for treasury,us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,,136889000.0
+Repurchases of common stock for treasury (in shares),us-gaap_TreasuryStockSharesAcquired,2317937.0,5446113.0,3207036.0,4710000.0,,
+Equity forward contract,atge_AdjustmentsToAdditionalPaidInCapitalEquityForwardContract,,,,30000000.0,,
+Reclassification adjustment for loss on interest rate swap,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,-0.0,-0.0,6695000.0,,
+Change in redeemable noncontrolling interest put option,us-gaap_MinorityInterestChangeInRedemptionValue,,,0.0,0.0,628000.0,0.0
+Reclassification adjustment for unrealized gain on available-for-sale marketable securities,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax,,,,,-126000.0,
+Reclassification adjustment for realized loss on foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax,,,,,-0.0,293360000.0
+Reclassification adjustment for realized gain (loss) on foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax,,-0.0,-0.0,-349000.0,,
+Reclassification adjustment for gain on available-for-sale marketable securities,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax,,,-0.0,-0.0,,

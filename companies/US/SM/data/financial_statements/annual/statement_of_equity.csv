@@ -1,0 +1,24 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net cash dividends declared per share,us-gaap_CommonStockDividendsPerShareDeclared,0.76,0.63,,,,
+Cash dividends declared per share,us-gaap_CommonStockDividendsPerShareDeclared,,,0.31,,,
+Cash dividends,us-gaap_DividendsCommonStockCash,,,37927000.0,2393000.0,2276000.0,
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,8827000.0,749000.0,-2279000.0,
+Cash dividends per share,us-gaap_CommonStockDividendsPerShareDeclared,,,,0.02,0.02,0.1
+"Issuance of common stock upon vesting of RSUs, net of shares used for tax withholdings (Shares)",sm_StockIssuedDuringPeriodSharesRestrictedStockUnitsAndPerformanceShareUnits,,,,,,334399.0
+"Issuance of common stock upon vesting of RSUs, net of shares used for tax withholdings (Amount)",sm_StockIssuedDuringPeriodValueRestrictedStockUnitsAndPerformanceShareUnits,,,,,,-1661000.0
+"Cash dividends, $ 0.10 per share",us-gaap_DividendsCommonStockCash,,,,,,11254000.0
+Issuance of common stock through cashless exercise of Warrants (Amount),us-gaap_StockIssuedDuringPeriodValueOther,,,,0.0,,
+Net Income,us-gaap_NetIncomeLoss,770293000.0,817880000.0,1111952000.0,36229000.0,-764614000.0,-187001000.0
+Other comprehensive income,us-gaap_OtherComprehensiveIncomeLossNetOfTax,1446000.0,1415000.0,,,,1061000.0
+Net cash dividends declared,us-gaap_DividendsCommonStockCash,87078000.0,74159000.0,,,,
+Issuance of common stock under Employee Stock Purchase Plan (Shares),us-gaap_StockIssuedDuringPeriodSharesEmployeeStockPurchasePlans,97500.0,114427.0,113785.0,313773.0,464757.0,314868.0
+Issuance of common stock under Employee Stock Purchase Plan (Amount),us-gaap_StockIssuedDuringPeriodValueEmployeeStockPurchasePlan,3201000.0,3058000.0,3039000.0,2639000.0,1464000.0,3209000.0
+"Issuance of common stock upon vesting of RSUs and settlement of PSUs, net of shares used for tax withholdings (Shares)",sm_StockIssuedDuringPeriodSharesRestrictedStockUnitsAndPerformanceShareUnits,350675.0,554216.0,1291427.0,827572.0,1022019.0,
+"Issuance of common stock upon vesting of RSUs and settlement of PSUs, net of shares used for tax withholdings (Amount)",sm_StockIssuedDuringPeriodValueRestrictedStockUnitsAndPerformanceShareUnits,-6837000.0,-7882000.0,-25129000.0,-9072000.0,-1560000.0,
+Stock-based compensation expense (Shares),us-gaap_StockIssuedDuringPeriodSharesShareBasedCompensation,39557.0,56872.0,29471.0,60510.0,267576.0,96719.0
+Stock-based compensation expense (Amount),us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,25021000.0,20250000.0,18772000.0,18819000.0,14999000.0,24318000.0
+"Stock Repurchased and Retired During Period, Shares",us-gaap_StockRepurchasedAndRetiredDuringPeriodShares,1771000.0,6931000.0,1365255.0,,,
+"Stock Repurchased and Retired During Period, Value",us-gaap_StockRepurchasedAndRetiredDuringPeriodValue,84639000.0,230170000.0,57207000.0,,,
+Other,us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,,0.0,,,-88000.0,
+Issuance of warrants,us-gaap_AdjustmentsToAdditionalPaidInCapitalWarrantIssued,,,,,21520000.0,
+Issuance of common stock through cashless exercise of Warrants (Shares),us-gaap_StockIssuedDuringPeriodSharesOther,,19037.0,,5918089.0,,

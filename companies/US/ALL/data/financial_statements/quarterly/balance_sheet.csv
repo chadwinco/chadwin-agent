@@ -1,0 +1,95 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Cash and Cash Equivalents,us-gaap_Cash,931000000.0,995000000.0,840000000.0,816000000.0,599000000.0,850000000.0,860000000.0,699000000.0,662000000.0,786000000.0,766000000.0,1130000000.0
+Other Assets,us-gaap_OtherAssets,5448000000.0,5419000000.0,4964000000.0,5834000000.0,6461000000.0,6255000000.0,6196000000.0,6278000000.0,5758000000.0,6109000000.0,6351000000.0,6059000000.0
+Total Assets,us-gaap_Assets,120402000000.0,115894000000.0,115161000000.0,113743000000.0,108368000000.0,105241000000.0,101176000000.0,100514000000.0,99631000000.0,97676000000.0,96350000000.0,97150000000.0
+"Property, Plant and Equipment",us-gaap_PropertyPlantAndEquipmentNet,601000000.0,619000000.0,632000000.0,714000000.0,777000000.0,802000000.0,909000000.0,945000000.0,971000000.0,1008000000.0,975000000.0,966000000.0
+Goodwill,us-gaap_Goodwill,3118000000.0,3118000000.0,3115000000.0,3206000000.0,3502000000.0,3502000000.0,3502000000.0,3502000000.0,3502000000.0,3502000000.0,3496000000.0,3497000000.0
+Total investments,us-gaap_Investments,82328000000.0,77437000000.0,74050000000.0,73602000000.0,70604000000.0,67859000000.0,63359000000.0,63668000000.0,63475000000.0,61006000000.0,61055000000.0,
+"Other investments, net",us-gaap_OtherInvestments,1017000000.0,964000000.0,901000000.0,866000000.0,979000000.0,1004000000.0,1608000000.0,1718000000.0,1724000000.0,1798000000.0,1917000000.0,2532000000.0
+"Fixed income securities, at fair value (amortized cost, net $56,732 and $53,616)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,57186000000.0,,,,,,,,,,,
+"Equity securities, at fair value (cost $4,943 and $4,329)",us-gaap_EquitySecuritiesFvNi,5338000000.0,,,,,,,,,,,
+"Mortgage loans, net",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,831000000.0,807000000.0,770000000.0,765000000.0,815000000.0,815000000.0,830000000.0,823000000.0,781000000.0,833000000.0,848000000.0,855000000.0
+Limited partnership interests,us-gaap_InvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures,9213000000.0,9194000000.0,9380000000.0,8925000000.0,8730000000.0,8562000000.0,8363000000.0,8150000000.0,7971000000.0,7907000000.0,7943000000.0,7977000000.0
+"Short-term, at fair value (amortized cost $8,743 and $4,539)",us-gaap_OtherShortTermInvestments,8743000000.0,,,,,,,,,,,
+"Premium installment receivables, net",us-gaap_PremiumsReceivableAtCarryingValue,11745000000.0,11271000000.0,11053000000.0,11041000000.0,10762000000.0,10573000000.0,10102000000.0,9713000000.0,9483000000.0,9150000000.0,8824000000.0,8874000000.0
+Deferred policy acquisition costs,us-gaap_DeferredPolicyAcquisitionCostsAndValueOfBusinessAcquired,6095000000.0,5930000000.0,5787000000.0,5751000000.0,6112000000.0,5946000000.0,5824000000.0,5607000000.0,5471000000.0,5273000000.0,5030000000.0,4824000000.0
+"Reinsurance and indemnification recoverables, net",all_ReinsuranceAndIndemnificationRecoverablesNet,9519000000.0,9645000000.0,10091000000.0,9013000000.0,8730000000.0,8726000000.0,9083000000.0,9151000000.0,9528000000.0,9961000000.0,9376000000.0,9691000000.0
+Accrued investment income,us-gaap_AccruedInvestmentIncomeReceivable,617000000.0,628000000.0,614000000.0,603000000.0,609000000.0,567000000.0,525000000.0,471000000.0,436000000.0,389000000.0,359000000.0,341000000.0
+Assets held for sale,us-gaap_AssetsOfDisposalGroupIncludingDiscontinuedOperation,0.0,715000000.0,3786000000.0,3163000000.0,,,,,,,,
+Reserve for property and casualty insurance claims and claims expense,us-gaap_LiabilityForClaimsAndClaimsAdjustmentExpense,43103000000.0,44141000000.0,43835000000.0,42743000000.0,41553000000.0,40143000000.0,40659000000.0,40531000000.0,38644000000.0,36529000000.0,34276000000.0,32991000000.0
+Unearned premiums,us-gaap_UnearnedPremiums,29157000000.0,28005000000.0,27167000000.0,27059000000.0,25929000000.0,24945000000.0,24518000000.0,23355000000.0,22499000000.0,22026000000.0,21026000000.0,20248000000.0
+Claim payments outstanding,all_ClaimPaymentsOutstanding,1554000000.0,1655000000.0,1659000000.0,1727000000.0,1575000000.0,1491000000.0,1480000000.0,1387000000.0,1333000000.0,1196000000.0,1216000000.0,1140000000.0
+Other liabilities and accrued expenses,all_OtherLiabilitiesAndAccruedExpenses,10699000000.0,9683000000.0,9901000000.0,10644000000.0,10421000000.0,10029000000.0,9933000000.0,9700000000.0,9114000000.0,10212000000.0,9635000000.0,9077000000.0
+Liabilities held for sale,us-gaap_LiabilitiesOfDisposalGroupIncludingDiscontinuedOperation,0.0,14000000.0,2375000000.0,2164000000.0,,,,,,,,
+Commitments and Contingent Liabilities (Note 12),us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+"Preferred stock and additional capital paid-in, $1 par value, 25 million shares authorized, 82.0 thousand shares issued and outstanding, $2,050 aggregate liquidation preference",us-gaap_PreferredStockIncludingAdditionalPaidInCapital,2001000000.0,2001000000.0,2001000000.0,2001000000.0,2001000000.0,2001000000.0,,,,,,
+Additional capital paid-in,us-gaap_AdditionalPaidInCapitalCommonStock,4117000000.0,4084000000.0,4048000000.0,3987000000.0,3927000000.0,3894000000.0,3811000000.0,3786000000.0,3780000000.0,3765000000.0,3740000000.0,3706000000.0
+Treasury Stock Common Value,us-gaap_TreasuryStockCommonValue,-37773000000.0,-37418000000.0,-37080000000.0,-37006000000.0,-37036000000.0,-37044000000.0,-37149000000.0,-37131000000.0,-36980000000.0,-36518000000.0,-35858000000.0,-35208000000.0
+Minority Interest,us-gaap_MinorityInterest,-16000000.0,-14000000.0,-3000000.0,-39000000.0,-20000000.0,-159000000.0,-146000000.0,-145000000.0,-121000000.0,-112000000.0,-91000000.0,-74000000.0
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 262 million and 265 million shares outstanding",us-gaap_CommonStockValueOutstanding,9000000.0,,,,,,,,,,,
+Unrealized net capital gains and losses,us-gaap_AccumulatedOtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,351000000.0,36000000.0,-351000000.0,361000000.0,-938000000.0,-819000000.0,-2512000000.0,-1845000000.0,-1573000000.0,-2927000000.0,-2138000000.0,
+Unrealized foreign currency translation adjustments,us-gaap_AccumulatedOtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentNetOfTax,-66000000.0,-106000000.0,-190000000.0,-99000000.0,-113000000.0,-90000000.0,-101000000.0,-87000000.0,-115000000.0,-150000000.0,-62000000.0,-15000000.0
+Unamortized pension and other postretirement prior service credit,us-gaap_AccumulatedOtherComprehensiveIncomeLossDefinedBenefitPensionAndOtherPostretirementPlansNetOfTax,10000000.0,11000000.0,11000000.0,12000000.0,12000000.0,12000000.0,15000000.0,20000000.0,25000000.0,34000000.0,42000000.0,57000000.0
+Discount rate for reserve for future policy benefits,all_AOCILiabilityForFuturePolicyBenefitDiscountRateBeforeTax,3000000.0,2000000.0,21000000.0,-23000000.0,13000000.0,14000000.0,28000000.0,-2000000.0,-10000000.0,,,
+"Fixed income securities, at fair value (amortized cost, net $54,383 and $53,616)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,54435000000.0,,,,,,,,,,
+"Short-term, at fair value (amortized cost $9,642 and $4,539)",us-gaap_OtherShortTermInvestments,,9640000000.0,,,,,,,,,,
+Reserve for future policy benefits,us-gaap_LiabilityForFuturePolicyBenefits,,304000000.0,86000000.0,274000000.0,1344000000.0,1325000000.0,1309000000.0,1339000000.0,1338000000.0,1276000000.0,1295000000.0,1274000000.0
+"Fixed income securities, at fair value (amortized cost, net $52,340 and $53,616)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,51993000000.0,,,,,,,,,
+"Short-term, at fair value (amortized cost $6,544 and $4,539)",us-gaap_OtherShortTermInvestments,,,6541000000.0,,,,,,,,,
+"Fixed income securities, at fair value (amortized cost, net $53,447 and $49,649)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,53961000000.0,,,,,,,,
+"Short-term, at fair value (amortized cost $6,995 and $5,145)",us-gaap_OtherShortTermInvestments,,,,6994000000.0,,,,,,,,
+"Fixed income securities, at fair value (amortized cost, net $53,788 and $49,649)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,52576000000.0,,,,,,,
+"Short-term, at fair value (amortized cost $5,290 and $5,145)",us-gaap_OtherShortTermInvestments,,,,,5288000000.0,,,,,,,
+"Fixed income securities, at fair value (amortized cost, net $51,837 and $49,649)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,50777000000.0,,,,,,
+"Short-term, at fair value (amortized cost $4,320 and $5,145)",us-gaap_OtherShortTermInvestments,,,,,,4318000000.0,,,,,,
+"Fixed income securities, at fair value (amortized cost, net $49,979 and $45,370)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,,46771000000.0,,,,,
+"Short-term, at fair value (amortized cost $3,369 and $4,174)",us-gaap_OtherShortTermInvestments,,,,,,,3368000000.0,,,,,
+"Fixed income securities, at fair value (amortized cost, net $47,904 and $45,370)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,,,45550000000.0,,,,
+"Short-term, at fair value (amortized cost $5,138 and $4,174)",us-gaap_OtherShortTermInvestments,,,,,,,,5137000000.0,,,,
+"Fixed income securities, at fair value (amortized cost, net $46,120 and $45,370)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,,,,44103000000.0,,,
+"Short-term, at fair value (amortized cost $6,722 and $4,174)",us-gaap_OtherShortTermInvestments,,,,,,,,,6722000000.0,,,
+"Fixed income securities, at fair value (amortized cost, net $45,468 and $41,376)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,,,,,41715000000.0,,
+"Short-term, at fair value (amortized cost $4,031 and $4,009)",us-gaap_OtherShortTermInvestments,,,,,,,,,,4030000000.0,,
+"Fixed income securities, at fair value (amortized cost, net $44,027 and $41,376)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,,,,,,41282000000.0,
+"Short-term, at fair value (amortized cost $4,384 and $4,009)",us-gaap_OtherShortTermInvestments,,,,,,,,,,,4384000000.0,
+"Fixed income securities, at fair value (amortized cost, net $42,027 and $41,376)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,,,,,,,,,40745000000.0
+"Short-term, at fair value (amortized cost $4,345 and $4,009)",us-gaap_OtherShortTermInvestments,,,,,,,,,,,,4344000000.0
+Total,us-gaap_Investments,,,,,,,,,,,,61768000000.0
+Total Liabilities,us-gaap_Liabilities,92913000000.0,91889000000.0,93109000000.0,92905000000.0,89795000000.0,86761000000.0,86729000000.0,85142000000.0,82258000000.0,80115000000.0,76326000000.0,74012000000.0
+Long Term Debt,us-gaap_LongTermDebt,8089000000.0,8087000000.0,8086000000.0,8083000000.0,8082000000.0,7938000000.0,7946000000.0,7949000000.0,8452000000.0,7967000000.0,7970000000.0,7973000000.0
+Deferred income taxes,us-gaap_DeferredIncomeTaxLiabilitiesNet,311000000.0,,,211000000.0,,,,,,0.0,0.0,402000000.0
+Deferred Tax Assets,us-gaap_DeferredIncomeTaxAssetsNet,0.0,117000000.0,229000000.0,0.0,212000000.0,161000000.0,816000000.0,480000000.0,345000000.0,492000000.0,118000000.0,
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,58853000000.0,55400000000.0,53586000000.0,51635000000.0,50718000000.0,50662000000.0,48491000000.0,48766000000.0,50388000000.0,51490000000.0,52412000000.0,53688000000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,298000000.0,-57000000.0,-509000000.0,251000000.0,-1026000000.0,-883000000.0,-2570000000.0,-1914000000.0,-1673000000.0,-3043000000.0,-2158000000.0,-953000000.0
+"Treasury stock, shares (in shares)",us-gaap_TreasuryStockCommonShares,,,635000000.0,,,,,,,,,
+Contractholder funds,all_PolicyholderContractDepositExcludingHeldForSale,,,,0.0,891000000.0,890000000.0,884000000.0,881000000.0,878000000.0,909000000.0,908000000.0,907000000.0
+"Equity securities, at fair value (cost $1,829 and $2,244)",us-gaap_EquitySecuritiesFvNi,,,,2091000000.0,,,,,,,,
+Total Stockholders' Equity,us-gaap_StockholdersEquity,27489000000.0,24005000000.0,22052000000.0,20838000000.0,18573000000.0,18480000000.0,14447000000.0,15372000000.0,17373000000.0,17561000000.0,20024000000.0,23138000000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,120402000000.0,115894000000.0,115161000000.0,113743000000.0,108368000000.0,105241000000.0,101176000000.0,100514000000.0,99631000000.0,97676000000.0,96350000000.0,97150000000.0
+"Equity securities, at fair value (cost $2,171 and $4,329)",us-gaap_EquitySecuritiesFvNi,,2397000000.0,,,,,,,,,,
+Commitments and Contingent Liabilities (Note 15),us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+Commitments and Contingent Liabilities (Note 13),us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+"Equity securities, at fair value (cost $4,652 and $6,016)",us-gaap_EquitySecuritiesFvNi,,,,,,,,,,4723000000.0,,
+"Preferred stock and additional capital paid-in, $1 par value, 25 million shares authorized, 81.0 thousand shares issued and outstanding, $2,025 aggregate liquidation preference",us-gaap_PreferredStockIncludingAdditionalPaidInCapital,,,,,,,,,1970000000.0,1970000000.0,1970000000.0,1970000000.0
+"Equity securities, at fair value (cost $2,393 and $4,253)",us-gaap_EquitySecuritiesFvNi,,,,,,,2419000000.0,,,,,
+"Preferred stock and additional capital paid-in, $1 par value, 25 million shares authorized, 82.0 thousand and 81.0 thousand shares issued and outstanding, $2,050 and $2,025 aggregate liquidation preference",us-gaap_PreferredStockIncludingAdditionalPaidInCapital,,,,,,,2001000000.0,2001000000.0,,,,
+Commitments and Contingent Liabilities (Note 14),us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+Common Stock Shares Outstanding,us-gaap_CommonStockSharesOutstanding,,,265000000.0,,,,,,,,,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 265 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,9000000.0,,,,,,,,,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 266 million and 281 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,,,,,,,9000000.0,,
+"Equity securities, at fair value (cost $4,410 and $6,016)",us-gaap_EquitySecuritiesFvNi,,,,,,,,,,,4681000000.0,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 271 million and 281 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,,,,,,,,9000000.0,
+"Equity securities, at fair value (cost $4,453 and $6,016)",us-gaap_EquitySecuritiesFvNi,,,,,,,,,,,,5315000000.0
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 264 million and 262 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,,9000000.0,9000000.0,,,,,,
+"Equity securities, at fair value (cost $2,172 and $2,244)",us-gaap_EquitySecuritiesFvNi,,,,,,2383000000.0,,,,,,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 263 million and 263 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,,,,,,9000000.0,,,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 264 million and 265 million shares outstanding",us-gaap_CommonStockValueOutstanding,,9000000.0,,,,,,,,,,
+"Equity securities, at fair value (cost $4,392 and $4,329)",us-gaap_EquitySecuritiesFvNi,,,4465000000.0,,,,,,,,,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 276 million and 281 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,,,,,,,,,9000000.0
+"Unrealized net capital gains and losses, after-tax",us-gaap_AccumulatedOtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,,,,,,,,,,,,-995000000.0
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 262 million and 263 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,,,,9000000.0,9000000.0,,,,
+"Equity securities, at fair value (cost $2,231 and $4,253)",us-gaap_EquitySecuritiesFvNi,,,,,,,,2290000000.0,,,,
+"Equity securities, at fair value (cost $2,147 and $4,253)",us-gaap_EquitySecuritiesFvNi,,,,,,,,,2174000000.0,,,
+"Common stock, $.01 par value, 2.0 billion shares authorized and 900 million issued, 265 million and 262 million shares outstanding",us-gaap_CommonStockValueOutstanding,,,,9000000.0,,,,,,,,
+"Equity securities, at fair value (cost $2,003 and $2,244)",us-gaap_EquitySecuritiesFvNi,,,,,2216000000.0,,,,,,,
+#REF!,us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,

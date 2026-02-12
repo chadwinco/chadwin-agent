@@ -1,0 +1,44 @@
+asof_date: '2026-02-07'
+currency: EUR
+price: 1413.01
+model:
+  type: three-stage-dcf-fade
+base_year:
+  year: '2025-12-31'
+  revenue: 32700000000.0
+  revenue_source: companies/ASML/data/filings/6-K-2026-01-28-0001628280-26-003701.md
+  net_debt: -8048300000.0
+  net_debt_year: '2024-12-31'
+  net_debt_source: companies/ASML/data/financial_statements/annual/balance_sheet.csv
+  diluted_shares: 393600000.0
+  diluted_shares_year: '2024-12-31'
+  diluted_shares_source: companies/ASML/data/financial_statements/annual/income_statement.csv
+notes: Updated process uses an explicit competitive-advantage period and fade period.
+  ASML assumptions reflect durable EUV/DUV ecosystem positioning, ongoing compute
+  demand tailwinds, and gradual fade to steady-state economics rather than an abrupt
+  five-year reset to inflation-like growth.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.12
+    fcf_margin_stage1: 0.3
+    discount_rate: 0.08
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.27
+    stage1_years: 12
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.13
+    fcf_margin_stage1: 0.31
+    discount_rate: 0.08
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.28
+    stage1_years: 12
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.09
+    fcf_margin_stage1: 0.24
+    discount_rate: 0.09
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.22
+    stage1_years: 10
+    fade_years: 5

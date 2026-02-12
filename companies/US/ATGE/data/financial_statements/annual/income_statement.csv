@@ -1,0 +1,55 @@
+label,concept,2025-06-30,2024-06-30,2023-06-30,2022-06-30,2021-06-30,2020-06-30
+Revenue,us-gaap_Revenues,1788290000.0,1584652000.0,1450826000.0,1387122000.0,1112380000.0,1052001000.0
+Restructuring expense,us-gaap_RestructuringCharges,3314000.0,1870000.0,18817000.0,25628000.0,9804000.0,28628000.0
+Business integration expense,us-gaap_BusinessCombinationIntegrationRelatedCosts,0.0,,,,,
+Gain on sale of assets,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,-0.0,-0.0,-13317000.0,-0.0,-0.0,-4779000.0
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,771430000.0,698548000.0,648486000.0,659776000.0,489233000.0,490054000.0
+Costs and Expenses,us-gaap_CostsAndExpenses,-1446748000.0,-1367598000.0,-1282656000.0,-1306658000.0,-950897000.0,-909741000.0
+Income (loss) from discontinued operations before income taxes,us-gaap_DiscontinuedOperationIncomeLossFromDiscontinuedOperationBeforeIncomeTax,5870000.0,,,,,
+Loss on disposal of discontinued operations before income taxes,atge_DiscontinuedOperationIncomeLossFromDiscontinuedOperationOtherThanGainLossOnDisposalBeforeIncomeTax,0.0,,,,,
+(Provision for) benefit from income taxes,us-gaap_DiscontinuedOperationTaxEffectOfDiscontinuedOperation,-1482000.0,-174000.0,,-125556000.0,,
+Income (loss) from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTax,4388000.0,,,347532000.0,,
+(Loss) gain on disposal of discontinued operations before income taxes,atge_DiscontinuedOperationIncomeLossFromDiscontinuedOperationOtherThanGainLossOnDisposalBeforeIncomeTax,,0.0,-3576000.0,,,
+(Loss) income from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTax,,-936000.0,-8394000.0,,,
+Income from continuing operations before income taxes,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments,,,,,126850000.0,237179000.0
+"Loss on disposal of discontinued operations before income taxes (includes ($293,360) accumulated other comprehensive income reclassifications for realized loss on foreign currency translation adjustments for the year ended June 30, 2020)",us-gaap_DiscontinuedOperationGainLossFromDisposalOfDiscontinuedOperationBeforeIncomeTax,,,,,0.0,-287560000.0
+Benefit from income taxes,us-gaap_DiscontinuedOperationTaxEffectOfDiscontinuedOperation,,,,,8819000.0,20823000.0
+Loss from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTax,,,,,-25127000.0,-329315000.0
+Benefit from (provision for) income taxes,us-gaap_DiscontinuedOperationTaxEffectOfDiscontinuedOperation,,,3646000.0,,,
+(Loss) income from discontinued operations before income taxes,us-gaap_DiscontinuedOperationIncomeLossFromDiscontinuedOperationBeforeIncomeTax,,,-8464000.0,-395000.0,-33946000.0,-62578000.0
+Loss from discontinued operations before income taxes,us-gaap_DiscontinuedOperationIncomeLossFromDiscontinuedOperationBeforeIncomeTax,,-762000.0,,,,
+"Selling, General and Administrative Expense",us-gaap_SellingGeneralAndAdministrativeExpense,672004000.0,632965000.0,586009000.0,568056000.0,420267000.0,395838000.0
+Operating Income,us-gaap_OperatingIncomeLoss,341542000.0,217054000.0,168170000.0,80464000.0,161483000.0,
+Operating income,us-gaap_IncomeLossFromContinuingOperationsBeforeInterestExpenseInterestIncomeIncomeTaxesExtraordinaryItemsNoncontrollingInterestsNet,,,,,,142260000.0
+Interest Expense,us-gaap_InterestExpense,-52318000.0,-63659000.0,-63100000.0,-129348000.0,-41365000.0,-19510000.0
+"Other income, net",us-gaap_OtherNonoperatingIncomeExpense,9290000.0,10542000.0,6965000.0,,,
+Net other income (expense),us-gaap_OtherNonoperatingIncomeExpense,,,,,,94919000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,298514000.0,163937000.0,112035000.0,-45064000.0,,
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,65837000.0,26224000.0,10283000.0,-15237000.0,25248000.0,-6358000.0
+Net Income from Continuing Operations,us-gaap_IncomeLossFromContinuingOperations,232677000.0,137713000.0,101752000.0,-29827000.0,102036000.0,243981000.0
+Net Income,us-gaap_NetIncomeLoss,237065000.0,136777000.0,93358000.0,317705000.0,76909000.0,-85334000.0
+Net loss attributable to redeemable noncontrolling interest from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToNoncontrollingInterest,,,-0.0,-0.0,,
+Profit or Loss,us-gaap_ProfitLoss,,,93358000.0,317705000.0,76475000.0,-85778000.0
+Net income attributable to redeemable noncontrolling interest from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToNoncontrollingInterest,,,,,-0.0,-0.0
+Equity method investment loss,us-gaap_IncomeLossFromEquityMethodInvestments,,,,,,0.0
+Net loss attributable to redeemable noncontrolling interest from continuing operations,us-gaap_IncomeLossFromContinuingOperationsAttributableToNoncontrollingEntity,,,,,434000.0,444000.0
+Continuing operations (In dollars per share),us-gaap_IncomeLossFromContinuingOperationsPerBasicShare,6.07,3.42,,,,
+Discontinued operations (In dollars per share),us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxPerBasicShare,0.11,-0.02,,,,
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,6.39,3.47,2.08,6.57,1.5,-1.59
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,6.18,3.39,2.05,6.57,1.49,-1.58
+Business acquisition and integration expense,atge_BusinessCombinationAcquisitionAndIntegrationRelatedCosts,,34215000.0,42661000.0,53198000.0,31593000.0,
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,37085000.0,39413000.0,44781000.0,48388000.0,51322000.0,53659000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,38334000.0,40307000.0,45600000.0,48388000.0,51645000.0,54094000.0
+Net loss from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,,-25127000.0,-329315000.0
+Settlement gain,atge_SettlementGainsLoss,,,,,,-0.0
+Gain on derivative,us-gaap_GainLossOnDerivativeInstrumentsNetPretax,,,,-0.0,-0.0,-110723000.0
+"Gain (loss) on disposal of discontinued operations before income taxes (includes ($293,360) accumulated other comprehensive income reclassifications for realized loss on foreign currency translation adjustments for the year ended June 30, 2020)",us-gaap_DiscontinuedOperationGainLossFromDisposalOfDiscontinuedOperationBeforeIncomeTax,,,,473483000.0,,
+Net (loss) income from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,-8394000.0,,,
+Continuing operations,us-gaap_IncomeLossFromContinuingOperationsPerBasicShare,,,2.23,-0.62,1.98,4.51
+Discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxPerBasicShare,,,-0.18,7.18,-0.49,-6.09
+Net other (expense) income,us-gaap_OtherNonoperatingIncomeExpense,,,,-125528000.0,-34633000.0,
+Interest and dividend income,us-gaap_InterestAndDividendIncomeOperating,,,,3820000.0,4094000.0,3688000.0
+Net income (loss) from discontinued operations,us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,347532000.0,,
+Investment gain (loss),us-gaap_MarketableSecuritiesGainLossExcludingOtherThanTemporaryImpairments,,,,,2638000.0,18000.0
+Investment gain,us-gaap_MarketableSecuritiesGainLossExcludingOtherThanTemporaryImpairments,,,,0.0,,
+Settlement gains,atge_SettlementGainsLoss,,,,,-0.0,

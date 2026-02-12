@@ -1,0 +1,36 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Contract Revenue,us-gaap_RevenueFromContractWithCustomerIncludingAssessedTax,3527920000.0,2935432000.0,3004925000.0,2713491000.0,2127106000.0,
+"Salaries, wages and benefits",us-gaap_LaborAndRelatedExpense,1463932000.0,1322615000.0,1211551000.0,986664000.0,826109000.0,1001746000.0
+"Aircraft maintenance, materials and repairs",us-gaap_AircraftMaintenanceMaterialsAndRepairs,712642000.0,673453000.0,644157000.0,817803000.0,,
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,383880000.0,383115000.0,394552000.0,440198000.0,474959000.0,368098000.0
+Aircraft fuel,skyw_FuelCost,87409000.0,85913000.0,108456000.0,107057000.0,,
+Airport-related expenses,skyw_LandingFeeAndOtherRental,85836000.0,72640000.0,71549000.0,104690000.0,,
+Aircraft rentals,skyw_AircraftRent,5257000.0,25507000.0,75353000.0,63357000.0,,
+Other operating expenses,us-gaap_OtherCostAndExpenseOperating,294307000.0,268120000.0,318145000.0,255932000.0,222797000.0,243729000.0
+"Net unrealized appreciation (depreciation) on marketable securities, net of taxes",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,-157000.0,4127000.0,,,,
+TOTAL COMPREHENSIVE INCOME,us-gaap_ComprehensiveIncomeNetOfTax,322805000.0,38469000.0,,,,340131000.0
+Revenue,us-gaap_Revenues,,,,,,2971963000.0
+"Net unrealized appreciation on marketable securities, net of taxes",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,,,,,,32000.0
+"Net unrealized depreciation on marketable securities, net of taxes",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,,,-3802000.0,,,
+TOTAL COMPREHENSIVE INCOME (LOSS),us-gaap_ComprehensiveIncomeNetOfTax,,,69151000.0,111910000.0,-8515000.0,
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,,,,,-2018304000.0,-2459705000.0
+Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,322962000.0,34342000.0,72953000.0,111910000.0,-8515000.0,340099000.0
+Operating Expenses,us-gaap_OperatingExpenses,-3033263000.0,-2831363000.0,-2823763000.0,-2437624000.0,,
+Operating Income,us-gaap_OperatingIncomeLoss,494657000.0,104069000.0,181162000.0,275867000.0,108802000.0,512258000.0
+Interest Expense,us-gaap_InterestExpense,,-130930000.0,-127083000.0,-123122000.0,-123173000.0,-127755000.0
+Interest Expense (non-operating),us-gaap_InterestExpenseNonoperating,-114340000.0,,,,,
+Interest income,us-gaap_InvestmentIncomeInterest,47961000.0,43928000.0,17605000.0,1114000.0,5879000.0,14131000.0
+"Other, net",us-gaap_OtherNonoperatingIncomeExpense,,,,,1165000.0,47671000.0
+"Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,,,20899000.0,-3249000.0,,
+"Other income (loss), net",us-gaap_OtherNonoperatingIncomeExpense,,23242000.0,,,,
+"Other income, net",us-gaap_OtherNonoperatingIncomeExpense,3865000.0,,,,,
+Nonoperating Income/Expense,us-gaap_NonoperatingIncomeExpense,-62514000.0,-63760000.0,-88579000.0,-125257000.0,-116129000.0,-65953000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,432143000.0,40309000.0,92583000.0,150610000.0,-7327000.0,446305000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,109181000.0,5967000.0,19630000.0,38700000.0,1188000.0,106206000.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,8.02,0.78,1.44,2.22,-0.17,6.68
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,7.77,0.77,1.44,2.2,-0.17,6.62
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,40262000.0,43940000.0,50548000.0,50348000.0,50195000.0,50932000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,41547000.0,44599000.0,50644000.0,50753000.0,50195000.0,51375000.0
+Special items,skyw_SpecialChargesAndWriteDownValueOfAssets,,,,84592000.0,,21869000.0
+Payroll support grant,skyw_GrantContraExpenses,,,,-422669000.0,,
+CARES Act payroll support grant,skyw_GrantContraExpenses,,,,,-345491000.0,

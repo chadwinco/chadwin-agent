@@ -1,0 +1,67 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net premiums written,us-gaap_PremiumsWrittenNet,14866000000.0,14196000000.0,12646000000.0,13829000000.0,13360000000.0,12221000000.0,13104000000.0,11951000000.0,10710000000.0,12020000000.0,10302000000.0,9199000000.0
+Increase in unearned premiums,us-gaap_IncreaseDecreaseInUnearnedPremiumsNet,-507000000.0,-1071000000.0,-646000000.0,-456000000.0,-1068000000.0,-638000000.0,-430000000.0,-952000000.0,-568000000.0,-485000000.0,-745000000.0,-453000000.0
+Net premiums earned,us-gaap_PremiumsEarnedNet,14359000000.0,13125000000.0,12000000000.0,13373000000.0,12292000000.0,11583000000.0,12674000000.0,10999000000.0,10142000000.0,11535000000.0,9557000000.0,8746000000.0
+Net investment income,us-gaap_NetInvestmentIncome,1648000000.0,1568000000.0,1561000000.0,1508000000.0,1468000000.0,1391000000.0,1314000000.0,1145000000.0,1107000000.0,979000000.0,888000000.0,822000000.0
+Net realized gains (losses),us-gaap_RealizedInvestmentGainsLosses,-283000000.0,-160000000.0,116000000.0,198000000.0,104000000.0,-101000000.0,-103000000.0,-304000000.0,-77000000.0,-384000000.0,,
+Market risk benefits gains (losses),us-gaap_MarketRiskBenefitChangeInFairValueGainLoss,142000000.0,17000000.0,92000000.0,-230000000.0,-29000000.0,21000000.0,-32000000.0,-7000000.0,-115000000.0,,,
+Revenue,us-gaap_Revenues,16148000000.0,14836000000.0,13353000000.0,14849000000.0,13835000000.0,12894000000.0,13853000000.0,11833000000.0,11057000000.0,12130000000.0,9941000000.0,9669000000.0
+Losses and loss expenses,us-gaap_PolicyholderBenefitsAndClaimsIncurredNet,-6951000000.0,-6572000000.0,-6896000000.0,-7383000000.0,-6431000000.0,-5727000000.0,-7106000000.0,-5683000000.0,-5148000000.0,-7279000000.0,-5408000000.0,-4787000000.0
+"Policy benefits (includes remeasurement gains of $66, $26, $61 and $4)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,1372000000.0,,,,,,,,,,,
+Policy acquisition costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,-2563000000.0,-2415000000.0,-2313000000.0,-2324000000.0,-2226000000.0,-2207000000.0,-2178000000.0,-2016000000.0,-1948000000.0,-1975000000.0,-1739000000.0,-1737000000.0
+General and Administrative Expense,us-gaap_GeneralAndAdministrativeExpense,-1138000000.0,-1125000000.0,-1080000000.0,-1094000000.0,-1094000000.0,-1070000000.0,-1060000000.0,-969000000.0,-930000000.0,-883000000.0,-818000000.0,-778000000.0
+Other (income) expense,us-gaap_OtherOperatingIncomeExpenseNet,43000000.0,655000000.0,83000000.0,325000000.0,110000000.0,191000000.0,154000000.0,100000000.0,296000000.0,-188000000.0,-101000000.0,310000000.0
+Depreciation and Amortization,us-gaap_AmortizationOfIntangibleAssets,-75000000.0,-74000000.0,-75000000.0,-81000000.0,-80000000.0,-80000000.0,-84000000.0,-70000000.0,-72000000.0,-69000000.0,-71000000.0,-71000000.0
+Integration expenses,us-gaap_BusinessCombinationIntegrationRelatedCosts,1000000.0,2000000.0,0.0,-7000000.0,,,,,,,,
+Total expenses,us-gaap_BenefitsLossesAndExpenses,-12254000000.0,-11120000000.0,-11689000000.0,-11855000000.0,-11129000000.0,-10258000000.0,-11400000000.0,-9648000000.0,-8781000000.0,-11053000000.0,-8433000000.0,-7340000000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,3894000000.0,3716000000.0,1664000000.0,2994000000.0,2706000000.0,2636000000.0,2453000000.0,2185000000.0,2276000000.0,1077000000.0,1508000000.0,2329000000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,-787000000.0,-717000000.0,-321000000.0,-504000000.0,-490000000.0,-342000000.0,-413000000.0,-392000000.0,-384000000.0,-265000000.0,-293000000.0,-355000000.0
+Profit or Loss,us-gaap_ProfitLoss,3107000000.0,2999000000.0,1343000000.0,2490000000.0,2216000000.0,2294000000.0,2040000000.0,,,,,
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-306000000.0,-31000000.0,-12000000.0,-166000000.0,14000000.0,-151000000.0,3000000.0,,,,,
+Net Income,us-gaap_NetIncomeLoss,2801000000.0,2968000000.0,1331000000.0,2324000000.0,2230000000.0,2143000000.0,2043000000.0,1793000000.0,1892000000.0,812000000.0,1215000000.0,1974000000.0
+Interest Expense,us-gaap_InterestExpense,197000000.0,181000000.0,181000000.0,192000000.0,182000000.0,178000000.0,174000000.0,165000000.0,160000000.0,-150000000.0,-134000000.0,132000000.0
+Unrealized appreciation,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,868000000.0,,,,,,,,,,,
+Current discount rate on future policy benefits,us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentBeforeTax,305000000.0,-130000000.0,-122000000.0,-672000000.0,53000000.0,-53000000.0,683000000.0,-35000000.0,-151000000.0,,,
+Instrument-specific credit risk on market risk benefits,us-gaap_OciMarketRiskBenefitInstrumentSpecificCreditRiskGainLossAfterAdjustmentsBeforeTax,-9000000.0,1000000.0,4000000.0,-8000000.0,5000000.0,5000000.0,-5000000.0,11000000.0,-3000000.0,,,
+Cumulative foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,128000000.0,796000000.0,359000000.0,445000000.0,-530000000.0,80000000.0,-317000000.0,215000000.0,-177000000.0,,-777000000.0,67000000.0
+"Other, including postretirement benefit liability adjustment",cb_OtherComprehensiveIncomeLossDefinedBenefitPlanAndOtherAfterReclassificationAdjustmentBeforeTax,-6000000.0,-26000000.0,-95000000.0,-19000000.0,-29000000.0,31000000.0,37000000.0,48000000.0,-33000000.0,,,
+"Other comprehensive income, before income tax",us-gaap_OtherComprehensiveIncomeLossBeforeTax,1286000000.0,,,,,,,,,,,
+Income tax expense related to OCI items,us-gaap_OtherComprehensiveIncomeLossTax,-40000000.0,,,-150000000.0,,,,,,,,
+Other comprehensive income,us-gaap_OtherComprehensiveIncomeLossNetOfTax,1246000000.0,,,,,,,,,,,
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,4353000000.0,4593000000.0,2347000000.0,5545000000.0,1255000000.0,1689000000.0,,,,,,
+Comprehensive income attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,-386000000.0,,-7000000.0,,,-123000000.0,,,,,,
+Comprehensive income attributable to Chubb,us-gaap_ComprehensiveIncomeNetOfTax,3967000000.0,4545000000.0,2340000000.0,5358000000.0,1312000000.0,1566000000.0,,,,,,
+"Net realized gains (losses) (includes $(442), $12, $(578), and $36 reclassified from AOCI)",us-gaap_RealizedInvestmentGainsLosses,,,,,,,,,,,-504000000.0,
+"Policy benefits (includes remeasurement losses of $2, $3, $5 and $22)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,1406000000.0,,,,,,,,,,
+"Policy benefits (includes remeasurement gains of $26, $25, $4 and $21)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,-1099000000.0,,,,,,,,
+Policy benefits (includes remeasurement losses of $3 and $19),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,1227000000.0,,,,,,,,,
+"Policy benefits (includes remeasurement losses of $3, $5, $22 and $4)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,-1219000000.0,,,,,,,
+Policy benefits (includes remeasurement gains (losses) of $(19) and $1),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,-1180000000.0,,,,,,
+"Policy benefits (includes remeasurement gains of $25, $17, $21, and $11)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,-938000000.0,,,,,
+Policy benefits (includes remeasurement gains (losses) of $1 and $(5)),us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,,-797000000.0,,,
+Policy benefits,us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,,,-486000000.0,-159000000.0,-145000000.0
+"Policy benefits (includes remeasurement losses of $5, nil, $4, and $6)",us-gaap_LiabilityForFuturePolicyBenefitsPeriodExpense,,,,,,,,-830000000.0,,,,
+Cigna integration expenses,us-gaap_BusinessCombinationIntegrationRelatedCosts,,,,,-7000000.0,-7000000.0,-14000000.0,-15000000.0,-22000000.0,-23000000.0,-3000000.0,
+Reclassification adjustment for net realized (gains) losses included in net income,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesBeforeTax,,,,,,,,,,,442000000.0,136000000.0
+Unrealized appreciation (depreciation),us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,986000000.0,901000000.0,3459000000.0,,,,,,,-4786000000.0,
+Change in unrealized appreciation (depreciation),us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,-489000000.0,-677000000.0,,,,,,
+Change in unrealized depreciation,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,,,-2170000000.0,-1194000000.0,1786000000.0,-3045000000.0,,
+Unrealized appreciation (depreciation) after reclassification adjustment,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeTax,,,,,,,,,,,-4344000000.0,-4652000000.0
+Change in Cumulative foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,,,,,,,,,,-966000000.0,,
+"Change in Other, including postretirement benefit liability adjustment",cb_OtherComprehensiveIncomeLossDefinedBenefitPlanAndOtherAfterReclassificationAdjustmentBeforeTax,,,,,,,,,,-59000000.0,,
+Income tax (expense) benefit related to OCI items,us-gaap_OtherComprehensiveIncomeLossTax,,-33000000.0,-43000000.0,,29000000.0,9000000.0,-0.0,28000000.0,-132000000.0,,245000000.0,
+Income tax benefit related to OCI items,us-gaap_OtherComprehensiveIncomeLossTax,,,,,,,,,,165000000.0,,812000000.0
+"Other comprehensive income (loss), before income tax",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,1627000000.0,1047000000.0,3205000000.0,-990000000.0,-614000000.0,,-955000000.0,1422000000.0,,-5116000000.0,
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,,1594000000.0,1004000000.0,3055000000.0,-961000000.0,-605000000.0,,-927000000.0,1290000000.0,,-4871000000.0,
+"Other comprehensive loss, before income tax",us-gaap_OtherComprehensiveIncomeLossBeforeTax,,,,,,,-1772000000.0,,,-4070000000.0,,-4566000000.0
+Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,,,,,-1772000000.0,,,-3905000000.0,,-3754000000.0
+Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,,,,,,,268000000.0,866000000.0,3182000000.0,-3093000000.0,-3656000000.0,-1780000000.0
+Comprehensive income (loss) attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,,-48000000.0,,-187000000.0,57000000.0,,,,,,,
+Comprehensive loss attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,,,,,,,79000000.0,,,,,
+Comprehensive income (loss) attributable to Chubb,us-gaap_ComprehensiveIncomeNetOfTax,,,,,,,347000000.0,,,,,
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,7.05,7.42,3.32,5.75,5.51,5.28,4.99,4.35,4.57,1.95,2.88,4.64
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,6.99,7.35,3.29,5.7,5.46,5.23,4.95,4.32,4.53,1.94,2.86,4.59
+,,,,,,,,,,,,,
+Net realized gains (losses) (includes $(136) and $24 reclassified from AOCI),us-gaap_RealizedInvestmentGainsLosses,,,,,,,,,,,,101000000.0
+Unrealized depreciation,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,,,,,,,,,-4788000000.0
+Postretirement benefit liability adjustment,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentBeforeTax,,,,,,,,,,,5000000.0,19000000.0

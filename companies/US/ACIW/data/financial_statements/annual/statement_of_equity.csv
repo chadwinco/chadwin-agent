@@ -1,0 +1,9 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,203118000.0,121509000.0,142177000.0,127791000.0,72660000.0,67062000.0
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,-12003000.0,8190000.0,,-7102000.0,-862000.0,1034000.0
+Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,-18113000.0,,,
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,41281000.0,24547000.0,29753000.0,27242000.0,29602000.0,36763000.0
+"Shares issued and forfeited, net, under stock plans",us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,9199000.0,9600000.0,8113000.0,12460000.0,15678000.0,
+"Shares issued and forfeited, net, under stock plans, including income tax benefits",us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,,,,,,16481000.0
+Repurchase of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,128454000.0,27587000.0,206537000.0,107378000.0,28881000.0,35617000.0
+Repurchase of stock-based compensation awards for tax withholdings,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,13111000.0,5149000.0,6983000.0,14833000.0,11568000.0,3986000.0

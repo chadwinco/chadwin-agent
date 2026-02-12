@@ -1,0 +1,66 @@
+{
+  "ticker": "99830",
+  "asof_date": "2026-02-08",
+  "currency": "JPY",
+  "price": 63500.0,
+  "method": "three-stage-dcf-fade",
+  "base_year": {
+    "period_end": "2025-08-31",
+    "revenue": 3400539000000.0,
+    "net_debt": -379739000000.0,
+    "diluted_shares": 307246757.0
+  },
+  "scenarios": {
+    "base": {
+      "revenue_growth_stage1": 0.085,
+      "fcf_margin_stage1": 0.14,
+      "discount_rate": 0.083,
+      "terminal_growth": 0.02,
+      "fcf_margin_terminal": 0.112,
+      "stage1_years": 10,
+      "fade_years": 5,
+      "projection_years_total": 15,
+      "enterprise_value": 12529857050870.752,
+      "equity_value": 12909596050870.752,
+      "value_per_share": 42017.02949421449,
+      "margin_of_safety": -0.3383144961541025,
+      "pv_explicit_fcf": 6860874383860.129,
+      "pv_terminal": 5668982667010.623,
+      "terminal_value": 18747008595527.38
+    },
+    "bull": {
+      "revenue_growth_stage1": 0.105,
+      "fcf_margin_stage1": 0.155,
+      "discount_rate": 0.076,
+      "terminal_growth": 0.025,
+      "fcf_margin_terminal": 0.123,
+      "stage1_years": 12,
+      "fade_years": 5,
+      "projection_years_total": 17,
+      "enterprise_value": 22241846386696.21,
+      "equity_value": 22621585386696.21,
+      "value_per_share": 73626.76699203113,
+      "margin_of_safety": 0.15947664554379726,
+      "pv_explicit_fcf": 10787053515567.463,
+      "pv_terminal": 11454792871128.75,
+      "terminal_value": 39792007810864.28
+    },
+    "bear": {
+      "revenue_growth_stage1": 0.05,
+      "fcf_margin_stage1": 0.105,
+      "discount_rate": 0.097,
+      "terminal_growth": 0.015,
+      "fcf_margin_terminal": 0.09,
+      "stage1_years": 8,
+      "fade_years": 5,
+      "projection_years_total": 13,
+      "enterprise_value": 5374836514676.449,
+      "equity_value": 5754575514676.449,
+      "value_per_share": 18729.49147084553,
+      "margin_of_safety": -0.7050473784118814,
+      "pv_explicit_fcf": 3349249507118.253,
+      "pv_terminal": 2025587007558.1965,
+      "terminal_value": 6748963217212.871
+    }
+  }
+}

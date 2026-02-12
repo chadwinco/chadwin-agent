@@ -1,0 +1,12 @@
+label,concept,2025-11-29,2025-08-30,2025-03-01,2024-11-30,2024-08-31,2024-03-02,2023-12-02,2023-09-02,2023-02-25,2022-11-26,2022-08-27
+"Other comprehensive income, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,372000.0,1961000.0,,,,,,,,,
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,151000.0,-434000.0,1299000.0,100000.0,677000.0,,,,
+"Other comprehensive loss, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,,,,,,595000.0,20000.0,-737000.0,-754000.0
+Stock compensation plan transactions,calm_StockCompensationPlanTransactions,1384000.0,1291000.0,-2758000.0,1068000.0,1097000.0,-571000.0,1061000.0,1035000.0,-528000.0,987000.0,980000.0
+Contributions,us-gaap_NoncontrollingInterestIncreaseFromBusinessCombination,979000.0,,,,,,,,,,
+Repurchase of shares,us-gaap_TreasuryStockValueAcquiredCostMethod,75590000.0,,,,,,,,,,
+Contributions to Crepini Foods LLC,us-gaap_NoncontrollingInterestIncreaseFromSubsidiaryEquityIssuance,,,,6485000.0,,,,,,,
+Acquisition of noncontrolling interest in Meadowcreek Foods LLC,us-gaap_MinorityInterestPeriodIncreaseDecrease,,,,0.0,,,,,,,
+Dividends,us-gaap_Dividends,34223000.0,66457000.0,16589000.0,7147000.0,4891000.0,4786000.0,557000.0,29000.0,10555000.0,6494000.0,41742000.0
+Profit or Loss,us-gaap_ProfitLoss,102927000.0,199107000.0,508153000.0,218359000.0,149590000.0,146363000.0,16578000.0,411000.0,322769000.0,198294000.0,125134000.0
+Dividends per common share (in dollars per share),us-gaap_CommonStockDividendsPerShareCashPaid,0.719,1.371,3.456,1.489,1.019,0.997,0.116,0.006,2.199,1.353,

@@ -1,0 +1,16 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Issuance of common stock upon vesting of restricted stock units,qlys_StockIssuedDuringPeriodValueRestrictedStockAwardVested,,,,,,,,0.0,0.0,0.0,0.0,0.0
+Net Income,us-gaap_NetIncomeLoss,50346000.0,47290000.0,47534000.0,46212000.0,43772000.0,39731000.0,46515000.0,35382000.0,29105000.0,27660000.0,26596000.0,25410000.0
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,241000.0,473000.0,,849000.0,-145000.0,376000.0,668000.0,45000.0,-1677000.0
+"Other comprehensive (loss) income, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,-124000.0,-4222000.0,-1281000.0,,,,,,,,,
+"Other comprehensive income, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,697000.0,,,,,,
+Issuance of common stock upon exercise of stock options (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,67000.0,57000.0,56000.0,54000.0,61000.0,46000.0,239000.0,101000.0,61000.0,217000.0,146000.0,66000.0
+Issuance of common stock upon exercise of stock options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,3279000.0,2978000.0,2599000.0,2341000.0,3200000.0,2770000.0,21236000.0,4820000.0,2328000.0,14088000.0,6504000.0,2569000.0
+Repurchase of common stock (in shares),us-gaap_StockRepurchasedAndRetiredDuringPeriodShares,366000.0,375000.0,292000.0,344000.0,233000.0,105000.0,273000.0,346000.0,584000.0,684000.0,561000.0,368000.0
+Repurchase of common stock,us-gaap_StockRepurchasedAndRetiredDuringPeriodValue,49743000.0,49544000.0,39739000.0,45213000.0,35063000.0,18029000.0,38822000.0,42492000.0,67032000.0,95026000.0,71232000.0,46581000.0
+Issuance of common stock upon vesting of restricted stock units (in shares),us-gaap_RestrictedStockSharesIssuedNetOfSharesForTaxWithholdings,86000.0,85000.0,172000.0,91000.0,91000.0,149000.0,92000.0,96000.0,108000.0,87000.0,90000.0,70000.0
+Taxes related to net share settlement of equity awards (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,36000.0,35000.0,78000.0,38000.0,35000.0,66000.0,39000.0,38000.0,43000.0,36000.0,33000.0,28000.0
+Taxes related to net share settlement of equity awards,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,4933000.0,4436000.0,10831000.0,5382000.0,5903000.0,11808000.0,5504000.0,4389000.0,5105000.0,4692000.0,4530000.0,3631000.0
+Issuance of common stock through employee stock purchase plan (in shares),us-gaap_StockIssuedDuringPeriodSharesEmployeeStockPurchasePlans,27000.0,,37000.0,31000.0,,29000.0,31000.0,,29500.0,23000.0,,22500.0
+Issuance of common stock through employee stock purchase plan,us-gaap_StockIssuedDuringPeriodValueEmployeeStockPurchasePlan,2934000.0,,3817000.0,3264000.0,,3608000.0,3089000.0,,2988000.0,2359000.0,,2086000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,19477000.0,18066000.0,18820000.0,20337000.0,17114000.0,19059000.0,18536000.0,16020000.0,16033000.0,13291000.0,12820000.0,11745000.0

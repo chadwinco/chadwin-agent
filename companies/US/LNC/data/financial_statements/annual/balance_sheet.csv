@@ -1,0 +1,57 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
+"Fixed maturity available-for-sale securities, at fair value",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,87111000000.0,88738000000.0,,,
+Trading securities,us-gaap_TradingSecuritiesDebt,2025000000.0,2359000000.0,3498000000.0,4482000000.0,4501000000.0
+Equity securities,us-gaap_EquitySecuritiesFvNi,294000000.0,306000000.0,427000000.0,318000000.0,129000000.0
+"Mortgage loans on real estate, net of allowance for credit losses",us-gaap_FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLoss,21083000000.0,18963000000.0,,,
+Policy loans,us-gaap_LoansInsurancePolicy,2476000000.0,2476000000.0,2359000000.0,2364000000.0,2426000000.0
+Derivative investments,us-gaap_DerivativeAssets,9677000000.0,6474000000.0,3594000000.0,5437000000.0,3109000000.0
+Other investments,us-gaap_OtherInvestments,6588000000.0,5015000000.0,3739000000.0,4292000000.0,3984000000.0
+Total investments,us-gaap_Investments,129254000000.0,124331000000.0,131654000000.0,153630000000.0,153956000000.0
+Cash and invested cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,5801000000.0,3365000000.0,3343000000.0,2612000000.0,1708000000.0
+"Deferred acquisition costs, value of business acquired and deferred sales inducements",lnc_DeferredPolicyAcquisitionCostsValueOfBusinessAcquiredAndDeferredSalesInducements,12537000000.0,12397000000.0,,,
+"Reinsurance recoverables, net of allowance for credit losses",us-gaap_ReinsuranceRecoverables,28750000000.0,29843000000.0,19882000000.0,20295000000.0,
+"Deposit assets, net of allowance for credit losses",us-gaap_DepositAssets,30776000000.0,28789000000.0,,,
+Market risk benefit assets,us-gaap_MarketRiskBenefitAssetAmount,-4860000000.0,-3894000000.0,,,
+Accrued investment income,us-gaap_AccruedInvestmentIncomeReceivable,1108000000.0,1082000000.0,1253000000.0,1189000000.0,1257000000.0
+Separate account assets,us-gaap_SeparateAccountAssets,168438000000.0,158257000000.0,143536000000.0,182583000000.0,167965000000.0
+Other Assets,us-gaap_OtherAssets,8163000000.0,9311000000.0,20708000000.0,18036000000.0,15960000000.0
+Total Assets,us-gaap_Assets,390831000000.0,372413000000.0,335108000000.0,387301000000.0,365948000000.0
+Goodwill,us-gaap_Goodwill,1144000000.0,1144000000.0,1144000000.0,1778000000.0,1778000000.0
+"Fixed maturity available-for-sale securities, at fair value (amortized cost: 2021 - $105,177; 2020 - $104,174; allowance for credit losses: 2021 - $19; 2020 - $13)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,118746000000.0,
+"Mortgage loans on real estate, net of allowance for credit losses (portion at fair value: 2021 - $739; 2020 - $832)",us-gaap_NotesReceivableNet,,,,17991000000.0,
+Reinsurance recoverables,us-gaap_ReinsuranceRecoverables,,,,,16496000000.0
+Premiums and fees receivable,us-gaap_PremiumsAndOtherReceivablesNet,,,,580000000.0,486000000.0
+Policyholder account balances,us-gaap_PolicyholderFunds,126197000000.0,120737000000.0,,,
+Future contract benefits,us-gaap_LiabilityForFuturePolicyBenefitsAndUnpaidClaimsAndClaimsAdjustmentExpense,39807000000.0,39864000000.0,42151000000.0,41030000000.0,40814000000.0
+Other contract holder funds,us-gaap_PolicyholderFunds,,,120800000000.0,111702000000.0,105405000000.0
+Funds withheld reinsurance liabilities,us-gaap_FundsHeldUnderReinsuranceAgreementsLiability,16907000000.0,17641000000.0,,2118000000.0,1946000000.0
+Market risk benefit liabilities,us-gaap_MarketRiskBenefitLiabilityAmount,1046000000.0,1716000000.0,,,
+Deferred front-end loads,lnc_DeferredFrontEndLoads,6730000000.0,5901000000.0,,,
+Payables for collateral on investments,us-gaap_DepositsReceivedForSecuritiesLoanedAtCarryingValue,10020000000.0,8105000000.0,6712000000.0,8946000000.0,6222000000.0
+Contingencies and Commitments (See Note 17),us-gaap_CommitmentsAndContingencies,,,,,
+Contingencies and Commitments (See Note 18),us-gaap_CommitmentsAndContingencies,,,,,
+Contingencies and Commitments (See Note 13),us-gaap_CommitmentsAndContingencies,,,,,
+Contingencies and Commitments (See Note 14),us-gaap_CommitmentsAndContingencies,,,,,
+Preferred stock,us-gaap_PreferredStockValueOutstanding,493000000.0,493000000.0,,,
+"Fixed maturity available-for-sale securities, at fair value (amortized cost: 2022 - $111,707; 2021 - $105,142; allowance for credit losses: 2022 - $22; 2021 - $19)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,99736000000.0,,
+"Mortgage loans on real estate, net of allowance for credit losses (portion at fair value: 2022 - $487; 2021 - $739)",us-gaap_NotesReceivableNet,,,18301000000.0,,
+Deferred acquisition costs and value of business acquired,us-gaap_DeferredPolicyAcquisitionCostsAndValueOfBusinessAcquired,,,13588000000.0,6081000000.0,5812000000.0
+Funds withheld reinsurance assets,us-gaap_FundsHeldUnderReinsuranceAgreementsAsset,,,,517000000.0,530000000.0
+"Fixed maturity available-for-sale securities, at fair value (amortized cost: 2020 – $104,174; 2019 – $94,295; allowance for credit losses: 2020 – $13; 2019 – $0)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,123044000000.0
+"Mortgage loans on real estate, net of allowance for credit losses (portion at fair value: 2020 – $832; 2019 – $0)",us-gaap_NotesReceivableNet,,,,,16763000000.0
+Separate account liabilities,us-gaap_SeparateAccountsLiability,168438000000.0,158257000000.0,143536000000.0,182583000000.0,167965000000.0
+Other Liabilities,us-gaap_OtherLiabilities,7261000000.0,7350000000.0,10885000000.0,13819000000.0,13823000000.0
+Total Liabilities,us-gaap_Liabilities,382562000000.0,365520000000.0,330539000000.0,367029000000.0,343249000000.0
+Long-term debt,lnc_LongTermDebtAndFairValueHedges,5856000000.0,5699000000.0,5955000000.0,6325000000.0,6682000000.0
+Short Term Debt,us-gaap_DebtCurrent,300000000.0,250000000.0,500000000.0,300000000.0,
+Common stock,us-gaap_CommonStockValueOutstanding,4674000000.0,4605000000.0,,,
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,7645000000.0,4778000000.0,6707000000.0,9096000000.0,8686000000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-5036000000.0,-3476000000.0,-7668000000.0,6441000000.0,8931000000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,8269000000.0,6893000000.0,4569000000.0,20272000000.0,22699000000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,390831000000.0,372413000000.0,335108000000.0,387301000000.0,365948000000.0
+"Preferred stock - 10,000,000 shares authorized",us-gaap_PreferredStockValueOutstanding,,,493000000.0,,
+"Common stock – 800,000,000 shares authorized; 169,220,511 and 177,193,515 shares issued and outstanding as of December 31, 2022, and December 31, 2021, respectively",us-gaap_CommonStockValueOutstanding,,,4544000000.0,,
+Reinsurance related embedded derivatives,lnc_ReinsuranceRelatedDerivativeLiabilities,,,,206000000.0,392000000.0
+"Common stock – 800,000,000 shares authorized; 177,193,515 and 192,329,691 shares issued and outstanding as of December 31, 2021, and December 31, 2020, respectively",us-gaap_CommonStockValueOutstanding,,,,4735000000.0,
+"Common stock – 800,000,000 shares authorized; 192,329,691 and 196,668,532 shares issued and outstanding as of December 31, 2020 and December 31, 2019, respectively",us-gaap_CommonStockValueOutstanding,,,,,5082000000.0
+Deferred gain on business sold through reinsurance,lnc_DeferredGainOnBusinessSoldThroughReinsurance,,,,26000000.0,

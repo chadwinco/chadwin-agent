@@ -1,0 +1,79 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Profit or Loss,us-gaap_ProfitLoss,322962000.0,34342000.0,72953000.0,111910000.0,-8515000.0,340099000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,383880000.0,383115000.0,394552000.0,440198000.0,474959000.0,368098000.0
+Stock based compensation expense,us-gaap_ShareBasedCompensation,19864000.0,17125000.0,9159000.0,8685000.0,6802000.0,10274000.0
+Decrease in credit loss reserves,us-gaap_ProvisionForLoanLossesExpensed,-3628000.0,-185000.0,,,,
+Gain on disposal of fixed assets,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,-8245000.0,-14295000.0,,,,
+Loss (gain) on investments in other companies,us-gaap_GainLossOnSaleOfInvestments,6815000.0,479000.0,,,,
+Net increase in deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,100368000.0,539000.0,23825000.0,37305000.0,6100000.0,
+Impairment loss (gain) on assets held for sale,us-gaap_ImpairmentOfLongLivedAssetsToBeDisposedOf,-4157000.0,,,,,
+Decrease (increase) in receivables,us-gaap_IncreaseDecreaseInAccountsReceivable,-41171000.0,19818000.0,-32959000.0,-30093000.0,26831000.0,-40700000.0
+Decrease (increase) in income tax receivable,us-gaap_IncreaseDecreaseInIncomeTaxesReceivable,-7504000.0,997000.0,7815000.0,-5570000.0,7225000.0,14795000.0
+Increase in inventories,us-gaap_IncreaseDecreaseInInventories,-11888000.0,-3905000.0,,,,-4303000.0
+Decrease (increase) in other current assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,-13813000.0,1593000.0,-2871000.0,-1936000.0,,
+Decrease (increase) in operating lease right-of-use assets,skyw_IncreaseDecreaseInOperatingLeaseRightOfUseAsset,-1004000.0,,,,,
+Increase (decrease) in operating lease liabilities,skyw_IncreaseDecreaseInOperatingLeaseLiabilities,1004000.0,,,,,
+Increase (decrease) in deferred revenue,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,-40012000.0,229862000.0,40812000.0,-6832000.0,,
+Decrease (increase) in unbilled revenue,skyw_IncreaseDecreaseInUnbilledRevenue,-7871000.0,12601000.0,,,,
+Increase (decrease) in accounts payable and other current liabilities,skyw_IncreaseDecreaseInAccountsPayableAndOtherCurrentLiabilities,-3138000.0,80960000.0,-42032000.0,231177000.0,-26984000.0,-54043000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,692462000.0,736334000.0,480376000.0,831820000.0,633563000.0,721030000.0
+Purchases of marketable securities,us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt,-1430733000.0,-1339465000.0,-1834403000.0,-1517861000.0,-1347775000.0,-1938750000.0
+"Proceeds from Sale of Debt Securities, ",us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt,1543256000.0,1600877000.0,1488359000.0,1526057000.0,1170556000.0,1866761000.0
+Aircraft and rotable spare parts,us-gaap_PaymentsForFlightEquipment,-265854000.0,-238068000.0,-632460000.0,-537574000.0,-425618000.0,-581329000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-44895000.0,-13258000.0,-13031000.0,-18127000.0,-12678000.0,-80586000.0
+Proceeds from the sale of property and equipment,us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,5154000.0,15879000.0,16983000.0,7117000.0,,
+Deposits on aircraft,skyw_PaymentsForDepositsOnAircraft,-17535000.0,-65000000.0,-37100000.0,-125701000.0,-9625000.0,-52817000.0
+Aircraft deposits applied towards acquired aircraft,skyw_ProceedsFromReturnOfDepositsOnAircraft,,11649000.0,138383000.0,32962000.0,,
+Decrease (increase) in investments and financing activities with third parties and other assets,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,-18020000.0,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-228627000.0,-23228000.0,-904894000.0,-698522000.0,-683471000.0,-657034000.0
+Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,116165000.0,69689000.0,684502000.0,450032000.0,406364000.0,200040000.0
+Principal payments on long-term debt,us-gaap_RepaymentsOfLongTermDebt,-452855000.0,-447604000.0,-415050000.0,-540537000.0,-187404000.0,-382442000.0
+Payment of debt issuance cost,us-gaap_PaymentsOfDebtIssuanceCosts,-670000.0,-175000.0,-2178000.0,-1665000.0,-4130000.0,
+Proceeds from Issuance of Common Stock,us-gaap_ProceedsFromIssuanceOfCommonStock,2864000.0,2811000.0,2957000.0,3146000.0,2819000.0,6271000.0
+Employee income tax paid on vested equity awards,skyw_TreasurySharesWithheldForPaymentOfTaxes,-6930000.0,-585000.0,-1150000.0,-1576000.0,-6165000.0,-9313000.0
+Purchase of treasury stock and related excise tax,skyw_PaymentsForRepurchaseOfCommonStockAndRelatedExciseTax,-43324000.0,-291949000.0,,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-384750000.0,-667813000.0,269081000.0,-90600000.0,178425000.0,-305174000.0
+Increase (decrease) in cash and cash equivalents,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,79085000.0,45293000.0,-155437000.0,42698000.0,128517000.0,-241178000.0
+Decrease (increase) in other assets,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,4158000.0,,-65395000.0,-89428000.0,4133000.0
+Acquisition of property and equipment,us-gaap_FairValueOfAssetsAcquired,99266000.0,12583000.0,16826000.0,11336000.0,,
+Derecognition of right of use assets,skyw_DerecognitionOfRightOfUseAssets,,39247000.0,,,,
+Derecognition of operating lease liabilities,skyw_DerecognitionOfOperatingLeaseLiabilities,,39247000.0,,,,
+,,,,,,,
+Impairment on assets held for sale,us-gaap_ImpairmentOfLongLivedAssetsToBeDisposedOf,,2318000.0,51384000.0,,,
+"Interest, net of capitalized amounts",us-gaap_InterestPaidNet,113571000.0,128288000.0,125321000.0,124918000.0,125440000.0,131733000.0
+Income Tax Expense,us-gaap_IncomeTaxesPaidNet,18588000.0,13610000.0,1166000.0,6589000.0,1780000.0,2490000.0
+Increase (decrease) in credit loss reserves,us-gaap_ProvisionForLoanLossesExpensed,,,-4591000.0,-4249000.0,,
+Loss (gain) on disposal of fixed assets,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,-7948000.0,-4586000.0,,
+Gain on investments in other companies,us-gaap_GainLossOnSaleOfInvestments,,,-11380000.0,,,
+Decrease (increase) in inventories,us-gaap_IncreaseDecreaseInInventories,,,-16628000.0,-12897000.0,19307000.0,
+Increase in unbilled revenue,skyw_IncreaseDecreaseInUnbilledRevenue,,,-11491000.0,-8404000.0,,
+Write-off of maintenance assets,skyw_WriteOffOfMaintenanceAssets,,,,,3255000.0,
+Increase in other assets,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,,,-31625000.0,,,
+Payment of cash dividends,us-gaap_PaymentsOfDividendsCommonStock,,,,,-13059000.0,-23467000.0
+Purchase of common stock,us-gaap_OriginationOfLoanToPurchaseCommonStock,,,,,,-16145000.0
+Engines contributed to joint venture,us-gaap_ContributionOfProperty,,,,,,22313000.0
+Non-cash assets used to acquire aircraft under operating leases,skyw_RightOfUseAssetsOnAircraftAcquiredUnderOperatingLeases,,,,,,153566000.0
+Debt assumed on aircraft acquired under operating leases,us-gaap_NoncashOrPartNoncashAcquisitionDebtAssumed1,,,,,,14475000.0
+Lease liability arising from the recognition of right-of-use asset,skyw_LeaseLiabilityArisingFromRecognitionOfRightOfUseAsset,,,,,,456472000.0
+Purchase of treasury stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,-20000000.0,-78476000.0
+Net increase (decrease) in deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,,,,109654000.0
+Increase in operating lease right-of-use asset,skyw_IncreaseDecreaseInOperatingLeaseRightOfUseAsset,,,,,,-895000.0
+Acquisition of rotable spare parts,skyw_NoncashAcquisitionOfRotableSpareParts,,,,,22187000.0,16514000.0
+Increase in debt issuance cost,us-gaap_PaymentsOfDebtIssuanceCosts,,,,,,-1642000.0
+Net cash received from sale of subsidiary,us-gaap_ProceedsFromDivestitureOfInterestInConsolidatedSubsidiaries,,,,,,53200000.0
+Decrease in carrying amount of liabilities,skyw_IncreaseDecreaseInCarryingAmountOfLiabilities,,,,,,-68341000.0
+Decrease in carrying amount of assets,skyw_IncreaseDecreaseInCarryingAmountOfAssets,,,,,,-101448000.0
+"Proceeds from the sale of aircraft, property and equipment",us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,,,,,3239000.0,26008000.0
+Return of deposits applied towards acquired aircraft,skyw_ReturnOfDepositsOnAircraft,,,,,27858000.0,46346000.0
+Gain on sale of subsidiary,skyw_GainLossOnSaleOfSubsidiaries,,,,,,-46525000.0
+Special items,skyw_SpecialChargesAndWriteDownValueOfAssets,,,,84592000.0,,21869000.0
+Decrease in operating lease right-of-use assets,skyw_IncreaseDecreaseInOperatingLeaseRightOfUseAsset,,25954000.0,86588000.0,43846000.0,53647000.0,
+Decrease in operating lease liabilities,skyw_IncreaseDecreaseInOperatingLeaseLiabilities,,-54984000.0,-76812000.0,-51326000.0,,
+Warrants issued to U.S. Treasury,skyw_WarrantsIssued,,,,5804000.0,,
+Cash received from buyers,us-gaap_GainOrLossOnSaleOfStockInSubsidiary,,,,,,79632000.0
+Increase in credit loss reserves,us-gaap_ProvisionForLoanLossesExpensed,,,,,17087000.0,
+Loss on disposal of fixed assets,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,,445000.0,
+Decrease in other current assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,,,8233000.0,2707000.0
+Increase in operating lease liabilities,skyw_IncreaseDecreaseInOperatingLeaseLiabilities,,,,,-65557000.0,
+Increase in deferred revenue,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,,,,,110728000.0,
+Warrants issued under CARES Act agreements,skyw_CoronavirusAidReliefAndEconomicSecurityActWarrantIssuance,,,,,8248000.0,

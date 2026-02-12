@@ -1,0 +1,54 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net Income,us-gaap_NetIncomeLoss,445000000.0,699000000.0,-722000000.0,-528000000.0,895000000.0,1222000000.0,853000000.0,511000000.0,-881000000.0,-2574000000.0,238000000.0,104000000.0
+Realized (gain) loss,us-gaap_DebtAndEquitySecuritiesRealizedGainLoss,-216000000.0,-641000000.0,11000000.0,-431000000.0,663000000.0,-434000000.0,453000000.0,-1784000000.0,-828000000.0,220000000.0,522000000.0,29000000.0
+Market risk benefit (gain) loss,us-gaap_MarketRiskBenefitChangeInFairValueGainLoss,-343000000.0,-940000000.0,1293000000.0,657000000.0,-136000000.0,-1907000000.0,-1428000000.0,-2023000000.0,619000000.0,,,
+"Sales and maturities (purchases) of trading securities, net",us-gaap_ProceedsFromPaymentsForTradingSecurities,,,71000000.0,,,129000000.0,,,290000000.0,,,
+Early extinguishment of debt (gain) loss,us-gaap_GainsLossesOnExtinguishmentOfDebt,,-94000000.0,,,,,,,,,,
+"Deferred acquisition costs, value of business acquired, deferred ales inducements and deferred front-end loads",lnc_DeferredAcquisitionCostsValueOfBusinessAcquiredDeferredSalesInducementsAndDeferredFrontEndLoadsDeferralsAndInterestNetOfAmortization,,,156000000.0,,,190000000.0,,,,,,
+Accrued investment income,us-gaap_IncreaseDecreaseInAccruedInvestmentIncomeReceivable,,,-16000000.0,,,-32000000.0,,,4000000.0,,,-35000000.0
+Insurance liabilities and reinsurance-related balances,lnc_ChangeInInsuranceLiabilitiesAndReinsuranceRelatedBalance,,,-216000000.0,,,-1047000000.0,,,-1322000000.0,,,1271000000.0
+Accrued expenses,us-gaap_IncreaseDecreaseInAccruedLiabilities,,,-227000000.0,,,-41000000.0,,,-143000000.0,,,-262000000.0
+Federal income tax accruals,us-gaap_IncreaseDecreaseInIncomeTaxes,,,-227000000.0,,,306000000.0,,,-289000000.0,,,42000000.0
+Other,us-gaap_OtherNoncashIncomeExpense,,,-68000000.0,,,-0.0,,,-60000000.0,,,
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,-272000000.0,,,-1343000000.0,,,-774000000.0,,,753000000.0
+Purchases of available-for-sale securities and equity securities,lnc_PaymentsToAcquireDebtSecuritiesAvailableForSaleAndEquitySecuritiesFVNI,,,-3722000000.0,,,-2360000000.0,,,-2999000000.0,,,-3934000000.0
+Sales of available-for-sale securities and equity securities,lnc_ProceedsFromSaleOfDebtSecuritiesAvailableForSaleAndEquitySecurities,,,509000000.0,,,677000000.0,,,1739000000.0,,,105000000.0
+"Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,,,2689000000.0,,,1694000000.0,,,1440000000.0,,,1604000000.0
+Issuance of mortgage loans on real estate,lnc_IssuanceOfMortgageLoansOnRealEstate,,,-919000000.0,,,-571000000.0,,,-269000000.0,,,-540000000.0
+Repayment and maturities of mortgage loans on real estate,lnc_RepaymentAndMaturitiesOfMortgageLoansOnRealEstate,,,502000000.0,,,267000000.0,,,183000000.0,,,717000000.0
+"Repayment (issuance) of policy loans, net",us-gaap_PaymentsForProceedsFromPolicyLoans,,,-54000000.0,,,-1000000.0,,,-27000000.0,,,25000000.0
+"Net change in collateral on investments, certain derivatives and related settlements",lnc_NetChangeInCollateralOnInvestmentsDerivativesAndRelatedSettlements,,,-799000000.0,,,2232000000.0,,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-2046000000.0,,,1639000000.0,,,-325000000.0,,,-2141000000.0
+"Payment of long-term debt, including current maturities",us-gaap_RepaymentsOfLongTermDebt,,,-300000000.0,,,-47000000.0,,,,,,-300000000.0
+Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,,,0.0,,,347000000.0,,,,,,297000000.0
+Payment related to sale-leaseback transactions,lnc_PaymentsOfSaleLeasebackTransactions,,,-2000000.0,,,-4000000.0,,,-5000000.0,,,-4000000.0
+Proceeds from certain financing arrangements,lnc_ProceedsFromFinancingLeasesAndOtherFinancingActivities,,,,,,,,,-10000000.0,,,
+Payment related to certain financing arrangements,lnc_PaymentsForFinancingLeasesAndOtherFinancingActivities,,,-14000000.0,,,-16000000.0,,,,,,
+Deposits,lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,4434000000.0,,,,,,,,,
+Withdrawals,lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,-3129000000.0,,,,,,,,,
+"Transfers from (to) separate accounts, net",lnc_TransfersToAndFromSeparateAccountsNet,,,-73000000.0,,,-90000000.0,,,21000000.0,,,
+Common stock issued for benefit plans,lnc_CommonStockIssuedForBenefitPlans,,,-4000000.0,,,-5000000.0,,,-4000000.0,,,-10000000.0
+Dividends paid to preferred stockholders,us-gaap_PaymentsOfDividendsPreferredStockAndPreferenceStock,,,-34000000.0,,,-34000000.0,,,-25000000.0,,,
+Dividends paid to common stockholders,us-gaap_PaymentsOfDividendsCommonStock,,,-77000000.0,,,-77000000.0,,,-77000000.0,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,801000000.0,,,461000000.0,,,1522000000.0,,,736000000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,-1517000000.0,,,757000000.0,,,,,,
+Impairment of intangibles,us-gaap_GoodwillAndIntangibleAssetImpairment,,,,,,,,,,634000000.0,,
+"Deferred acquisition costs, value of business acquired, deferred sales inducements and deferred front-end loads",lnc_DeferredAcquisitionCostsValueOfBusinessAcquiredDeferredSalesInducementsAndDeferredFrontEndLoadsDeferralsAndInterestNetOfAmortization,,,,,,,,,156000000.0,,,
+Purchases of alternative investments,lnc_PaymentsToAcquireAlternativeInvestments,,,-397000000.0,,,-315000000.0,,,-170000000.0,,,-161000000.0
+Sales and repayments of alternative investments,lnc_ProceedsFromSaleAndRepaymentOfAlternativeInvestments,,,213000000.0,,,16000000.0,,,22000000.0,,,131000000.0
+Deposits of fixed account balances,lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,,,,3602000000.0,,,,,,
+Withdrawals of fixed account balances,lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,,,,-3215000000.0,,,,,,
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,,,,,,,-400000000.0
+"Net increase (decrease) in cash, invested cash and restricted cash",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,,,,,,,,,423000000.0,,,-652000000.0
+"Net change in collateral on investments, derivatives and related settlements",lnc_NetChangeInCollateralOnInvestmentsDerivativesAndRelatedSettlements,,,,,,,,,-184000000.0,,,16000000.0
+"Deposits of fixed account values, including the fixed portion of variable",lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,,,,,,,,,,3048000000.0
+Deposits of fixed account values balances,lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,,,,,,,4192000000.0,,,
+Withdrawals of fixed account values balances,lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,,,,,,,-2570000000.0,,,
+"Deferred acquisition costs, value of business acquired, deferred sales inducements and deferred front-end loads deferrals and interest, net of amortization",lnc_DeferredAcquisitionCostsValueOfBusinessAcquiredDeferredSalesInducementsAndDeferredFrontEndLoadsDeferralsAndInterestNetOfAmortization,,,,,,,,,,,,31000000.0
+"Withdrawals of fixed account values, including the fixed portion of variable",lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,,,,,,,,,,-1830000000.0
+"Transfers to and from separate accounts, net",lnc_TransfersToAndFromSeparateAccountsNet,,,,,,,,,,,,14000000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,,,,,,,,,,,,-79000000.0
+"Trading securities purchases, sales and maturities, net",us-gaap_ProceedsFromPaymentsForTradingSecurities,,,,,,,,,,,,-187000000.0
+Amortization of deferred gain (loss) on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,,,12000000.0,12000000.0,,,,,,
+Premiums and fees receivable,us-gaap_IncreaseDecreaseInPremiumsReceivable,,,,,,,,,,,,-91000000.0
+Amortization of deferred gain on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,,,,,-15000000.0,-9000000.0,-9000000.0,-18000000.0,-19000000.0,-19000000.0

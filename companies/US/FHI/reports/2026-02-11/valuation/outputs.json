@@ -1,0 +1,59 @@
+{
+  "ticker": "FHI",
+  "asof_date": "2026-02-11",
+  "currency": "USD",
+  "price": 54.33,
+  "method": "two-stage-residual-income",
+  "base_year": {
+    "period_end": "2024-12-31",
+    "common_equity": 1095206000,
+    "shares_outstanding": 73992269.46438432
+  },
+  "scenarios": {
+    "base": {
+      "assumptions": {
+        "roe_stage1": 0.24,
+        "payout_ratio": 0.6,
+        "cost_of_equity": 0.095,
+        "terminal_roe": 0.16,
+        "terminal_growth": 0.03,
+        "stage1_years": 12
+      },
+      "equity_value": 3951570104.1326437,
+      "value_per_share": 53.405175064061325,
+      "margin_of_safety": -0.01702236215605879,
+      "pv_residual_income": 1749095377.392009,
+      "pv_continuing_value": 1107268726.740635
+    },
+    "bull": {
+      "assumptions": {
+        "roe_stage1": 0.25,
+        "payout_ratio": 0.6,
+        "cost_of_equity": 0.09,
+        "terminal_roe": 0.16,
+        "terminal_growth": 0.03,
+        "stage1_years": 12
+      },
+      "equity_value": 4550487441.032015,
+      "value_per_share": 61.499498176932676,
+      "margin_of_safety": 0.1319620500079639,
+      "pv_residual_income": 2029552877.0783846,
+      "pv_continuing_value": 1425728563.9536304
+    },
+    "bear": {
+      "assumptions": {
+        "roe_stage1": 0.2,
+        "payout_ratio": 0.7,
+        "cost_of_equity": 0.11,
+        "terminal_roe": 0.13,
+        "terminal_growth": 0.025,
+        "stage1_years": 8
+      },
+      "equity_value": 1881376858.2637806,
+      "value_per_share": 25.426667838176915,
+      "margin_of_safety": -0.5319958064020447,
+      "pv_residual_income": 607945303.1154772,
+      "pv_continuing_value": 178225555.1483035
+    }
+  }
+}

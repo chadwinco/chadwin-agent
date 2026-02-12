@@ -1,0 +1,16 @@
+label,concept,2025-12-31,2025-09-30,2025-03-31,2024-12-31,2024-09-30,2024-03-31,2023-12-31,2023-09-30,2023-03-31,2022-12-31,2022-09-30,2022-03-31
+Settlement of equity forward contract,atge_AdjustmentsToAdditionalPaidInCapitalEquityForwardContractSettlementIncludingTreasuryStock,,,,,,,,,,-13162000.0,,
+Equity forward contract,atge_AdjustmentsToAdditionalPaidInCapitalEquityForwardContract,,,,,,,,,,,,30000000.0
+"Other comprehensive loss, net of tax",us-gaap_OtherComprehensiveIncomeOtherNetOfTax,,,,,,,,,,,-1267000.0,
+Net Income,us-gaap_NetIncomeLoss,76376000.0,61832000.0,60832000.0,75856000.0,46165000.0,36821000.0,39891000.0,10646000.0,45869000.0,24144000.0,2192000.0,349842000.0
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeOtherNetOfTax,,,,,,,,,,,,-24000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,13239000.0,8293000.0,10263000.0,11467000.0,9451000.0,5900000.0,6050000.0,7455000.0,2795000.0,1968000.0,6145000.0,4953000.0
+Net activity from stock-based compensation awards,atge_StockIssuedDuringPeriodValueShareBasedPaymentArrangementNetActivity,-2866000.0,-38988000.0,-84000.0,-1146000.0,-1219000.0,3000.0,13908000.0,-5101000.0,93000.0,-441000.0,-2245000.0,24000.0
+Net activity from stock-based compensation awards (in shares),atge_StockIssuedDuringPeriodSharesShareBasedPaymentArrangementNetActivity,83000.0,715000.0,13000.0,57000.0,258478.0,8000.0,487000.0,15400.0,15000.0,57000.0,47809.0,54000.0
+Proceeds from stock issued under Colleague Stock Purchase Plan,us-gaap_StockIssuedDuringPeriodValueEmployeeStockPurchasePlan,449000.0,457000.0,395000.0,298000.0,331000.0,248000.0,188000.0,211000.0,181000.0,174000.0,147000.0,173000.0
+Proceeds from stock issued under Colleague Stock Purchase Plan (in shares),us-gaap_StockIssuedDuringPeriodSharesEmployeeStockPurchasePlans,3000.0,4000.0,4000.0,4000.0,5000.0,5000.0,4000.0,6000.0,5000.0,5000.0,4000.0,6000.0
+Repurchases of common stock for treasury,us-gaap_TreasuryStockValueAcquiredCostMethod,166026000.0,7595000.0,77603000.0,37517000.0,33911000.0,91408000.0,69301000.0,91884000.0,47770000.0,,,120000000.0
+Repurchases of common stock for treasury (in shares),us-gaap_TreasuryStockSharesAcquired,1727565.0,56817.0,791420.0,471327.0,462063.0,1771603.0,1350735.0,2158398.0,1228890.0,,,0.0
+Reclassification adjustment for realized gain on foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax,,,,,,,,,-0.0,,,-1551000.0
+Reclassification adjustment for loss on interest rate swap,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,,,,,,,,-0.0,-0.0,-0.0,
+Reclassification adjustment for unrealized loss on interest rate swap,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,,,,,,,,,,,-0.0

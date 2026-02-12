@@ -1,0 +1,42 @@
+asof_date: '2026-02-07'
+currency: USD
+price: 21.99
+model:
+  type: three-stage-dcf-fade
+base_year:
+  year: '2025-09-30'
+  revenue: 1096692000.0
+  net_debt: -340485000.0
+  diluted_shares: 403212000.0
+scenarios:
+  base:
+    revenue_growth_stage1: 0.13
+    fcf_margin_stage1: 0.21
+    discount_rate: 0.1
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.21
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.14
+    fcf_margin_stage1: 0.23
+    discount_rate: 0.09
+    terminal_growth: 0.035
+    fcf_margin_terminal: 0.22
+    stage1_years: 11
+    fade_years: 6
+  bear:
+    revenue_growth_stage1: 0.08
+    fcf_margin_stage1: 0.14
+    discount_rate: 0.115
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.14
+    stage1_years: 8
+    fade_years: 5
+notes:
+- Base revenue is annualized from 2025-09-30 quarterly revenue ($274.173M * 4) due
+  limited post-IPO annual history.
+- Net debt uses total debt minus cash and cash equivalents from latest statement;
+  current debt line-items were not reported in the annual export.
+- Stage-1 duration reflects platform expansion evidence in SEC filings but tempered
+  for AI/competition and execution risk.

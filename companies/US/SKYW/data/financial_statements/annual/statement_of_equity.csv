@@ -1,0 +1,31 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,322962000.0,34342000.0,72953000.0,111910000.0,-8515000.0,340099000.0
+Exercise of common stock options and vested employee stock awards,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,57000.0,142000.0,606000.0,,
+Exercise of common stock options and vested employee stock awards (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,270000.0,3848.0,9817.0,41020.0,,
+Employee income tax paid on vested equity awards,skyw_TreasurySharesWithheldForPaymentOfTax,6930000.0,585000.0,1150000.0,1576000.0,,
+Employee income tax paid on vested equity awards (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,117000.0,32000.0,38000.0,42000.0,,
+Sale of common stock under employee stock purchase plan,us-gaap_StockIssuedDuringPeriodValueEmployeeStockPurchasePlan,2864000.0,2754000.0,2815000.0,2540000.0,2781000.0,3165000.0
+Sale of common stock under employee stock purchase plan (in shares),us-gaap_StockIssuedDuringPeriodSharesEmployeeStockPurchasePlans,48000.0,117000.0,106000.0,64000.0,65000.0,65000.0
+"Issuance of common stock upon warrant exercise, net (in Shares)",skyw_StockIssuedDuringPeriodSharesWarrantsExercised,481201.0,,,,,
+Stock based compensation expense,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,19864000.0,17125000.0,9159000.0,8685000.0,6802000.0,
+Treasury stock purchases,us-gaap_TreasuryStockRetiredCostMethodAmount,43324000.0,,,,20000000.0,78476000.0
+Treasury stock purchases (in shares),us-gaap_TreasuryStockSharesRetired,578000.0,,,,386000.0,1396000.0
+Treasury stock purchases and related excise tax,us-gaap_TreasuryStockRetiredCostMethodAmount,,291949000.0,,,,
+Treasury stock purchases and related excise tax (in shares),us-gaap_TreasuryStockSharesRetired,,10589000.0,,,,
+"Net unrealized appreciation (depreciation) on marketable securities, net of tax",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,-157000.0,4127000.0,,,,
+Exercise of common stock options and vested restricted stock units,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,,,,38000.0,
+Exercise of common stock options and vested restricted stock units (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,,,,2578.0,
+Exercise of common stock options and stock issued under equity award plan,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,,,,,3106000.0
+Exercise of common stock options and stock issued under equity award plan (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,,,,,232514.0
+Treasury shares acquired from vested employee stock awards for income tax withholdings,skyw_TreasurySharesWithheldForPaymentOfTax,,,,,,9313000.0
+Treasury shares acquired from vested employee stock awards for income tax withholdings (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,,,,,,173000.0
+Stock based compensation expense related to the issuance of equity awards,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,,,,,,5770000.0
+"Net unrealized appreciation on marketable securities, net of taxes",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,,,,,,32000.0
+Shares acquired from vested employee stock awards for income tax withholdings,skyw_TreasurySharesWithheldForPaymentOfTax,,,,,6165000.0,
+Shares acquired from vested employee stock awards for income tax withholdings (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,,,,,108000.0,
+Warrants issued to U.S. Treasury,us-gaap_StockAndWarrantsIssuedDuringPeriodValuePreferredStockAndWarrants,,,,5804000.0,,
+Common stock purchased and cancelled,us-gaap_StockRepurchasedAndRetiredDuringPeriodValue,,,,,,16145000.0
+Common stock purchased and cancelled (in shares),us-gaap_StockRepurchasedAndRetiredDuringPeriodShares,,,,,,268000.0
+"Net unrealized depreciation on marketable securities, net of tax",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,,,-3802000.0,,,
+Cash dividends declared,us-gaap_DividendsCommonStockCash,,,,,7019000.0,24364000.0
+Warrants issued under CARES Act agreements,skyw_CoronavirusAidReliefAndEconomicSecurityActWarrantIssuance,,,,,8248000.0,

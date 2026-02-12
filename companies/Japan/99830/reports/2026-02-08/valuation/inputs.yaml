@@ -1,0 +1,48 @@
+asof_date: 2026-02-08
+ticker: "99830"
+currency: JPY
+price: 63500.0
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2025-08-31
+  revenue: 3400539000000.0
+  net_debt: -379739000000.0
+  diluted_shares: 307246757.0
+notes: |
+  Valuation is fully JPY-denominated (no USD translation).
+  Base-year revenue, net debt, and diluted shares are anchored to FY2025 annual
+  statements. Net debt is calculated as total debt minus cash and cash
+  equivalents:
+  513,500,000,000 - 893,239,000,000 = -379,739,000,000 (net cash).
+
+  FY2026 guidance was revised upward on 2026-01-08 (revenue +50bn yen; business
+  and operating profit +40bn yen each), supporting durable stage-1 growth
+  assumptions. However, management also flagged risks from warm-weather demand
+  volatility, inventory normalization, competition, and exchange rates, so
+  margin and growth fade are explicitly modeled.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.085
+    fcf_margin_stage1: 0.14
+    discount_rate: 0.083
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.112
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.105
+    fcf_margin_stage1: 0.155
+    discount_rate: 0.076
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.123
+    stage1_years: 12
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.05
+    fcf_margin_stage1: 0.105
+    discount_rate: 0.097
+    terminal_growth: 0.015
+    fcf_margin_terminal: 0.09
+    stage1_years: 8
+    fade_years: 5

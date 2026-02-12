@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+ACIW,40.33,4160000000.0,1.06,,38.89 - 58.14,,,1389044.0,"Aci Worldwide, Inc.",USD,0000935036,US0044981019,004498101,Nasdaq Global Select Market,NASDAQ,Software - Infrastructure,https://aciworldwide.com,Thomas Warsop,Technology,United States,3103,402-390-7600,6060 Coventry Drive,Elkhorn,NE,,,false,true,false

@@ -1,0 +1,76 @@
+{
+  "query": "Qualys, Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.msn.com/en-us/money/other/qualys-inc-nasdaq-qlys-q4-2025-earnings-call-transcript/ar-AA1VSjkU",
+    "https://seekingalpha.com/article/4866839-qualys-inc-qlys-q4-2025-earnings-call-transcript",
+    "https://www.nasdaq.com/articles/qualys-qlys-q4-2025-earnings-call-transcript",
+    "https://finance.yahoo.com/quote/QLYS/earnings-calls/",
+    "https://www.insidermonkey.com/blog/qualys-inc-nasdaqqlys-q3-2025-earnings-call-transcript-1640976/",
+    "https://news.alphastreet.com/qualys-inc-qlys-q4-2025-earnings-call-transcript/",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-qualys-beats-q1-2025-estimates-stock-rises-93CH-4026717"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/QLYS/data/filings/earnings-call-2026-02-06-news.alphastreet.com.md",
+    "source_url": "https://news.alphastreet.com/qualys-inc-qlys-q4-2025-earnings-call-transcript/",
+    "published_date": "2026-02-06"
+  },
+  "attempts": [
+    {
+      "url": "https://www.msn.com/en-us/money/other/qualys-inc-nasdaq-qlys-q4-2025-earnings-call-transcript/ar-AA1VSjkU",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://seekingalpha.com/article/4866839-qualys-inc-qlys-q4-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.nasdaq.com/articles/qualys-qlys-q4-2025-earnings-call-transcript",
+      "status": "body_too_short",
+      "http_status": 200,
+      "body_length": 452,
+      "published_date": null,
+      "message": "Extracted body shorter than 1000 characters."
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/QLYS/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/qualys-inc-nasdaqqlys-q3-2025-earnings-call-transcript-1640976/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 57121,
+      "published_date": null,
+      "message": null
+    },
+    {
+      "url": "https://news.alphastreet.com/qualys-inc-qlys-q4-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 60685,
+      "published_date": "2026-02-06",
+      "message": null
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-qualys-beats-q1-2025-estimates-stock-rises-93CH-4026717",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
+}
