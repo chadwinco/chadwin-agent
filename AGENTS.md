@@ -5,7 +5,7 @@ This repository is a local, Codex-operated equity research system.
 
 It is intentionally different from a traditional app:
 - An LLM agent is always the active operator.
-- Deterministic Python code is used for bounded automation only (fetching, parsing, transformations, calculations).
+- Deterministic Python code is used only for bounded automation that is materially faster/easier than agent-native execution (for example: `edgartools` SEC fetches, strict parsers, deterministic transformations, repeatable calculations).
 - The LLM is always responsible for sanity checks, error recovery, and final outcome quality.
 
 If you are acting as an agent in this repo, treat successful end-to-end delivery as your responsibility.
@@ -17,6 +17,7 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 4. After every command or edit, inspect outputs for errors or inconsistencies and fix them immediately.
 5. Never leave known breakage behind; rerun affected steps until outputs are correct.
 6. Keep work traceable: explicit dates, explicit assumptions, explicit file references.
+7. Do not add deterministic wrappers for tasks the LLM can already do directly (for example generic web search/browsing, routine file reads/writes, or simple routing decisions).
 
 ## Skill Selection Protocol
 - Treat `$research` as the default top-level skill for semi-autonomous runs.
@@ -70,6 +71,10 @@ A run is not complete until all required files exist and are internally consiste
 
 ## LLM-First Execution Rules
 - Treat scripts and shell commands as helpers, not substitutes for reasoning.
+- Default to direct LLM execution for open-ended work (web research, source triage, synthesis, file drafting/edits).
+- Do not build or expand script-level API plumbing for generic web search or generic repository file operations when the agent can do the task directly.
+- Add deterministic code only when it clearly improves speed, reliability, or reproducibility for a bounded step.
+- If uncertain whether code is justified, do the task directly with the LLM first and only then codify the narrow repeated bottleneck.
 - Perform cross-checks the scripts cannot guarantee (units, sign conventions, date cutoffs, claim-evidence alignment).
 - Validate that conclusions match computed valuation outputs and cited evidence.
 - If data is missing or malformed, resolve it (or fetch again) before writing final conclusions.
