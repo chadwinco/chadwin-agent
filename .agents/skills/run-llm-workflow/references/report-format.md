@@ -111,4 +111,5 @@ For each risk, write 1-2 sentences:
 - Next best research focus: <lever or "None">
 
 One short paragraph on why additional research is (or is not) likely to change the decision materially.
+Keep this paragraph as plain prose (not `Key: Value` format) so follow-up routing parsers only read the bullet fields above.
 ```

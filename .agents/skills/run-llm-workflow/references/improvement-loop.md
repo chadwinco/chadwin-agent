@@ -2,26 +2,38 @@
 
 Use this after each completed report to keep the skill improving.
 
-## 1. Log Learnings
+## 1. Mandatory Post-Run Introspection (Every Run)
+Review the full run path before closing the task:
+- include command retries/failures, path mistakes, parser surprises, and assumption misunderstandings;
+- identify the root cause (one-off operator miss vs workflow/documentation gap);
+- decide whether a workflow/reference update would have prevented the issue.
+
+## 2. Log Learnings (Every Run)
 Append one row to `docs/improvement-log.md`:
 
 `| Date | Area | Observation | Action |`
 
-Focus on repeatable issues:
+Focus on accuracy and misunderstanding prevention:
 - weak or missing evidence
 - unclear thesis
 - valuation assumption drift
 - noisy or overly long write-ups
+- command/path mistakes caused by ambiguous instructions
+- brittle parsing or formatting assumptions
 
-## 2. Patch the Skill When Issues Repeat
-If the same issue appears twice, update one of:
+If no workflow change is needed, still log a concise no-change outcome.
+
+## 3. Patch the Workflow in the Same Run
+When introspection finds a repeatable or workflow-caused issue, update one of:
 - `references/research-workflow.md`
 - `references/report-format.md`
 - `references/valuation-method.md`
+- `SKILL.md` (if routing/entrypoint guidance is unclear)
+- relevant router/helper scripts (only when docs alone cannot prevent recurrence)
 
 Keep changes concrete and minimal.
 
-## 3. Preserve Decision Traceability
+## 4. Preserve Decision Traceability
 When assumptions change materially versus a prior run, explain why:
 - in the report valuation section
 - in the corresponding `docs/improvement-log.md` row

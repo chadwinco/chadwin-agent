@@ -2,7 +2,7 @@
 
 - Source: https://www.fool.com/earnings/call-transcripts/2025/10/24/intel-intc-q3-2025-earnings-call-transcript/
 - Published: 2025-10-24
-- Retrieved: 2026-02-08
+- Retrieved: 2026-02-12
 NASDAQ : INTC
 
 Intel
@@ -77,7 +77,7 @@ Supply Environment -- CFO Zinsner stated, "We are definitely tight on Intel 10 a
 
 SUMMARY
 
-Intel ( INTC +4.91% ) reported revenue and profitability that exceeded prior guidance for Q3 2025 on a non-GAAP basis, accompanied by four consecutive quarters of improved execution. Strategic liquidity actions included significant cash inflows from US government and private partnerships, which bolstered Intel’s operational flexibility and reduced balance sheet risk. Segment results highlighted strong sequential growth in both client and data center revenue for Q3 2025, with ongoing supply constraints limiting fulfillment in key nodes and Foundry. Management guided for Q4 revenue and margins to be pressured by product mix and new product ramp costs, with guidance provided on a non-GAAP basis, while underscoring disciplined capital deployment and a multi-year roadmap anchored in AI, foundry, and custom silicon opportunities. Intel’s partnership announcements with NVIDIA and the US government reflect a clear strategy to leverage x86 leadership amid accelerating AI adoption, though execution risk remains until capacity and yield at leading-edge nodes normalize.
+Intel ( INTC 3.18% ) reported revenue and profitability that exceeded prior guidance for Q3 2025 on a non-GAAP basis, accompanied by four consecutive quarters of improved execution. Strategic liquidity actions included significant cash inflows from US government and private partnerships, which bolstered Intel’s operational flexibility and reduced balance sheet risk. Segment results highlighted strong sequential growth in both client and data center revenue for Q3 2025, with ongoing supply constraints limiting fulfillment in key nodes and Foundry. Management guided for Q4 revenue and margins to be pressured by product mix and new product ramp costs, with guidance provided on a non-GAAP basis, while underscoring disciplined capital deployment and a multi-year roadmap anchored in AI, foundry, and custom silicon opportunities. Intel’s partnership announcements with NVIDIA and the US government reflect a clear strategy to leverage x86 leadership amid accelerating AI adoption, though execution risk remains until capacity and yield at leading-edge nodes normalize.
 
 CFO Zinsner said, "We may actually be at our peak in terms of shortages in Q1," and expects supply conditions to improve after the first quarter.
 

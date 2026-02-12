@@ -54,13 +54,13 @@ Repayments of Long-term Debt,us-gaap_RepaymentsOfLongTermDebt,,-2288000000.0,-42
 "Acquisition of property, plant, and equipment",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,8125000000.0,,,,
 "Acquisition of property, plant and equipment",us-gaap_CapitalExpendituresIncurredButNotYetPaid,4952000000.0,,,,,
 "Interest, net of capitalized interest",us-gaap_InterestPaidNet,1106000000.0,987000000.0,613000000.0,459000000.0,545000000.0,594000000.0
-"Acquisition of property, plant, and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,4804000000.0,,,
 Net Income,us-gaap_NetIncomeLoss,,,,,19868000000.0,20899000000.0
+Proceeds from Mobileye IPO,us-gaap_ProceedsFromIssuanceInitialPublicOffering,,,,1032000000.0,,
 Purchases of available-for-sale debt investments,us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt,,,,,-5051000000.0,-6862000000.0
 "Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,,,,,6467000000.0,6781000000.0
-Purchases of trading assets,us-gaap_PaymentsToAcquireShortTermInvestments,,,,,-35503000000.0,-22377000000.0
 Maturities and sales of trading assets,us-gaap_ProceedsFromSaleMaturityAndCollectionOfShorttermInvestments,,,,,28832000000.0,15377000000.0
+Purchases of trading assets,us-gaap_PaymentsToAcquireShortTermInvestments,,,,,-35503000000.0,-22377000000.0
 "Proceeds from Equity Method Investment, Distribution, Return of Capital",us-gaap_ProceedsFromEquityMethodInvestmentDividendsOrDistributionsReturnOfCapital,,,,,581000000.0,910000000.0
-Proceeds from Mobileye IPO,us-gaap_ProceedsFromIssuanceInitialPublicOffering,,,,1032000000.0,,
 "Acquisition of property, plant and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,5431000000.0,1619000000.0,2973000000.0
+"Acquisition of property, plant, and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,4804000000.0,,,
 Customer deposits and prepaid supply agreements,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,,,0.0,-24000000.0,-1583000000.0,-181000000.0

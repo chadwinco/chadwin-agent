@@ -1,0 +1,55 @@
+asof_date: 2026-02-12
+ticker: INTC
+currency: USD
+price: 46.71
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2025-12-27
+  revenue: 52853000000.0
+  net_debt: 9169000000.0
+  diluted_shares: 4530000000.0
+notes: |
+  Base year uses FY2025 annual statements. Net debt is calculated as short-term debt plus long-term debt
+  minus cash and current marketable securities. Scenario growth is anchored to analyst revenue averages
+  (2026-2027 CAGR ~5.7%), while discount rates and margin dispersion reflect unresolved foundry economics,
+  Intel 7/10 supply constraints, and execution risk in converting 18A/14A progress into durable external
+  foundry volumes.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.065
+    fcf_margin_stage1: 0.13
+    discount_rate: 0.098
+    terminal_growth: 0.024
+    fcf_margin_terminal: 0.13
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.08
+    fcf_margin_stage1: 0.17
+    discount_rate: 0.09
+    terminal_growth: 0.028
+    fcf_margin_terminal: 0.17
+    stage1_years: 12
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.01
+    fcf_margin_stage1: 0.06
+    discount_rate: 0.115
+    terminal_growth: 0.018
+    fcf_margin_terminal: 0.08
+    stage1_years: 8
+    fade_years: 4
+sources:
+  - companies/US/INTC/data/company_profile.csv
+  - companies/US/INTC/data/financial_statements/annual/income_statement.csv
+  - companies/US/INTC/data/financial_statements/annual/balance_sheet.csv
+  - companies/US/INTC/data/financial_statements/annual/cash_flow_statement.csv
+  - companies/US/INTC/data/analyst_consensus.csv
+  - companies/US/INTC/data/analyst_revenue_estimates.csv
+  - companies/US/INTC/data/analyst_eps_estimates.csv
+  - companies/US/INTC/data/analyst_eps_forward_pe_estimates.csv
+  - companies/US/INTC/data/analyst_price_targets.csv
+  - companies/US/INTC/data/analyst_ratings_actions_12m.csv
+  - companies/US/INTC/data/filings/10-K-2026-01-23-0000050863-26-000011.md
+  - companies/US/INTC/data/filings/earnings-call-2025-10-24-fool.com.md

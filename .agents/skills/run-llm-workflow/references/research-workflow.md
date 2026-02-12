@@ -8,6 +8,8 @@ Generate a decision-grade investment write-up and scenario valuation from local 
 - Do not treat this as a one-command pipeline.
 - Use shell/Python snippets only as helpers for extraction or arithmetic.
 - Completion requires writing all required outputs and passing the goal gate in Step 7.
+- Before ad-hoc helper commands, verify path targets exist from repo root (`pwd`, `test -d .agents`, `test -d companies`).
+- For file discovery, prefer `rg --files <path>` before targeted `rg -n ... <path>` so searches fail less often on guessed directories.
 
 ## Inputs
 Primary local inputs:
@@ -131,7 +133,12 @@ Stop when all conditions below are true:
 
 If any condition fails, continue the resolution loop instead of finalizing.
 
-## Step 8: Queue and Improvement
+## Step 8: Queue and Mandatory Post-Run Introspection
 - Remove ticker from queue only after Step 7 passes:
   - `python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>`
-- Record repeatable process improvements in `docs/improvement-log.md` using `references/improvement-loop.md`.
+- Run post-run introspection after every completed run using `references/improvement-loop.md`.
+- For each run, inspect the full execution path (including failed commands/retries and ambiguity points), then:
+  - identify any misunderstanding, avoidable error, or workflow friction;
+  - classify root cause (one-off vs repeatable workflow gap);
+  - apply the smallest concrete workflow/reference update in the same turn when the issue is repeatable or workflow-caused.
+- Record the introspection outcome in `docs/improvement-log.md` (including explicit no-change outcomes when no update is needed).

@@ -1,0 +1,17 @@
+rating,action,priceTarget,priceTargetOld,priceTargetNew,upsidePct,date,source,retrieved
+Hold,Maintains,$49 → $52,49.0,52.0,11.33,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$50 → $48,50.0,48.0,2.76,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$38 → $41,38.0,41.0,-12.22,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$40 → $50,40.0,50.0,7.04,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$50 → $48,50.0,48.0,2.76,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$35 → $42,35.0,42.0,-10.08,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Reiterates,$30,,30.0,-35.77,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$41 → $45,41.0,45.0,-3.66,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Buy,Maintains,$60 → $65,60.0,65.0,39.16,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Strong Sell,Maintains,$25 → $30,25.0,30.0,-35.77,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Strong Buy,Maintains,$50 → $57,50.0,57.0,22.03,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Reiterates,n/a,,,,2026-01-23,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$35 → $36,35.0,36.0,-22.93,2026-01-21,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Maintains,$40 → $45,40.0,45.0,-3.66,2026-01-20,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold,Reiterates,$30,,30.0,-35.77,2026-01-20,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12
+Hold → Strong Buy,Upgrades,$65,,65.0,39.16,2026-01-20,https://stockanalysis.com/stocks/intc/ratings/,2026-02-12

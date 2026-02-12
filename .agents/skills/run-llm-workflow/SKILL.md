@@ -105,7 +105,7 @@ Market-expectation anchors (when available):
 3. Draft the report using `references/report-format.md`, honoring report-content preferences.
 4. Use `references/source-quality-and-search.md` for targeted external checks when local files cannot resolve high-impact lever questions.
 5. For US SEC historical pulls, follow `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
-6. Record repeatable process learnings using `references/improvement-loop.md`.
+6. Run mandatory post-run introspection using `references/improvement-loop.md`, and apply same-run workflow/reference updates when introspection finds repeatable or workflow-caused issues.
 
 ## Constraints
 - Keep the report concise and decision-oriented.

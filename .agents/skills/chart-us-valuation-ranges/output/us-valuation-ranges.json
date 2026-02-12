@@ -1,14 +1,25 @@
 [
   {
-    "ticker": "CALM",
-    "asof_date": "2026-02-07",
-    "report_dir": "2026-02-07",
-    "bear_margin_of_safety": -0.37199380772357293,
-    "base_margin_of_safety": 0.25190523880953974,
-    "bull_margin_of_safety": 1.2318089181286385,
-    "bear_value_per_share": 51.82935104857353,
-    "base_value_per_share": 103.31973935895132,
-    "bull_value_per_share": 184.19119001315653
+    "ticker": "NICE",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12-01",
+    "bear_margin_of_safety": -0.17232021376858353,
+    "base_margin_of_safety": 0.3502869958636432,
+    "bull_margin_of_safety": 1.0876122154443966,
+    "bear_value_per_share": 86.87327036284947,
+    "base_value_per_share": 141.72612308584797,
+    "bull_value_per_share": 219.11577813304385
+  },
+  {
+    "ticker": "SLDE",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12-01",
+    "bear_margin_of_safety": -0.6470996221543787,
+    "base_margin_of_safety": 0.2666579531826603,
+    "bull_margin_of_safety": 0.954682268410574,
+    "bear_value_per_share": 5.755805162662083,
+    "base_value_per_share": 20.659191216409187,
+    "bull_value_per_share": 31.88086779777646
   },
   {
     "ticker": "SKYW",
@@ -99,6 +110,17 @@
     "bull_value_per_share": 147.42
   },
   {
+    "ticker": "BYD",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12",
+    "bear_margin_of_safety": -0.562693268070575,
+    "base_margin_of_safety": 0.053222952089375886,
+    "bull_margin_of_safety": 0.6928636968957418,
+    "bear_value_per_share": 36.11716299005121,
+    "base_value_per_share": 86.98568361306155,
+    "bull_value_per_share": 139.8136127266193
+  },
+  {
     "ticker": "LNC",
     "asof_date": "2026-02-08",
     "report_dir": "2026-02-08",
@@ -130,6 +152,17 @@
     "bear_value_per_share": 13.122940669661165,
     "base_value_per_share": 28.79272670904186,
     "bull_value_per_share": 39.97219875952007
+  },
+  {
+    "ticker": "CALM",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12",
+    "bear_margin_of_safety": -0.5095652573228999,
+    "base_margin_of_safety": 0.006318253226511361,
+    "bull_margin_of_safety": 0.7171734943424808,
+    "bear_value_per_share": 40.475579313141075,
+    "base_value_per_share": 83.05144543878399,
+    "bull_value_per_share": 141.71832848808495
   },
   {
     "ticker": "BHF",

@@ -57,6 +57,8 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <R
   - `valuation/inputs.yaml`
   - `valuation/outputs.json`
 
+6. Run post-run introspection via `$run-llm-workflow` `references/improvement-loop.md` after every completed run, and apply workflow/reference updates in the same turn when repeatable workflow gaps are found.
+
 ## Behavior Contract
 
 - No ticker provided:

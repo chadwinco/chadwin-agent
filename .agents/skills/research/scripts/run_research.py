@@ -273,12 +273,19 @@ def _extract_report_stop_gate(report_path: Path) -> dict[str, Any] | None:
         return None
 
     section_lines: list[str] = []
+    list_started = False
     for raw in lines[start_idx:]:
         stripped = raw.strip()
         if stripped.startswith("## "):
             break
-        if stripped:
+        if not stripped:
+            continue
+        if stripped.startswith("- ") or stripped.startswith("* "):
+            list_started = True
             section_lines.append(stripped)
+            continue
+        if list_started:
+            break
 
     parsed_fields: dict[str, str] = {}
     for raw in section_lines:

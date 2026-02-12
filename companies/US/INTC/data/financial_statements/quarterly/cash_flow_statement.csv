@@ -43,6 +43,6 @@ Proceeds from sales of subsidiary shares,us-gaap_ProceedsFromMinorityShareholder
 Recognition of capital-related government incentives,intc_NoncashCapitalRelatedGovernmentAssistance,,,985000000.0,,,,,,,,,
 "Interest, net of capitalized interest",us-gaap_InterestPaidNet,,,635000000.0,,,540000000.0,,,313000000.0,,,177000000.0
 Income Tax Expense,us-gaap_IncomeTaxesPaidNet,,,221000000.0,,,315000000.0,,,267000000.0,,,335000000.0
-"Acquisition of property, plant, and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,5167000000.0,,,,,,2949000000.0
-"Acquisition of property, plant and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,,,,4711000000.0,,,
 Net Income,us-gaap_NetIncomeLoss,,,,,,,,,,1019000000.0,-454000000.0,8113000000.0
+"Acquisition of property, plant and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,,,,4711000000.0,,,
+"Acquisition of property, plant, and equipment included in accounts payable and accrued liabilities",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,5167000000.0,,,,,,2949000000.0
