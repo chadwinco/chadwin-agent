@@ -1,0 +1,40 @@
+asof_date: 2026-02-12
+ticker: CALM
+currency: USD
+price: 82.53
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2025-05-31
+  revenue: 4261885000.0
+  net_debt: -499392000.0
+  diluted_shares: 48891000.0
+notes: |
+  Deep-dive revisions vs baseline 2026-02-07: lower growth/margins to reflect mix and pricing-framework
+  evidence from FY2026 YTD filings, and higher discount rates to incorporate unresolved antitrust/legal
+  overhang. Net debt and share count are unchanged due strong liquidity and no funded debt.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.0025
+    fcf_margin_stage1: 0.08
+    discount_rate: 0.10
+    terminal_growth: 0.0225
+    fcf_margin_terminal: 0.0625
+    stage1_years: 8
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.0225
+    fcf_margin_stage1: 0.105
+    discount_rate: 0.09
+    terminal_growth: 0.0275
+    fcf_margin_terminal: 0.0825
+    stage1_years: 10
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: -0.02
+    fcf_margin_stage1: 0.0425
+    discount_rate: 0.11
+    terminal_growth: 0.0175
+    fcf_margin_terminal: 0.035
+    stage1_years: 6
+    fade_years: 5
