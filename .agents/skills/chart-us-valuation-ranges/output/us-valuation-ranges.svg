@@ -5,7 +5,7 @@
 </defs>
 <rect x="0" y="0" width="1600" height="1410" fill="url(#bg)"/>
 <text x="170" y="48" font-size="34" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="700">US Margin of Safety Ranges (Latest Reports)</text>
-<text x="170" y="78" font-size="15" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#4b5563">Generated 2026-02-12 16:53 from latest report per ticker in companies/US</text>
+<text x="170" y="78" font-size="15" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#4b5563">Generated 2026-02-12 17:08 from latest report per ticker in companies/US</text>
 <circle cx="170" cy="100" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
 <text x="182" y="105" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">Bear MoS</text>
 <circle cx="320" cy="100" r="6" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
@@ -28,61 +28,61 @@
 <text x="1380.00" y="96" text-anchor="middle" font-size="12" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#4b5563">154%</text>
 <rect x="876.10" y="114" width="12.00" height="1212" fill="#111827" opacity="0.08"/>
 <rect x="50" y="120.0" width="1330" height="34" fill="#ffffff" opacity="0.45"/>
-<line x1="748.23" y1="137.00" x2="1225.14" y2="137.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="748.23" cy="137.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="963.68" cy="137.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1225.14" cy="137.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="142.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">LYFT</text>
-<text x="1392" y="142.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-41.5% / +25.3% / +106.4%</text>
+<line x1="762.19" y1="137.00" x2="1279.17" y2="137.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="762.19" cy="137.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="963.30" cy="137.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1279.17" cy="137.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="142.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">CALM</text>
+<text x="1392" y="142.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-37.2% / +25.2% / +123.2%</text>
 <rect x="50" y="168.0" width="1330" height="34" fill="#f8fafc" opacity="0.45"/>
-<line x1="762.19" y1="185.00" x2="1279.17" y2="185.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="762.19" cy="185.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="963.30" cy="185.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1279.17" cy="185.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="190.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">CALM</text>
-<text x="1392" y="190.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-37.2% / +25.2% / +123.2%</text>
+<line x1="736.53" y1="185.00" x2="1142.04" y2="185.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="736.53" cy="185.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="948.60" cy="185.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1142.04" cy="185.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="190.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">SKYW</text>
+<text x="1392" y="190.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-45.2% / +20.6% / +80.6%</text>
 <rect x="50" y="216.0" width="1330" height="34" fill="#ffffff" opacity="0.45"/>
-<line x1="736.53" y1="233.00" x2="1142.04" y2="233.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="736.53" cy="233.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="948.60" cy="233.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1142.04" cy="233.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="238.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">SKYW</text>
-<text x="1392" y="238.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-45.2% / +20.6% / +80.6%</text>
+<line x1="773.05" y1="233.00" x2="1182.53" y2="233.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="773.05" cy="233.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="946.45" cy="233.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1182.53" cy="233.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="238.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">FC</text>
+<text x="1392" y="238.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-33.8% / +20.0% / +93.2%</text>
 <rect x="50" y="264.0" width="1330" height="34" fill="#f8fafc" opacity="0.45"/>
-<line x1="773.05" y1="281.00" x2="1182.53" y2="281.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="773.05" cy="281.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="946.45" cy="281.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1182.53" cy="281.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="286.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">FC</text>
-<text x="1392" y="286.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-33.8% / +20.0% / +93.2%</text>
+<line x1="776.40" y1="281.00" x2="1172.73" y2="281.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="776.40" cy="281.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="946.44" cy="281.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1172.73" cy="281.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="286.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">ATGE</text>
+<text x="1392" y="286.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-32.8% / +20.0% / +90.2%</text>
 <rect x="50" y="312.0" width="1330" height="34" fill="#ffffff" opacity="0.45"/>
-<line x1="776.40" y1="329.00" x2="1172.73" y2="329.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="776.40" cy="329.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="946.44" cy="329.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1172.73" cy="329.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="334.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">ATGE</text>
-<text x="1392" y="334.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-32.8% / +20.0% / +90.2%</text>
+<line x1="781.24" y1="329.00" x2="1160.44" y2="329.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="781.24" cy="329.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="937.32" cy="329.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1160.44" cy="329.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="334.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">ACIW</text>
+<text x="1392" y="334.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-31.3% / +17.1% / +86.4%</text>
 <rect x="50" y="360.0" width="1330" height="34" fill="#f8fafc" opacity="0.45"/>
-<line x1="781.24" y1="377.00" x2="1160.44" y2="377.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="781.24" cy="377.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="937.32" cy="377.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1160.44" cy="377.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="382.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">ACIW</text>
-<text x="1392" y="382.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-31.3% / +17.1% / +86.4%</text>
+<line x1="731.66" y1="377.00" x2="1173.14" y2="377.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="731.66" cy="377.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="932.03" cy="377.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1173.14" cy="377.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="382.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">PAYC</text>
+<text x="1392" y="382.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-46.7% / +15.5% / +90.3%</text>
 <rect x="50" y="408.0" width="1330" height="34" fill="#ffffff" opacity="0.45"/>
-<line x1="731.66" y1="425.00" x2="1173.14" y2="425.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="731.66" cy="425.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="932.03" cy="425.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1173.14" cy="425.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="430.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">PAYC</text>
-<text x="1392" y="430.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-46.7% / +15.5% / +90.3%</text>
+<line x1="763.50" y1="425.00" x2="1080.62" y2="425.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="763.50" cy="425.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="923.88" cy="425.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1080.62" cy="425.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="430.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">QLYS</text>
+<text x="1392" y="430.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-36.8% / +13.0% / +61.6%</text>
 <rect x="50" y="456.0" width="1330" height="34" fill="#f8fafc" opacity="0.45"/>
-<line x1="763.50" y1="473.00" x2="1080.62" y2="473.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
-<circle cx="763.50" cy="473.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="923.88" cy="473.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
-<circle cx="1080.62" cy="473.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-<text x="40" y="478.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">QLYS</text>
-<text x="1392" y="478.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-36.8% / +13.0% / +61.6%</text>
+<line x1="710.67" y1="473.00" x2="1129.40" y2="473.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+<circle cx="710.67" cy="473.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="916.81" cy="473.00" r="7" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="1129.40" cy="473.00" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="478.00" text-anchor="start" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">LYFT</text>
+<text x="1392" y="478.00" text-anchor="start" font-size="13" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">-53.2% / +10.8% / +76.7%</text>
 <rect x="50" y="504.0" width="1330" height="34" fill="#ffffff" opacity="0.45"/>
 <line x1="752.42" y1="521.00" x2="1079.21" y2="521.00" stroke="#2563eb" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
 <circle cx="752.42" cy="521.00" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>

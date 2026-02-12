@@ -1,16 +1,5 @@
 [
   {
-    "ticker": "LYFT",
-    "asof_date": "2026-02-12",
-    "report_dir": "2026-02-12-01",
-    "bear_margin_of_safety": -0.4153,
-    "base_margin_of_safety": 0.2531,
-    "bull_margin_of_safety": 1.0642,
-    "bear_value_per_share": 8.18,
-    "base_value_per_share": 17.53,
-    "bull_value_per_share": 28.88
-  },
-  {
     "ticker": "CALM",
     "asof_date": "2026-02-07",
     "report_dir": "2026-02-07",
@@ -86,6 +75,17 @@
     "bear_value_per_share": 68.99200525701828,
     "base_value_per_share": 123.29625614926881,
     "bull_value_per_share": 176.371362136066
+  },
+  {
+    "ticker": "LYFT",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12-02",
+    "bear_margin_of_safety": -0.5318,
+    "base_margin_of_safety": 0.1077,
+    "bull_margin_of_safety": 0.7672,
+    "bear_value_per_share": 6.55,
+    "base_value_per_share": 15.5,
+    "bull_value_per_share": 24.72
   },
   {
     "ticker": "ANF",
