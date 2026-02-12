@@ -53,8 +53,9 @@ cp companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.
 4. Execute `references/deep-research-workflow.md`.
 5. Draft the revised report using `references/report-format.md`.
 6. Apply `references/source-quality-and-search.md` for third-party research quality controls.
-7. Pull older SEC filings when needed via `references/historical-sec-fetch.md`.
-8. Finalize required outputs and pass the quality gate.
+7. Follow `references/sec-access-policy.md` for all SEC retrievals (required).
+8. Pull older SEC filings when needed via `references/historical-sec-fetch.md`.
+9. Finalize required outputs and pass the quality gate.
 
 ## Required Outputs
 Under `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`:
@@ -83,10 +84,12 @@ Under `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`:
 - Use evidence dated on or before the revised as-of date.
 - Prioritize disconfirming evidence over confirming evidence.
 - Paraphrase sources; avoid verbatim copying.
+- SEC retrievals must use skill SEC scripts and configured `EDGAR_IDENTITY`; do not use ad-hoc direct `sec.gov` HTTP calls.
 
 ## Related References
 - `references/deep-research-workflow.md`
 - `references/report-format.md`
 - `references/source-quality-and-search.md`
+- `references/sec-access-policy.md`
 - `references/historical-sec-fetch.md`
 - `.agents/skills/run-llm-workflow/references/valuation-method.md`

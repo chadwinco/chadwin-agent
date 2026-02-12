@@ -4,6 +4,7 @@ Use this when recent filings are insufficient to resolve a high-impact downside 
 
 Helper script:
 - `.agents/skills/run-llm-deep-dive/scripts/fetch_historical_filings.py`
+- `.agents/skills/run-llm-deep-dive/scripts/fetch_sec_filing_markdown.py` (targeted filing fetch)
 
 ## Typical Use Cases
 - Check how margins and disclosure language behaved in prior downturns.
@@ -12,7 +13,8 @@ Helper script:
 
 ## Prerequisites
 - US ticker package exists under `companies/US/<TICKER>/data`.
-- `EDGAR_IDENTITY` set in `.env` (or pass `--identity`).
+- `EDGAR_IDENTITY` set in `.env` (or pass `--identity` with explicit override intent).
+- Follow `references/sec-access-policy.md`.
 
 ## Command Examples
 
@@ -36,6 +38,16 @@ python3 .agents/skills/run-llm-deep-dive/scripts/fetch_historical_filings.py \
   --before <YYYY-MM-DD>
 ```
 
+Pull a specific filing (for example peer 8-K) into local markdown:
+
+```bash
+python3 .agents/skills/run-llm-deep-dive/scripts/fetch_sec_filing_markdown.py \
+  --ticker <PEER_TICKER> \
+  --form 8-K \
+  --filed-date <YYYY-MM-DD> \
+  --output-path companies/US/<PRIMARY_TICKER>/data/filings/third_party/<PEER_FILE>.md
+```
+
 Files are written to:
 - `companies/US/<TICKER>/data/filings/historical/`
 
@@ -43,3 +55,5 @@ Files are written to:
 - Keep pull scope tight to the hypothesis you are testing.
 - Respect revised as-of date; do not include future-dated evidence.
 - Treat fetched files as candidate evidence, not automatic truth. Validate claim relevance before using.
+- Do not fetch SEC pages with ad-hoc direct HTTP tooling; use the skill SEC scripts so identity and provenance are controlled.
+- `fetch_historical_filings.py` and `fetch_sec_filing_markdown.py` default to `.env` identity and block mismatched `--identity` unless `--allow-identity-override` is set.

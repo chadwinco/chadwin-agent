@@ -12,6 +12,9 @@ Use this order when evaluating third-party sources:
 - Court filings / legal dockets
 - Official company counterparties (major customer/supplier filings)
 
+SEC-specific execution rule:
+- When collecting SEC evidence for this skill, use the local SEC helper scripts and configured `EDGAR_IDENTITY` (see `references/sec-access-policy.md`), not ad-hoc direct `sec.gov` HTTP calls.
+
 2. High-quality secondary sources
 - Industry bodies and audited industry datasets
 - Credit rating agency reports/updates

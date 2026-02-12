@@ -31,6 +31,8 @@ Company evidence base:
 Optional controls:
 - `preferences/user_preferences.json`
 - `.agents/skills/run-llm-deep-dive/scripts/fetch_historical_filings.py` (US)
+- `.agents/skills/run-llm-deep-dive/scripts/fetch_sec_filing_markdown.py` (US, targeted SEC filings)
+- `references/sec-access-policy.md` (required SEC-access guardrails)
 
 ## Step 1: Confirm Scope and Dates
 - Confirm ticker, exchange country, revised as-of date, and baseline date explicitly.
@@ -77,6 +79,7 @@ Optional controls:
 - Prefer primary, high-quality sources (regulatory, company counterparties, industry bodies, top-tier data providers).
 - For any material external claim, collect at least two independent sources when feasible.
 - Log every accepted source in `third-party-sources.md` with publication date and access date.
+- For SEC sources, follow `references/sec-access-policy.md` and use skill SEC scripts only.
 
 ## Step 6: Pull Older SEC Filings if Needed (US)
 - Use this when multi-year risks cannot be resolved from current local files.
@@ -121,6 +124,7 @@ Evidence quality:
 - [ ] Every factual claim cites local file paths.
 - [ ] External claims are logged in `third-party-sources.md` with source quality notes.
 - [ ] Source quality hierarchy was followed; low-credibility sources were excluded.
+- [ ] SEC retrievals followed `references/sec-access-policy.md` (no ad-hoc direct `sec.gov` HTTP calls).
 
 Valuation integrity:
 - [ ] Every revised assumption has evidence-backed rationale.

@@ -3,10 +3,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
+
+try:
+    from dotenv import load_dotenv  # type: ignore
+except Exception:  # pragma: no cover - optional dependency
+    load_dotenv = None
 
 
 def _default_base_dir() -> Path:
@@ -86,6 +92,41 @@ def _resolve_output_dir(base_dir: Path, ticker: str, output_dir: str | None) -> 
     return base_dir / "companies" / "US" / ticker / "data" / "filings" / "historical"
 
 
+def _configured_edgar_identity(base_dir: Path) -> str | None:
+    if load_dotenv:
+        load_dotenv(base_dir / ".env")
+    return os.getenv("EDGAR_IDENTITY") or os.getenv("SEC_IDENTITY_EMAIL")
+
+
+def _resolve_edgar_identity(
+    base_dir: Path,
+    requested_identity: str | None,
+    allow_identity_override: bool,
+) -> tuple[str, str]:
+    configured_identity = _configured_edgar_identity(base_dir=base_dir)
+    requested = requested_identity.strip() if requested_identity else None
+
+    if requested:
+        if (
+            configured_identity
+            and requested != configured_identity
+            and not allow_identity_override
+        ):
+            raise RuntimeError(
+                "Provided --identity differs from configured EDGAR_IDENTITY. "
+                "Use the configured .env identity or pass --allow-identity-override."
+            )
+        source = "identity-override" if configured_identity and requested != configured_identity else "identity-arg"
+        return requested, source
+
+    if configured_identity:
+        return configured_identity, "env"
+
+    raise RuntimeError(
+        "EDGAR_IDENTITY (or SEC_IDENTITY_EMAIL) is not set in environment/.env and no --identity was provided."
+    )
+
+
 def _load_fetch_helpers(base_dir: Path):
     helper_dir = (
         base_dir
@@ -150,6 +191,14 @@ def _parse_args() -> argparse.Namespace:
         "--identity",
         help="SEC identity override. Otherwise uses EDGAR_IDENTITY or SEC_IDENTITY_EMAIL.",
     )
+    parser.add_argument(
+        "--allow-identity-override",
+        action="store_true",
+        help=(
+            "Allow --identity to differ from configured EDGAR_IDENTITY in .env. "
+            "Use sparingly for explicit operational reasons."
+        ),
+    )
     parser.add_argument("--base-dir", default=str(_default_base_dir()))
     parser.add_argument(
         "--output-dir",
@@ -183,10 +232,17 @@ def main() -> int:
         return 1
 
     try:
-        ensure_edgar_identity(args.identity)
+        resolved_identity, identity_source = _resolve_edgar_identity(
+            base_dir=base_dir,
+            requested_identity=args.identity,
+            allow_identity_override=args.allow_identity_override,
+        )
+        ensure_edgar_identity(resolved_identity)
     except Exception as exc:
         print(f"EDGAR identity setup failed: {exc}", file=sys.stderr)
         return 1
+
+    print(f"Using SEC identity source: {identity_source}")
 
     try:
         from edgar import Company  # type: ignore
@@ -274,6 +330,7 @@ def main() -> int:
         "before": args.before.isoformat() if args.before else None,
         "after": args.after.isoformat() if args.after else None,
         "output_dir": str(output_dir),
+        "identity_source": identity_source,
         "counts": per_form_counts,
         "errors": errors,
         "entries": entries,
