@@ -1,0 +1,4 @@
+interface:
+  display_name: "US Valuation Range Chart"
+  short_description: "Chart latest US base/bull/bear valuation ranges"
+  default_prompt: "Use $chart-us-valuation-ranges to graph the latest US base/bull/bear valuation ranges from companies/US."
