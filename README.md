@@ -39,6 +39,7 @@ Use one of these Skill-level requests in Codex:
 - Advanced manual control: `$fetch-us-company-data`
 - Advanced manual control: `$fetch-japanese-company-data`
 - Advanced manual control: `$run-llm-workflow`
+- Advanced manual control: `$run-llm-deep-dive`
 - Preferences setup/update: `$manage-user-preferences`
 
 Most skills now read `preferences/user_preferences.json` by default (market guardrails plus sector/industry and report-style preferences where applicable).
@@ -47,6 +48,7 @@ Example requests you can give Codex:
 - `Run $research for AAPL as-of 2026-02-11.`
 - `Run $fetch-us-investment-ideas, then use $research with no ticker.`
 - `Run $fetch-japanese-company-data for 79740 as-of 2026-02-11, then run $run-llm-workflow.`
+- `Run $run-llm-deep-dive for HRMY as-of 2026-02-12 using baseline report date 2026-02-11.`
 - `Run $manage-user-preferences and ask me questions to build my profile.`
 
 ## Required Outputs Per Completed Run
@@ -65,6 +67,7 @@ Primary Skill docs:
 - `/Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/fetch-japanese-company-data/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`
+- `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-deep-dive/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/manage-user-preferences/SKILL.md`
 
 ## Repository Layout

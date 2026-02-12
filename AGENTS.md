@@ -39,6 +39,7 @@ Use one of these modes explicitly:
    - `$fetch-us-company-data`
    - `$fetch-japanese-company-data`
    - `$run-llm-workflow`
+   - `$run-llm-deep-dive`
    - `$manage-user-preferences`
    - Choosing these directly indicates the user wants finer-grained process control.
 
@@ -50,9 +51,10 @@ If no specific lower-level control is requested, prefer `$research`.
    - `$fetch-us-company-data` for US tickers
    - `$fetch-japanese-company-data` for JP tickers
 3. Produce research outputs: `$run-llm-workflow`
-4. Validate artifacts and pass quality gate
-5. Remove completed ticker from `idea-screens/company-ideas-log.jsonl`
-6. Record repeatable process improvements in `docs/improvement-log.md`
+4. (Optional) Deep falsification pass for promising names: `$run-llm-deep-dive`
+5. Validate artifacts and pass quality gate
+6. Remove completed ticker from `idea-screens/company-ideas-log.jsonl`
+7. Record repeatable process improvements in `docs/improvement-log.md`
 
 ## Required Outputs Per Completed Run
 For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`:
