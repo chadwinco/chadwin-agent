@@ -152,7 +152,7 @@ def _load_fetch_helpers(base_dir: Path):
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Fetch older SEC filings for a US ticker to support deep-dive hypothesis testing."
+            "Fetch older SEC filings for a US ticker to support progressive hypothesis testing."
         )
     )
     parser.add_argument("--ticker", required=True, help="US ticker symbol (for example ANF).")

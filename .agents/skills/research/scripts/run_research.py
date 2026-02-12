@@ -74,16 +74,16 @@ def _parse_args() -> argparse.Namespace:
         "--post-report-check",
         action="store_true",
         help=(
-            "Evaluate latest same-date report package and route to deep dive when promising. "
-            "Use after run-llm-workflow completes."
+            "Evaluate latest same-date report package and route to progressive follow-up "
+            "research when promising. Use after run-llm-workflow completes."
         ),
     )
     parser.add_argument(
-        "--deep-dive-mos-threshold",
+        "--followup-mos-threshold",
         type=float,
         default=0.25,
         help=(
-            "Base-case margin-of-safety threshold for deep-dive routing during "
+            "Base-case margin-of-safety threshold for follow-up routing during "
             "--post-report-check (default: 0.25)."
         ),
     )
@@ -243,8 +243,8 @@ def _post_report_decision(
 
     promising = base_mos >= mos_threshold and verdict_normalized != "avoid"
     if promising:
-        next_action = "run_deep_dive"
-        reason = "promising_initial_report"
+        next_action = "run_research"
+        reason = "promising_report_requires_followup_research"
     elif verdict_normalized == "avoid":
         next_action = "done"
         reason = "report_verdict_avoid"
@@ -261,10 +261,11 @@ def _post_report_decision(
         "report_path": str(report_path),
         "valuation_outputs_path": str(outputs_path),
         "base_margin_of_safety": base_mos,
-        "deep_dive_mos_threshold": mos_threshold,
+        "followup_mos_threshold": mos_threshold,
         "report_verdict": verdict_raw,
         "report_verdict_normalized": verdict_normalized,
         "promising": promising,
+        "followup_focus": "falsification",
     }
 
 
@@ -512,7 +513,7 @@ def main() -> int:
         decision = _post_report_decision(
             company_dir=company_dir,
             asof=args.asof,
-            mos_threshold=args.deep_dive_mos_threshold,
+            mos_threshold=args.followup_mos_threshold,
         )
         decision.update(
             {

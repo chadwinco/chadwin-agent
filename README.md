@@ -38,16 +38,17 @@ Use one of these Skill-level requests in Codex:
 - Advanced manual control: `$fetch-us-investment-ideas`
 - Advanced manual control: `$fetch-us-company-data`
 - Advanced manual control: `$run-llm-workflow`
-- Advanced manual control: `$run-llm-deep-dive`
 - Preferences setup/update: `$manage-user-preferences`
 - For non-US markets, use the installed market-specific fetch skill when available.
+
+`$run-llm-workflow` now includes progressive falsification/deep-research behavior: it should keep investigating the highest-impact unresolved issues and stop only when key investment points are resolved to decision quality.
 
 Most skills now read `preferences/user_preferences.json` by default (market guardrails plus sector/industry and report-style preferences where applicable).
 
 Example requests you can give Codex:
 - `Run $research for AAPL as-of 2026-02-11.`
 - `Run $fetch-us-investment-ideas, then use $research with no ticker.`
-- `Run $run-llm-deep-dive for HRMY as-of 2026-02-12 using baseline report directory 2026-02-11.`
+- `Run $run-llm-workflow for HRMY as-of 2026-02-12 and focus on falsifying the key unresolved issues from the latest same-date baseline report package.`
 - `Run $manage-user-preferences and ask me questions to build my profile.`
 
 ## Required Outputs Per Completed Run
@@ -70,7 +71,6 @@ Primary Skill docs:
 - `/Users/chad/source/chadwin-codex/.agents/skills/fetch-us-investment-ideas/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`
-- `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-deep-dive/SKILL.md`
 - `/Users/chad/source/chadwin-codex/.agents/skills/manage-user-preferences/SKILL.md`
 
 ## Repository Layout

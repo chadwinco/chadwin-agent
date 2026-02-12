@@ -15,7 +15,18 @@ _As of {YYYY-MM-DD}_
 - Current price: ${...}
 - Margin of safety (base): ...%
 
-2-4 bullets on the core thesis and biggest uncertainty.
+2-4 bullets on the core thesis, what changed conviction most, and biggest remaining uncertainty.
+
+## Market-Implied Expectations (Analyst Anchor)
+| Signal | Current Read | Implication for Base Case |
+| --- | --- | --- |
+| Consensus stance / analyst count | | |
+| Revenue outlook dispersion | | |
+| EPS and forward P/E path | | |
+| Price target range and median | | |
+| Recent ratings/target revisions | | |
+
+One short paragraph: where your base case aligns with consensus and where it intentionally differs.
 
 ## Business and Competitive Position
 1-2 short paragraphs on how the company makes money, why returns can persist, and where the model is vulnerable.
@@ -28,6 +39,11 @@ _As of {YYYY-MM-DD}_
 | Cash generation (FCF or operating-cash proxy) | | | |
 | Returns metric (ROIC or ROE proxy) | | | |
 | Leverage / capital adequacy | | | |
+
+## Key Issue Resolution
+| Issue | Why It Matters | Resolution Status (Resolved/Bounded/Open) | Evidence | Valuation Impact |
+| --- | --- | --- | --- | --- |
+| | | | | |
 
 ## Valuation
 | Scenario | Core Assumptions | Discount / Cost of Equity | Terminal Assumption | Value/Share | MOS vs Price |
@@ -44,4 +60,5 @@ Include one sentence for each risk on what evidence would invalidate the thesis.
 
 ## Conclusion
 2-3 sentences with a clear call at the current price.
+Explicitly note if any thesis-critical uncertainty remains open.
 ```

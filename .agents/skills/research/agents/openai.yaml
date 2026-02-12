@@ -1,4 +1,4 @@
 interface:
   display_name: "Research"
-  short_description: "Orchestrate fetch + report research runs"
-  default_prompt: "Use $research to select a company (respecting preferences/user_preferences.json by default), fetch the right market data, run $run-llm-workflow when needed, then run post-report routing (`run_research.py --post-report-check`) and automatically route promising reports (base MoS >= 25%, verdict not Avoid) to $run-llm-deep-dive."
+  short_description: "Orchestrate fetch + progressive report research runs"
+  default_prompt: "Use $research to select a company (respecting preferences/user_preferences.json by default), fetch the right market data, run $run-llm-workflow when needed, then run post-report routing (`run_research.py --post-report-check`) and automatically route promising reports (base MoS >= 25%, verdict not Avoid) back into a falsification-focused follow-up pass of $run-llm-workflow."

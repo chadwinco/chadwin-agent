@@ -14,6 +14,21 @@ Use one of two methods depending on business economics:
   - statutory/regulatory capital constraints drive value; and
   - reported operating cash flow is noisy as a valuation anchor.
 
+## Analyst Anchor Rules (Required When Files Exist)
+Use local analyst files to anchor what the market currently expects:
+- `analyst_revenue_estimates.csv`
+- `analyst_eps_estimates.csv`
+- `analyst_eps_forward_pe_estimates.csv`
+- `analyst_price_targets.csv`
+- `analyst_consensus.csv`
+- `analyst_ratings_actions_12m.csv`
+
+How to use them:
+- Anchor near-term growth/profitability ranges to analyst central tendency and dispersion.
+- Use ratings/target actions to detect expectation momentum shifts.
+- Use forward P/E and target range as a valuation-sentiment cross-check against your scenario outputs.
+- If your base case differs materially from consensus, keep it only with explicit evidence and written rationale in the report/inputs notes.
+
 ---
 
 ## Model A: Three-Stage DCF with Competitive-Advantage Fade
@@ -192,6 +207,7 @@ For DCF runs, include `enterprise_value` in each scenario.
 ## Sanity Checks
 - Base value should usually be between bull and bear.
 - Recalculate one scenario manually to check arithmetic.
+- Compare base assumptions to analyst-implied expectations; explain any intentional non-consensus stance.
 - If outputs look nonsensical, verify:
   - units
   - share count denominator

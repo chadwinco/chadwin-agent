@@ -1,22 +1,27 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data`. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
+description: Produce a concise, LLM-written investment report and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` using a progressive, issue-driven workflow that includes deep falsification when needed. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
 ---
 
 # Run LLM Workflow
 
 ## Overview
-This is an LLM-first research workflow. The target output is intentionally simple:
-1. A short investment summary for a company.
+This is the canonical LLM-first research workflow.
+
+The target output is intentionally simple and auditable:
+1. A decision-oriented investment report.
 2. A transparent base/bull/bear valuation.
 
-Do not use a deterministic end-to-end analysis script for this skill.
+The research process is progressive, not fixed-stage by default:
+- identify the highest-impact unresolved investment questions,
+- investigate them to required depth,
+- stop when key decision points are resolved to expert-level confidence.
 
 ## Execution Mode (Required)
 - Execute this skill by reasoning through the workflow and writing outputs.
 - Do not look for or invent a single `scripts/*.py` command that completes the report.
 - Helper commands are fine for extraction or arithmetic, but they do not replace the LLM workflow.
-- The task is complete only when all required output files are written and the quality gate passes.
+- The task is complete only when all required output files are written and the goal gate in `references/research-workflow.md` passes.
 
 ## Report Directory Convention
 Use `<REPORT_DATE_DIR>` for outputs:
@@ -25,12 +30,12 @@ Use `<REPORT_DATE_DIR>` for outputs:
 - Exception: if `reports/YYYY-MM-DD/valuation/inputs.yaml` already exists and the package is incomplete (missing `report.md` or `valuation/outputs.json`), continue writing into `YYYY-MM-DD` instead of creating a suffixed directory.
 
 ## Quick Start
-1. Resolve ticker and confirm as-of date with the user.
+1. Resolve ticker and as-of date explicitly.
 2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
 3. Load `preferences/user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
-4. Resolve the output directory from the repo root:
+4. Resolve the output directory from repo root:
 
 ```bash
 REPORTS_ROOT="companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
@@ -55,8 +60,9 @@ REPORT_DIR="$REPORTS_ROOT/$REPORT_DATE_DIR"
 mkdir -p "$REPORT_DIR/valuation"
 echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
-5. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
-6. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
+
+5. Work through `references/research-workflow.md` as an LLM task.
+6. After report completion and goal-gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
 Use the queue CLI owned by the `$research` skill from repo root:
@@ -66,37 +72,55 @@ python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-ll
 python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>
 ```
 
-- If ticker is omitted, the `pick` command above is the default selection source.
-- The `remove` command should run only after required outputs are finalized and Step 6 quality gates pass.
+- If ticker is omitted, `pick` is the default selection source.
+- Run `remove` only after required outputs are finalized and the goal gate passes.
 
 ## Required Outputs
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/inputs.yaml`
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
 
+## Inputs to Prioritize
+Core local evidence:
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+
+Market-expectation anchors (when available):
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_price_targets.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
+
 ## Workflow
-1. Work through the end-to-end process in `references/research-workflow.md` manually as an LLM workflow.
-2. Build valuation assumptions and outputs using `references/valuation-method.md`, aligned with user strategy preferences where applicable.
+1. Execute the progressive workflow in `references/research-workflow.md`.
+2. Build valuation assumptions and outputs using `references/valuation-method.md`, explicitly reconciling your assumptions with analyst-implied market expectations.
 3. Draft the report using `references/report-format.md`, honoring report-content preferences.
-4. Check all quality gates in `references/research-workflow.md` (Step 6) before finalizing.
-5. Remove the completed ticker from `idea-screens/company-ideas-log.jsonl`.
-6. Record learnings using `references/improvement-loop.md`.
+4. Use `references/source-quality-and-search.md` for targeted external falsification when local files cannot resolve key issues.
+5. For US SEC historical pulls, follow `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
+6. Record repeatable process learnings using `references/improvement-loop.md`.
 
 ## Constraints
 - Keep the report concise and decision-oriented.
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs a local file citation.
+- External claims must be cross-checked and traceable.
 - Do not violate explicit user exclusions in `preferences/user_preferences.json` unless the user explicitly asks to override.
 
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.
 - If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-llm-workflow`) and confirm the log has candidates.
 - If required data is missing, run the appropriate market fetch skill for that ticker/date (for example, `$fetch-us-company-data`).
-- If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
-- If the write-up is weak, rerun the Step 6 quality gate in `references/research-workflow.md` and fix every unchecked item.
+- If valuation looks inconsistent, re-check units and net-debt sign in `references/valuation-method.md`.
+- If the write-up is weak, rerun the goal gate in `references/research-workflow.md` and close every unresolved high-impact issue before finalizing.
 
 ## Related References
 - `references/research-workflow.md`
 - `references/report-format.md`
 - `references/valuation-method.md`
+- `references/source-quality-and-search.md`
+- `references/sec-access-policy.md`
+- `references/historical-sec-fetch.md`
 - `references/improvement-loop.md`

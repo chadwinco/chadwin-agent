@@ -1,17 +1,15 @@
 ---
 name: research
-description: Thin orchestration wrapper for fetch + research + escalation. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it can route promising names to deep-dive.
+description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it can route promising names to a falsification-focused follow-up run of `$run-llm-workflow`.
 ---
 
 # Research
 
 ## Overview
-
 Use this as the default entrypoint for autonomous runs. It delegates to:
 - `$fetch-us-company-data`
 - an installed market-specific fetch skill for non-US companies
 - `$run-llm-workflow`
-- `$run-llm-deep-dive` (auto-routed for promising initial reports)
 
 Company packages are organized by exchange country under `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
 When present, `preferences/user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
@@ -24,7 +22,7 @@ When present, `preferences/user_preferences.json` is used by default to filter q
 python3 .agents/skills/research/scripts/run_research.py [--ticker <TICKER>] --asof <YYYY-MM-DD>
 ```
 
-2. Read the JSON output fields:
+2. Read JSON output fields:
 - `resolved_ticker`
 - `market`
 - `new_data_fetched`
@@ -35,51 +33,48 @@ python3 .agents/skills/research/scripts/run_research.py [--ticker <TICKER>] --as
 - If `next_action` is `done`, stop.
 - If `next_action` is `run_research`, run `$run-llm-workflow` for `resolved_ticker` and the same `asof` date.
 
-4. After `$run-llm-workflow` completes, run post-report routing check:
+4. Optional promising-name follow-up routing (same skill, deeper focus):
 
 ```bash
 python3 .agents/skills/research/scripts/run_research.py --ticker <RESOLVED_TICKER> --asof <YYYY-MM-DD> --post-report-check
 ```
 
-- If `next_action` is `run_deep_dive`, run `$run-llm-deep-dive` using:
+- If `next_action` is `run_research`, run `$run-llm-workflow` again using:
   - `resolved_ticker`
-  - `asof` as revised as-of date
-  - `baseline_report_dir` from the JSON output
+  - same `asof` date
+  - `baseline_report_dir` from JSON output as the starting reference package
+  - `followup_focus` from JSON output (currently `falsification`)
 - If `next_action` is `done`, stop.
 
-5. When research and optional deep-dive complete, ensure queue removal is handled:
+5. When research is complete, remove ticker from queue:
 
 ```bash
 python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <RESOLVED_TICKER>
 ```
 
-- If a deep-dive was run, verify all required deep-dive outputs exist before queue removal:
+- Remove only after required output files exist in the final report package:
   - `report.md`
   - `valuation/inputs.yaml`
   - `valuation/outputs.json`
-  - `deep-dive-plan.md`
-  - `deep-dive-changes.md`
-  - `third-party-sources.md`
-- Do not run `--post-report-check` again after deep-dive finalization for the same as-of date; it is a baseline-to-deep-dive routing gate, not a completion gate.
 
 ## Behavior Contract
 
 - No ticker provided:
   - Select from `idea-screens/company-ideas-log.jsonl`, filtered by `preferences/user_preferences.json` when present.
-  - Use the selected company's market to run the correct fetch script.
+  - Use selected company's market to run the correct fetch script.
   - Set `next_action` to `run_research`.
 
 - Ticker provided:
   - Infer market from existing company profile, queue metadata, and ticker pattern.
-  - If preferences exclude the inferred market, return an error (unless `--ignore-preferences` is set).
-  - Run the correct fetch script for that market.
+  - If preferences exclude inferred market, return an error (unless `--ignore-preferences` is set).
+  - Run correct fetch script for that market.
   - If no new data was fetched and an up-to-date report already exists, set `next_action` to `done`.
   - Otherwise set `next_action` to `run_research`.
 
-- Post-report deep-dive routing (`--post-report-check`):
-  - Load the latest report package for the same as-of date (`YYYY-MM-DD` or `YYYY-MM-DD-*`).
+- Post-report follow-up routing (`--post-report-check`):
+  - Load latest report package for the same as-of date (`YYYY-MM-DD` or `YYYY-MM-DD-*`).
   - Read base scenario `margin_of_safety` from `valuation/outputs.json`.
-  - If base MoS is greater than or equal to `--deep-dive-mos-threshold` (default `0.25`) and report verdict is not `Avoid`, set `next_action` to `run_deep_dive`.
+  - If base MoS is greater than or equal to `--followup-mos-threshold` (default `0.25`) and report verdict is not `Avoid`, set `next_action` to `run_research` with `followup_focus=falsification`.
   - Otherwise set `next_action` to `done`.
 
 ## Options
@@ -95,8 +90,8 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <R
 - `--ignore-preferences`: Disable preference-based queue filtering and market guardrails.
 - `--overwrite-assumptions`: Pass through to fetch scripts.
 - `--dry-run`: Emit decision without running fetch.
-- `--post-report-check`: Evaluate latest same-date report package and emit deep-dive routing decision.
-- `--deep-dive-mos-threshold <FLOAT>`: Base MoS threshold for auto deep-dive routing (default `0.25`).
+- `--post-report-check`: Evaluate latest same-date report package and emit follow-up routing decision.
+- `--followup-mos-threshold <FLOAT>`: Base MoS threshold for auto follow-up routing (default `0.25`).
 
 ## Validation Reference
 

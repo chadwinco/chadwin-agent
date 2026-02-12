@@ -39,7 +39,6 @@ Use one of these modes explicitly:
    - `$fetch-us-investment-ideas`
    - `$fetch-us-company-data`
    - `$run-llm-workflow`
-   - `$run-llm-deep-dive`
    - `$manage-user-preferences`
    - Choosing these directly indicates the user wants finer-grained process control.
 
@@ -50,8 +49,8 @@ If no specific lower-level control is requested, prefer `$research`.
 2. Fetch company data by market:
    - `$fetch-us-company-data` for US tickers
    - For non-US tickers, run the installed market-specific fetch skill under `.agents/skills/`
-3. Produce research outputs: `$run-llm-workflow`
-4. (Optional) Deep falsification pass for promising names: `$run-llm-deep-dive`
+3. Produce research outputs with progressive depth: `$run-llm-workflow`
+4. If high-impact issues remain, run another `$run-llm-workflow` pass focused on falsification until the stop rule is satisfied
 5. Validate artifacts and pass quality gate
 6. Remove completed ticker from `idea-screens/company-ideas-log.jsonl`
 7. Record repeatable process improvements in `docs/improvement-log.md`
