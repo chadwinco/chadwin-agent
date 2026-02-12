@@ -1,0 +1,35 @@
+asof_date: 2026-02-12
+currency: USD
+price: 91.48
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2025-02-01
+  revenue: 4948587000
+  net_debt: -772727000
+  diluted_shares: 52971000
+scenarios:
+  base:
+    revenue_growth_stage1: 0.05
+    fcf_margin_stage1: 0.085
+    discount_rate: 0.10
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.065
+    stage1_years: 7
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.07
+    fcf_margin_stage1: 0.10
+    discount_rate: 0.095
+    terminal_growth: 0.0275
+    fcf_margin_terminal: 0.075
+    stage1_years: 8
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.02
+    fcf_margin_stage1: 0.055
+    discount_rate: 0.11
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.045
+    stage1_years: 6
+    fade_years: 5

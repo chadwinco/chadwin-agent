@@ -1,0 +1,27 @@
+{
+  "ticker": "ANF",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 91.48,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 6089144686.02,
+      "equity_value": 6861871686.02,
+      "value_per_share": 129.54,
+      "margin_of_safety": 0.416
+    },
+    "bull": {
+      "enterprise_value": 9180521249.43,
+      "equity_value": 9953248249.43,
+      "value_per_share": 187.9,
+      "margin_of_safety": 1.054
+    },
+    "bear": {
+      "enterprise_value": 2845301123.6,
+      "equity_value": 3618028123.6,
+      "value_per_share": 68.3,
+      "margin_of_safety": -0.2534
+    }
+  }
+}
