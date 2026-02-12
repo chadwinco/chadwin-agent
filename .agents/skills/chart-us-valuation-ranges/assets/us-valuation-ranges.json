@@ -286,6 +286,17 @@
     "bull_value_per_share": 205.93525326305374
   },
   {
+    "ticker": "INTC",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12",
+    "bear_margin_of_safety": -0.8778246410092763,
+    "base_margin_of_safety": -0.4051653572050251,
+    "bull_margin_of_safety": 0.1444927798429465,
+    "bear_value_per_share": 5.7068110184567065,
+    "base_value_per_share": 27.784726164953277,
+    "bull_value_per_share": 53.45925774646403
+  },
+  {
     "ticker": "CB",
     "asof_date": "2026-02-06",
     "report_dir": "2026-02-06",
@@ -295,16 +306,5 @@
     "bear_value_per_share": null,
     "base_value_per_share": null,
     "bull_value_per_share": null
-  },
-  {
-    "ticker": "INTC",
-    "asof_date": "2026-02-08",
-    "report_dir": "2026-02-08",
-    "bear_margin_of_safety": -0.8971450776456075,
-    "base_margin_of_safety": -0.6994594900141904,
-    "bull_margin_of_safety": 0.02648340463647436,
-    "bear_value_per_share": 5.203430521908716,
-    "base_value_per_share": 15.204344400182109,
-    "bull_value_per_share": 51.929795440559246
   }
 ]

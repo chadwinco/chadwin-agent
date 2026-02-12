@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render latest US ticker margin-of-safety ranges into chat-friendly artifacts."""
+"""Render latest US ticker margin-of-safety ranges into deterministic artifacts."""
 
 from __future__ import annotations
 
@@ -42,8 +42,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-dir",
-        default=".agents/skills/chart-us-valuation-ranges/output",
-        help="Directory for generated files (default: skill output folder).",
+        default=".agents/skills/chart-us-valuation-ranges/assets",
+        help="Directory for generated files (default: skill assets folder).",
     )
     parser.add_argument(
         "--sort-by",
@@ -67,12 +67,6 @@ def parse_args() -> argparse.Namespace:
         "--title",
         default="US Margin of Safety Ranges (Latest Reports)",
         help="Chart title.",
-    )
-    parser.add_argument(
-        "--bar-width",
-        type=int,
-        default=30,
-        help="ASCII range-bar width for the markdown table (default: 30).",
     )
     return parser.parse_args()
 
@@ -386,90 +380,6 @@ def build_svg(records: list[ValuationRecord], title: str) -> str:
     return "\n".join(parts) + "\n"
 
 
-def _value_to_index(value: float, lo: float, hi: float, width: int) -> int:
-    if hi <= lo:
-        return width // 2
-    normalized = (value - lo) / (hi - lo)
-    idx = round(normalized * (width - 1))
-    return max(0, min(width - 1, idx))
-
-
-def ascii_range_bar(
-    bear: float,
-    base: float,
-    bull: float,
-    scale_min: float,
-    scale_max: float,
-    width: int,
-) -> str:
-    width = max(10, width)
-    chars = [" "] * width
-    b_idx = _value_to_index(bear, scale_min, scale_max, width)
-    m_idx = _value_to_index(base, scale_min, scale_max, width)
-    u_idx = _value_to_index(bull, scale_min, scale_max, width)
-
-    lo = min(b_idx, u_idx)
-    hi = max(b_idx, u_idx)
-    for idx in range(lo, hi + 1):
-        chars[idx] = "="
-
-    chars[b_idx] = "B"
-    chars[u_idx] = "U"
-    chars[m_idx] = "M"
-    return f"[{''.join(chars)}]"
-
-
-def write_chat_markdown(
-    records: list[ValuationRecord],
-    image_path: Path,
-    markdown_path: Path,
-    title: str,
-    skipped: list[str],
-    bar_width: int,
-) -> None:
-    scale_min = min(min(item.bear_mos, item.base_mos, item.bull_mos) for item in records)
-    scale_max = max(max(item.bear_mos, item.base_mos, item.bull_mos) for item in records)
-
-    lines: list[str] = []
-    lines.append(f"# {title}")
-    lines.append("")
-    lines.append(f"- Companies plotted: {len(records)}")
-    lines.append("- Metric: `margin_of_safety` (bear/base/bull) from each latest outputs JSON")
-    lines.append(f"- Range bar scale: `{pct(scale_min)} to {pct(scale_max)}`")
-    if skipped:
-        lines.append(f"- Skipped companies: {len(skipped)}")
-    lines.append("")
-    lines.append(f"![US margin of safety ranges]({image_path.resolve()})")
-    lines.append("")
-
-    if skipped:
-        lines.append("## Skipped Companies")
-        for reason in skipped:
-            lines.append(f"- {reason}")
-        lines.append("")
-
-    lines.append("| Ticker | As-Of | Report Dir | Bear MoS | Base MoS | Bull MoS | Range Bar |")
-    lines.append("| --- | --- | --- | ---: | ---: | ---: | --- |")
-    for item in records:
-        bar = ascii_range_bar(
-            bear=item.bear_mos,
-            base=item.base_mos,
-            bull=item.bull_mos,
-            scale_min=scale_min,
-            scale_max=scale_max,
-            width=bar_width,
-        )
-        lines.append(
-            "| "
-            f"{item.ticker} | {item.asof_date} | {item.report_dir} | "
-            f"{pct(item.bear_mos)} | {pct(item.base_mos)} | {pct(item.bull_mos)} | `{bar}` |"
-        )
-
-    lines.append("")
-    lines.append("Legend for range bar: `B`=Bear, `M`=Base, `U`=Bull")
-    markdown_path.write_text("\n".join(lines) + "\n")
-
-
 def main() -> int:
     args = parse_args()
     companies_root = Path(args.companies_root).resolve()
@@ -490,18 +400,9 @@ def main() -> int:
         ordered = ordered[: args.limit]
 
     svg_path = output_dir / "us-valuation-ranges.svg"
-    markdown_path = output_dir / "us-valuation-ranges-chat.md"
     json_path = output_dir / "us-valuation-ranges.json"
 
     svg_path.write_text(build_svg(ordered, args.title))
-    write_chat_markdown(
-        records=ordered,
-        image_path=svg_path,
-        markdown_path=markdown_path,
-        title=args.title,
-        skipped=skipped,
-        bar_width=args.bar_width,
-    )
 
     json_rows = []
     for item in ordered:
@@ -522,7 +423,6 @@ def main() -> int:
 
     print(f"[OK] Rows rendered: {len(ordered)}")
     print(f"[OK] SVG range chart: {svg_path}")
-    print(f"[OK] Chat markdown: {markdown_path}")
     print(f"[OK] JSON data: {json_path}")
 
     if skipped:

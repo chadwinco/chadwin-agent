@@ -1,12 +1,12 @@
 ---
 name: chart-us-valuation-ranges
-description: "Build a deterministic cross-ticker margin-of-safety snapshot for companies/US by selecting each ticker's latest dated reports folder and reading valuation outputs.json (fallback: output.json), then generating a range-bar chart and markdown table. Use when the user asks to compare bear/base/bull margin_of_safety ranges across US companies, see latest downside/upside dispersion, or present a portfolio-style valuation dashboard in Codex chat."
+description: "Build a deterministic cross-ticker margin-of-safety snapshot for companies/US by selecting each ticker's latest dated reports folder and reading valuation outputs.json (fallback: output.json), then generating a range-bar chart and JSON dataset. Use when the user asks to compare bear/base/bull margin_of_safety ranges across US companies, see latest downside/upside dispersion, or present a portfolio-style valuation dashboard in Codex chat."
 ---
 
 # Chart US Valuation Ranges
 
 ## Overview
-Render a single deterministic chart and markdown snapshot of latest US margin-of-safety ranges (bear/base/bull) from local report outputs.
+Render a single deterministic chart and machine-readable snapshot of latest US margin-of-safety ranges (bear/base/bull) from local report outputs.
 
 ## Quick Start
 Run from repo root:
@@ -16,15 +16,13 @@ Run from repo root:
 ```
 
 Generated files:
-- `.agents/skills/chart-us-valuation-ranges/output/us-valuation-ranges.svg`
-- `.agents/skills/chart-us-valuation-ranges/output/us-valuation-ranges-chat.md`
-- `.agents/skills/chart-us-valuation-ranges/output/us-valuation-ranges.json`
+- `.agents/skills/chart-us-valuation-ranges/assets/us-valuation-ranges.svg`
+- `.agents/skills/chart-us-valuation-ranges/assets/us-valuation-ranges.json`
 
 ## Workflow
 1. Run the script.
 2. Read stdout for skipped tickers and include that note if relevant.
-3. Use the generated chat markdown snapshot in your response (it contains an image-based range chart and table).
-4. If image rendering is unavailable, rely on the table's ASCII range-bar column.
+3. Use the generated SVG in chat and the JSON for deterministic row values.
 
 ## Selection Rules
 - Enumerate all directories under `companies/US`.
@@ -42,7 +40,7 @@ Generated files:
   - Base = `scenarios.base.margin_of_safety`
   - Bull = `scenarios.bull.margin_of_safety`
 - Render horizontal range bars (bear-to-bull span) with a base marker.
-- Include a markdown table with ticker, as-of date, report dir, bear/base/bull margin-of-safety, and an ASCII range bar.
+- Export JSON rows with ticker, as-of date, report dir, and bear/base/bull margin-of-safety plus scenario value-per-share fields.
 
 ## Optional Flags
 ```bash
@@ -53,7 +51,7 @@ Generated files:
 
 Supported options:
 - `--companies-root` (default `companies/US`)
-- `--output-dir` (default `.agents/skills/chart-us-valuation-ranges/output`)
+- `--output-dir` (default `.agents/skills/chart-us-valuation-ranges/assets`)
 - `--sort-by` (`ticker|base|spread`)
 - `--order` (`asc|desc`)
 - `--limit` (`0` means no limit)
