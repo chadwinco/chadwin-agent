@@ -1,4 +1,4 @@
 interface:
   display_name: "Manage User Preferences"
   short_description: "Create or update the persistent preferences profile"
-  default_prompt: "Use $manage-user-preferences to run a 4-section interview one section at a time, normalize each response into preferences/user_preferences.json, and notify me when the update is complete."
+  default_prompt: "Use $manage-user-preferences to run a 4-section interview one section at a time, normalize each response with LLM judgment into preferences/user_preferences.json (no deterministic parser scripts), and notify me when the update is complete."
