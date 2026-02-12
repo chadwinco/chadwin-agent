@@ -1,0 +1,76 @@
+{
+  "query": "Brady Corp earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.insidermonkey.com/blog/brady-corporation-nysebrc-q4-2025-earnings-call-transcript-1603753/",
+    "https://finance.yahoo.com/quote/BRC/earnings-calls/",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-brady-corporation-q4-2025-beats-earnings-expectations-93CH-4224862",
+    "https://www.msn.com/en-us/money/companies/brady-corporation-nysebrc-q2-2025-earnings-call-transcript/ar-AA1zzzls",
+    "https://www.insidermonkey.com/blog/brady-corporation-nysebrc-q1-2026-earnings-call-transcript-1647563/",
+    "https://finance.yahoo.com/quote/BRC/earnings/BRC-Q1-2026-earnings_call-382868.html",
+    "https://seekingalpha.com/article/4844679-brady-corporation-brc-q1-2026-earnings-call-transcript"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/BRC/data/filings/earnings-call-2025-11-18-insidermonkey.com.md",
+    "source_url": "https://www.insidermonkey.com/blog/brady-corporation-nysebrc-q1-2026-earnings-call-transcript-1647563/",
+    "published_date": "2025-11-18"
+  },
+  "attempts": [
+    {
+      "url": "https://www.insidermonkey.com/blog/brady-corporation-nysebrc-q4-2025-earnings-call-transcript-1603753/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 31878,
+      "published_date": "2025-09-05",
+      "message": null
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/BRC/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-brady-corporation-q4-2025-beats-earnings-expectations-93CH-4224862",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.msn.com/en-us/money/companies/brady-corporation-nysebrc-q2-2025-earnings-call-transcript/ar-AA1zzzls",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/brady-corporation-nysebrc-q1-2026-earnings-call-transcript-1647563/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 28965,
+      "published_date": "2025-11-18",
+      "message": null
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/BRC/earnings/BRC-Q1-2026-earnings_call-382868.html",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4844679-brady-corporation-brc-q1-2026-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

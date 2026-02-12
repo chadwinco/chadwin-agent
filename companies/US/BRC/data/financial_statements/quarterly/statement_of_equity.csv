@@ -1,0 +1,13 @@
+label,concept,2025-10-31,2025-04-30,2025-01-31,2024-10-31,2024-04-30,2024-01-31,2023-10-31,2023-04-30,2023-01-31,2022-10-31,2022-04-30,2022-01-31
+Issuance of shares of Class A Common Stock under stock plan,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,,340000.0,-712000.0,,85000.0,2739000.0,,947000.0,2334000.0,,-244000.0,1463000.0
+"Other comprehensive loss, net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,,,,,-22222000.0,,,-17437000.0,,
+Repurchase of shares of Class A Common Stock,us-gaap_StockRepurchasedDuringPeriodValue,,,,,,,,11913000.0,5791000.0,12070000.0,63210000.0,2796000.0
+"Common Stock, Dividends, Per Share, Cash Paid",us-gaap_CommonStockDividendsPerShareCashPaid,,,,,,,,,,0.2134,,
+"Common Stock, Dividends, Per Share, Declared",us-gaap_CommonStockDividendsPerShareDeclared,,,,,,,,,,,0.225,0.225
+Net Income,us-gaap_NetIncomeLoss,53936000.0,52263000.0,40334000.0,46783000.0,50890000.0,43628000.0,47241000.0,48052000.0,37986000.0,39441000.0,40054000.0,33815000.0
+"Other Comprehensive Income (Loss), Net of Tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,5432000.0,38093000.0,-20225000.0,-1980000.0,-6466000.0,15342000.0,,-31000.0,31144000.0,,-19949000.0,-18268000.0
+Issuance of shares of Class A Common Stock under stock plan,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,-1802000.0,,,-2870000.0,,,-265000.0,,,1155000.0,,
+Tax benefit and withholdings from deferred compensation distributions,us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,266000.0,,,190000.0,,,149000.0,,,66000.0,,
+"Repurchase of shares of Class A Common Stock, including excise taxes",us-gaap_TreasuryStockValueAcquiredCostMethod,-4054000.0,33330000.0,,,50932000.0,7713000.0,-14185000.0,,,,,
+Stock-based compensation expense,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,6746000.0,1769000.0,2180000.0,5813000.0,1159000.0,1100000.0,4163000.0,2046000.0,1423000.0,2958000.0,1983000.0,3041000.0
+"Dividends, Common Stock, Cash",us-gaap_DividendsCommonStockCash,808000.0,10521000.0,10616000.0,790000.0,10364000.0,10525000.0,773000.0,814000.0,10603000.0,755000.0,10655000.0,10857000.0

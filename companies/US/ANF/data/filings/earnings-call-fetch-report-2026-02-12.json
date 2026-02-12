@@ -1,0 +1,67 @@
+{
+  "query": "Abercrombie & Fitch Co /De/ earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://finance.yahoo.com/quote/AFT.DE/earnings/AFT.DE-Q4-2025-earnings_call-259348.html",
+    "https://www.fool.com/earnings/call-transcripts/2025/11/25/abercrombie-anf-q3-2025-earnings-call-transcript/",
+    "https://finance.yahoo.com/quote/AFT.DE/earnings-calls/",
+    "https://finance.yahoo.com/quote/ANF/earnings-calls/",
+    "https://news.alphastreet.com/abercrombie-fitch-co-anf-q3-2025-earnings-call-transcript/",
+    "https://www.msn.com/en-us/money/other/abercrombie-fitch-co-nyse-anf-q3-2025-earnings-call-transcript/ar-AA1RcjJX"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/ANF/data/filings/earnings-call-2026-01-22-news.alphastreet.com.md",
+    "source_url": "https://news.alphastreet.com/abercrombie-fitch-co-anf-q3-2025-earnings-call-transcript/",
+    "published_date": "2026-01-22"
+  },
+  "attempts": [
+    {
+      "url": "https://finance.yahoo.com/quote/AFT.DE/earnings/AFT.DE-Q4-2025-earnings_call-259348.html",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.fool.com/earnings/call-transcripts/2025/11/25/abercrombie-anf-q3-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 44378,
+      "published_date": "2025-11-25",
+      "message": null
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/AFT.DE/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/ANF/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://news.alphastreet.com/abercrombie-fitch-co-anf-q3-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 39900,
+      "published_date": "2026-01-22",
+      "message": null
+    },
+    {
+      "url": "https://www.msn.com/en-us/money/other/abercrombie-fitch-co-nyse-anf-q3-2025-earnings-call-transcript/ar-AA1RcjJX",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    }
+  ]
+}

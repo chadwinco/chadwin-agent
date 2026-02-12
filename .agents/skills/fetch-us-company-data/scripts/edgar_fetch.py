@@ -668,16 +668,32 @@ def _build_balance_sheet(financials, ticker: str, period_label: str, currency: s
     _attach_metric(out, total_assets, "totalAssets", period_cols)
     _attach_metric(out, total_equity, "totalEquity", period_cols)
 
-    if total_debt is not None:
+    if total_debt is not None and _series_has_values(total_debt, period_cols):
         _attach_metric(out, total_debt, "totalDebt", period_cols)
     else:
+        def _numeric_period_series(series):
+            if series is None:
+                return None
+            if isinstance(series, pd.DataFrame):
+                if series.empty:
+                    return None
+                series = series.iloc[0]
+            values = pd.to_numeric([series.get(col) for col in period_cols], errors="coerce")
+            if pd.isna(values).all():
+                return None
+            return pd.Series(values, index=period_cols)
+
+        short_debt_series = _numeric_period_series(short_debt)
+        long_debt_series = _numeric_period_series(long_debt)
+
         debt_series = None
-        if short_debt is not None and long_debt is not None:
-            debt_series = short_debt.add(long_debt, fill_value=0)
-        elif short_debt is not None:
-            debt_series = short_debt
-        elif long_debt is not None:
-            debt_series = long_debt
+        if short_debt_series is not None and long_debt_series is not None:
+            debt_series = short_debt_series.add(long_debt_series, fill_value=0)
+        elif short_debt_series is not None:
+            debt_series = short_debt_series
+        elif long_debt_series is not None:
+            debt_series = long_debt_series
+
         _attach_metric(out, debt_series, "totalDebt", period_cols)
 
     out["netDebt"] = out["totalDebt"] - out["cashAndCashEquivalents"]

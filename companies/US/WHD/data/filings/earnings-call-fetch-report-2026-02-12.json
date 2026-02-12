@@ -1,0 +1,67 @@
+{
+  "query": "Cactus, Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.msn.com/en-us/money/companies/cactus-inc-nyse-whd-q2-2025-earnings-call-transcript/ar-AA1JMdB3",
+    "https://www.insidermonkey.com/blog/cactus-inc-nysewhd-q3-2025-earnings-call-transcript-1638528/",
+    "https://seekingalpha.com/article/4807916-cactus-inc-whd-q2-2025-earnings-call-transcript",
+    "https://finance.yahoo.com/quote/WHD/earnings/WHD-Q2-2025-earnings_call-340945.html",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-cactus-inc-beats-q1-2025-earnings-forecast-stock-surges-93CH-4017394",
+    "https://news.alphastreet.com/cactus-inc-whd-q3-2025-earnings-call-transcript/"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/WHD/data/filings/earnings-call-2026-01-22-news.alphastreet.com.md",
+    "source_url": "https://news.alphastreet.com/cactus-inc-whd-q3-2025-earnings-call-transcript/",
+    "published_date": "2026-01-22"
+  },
+  "attempts": [
+    {
+      "url": "https://www.msn.com/en-us/money/companies/cactus-inc-nyse-whd-q2-2025-earnings-call-transcript/ar-AA1JMdB3",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/cactus-inc-nysewhd-q3-2025-earnings-call-transcript-1638528/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 29102,
+      "published_date": "2025-11-01",
+      "message": null
+    },
+    {
+      "url": "https://seekingalpha.com/article/4807916-cactus-inc-whd-q2-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/WHD/earnings/WHD-Q2-2025-earnings_call-340945.html",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-cactus-inc-beats-q1-2025-earnings-forecast-stock-surges-93CH-4017394",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://news.alphastreet.com/cactus-inc-whd-q3-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 29849,
+      "published_date": "2026-01-22",
+      "message": null
+    }
+  ]
+}

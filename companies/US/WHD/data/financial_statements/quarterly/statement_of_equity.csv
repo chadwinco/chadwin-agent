@@ -1,0 +1,19 @@
+label,concept,2025-09-30,2025-06-30,2024-09-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-06-30,2022-03-31
+Issuance of common stock (in shares),us-gaap_StockIssuedDuringPeriodSharesNewIssues,,,,,,,128150.0,,
+Issuances of common stock,us-gaap_StockIssuedDuringPeriodValueNewIssues,,,,,,,169369000.0,,
+Member distributions,us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,1560000.0,3654000.0,1827000.0,1684000.0,9214000.0,3068000.0,1644000.0,1694000.0,1654000.0
+Effect of CC Unit redemptions (in shares),us-gaap_StockIssuedDuringPeriodSharesConversionOfUnits,252000.0,173000.0,154000.0,,,,,,
+Effect of CC Unit redemptions,us-gaap_StockIssuedDuringPeriodValueConversionOfUnits,0.0,0.0,0.0,,0.0,0.0,,,
+Effect of CW Unit redemptions,us-gaap_StockIssuedDuringPeriodValueConversionOfUnits,,,,,,,,0.0,0.0
+Effect of CW Unit redemptions (in shares),us-gaap_StockIssuedDuringPeriodSharesConversionOfUnits,,,,,714000.0,158000.0,,411000.0,-1000000.0
+Tax impact of equity transactions,whd_AdjustmentsToAdditionalPaidInCapitalTaxReceivableAgreement,267000.0,185000.0,70000.0,234000.0,2474000.0,428000.0,2845000.0,433000.0,2531000.0
+Equity award vestings (in shares),us-gaap_StockIssuedDuringPeriodSharesShareBasedCompensation,13000.0,11000.0,22000.0,196000.0,,7000.0,193000.0,5000.0,162000.0
+Equity award vestings,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,-204000.0,-212000.0,-832000.0,-4896000.0,,-97000.0,-4343000.0,-72000.0,-4424000.0
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeOtherNetOfTax,-120000.0,497000.0,769000.0,-803000.0,,,,,
+Other comprehensive loss,us-gaap_OtherComprehensiveIncomeOtherNetOfTax,,,,,-670000.0,-445000.0,,-1367000.0,
+Other comprehensive loss (income),us-gaap_OtherComprehensiveIncomeOtherNetOfTax,,,,,,,303000.0,,436000.0
+Share repurchases (in shares),us-gaap_StockRepurchasedDuringPeriodShares,,,,87000.0,,4000.0,,,
+Share repurchases,us-gaap_StockRepurchasedDuringPeriodValue,,,,3372000.0,,159000.0,,,
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationAndExerciseOfStockOptions,6126000.0,6400000.0,5704000.0,4469000.0,4618000.0,5049000.0,3703000.0,2350000.0,2666000.0
+Cash dividends declared,us-gaap_DividendsCash,9822000.0,9096000.0,8837000.0,7944000.0,7930000.0,7229000.0,7130000.0,6724000.0,6569000.0
+Net Income from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest,50188000.0,49047000.0,62437000.0,49815000.0,68019000.0,32459000.0,52288000.0,35780000.0,27083000.0

@@ -1,0 +1,20 @@
+label,concept,2025-02-01,2024-02-03,2023-01-28,2022-01-29,2021-01-30,2020-02-01
+Purchase of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,,0.0,125775000.0,377290000.0,15172000.0,-63542000.0
+"Distributions to noncontrolling interests, net",us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,,4191000.0,7075000.0,8506000.0,4751000.0,-2955000.0
+"New Accounting Pronouncement or Change in Accounting Principle, Effect of Adoption, Quantification",us-gaap_NewAccountingPronouncementOrChangeInAccountingPrincipleEffectOfAdoptionQuantification,,,,,,-75165000.0
+Net income attributable to noncontrolling interests,us-gaap_IncomeLossAttributableToNoncontrollingInterest,-7793000.0,-7290000.0,-7569000.0,7056000.0,5067000.0,5602000.0
+Net Income,us-gaap_NetIncomeLoss,566223000.0,328123000.0,2816000.0,263010000.0,-114021000.0,39358000.0
+Profit or Loss,us-gaap_ProfitLoss,574016000.0,335413000.0,10385000.0,270066000.0,-108954000.0,44960000.0
+Purchase of common stock(1),us-gaap_TreasuryStockValueAcquiredCostMethod,231031000.0,,,,,
+"Purchase of common stock, shares",us-gaap_TreasuryStockSharesAcquired,1615000.0,0.0,4770000.0,10200000.0,1397000.0,3957000.0
+Dividends,us-gaap_Dividends,,,,0.0,,
+Dividends ($0.80 per share),us-gaap_Dividends,,,,,12556000.0,-51510000.0
+Share-based compensation issuances and exercises,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,70208000.0,29485000.0,14464000.0,13163000.0,5694000.0,-6804000.0
+"Share-based compensation issuances and exercises, shares",us-gaap_StockIssuedDuringPeriodSharesShareBasedCompensation,850000.0,1498000.0,787000.0,786000.0,1010000.0,516000.0
+Share-based compensation expense,us-gaap_AllocatedShareBasedCompensationExpense,38667000.0,40122000.0,28995000.0,29304000.0,18682000.0,14007000.0
+"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), after Reclassification and Tax",us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,4168000.0,5438000.0,,,,
+"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, Net of Tax",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-7351000.0,-3879000.0,,,,
+"Foreign currency translation adjustments, net of tax",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,,,-11964000.0,-22917000.0,12195000.0,-5080000.0
+"Derivative financial instruments, net of tax",us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,,,-10857000.0,10518000.0,-5616000.0,-1354000.0
+"Distribution to noncontrolling interests, net",us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,6925000.0,,,,,
+"Common stock, dividends declared (in dollars per share)",us-gaap_CommonStockDividendsPerShareDeclared,,,,0.0,,

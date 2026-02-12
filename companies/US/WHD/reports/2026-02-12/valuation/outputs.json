@@ -1,0 +1,27 @@
+{
+  "ticker": "WHD",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 57.34,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 3157444916.84,
+      "equity_value": 3500287916.84,
+      "value_per_share": 43.8,
+      "margin_of_safety": -0.2361
+    },
+    "bull": {
+      "enterprise_value": 4919293040.61,
+      "equity_value": 5262136040.61,
+      "value_per_share": 65.85,
+      "margin_of_safety": 0.1484
+    },
+    "bear": {
+      "enterprise_value": 1706411632.57,
+      "equity_value": 2049254632.57,
+      "value_per_share": 25.64,
+      "margin_of_safety": -0.5528
+    }
+  }
+}

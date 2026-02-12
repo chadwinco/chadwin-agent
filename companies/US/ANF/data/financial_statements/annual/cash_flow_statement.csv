@@ -1,0 +1,73 @@
+label,concept,2025-02-01,2024-02-03,2023-01-28,2022-01-29,2021-01-30,2020-02-01
+Profit or Loss,us-gaap_ProfitLoss,574016000.0,335413000.0,10385000.0,270066000.0,-108954000.0,44960000.0
+Depreciation and Amortization,us-gaap_DepreciationAndAmortization,153773000.0,141104000.0,132243000.0,144035000.0,166281000.0,173625000.0
+"Hosting Arrangement, Service Contract, Implementation Cost, Expense, Amortization",us-gaap_HostingArrangementServiceContractImplementationCostExpenseAmortization,15572000.0,,,,,
+Asset impairment,us-gaap_RestructuringCostsAndAssetImpairmentCharges,11596000.0,8289000.0,14031000.0,,,22364000.0
+Loss on disposal,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,3440000.0,6408000.0,552000.0,,,6298000.0
+Deferred Income Tax Expense (Benefit),us-gaap_DeferredIncomeTaxExpenseBenefit,-12278000.0,-4743000.0,11500000.0,,,
+Share-based compensation,us-gaap_ShareBasedCompensation,38667000.0,40122000.0,28995000.0,,,14007000.0
+Loss (gain) on extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,1114000.0,1975000.0,,,,
+Inventories,us-gaap_IncreaseDecreaseInInventories,-106874000.0,35043000.0,18505000.0,,,2270000.0
+Accounts payable and accrued expenses,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,129262000.0,82925000.0,-115152000.0,,,10821000.0
+Operating lease right-of use assets and liabilities,anf_Increasedecreaseinoperatingleaseliabilities,-3288000.0,-55646000.0,-18495000.0,,,
+Income taxes,us-gaap_IncreaseDecreaseInAccruedIncomeTaxesPayable,-9845000.0,35806000.0,-7390000.0,,,-5473000.0
+Other assets,us-gaap_IncreaseDecreaseInOtherOperatingAssets,-71361000.0,33623000.0,-86923000.0,,,-20137000.0
+Other liabilities,us-gaap_IncreaseDecreaseInOtherOperatingLiabilities,-13418000.0,-6897000.0,9458000.0,-14340000.0,1889000.0,-3642000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,710376000.0,653422000.0,-2343000.0,277782000.0,404918000.0,300685000.0
+Payments to Acquire Marketable Securities,us-gaap_PaymentsToAcquireMarketableSecurities,-139600000.0,,,,,
+Proceeds from Sale and Maturity of Marketable Securities,us-gaap_ProceedsFromSaleAndMaturityOfMarketableSecurities,24800000.0,,,,,
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-182903000.0,-157797000.0,-164566000.0,-96979000.0,-101910000.0,-202784000.0
+"Proceeds from Sale of Property, Plant, and Equipment",us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,0.0,615000.0,11891000.0,,,
+Withdrawal of funds from Rabbi Trust assets,anf_WithdrawalfromRabbiTrustAssets,0.0,0.0,12000000.0,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-297703000.0,-157182000.0,-140675000.0,-96979000.0,-51910000.0,-202784000.0
+Proceeds from issuance of senior secured notes,us-gaap_ProceedsFromIssuanceOfSecuredDebt,,,0.0,,,
+Repayment/redemption of senior secured notes,us-gaap_RepaymentsOfSecuredDebt,-223331000.0,,,,,
+Payment of debt modification costs and fees,us-gaap_PaymentsOfDebtIssuanceCosts,-3291000.0,,,,,
+Purchases of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-229807000.0,-0.0,-125775000.0,,,-63542000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,-70208000.0,,,,,
+Dividends paid,us-gaap_PaymentsOfDividendsCommonStock,,,-0.0,,,-51510000.0
+Proceeds from (Payments for) Other Financing Activities,us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,-8240000.0,-33049000.0,-21511000.0,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-534877000.0,-111201000.0,-155329000.0,-446898000.0,69717000.0,-147873000.0
+Effect of foreign currency exchange rates on cash,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,-7086000.0,-2923000.0,-8452000.0,,,-3593000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,-129290000.0,382116000.0,-306799000.0,-289789000.0,431893000.0,-53565000.0
+Right-of-Use Asset Obtained in Exchange for Operating Lease Liability,us-gaap_RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,365813000.0,155184000.0,269430000.0,29241000.0,-38279000.0,391753000.0
+Purchases of property and equipment accrued in accounts payable,us-gaap_ConstructionInProgressExpendituresIncurredButNotYetPaid,48856000.0,,,,,
+Benefit from deferred income taxes,anf_CurrentDeferredIncomeTaxExpenseBenefit,,,,,,9150000.0
+Deferred lease credits amortization,anf_DeferredLeaseCreditsAmortization,,,,,-0.0,-0.0
+Restructuring Costs and Asset Impairment Charges,us-gaap_RestructuringCostsAndAssetImpairmentCharges,,,,12100000.0,72937000.0,
+Gain (Loss) on Disposition of Property Plant Equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,5020000.0,16353000.0,
+Current Deferred Income Tax Expense (Benefit),anf_CurrentDeferredIncomeTaxExpenseBenefit,,,,-31922000.0,23986000.0,
+"Share-based Payment Arrangement, Noncash Expense",us-gaap_ShareBasedCompensation,,,,29304000.0,18682000.0,
+Gain (Loss) on Extinguishment of Debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,,,5347000.0,,
+Increase (Decrease) in Inventories,us-gaap_IncreaseDecreaseInInventories,,,,-123221000.0,33312000.0,
+Increase (Decrease) in Accounts Payable and Accrued Liabilities,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,,,,77910000.0,186747000.0,
+Increase decrease in operating lease liabilities,anf_Increasedecreaseinoperatingleaseliabilities,,,,-93827000.0,-55700000.0,46442000.0
+Increase (Decrease) in Income Taxes Payable,us-gaap_IncreaseDecreaseInAccruedIncomeTaxesPayable,,,,-3086000.0,10753000.0,
+Increase (Decrease) in Other Operating Assets,us-gaap_IncreaseDecreaseInOtherOperatingAssets,,,,396000.0,38632000.0,
+Withdrawal from Rabbi Trust Assets,anf_WithdrawalfromRabbiTrustAssets,,,,0.0,50000000.0,
+Repayments of Lines of Credit,us-gaap_RepaymentsOfDebt,,,,-0.0,-233250000.0,
+Repayments of Short-term Debt,us-gaap_RepaymentsOfShortTermDebt,,,,-0.0,-210000000.0,
+Proceeds from Short-term Debt,us-gaap_ProceedsFromShortTermDebt,,,,0.0,210000000.0,
+Payments of Debt Issuance Costs,us-gaap_PaymentsOfDebtIssuanceCosts,,,,-2016000.0,-7318000.0,
+Payments for Repurchase of Common Stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,-377290000.0,-15172000.0,
+"Payments of Ordinary Dividends, Common Stock",us-gaap_PaymentsOfDividendsCommonStock,,,,-0.0,-12556000.0,
+Repayments of Notes Payable,us-gaap_RepaymentsOfNotesPayable,,,,46969000.0,,
+Proceeds from Notes Payable,us-gaap_ProceedsFromIssuanceOfSecuredDebt,,,,0.0,350000000.0,
+Effect of Exchange Rate on Cash and Cash Equivalents,us-gaap_EffectOfExchangeRateOnCashAndCashEquivalents,,,,-23694000.0,9168000.0,
+Construction in Progress Expenditures Incurred but Not yet Paid,us-gaap_ConstructionInProgressExpendituresIncurredButNotYetPaid,,,,29932000.0,16250000.0,
+(Gain) loss on extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,,-52000.0,,,
+Proceeds from sale of property and equipment,us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,,,,,,0.0
+Other financing activities,anf_ChangeInOutstandingChecksAndOther,,,,,,-12821000.0
+Purchase of senior secured notes,us-gaap_RepaymentsOfSecuredDebt,,-77972000.0,-7862000.0,,,
+Payment of debt issuance costs and fees,us-gaap_PaymentsOfDebtIssuanceCosts,,-180000.0,-181000.0,,,
+Repayments of term loan facility borrowings,us-gaap_RepaymentsOfLinesOfCredit,,,,,,-20000000.0
+Repayment of borrowings under the term loan facility,us-gaap_RepaymentsOfDebt,,,-0.0,,,
+Repayment of borrowings under the senior secured asset-based revolving credit facility,us-gaap_RepaymentsOfShortTermDebt,,,-0.0,,,
+Proceeds from borrowings under the senior secured asset-based revolving credit facility,us-gaap_ProceedsFromShortTermDebt,,,0.0,,,
+Purchases of property and equipment not yet paid at end of period,us-gaap_ConstructionInProgressExpendituresIncurredButNotYetPaid,,35568000.0,57313000.0,,,44199000.0
+Cash paid for interest,us-gaap_InterestPaidNet,9527000.0,24891000.0,26687000.0,28413000.0,26629000.0,17514000.0
+Cash paid for income taxes,us-gaap_IncomeTaxesPaid,217654000.0,120448000.0,53011000.0,74709000.0,15210000.0,20717000.0
+Cash received from income tax refunds,us-gaap_ProceedsFromIncomeTaxRefunds,502000.0,1843000.0,3701000.0,2292000.0,4650000.0,8773000.0
+"Operating Lease, Payments",us-gaap_OperatingLeasePayments,278229000.0,296834000.0,263269000.0,364842000.0,316992000.0,422850000.0
+RentAbatementsReceived,anf_RentAbatementsReceived,,,,17900000.0,,
+Change in Outstanding Checks and Other,anf_ChangeInOutstandingChecksAndOther,,,,-20623000.0,-11987000.0,

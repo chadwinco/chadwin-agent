@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+WHD,57.34,4580000000.0,1.25,0.56,33.20 - 61.38,,,1352399.0,"Cactus, Inc.",USD,0001699136,US1272031071,127203107,New York Stock Exchange,NYSE,Oil & Gas Equipment & Services,https://cactuswhd.com,Scott Bender,Energy,United States,1600,713-626-8800,920 Memorial City Way,Suite 300,,,,false,true,false
