@@ -1,0 +1,53 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net Income,us-gaap_NetIncomeLoss,46074000.0,40314000.0,2567000.0,-12426000.0,5014000.0,-31535000.0,-12100000.0,-114262000.0,-187649000.0,-422201000.0,-377246000.0,-196932000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,,,33572000.0,,,32408000.0,,,27230000.0,,,31788000.0
+Stock-based compensation,us-gaap_ShareBasedCompensation,,,93158000.0,,,80098000.0,,,180383000.0,,,153743000.0
+Amortization of premium on marketable securities,us-gaap_InvestmentIncomeAmortizationOfPremium,,,33000.0,,,64000.0,,,80000.0,,,1063000.0
+Accretion of discount on marketable securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,-21482000.0,,,-20872000.0,,,-13624000.0,,,-1238000.0
+Amortization of debt discount and issuance costs,us-gaap_AmortizationOfFinancingCostsAndDiscounts,761000.0,762000.0,927000.0,989000.0,951000.0,804000.0,908000.0,866000.0,666000.0,736000.0,694000.0,653000.0
+Other,us-gaap_OtherNoncashIncomeExpense,,,-332000.0,,,2114000.0,,,3489000.0,,,1835000.0
+Prepaid expenses and other assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,-9027000.0,,,9760000.0,,,-1115000.0,,,-187884000.0
+Operating lease right-of-use assets,lyft_IncreaseDecreaseInOperatingLeaseRightOfUseAssets,,,5497000.0,,,7055000.0,,,18978000.0,,,13497000.0
+Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayable,,,800000.0,,,31819000.0,,,-4295000.0,,,-33932000.0
+Insurance reserves,lyft_IncreaseDecreaseInInsuranceReserves,,,122142000.0,,,53084000.0,,,-63647000.0,,,-2748000.0
+Accrued and other liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities,,,67496000.0,,,8486000.0,,,-15306000.0,,,96242000.0
+Lease liabilities,lyft_IncreaseDecreaseInLeaseLiabilities,,,-7746000.0,,,-12772000.0,,,-11655000.0,,,-14707000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,287234000.0,,,156177000.0,,,-74040000.0,,,-152343000.0
+Purchases of marketable securities,us-gaap_PaymentsToAcquireMarketableSecurities,,,-1028810000.0,,,-1124149000.0,,,-598640000.0,,,-661728000.0
+Purchases of term deposits,lyft_PaymentsToAcquireTermDeposits,,,-0.0,,,-2194000.0,,,,,,-0.0
+"Proceeds from Sale of Debt Securities, ",us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt,,,71204000.0,,,43973000.0,,,223114000.0,,,202246000.0
+"Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,,,1014047000.0,,,841665000.0,,,846440000.0,,,224865000.0
+Proceeds from maturities of term deposits,lyft_ProceedsFromMaturitiesOfTermDeposits,,,2194000.0,,,3539000.0,,,5000000.0,,,175000000.0
+Purchases of property and equipment and scooter fleet,lyft_PaymentsToAcquirePropertyAndEquipmentAndScooterFleet,,,-6500000.0,,,-29106000.0,,,-46799000.0,,,-30310000.0
+Sales of property and equipment,us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,,,13523000.0,,,24181000.0,,,20256000.0,,,15685000.0
+Payments to Acquire Businesses,us-gaap_PaymentsToAcquireBusinessesNetOfCashAcquired,,,,,,,,,,,,-0.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,65658000.0,,,-242091000.0,,,449371000.0,,,-74242000.0
+Repayment of loans,us-gaap_RepaymentsOfDebt,,,-16492000.0,,,-20572000.0,,,-21145000.0,,,-12266000.0
+Payment for settlement of convertible senior notes due 2025,us-gaap_RepaymentsOfConvertibleDebt,,,-0.0,,,-350000000.0,,,,,,
+Payment of debt issuance costs ,us-gaap_PaymentsOfDebtIssuanceCosts,,,-0.0,,,-11888000.0,,,,,,
+Purchase of capped calls,us-gaap_PaymentsForDerivativeInstrumentFinancingActivities,-15000000.0,,,,,,,,,,,
+Repurchase of Class A common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-0.0,,,,,,,,,
+Proceeds from exercise of stock options and other common stock issuances,us-gaap_ProceedsFromStockOptionsExercised,,,0.0,,,1924000.0,,,297000.0,,,90000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,,,-24294000.0,,,-1462000.0,,,-1165000.0,,,-1807000.0
+Principal payments on finance lease obligations,us-gaap_FinanceLeasePrincipalPayments,,,-10903000.0,,,-11479000.0,,,-5730000.0,,,-8031000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-51689000.0,,,-31363000.0,,,-27743000.0,,,-22014000.0
+"Effect of foreign exchange on cash, cash equivalents and restricted cash and cash equivalents",us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,,,-349000.0,,,-528000.0,,,17000.0,,,89000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,300854000.0,,,-117805000.0,,,347605000.0,,,-248510000.0
+,,,,,,,,,,,,,
+Financed vehicles acquired,us-gaap_NoncashOrPartNoncashAcquisitionValueOfAssetsAcquired1,,,725000.0,,,88350000.0,,,,,,
+Purchases of property and equipment and scooter fleet not yet settled,us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,10419000.0,,,8496000.0,,,,,,
+Right-of-use assets acquired under finance leases,us-gaap_RightOfUseAssetObtainedInExchangeForFinanceLeaseLiability,,,1336000.0,,,11956000.0,,,5367000.0,,,4002000.0
+Right-of-use assets acquired under operating leases,us-gaap_RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,,,942000.0,,,3328000.0,,,672000.0,,,1426000.0
+Remeasurement of finance and operating lease right of use assets,lyft_RemeasurementOfFinanceAndOperatingLeaseRightOfUseAssetsForLeaseModification,,,-509000.0,,,-3659000.0,,,-8105000.0,,,
+Proceeds from issuance of convertible senior notes,us-gaap_ProceedsFromConvertibleDebt,,,0.0,,,460000000.0,,,,,,
+Purchase of capped call,us-gaap_PaymentsForDerivativeInstrumentFinancingActivities,,,-0.0,,,-47886000.0,,,,,,
+"Gain on sale and disposal of assets, net",us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,-371000.0,,,,,,-7575000.0,,,
+,,,,,,,,,,,,,
+Impairment of non-marketable equity security,us-gaap_AssetImpairmentCharges,,,,,,,-0.0,,,,,
+"(Gain) loss on sale and disposal of assets, net",us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,,,-4336000.0,,,,,,-13723000.0
+Repurchase of Class A Common Stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,,,-50000000.0,,,,,,
+"Financed vehicles acquired, net of principal payments",us-gaap_NoncashOrPartNoncashAcquisitionValueOfAssetsAcquired1,,,,,,,,,98373000.0,,,
+"Purchases of property and equipment, and scooter fleet not yet settled",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,,,,7547000.0,,,29477000.0
+Remeasurement of finance and operating lease right of use assets for lease modification,lyft_RemeasurementOfFinanceAndOperatingLeaseRightOfUseAssetsForLeaseModification,,,,,,,,,,,,1217000.0
+Gain on divestiture,us-gaap_GainLossOnSaleOfBusiness,,,,,,,,,,0.0,,
+Impairment charges,us-gaap_ImpairmentOfInvestments,,,,,,,,,,-135714000.0,,

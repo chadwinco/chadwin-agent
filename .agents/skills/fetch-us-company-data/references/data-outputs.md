@@ -11,6 +11,7 @@ The fetch step writes data under `companies/US/<TICKER>/data`.
 ## Optional outputs
 - `filings/10-K-*.md` or `filings/20-F-*.md`
 - `filings/10-Q-*.md`, `filings/8-K-*.md`, `filings/6-K-*.md`
+  - For `8-K`/`6-K`, markdown should include attachment sections (`### Attachment: ...`) when exhibit text is extractable.
 - `filings/S-1-*.md`, `filings/S-1-A-*.md`, `filings/F-1-*.md`, `filings/F-1-A-*.md`
 - `filings/earnings-call-<YYYY-MM-DD>-<source>.md`
 - `financial_statements/quarterly/*.csv`

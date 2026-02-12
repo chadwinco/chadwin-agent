@@ -68,6 +68,10 @@ Optional controls:
 
 ## Step 4: Execute Local Evidence Pass
 - Pull decision-critical evidence from local filings/statements/transcripts first.
+- Run a mandatory corporate-action sweep before assumption updates:
+  - check recent and historical SEC filings for signed or proposed M&A, take-private deals, spin-offs, tender offers, and special-committee processes;
+  - for US tickers, use `fetch_historical_filings.py` with at least `8-K,PREM14A,DEFM14A` scoped to revised as-of date;
+  - if a signed transaction exists, explicitly model upside caps and break-risk downside before relying on standalone valuation.
 - Focus on signals that can break the thesis:
   - weakening segment economics
   - customer concentration changes
@@ -128,6 +132,7 @@ Evidence quality:
 - [ ] External claims are logged in `third-party-sources.md` with source quality notes.
 - [ ] Source quality hierarchy was followed; low-credibility sources were excluded.
 - [ ] SEC retrievals followed `references/sec-access-policy.md` (no ad-hoc direct `sec.gov` HTTP calls).
+- [ ] Corporate-action sweep completed and documented (including whether event-risk caps or break-risk overlays were applied).
 
 Valuation integrity:
 - [ ] Every revised assumption has evidence-backed rationale.

@@ -1,0 +1,21 @@
+label,concept,2025-12-31,2024-12-31,2023-12-31,2022-12-31,2021-12-31
+Revenue,us-gaap_Revenues,6316261000.0,5786016000.0,4403589000.0,4095135000.0,3208323000.0
+Total Cost of Revenue,us-gaap_CostOfRevenue,3697653000.0,3337714000.0,2543954000.0,2435736000.0,1702317000.0
+Costs and Expenses,us-gaap_CostsAndExpenses,-6504635000.0,-5904928000.0,-4879193000.0,-5554051000.0,-4343540000.0
+Stock-based compensation included in costs and expenses,us-gaap_AllocatedShareBasedCompensationExpense,23600000.0,330921000.0,,,
+Operations and support,lyft_OperationsAndSupportExpense,478332000.0,443821000.0,427239000.0,443846000.0,402233000.0
+Research and Development Expense,us-gaap_ResearchAndDevelopmentExpense,451419000.0,397073000.0,555916000.0,856777000.0,911946000.0
+General and Administrative Expense,us-gaap_GeneralAndAdministrativeExpense,1002130000.0,937348000.0,871080000.0,1286180000.0,915638000.0
+Selling Expense,us-gaap_SellingAndMarketingExpense,875101000.0,788972000.0,481004000.0,531512000.0,411406000.0
+Operating Income,us-gaap_OperatingIncomeLoss,-188374000.0,-118912000.0,-475604000.0,-1458916000.0,-1135217000.0
+Interest Expense,us-gaap_InterestExpense,,,26223000.0,19735000.0,51635000.0
+Stock-based compensation expense,us-gaap_AllocatedShareBasedCompensationExpense,,,,750767000.0,724560000.0
+Interest Expense (non-operating),us-gaap_InterestExpenseNonoperating,20755000.0,28921000.0,,,
+Nonoperating Income/Expense,us-gaap_NonoperatingIncomeExpense,155882000.0,173183000.0,170123000.0,-99988000.0,135933000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,-53247000.0,25350000.0,-331704000.0,-1578639000.0,-1050919000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,-2897255000.0,2566000.0,8616000.0,5872000.0,11225000.0
+Net Income,us-gaap_NetIncomeLoss,2844008000.0,22784000.0,-340320000.0,-1584511000.0,-1062144000.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,6.92,0.06,-0.88,-4.47,-3.17
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,6.81,0.06,-0.88,-4.47,-3.17
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,410840000.0,409181000.0,385335000.0,354731000.0,334724000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,417659000.0,413651000.0,385335000.0,354731000.0,334724000.0

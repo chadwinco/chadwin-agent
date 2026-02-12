@@ -1,0 +1,27 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Contract Revenue,us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax,1883200000.0,1693674000.0,1375218000.0,1055524000.0,841434000.0,737671000.0
+General and administrative,payc_GeneralAndAdministrativeExpenseBenefit,158600000.0,,,,,
+Depreciation and Amortization,us-gaap_DepreciationAndAmortization,78700000.0,61357000.0,49764000.0,35811000.0,27605000.0,21800000.0
+Comprehensive earnings:,us-gaap_StatementOfOtherComprehensiveIncomeAbstract,502400000.0,,,,,
+Unrealized net gains (losses) on available-for-sale securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax,1000000.0,3501000.0,-4757000.0,,,
+Tax effect,us-gaap_OtherComprehensiveIncomeLossTax,-600000.0,-837000.0,-1054000.0,,,
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,400000.0,2664000.0,-3703000.0,,,
+Comprehensive earnings (loss),us-gaap_ComprehensiveIncomeNetOfTax,,343452000.0,277686000.0,,,
+Depreciation and amortization,us-gaap_CostOfGoodsAndServicesSoldDepreciationAndAmortization,67200000.0,52591000.0,42935000.0,31411000.0,25768000.0,20411000.0
+Total Cost of Revenue,us-gaap_CostOfRevenue,334600000.0,276290000.0,212741000.0,161886000.0,123546000.0,109747000.0
+Direct Operating Costs,us-gaap_DirectOperatingCosts,267400000.0,223699000.0,169806000.0,130475000.0,97778000.0,89336000.0
+Costs and Expenses,us-gaap_CostsAndExpenses,-1248900000.0,-1242352000.0,-996539000.0,-801957000.0,-655311000.0,-511447000.0
+Research and Development Expense,us-gaap_ResearchAndDevelopmentExpense,242600000.0,198951000.0,148343000.0,118426000.0,90244000.0,73080000.0
+"Selling, General and Administrative Expense",us-gaap_SellingGeneralAndAdministrativeExpense,914300000.0,966062000.0,783798000.0,640071000.0,531765000.0,401700000.0
+General and Administrative Expense,us-gaap_GeneralAndAdministrativeExpense,,288137000.0,239130000.0,209840000.0,178200000.0,127534000.0
+Marketing Expense,us-gaap_MarketingExpense,434400000.0,417617000.0,346561000.0,275994000.0,235716000.0,179286000.0
+Operating Income,us-gaap_OperatingIncomeLoss,634300000.0,451322000.0,378679000.0,253567000.0,186123000.0,226224000.0
+Interest Expense,us-gaap_InterestExpense,-3400000.0,-1927000.0,-2536000.0,,-19000.0,-940000.0
+"Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,18100000.0,23004000.0,13435000.0,2395000.0,-168000.0,803000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,649000000.0,472399000.0,389578000.0,255962000.0,185936000.0,226087000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,147000000.0,131611000.0,108189000.0,60002000.0,42483000.0,45511000.0
+Net Income,us-gaap_NetIncomeLoss,502000000.0,340788000.0,281389000.0,195960000.0,143453000.0,180576000.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,8.93,5.91,4.86,3.39,2.49,3.14
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,8.92,5.88,4.84,3.37,2.46,3.09
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,56200000.0,57707000.0,57928000.0,57885000.0,57620000.0,57561000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,56300000.0,57974000.0,58175000.0,58191000.0,58285000.0,58395000.0

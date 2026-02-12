@@ -21,13 +21,13 @@ Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActiv
 Expected credit loss (income) on note receivable,byd_ExpectedCreditLossIncomeOnNoteReceivable,,,,,,0.0,,,-34371000.0,,,
 Operating lease right-of-use asset and liability remeasurements,us-gaap_CapitalLeaseObligationsIncurred,,,,,,,,,-0.0,,,11224000.0
 Share-based compensation activities,byd_CashFlowsFromFinancingActivitiesShareBasedCompensationActivitiesNet,,,,,,,,,,,,-10829000.0
-"Income taxes payable, net",us-gaap_IncreaseDecreaseInIncomeTaxesReceivable,,,,,,40766000.0,,,41984000.0,,,38141000.0
 Impairment of assets,us-gaap_AssetImpairmentCharges,,,,,,,,,4537000.0,5575000.0,,
 Gain on sale of assets,us-gaap_GainLossOnDispositionOfAssets1,,,,,,,,,0.0,,,-12725000.0
-Borrowings under credit facilities,us-gaap_ProceedsFromLinesOfCredit,,,,,,,,,356900000.0,,,
-Borrowings under bank credit facility,us-gaap_ProceedsFromLinesOfCredit,,,,,,,,,,,,880000000.0
+"Income taxes payable, net",us-gaap_IncreaseDecreaseInIncomeTaxesReceivable,,,,,,40766000.0,,,41984000.0,,,38141000.0
 Proceeds received from disposition of assets,us-gaap_ProceedsFromSalesOfAssetsInvestingActivities,,,,,,,,,0.0,,,20115000.0
 Insurance proceeds received from hurricane losses,us-gaap_ProceedsFromInsuranceSettlementInvestingActivities,,,,,,,,,,,,0.0
+Borrowings under credit facilities,us-gaap_ProceedsFromLinesOfCredit,,,,,,,,,356900000.0,,,
+Borrowings under bank credit facility,us-gaap_ProceedsFromLinesOfCredit,,,,,,,,,,,,880000000.0
 Payments under credit facilities,us-gaap_RepaymentsOfLinesOfCredit,,,,,,,,,-439700000.0,,,
 Payments under bank credit facility,us-gaap_RepaymentsOfLinesOfCredit,,,,,,,,,,,,-867897000.0
 Debt financing costs,us-gaap_PaymentOfFinancingAndStockIssuanceCosts,,,,,,,,,0.0,,,-13635000.0

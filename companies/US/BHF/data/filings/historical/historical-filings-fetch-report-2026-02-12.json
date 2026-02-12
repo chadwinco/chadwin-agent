@@ -1,0 +1,158 @@
+{
+  "ticker": "BHF",
+  "generated_at": "2026-02-12T15:00:58Z",
+  "forms": [
+    "8-K"
+  ],
+  "limit_per_form": 20,
+  "before": "2026-02-12",
+  "after": null,
+  "output_dir": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical",
+  "identity_source": "env",
+  "counts": {
+    "8-K": 20
+  },
+  "errors": [],
+  "entries": [
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-11-07",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-11-07-0001685040-25-000069.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-11-06",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-11-06-0001685040-25-000067.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-11-06",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-11-06-0001685040-25-000065.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-09-02",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-09-02-0001685040-25-000052.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-08-07",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-08-07-0001685040-25-000046.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-06-16",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-06-16-0001685040-25-000038.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-05-20",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-05-20-0001685040-25-000021.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-05-08",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-05-08-0001685040-25-000015.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-02-11",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-02-11-0001685040-25-000005.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2025-02-04",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2025-02-04-0001685040-25-000002.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-11-08",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-A-2024-11-08-0001685040-24-000055.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-11-07",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-11-07-0001685040-24-000050.md",
+      "status": "exists"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-10-08",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-10-08-0001685040-24-000045.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-08-07",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-08-07-0001685040-24-000035.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-06-10",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-06-10-0001685040-24-000023.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-05-07",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-05-07-0001685040-24-000017.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-04-09",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-04-09-0001685040-24-000011.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2024-02-12",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2024-02-12-0001685040-24-000003.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2023-11-16",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2023-11-16-0001685040-23-000075.md",
+      "status": "written"
+    },
+    {
+      "ticker": "BHF",
+      "form": "8-K",
+      "filed_date": "2023-11-07",
+      "path": "/Users/chad/source/chadwin-codex/companies/US/BHF/data/filings/historical/8-K-2023-11-07-0001685040-23-000071.md",
+      "status": "written"
+    }
+  ]
+}

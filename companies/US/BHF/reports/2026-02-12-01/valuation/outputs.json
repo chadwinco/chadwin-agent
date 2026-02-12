@@ -1,0 +1,25 @@
+{
+  "ticker": "BHF",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 64.1,
+  "method": "two-stage-residual-income",
+  "baseline_report_dir": "2026-02-12",
+  "scenarios": {
+    "base": {
+      "equity_value": 4673609974.53,
+      "value_per_share": 81.63,
+      "margin_of_safety": 0.2735
+    },
+    "bull": {
+      "equity_value": 5962442098.97,
+      "value_per_share": 104.14,
+      "margin_of_safety": 0.6246
+    },
+    "bear": {
+      "equity_value": 2899235783.48,
+      "value_per_share": 50.64,
+      "margin_of_safety": -0.21
+    }
+  }
+}

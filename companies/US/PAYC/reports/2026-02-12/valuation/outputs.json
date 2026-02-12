@@ -1,0 +1,27 @@
+{
+  "ticker": "PAYC",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 118.71,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 8177224893.63,
+      "equity_value": 8579224893.63,
+      "value_per_share": 152.38,
+      "margin_of_safety": 0.2837
+    },
+    "bull": {
+      "enterprise_value": 14522343192.57,
+      "equity_value": 14924343192.57,
+      "value_per_share": 265.09,
+      "margin_of_safety": 1.2331
+    },
+    "bear": {
+      "enterprise_value": 4132244006.3,
+      "equity_value": 4534244006.3,
+      "value_per_share": 80.54,
+      "margin_of_safety": -0.3216
+    }
+  }
+}

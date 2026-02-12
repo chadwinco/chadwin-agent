@@ -1,0 +1,28 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Revenue,us-gaap_Revenues,4724000000.0,4117000000.0,8473000000.0,7142000000.0,8503000000.0,6554000000.0
+Premiums,us-gaap_PremiumsEarnedNet,770000000.0,828000000.0,662000000.0,707000000.0,766000000.0,882000000.0
+Universal life and investment-type product policy fees,us-gaap_InsuranceCommissionsAndFees,2116000000.0,2295000000.0,3141000000.0,3636000000.0,3463000000.0,3580000000.0
+Net investment income,us-gaap_NetInvestmentIncome,5222000000.0,4664000000.0,4138000000.0,4881000000.0,3601000000.0,3579000000.0
+Other revenues,us-gaap_OtherIncome,579000000.0,483000000.0,476000000.0,446000000.0,413000000.0,389000000.0
+Net investment gains (losses),us-gaap_RealizedInvestmentGainsLosses,-295000000.0,-246000000.0,-248000000.0,-59000000.0,278000000.0,112000000.0
+Net derivative gains (losses),us-gaap_GainLossOnDerivativeInstrumentsNetPretax,-3668000000.0,-3907000000.0,304000000.0,-2469000000.0,-18000000.0,-1988000000.0
+"Policyholder benefits and claims (including liability remeasurement gains (losses) of ($978), ($234), $137, respectively)",us-gaap_PolicyholderBenefitsAndClaimsIncurredNet,2294000000.0,,,,,
+Interest credited to policyholder account balances,us-gaap_InterestCreditedToPolicyholdersAccountBalances,2136000000.0,1825000000.0,1439000000.0,1312000000.0,1092000000.0,1063000000.0
+Amortization of deferred policy acquisition costs and value of business acquired,us-gaap_DeferredPolicyAcquisitionCostsAndPresentValueOfFutureProfitsAmortization1,599000000.0,620000000.0,956000000.0,144000000.0,,
+Change in market risk benefits,us-gaap_MarketRiskBenefitChangeInFairValueGainLoss,2673000000.0,1507000000.0,,,,
+Total expenses,us-gaap_BenefitsLossesAndExpenses,-4302000000.0,-5591000000.0,-8645000000.0,-7350000000.0,-9922000000.0,-7606000000.0
+Less: Preferred stock dividends,us-gaap_PreferredStockDividendsIncomeStatementImpact,-102000000.0,-102000000.0,-104000000.0,-89000000.0,-44000000.0,-21000000.0
+Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,286000000.0,-1214000000.0,-99000000.0,-197000000.0,-1105000000.0,-761000000.0
+Operating Expenses,us-gaap_OperatingExpenses,1946000000.0,1977000000.0,2085000000.0,2451000000.0,2353000000.0,2491000000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,422000000.0,-1474000000.0,-172000000.0,-208000000.0,-1419000000.0,-1052000000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,29000000.0,-367000000.0,-182000000.0,-105000000.0,-363000000.0,-317000000.0
+Net Income,us-gaap_NetIncomeLoss,388000000.0,-1112000000.0,5000000.0,-108000000.0,-1061000000.0,-740000000.0
+Profit or Loss,us-gaap_ProfitLoss,393000000.0,-1107000000.0,10000000.0,-103000000.0,-1056000000.0,-735000000.0
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-5000000.0,-5000000.0,-5000000.0,-5000000.0,-5000000.0,-5000000.0
+,,,,,,,
+Amortization of DAC and VOBA,us-gaap_DeferredPolicyAcquisitionCostsAndPresentValueOfFutureProfitsAmortization1,,,,,766000000.0,
+Amortization of DAC and VOBA,us-gaap_DeferredPolicyAcquisitionCostsAndPresentValueOfFutureProfitsAmortization1,,,,,,382000000.0
+Policyholder benefits and claims,us-gaap_PolicyholderBenefitsAndClaimsIncurredNet,,,4165000000.0,3443000000.0,5711000000.0,3670000000.0
+"Policyholder benefits and claims (including liability remeasurement gains (losses) of ($234), $137, ($50), respectively)",us-gaap_PolicyholderBenefitsAndClaimsIncurredNet,,2676000000.0,,,,
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,4.67,-18.39,-1.36,-2.36,-11.58,-6.76
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,4.64,-18.39,-1.36,-2.36,-11.58,-6.76

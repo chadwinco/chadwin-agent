@@ -1,0 +1,45 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,402000000.0,294025000.0,400730000.0,277978000.0,151710000.0,133667000.0
+Inventory,us-gaap_InventoryNet,1400000.0,1383000.0,1607000.0,1131000.0,1151000.0,1158000.0
+"Property and equipment, net",payc_PropertyPlantAndEquipmentNetIncludingLandAndConstructionInProgress,561400000.0,,,,,
+"Property, Plant and Equipment",us-gaap_PropertyPlantAndEquipmentNet,,498197000.0,402448000.0,348953000.0,285218000.0,238458000.0
+Goodwill,us-gaap_Goodwill,51900000.0,51889000.0,51889000.0,51889000.0,51889000.0,51889000.0
+Intangible Assets,us-gaap_IntangibleAssetsNetExcludingGoodwill,46200000.0,50112000.0,54017000.0,58028000.0,,
+Accounts Receivable,us-gaap_AccountsReceivableNetCurrent,39200000.0,16442000.0,22843000.0,9490000.0,9130000.0,9298000.0
+Accounts Payable,us-gaap_AccountsPayableCurrent,23900000.0,13875000.0,16054000.0,5772000.0,6787000.0,5051000.0
+Short Term Debt,us-gaap_LongTermDebtCurrent,,,0.0,1775000.0,1775000.0,1775000.0
+Other Non Current Liabilities,us-gaap_OtherLiabilitiesNoncurrent,49900000.0,108453000.0,75245000.0,72988000.0,19263000.0,19553000.0
+Other Non Current Assets,us-gaap_OtherAssetsNoncurrent,31400000.0,103643000.0,62013000.0,42385000.0,34843000.0,33336000.0
+Income tax receivable,us-gaap_IncomeTaxesReceivable,11900000.0,18391000.0,5583000.0,16413000.0,10447000.0,4020000.0
+Prepaid Expenses,us-gaap_PrepaidExpenseCurrent,44400000.0,37613000.0,34056000.0,23729000.0,17854000.0,13561000.0
+Total Current Assets,us-gaap_AssetsCurrent,4304800000.0,2813426000.0,2764172000.0,2252038000.0,1864605000.0,1871100000.0
+Deferred contract costs,us-gaap_DeferredCostsCurrent,140400000.0,118206000.0,96378000.0,76724000.0,60819000.0,46618000.0
+Current assets before funds held for clients,payc_CurrentAssetsBeforeFundsHeldForClients,639300000.0,486060000.0,561197000.0,405465000.0,251111000.0,208322000.0
+Funds held for clients,us-gaap_FundsHeldForClients,3665500000.0,2327366000.0,2202975000.0,1846573000.0,1613494000.0,1662778000.0
+Total Assets,us-gaap_Assets,5859900000.0,4197539000.0,3902513000.0,3215145000.0,2607912000.0,2486917000.0
+Long-term deferred contract costs,us-gaap_AmountOfDeferredCostsRelatedToLongTermContracts,783600000.0,680272000.0,567974000.0,461852000.0,371357000.0,292134000.0
+Operating lease right-of-use assets,us-gaap_OperatingLeaseRightOfUseAsset,80600000.0,,,,,
+Total Non Current Liabilities,us-gaap_LiabilitiesNoncurrent,377200000.0,359860000.0,342869000.0,331021000.0,234239000.0,206767000.0
+Total Liabilities,us-gaap_Liabilities,4284000000.0,2894503000.0,2719906000.0,2321431000.0,1952269000.0,1960289000.0
+Accrued expenses and other current liabilities,us-gaap_AccruedLiabilitiesAndOtherLiabilities,74800000.0,83302000.0,59990000.0,63397000.0,44175000.0,45600000.0
+Total Current Liabilities,us-gaap_LiabilitiesCurrent,3906800000.0,2534643000.0,2377037000.0,1990410000.0,1718030000.0,1753522000.0
+Accrued commissions and bonuses,payc_AccruedCommissionsAndBonusesCurrent,33000000.0,30492000.0,28439000.0,22357000.0,13703000.0,12343000.0
+Accrued payroll and vacation,payc_AccruedPayrollAndVacationCurrent,59000000.0,56086000.0,45023000.0,34259000.0,24529000.0,14870000.0
+Operating lease liabilities,us-gaap_OperatingLeaseLiabilityCurrent,20400000.0,,,,,
+Current liabilities before client funds obligation,payc_CurrentLiabilitiesBeforeClientFundObligations,241100000.0,206567000.0,169331000.0,143837000.0,104536000.0,90744000.0
+Client funds obligation,payc_ClientFundsObligation,3665700000.0,2328076000.0,2207706000.0,1846573000.0,1613494000.0,1662778000.0
+Deferred Revenue,us-gaap_DeferredRevenueCurrent,114600000.0,107657000.0,97591000.0,85149000.0,73259000.0,65139000.0
+Long-term operating lease liabilities,us-gaap_OperatingLeaseLiabilityNoncurrent,63000000.0,,,,,
+"Commitments and contingencies (Note 13 ""Commitments and Contingencies"")",us-gaap_CommitmentsAndContingencies,,,,,,
+Commitments and contingencies,us-gaap_CommitmentsAndContingencies,,,,,,
+Long Term Debt,us-gaap_LongTermDebtNoncurrent,,,29000000.0,27380000.0,29119000.0,30858000.0
+"Deferred income tax liabilities, net",us-gaap_DeferredIncomeTaxLiabilitiesNet,149700000.0,143750000.0,141033000.0,145504000.0,112598000.0,91217000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,5859900000.0,4197539000.0,3902513000.0,3215145000.0,2607912000.0,2486917000.0
+Treasury Stock Common Value,us-gaap_TreasuryStockValue,-1036400000.0,-891026000.0,-587905000.0,-488082000.0,-422502000.0,-307652000.0
+Common Stock,us-gaap_CommonStockValue,600000.0,627000.0,625000.0,623000.0,618000.0,613000.0
+Additional paid-in capital,us-gaap_AdditionalPaidInCapitalCommonStock,724800000.0,724493000.0,576622000.0,465594000.0,357908000.0,
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,1887500000.0,1469981000.0,1196968000.0,915579000.0,719619000.0,576166000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-600000.0,-1039000.0,-3703000.0,,,
+Total Stockholders' Equity,us-gaap_StockholdersEquity,1575900000.0,1303036000.0,1182607000.0,893714000.0,655643000.0,526628000.0
+Commitments and contingencies (Note 12),us-gaap_CommitmentsAndContingencies,,,,,,
+Additional paid in capital,us-gaap_AdditionalPaidInCapitalCommonStock,,,,,,257501000.0

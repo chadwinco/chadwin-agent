@@ -1,0 +1,868 @@
+{
+  "generated_at_utc": "2026-02-12T14:24:38+00:00",
+  "source": "finviz_screener",
+  "universe": {
+    "country": "USA",
+    "exchanges": [
+      "NASDAQ",
+      "NYSE",
+      "AMEX"
+    ]
+  },
+  "filters": {
+    "min_market_cap_b": 1.5,
+    "max_pe": 18.0,
+    "min_roe_pct": 12.0,
+    "min_roic_pct": 8.0,
+    "min_operating_margin_pct": 8.0,
+    "min_profit_margin_pct": 8.0,
+    "max_debt_to_equity": 1.2,
+    "max_pages_per_exchange": 12
+  },
+  "preferences": {
+    "applied": true,
+    "path": "/Users/chad/source/chadwin-codex/preferences/user_preferences.json"
+  },
+  "ideas": [
+    {
+      "ticker": "BYD",
+      "company": "Boyd Gaming Corp",
+      "exchange": "NYSE",
+      "sector": "Consumer Cyclical",
+      "industry": "Resorts & Casinos",
+      "score": 88.13,
+      "thesis": "Possible value-quality setup: trades near 3.7x P/E (forward 10.2x) while generating ROE 87.2%, ROIC 36.0%, operating margin 21.4% and Debt/Equity 0.79.",
+      "metrics": {
+        "market_cap_usd": 6520000000,
+        "pe": 3.67,
+        "forward_pe": 10.24,
+        "price_to_book": 2.46,
+        "roe_pct": 87.17,
+        "roic_pct": 35.95,
+        "operating_margin_pct": 21.43,
+        "profit_margin_pct": 45.05,
+        "debt_to_equity": 0.79,
+        "eps_next_5y_pct": 9.73
+      }
+    },
+    {
+      "ticker": "LYFT",
+      "company": "Lyft Inc",
+      "exchange": "NASDAQ",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "score": 85.59,
+      "thesis": "Possible value-quality setup: trades near 2.0x P/E (forward 14.0x) while generating ROE 140.8%, ROIC 64.1%, operating margin 24.6% and Debt/Equity 0.36.",
+      "metrics": {
+        "market_cap_usd": 5590000000,
+        "pe": 1.97,
+        "forward_pe": 13.98,
+        "price_to_book": 1.71,
+        "roe_pct": 140.78,
+        "roic_pct": 64.12,
+        "operating_margin_pct": 24.63,
+        "profit_margin_pct": 45.03,
+        "debt_to_equity": 0.36,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "LNC",
+      "company": "Lincoln National Corp",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Life",
+      "score": 83.63,
+      "thesis": "Possible value-quality setup: trades near 3.5x P/E (forward 4.8x) while generating ROE 21.7%, ROIC 12.4%, operating margin 13.9% and Debt/Equity 0.55.",
+      "metrics": {
+        "market_cap_usd": 7310000000,
+        "pe": 3.46,
+        "forward_pe": 4.78,
+        "price_to_book": 0.77,
+        "roe_pct": 21.66,
+        "roic_pct": 12.44,
+        "operating_margin_pct": 13.9,
+        "profit_margin_pct": 10.19,
+        "debt_to_equity": 0.55,
+        "eps_next_5y_pct": 7.35
+      }
+    },
+    {
+      "ticker": "SLDE",
+      "company": "Slide Insurance Holdings Inc",
+      "exchange": "NASDAQ",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "score": 82.64,
+      "thesis": "Possible value-quality setup: trades near 1.6x P/E (forward n/a) while generating ROE 52.3%, ROIC 34.6%, operating margin 45.0% and Debt/Equity 0.05.",
+      "metrics": {
+        "market_cap_usd": 2120000000,
+        "pe": 1.57,
+        "forward_pe": null,
+        "price_to_book": 2.2,
+        "roe_pct": 52.29,
+        "roic_pct": 34.6,
+        "operating_margin_pct": 45.03,
+        "profit_margin_pct": 33.28,
+        "debt_to_equity": 0.05,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "SM",
+      "company": "SM Energy Co",
+      "exchange": "NYSE",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "score": 81.95,
+      "thesis": "Possible value-quality setup: trades near 3.5x P/E (forward 6.1x) while generating ROE 16.6%, ROIC 10.4%, operating margin 30.9% and Debt/Equity 0.58.",
+      "metrics": {
+        "market_cap_usd": 5220000000,
+        "pe": 3.46,
+        "forward_pe": 6.07,
+        "price_to_book": 0.53,
+        "roe_pct": 16.58,
+        "roic_pct": 10.38,
+        "operating_margin_pct": 30.85,
+        "profit_margin_pct": 22.03,
+        "debt_to_equity": 0.58,
+        "eps_next_5y_pct": -12.49
+      }
+    },
+    {
+      "ticker": "BHF",
+      "company": "Brighthouse Financial Inc",
+      "exchange": "NASDAQ",
+      "sector": "Financial",
+      "industry": "Insurance - Life",
+      "score": 80.75,
+      "thesis": "Possible value-quality setup: trades near 4.3x P/E (forward 3.0x) while generating ROE 16.3%, ROIC 9.1%, operating margin 20.9% and Debt/Equity 0.50.",
+      "metrics": {
+        "market_cap_usd": 3650000000,
+        "pe": 4.35,
+        "forward_pe": 3.05,
+        "price_to_book": 0.57,
+        "roe_pct": 16.27,
+        "roic_pct": 9.09,
+        "operating_margin_pct": 20.85,
+        "profit_margin_pct": 13.77,
+        "debt_to_equity": 0.5,
+        "eps_next_5y_pct": 1.49
+      }
+    },
+    {
+      "ticker": "ALL",
+      "company": "Allstate Corp",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "score": 80.57,
+      "thesis": "Possible value-quality setup: trades near 5.4x P/E (forward 8.1x) while generating ROE 39.5%, ROIC 26.7%, operating margin 16.8% and Debt/Equity 0.24.",
+      "metrics": {
+        "market_cap_usd": 53570000000,
+        "pe": 5.36,
+        "forward_pe": 8.05,
+        "price_to_book": 1.86,
+        "roe_pct": 39.51,
+        "roic_pct": 26.68,
+        "operating_margin_pct": 16.82,
+        "profit_margin_pct": 15.19,
+        "debt_to_equity": 0.24,
+        "eps_next_5y_pct": -10.14
+      }
+    },
+    {
+      "ticker": "CALM",
+      "company": "Cal-Maine Foods, Inc",
+      "exchange": "NASDAQ",
+      "sector": "Consumer Defensive",
+      "industry": "Farm Products",
+      "score": 79.75,
+      "thesis": "Possible value-quality setup: trades near 3.5x P/E (forward 18.6x) while generating ROE 48.7%, ROIC 42.8%, operating margin 34.4% and Debt/Equity 0.00.",
+      "metrics": {
+        "market_cap_usd": 3960000000,
+        "pe": 3.51,
+        "forward_pe": 18.56,
+        "price_to_book": 1.47,
+        "roe_pct": 48.69,
+        "roic_pct": 42.84,
+        "operating_margin_pct": 34.4,
+        "profit_margin_pct": 27.37,
+        "debt_to_equity": 0.0,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "PYPL",
+      "company": "PayPal Holdings Inc",
+      "exchange": "NASDAQ",
+      "sector": "Financial",
+      "industry": "Credit Services",
+      "score": 76.38,
+      "thesis": "Possible value-quality setup: trades near 7.5x P/E (forward 7.0x) while generating ROE 25.7%, ROIC 17.0%, operating margin 19.7% and Debt/Equity 0.60.",
+      "metrics": {
+        "market_cap_usd": 37250000000,
+        "pe": 7.48,
+        "forward_pe": 6.96,
+        "price_to_book": 1.84,
+        "roe_pct": 25.73,
+        "roic_pct": 16.99,
+        "operating_margin_pct": 19.69,
+        "profit_margin_pct": 15.7,
+        "debt_to_equity": 0.6,
+        "eps_next_5y_pct": 6.2
+      }
+    },
+    {
+      "ticker": "SYF",
+      "company": "Synchrony Financial",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Credit Services",
+      "score": 74.91,
+      "thesis": "Possible value-quality setup: trades near 7.9x P/E (forward 7.0x) while generating ROE 21.3%, ROIC 11.7%, operating margin 28.4% and Debt/Equity 0.91.",
+      "metrics": {
+        "market_cap_usd": 25350000000,
+        "pe": 7.86,
+        "forward_pe": 7.02,
+        "price_to_book": 1.63,
+        "roe_pct": 21.3,
+        "roic_pct": 11.68,
+        "operating_margin_pct": 28.38,
+        "profit_margin_pct": 18.15,
+        "debt_to_equity": 0.91,
+        "eps_next_5y_pct": 8.07
+      }
+    },
+    {
+      "ticker": "FHI",
+      "company": "Federated Hermes Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "score": 74.91,
+      "thesis": "Possible value-quality setup: trades near 10.4x P/E (forward 9.4x) while generating ROE 34.1%, ROIC 25.2%, operating margin 29.5% and Debt/Equity 0.29.",
+      "metrics": {
+        "market_cap_usd": 4180000000,
+        "pe": 10.37,
+        "forward_pe": 9.36,
+        "price_to_book": 3.52,
+        "roe_pct": 34.09,
+        "roic_pct": 25.24,
+        "operating_margin_pct": 29.54,
+        "profit_margin_pct": 21.58,
+        "debt_to_equity": 0.29,
+        "eps_next_5y_pct": 8.14
+      }
+    },
+    {
+      "ticker": "NMIH",
+      "company": "NMI Holdings Inc",
+      "exchange": "NASDAQ",
+      "sector": "Financial",
+      "industry": "Insurance - Specialty",
+      "score": 71.07,
+      "thesis": "Possible value-quality setup: trades near 8.3x P/E (forward 7.5x) while generating ROE 16.2%, ROIC 12.9%, operating margin 74.8% and Debt/Equity 0.16.",
+      "metrics": {
+        "market_cap_usd": 3150000000,
+        "pe": 8.33,
+        "forward_pe": 7.48,
+        "price_to_book": 1.2,
+        "roe_pct": 16.17,
+        "roic_pct": 12.93,
+        "operating_margin_pct": 74.77,
+        "profit_margin_pct": 55.07,
+        "debt_to_equity": 0.16,
+        "eps_next_5y_pct": null
+      }
+    },
+    {
+      "ticker": "GL",
+      "company": "Globe Life Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Life",
+      "score": 70.21,
+      "thesis": "Possible value-quality setup: trades near 10.2x P/E (forward 8.7x) while generating ROE 22.3%, ROIC 14.5%, operating margin 26.6% and Debt/Equity 0.48.",
+      "metrics": {
+        "market_cap_usd": 11460000000,
+        "pe": 10.22,
+        "forward_pe": 8.74,
+        "price_to_book": 2.03,
+        "roe_pct": 22.28,
+        "roic_pct": 14.5,
+        "operating_margin_pct": 26.65,
+        "profit_margin_pct": 19.37,
+        "debt_to_equity": 0.48,
+        "eps_next_5y_pct": 7.42
+      }
+    },
+    {
+      "ticker": "CNX",
+      "company": "CNX Resources Corp",
+      "exchange": "NYSE",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "score": 69.03,
+      "thesis": "Possible value-quality setup: trades near 10.9x P/E (forward 9.8x) while generating ROE 15.0%, ROIC 9.5%, operating margin 37.1% and Debt/Equity 0.60.",
+      "metrics": {
+        "market_cap_usd": 5690000000,
+        "pe": 10.88,
+        "forward_pe": 9.81,
+        "price_to_book": 1.31,
+        "roe_pct": 15.01,
+        "roic_pct": 9.48,
+        "operating_margin_pct": 37.07,
+        "profit_margin_pct": 29.55,
+        "debt_to_equity": 0.6,
+        "eps_next_5y_pct": 18.52
+      }
+    },
+    {
+      "ticker": "APA",
+      "company": "APA Corporation",
+      "exchange": "NASDAQ",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "score": 68.91,
+      "thesis": "Possible value-quality setup: trades near 6.8x P/E (forward 12.5x) while generating ROE 27.2%, ROIC 14.7%, operating margin 30.5% and Debt/Equity 0.77.",
+      "metrics": {
+        "market_cap_usd": 10020000000,
+        "pe": 6.8,
+        "forward_pe": 12.47,
+        "price_to_book": 1.68,
+        "roe_pct": 27.24,
+        "roic_pct": 14.74,
+        "operating_margin_pct": 30.51,
+        "profit_margin_pct": 15.65,
+        "debt_to_equity": 0.77,
+        "eps_next_5y_pct": -11.32
+      }
+    },
+    {
+      "ticker": "TROW",
+      "company": "T. Rowe Price Group Inc",
+      "exchange": "NASDAQ",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "score": 68.5,
+      "thesis": "Possible value-quality setup: trades near 10.1x P/E (forward 9.2x) while generating ROE 19.2%, ROIC 18.0%, operating margin 35.2% and Debt/Equity 0.05.",
+      "metrics": {
+        "market_cap_usd": 20470000000,
+        "pe": 10.14,
+        "forward_pe": 9.23,
+        "price_to_book": 1.89,
+        "roe_pct": 19.21,
+        "roic_pct": 18.02,
+        "operating_margin_pct": 35.21,
+        "profit_margin_pct": 27.84,
+        "debt_to_equity": 0.05,
+        "eps_next_5y_pct": 1.56
+      }
+    },
+    {
+      "ticker": "RYN",
+      "company": "Rayonier Inc",
+      "exchange": "NYSE",
+      "sector": "Real Estate",
+      "industry": "REIT - Specialty",
+      "score": 67.76,
+      "thesis": "Possible value-quality setup: trades near 9.2x P/E (forward 40.2x) while generating ROE 38.1%, ROIC 11.8%, operating margin 37.0% and Debt/Equity 0.47.",
+      "metrics": {
+        "market_cap_usd": 6760000000,
+        "pe": 9.21,
+        "forward_pe": 40.23,
+        "price_to_book": 1.51,
+        "roe_pct": 38.06,
+        "roic_pct": 11.82,
+        "operating_margin_pct": 36.96,
+        "profit_margin_pct": 33.94,
+        "debt_to_equity": 0.47,
+        "eps_next_5y_pct": 11.96
+      }
+    },
+    {
+      "ticker": "SEIC",
+      "company": "SEI Investments Co",
+      "exchange": "NASDAQ",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "score": 66.46,
+      "thesis": "Possible value-quality setup: trades near 14.2x P/E (forward 12.4x) while generating ROE 30.4%, ROIC 29.6%, operating margin 27.6% and Debt/Equity 0.00.",
+      "metrics": {
+        "market_cap_usd": 9820000000,
+        "pe": 14.23,
+        "forward_pe": 12.41,
+        "price_to_book": 4.0,
+        "roe_pct": 30.44,
+        "roic_pct": 29.56,
+        "operating_margin_pct": 27.58,
+        "profit_margin_pct": 31.09,
+        "debt_to_equity": 0.0,
+        "eps_next_5y_pct": 12.81
+      }
+    },
+    {
+      "ticker": "PRI",
+      "company": "Primerica Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Life",
+      "score": 65.83,
+      "thesis": "Possible value-quality setup: trades near 11.6x P/E (forward 9.7x) while generating ROE 33.9%, ROIC 17.2%, operating margin 31.3% and Debt/Equity 0.82.",
+      "metrics": {
+        "market_cap_usd": 8090000000,
+        "pe": 11.63,
+        "forward_pe": 9.7,
+        "price_to_book": 3.54,
+        "roe_pct": 33.92,
+        "roic_pct": 17.2,
+        "operating_margin_pct": 31.33,
+        "profit_margin_pct": 21.9,
+        "debt_to_equity": 0.82,
+        "eps_next_5y_pct": 7.34
+      }
+    },
+    {
+      "ticker": "ANF",
+      "company": "Abercrombie & Fitch Co",
+      "exchange": "NYSE",
+      "sector": "Consumer Cyclical",
+      "industry": "Apparel Retail",
+      "score": 65.44,
+      "thesis": "Possible value-quality setup: trades near 8.8x P/E (forward 8.8x) while generating ROE 40.7%, ROIC 23.5%, operating margin 13.9% and Debt/Equity 0.86.",
+      "metrics": {
+        "market_cap_usd": 4200000000,
+        "pe": 8.77,
+        "forward_pe": 8.76,
+        "price_to_book": 3.19,
+        "roe_pct": 40.72,
+        "roic_pct": 23.49,
+        "operating_margin_pct": 13.9,
+        "profit_margin_pct": 10.07,
+        "debt_to_equity": 0.86,
+        "eps_next_5y_pct": 1.64
+      }
+    },
+    {
+      "ticker": "PAYC",
+      "company": "Paycom Software Inc",
+      "exchange": "NYSE",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "score": 65.29,
+      "thesis": "Possible value-quality setup: trades near 14.8x P/E (forward 10.5x) while generating ROE 28.6%, ROIC 25.6%, operating margin 27.9% and Debt/Equity 0.05.",
+      "metrics": {
+        "market_cap_usd": 6680000000,
+        "pe": 14.76,
+        "forward_pe": 10.48,
+        "price_to_book": 3.84,
+        "roe_pct": 28.56,
+        "roic_pct": 25.6,
+        "operating_margin_pct": 27.91,
+        "profit_margin_pct": 22.65,
+        "debt_to_equity": 0.05,
+        "eps_next_5y_pct": 10.24
+      }
+    },
+    {
+      "ticker": "ARLP",
+      "company": "Alliance Resource Partners, LP",
+      "exchange": "NASDAQ",
+      "sector": "Energy",
+      "industry": "Thermal Coal",
+      "score": 64.88,
+      "thesis": "Possible value-quality setup: trades near 10.6x P/E (forward 9.2x) while generating ROE 16.8%, ROIC 13.5%, operating margin 17.6% and Debt/Equity 0.25.",
+      "metrics": {
+        "market_cap_usd": 3270000000,
+        "pe": 10.6,
+        "forward_pe": 9.23,
+        "price_to_book": 1.78,
+        "roe_pct": 16.8,
+        "roic_pct": 13.52,
+        "operating_margin_pct": 17.56,
+        "profit_margin_pct": 14.07,
+        "debt_to_equity": 0.25,
+        "eps_next_5y_pct": 9.22
+      }
+    },
+    {
+      "ticker": "MTDR",
+      "company": "Matador Resources Co",
+      "exchange": "NYSE",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "score": 64.58,
+      "thesis": "Possible value-quality setup: trades near 7.8x P/E (forward 11.3x) while generating ROE 15.1%, ROIC 8.9%, operating margin 35.3% and Debt/Equity 0.58.",
+      "metrics": {
+        "market_cap_usd": 6030000000,
+        "pe": 7.76,
+        "forward_pe": 11.27,
+        "price_to_book": 1.1,
+        "roe_pct": 15.06,
+        "roic_pct": 8.95,
+        "operating_margin_pct": 35.3,
+        "profit_margin_pct": 20.42,
+        "debt_to_equity": 0.58,
+        "eps_next_5y_pct": -6.51
+      }
+    },
+    {
+      "ticker": "FDS",
+      "company": "Factset Research Systems Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Financial Data & Stock Exchanges",
+      "score": 63.63,
+      "thesis": "Possible value-quality setup: trades near 12.3x P/E (forward 10.2x) while generating ROE 28.8%, ROIC 16.2%, operating margin 32.5% and Debt/Equity 0.72.",
+      "metrics": {
+        "market_cap_usd": 7190000000,
+        "pe": 12.33,
+        "forward_pe": 10.17,
+        "price_to_book": 3.33,
+        "roe_pct": 28.83,
+        "roic_pct": 16.23,
+        "operating_margin_pct": 32.46,
+        "profit_margin_pct": 25.4,
+        "debt_to_equity": 0.72,
+        "eps_next_5y_pct": 7.17
+      }
+    },
+    {
+      "ticker": "HIG",
+      "company": "Hartford Insurance Group Inc.(The)",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Diversified",
+      "score": 63.6,
+      "thesis": "Possible value-quality setup: trades near 10.6x P/E (forward 9.8x) while generating ROE 21.7%, ROIC 16.3%, operating margin 17.4% and Debt/Equity 0.23.",
+      "metrics": {
+        "market_cap_usd": 39570000000,
+        "pe": 10.64,
+        "forward_pe": 9.81,
+        "price_to_book": 2.19,
+        "roe_pct": 21.66,
+        "roic_pct": 16.34,
+        "operating_margin_pct": 17.4,
+        "profit_margin_pct": 13.46,
+        "debt_to_equity": 0.23,
+        "eps_next_5y_pct": 5.51
+      }
+    },
+    {
+      "ticker": "APAM",
+      "company": "Artisan Partners Asset Management Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "score": 63.36,
+      "thesis": "Possible value-quality setup: trades near 11.0x P/E (forward 10.3x) while generating ROE 62.6%, ROIC 34.5%, operating margin 38.0% and Debt/Equity 0.65.",
+      "metrics": {
+        "market_cap_usd": 3570000000,
+        "pe": 11.03,
+        "forward_pe": 10.3,
+        "price_to_book": 7.76,
+        "roe_pct": 62.62,
+        "roic_pct": 34.45,
+        "operating_margin_pct": 38.0,
+        "profit_margin_pct": 21.13,
+        "debt_to_equity": 0.65,
+        "eps_next_5y_pct": 3.04
+      }
+    },
+    {
+      "ticker": "GRBK",
+      "company": "Green Brick Partners Inc",
+      "exchange": "NYSE",
+      "sector": "Consumer Cyclical",
+      "industry": "Residential Construction",
+      "score": 61.35,
+      "thesis": "Possible value-quality setup: trades near 10.2x P/E (forward 11.2x) while generating ROE 20.4%, ROIC 15.6%, operating margin 20.8% and Debt/Equity 0.19.",
+      "metrics": {
+        "market_cap_usd": 3370000000,
+        "pe": 10.16,
+        "forward_pe": 11.16,
+        "price_to_book": 1.92,
+        "roe_pct": 20.37,
+        "roic_pct": 15.6,
+        "operating_margin_pct": 20.79,
+        "profit_margin_pct": 15.89,
+        "debt_to_equity": 0.19,
+        "eps_next_5y_pct": -5.0
+      }
+    },
+    {
+      "ticker": "AMP",
+      "company": "Ameriprise Financial Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "score": 61.2,
+      "thesis": "Possible value-quality setup: trades near 13.4x P/E (forward 10.5x) while generating ROE 60.5%, ROIC 29.2%, operating margin 25.6% and Debt/Equity 0.90.",
+      "metrics": {
+        "market_cap_usd": 45150000000,
+        "pe": 13.37,
+        "forward_pe": 10.47,
+        "price_to_book": 7.01,
+        "roe_pct": 60.51,
+        "roic_pct": 29.18,
+        "operating_margin_pct": 25.56,
+        "profit_margin_pct": 18.85,
+        "debt_to_equity": 0.9,
+        "eps_next_5y_pct": 9.87
+      }
+    },
+    {
+      "ticker": "LRN",
+      "company": "Stride Inc",
+      "exchange": "NYSE",
+      "sector": "Consumer Defensive",
+      "industry": "Education & Training Services",
+      "score": 60.46,
+      "thesis": "Possible value-quality setup: trades near 13.1x P/E (forward 11.1x) while generating ROE 22.3%, ROIC 15.6%, operating margin 18.6% and Debt/Equity 0.36.",
+      "metrics": {
+        "market_cap_usd": 3660000000,
+        "pe": 13.07,
+        "forward_pe": 11.09,
+        "price_to_book": 2.36,
+        "roe_pct": 22.26,
+        "roic_pct": 15.62,
+        "operating_margin_pct": 18.56,
+        "profit_margin_pct": 12.66,
+        "debt_to_equity": 0.36,
+        "eps_next_5y_pct": 12.0
+      }
+    },
+    {
+      "ticker": "ADBE",
+      "company": "Adobe Inc",
+      "exchange": "NASDAQ",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "score": 59.92,
+      "thesis": "Possible value-quality setup: trades near 15.4x P/E (forward 9.8x) while generating ROE 55.4%, ROIC 39.2%, operating margin 36.6% and Debt/Equity 0.57.",
+      "metrics": {
+        "market_cap_usd": 105560000000,
+        "pe": 15.39,
+        "forward_pe": 9.75,
+        "price_to_book": 9.14,
+        "roe_pct": 55.43,
+        "roic_pct": 39.19,
+        "operating_margin_pct": 36.63,
+        "profit_margin_pct": 30.0,
+        "debt_to_equity": 0.57,
+        "eps_next_5y_pct": 10.99
+      }
+    },
+    {
+      "ticker": "THG",
+      "company": "Hanover Insurance Group Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "score": 59.53,
+      "thesis": "Possible value-quality setup: trades near 9.5x P/E (forward 9.6x) while generating ROE 20.0%, ROIC 15.5%, operating margin 13.4% and Debt/Equity 0.36.",
+      "metrics": {
+        "market_cap_usd": 6140000000,
+        "pe": 9.49,
+        "forward_pe": 9.57,
+        "price_to_book": 1.81,
+        "roe_pct": 20.02,
+        "roic_pct": 15.52,
+        "operating_margin_pct": 13.45,
+        "profit_margin_pct": 10.05,
+        "debt_to_equity": 0.36,
+        "eps_next_5y_pct": -1.94
+      }
+    },
+    {
+      "ticker": "BSM",
+      "company": "Black Stone Minerals L.P",
+      "exchange": "NYSE",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "score": 59.53,
+      "thesis": "Possible value-quality setup: trades near 13.2x P/E (forward 12.6x) while generating ROE 23.9%, ROIC 20.0%, operating margin 65.5% and Debt/Equity 0.08.",
+      "metrics": {
+        "market_cap_usd": 3220000000,
+        "pe": 13.24,
+        "forward_pe": 12.63,
+        "price_to_book": 3.9,
+        "roe_pct": 23.9,
+        "roic_pct": 20.04,
+        "operating_margin_pct": 65.47,
+        "profit_margin_pct": 54.89,
+        "debt_to_equity": 0.08,
+        "eps_next_5y_pct": 5.75
+      }
+    },
+    {
+      "ticker": "SKYW",
+      "company": "Skywest Inc",
+      "exchange": "NASDAQ",
+      "sector": "Industrials",
+      "industry": "Airlines",
+      "score": 59.15,
+      "thesis": "Possible value-quality setup: trades near 10.1x P/E (forward 8.5x) while generating ROE 16.6%, ROIC 9.3%, operating margin 15.2% and Debt/Equity 0.87.",
+      "metrics": {
+        "market_cap_usd": 4190000000,
+        "pe": 10.1,
+        "forward_pe": 8.54,
+        "price_to_book": 1.57,
+        "roe_pct": 16.62,
+        "roic_pct": 9.33,
+        "operating_margin_pct": 15.22,
+        "profit_margin_pct": 10.55,
+        "debt_to_equity": 0.87,
+        "eps_next_5y_pct": 6.49
+      }
+    },
+    {
+      "ticker": "NFG",
+      "company": "National Fuel Gas Co",
+      "exchange": "NYSE",
+      "sector": "Energy",
+      "industry": "Oil & Gas Integrated",
+      "score": 58.98,
+      "thesis": "Possible value-quality setup: trades near 11.9x P/E (forward 9.9x) while generating ROE 20.7%, ROIC 11.6%, operating margin 41.6% and Debt/Equity 0.77.",
+      "metrics": {
+        "market_cap_usd": 8080000000,
+        "pe": 11.86,
+        "forward_pe": 9.91,
+        "price_to_book": 2.25,
+        "roe_pct": 20.67,
+        "roic_pct": 11.55,
+        "operating_margin_pct": 41.61,
+        "profit_margin_pct": 28.0,
+        "debt_to_equity": 0.77,
+        "eps_next_5y_pct": 2.7
+      }
+    },
+    {
+      "ticker": "PGR",
+      "company": "Progressive Corp",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "score": 58.59,
+      "thesis": "Possible value-quality setup: trades near 11.4x P/E (forward 12.9x) while generating ROE 34.2%, ROIC 26.7%, operating margin 16.6% and Debt/Equity 0.19.",
+      "metrics": {
+        "market_cap_usd": 122190000000,
+        "pe": 11.42,
+        "forward_pe": 12.92,
+        "price_to_book": 3.44,
+        "roe_pct": 34.23,
+        "roic_pct": 26.71,
+        "operating_margin_pct": 16.55,
+        "profit_margin_pct": 12.9,
+        "debt_to_equity": 0.19,
+        "eps_next_5y_pct": -3.95
+      }
+    },
+    {
+      "ticker": "INGR",
+      "company": "Ingredion Inc",
+      "exchange": "NYSE",
+      "sector": "Consumer Defensive",
+      "industry": "Packaged Foods",
+      "score": 58.2,
+      "thesis": "Possible value-quality setup: trades near 10.7x P/E (forward 10.1x) while generating ROE 18.1%, ROIC 12.1%, operating margin 14.3% and Debt/Equity 0.42.",
+      "metrics": {
+        "market_cap_usd": 7620000000,
+        "pe": 10.74,
+        "forward_pe": 10.1,
+        "price_to_book": 1.77,
+        "roe_pct": 18.05,
+        "roic_pct": 12.12,
+        "operating_margin_pct": 14.27,
+        "profit_margin_pct": 10.1,
+        "debt_to_equity": 0.42,
+        "eps_next_5y_pct": 5.84
+      }
+    },
+    {
+      "ticker": "TRV",
+      "company": "Travelers Companies Inc",
+      "exchange": "NYSE",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "score": 58.16,
+      "thesis": "Possible value-quality setup: trades near 10.9x P/E (forward 10.6x) while generating ROE 20.7%, ROIC 14.9%, operating margin 16.8% and Debt/Equity 0.28.",
+      "metrics": {
+        "market_cap_usd": 66700000000,
+        "pe": 10.86,
+        "forward_pe": 10.61,
+        "price_to_book": 1.98,
+        "roe_pct": 20.7,
+        "roic_pct": 14.91,
+        "operating_margin_pct": 16.84,
+        "profit_margin_pct": 12.78,
+        "debt_to_equity": 0.28,
+        "eps_next_5y_pct": 1.13
+      }
+    },
+    {
+      "ticker": "ATGE",
+      "company": "Adtalem Global Education Inc",
+      "exchange": "NYSE",
+      "sector": "Consumer Defensive",
+      "industry": "Education & Training Services",
+      "score": 58.11,
+      "thesis": "Possible value-quality setup: trades near 14.0x P/E (forward 10.5x) while generating ROE 17.9%, ROIC 12.2%, operating margin 19.9% and Debt/Equity 0.53.",
+      "metrics": {
+        "market_cap_usd": 3280000000,
+        "pe": 14.02,
+        "forward_pe": 10.51,
+        "price_to_book": 2.39,
+        "roe_pct": 17.92,
+        "roic_pct": 12.17,
+        "operating_margin_pct": 19.89,
+        "profit_margin_pct": 13.37,
+        "debt_to_equity": 0.53,
+        "eps_next_5y_pct": 16.62
+      }
+    },
+    {
+      "ticker": "EOG",
+      "company": "EOG Resources, Inc",
+      "exchange": "NYSE",
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "score": 57.6,
+      "thesis": "Possible value-quality setup: trades near 11.8x P/E (forward 12.2x) while generating ROE 18.5%, ROIC 14.6%, operating margin 33.0% and Debt/Equity 0.27.",
+      "metrics": {
+        "market_cap_usd": 64150000000,
+        "pe": 11.77,
+        "forward_pe": 12.22,
+        "price_to_book": 2.12,
+        "roe_pct": 18.48,
+        "roic_pct": 14.57,
+        "operating_margin_pct": 32.99,
+        "profit_margin_pct": 24.43,
+        "debt_to_equity": 0.27,
+        "eps_next_5y_pct": -0.1
+      }
+    },
+    {
+      "ticker": "CF",
+      "company": "CF Industries Holdings Inc",
+      "exchange": "NYSE",
+      "sector": "Basic Materials",
+      "industry": "Agricultural Inputs",
+      "score": 57.41,
+      "thesis": "Possible value-quality setup: trades near 11.7x P/E (forward 13.0x) while generating ROE 27.5%, ROIC 16.9%, operating margin 35.6% and Debt/Equity 0.70.",
+      "metrics": {
+        "market_cap_usd": 15120000000,
+        "pe": 11.68,
+        "forward_pe": 12.96,
+        "price_to_book": 3.15,
+        "roe_pct": 27.46,
+        "roic_pct": 16.95,
+        "operating_margin_pct": 35.57,
+        "profit_margin_pct": 20.47,
+        "debt_to_equity": 0.7,
+        "eps_next_5y_pct": -1.51
+      }
+    }
+  ]
+}

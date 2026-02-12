@@ -75,6 +75,7 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - `companies/US/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `companies/US/<TICKER>/data/filings/10-K-*.md` or `companies/US/<TICKER>/data/filings/20-F-*.md`
   - If no annual filing exists yet (common for recent IPOs), expect registration-form fallback files such as `companies/US/<TICKER>/data/filings/S-1-*.md` or `companies/US/<TICKER>/data/filings/S-1-A-*.md`
+- `companies/US/<TICKER>/data/filings/8-K-*.md` (and `6-K-*.md` for FPIs) should include `### Attachment: ...` sections when exhibit content is extractable.
 - `companies/US/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
 - `companies/US/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json` containing URL attempts and failure reasons
 - `companies/US/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available

@@ -101,6 +101,68 @@ def inject_page_headers(markdown: Optional[str]) -> Optional[str]:
     return PAGE_DIV_PATTERN.sub(_replacement, markdown)
 
 
+def _call_optional_method(obj, name: str):
+    method = getattr(obj, name, None)
+    if not callable(method):
+        return None
+    try:
+        return method()
+    except Exception:
+        return None
+
+
+def _looks_like_html(value: str) -> bool:
+    snippet = value.lstrip()[:250].lower()
+    return snippet.startswith("<!doctype html") or snippet.startswith("<html") or "<body" in snippet
+
+
+def _normalize_attachment_text(value) -> Optional[str]:
+    if value is None:
+        return None
+
+    if isinstance(value, bytes):
+        text = None
+        for encoding in ("utf-8", "latin-1"):
+            try:
+                text = value.decode(encoding)
+                break
+            except Exception:
+                continue
+        if text is None:
+            return None
+    else:
+        text = str(value)
+
+    text = text.replace("\r\n", "\n").replace("\r", "\n").strip()
+    if not text:
+        return None
+
+    if BeautifulSoup is not None and _looks_like_html(text):
+        try:
+            text = BeautifulSoup(text, "html.parser").get_text("\n", strip=True)
+        except Exception:
+            pass
+
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    return text or None
+
+
+def _attachment_markdown(attachment) -> Optional[str]:
+    markdown = _call_optional_method(attachment, "markdown")
+    if markdown:
+        markdown = inject_page_headers(markdown)
+        if markdown:
+            return markdown.strip()
+
+    text_content = _call_optional_method(attachment, "text")
+    normalized = _normalize_attachment_text(text_content)
+    if normalized:
+        return normalized
+
+    raw_content = _call_optional_method(attachment, "content")
+    return _normalize_attachment_text(raw_content)
+
+
 def filing_markdown(
     filing,
     include_attachments: bool = False,
@@ -141,12 +203,13 @@ def filing_markdown(
 
         for attachment in attachments:
             try:
-                if not hasattr(attachment, "is_html") or not attachment.is_html():
+                is_html = bool(_call_optional_method(attachment, "is_html"))
+                if not is_html:
                     continue
                 document_name = getattr(attachment, "document", None)
                 if document_name and document_name in primary_documents:
                     continue
-                markdown_content = inject_page_headers(attachment.markdown())
+                markdown_content = _attachment_markdown(attachment)
                 if not markdown_content:
                     continue
 
@@ -235,13 +298,21 @@ def _write_filing_markdown(
 
     filename = _filing_filename(filing)
     path = filings_dir / filename
-    if not path.exists():
+    if not path.exists() or include_attachments:
         markdown = filing_markdown(
             filing,
             include_attachments=include_attachments,
             attachment_forms=attachment_forms,
         )
-        path.write_text(markdown)
+        if not path.exists():
+            path.write_text(markdown)
+        else:
+            try:
+                existing_markdown = path.read_text()
+            except Exception:
+                existing_markdown = None
+            if existing_markdown != markdown:
+                path.write_text(markdown)
 
     return FilingSummary(
         form=str(getattr(filing, "form", "")),

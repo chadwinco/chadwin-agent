@@ -1,0 +1,41 @@
+asof_date: 2026-02-12
+currency: USD
+price: 118.71
+model:
+  type: three-stage-dcf-fade
+baseline_report_dir: 2026-02-12
+base_year:
+  period_end: 2024-12-31
+  revenue: 1883200000.0
+  net_debt: -402000000.0
+  diluted_shares: 56300000.0
+notes:
+  - Revised from baseline after falsification review of growth durability, margin durability, and macro hiring sensitivity.
+  - Stage-1 base growth trimmed modestly to reflect lower near-term guidance and labor-market moderation evidence.
+  - Base-stage and terminal FCF margins trimmed to reflect sustained automation investment intensity and competitive pricing risk.
+  - Balance-sheet inputs unchanged: no funded debt outstanding and significant cash cushion.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.081
+    fcf_margin_stage1: 0.20
+    discount_rate: 0.10
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.165
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.095
+    fcf_margin_stage1: 0.215
+    discount_rate: 0.09
+    terminal_growth: 0.033
+    fcf_margin_terminal: 0.185
+    stage1_years: 12
+    fade_years: 6
+  bear:
+    revenue_growth_stage1: 0.04
+    fcf_margin_stage1: 0.15
+    discount_rate: 0.115
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.13
+    stage1_years: 8
+    fade_years: 5

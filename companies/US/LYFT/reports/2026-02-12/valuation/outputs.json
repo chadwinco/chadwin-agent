@@ -1,0 +1,27 @@
+{
+  "ticker": "LYFT",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 13.99,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 7580509673.28,
+      "equity_value": 7710114673.28,
+      "value_per_share": 18.46,
+      "margin_of_safety": 0.3195
+    },
+    "bull": {
+      "enterprise_value": 13706741351.19,
+      "equity_value": 13836346351.19,
+      "value_per_share": 33.13,
+      "margin_of_safety": 1.368
+    },
+    "bear": {
+      "enterprise_value": 3764166781.88,
+      "equity_value": 3893771781.88,
+      "value_per_share": 9.32,
+      "margin_of_safety": -0.3336
+    }
+  }
+}

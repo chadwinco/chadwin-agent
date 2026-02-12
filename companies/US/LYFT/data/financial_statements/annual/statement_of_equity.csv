@@ -1,0 +1,23 @@
+label,concept,2025-12-31,2024-12-31,2023-12-31,2022-12-31,2021-12-31
+Settlement of convertible senior notes,lyft_ConversionOfConvertibleDebtValue,,,,,1000.0
+Issuance of common stock upon exercise of stock options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,3613000.0,1204000.0,454000.0,5184000.0
+Issuance of common stock upon exercise of stock options (in shares),us-gaap_StockIssuedDuringPeriodSharesStockOptionsExercised,,780000.0,201000.0,112000.0,812000.0
+Issuance of common stock upon settlement of restricted stock units (in shares),us-gaap_StockIssuedDuringPeriodSharesRestrictedStockAwardNetOfForfeitures,21065000.0,22011000.0,28397000.0,23928000.0,
+Issuance of common stock upon settlement of restricted stock units,us-gaap_StockIssuedDuringPeriodValueRestrictedStockAwardNetOfForfeitures,,,0.0,1000.0,
+Shares withheld related to net share settlement,us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation,151311000.0,40328000.0,3021000.0,6733000.0,26298000.0
+Shares withheld related to net share settlement (in shares),us-gaap_SharesPaidForTaxWithholdingForShareBasedCompensation,9000000.0,2528016.0,295948.0,358330.0,508934.0
+Issuance of common stock under employee stock purchase plan,us-gaap_StockIssuedDuringPeriodValueEmployeeStockPurchasePlan,14861000.0,11438000.0,9788000.0,21198000.0,28637000.0
+Issuance of common stock under employee stock purchase plan (in shares),us-gaap_StockIssuedDuringPeriodSharesEmployeeStockPurchasePlans,1077000.0,1080000.0,1349000.0,3803504.0,2267947.0
+Repurchase and retirement of common stock,us-gaap_StockRepurchasedDuringPeriodValue,503236000.0,,,,
+Repurchase and retirement of common stock (in shares),us-gaap_StockRepurchasedDuringPeriodShares,30300000.0,,,,
+Purchase of capped call,lyft_PurchaseOfCappedCallBeforeTax,,47886000.0,,,
+"Purchase of capped call, net of tax",lyft_PurchaseOfCappedCallNetOfTax,30811000.0,,,,
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,322268000.0,330921000.0,484533000.0,753619000.0,721710000.0
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,10728000.0,,805000.0,,-2038000.0
+Net Income,us-gaap_NetIncomeLoss,2844008000.0,22784000.0,-340320000.0,-1584511000.0,-1062144000.0
+Other,us-gaap_StockholdersEquityOther,,-110000.0,139000.0,140000.0,
+Other comprehensive (loss) income,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,-5154000.0,,,
+Repurchase of common stock,us-gaap_StockRepurchasedDuringPeriodValue,,50000000.0,,,
+Repurchase of common stock (in shares),us-gaap_StockRepurchasedDuringPeriodShares,,3143000.0,,,
+Issuance of common stock upon settlement of RSUs (in shares),us-gaap_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriod,,,,,19926000.0
+Other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,-3243000.0,

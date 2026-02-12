@@ -1,0 +1,67 @@
+{
+  "query": "Lyft, Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.fool.com/earnings/call-transcripts/2026/02/10/lyft-lyft-q4-2025-earnings-call-transcript/",
+    "https://seekingalpha.com/article/4868432-lyft-inc-lyft-q4-2025-earnings-call-transcript",
+    "https://www.msn.com/en-us/money/companies/lyft-inc-nasdaqlyft-q4-2025-earnings-call-transcript/ar-AA1W8g14",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-lyft-q4-2025-sees-record-profitability-despite-revenue-miss-93CH-4498403",
+    "https://finance.yahoo.com/quote/LYFT/earnings-calls/",
+    "https://www.gurufocus.com/news/8604009/q4-2025-lyft-inc-earnings-call-transcript"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/LYFT/data/filings/earnings-call-2026-02-10-fool.com.md",
+    "source_url": "https://www.fool.com/earnings/call-transcripts/2026/02/10/lyft-lyft-q4-2025-earnings-call-transcript/",
+    "published_date": "2026-02-10"
+  },
+  "attempts": [
+    {
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/02/10/lyft-lyft-q4-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 52058,
+      "published_date": "2026-02-10",
+      "message": null
+    },
+    {
+      "url": "https://seekingalpha.com/article/4868432-lyft-inc-lyft-q4-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.msn.com/en-us/money/companies/lyft-inc-nasdaqlyft-q4-2025-earnings-call-transcript/ar-AA1W8g14",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-lyft-q4-2025-sees-record-profitability-despite-revenue-miss-93CH-4498403",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/LYFT/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.gurufocus.com/news/8604009/q4-2025-lyft-inc-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

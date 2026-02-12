@@ -53,6 +53,15 @@ python3 .agents/skills/research/scripts/run_research.py --ticker <RESOLVED_TICKE
 python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <RESOLVED_TICKER>
 ```
 
+- If a deep-dive was run, verify all required deep-dive outputs exist before queue removal:
+  - `report.md`
+  - `valuation/inputs.yaml`
+  - `valuation/outputs.json`
+  - `deep-dive-plan.md`
+  - `deep-dive-changes.md`
+  - `third-party-sources.md`
+- Do not run `--post-report-check` again after deep-dive finalization for the same as-of date; it is a baseline-to-deep-dive routing gate, not a completion gate.
+
 ## Behavior Contract
 
 - No ticker provided:

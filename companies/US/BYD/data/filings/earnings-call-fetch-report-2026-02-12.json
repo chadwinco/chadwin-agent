@@ -1,0 +1,58 @@
+{
+  "query": "Boyd Gaming Corp earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.fool.com/earnings/call-transcripts/2026/02/05/boyd-gaming-byd-q4-2025-earnings-call-transcript/",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-boyd-gaming-beats-q4-2025-expectations-stock-dips-93CH-4489201",
+    "https://finance.yahoo.com/quote/BYD/earnings-calls/",
+    "https://seekingalpha.com/article/4866962-boyd-gaming-corporation-byd-q4-2025-earnings-call-transcript",
+    "https://www.insidermonkey.com/blog/boyd-gaming-corporation-nysebyd-q4-2025-earnings-call-transcript-1690229/"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/BYD/data/filings/earnings-call-2026-02-06-insidermonkey.com.md",
+    "source_url": "https://www.insidermonkey.com/blog/boyd-gaming-corporation-nysebyd-q4-2025-earnings-call-transcript-1690229/",
+    "published_date": "2026-02-06"
+  },
+  "attempts": [
+    {
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/02/05/boyd-gaming-byd-q4-2025-earnings-call-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 49641,
+      "published_date": "2026-02-05",
+      "message": null
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-boyd-gaming-beats-q4-2025-expectations-stock-dips-93CH-4489201",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/BYD/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4866962-boyd-gaming-corporation-byd-q4-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/boyd-gaming-corporation-nysebyd-q4-2025-earnings-call-transcript-1690229/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 44369,
+      "published_date": "2026-02-06",
+      "message": null
+    }
+  ]
+}

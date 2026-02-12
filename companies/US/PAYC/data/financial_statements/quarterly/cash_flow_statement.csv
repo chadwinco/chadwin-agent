@@ -1,0 +1,42 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Profit or Loss,us-gaap_ProfitLoss,,,139400000.0,,,247187000.0,,,119296000.0,,,91930000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,,,39900000.0,,,32468000.0,,,26272000.0,,,21655000.0
+Stock-based compensation expense,us-gaap_ShareBasedCompensation,,,22200000.0,,,-93790000.0,,,27819000.0,,,22055000.0
+Amortization of debt issuance costs,us-gaap_AmortizationOfFinancingCosts,,,300000.0,,,276000.0,,,308000.0,,,9000.0
+Gain on disposition of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,,,,,,-13000.0,,,
+Accretion of discount on available-for-sale securities,us-gaap_AccretionAmortizationOfDiscountsAndPremiumsInvestments,,,-1300000.0,,,-73000.0,,,-124000.0,,,-303000.0
+Non-cash marketing expense,us-gaap_OtherNoncashExpense,,,400000.0,,,398000.0,,,418000.0,,,437000.0
+"Deferred income taxes, net",us-gaap_DeferredIncomeTaxesAndTaxCredits,,,-6200000.0,,,-10489000.0,,,-1650000.0,,,-10332000.0
+Other,payc_OtherNoncashIncomeExpenses,,,100000.0,,,-100000.0,,,78000.0,,,
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,,,7900000.0,,,-3555000.0,,,5041000.0,,,-8455000.0
+Prepaid expenses,us-gaap_IncreaseDecreaseInPrepaidExpense,,,-4500000.0,,,-13888000.0,,,-6984000.0,,,-4859000.0
+Inventory,us-gaap_IncreaseDecreaseInInventories,,,,,,182000.0,,,385000.0,,,124000.0
+Other assets,us-gaap_IncreaseDecreaseInOtherOperatingAssets,,,300000.0,,,572000.0,,,2923000.0,,,-2970000.0
+Deferred contract costs,us-gaap_IncreaseDecreaseInDeferredCharges,,,-31400000.0,,,-37640000.0,,,-38519000.0,,,-36261000.0
+"Income taxes, net",us-gaap_IncreaseDecreaseInIncomeTaxesPayableNetOfIncomeTaxesReceivable,,,54900000.0,,,35673000.0,,,24933000.0,,,39593000.0
+Accounts payable,us-gaap_IncreaseDecreaseInAccountsPayable,,,-14400000.0,,,2980000.0,,,-4645000.0,,,5406000.0
+Accrued commissions and bonuses,payc_IncreaseDecreaseInAccruedCommissionAndBonuses,,,-13400000.0,,,-10401000.0,,,-10845000.0,,,-10309000.0
+Accrued payroll and vacation,payc_IncreaseDecreaseInAccruedPayrollAndVacation,,,-12500000.0,,,-13636000.0,,,-8835000.0,,,8579000.0
+Deferred revenue,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,,,4100000.0,,,6570000.0,,,3386000.0,,,3390000.0
+Accrued expenses and other current liabilities,us-gaap_IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities,,,-4000000.0,,,5892000.0,,,6859000.0,,,-1195000.0
+Net change in operating right-of-use assets and operating lease liabilities,payc_IncreaseDecreaseInOperatingRightOfUseAssetsAndOperatingLeaseLiabilities,,,700000.0,,,,,,,,,
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,182500000.0,,,148636000.0,,,146103000.0,,,117231000.0
+Purchases of investments from funds held for clients,us-gaap_PaymentsToAcquireInvestments,,,-342200000.0,,,-0.0,,,-25000000.0,,,-169152000.0
+Proceeds from investments from funds held for clients,us-gaap_ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities,,,,,,90000000.0,,,25000000.0,,,136000000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-37700000.0,,,-47728000.0,,,-40618000.0,,,-34474000.0
+Proceeds from sale of property and equipment,us-gaap_ProceedsFromSaleOfPropertyPlantAndEquipment,,,,,,13000.0,,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-379900000.0,,,42285000.0,,,-40618000.0,,,-67626000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,,,-5200000.0,,,-3052000.0,,,-626000.0,,,-218000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,,,-21100000.0,,,-21209000.0,,,,,,
+Net change in client funds obligation,payc_IncreaseDecreaseInClientFundsObligation,,,-1426000000.0,,,400355000.0,,,183629000.0,,,2099530000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-1452300000.0,,,376094000.0,,,183003000.0,,,2098868000.0
+"(Decrease) increase in cash, cash equivalents, restricted cash and restricted cash equivalents",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,,,-1649700000.0,,,,,,,,,
+Loss (Gain) on disposition of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,,,10000.0,,,,,,
+Payments on long-term debt,us-gaap_RepaymentsOfLongTermDebt,,,,,,,,,,,,-444000.0
+"Increase (decrease) in cash, cash equivalents, restricted cash and restricted cash equivalents",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,,,,,,,,,288488000.0,,,2148473000.0
+"Increase in cash, cash equivalents, restricted cash and restricted cash equivalents",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,,,,,,567015000.0,,,,,,
+Cash paid for derivative settlement,payc_CashPaidInSettlementOfDerivativeInstruments,,,,,,,,,,,,-174000.0
+"Purchases of property and equipment, accrued but not paid",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,5500000.0,,,9070000.0,,,6991000.0,,,5394000.0
+Stock-based compensation for capitalized software,us-gaap_EmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsCapitalizedAmount,6600000.0,8500000.0,5300000.0,5100000.0,5200000.0,3589000.0,3800000.0,4200000.0,3597000.0,2300000.0,2300000.0,1891000.0
+Right of use assets obtained in exchange for operating lease liabilities,us-gaap_RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,,,2200000.0,,,5080000.0,,,1933000.0,,,4146000.0
+(Gain)/loss on derivative,us-gaap_DerivativeInstrumentsNotDesignatedAsHedgingInstrumentsGainLossNet,,,,,,,,,,,,-1089000.0

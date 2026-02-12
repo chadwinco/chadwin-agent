@@ -87,6 +87,7 @@ These are the canonical statement sources used by the analysis workflow.
 ## Filings and Transcripts
 Filings and transcript markdown files are stored under:
 - `companies/US/<TICKER>/data/filings/`
+- `8-K`/`6-K` files should include `### Attachment: ...` sections for exhibit bodies when EdgarTools can extract the attachment text.
 
 ## Date Alignment
 For each fiscal year, income, balance sheet, and cash flow rows should align on `fiscalYear` and be within the same `date` range. The quality checker flags mismatches.

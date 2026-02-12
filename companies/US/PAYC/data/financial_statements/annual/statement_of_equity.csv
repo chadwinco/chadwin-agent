@@ -1,0 +1,10 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Vesting of restricted stock,us-gaap_StockIssuedDuringPeriodValueRestrictedStockAwardNetOfForfeitures,,1000.0,2000.0,-5000.0,-5000.0,-6000.0
+"Vesting of restricted stock, shares",us-gaap_StockIssuedDuringPeriodSharesRestrictedStockAwardNetOfForfeitures,300000.0,157000.0,220000.0,437000.0,511000.0,603000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,400000.0,147872000.0,111030000.0,107691000.0,100412000.0,53827000.0
+Dividends declared,us-gaap_DividendsCommonStock,84500000.0,67775000.0,,,,
+Repurchases of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,145400000.0,303121000.0,99823000.0,65580000.0,114850000.0,42528000.0
+"Repurchases of common stock, shares",us-gaap_TreasuryStockSharesAcquired,1000000.0,1496000.0,365000.0,164000.0,432897.0,219764000.0
+Net Income,us-gaap_NetIncomeLoss,502000000.0,340788000.0,281389000.0,195960000.0,143453000.0,180576000.0
+"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,-3703000.0,,,
+"Other comprehensive earnings (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,400000.0,2664000.0,,,,

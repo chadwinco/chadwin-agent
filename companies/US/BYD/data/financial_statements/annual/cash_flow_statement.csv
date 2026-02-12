@@ -1,9 +1,5 @@
 label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
 Net Income,us-gaap_NetIncomeLoss,577952000.0,620023000.0,639377000.0,463846000.0,-134700000.0,157636000.0
-Cash flows from operating activities,us-gaap_CashProvidedByUsedInOperatingActivitiesDiscontinuedOperations,,,,,0.0,0.0
-Net cash provided by discontinued operations,us-gaap_NetCashProvidedByUsedInDiscontinuedOperations,,,,,0.0,0.0
-Cash flows from investing activities,us-gaap_CashProvidedByUsedInInvestingActivitiesDiscontinuedOperations,,,,,0.0,0.0
-Cash flows from financing activities,us-gaap_CashProvidedByUsedInFinancingActivitiesDiscontinuedOperations,,,,,0.0,0.0
 Depreciation and Amortization,us-gaap_DepreciationAndAmortization,276639000.0,256780000.0,258179000.0,267787000.0,281031000.0,276569000.0
 Amortization of debt financing costs and discounts on debt,us-gaap_AmortizationOfFinancingCostsAndDiscounts,7591000.0,7761000.0,8551000.0,11172000.0,12095000.0,9227000.0
 Non-cash operating lease expense,us-gaap_OperatingLeaseRightOfUseAssetAmortizationExpense,87687000.0,78811000.0,65204000.0,45599000.0,55578000.0,31524000.0
@@ -41,6 +37,10 @@ Insurance proceeds received from hurricane losses,us-gaap_ProceedsFromInsuranceS
 Proceeds received from disposition of assets,us-gaap_ProceedsFromSalesOfAssetsInvestingActivities,0.0,0.0,21953000.0,0.0,15050000.0,
 Other investing activities,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,-3454000.0,-3935000.0,-7834000.0,6672000.0,0.0,-18259000.0
 Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-433912000.0,-264330000.0,-422312000.0,-129580000.0,-171181000.0,-231431000.0
+Cash flows from operating activities,us-gaap_CashProvidedByUsedInOperatingActivitiesDiscontinuedOperations,,,,,0.0,0.0
+Cash flows from investing activities,us-gaap_CashProvidedByUsedInInvestingActivitiesDiscontinuedOperations,,,,,0.0,0.0
+Net cash provided by discontinued operations,us-gaap_NetCashProvidedByUsedInDiscontinuedOperations,,,,,0.0,0.0
+Cash flows from financing activities,us-gaap_CashProvidedByUsedInFinancingActivitiesDiscontinuedOperations,,,,,0.0,0.0
 Borrowings under credit facilities,us-gaap_ProceedsFromLinesOfCredit,1764300000.0,1505800000.0,2122100000.0,,,
 Payments under credit facilities,us-gaap_RepaymentsOfLinesOfCredit,-1510300000.0,-1647300000.0,-1802197000.0,,,
 Retirements of senior notes,us-gaap_RepaymentsOfSeniorDebt,0.0,0.0,-300000000.0,,,

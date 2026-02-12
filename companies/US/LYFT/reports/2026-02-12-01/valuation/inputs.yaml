@@ -1,0 +1,41 @@
+asof_date: 2026-02-12
+currency: USD
+price: 13.99
+model:
+  type: three-stage-dcf-fade
+baseline_report_dir: "2026-02-12"
+base_year:
+  period_end: 2025-12-31
+  revenue: 6316261000.0
+  net_debt: -129605000.0
+  diluted_shares: 417659000.0
+notes:
+  - Revised after falsification-focused deep dive on competition, insurance volatility, and macro demand sensitivity.
+  - Base growth and margins reduced versus baseline to reflect persistent low-switching-cost competition and incentive risk.
+  - Terminal margin trimmed to reflect insurance-cost and regulatory-risk drag on long-run cash conversion.
+  - Base-year balance-sheet inputs unchanged; company remains net-cash on a cash-minus-debt basis.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.069
+    fcf_margin_stage1: 0.075
+    discount_rate: 0.108
+    terminal_growth: 0.024
+    fcf_margin_terminal: 0.057
+    stage1_years: 8
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.085
+    fcf_margin_stage1: 0.09
+    discount_rate: 0.10
+    terminal_growth: 0.028
+    fcf_margin_terminal: 0.067
+    stage1_years: 10
+    fade_years: 6
+  bear:
+    revenue_growth_stage1: 0.04
+    fcf_margin_stage1: 0.05
+    discount_rate: 0.12
+    terminal_growth: 0.017
+    fcf_margin_terminal: 0.038
+    stage1_years: 7
+    fade_years: 5

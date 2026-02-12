@@ -1,0 +1,71 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Cash and cash equivalents,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,6606000000.0,5540000000.0,4667000000.0,5630000000.0,4441000000.0,3823000000.0,3839000000.0,3737000000.0,3685000000.0,,,
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,,,,,,,,,,4793000000.0,5071000000.0,4101000000.0
+Income Taxes Receivable,us-gaap_IncomeTaxReceivable,,,,,,,,,,18000000.0,18000000.0,
+Other Assets,us-gaap_OtherAssets,342000000.0,348000000.0,364000000.0,324000000.0,404000000.0,349000000.0,368000000.0,382000000.0,395000000.0,446000000.0,445000000.0,465000000.0
+Total Assets,us-gaap_Assets,244679000000.0,242645000000.0,234681000000.0,245156000000.0,237438000000.0,239688000000.0,223516000000.0,231545000000.0,230002000000.0,221641000000.0,228211000000.0,245052000000.0
+Total investments,us-gaap_Investments,120880000000.0,120747000000.0,117257000000.0,118854000000.0,115299000000.0,115894000000.0,108660000000.0,111286000000.0,111290000000.0,108504000000.0,110435000000.0,113420000000.0
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $86,564 and $87,603, respectively; allowance for credit losses of $64 and $81, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,81537000000.0,,,,,,,,,,,
+"Trading securities, at estimated fair value",us-gaap_TradingSecuritiesDebt,528000000.0,520000000.0,365000000.0,,,,,,,,,
+"Equity securities, at estimated fair value",us-gaap_EquitySecuritiesFvNiCurrentAndNoncurrent,78000000.0,74000000.0,73000000.0,87000000.0,85000000.0,86000000.0,90000000.0,91000000.0,91000000.0,100000000.0,96000000.0,80000000.0
+"Mortgage loans (net of allowance for credit losses of $205 and $178, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,22862000000.0,,,,,,,,,,,
+Policy loans,us-gaap_LoansInsurancePolicy,1439000000.0,1425000000.0,1436000000.0,1387000000.0,1470000000.0,1651000000.0,1311000000.0,1288000000.0,1273000000.0,1274000000.0,1277000000.0,1270000000.0
+Limited partnerships and limited liability companies,us-gaap_RealEstateInvestments,4816000000.0,4798000000.0,4839000000.0,4870000000.0,4938000000.0,4920000000.0,4931000000.0,4914000000.0,4803000000.0,4607000000.0,4683000000.0,4587000000.0
+"Short-term investments, principally at estimated fair value",us-gaap_OtherShortTermInvestments,778000000.0,1170000000.0,1569000000.0,1812000000.0,1390000000.0,1347000000.0,1003000000.0,1125000000.0,1386000000.0,1130000000.0,920000000.0,1062000000.0
+"Other invested assets, principally at estimated fair value (net of allowance for credit losses of $0 and $0, respectively)",us-gaap_OtherInvestments,8842000000.0,8932000000.0,5284000000.0,,,,,,,,,
+Accrued investment income,us-gaap_AccruedInvestmentIncomeReceivable,1350000000.0,1235000000.0,1267000000.0,2083000000.0,1169000000.0,1297000000.0,1143000000.0,1027000000.0,985000000.0,909000000.0,852000000.0,754000000.0
+"Premiums, reinsurance and other receivables (net of allowance for credit losses of $3 and $3, respectively)",us-gaap_PremiumsAndOtherReceivablesNet,21244000000.0,21258000000.0,21188000000.0,20692000000.0,20043000000.0,20234000000.0,,,,,,
+Deferred policy acquisition costs and value of business acquired,us-gaap_DeferredPolicyAcquisitionCostsAndValueOfBusinessAcquired,4603000000.0,4636000000.0,4672000000.0,4745000000.0,4791000000.0,4829000000.0,4919000000.0,4968000000.0,5027000000.0,5639000000.0,5434000000.0,5581000000.0
+Current income tax recoverable,us-gaap_IncomeTaxReceivable,17000000.0,17000000.0,20000000.0,28000000.0,28000000.0,28000000.0,31000000.0,31000000.0,30000000.0,,,
+Market risk benefit assets,us-gaap_MarketRiskBenefitAssetAmount,979000000.0,1084000000.0,914000000.0,750000000.0,916000000.0,839000000.0,694000000.0,602000000.0,510000000.0,,,
+Separate account assets,us-gaap_SeparateAccountAssets,87127000000.0,86085000000.0,82524000000.0,90313000000.0,88260000000.0,90332000000.0,82675000000.0,88392000000.0,87440000000.0,81836000000.0,88843000000.0,104441000000.0
+"Contingencies, Commitments and Guarantees (Note 13)",us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+Preferred Stock,us-gaap_PreferredStockValue,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Treasury Stock Common Value,us-gaap_TreasuryStockValue,-2688000000.0,-2687000000.0,-2644000000.0,-2512000000.0,-2447000000.0,-2382000000.0,-2248000000.0,-2183000000.0,-2119000000.0,-1949000000.0,-1813000000.0,-1681000000.0
+Minority Interest,us-gaap_MinorityInterest,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0,65000000.0
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $86,762 and $87,603, respectively; allowance for credit losses of $67 and $81, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,80835000000.0,,,,,,,,,,
+"Mortgage loans (net of allowance for credit losses of $209 and $178, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,22993000000.0,23051000000.0,,,,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $87,070 and $87,603, respectively; allowance for credit losses of $56 and $81, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,80640000000.0,,,,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $87,838 and $87,131, respectively; allowance for credit losses of $61 and $21, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,83298000000.0,,,,,,,,
+"Mortgage loans (net of allowance for credit losses of $167 and $137, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,22938000000.0,,,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $88,176 and $87,131, respectively; allowance for credit losses of $45 and $21, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,80581000000.0,,,,,,,
+"Mortgage loans (net of allowance for credit losses of $155 and $137, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,22641000000.0,,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $87,555 and $87,131, respectively; allowance for credit losses of $27 and $21, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,80474000000.0,,,,,,
+"Mortgage loans (net of allowance for credit losses of $142 and $137, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,22670000000.0,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $86,373 and $84,344, respectively; allowance for credit losses of $22 and $7, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,,75433000000.0,,,,,
+"Mortgage loans (net of allowance for credit losses of $137 and $119, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,,22682000000.0,,,,,
+"Premiums, reinsurance and other receivables (net of allowance for credit losses of $13 and $10, respectively)",us-gaap_PremiumsAndOtherReceivablesNet,,,,,,,19066000000.0,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $85,570 and $84,344, respectively; allowance for credit losses of $12 and $7, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,,,77577000000.0,,,,
+"Mortgage loans (net of allowance for credit losses of $145 and $119, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,,,22614000000.0,,,,
+"Premiums, reinsurance and other receivables (net of allowance for credit losses of $10 and $10, respectively)",us-gaap_PremiumsAndOtherReceivablesNet,,,,,,,,19223000000.0,18967000000.0,17877000000.0,16642000000.0,16290000000.0
+"Contingencies, Commitments and Guarantees (Note 12)",us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $84,693 and $84,344, respectively; allowance for credit losses of $5 and $7, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,,,,77685000000.0,,,
+"Mortgage loans (net of allowance for credit losses of $136 and $119, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,,,,22823000000.0,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $85,307 and $79,246, respectively; allowance for credit losses of $5 and $11, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,,,,,75271000000.0,,
+"Mortgage loans (net of allowance for credit losses of $99 and $123, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,,,,,22089000000.0,,
+"Contingencies, Commitments and Guarantees (Note 11)",us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $83,613 and $79,246, respectively; allowance for credit losses of $4 and $11, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,,,,,,78606000000.0,
+"Mortgage loans (net of allowance for credit losses of $103 and $123, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,,,,,,21508000000.0,
+"Fixed maturity securities available-for-sale, at estimated fair value (amortized cost: $81,242 and $79,246, respectively; allowance for credit losses of $11 and $11, respectively)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,,,,,,,82496000000.0
+"Mortgage loans (net of allowance for credit losses of $127 and $123, respectively)",us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,,,,,,,,,,,,21357000000.0
+"Contingencies, Commitments and Guarantees (Note 10)",us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+Future policy benefits,us-gaap_LiabilityForFuturePolicyBenefitAfterReinsurance,32021000000.0,31974000000.0,31834000000.0,32781000000.0,31886000000.0,32245000000.0,30404000000.0,31899000000.0,32286000000.0,41786000000.0,41142000000.0,41979000000.0
+Policyholder account balances,us-gaap_PolicyholderContractDeposits,88703000000.0,88046000000.0,85618000000.0,87678000000.0,85865000000.0,84159000000.0,78371000000.0,78643000000.0,76120000000.0,71323000000.0,68293000000.0,67887000000.0
+Market risk benefit liabilities,us-gaap_MarketRiskBenefitLiabilityAmount,8529000000.0,8051000000.0,9165000000.0,9580000000.0,8708000000.0,8964000000.0,8830000000.0,9783000000.0,10729000000.0,,,
+Other policy-related balances,us-gaap_OtherPolicyholderFunds,3918000000.0,3977000000.0,3866000000.0,3853000000.0,3796000000.0,3798000000.0,3806000000.0,3784000000.0,3816000000.0,3364000000.0,3273000000.0,3457000000.0
+Payables for collateral under securities loaned and other transactions,us-gaap_ObligationToReturnSecuritiesReceivedAsCollateral,4347000000.0,3994000000.0,3904000000.0,3764000000.0,3906000000.0,3653000000.0,3941000000.0,4133000000.0,4401000000.0,6532000000.0,6675000000.0,6209000000.0
+Current income tax payable,us-gaap_AccruedIncomeTaxes,,,,,,,,,,0.0,0.0,61000000.0
+Separate account liabilities,us-gaap_SeparateAccountsLiability,87127000000.0,86085000000.0,82524000000.0,90313000000.0,88260000000.0,90332000000.0,82675000000.0,88392000000.0,87440000000.0,81836000000.0,88843000000.0,104441000000.0
+Other Liabilities,us-gaap_OtherLiabilities,10451000000.0,11625000000.0,9311000000.0,8442000000.0,7656000000.0,9122000000.0,8198000000.0,6783000000.0,6234000000.0,7765000000.0,6572000000.0,4767000000.0
+Total Liabilities,us-gaap_Liabilities,238251000000.0,236907000000.0,229377000000.0,239566000000.0,233232000000.0,235428000000.0,219382000000.0,226573000000.0,224183000000.0,215762000000.0,217955000000.0,232173000000.0
+Long Term Debt,us-gaap_LongTermDebt,3155000000.0,3155000000.0,3155000000.0,3155000000.0,3155000000.0,3155000000.0,3157000000.0,3156000000.0,3157000000.0,3156000000.0,3157000000.0,3157000000.0
+Deferred income tax liability,us-gaap_DeferredIncomeTaxLiabilitiesNet,,,,,,,,,,0.0,0.0,215000000.0
+Deferred Tax Assets,us-gaap_DeferredIncomeTaxAssetsNet,1531000000.0,1695000000.0,1808000000.0,1737000000.0,2087000000.0,2063000000.0,2121000000.0,1897000000.0,1673000000.0,1619000000.0,471000000.0,
+"Other invested assets, principally at estimated fair value (net of allowance for credit losses of $12 and $13, respectively)",us-gaap_OtherInvestments,,,,4462000000.0,4194000000.0,4746000000.0,,,,,,
+"Other invested assets, principally at estimated fair value (net of allowance for credit losses of $13 and $13, respectively)",us-gaap_OtherInvestments,,,,,,,3210000000.0,3677000000.0,3229000000.0,4033000000.0,3345000000.0,2568000000.0
+Common Stock,us-gaap_CommonStockValue,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0,1000000.0
+Additional paid-in capital,us-gaap_AdditionalPaidInCapital,13893000000.0,13918000000.0,13939000000.0,13953000000.0,13972000000.0,13989000000.0,14022000000.0,14039000000.0,14054000000.0,14095000000.0,14113000000.0,14133000000.0
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,-823000000.0,-1302000000.0,-1387000000.0,-1790000000.0,-1966000000.0,-2000000000.0,-590000000.0,-1069000000.0,-894000000.0,304000000.0,981000000.0,-2000000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-4020000000.0,-4257000000.0,-4670000000.0,-4127000000.0,-5419000000.0,-5413000000.0,-7116000000.0,-5881000000.0,-5288000000.0,-6637000000.0,-3091000000.0,363000000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,6428000000.0,5738000000.0,5304000000.0,5590000000.0,4206000000.0,4260000000.0,4134000000.0,4972000000.0,5819000000.0,5879000000.0,10256000000.0,12879000000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,244679000000.0,242645000000.0,234681000000.0,245156000000.0,237438000000.0,239688000000.0,223516000000.0,231545000000.0,230002000000.0,221641000000.0,228211000000.0,245052000000.0
