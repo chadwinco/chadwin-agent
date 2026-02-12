@@ -23,7 +23,7 @@ Chief Operating Officer — Daniel William Jester
 
 TAKEAWAYS
 
-Total Revenue -- Paycom Software ( PAYC 1.70% ) reported $544 million, up 10% year over year for the quarter, and $2.05 billion for the full year, exceeding the initial outlook.
+Total Revenue -- Paycom Software ( PAYC 0.49% ) reported $544 million, up 10% year over year for the quarter, and $2.05 billion for the full year, exceeding the initial outlook.
 
 Recurring and Other Revenue -- $517 million for the quarter, up 11% year over year; $1.94 billion for the full year, a 10% increase.
 

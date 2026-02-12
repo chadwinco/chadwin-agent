@@ -45,8 +45,8 @@ Proceeds from maturities of short-term investments from funds held for clients,u
 Loss on disposition of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,,146000.0,,
 "Cash paid for interest, net of amounts capitalized",us-gaap_InterestPaidNet,2000000.0,985000.0,507000.0,2000.0,,891000.0
 Income Tax Expense,us-gaap_IncomeTaxesPaidNet,136900000.0,139914000.0,100578000.0,33068000.0,27530000.0,24566000.0
-(Gain)/loss on disposition of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,-150000.0,,,
 Loss (Gain) on disposition of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,23000.0,,,,
+(Gain)/loss on disposition of property and equipment,us-gaap_GainLossOnSaleOfPropertyPlantEquipment,,,-150000.0,,,
 (Gain)/loss on derivative,us-gaap_DerivativeInstrumentsNotDesignatedAsHedgingInstrumentsGainLossNet,,,-1559000.0,-662000.0,1993000.0,1456000.0
 "Purchases of property and equipment, accrued but not paid",us-gaap_CapitalExpendituresIncurredButNotYetPaid,3900000.0,9025000.0,5899000.0,7581000.0,837000.0,7451000.0
 Stock-based compensation for capitalized software,us-gaap_EmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsCapitalizedAmount,17500000.0,14657000.0,8965000.0,7141000.0,6655000.0,4757000.0
