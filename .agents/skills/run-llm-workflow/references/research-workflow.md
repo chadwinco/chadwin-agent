@@ -19,11 +19,6 @@ Primary local inputs:
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_estimates.csv` (optional)
 - `preferences/user_preferences.json` (optional, for strategy/report customization)
 
-Legacy fallback paths:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/income_statement_annual.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/balance_sheet_annual.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/cash_flow_statement_annual.csv`
-
 Drafting assets:
 - `.agents/skills/run-llm-workflow/assets/investment-summary.md`
 - `.agents/skills/run-llm-workflow/assets/business-and-competitive-position.md`
