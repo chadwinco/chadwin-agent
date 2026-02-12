@@ -1,0 +1,27 @@
+{
+  "ticker": "BYD",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 82.59,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 8392306228.037903,
+      "equity_value": 6645706228.037903,
+      "value_per_share": 86.98568361306155,
+      "margin_of_safety": 0.053222952089375886
+    },
+    "bull": {
+      "enterprise_value": 12428360012.313715,
+      "equity_value": 10681760012.313715,
+      "value_per_share": 139.8136127266193,
+      "margin_of_safety": 0.6928636968957418
+    },
+    "bear": {
+      "enterprise_value": 4505951252.439913,
+      "equity_value": 2759351252.439913,
+      "value_per_share": 36.11716299005121,
+      "margin_of_safety": -0.562693268070575
+    }
+  }
+}

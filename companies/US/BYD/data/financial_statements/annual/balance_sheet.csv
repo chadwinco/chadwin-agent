@@ -31,5 +31,5 @@ Common Stock,us-gaap_CommonStockValue,862000.0,968000.0,1028000.0,1113000.0,1118
 Additional paid-in capital,us-gaap_AdditionalPaidInCapital,0.0,0.0,305152000.0,827725000.0,876433000.0,883715000.0
 Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,1583053000.0,1744232000.0,1285827000.0,710088000.0,246242000.0,380942000.0
 Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-2402000.0,-1098000.0,-1382000.0,-180000.0,150000.0,-530000.0
-Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,6391815000.0,6273126000.0,6311127000.0,6224169000.0,6558948000.0,6650145000.0
 Total Stockholders' Equity,us-gaap_StockholdersEquity,1581513000.0,1744102000.0,1590625000.0,1538746000.0,1123943000.0,1265242000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,6391815000.0,6273126000.0,6311127000.0,6224169000.0,6558948000.0,6650145000.0

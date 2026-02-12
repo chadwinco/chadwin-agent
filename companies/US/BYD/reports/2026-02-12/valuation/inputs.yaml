@@ -1,20 +1,40 @@
-forecast_years: 5
-notes: Auto-generated using analyst revenue forecasts (StockAnalysis) for FY2027 (CAGR
-  from FY2024 over 3 years) and recent financial averages. Review and adjust before
-  making decisions.
+asof_date: 2026-02-12
+currency: USD
+price: 82.59
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2024-12-31
+  revenue: 3930194000.0
+  net_debt: 1746600000.0
+  diluted_shares: 76400000.0
+assumption_notes:
+  - Net debt uses year-end 2025 cash ($353.4m) and total debt ($2.1b) disclosed in the February 5, 2026 earnings release.
+  - Share count uses management's year-end 2025 actual share count of 76.4m from the February 5, 2026 earnings call.
+  - Base case growth is slightly above analyst 2026-2027 revenue averages (~$4.1b to ~$4.2b) to reflect project ramp from Cadence, Sky River expansion, and Norfolk.
+  - Base-case FCF margin is set below recent normalized levels to reflect elevated 2026 growth capex guidance.
 scenarios:
   base:
-    revenue_growth: 0.022378639845445525
-    fcf_margin: 0.1467816999354189
-    discount_rate: 0.1
-    terminal_growth: 0.02
-  bull:
-    revenue_growth: 0.053856021000111776
-    fcf_margin: 0.1667816999354189
+    revenue_growth_stage1: 0.0325
+    fcf_margin_stage1: 0.135
     discount_rate: 0.09
     terminal_growth: 0.025
+    fcf_margin_terminal: 0.115
+    stage1_years: 10
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.05
+    fcf_margin_stage1: 0.15
+    discount_rate: 0.085
+    terminal_growth: 0.03
+    fcf_margin_terminal: 0.13
+    stage1_years: 10
+    fade_years: 5
   bear:
-    revenue_growth: -0.03790486474705468
-    fcf_margin: 0.12
-    discount_rate: 0.11
-    terminal_growth: 0.015
+    revenue_growth_stage1: 0.01
+    fcf_margin_stage1: 0.105
+    discount_rate: 0.105
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.10
+    stage1_years: 10
+    fade_years: 5

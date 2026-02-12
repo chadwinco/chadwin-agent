@@ -23,10 +23,10 @@ Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOpe
 Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,-174051000.0,-132884000.0,189429000.0,140093000.0,-36314000.0,44490000.0
 Net Income from Continuing Operations,us-gaap_IncomeLossFromContinuingOperations,,,,,-134700000.0,157636000.0
 Net Income,us-gaap_NetIncomeLoss,577952000.0,620023000.0,639377000.0,463846000.0,-134700000.0,157636000.0
-Continuing operations (in dollars per share),us-gaap_IncomeLossFromContinuingOperationsPerBasicShare,,,,,-1.19,1.38
-Discontinued operations (in dollars per share),us-gaap_DiscontinuedOperationIncomeLossFromDiscontinuedOperationNetOfTaxPerBasicShare,,,,,0.0,0.0
 "Income (loss) from discontinued operations, net of tax",us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,,-0.0,
 "Income from discontinued operations, net of tax",us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,,,-0.0
+Discontinued operations (in dollars per share),us-gaap_DiscontinuedOperationIncomeLossFromDiscontinuedOperationNetOfTaxPerBasicShare,,,,,0.0,0.0
+Continuing operations (in dollars per share),us-gaap_IncomeLossFromContinuingOperationsPerBasicShare,,,,,-1.19,1.38
 Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,6.19,6.12,5.87,4.07,-1.19,1.39
 Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,6.19,6.12,5.87,4.07,-1.19,1.38
 Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,93314000.0,101325000.0,108885000.0,113866000.0,113515000.0,113474000.0
