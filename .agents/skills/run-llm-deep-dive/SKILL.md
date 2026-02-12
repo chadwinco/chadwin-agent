@@ -1,6 +1,6 @@
 ---
 name: run-llm-deep-dive
-description: Run a falsification-first deep diligence workflow for companies that looked attractive after `run-llm-workflow`: design an original downside-focused research plan, execute local plus targeted third-party research (with optional older SEC pulls), then publish revised report and valuation outputs with explicit deltas.
+description: Run a falsification-first deep diligence workflow for companies that looked attractive after `run-llm-workflow`. Design an original downside-focused research plan, execute local plus targeted third-party research (with optional older SEC pulls), then publish revised report and valuation outputs with explicit deltas.
 ---
 
 # Run LLM Deep Dive
