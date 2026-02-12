@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+LPLA,338.67,27110000000.0,0.56,1.2,262.83 - 403.58,,,2535661.0,LPL Financial Holdings Inc.,USD,0001397911,US50212V1008,50212V100,Nasdaq Global Select Market,NASDAQ,Capital Markets,https://lpl.com,Richard Steinmeier,Financials,United States,9000,800-877-7210,4707 Executive Drive,San Diego,CA,,,false,true,false

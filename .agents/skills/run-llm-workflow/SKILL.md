@@ -22,6 +22,7 @@ Do not use a deterministic end-to-end analysis script for this skill.
 Use `<REPORT_DATE_DIR>` for outputs:
 - First run for an as-of date: `YYYY-MM-DD`
 - Additional runs for that same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+- Exception: if `reports/YYYY-MM-DD/valuation/inputs.yaml` already exists and the package is incomplete (missing `report.md` or `valuation/outputs.json`), continue writing into `YYYY-MM-DD` instead of creating a suffixed directory.
 
 ## Quick Start
 1. Resolve ticker and confirm as-of date with the user.
@@ -34,13 +35,21 @@ Use `<REPORT_DATE_DIR>` for outputs:
 ```bash
 REPORTS_ROOT="companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
 ASOF_DATE="<YYYY-MM-DD>"
+PRIMARY_DIR="$REPORTS_ROOT/$ASOF_DATE"
 REPORT_DATE_DIR="$ASOF_DATE"
-if [ -e "$REPORTS_ROOT/$REPORT_DATE_DIR" ]; then
-  IDX=1
-  while [ -e "$REPORTS_ROOT/${ASOF_DATE}-$(printf '%02d' "$IDX")" ]; do
-    IDX=$((IDX + 1))
-  done
-  REPORT_DATE_DIR="${ASOF_DATE}-$(printf '%02d' "$IDX")"
+if [ -d "$PRIMARY_DIR" ]; then
+  # Resume fetch-bootstrap package if valuation inputs exist but outputs are incomplete.
+  if [ -f "$PRIMARY_DIR/valuation/inputs.yaml" ] && [ ! -f "$PRIMARY_DIR/report.md" ]; then
+    REPORT_DATE_DIR="$ASOF_DATE"
+  elif [ -f "$PRIMARY_DIR/valuation/inputs.yaml" ] && [ ! -f "$PRIMARY_DIR/valuation/outputs.json" ]; then
+    REPORT_DATE_DIR="$ASOF_DATE"
+  else
+    IDX=1
+    while [ -e "$REPORTS_ROOT/${ASOF_DATE}-$(printf '%02d' "$IDX")" ]; do
+      IDX=$((IDX + 1))
+    done
+    REPORT_DATE_DIR="${ASOF_DATE}-$(printf '%02d' "$IDX")"
+  fi
 fi
 REPORT_DIR="$REPORTS_ROOT/$REPORT_DATE_DIR"
 mkdir -p "$REPORT_DIR/valuation"

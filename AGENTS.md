@@ -66,6 +66,7 @@ A run is not complete until all required files exist and are internally consiste
 `<REPORT_DATE_DIR>` naming convention:
 - First run for an as-of date: `YYYY-MM-DD`
 - Additional runs for the same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+- Exception: if `reports/YYYY-MM-DD/valuation/inputs.yaml` already exists and the package is incomplete (missing `report.md` or `valuation/outputs.json`), complete `YYYY-MM-DD` instead of allocating a suffix.
 
 ## LLM-First Execution Rules
 - Treat scripts and shell commands as helpers, not substitutes for reasoning.
@@ -111,7 +112,7 @@ Do not only patch a single report output when the issue is systemic.
 ## Practical Conventions
 - Work from repo root: `/Users/chad/source/chadwin-codex`
 - Store company packages by exchange country (for example `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
-- For report outputs, never overwrite an existing report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date.
+- For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
 - Honor `preferences/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.

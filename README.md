@@ -59,6 +59,7 @@ For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`, a run is
 `<REPORT_DATE_DIR>` naming convention:
 - First run for an as-of date: `YYYY-MM-DD`
 - Additional runs for the same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+- Exception: if `reports/YYYY-MM-DD/valuation/inputs.yaml` exists but `report.md` or `valuation/outputs.json` is missing, continue that incomplete package instead of creating a suffixed directory.
 
 ## What The Agent Uses Internally
 Skills are the authoritative workflow definitions and use scripts as bounded helpers.

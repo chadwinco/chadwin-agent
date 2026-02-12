@@ -1,0 +1,86 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,1058616000.0,1066250000.0,845702000.0,459866000.0,472640000.0,559880000.0
+Depreciation and Amortization,us-gaap_Depreciation,135234000.0,107211000.0,87560000.0,79260000.0,67358000.0,65334000.0
+Amortization of debt issuance costs,us-gaap_AmortizationOfFinancingCosts,11319000.0,8731000.0,6853000.0,5733000.0,5384000.0,4672000.0
+Share-based compensation,us-gaap_ShareBasedCompensation,91761000.0,68669000.0,52608000.0,44175000.0,33975000.0,32864000.0
+Provision for credit losses,us-gaap_ProvisionForDoubtfulAccounts,18970000.0,15947000.0,13667000.0,9168000.0,,
+Deferred (benefit) provision for income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,-76244000.0,-68454000.0,-93349000.0,,,
+Loan forgiveness,lpla_LoanForgiveness,292446000.0,223517000.0,179529000.0,151427000.0,113126000.0,92502000.0
+Unrealized loss (gain) on deferred compensation plans,lpla_DeferredCompensationArrangementWithIndividualUnrealizedGainLoss,66456000.0,,,,,
+Change in estimated fair value of contingent consideration,us-gaap_BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1,41721000.0,,,,,
+Other,us-gaap_OtherNoncashIncomeExpense,-25319000.0,39172000.0,14783000.0,-10007000.0,-12673000.0,-11421000.0
+"Receivables from clients, net",lpla_IncreaseDecreaseReceivablesFromClients,-45808000.0,-28070000.0,17254000.0,-174236000.0,,
+"Receivables from brokers, dealers and clearing organizations",us-gaap_IncreaseDecreaseInBrokerageReceivables,-12742000.0,6207000.0,46227000.0,-4764000.0,,
+"Advisor loans, net",us-gaap_IncreaseDecreaseInOtherLoans,-1103933000.0,-594438000.0,-341872000.0,-526677000.0,,
+"Other receivables, net",us-gaap_IncreaseDecreaseInOtherReceivables,-126829000.0,-71328000.0,-107588000.0,-140021000.0,,
+Investment securities - trading,us-gaap_IncreaseDecreaseInTradingSecurities,34183000.0,-38956000.0,-73000.0,-8732000.0,,
+Other assets,us-gaap_IncreaseDecreaseInOtherOperatingAssets,-435255000.0,-213043000.0,-148263000.0,-136182000.0,-103925000.0,-62670000.0
+Client payables,lpla_IncreaseDecreasePayablesToClients,-367511000.0,-428753000.0,982705000.0,177703000.0,,
+"Payables to brokers, dealers and clearing organizations",us-gaap_IncreaseDecreaseInPayablesToBrokerDealers,-34149000.0,15585000.0,-22367000.0,80376000.0,,
+Accrued advisory and commission expenses payable,lpla_ChangesInAccruedCommissionsAndAdvisoryFeesPayable,74699000.0,11421000.0,-19087000.0,29771000.0,12710000.0,
+Accounts payable and accrued liabilities,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,36977000.0,31256000.0,50664000.0,12390000.0,96521000.0,87210000.0
+Other liabilities,us-gaap_IncreaseDecreaseInOtherOperatingLiabilities,336412000.0,117805000.0,183381000.0,211819000.0,,
+Operating lease assets,lpla_IncreaseDecreaseInOperatingLeaseAssets,-1942000.0,-3112000.0,-2574000.0,-2227000.0,,
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,277589000.0,512611000.0,1945577000.0,453134000.0,789941000.0,623871000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-562531000.0,-403286000.0,-306596000.0,-215987000.0,-155532000.0,-156389000.0
+Payments to Acquire Businesses,us-gaap_PaymentsToAcquireBusinessesNetOfCashAcquired,-1020221000.0,-453475000.0,-56458000.0,-245913000.0,-30556000.0,-25853000.0
+Purchases of securities classified as held-to-maturity,us-gaap_PaymentsToAcquireHeldToMaturitySecurities,-4769000.0,-4725000.0,-10936000.0,-1741000.0,,
+Proceeds from maturities of securities classified as held-to-maturity,us-gaap_ProceedsFromSaleAndMaturityOfHeldToMaturitySecurities,5000000.0,5500000.0,5000000.0,5000000.0,,
+Payments to Acquire Investments,lpla_PaymentsToAcquireInvestmentsOther,-0.0,-4200000.0,-7410000.0,,,
+Interest Costs Capitalized,us-gaap_InterestPaidCapitalized,-9611000.0,,,,,
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-1592132000.0,-860186000.0,-376400000.0,-458641000.0,-187499000.0,-180987000.0
+Proceeds from revolving credit facilities,us-gaap_ProceedsFromLinesOfCredit,1430000000.0,1718000000.0,815000000.0,1585000000.0,1806000000.0,
+Repayments of revolving credit facilities,us-gaap_RepaymentsOfLinesOfCredit,-663000000.0,-1438000000.0,-905000000.0,-1495000000.0,-1851000000.0,
+Proceeds from senior unsecured term loans,us-gaap_ProceedsFromRepaymentsOfSecuredDebt,1020000000.0,,,,,
+Repayment of senior secured term loans,us-gaap_RepaymentsOfUnsecuredDebt,-1027200000.0,-10700000.0,-10700000.0,-10700000.0,-10700000.0,-411250000.0
+Proceeds from senior unsecured notes,us-gaap_ProceedsFromIssuanceOfSeniorLongTermDebt,998325000.0,,,1300000000.0,,
+Payment of debt issuance costs,us-gaap_PaymentsOfDebtIssuanceCosts,-17905000.0,-13474000.0,-1872000.0,-15929000.0,-0.0,-17615000.0
+Payment of contingent consideration,us-gaap_PaymentForContingentConsiderationLiabilityFinancingActivities,-50063000.0,-0.0,-0.0,-8941000.0,-10000000.0,
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,-41288000.0,-40005000.0,-25157000.0,-20230000.0,-9420000.0,-5863000.0
+Repurchase of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-170096000.0,-1100101000.0,-325031000.0,-90011000.0,-150036000.0,-500370000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,-89727000.0,-92190000.0,-79833000.0,-80095000.0,-79097000.0,-82597000.0
+Proceeds from stock option exercises and other,us-gaap_ProceedsFromStockOptionsExercised,28728000.0,18665000.0,28730000.0,41974000.0,30236000.0,40162000.0
+Principal payment of finance leases and obligations,lpla_PaymentofLeaseholdFinancingObligation,-342000.0,-195000.0,-408000.0,-1356000.0,-1169000.0,-692000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,1417432000.0,-208532000.0,-504271000.0,278837000.0,-275186000.0,-533225000.0
+Repayment of senior unsecured notes,us-gaap_RepaymentsOfUnsecuredDebt,,,,-900000000.0,,
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,102889000.0,-556107000.0,1064906000.0,273330000.0,327256000.0,-90341000.0
+Proceeds from Lines of Credit,us-gaap_ProceedsFromLinesOfCredit,,,,,,523000000.0
+Proceeds from disposal of fixed assets,us-gaap_ProceedsFromSaleOfProductiveAssets,,,,,,0.0
+Repayments of Lines of Credit,us-gaap_RepaymentsOfLinesOfCredit,,,,,,-478000000.0
+Fixed assets obtained in exchange for finance lease liabilities,us-gaap_RightOfUseAssetObtainedInExchangeForFinanceLeaseLiability,,,,,0.0,1453000.0
+"Receivables from product sponsors, broker-dealers, and clearing organizations",us-gaap_IncreaseDecreaseInBrokerageReceivables,,,,,,-7180000.0
+Accrued commission and advisory expenses payable,lpla_ChangesInAccruedCommissionsAndAdvisoryFeesPayable,,,,,,8462000.0
+Purchase of securities classified as held-to-maturity,us-gaap_PaymentsToAcquireHeldToMaturitySecurities,,,,,-6511000.0,-3745000.0
+Proceeds from maturity of securities classified as held-to-maturity,us-gaap_ProceedsFromSaleAndMaturityOfHeldToMaturitySecurities,,,,,5100000.0,5000000.0
+Proceeds from senior secured term loans and senior notes,us-gaap_ProceedsFromLongTermLinesOfCredit,,,,,0.0,400000000.0
+Finance and capital lease obligations,lpla_Financeandcapitalleaseobligations,,,,,,0.0
+Property and equipment obtained in exchange for finance lease liabilities,us-gaap_RightOfUseAssetObtainedInExchangeForFinanceLeaseLiability,,,,0.0,,
+Provision for bad debts,us-gaap_ProvisionForDoubtfulAccounts,,,,,5824000.0,6698000.0
+Receivables from others,us-gaap_IncreaseDecreaseInOtherReceivables,,,,,-11090000.0,-52365000.0
+Receivables from clients,lpla_IncreaseDecreaseReceivablesFromClients,,,,,28475000.0,-20602000.0
+Payables to clients,lpla_IncreaseDecreasePayablesToClients,,,,,297210000.0,107927000.0
+"Receivables from product sponsors, broker-dealers and clearing organizations",us-gaap_IncreaseDecreaseInBrokerageReceivables,,,,,-55538000.0,
+Advisor loans,us-gaap_IncreaseDecreaseInOtherLoans,,,,,-225518000.0,-235499000.0
+Securities borrowed,us-gaap_IncreaseDecreaseInSecuritiesBorrowed,,,,,-12446000.0,-12855000.0
+Securities owned,us-gaap_IncreaseDecreaseInTradingSecurities,,,,,16072000.0,-16848000.0
+"Securities sold, but not yet purchased",us-gaap_IncreaseDecreaseInFinancialInstrumentsSoldNotYetPurchased,,,,,30000.0,7000.0
+Drafts payable,lpla_DraftsPayableChangesInOperatingAssetsAndLiabilities,,,,,-40233000.0,-6398000.0
+Payables to broker-dealers and clearing organizations,us-gaap_IncreaseDecreaseInPayablesToBrokerDealers,,,,,-2259000.0,15822000.0
+Operating leases,lpla_IncreaseDecreaseInRightOfUseAssetsAndLeaseLiabilitiesNet,,,,,-1967000.0,-1446000.0
+Income taxes receivable/payable,us-gaap_IncreaseDecreaseInIncomeTaxes,,,,,8016000.0,-12861000.0
+Discount on proceeds from senior secured credit facilities recorded as debt issuance costs,lpla_DiscountOnProceedsFromSeniorCreditFacilitiesRecordedAsDebtIssuanceCosts,,,,,,0.0
+"Interest Paid, Excluding Capitalized Interest, Operating Activities",us-gaap_InterestPaidNet,,,,,,126949000.0
+Interest paid,us-gaap_InterestPaidNet,268351000.0,191350000.0,118824000.0,103689000.0,106879000.0,
+Income taxes paid,us-gaap_IncomeTaxesPaid,320259000.0,535959000.0,238155000.0,144556000.0,169237000.0,213339000.0
+Cash paid for amounts included in the measurement of operating lease liabilities,us-gaap_OperatingLeasePayments,31737000.0,27714000.0,24657000.0,22355000.0,,
+Cash paid for amounts included in the measurement of finance lease liabilities,lpla_FinanceLeasePaymentOnLiability,8727000.0,8577000.0,8825000.0,9716000.0,,
+Deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,,18464000.0,-23684000.0,-18615000.0
+Repayments of Unsecured Debt,us-gaap_RepaymentsOfUnsecuredDebt,,-0.0,-0.0,,,
+Proceeds from Issuance of Senior Long-term Debt,us-gaap_ProceedsFromIssuanceOfSeniorLongTermDebt,,749468000.0,0.0,,,
+Make-whole premium on redemption of senior unsecured notes,us-gaap_PaymentsOfDebtExtinguishmentCosts,,-0.0,-0.0,-25875000.0,,
+Capital expenditures included in accounts payable and accrued liabilities,us-gaap_CapitalExpendituresIncurredButNotYetPaid,36260000.0,26021000.0,33957000.0,21373000.0,12186000.0,13736000.0
+Lease assets obtained in exchange for operating lease liabilities,us-gaap_RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,37115000.0,17517000.0,10785000.0,3602000.0,7968000.0,108879000.0
+Contingent consideration liabilities recognized at acquisition date,lpla_NocnashContingentConsiderationLiabilitiesRecognizedAtAcquisitionDate,87883000.0,88132000.0,,,,
+Loss on extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,-0.0,-0.0,24400000.0,-0.0,3156000.0
+Unearned revenue,us-gaap_IncreaseDecreaseInDeferredRevenue,,,,,12201000.0,2318000.0
+National Planning Holdings acquisition,us-gaap_PaymentsToAcquireBusinessesGross,,,,,,-0.0

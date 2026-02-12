@@ -1,0 +1,38 @@
+{
+  "ticker": "LPLA",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 338.67,
+  "method": "two-stage-residual-income",
+  "base_year": {
+    "period_end": "2025-09-30",
+    "common_equity": 5042938000.0,
+    "shares_outstanding": 80357000.0
+  },
+  "scenarios": {
+    "base": {
+      "equity_value": 24639375132.076557,
+      "value_per_share": 306.62388008607286,
+      "margin_of_safety": -0.09462343849153199,
+      "present_value_stage1_residual_income": 12069431840.05619,
+      "present_value_continuing_value": 7527005292.020367,
+      "book_value_end_of_stage1": 27754028781.31993
+    },
+    "bull": {
+      "equity_value": 36415129638.53312,
+      "value_per_share": 453.166863353947,
+      "margin_of_safety": 0.3380779618919507,
+      "present_value_stage1_residual_income": 16363161853.215942,
+      "present_value_continuing_value": 15009029785.317179,
+      "book_value_end_of_stage1": 33361905175.161606
+    },
+    "bear": {
+      "equity_value": 13501965326.331621,
+      "value_per_share": 168.0247561050266,
+      "margin_of_safety": -0.503868792319879,
+      "present_value_stage1_residual_income": 6707877715.9043045,
+      "present_value_continuing_value": 1751149610.4273164,
+      "book_value_end_of_stage1": 18388360955.45082
+    }
+  }
+}

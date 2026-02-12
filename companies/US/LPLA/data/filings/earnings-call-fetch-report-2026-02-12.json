@@ -1,0 +1,58 @@
+{
+  "query": "LPL Financial Holdings Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://finance.yahoo.com/quote/LPLA/earnings-calls/",
+    "https://www.msn.com/en-us/money/companies/lpl-financial-holdings-inc-nasdaqlpla-q4-2025-earnings-call-transcript/ar-AA1Vknys",
+    "https://www.fool.com/earnings/call-transcripts/2026/01/29/lpl-financial-lpla-q4-2025-earnings-transcript/",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-lpl-financial-q2-2025-sees-eps-beat-stock-steady-93CH-4321193",
+    "https://www.marketscreener.com/news/lpl-financial-q2-2025-earnings-call-transcript-ce7c5fd3dd89f42c"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/LPLA/data/filings/earnings-call-2026-01-29-fool.com.md",
+    "source_url": "https://www.fool.com/earnings/call-transcripts/2026/01/29/lpl-financial-lpla-q4-2025-earnings-transcript/",
+    "published_date": "2026-01-29"
+  },
+  "attempts": [
+    {
+      "url": "https://finance.yahoo.com/quote/LPLA/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.msn.com/en-us/money/companies/lpl-financial-holdings-inc-nasdaqlpla-q4-2025-earnings-call-transcript/ar-AA1Vknys",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/01/29/lpl-financial-lpla-q4-2025-earnings-transcript/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 57152,
+      "published_date": "2026-01-29",
+      "message": null
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-lpl-financial-q2-2025-sees-eps-beat-stock-steady-93CH-4321193",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.marketscreener.com/news/lpl-financial-q2-2025-earnings-call-transcript-ce7c5fd3dd89f42c",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 17198,
+      "published_date": "2025-08-01",
+      "message": null
+    }
+  ]
+}
