@@ -2,7 +2,7 @@
 
 - Source: https://www.fool.com/earnings/call-transcripts/2025/11/27/cal-maine-foods-calm-q1-2026-earnings-transcript/
 - Published: 2025-11-27
-- Retrieved: 2026-02-07
+- Retrieved: 2026-02-12
 NASDAQ : CALM
 
 Cal-Maine Foods
@@ -57,7 +57,7 @@ Biosecurity Investment -- Over $80 million invested since 2015 to address highly
 
 SUMMARY
 
-Cal-Maine Foods ( CALM 2.14% ) delivered its highest first-quarter results in company history, with management attributing this to ongoing portfolio diversification and substantial specialty and prepared foods growth. Strategic priorities now include further expanding specialty eggs, leveraging vertically integrated production for competitive cost structure, and maintaining a disciplined, multi-pronged capital allocation policy. Management reaffirmed its confidence in ongoing M&A as "a robust pipeline of disciplined accretive opportunities," and highlighted Echo Lake Foods surpassing initial financial and operational goals during its first quarter post-acquisition.
+Cal-Maine Foods ( CALM 1.40% ) delivered its highest first-quarter results in company history, with management attributing this to ongoing portfolio diversification and substantial specialty and prepared foods growth. Strategic priorities now include further expanding specialty eggs, leveraging vertically integrated production for competitive cost structure, and maintaining a disciplined, multi-pronged capital allocation policy. Management reaffirmed its confidence in ongoing M&A as "a robust pipeline of disciplined accretive opportunities," and highlighted Echo Lake Foods surpassing initial financial and operational goals during its first quarter post-acquisition.
 
 Management emphasized that "Specialty eggs and prepared foods are not promises for tomorrow, they are delivering today," and are expected to continue driving earnings quality and margin expansion.
 

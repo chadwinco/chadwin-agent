@@ -242,17 +242,22 @@ def _company_name_from_profile(data_dir: Path) -> str | None:
 
 
 def _load_analyst_estimates(data_dir: Path):
-    path = data_dir / "analyst_estimates.csv"
-    if not path.exists():
-        return None
+    paths = [
+        data_dir / "analyst_revenue_estimates.csv",
+        data_dir / "analyst_estimates.csv",  # legacy filename
+    ]
     try:
         import pandas as pd  # type: ignore
     except ImportError:
         return None
-    try:
-        return pd.read_csv(path)
-    except Exception:
-        return None
+    for path in paths:
+        if not path.exists():
+            continue
+        try:
+            return pd.read_csv(path)
+        except Exception:
+            continue
+    return None
 
 
 def main() -> None:
@@ -342,12 +347,16 @@ def main() -> None:
     print(f"Fetching financial statements for {ticker}...")
     fetch_company_financials(ticker, data_dir, identity=args.identity)
 
-    print(f"Fetching analyst revenue forecasts for {ticker}...")
+    print(f"Fetching analyst forecast datasets for {ticker}...")
     forecast = fetch_analyst_forecasts(ticker, data_dir)
     if forecast:
-        print(f"Saved analyst forecasts to {forecast.path}")
+        if forecast.generated_paths:
+            saved = ", ".join(str(path.name) for path in forecast.generated_paths)
+            print(f"Saved analyst forecast files: {saved}")
+        else:
+            print(f"Saved analyst forecasts to {forecast.path}")
     else:
-        print("No analyst revenue forecast found.")
+        print("No analyst forecast data found.")
 
     data = None
     metrics = {}

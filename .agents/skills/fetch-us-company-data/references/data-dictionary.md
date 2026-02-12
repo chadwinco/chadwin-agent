@@ -12,7 +12,12 @@ This repo expects company financial data under `companies/US/<TICKER>/data`. The
 - `financial_statements/quarterly/` (full EDGAR statement exports)
 - `filings/` (10-K/10-Q/8-K markdown + earnings call transcripts)
   - For recent IPOs without annual reports, registration forms such as `S-1`/`S-1-A` and `F-1`/`F-1-A` may be present instead.
-- `analyst_estimates.csv` (analyst revenue forecasts)
+- `analyst_revenue_estimates.csv` (analyst revenue forecasts)
+- `analyst_price_targets.csv`
+- `analyst_consensus.csv`
+- `analyst_eps_estimates.csv`
+- `analyst_eps_forward_pe_estimates.csv`
+- `analyst_ratings_actions_12m.csv`
 
 ### `company_profile.csv`
 - `symbol`, `companyName`, `currency`
@@ -25,10 +30,48 @@ This repo expects company financial data under `companies/US/<TICKER>/data`. The
 
 Values may be blank when the source data is unavailable, but the column set should be present.
 
-### `analyst_estimates.csv`
+### `analyst_revenue_estimates.csv`
 - `metric` (currently `revenue`)
 - `fiscalYear`
 - `high`, `avg`, `low` (forecast values in absolute dollars)
+- `highRaw`, `avgRaw`, `lowRaw` (raw page text; captures locked values like `Pro`)
+- `source` (URL)
+- `retrieved` (YYYY-MM-DD)
+
+### `analyst_price_targets.csv`
+- `low`, `average`, `median`, `high` (price targets in absolute dollars)
+- `lowChangePct`, `averageChangePct`, `medianChangePct`, `highChangePct` (percent upside/downside)
+- `source` (URL)
+- `retrieved` (YYYY-MM-DD)
+
+### `analyst_consensus.csv`
+- `consensus` (for example `Buy`, `Hold`, `Sell`)
+- `analystCount`
+- `averagePriceTarget`
+- `source` (URL)
+- `retrieved` (YYYY-MM-DD)
+
+### `analyst_eps_estimates.csv`
+- `fiscalYear`
+- `periodEnding`
+- `eps`
+- `epsGrowthPct` (percentage points)
+- `source` (URL)
+- `retrieved` (YYYY-MM-DD)
+
+### `analyst_eps_forward_pe_estimates.csv`
+- `fiscalYear`
+- `periodEnding`
+- `forwardPE`
+- `source` (URL)
+- `retrieved` (YYYY-MM-DD)
+
+### `analyst_ratings_actions_12m.csv`
+- `rating`
+- `action`
+- `priceTarget`, `priceTargetOld`, `priceTargetNew`
+- `upsidePct`
+- `date` (`YYYY-MM-DD`)
 - `source` (URL)
 - `retrieved` (YYYY-MM-DD)
 

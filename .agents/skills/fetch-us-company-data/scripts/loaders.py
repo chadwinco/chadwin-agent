@@ -424,13 +424,19 @@ def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
 
     key_metrics_path = data_dir / "key_metrics.csv"
     ratios_path = data_dir / "ratios.csv"
-    analyst_estimates_path = data_dir / "analyst_estimates.csv"
+    analyst_estimates_candidates = [
+        data_dir / "analyst_revenue_estimates.csv",
+        data_dir / "analyst_estimates.csv",  # legacy filename
+    ]
 
     key_metrics = _load_csv(key_metrics_path) if key_metrics_path.exists() else None
     ratios = _load_csv(ratios_path) if ratios_path.exists() else None
-    analyst_estimates = (
-        _load_csv(analyst_estimates_path) if analyst_estimates_path.exists() else None
-    )
+    analyst_estimates = None
+    for analyst_estimates_path in analyst_estimates_candidates:
+        if not analyst_estimates_path.exists():
+            continue
+        analyst_estimates = _load_csv(analyst_estimates_path)
+        break
 
     return CompanyData(
         income_annual=income,

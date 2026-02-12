@@ -78,7 +78,12 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - `companies/US/<TICKER>/data/filings/8-K-*.md` (and `6-K-*.md` for FPIs) should include `### Attachment: ...` sections when exhibit content is extractable.
 - `companies/US/<TICKER>/data/filings/earnings-call-<YYYY-MM-DD>-<source>.md` if a transcript was found
 - `companies/US/<TICKER>/data/filings/earnings-call-fetch-report-<YYYY-MM-DD>.json` containing URL attempts and failure reasons
-- `companies/US/<TICKER>/data/analyst_estimates.csv` if analyst revenue forecasts were available
+- `companies/US/<TICKER>/data/analyst_revenue_estimates.csv` if analyst revenue forecasts were available
+- `companies/US/<TICKER>/data/analyst_price_targets.csv` when StockAnalysis price targets are available
+- `companies/US/<TICKER>/data/analyst_consensus.csv` when analyst consensus is available
+- `companies/US/<TICKER>/data/analyst_eps_estimates.csv` when annual EPS / EPS growth estimates are available
+- `companies/US/<TICKER>/data/analyst_eps_forward_pe_estimates.csv` when annual forward P/E values are available
+- `companies/US/<TICKER>/data/analyst_ratings_actions_12m.csv` when ratings table rows are available
 - `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Troubleshooting

@@ -15,7 +15,12 @@ The fetch step writes data under `companies/US/<TICKER>/data`.
 - `filings/S-1-*.md`, `filings/S-1-A-*.md`, `filings/F-1-*.md`, `filings/F-1-A-*.md`
 - `filings/earnings-call-<YYYY-MM-DD>-<source>.md`
 - `financial_statements/quarterly/*.csv`
-- `analyst_estimates.csv`
+- `analyst_revenue_estimates.csv`
+- `analyst_price_targets.csv`
+- `analyst_consensus.csv`
+- `analyst_eps_estimates.csv`
+- `analyst_eps_forward_pe_estimates.csv`
+- `analyst_ratings_actions_12m.csv`
 
 ## Bootstrap output
 - `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
