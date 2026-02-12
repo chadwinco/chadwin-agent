@@ -93,8 +93,12 @@ def _normalize_country_token(value: str) -> str:
         "usa": "US",
         "united states": "US",
         "united states of america": "US",
-        "jp": "Japan",
-        "japan": "Japan",
+        "non-us": "Non-US",
+        "non us": "Non-US",
+        "non_us": "Non-US",
+        "nonus": "Non-US",
+        "international": "Non-US",
+        "intl": "Non-US",
         "uk": "UK",
         "united kingdom": "UK",
         "ca": "Canada",
@@ -296,7 +300,7 @@ def _update_markets_section(current: dict[str, Any]) -> None:
     print(f"- included countries: {_render_list(current['included_countries'])}")
     raw = _section_prompt(
         "Which country markets are you interested in? "
-        "(example: US, Japan)"
+        "(example: US, Non-US)"
     )
     if not raw:
         return

@@ -10,18 +10,20 @@ DEFAULT_LOG_RELATIVE_PATH = Path("idea-screens") / "company-ideas-log.jsonl"
 DEFAULT_PREFERENCES_RELATIVE_PATH = Path("preferences") / "user_preferences.json"
 
 TASK_FETCH_US = "fetch-us-company-data"
-TASK_FETCH_JP = "fetch-japanese-company-data"
+TASK_FETCH_NON_US = "non-us"
 TASK_RESEARCH = "run-llm-workflow"
-COUNTRY_DIR_BY_MARKET = {"us": "US", "jp": "Japan"}
+COUNTRY_DIR_BY_MARKET = {"us": "US", "non-us": "International"}
 
 TASK_ALIASES = {
     TASK_FETCH_US: TASK_FETCH_US,
     "fetch_us_company_data": TASK_FETCH_US,
     "us": TASK_FETCH_US,
-    TASK_FETCH_JP: TASK_FETCH_JP,
-    "fetch_japanese_company_data": TASK_FETCH_JP,
-    "jp": TASK_FETCH_JP,
-    "japan": TASK_FETCH_JP,
+    TASK_FETCH_NON_US: TASK_FETCH_NON_US,
+    "non_us": TASK_FETCH_NON_US,
+    "nonus": TASK_FETCH_NON_US,
+    "international": TASK_FETCH_NON_US,
+    "exus": TASK_FETCH_NON_US,
+    "ex-us": TASK_FETCH_NON_US,
     TASK_RESEARCH: TASK_RESEARCH,
     "run-company-research": TASK_RESEARCH,
     "run_company_research": TASK_RESEARCH,
@@ -170,8 +172,19 @@ def normalize_market(value: Any) -> str | None:
         return None
     if normalized in {"us", "usa", "united states"}:
         return "us"
-    if normalized in {"jp", "japan", "tse", "jpx"}:
-        return "jp"
+    if normalized in {
+        "non-us",
+        "non us",
+        "non_us",
+        "nonus",
+        "international",
+        "intl",
+        "outside us",
+        "ex-us",
+        "ex us",
+        "exus",
+    }:
+        return "non-us"
     return None
 
 
@@ -202,7 +215,7 @@ def preferred_markets(preferences: dict[str, Any] | None) -> set[str]:
     selected: set[str] = set()
     for country in _string_list(markets.get("included_countries")):
         normalized = normalize_market(country)
-        if normalized in {"us", "jp"}:
+        if normalized in {"us", "non-us"}:
             selected.add(normalized)
     return selected
 
@@ -249,7 +262,7 @@ def matches_sector_industry_preferences(
     return True
 
 
-def _jp_root_code(ticker: str) -> str | None:
+def _non_us_numeric_root_code(ticker: str) -> str | None:
     normalized = normalize_ticker(ticker)
     root = normalized[:-2] if normalized.endswith(".T") else normalized
     if not root.isdigit():
@@ -263,9 +276,9 @@ def _jp_root_code(ticker: str) -> str | None:
 
 def queue_key(ticker: Any) -> str:
     normalized = normalize_ticker(ticker)
-    jp_code = _jp_root_code(normalized)
-    if jp_code:
-        return f"JP:{jp_code}"
+    numeric_code = _non_us_numeric_root_code(normalized)
+    if numeric_code:
+        return f"NONUS:{numeric_code}"
     return f"GEN:{normalized}"
 
 
@@ -274,12 +287,14 @@ def detect_market(ticker: Any, exchange: Any = None) -> str | None:
     normalized_exchange = _clean_text(exchange).upper()
     if normalized_exchange in {"NASDAQ", "NYSE", "AMEX"}:
         return "us"
-    if normalized_exchange in {"TSE", "JPX", "TOKYO"}:
-        return "jp"
-    if _jp_root_code(normalized_ticker):
-        return "jp"
+    if normalized_exchange:
+        return "non-us"
+    if _non_us_numeric_root_code(normalized_ticker):
+        return "non-us"
     if normalized_ticker:
         candidate = normalized_ticker.replace(".", "").replace("-", "")
+        if candidate.isdigit():
+            return "non-us"
         if candidate.isalnum():
             return "us"
     return None
@@ -385,8 +400,8 @@ def _task_market(task: str) -> str | None:
     normalized_task = normalize_task(task)
     if normalized_task == TASK_FETCH_US:
         return "us"
-    if normalized_task == TASK_FETCH_JP:
-        return "jp"
+    if normalized_task == TASK_FETCH_NON_US:
+        return "non-us"
     return None
 
 
@@ -407,7 +422,7 @@ def _company_data_exists(base_dir: Path, ticker: str, market: str | None = None)
     candidates.extend(
         [
             companies_dir / "US" / normalized_ticker / "data",
-            companies_dir / "Japan" / normalized_ticker / "data",
+            companies_dir / "International" / normalized_ticker / "data",
             companies_dir / normalized_ticker / "data",  # legacy flat layout fallback
         ]
     )

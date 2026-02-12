@@ -51,11 +51,18 @@ def _parse_args() -> argparse.Namespace:
         help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
     )
     parser.add_argument("--identity", help="EDGAR identity for US fetch.")
-    parser.add_argument("--isin", help="Optional ISIN for JP fetch.")
+    parser.add_argument("--isin", help="Optional identifier for non-US fetch scripts.")
     parser.add_argument(
         "--market",
-        choices=["us", "jp"],
+        choices=["us", "non-us"],
         help="Optional market override. Otherwise inferred from ticker/profile/queue.",
+    )
+    parser.add_argument(
+        "--fetch-script",
+        help=(
+            "Optional path to a market fetch script (`add_company.py`). "
+            "Relative paths are resolved from --base-dir."
+        ),
     )
     parser.add_argument("--overwrite-assumptions", action="store_true")
     parser.add_argument(
@@ -164,7 +171,7 @@ def _queue_market(base_dir: Path, ticker: str, ideas_log: str | None) -> str | N
     for entry in read_queue_entries(base_dir=base_dir, ideas_log=ideas_log):
         if queue_key(entry.get("ticker")) == queue_key(ticker):
             market = str(entry.get("market") or "").strip().lower()
-            if market in {"us", "jp"}:
+            if market in {"us", "non-us"}:
                 return market
     return None
 
@@ -176,42 +183,41 @@ def _infer_market(
     ideas_log: str | None,
     override: str | None,
 ) -> str:
-    if override in {"us", "jp"}:
+    if override in {"us", "non-us"}:
         return override
 
     matches = _matching_company_dirs(base_dir, ticker)
     for company_dir in matches:
         exchange = _profile_exchange(company_dir)
         inferred = detect_market(ticker=company_dir.name, exchange=exchange)
-        if inferred in {"us", "jp"}:
+        if inferred in {"us", "non-us"}:
             return inferred
 
     queued = _queue_market(base_dir, ticker, ideas_log)
-    if queued in {"us", "jp"}:
+    if queued in {"us", "non-us"}:
         return queued
 
     inferred = detect_market(ticker=ticker)
-    if inferred in {"us", "jp"}:
+    if inferred in {"us", "non-us"}:
         return inferred
 
     return "us"
 
 
-def _fetch_script(base_dir: Path, market: str) -> Path:
+def _fetch_script(base_dir: Path, market: str, override: str | None) -> Path | None:
+    if override:
+        path = Path(override)
+        if not path.is_absolute():
+            path = base_dir / path
+        return path
     if market == "us":
         return base_dir / ".agents" / "skills" / "fetch-us-company-data" / "scripts" / "add_company.py"
-    return (
-        base_dir
-        / ".agents"
-        / "skills"
-        / "fetch-japanese-company-data"
-        / "scripts"
-        / "add_company.py"
-    )
+    return None
 
 
 def _run_fetch(
     *,
+    script: Path,
     base_dir: Path,
     market: str,
     ticker: str,
@@ -223,7 +229,6 @@ def _run_fetch(
     preferences_path: str | None,
     ignore_preferences: bool,
 ) -> tuple[int, list[str]]:
-    script = _fetch_script(base_dir, market)
     command = [
         "python3",
         str(script),
@@ -244,7 +249,7 @@ def _run_fetch(
         command.append("--overwrite-assumptions")
     if market == "us" and identity:
         command.extend(["--identity", identity])
-    if market == "jp" and isin:
+    if market != "us" and isin:
         command.extend(["--isin", isin])
 
     completed = subprocess.run(command, check=False)
@@ -307,7 +312,7 @@ def main() -> int:
         )
         ticker_input = str(queued["ticker"]).strip().upper()
         market = str(queued.get("market") or "").strip().lower()
-        if market not in {"us", "jp"}:
+        if market not in {"us", "non-us"}:
             market = _infer_market(
                 base_dir=base_dir,
                 ticker=ticker_input,
@@ -348,32 +353,60 @@ def main() -> int:
 
     fetch_return_code = 0
     fetch_command: list[str] = []
+    fetch_script: Path | None = _fetch_script(base_dir, market, args.fetch_script)
+    fetch_skipped_reason: str | None = None
     if args.dry_run:
         print("Dry run: skipping fetch execution.")
     else:
-        fetch_return_code, fetch_command = _run_fetch(
-            base_dir=base_dir,
-            market=market,
-            ticker=ticker_input,
-            asof=args.asof,
-            ideas_log=args.ideas_log,
-            identity=args.identity,
-            isin=args.isin,
-            overwrite_assumptions=args.overwrite_assumptions,
-            preferences_path=args.preferences_path,
-            ignore_preferences=args.ignore_preferences,
-        )
-        if fetch_return_code != 0:
+        if fetch_script is None:
+            if before_data_mtime is None:
+                result = {
+                    "status": "error",
+                    "reason": "missing_market_fetch_script",
+                    "market": market,
+                    "ticker_input": ticker_input,
+                    "suggested_fix": "Install a fetch skill for this market or pass --fetch-script.",
+                }
+                print(json.dumps(result, indent=2))
+                return 2
+            fetch_skipped_reason = "missing_market_fetch_script"
+        elif not fetch_script.exists():
             result = {
                 "status": "error",
-                "reason": "fetch_failed",
+                "reason": "fetch_script_not_found",
                 "market": market,
                 "ticker_input": ticker_input,
-                "fetch_command": fetch_command,
-                "fetch_return_code": fetch_return_code,
+                "fetch_script": str(fetch_script),
             }
             print(json.dumps(result, indent=2))
-            return fetch_return_code
+            return 2
+
+        if fetch_script is not None:
+            fetch_return_code, fetch_command = _run_fetch(
+                script=fetch_script,
+                base_dir=base_dir,
+                market=market,
+                ticker=ticker_input,
+                asof=args.asof,
+                ideas_log=args.ideas_log,
+                identity=args.identity,
+                isin=args.isin,
+                overwrite_assumptions=args.overwrite_assumptions,
+                preferences_path=args.preferences_path,
+                ignore_preferences=args.ignore_preferences,
+            )
+            if fetch_return_code != 0:
+                result = {
+                    "status": "error",
+                    "reason": "fetch_failed",
+                    "market": market,
+                    "ticker_input": ticker_input,
+                    "fetch_script": str(fetch_script),
+                    "fetch_command": fetch_command,
+                    "fetch_return_code": fetch_return_code,
+                }
+                print(json.dumps(result, indent=2))
+                return fetch_return_code
 
     after_matches = _matching_company_dirs(base_dir, ticker_input)
     after_company_dir = after_matches[0] if after_matches else before_company_dir
@@ -424,7 +457,9 @@ def main() -> int:
         "latest_report_path": str(after_report.latest_report_path) if after_report.latest_report_path else None,
         "latest_report_mtime_utc": _format_utc(after_report.latest_report_mtime),
         "report_up_to_date": report_up_to_date,
-        "fetch_ran": not args.dry_run,
+        "fetch_ran": bool(fetch_command),
+        "fetch_script": str(fetch_script) if fetch_script is not None else None,
+        "fetch_skipped_reason": fetch_skipped_reason,
         "fetch_command": fetch_command,
         "next_action": next_action,
         "reason": reason,

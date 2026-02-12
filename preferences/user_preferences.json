@@ -4,7 +4,7 @@
   "markets": {
     "included_countries": [
       "US",
-      "Japan",
+      "Non-US",
       "Sweden"
     ]
   },

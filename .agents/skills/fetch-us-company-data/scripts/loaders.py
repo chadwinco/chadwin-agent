@@ -318,7 +318,7 @@ def _resolve_data_dir(base_dir: Path, ticker: str) -> Path:
 
     direct_candidates = [
         companies_dir / "US" / ticker / "data",
-        companies_dir / "Japan" / ticker / "data",
+        companies_dir / "International" / ticker / "data",
         companies_dir / ticker / "data",  # legacy flat layout fallback
     ]
     for candidate in direct_candidates:
@@ -344,7 +344,7 @@ def _resolve_data_dir(base_dir: Path, ticker: str) -> Path:
         "Missing data directory for "
         f"{ticker}. Expected one of: "
         f"{companies_dir / 'US' / ticker / 'data'}, "
-        f"{companies_dir / 'Japan' / ticker / 'data'}."
+        f"{companies_dir / 'International' / ticker / 'data'}."
     )
 
 

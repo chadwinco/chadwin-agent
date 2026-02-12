@@ -58,4 +58,4 @@ The saved JSON must include:
 - `report_preferences`
 - `updated_at_utc`
 
-Use concise plain-language values in arrays (for example: `"US"`, `"Japan"`, `"oil"`, `"biotech"`, `"value long"`).
+Use concise plain-language values in arrays (for example: `"US"`, `"Non-US"`, `"oil"`, `"biotech"`, `"value long"`).

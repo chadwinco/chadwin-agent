@@ -39,7 +39,7 @@ Drafting assets:
   - `python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-llm-workflow`
 - Load `preferences/user_preferences.json` when present and honor exclusions/preferences for strategy framing and report contents.
 - Use filings/transcripts dated on or before the as-of date.
-- If local data is missing, stop and run the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
+- If local data is missing, stop and run the market-appropriate fetch skill (for example, `$fetch-us-company-data`).
 
 ## Step 2: Build the Fact Base
 - Use `grep` against `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md` for:

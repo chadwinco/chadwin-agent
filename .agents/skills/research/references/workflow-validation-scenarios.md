@@ -21,10 +21,10 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Confirm data files are created in `companies/US/AAPL/data/`.
 - Confirm `companies/US/AAPL/data/filings/earnings-call-*.md` exists.
 
-## 3. Create a Japanese company package
-- `python /Users/chad/source/chadwin-codex/.agents/skills/fetch-japanese-company-data/scripts/add_company.py --ticker 79740 --asof <YYYY-MM-DD>`
-- Confirm data files are created in `companies/Japan/79740/data/`.
-- Confirm `companies/Japan/79740/reports/<YYYY-MM-DD>/valuation/inputs.yaml` exists.
+## 3. Create a non-US company package (when a market-specific fetch skill is installed)
+- `python /Users/chad/source/chadwin-codex/.agents/skills/<NON_US_FETCH_SKILL>/scripts/add_company.py --ticker <IDENTIFIER> --asof <YYYY-MM-DD>`
+- Confirm data files are created in `companies/<EXCHANGE_COUNTRY>/<IDENTIFIER>/data/`.
+- Confirm `companies/<EXCHANGE_COUNTRY>/<IDENTIFIER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml` exists.
 
 ## 4. Missing data scenario
 - Temporarily rename one required CSV in `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/`.

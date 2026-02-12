@@ -37,7 +37,6 @@ Use one of these modes explicitly:
 2. Manual control (advanced): direct skill invocation
    - `$fetch-us-investment-ideas`
    - `$fetch-us-company-data`
-   - `$fetch-japanese-company-data`
    - `$run-llm-workflow`
    - `$run-llm-deep-dive`
    - `$manage-user-preferences`
@@ -49,7 +48,7 @@ If no specific lower-level control is requested, prefer `$research`.
 1. (Optional) Seed ideas: `$fetch-us-investment-ideas`
 2. Fetch company data by market:
    - `$fetch-us-company-data` for US tickers
-   - `$fetch-japanese-company-data` for JP tickers
+   - For non-US tickers, run the installed market-specific fetch skill under `.agents/skills/`
 3. Produce research outputs: `$run-llm-workflow`
 4. (Optional) Deep falsification pass for promising names: `$run-llm-deep-dive`
 5. Validate artifacts and pass quality gate
@@ -107,7 +106,7 @@ Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
 - Work from repo root: `/Users/chad/source/chadwin-codex`
-- Store company packages by exchange country (for example `companies/US/<TICKER>/...` and `companies/Japan/<TICKER>/...`).
+- Store company packages by exchange country (for example `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
 - Honor `preferences/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.

@@ -1,6 +1,6 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data`. Use after running the market-appropriate fetch skill (`$fetch-us-company-data` or `$fetch-japanese-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/YYYY-MM-DD/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
+description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data`. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/YYYY-MM-DD/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
 ---
 
 # Run LLM Workflow
@@ -20,7 +20,7 @@ Do not use a deterministic end-to-end analysis script for this skill.
 
 ## Quick Start
 1. Resolve ticker and confirm as-of date with the user.
-2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate fetch skill first (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
+2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
 3. Load `preferences/user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
@@ -65,7 +65,7 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <T
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.
 - If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-llm-workflow`) and confirm the log has candidates.
-- If required data is missing, run the appropriate fetch skill for that ticker/date (`$fetch-us-company-data` or `$fetch-japanese-company-data`).
+- If required data is missing, run the appropriate market fetch skill for that ticker/date (for example, `$fetch-us-company-data`).
 - If valuation looks inconsistent, re-check units and net debt sign in `references/valuation-method.md`.
 - If the write-up is weak, rerun the Step 6 quality gate in `references/research-workflow.md` and fix every unchecked item.
 

@@ -1,6 +1,6 @@
 ---
 name: research
-description: Thin orchestration wrapper for the existing company fetch and research skills. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs JP), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current.
+description: Thin orchestration wrapper for the existing company fetch and research skills. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current.
 ---
 
 # Research
@@ -9,10 +9,10 @@ description: Thin orchestration wrapper for the existing company fetch and resea
 
 Use this as the default entrypoint for autonomous runs. It delegates to:
 - `$fetch-us-company-data`
-- `$fetch-japanese-company-data`
+- an installed market-specific fetch skill for non-US companies
 - `$run-llm-workflow`
 
-Company packages are organized by exchange country under `companies/US/<TICKER>/...` and `companies/Japan/<TICKER>/...`.
+Company packages are organized by exchange country under `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
 When present, `preferences/user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
 
 ## Workflow
@@ -58,9 +58,10 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <R
 
 - `--ticker <TICKER>`: Optional explicit ticker/identifier.
 - `--asof <YYYY-MM-DD>`: As-of date (default: today).
-- `--market us|jp`: Optional override if market inference is ambiguous.
+- `--market us|non-us`: Optional override if market inference is ambiguous.
+- `--fetch-script <PATH>`: Optional override path to a market fetch `add_company.py` script.
 - `--identity "<NAME EMAIL>"`: EDGAR identity for US fetch runs.
-- `--isin <ISIN>`: Optional ISIN for JP fetch runs.
+- `--isin <ISIN>`: Optional identifier used by non-US fetch scripts that accept it.
 - `--ideas-log <PATH>`: Override queue log path.
 - `--preferences-path <PATH>`: Override preferences path (default `preferences/user_preferences.json`).
 - `--ignore-preferences`: Disable preference-based queue filtering and market guardrails.
