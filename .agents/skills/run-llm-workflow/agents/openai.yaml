@@ -1,4 +1,4 @@
 interface:
   display_name: "Run LLM Workflow"
   short_description: "LLM-first report + valuation workflow (no one-shot script)"
-  default_prompt: "Use $run-llm-workflow for <TICKER> as of <YYYY-MM-DD> (or omit ticker to auto-pick from the shared ideas log). Work through the LLM research workflow end-to-end, applying preferences/user_preferences.json for strategy and report emphasis, produce report.md plus valuation inputs/outputs, then remove the completed ticker from the queue."
+  default_prompt: "Use $run-llm-workflow for <TICKER> as of <YYYY-MM-DD> (or omit ticker to auto-pick from the shared ideas log). Work through the LLM research workflow end-to-end, applying preferences/user_preferences.json for strategy and report emphasis, and write outputs in `reports/<REPORT_DATE_DIR>` using `YYYY-MM-DD`, then `YYYY-MM-DD-01`, `-02`, etc. for additional same-day runs. Produce report.md plus valuation inputs/outputs, then remove the completed ticker from the queue."

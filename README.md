@@ -47,14 +47,18 @@ Most skills now read `preferences/user_preferences.json` by default (market guar
 Example requests you can give Codex:
 - `Run $research for AAPL as-of 2026-02-11.`
 - `Run $fetch-us-investment-ideas, then use $research with no ticker.`
-- `Run $run-llm-deep-dive for HRMY as-of 2026-02-12 using baseline report date 2026-02-11.`
+- `Run $run-llm-deep-dive for HRMY as-of 2026-02-12 using baseline report directory 2026-02-11.`
 - `Run $manage-user-preferences and ask me questions to build my profile.`
 
 ## Required Outputs Per Completed Run
-For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`, a run is complete only when these exist:
+For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`, a run is complete only when these exist:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
+
+`<REPORT_DATE_DIR>` naming convention:
+- First run for an as-of date: `YYYY-MM-DD`
+- Additional runs for the same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
 
 ## What The Agent Uses Internally
 Skills are the authoritative workflow definitions and use scripts as bounded helpers.
@@ -71,7 +75,7 @@ Primary Skill docs:
 ## Repository Layout
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/`: exchange-country roots for company packages
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/`: local evidence inputs
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`: report and valuation outputs
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`: report and valuation outputs
 - `idea-screens/`: idea queue and generated idea files
 - `preferences/user_preferences.json`: persistent user preference profile
 - `docs/`: supporting docs and improvement log

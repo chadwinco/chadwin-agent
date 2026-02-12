@@ -1,6 +1,6 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data`. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/YYYY-MM-DD/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
+description: Produce a concise, LLM-written investment summary and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data`. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files. This skill is intentionally non-scripted and should be executed as an LLM workflow, not a one-command analysis script.
 ---
 
 # Run LLM Workflow
@@ -18,16 +18,33 @@ Do not use a deterministic end-to-end analysis script for this skill.
 - Helper commands are fine for extraction or arithmetic, but they do not replace the LLM workflow.
 - The task is complete only when all required output files are written and the quality gate passes.
 
+## Report Directory Convention
+Use `<REPORT_DATE_DIR>` for outputs:
+- First run for an as-of date: `YYYY-MM-DD`
+- Additional runs for that same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+
 ## Quick Start
 1. Resolve ticker and confirm as-of date with the user.
 2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
 3. Load `preferences/user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
-4. Create the output directory from the repo root:
+4. Resolve the output directory from the repo root:
 
 ```bash
-mkdir -p companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation
+REPORTS_ROOT="companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
+ASOF_DATE="<YYYY-MM-DD>"
+REPORT_DATE_DIR="$ASOF_DATE"
+if [ -e "$REPORTS_ROOT/$REPORT_DATE_DIR" ]; then
+  IDX=1
+  while [ -e "$REPORTS_ROOT/${ASOF_DATE}-$(printf '%02d' "$IDX")" ]; do
+    IDX=$((IDX + 1))
+  done
+  REPORT_DATE_DIR="${ASOF_DATE}-$(printf '%02d' "$IDX")"
+fi
+REPORT_DIR="$REPORTS_ROOT/$REPORT_DATE_DIR"
+mkdir -p "$REPORT_DIR/valuation"
+echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
 5. Work through `references/research-workflow.md` as an LLM task (no one-shot script).
 6. After report completion and quality gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
@@ -44,9 +61,9 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <T
 - The `remove` command should run only after required outputs are finalized and Step 6 quality gates pass.
 
 ## Required Outputs
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.md`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/inputs.yaml`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
 
 ## Workflow
 1. Work through the end-to-end process in `references/research-workflow.md` manually as an LLM workflow.

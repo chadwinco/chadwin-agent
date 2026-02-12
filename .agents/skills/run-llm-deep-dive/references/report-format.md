@@ -1,14 +1,14 @@
 # Deep-Dive Report Format
 
 Use this structure for:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`
 
 The goal is to communicate what changed after deeper, downside-focused research.
 
 ```markdown
 # {Company Name} ({TICKER}) Deep-Dive Revision
 
-_As of {YYYY-MM-DD} (Baseline: {BASELINE_DATE})_
+_As of {YYYY-MM-DD} (Baseline package: {BASELINE_REPORT_DIR})_
 
 ## Executive Delta
 - Prior verdict: Attractive | Watch | Avoid
@@ -45,6 +45,6 @@ For each, include one disconfirming signal to track.
 
 ## Companion Delta File
 Also write:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/deep-dive-changes.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/deep-dive-changes.md`
 
 That file should include assumption-by-assumption change traceability with explicit citations.

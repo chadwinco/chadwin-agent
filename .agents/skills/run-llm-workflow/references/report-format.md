@@ -1,6 +1,6 @@
 # Report Format
 
-Use this structure for `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.md`. Keep it concise and decision-oriented.
+Use this structure for `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`. Keep it concise and decision-oriented.
 If `preferences/user_preferences.json` exists, prioritize `report_preferences.must_include`, then `nice_to_have`, and avoid items listed in `report_preferences.exclude` unless required for analytical integrity.
 
 ```markdown

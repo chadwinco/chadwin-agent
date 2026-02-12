@@ -18,9 +18,9 @@ Required deliverables:
 
 ## Inputs
 Baseline package:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_DATE>/report.md`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_DATE>/valuation/inputs.yaml`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_DATE>/valuation/outputs.json`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_REPORT_DIR>/report.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_REPORT_DIR>/valuation/inputs.yaml`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_REPORT_DIR>/valuation/outputs.json`
 
 Company evidence base:
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
@@ -35,10 +35,13 @@ Optional controls:
 - `references/sec-access-policy.md` (required SEC-access guardrails)
 
 ## Step 1: Confirm Scope and Dates
-- Confirm ticker, exchange country, revised as-of date, and baseline date explicitly.
+- Confirm ticker, exchange country, revised as-of date, and baseline report directory explicitly.
 - Confirm baseline files exist and are readable.
+- Resolve a new output report directory (`<REPORT_DATE_DIR>`) using:
+  - first run on revised as-of date: `YYYY-MM-DD`
+  - additional runs for same revised as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+- Do not revise output files in-place inside an existing report directory.
 - Ensure all evidence used (local and external) is dated on or before the revised as-of date.
-- If revising in-place for an existing report date, snapshot old files first.
 
 ## Step 2: Extract Baseline Failure Points
 - Parse the baseline thesis and identify assumptions that, if wrong, can destroy intrinsic value.
@@ -110,7 +113,7 @@ Optional controls:
 All checks must pass before completion.
 
 Scope and data:
-- [ ] Ticker, revised as-of date, and baseline date are explicit.
+- [ ] Ticker, revised as-of date, baseline report directory, and output report directory are explicit.
 - [ ] Required baseline and output files exist and are readable.
 - [ ] Evidence used is dated on or before revised as-of date.
 - [ ] Workflow was executed as LLM reasoning, not delegated to one deterministic analyzer.

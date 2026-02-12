@@ -5,7 +5,7 @@ Use this for `deep-dive-changes.md`.
 ```markdown
 # Deep-Dive Changes vs Baseline
 
-_Ticker: {TICKER} | Revised as-of: {YYYY-MM-DD} | Baseline: {BASELINE_DATE}_
+_Ticker: {TICKER} | Revised as-of: {YYYY-MM-DD} | Baseline package: {BASELINE_REPORT_DIR}_
 
 ## Verdict Delta
 - Baseline verdict:

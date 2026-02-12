@@ -5,7 +5,7 @@ Use this as a starting structure for `deep-dive-plan.md`. Customize every row fo
 ```markdown
 # {TICKER} Deep-Dive Research Plan
 
-_As of {YYYY-MM-DD} | Baseline report date: {BASELINE_DATE}_
+_As of {YYYY-MM-DD} | Baseline package: {BASELINE_REPORT_DIR}_
 
 ## Objective
 State the key decision this deep-dive should resolve.

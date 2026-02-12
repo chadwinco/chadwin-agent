@@ -56,12 +56,16 @@ If no specific lower-level control is requested, prefer `$research`.
 7. Record repeatable process improvements in `docs/improvement-log.md`
 
 ## Required Outputs Per Completed Run
-For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`:
+For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
 
 A run is not complete until all required files exist and are internally consistent.
+
+`<REPORT_DATE_DIR>` naming convention:
+- First run for an as-of date: `YYYY-MM-DD`
+- Additional runs for the same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
 
 ## LLM-First Execution Rules
 - Treat scripts and shell commands as helpers, not substitutes for reasoning.
@@ -107,6 +111,7 @@ Do not only patch a single report output when the issue is systemic.
 ## Practical Conventions
 - Work from repo root: `/Users/chad/source/chadwin-codex`
 - Store company packages by exchange country (for example `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
+- For report outputs, never overwrite an existing report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date.
 - Honor `preferences/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.

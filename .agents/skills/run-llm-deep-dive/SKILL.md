@@ -22,43 +22,51 @@ This workflow is intentionally adversarial to the baseline thesis: prioritize ev
 
 ## Inputs
 Required:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_DATE>/report.md`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_DATE>/valuation/inputs.yaml`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_DATE>/valuation/outputs.json`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_REPORT_DIR>/report.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_REPORT_DIR>/valuation/inputs.yaml`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<BASELINE_REPORT_DIR>/valuation/outputs.json`
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/...`
 
 Optional:
 - `preferences/user_preferences.json`
 - Extra US historical filings from `scripts/fetch_historical_filings.py`
 
+## Report Directory Convention
+Use `<REPORT_DATE_DIR>` for deep-dive outputs:
+- First run for revised as-of date: `YYYY-MM-DD`
+- Additional runs for that same revised as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+
+Never rewrite an existing report package during deep-dive runs.
+
 ## Quick Start
-1. Confirm ticker, exchange country, baseline date, and revised as-of date.
-2. Create output directory:
+1. Confirm ticker, exchange country, baseline report directory, and revised as-of date.
+2. Resolve a new output directory:
 
 ```bash
-mkdir -p companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation
+REPORTS_ROOT="companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
+ASOF_DATE="<YYYY-MM-DD>"
+REPORT_DATE_DIR="$ASOF_DATE"
+if [ -e "$REPORTS_ROOT/$REPORT_DATE_DIR" ]; then
+  IDX=1
+  while [ -e "$REPORTS_ROOT/${ASOF_DATE}-$(printf '%02d' "$IDX")" ]; do
+    IDX=$((IDX + 1))
+  done
+  REPORT_DATE_DIR="${ASOF_DATE}-$(printf '%02d' "$IDX")"
+fi
+REPORT_DIR="$REPORTS_ROOT/$REPORT_DATE_DIR"
+mkdir -p "$REPORT_DIR/valuation"
+echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
 
-3. If `<YYYY-MM-DD>` already contains a prior report package, snapshot it before rewriting:
-
-```bash
-cp companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.md \
-  companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/report.initial.md
-cp companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml \
-  companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.initial.yaml
-cp companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json \
-  companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.initial.json
-```
-
-4. Execute `references/deep-research-workflow.md`.
-5. Draft the revised report using `references/report-format.md`.
-6. Apply `references/source-quality-and-search.md` for third-party research quality controls.
-7. Follow `references/sec-access-policy.md` for all SEC retrievals (required).
-8. Pull older SEC filings when needed via `references/historical-sec-fetch.md`.
-9. Finalize required outputs and pass the quality gate.
+3. Execute `references/deep-research-workflow.md`.
+4. Draft the revised report using `references/report-format.md`.
+5. Apply `references/source-quality-and-search.md` for third-party research quality controls.
+6. Follow `references/sec-access-policy.md` for all SEC retrievals (required).
+7. Pull older SEC filings when needed via `references/historical-sec-fetch.md`.
+8. Finalize required outputs and pass the quality gate.
 
 ## Required Outputs
-Under `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/`:
+Under `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`

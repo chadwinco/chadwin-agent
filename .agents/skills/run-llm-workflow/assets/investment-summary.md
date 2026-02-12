@@ -3,7 +3,7 @@
 Goal: Produce a concise, decision-oriented summary for the current price.
 
 Inputs:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/valuation/outputs.json`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
 - Local filing and transcript evidence from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
 - Current price from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
 

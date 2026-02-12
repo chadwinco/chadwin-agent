@@ -54,7 +54,7 @@ Use narrow, purpose-built queries. Avoid generic "is this company good?" style p
 ## 4. External Source Log (Required)
 
 Write:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<YYYY-MM-DD>/third-party-sources.md`
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/third-party-sources.md`
 
 Minimum table:
 
