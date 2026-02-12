@@ -56,3 +56,12 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Ensure `preferences/user_preferences.json` has `excluded_industries` including `biotech`.
 - Run `python /Users/chad/source/chadwin-codex/.agents/skills/research/scripts/run_research.py --asof <YYYY-MM-DD> --dry-run --ideas-log <TEMP_JSONL_PATH>`.
 - Confirm the selected ticker is the non-biotech candidate.
+
+## 10. Promising-report deep-dive routing
+- Run `$run-llm-workflow` for a ticker/date with a completed `valuation/outputs.json`.
+- Run:
+  - `python /Users/chad/source/chadwin-codex/.agents/skills/research/scripts/run_research.py --ticker <TICKER> --asof <YYYY-MM-DD> --post-report-check`
+- Confirm:
+  - `baseline_report_dir` is populated.
+  - `base_margin_of_safety` is read from `valuation/outputs.json`.
+  - `next_action` is `run_deep_dive` when base MoS is `>= 0.25` and verdict is not `Avoid`; otherwise `done`.

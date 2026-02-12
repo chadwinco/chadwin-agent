@@ -71,6 +71,23 @@ def _parse_args() -> argparse.Namespace:
         help="Do not execute fetch script; emit decision only.",
     )
     parser.add_argument(
+        "--post-report-check",
+        action="store_true",
+        help=(
+            "Evaluate latest same-date report package and route to deep dive when promising. "
+            "Use after run-llm-workflow completes."
+        ),
+    )
+    parser.add_argument(
+        "--deep-dive-mos-threshold",
+        type=float,
+        default=0.25,
+        help=(
+            "Base-case margin-of-safety threshold for deep-dive routing during "
+            "--post-report-check (default: 0.25)."
+        ),
+    )
+    parser.add_argument(
         "--preferences-path",
         help="Override preferences path (default: preferences/user_preferences.json).",
     )
@@ -110,6 +127,145 @@ def _latest_report_status(company_dir: Path) -> ReportStatus:
             latest_mtime = mtime
             latest_path = report_path
     return ReportStatus(latest_report_path=latest_path, latest_report_mtime=latest_mtime)
+
+
+def _asof_report_dir_match(report_dir_name: str, asof: str) -> bool:
+    return report_dir_name == asof or report_dir_name.startswith(f"{asof}-")
+
+
+def _latest_report_for_asof(company_dir: Path, asof: str) -> Path | None:
+    reports_dir = company_dir / "reports"
+    if not reports_dir.exists():
+        return None
+
+    latest_report_path: Path | None = None
+    latest_mtime: float | None = None
+    for report_dir in reports_dir.iterdir():
+        if not report_dir.is_dir() or not _asof_report_dir_match(report_dir.name, asof):
+            continue
+        report_path = report_dir / "report.md"
+        if not report_path.is_file():
+            continue
+        mtime = report_path.stat().st_mtime
+        if latest_mtime is None or mtime > latest_mtime:
+            latest_mtime = mtime
+            latest_report_path = report_path
+    return latest_report_path
+
+
+def _extract_report_verdict(report_path: Path) -> str | None:
+    try:
+        text = report_path.read_text(encoding="utf-8")
+    except Exception:
+        return None
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if "verdict:" not in line.lower():
+            continue
+        _, _, value = line.partition(":")
+        verdict = value.strip()
+        if not verdict or "|" in verdict:
+            return None
+        verdict = verdict.replace("**", "").replace("*", "").replace("`", "").strip()
+        return verdict or None
+    return None
+
+
+def _normalize_verdict(verdict: str | None) -> str | None:
+    if verdict is None:
+        return None
+    normalized = verdict.strip().lower()
+    if normalized.startswith("attractive"):
+        return "attractive"
+    if normalized.startswith("watch"):
+        return "watch"
+    if normalized.startswith("avoid"):
+        return "avoid"
+    return normalized or None
+
+
+def _read_base_margin_of_safety(outputs_path: Path) -> float | None:
+    try:
+        payload = json.loads(outputs_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    scenarios = payload.get("scenarios") or {}
+    base = scenarios.get("base") or {}
+    value = base.get("margin_of_safety")
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
+
+
+def _post_report_decision(
+    *,
+    company_dir: Path,
+    asof: str,
+    mos_threshold: float,
+) -> dict[str, Any]:
+    report_path = _latest_report_for_asof(company_dir, asof)
+    if report_path is None:
+        return {
+            "status": "error",
+            "reason": "missing_report_for_asof",
+            "next_action": "done",
+            "asof": asof,
+        }
+
+    report_dir = report_path.parent
+    outputs_path = report_dir / "valuation" / "outputs.json"
+    if not outputs_path.exists():
+        return {
+            "status": "error",
+            "reason": "missing_valuation_outputs",
+            "next_action": "done",
+            "asof": asof,
+            "baseline_report_dir": report_dir.name,
+            "report_path": str(report_path),
+            "valuation_outputs_path": str(outputs_path),
+        }
+
+    base_mos = _read_base_margin_of_safety(outputs_path)
+    if base_mos is None:
+        return {
+            "status": "error",
+            "reason": "missing_base_margin_of_safety",
+            "next_action": "done",
+            "asof": asof,
+            "baseline_report_dir": report_dir.name,
+            "report_path": str(report_path),
+            "valuation_outputs_path": str(outputs_path),
+        }
+
+    verdict_raw = _extract_report_verdict(report_path)
+    verdict_normalized = _normalize_verdict(verdict_raw)
+
+    promising = base_mos >= mos_threshold and verdict_normalized != "avoid"
+    if promising:
+        next_action = "run_deep_dive"
+        reason = "promising_initial_report"
+    elif verdict_normalized == "avoid":
+        next_action = "done"
+        reason = "report_verdict_avoid"
+    else:
+        next_action = "done"
+        reason = "base_margin_of_safety_below_threshold"
+
+    return {
+        "status": "ok",
+        "reason": reason,
+        "next_action": next_action,
+        "asof": asof,
+        "baseline_report_dir": report_dir.name,
+        "report_path": str(report_path),
+        "valuation_outputs_path": str(outputs_path),
+        "base_margin_of_safety": base_mos,
+        "deep_dive_mos_threshold": mos_threshold,
+        "report_verdict": verdict_raw,
+        "report_verdict_normalized": verdict_normalized,
+        "promising": promising,
+    }
 
 
 def _profile_exchange(company_dir: Path) -> str | None:
@@ -302,6 +458,78 @@ def main() -> int:
         if preferences_applied
         else {}
     )
+
+    if args.post_report_check:
+        if not ticker_input:
+            result = {
+                "status": "error",
+                "reason": "ticker_required_for_post_report_check",
+                "next_action": "done",
+                "asof": args.asof,
+            }
+            print(json.dumps(result, indent=2))
+            return 2
+
+        market = _infer_market(
+            base_dir=base_dir,
+            ticker=ticker_input,
+            ideas_log=args.ideas_log,
+            override=args.market,
+        )
+        if preferences_applied and not market_is_allowed(market, preferences):
+            result = {
+                "status": "error",
+                "reason": "market_excluded_by_preferences",
+                "market": market,
+                "ticker_input": ticker_input,
+                "next_action": "done",
+                "preferences_applied": True,
+                "preferences_path": str(resolved_preferences_path),
+            }
+            print(json.dumps(result, indent=2))
+            return 2
+
+        matches = _matching_company_dirs(base_dir, ticker_input)
+        company_dir = (
+            matches[0]
+            if matches
+            else _default_company_dir(base_dir, ticker_input, market)
+        )
+        if not company_dir.exists():
+            result = {
+                "status": "error",
+                "reason": "company_package_not_found",
+                "market": market,
+                "ticker_input": ticker_input,
+                "resolved_ticker": ticker_input,
+                "company_dir": str(company_dir),
+                "next_action": "done",
+                "asof": args.asof,
+            }
+            print(json.dumps(result, indent=2))
+            return 2
+
+        decision = _post_report_decision(
+            company_dir=company_dir,
+            asof=args.asof,
+            mos_threshold=args.deep_dive_mos_threshold,
+        )
+        decision.update(
+            {
+                "market": market,
+                "ticker_input": ticker_input,
+                "resolved_ticker": company_dir.name.upper(),
+                "explicit_ticker": explicit_ticker,
+                "company_dir": str(company_dir),
+                "post_report_check": True,
+                "preferences_applied": preferences_applied,
+                "preferences_path": (
+                    str(resolved_preferences_path) if preferences_applied else None
+                ),
+            }
+        )
+        print(json.dumps(decision, indent=2))
+        return 0 if decision.get("status") == "ok" else 2
 
     if not ticker_input:
         queued = _pick_from_queue(
