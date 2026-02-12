@@ -2,11 +2,7 @@
   "schema_version": 1,
   "updated_at_utc": "2026-02-11T12:00:42+00:00",
   "markets": {
-    "included_countries": [
-      "US",
-      "Non-US",
-      "Sweden"
-    ]
+    "included_countries": []
   },
   "sector_and_industry_preferences": {
     "preferred_sectors": [],
@@ -26,15 +22,9 @@
     "notes": ""
   },
   "report_preferences": {
-    "must_include": [
-      "key business levers driving valuation",
-      "revenue growth by market",
-      "revenue growth by product line"
-    ],
+    "must_include": [],
     "nice_to_have": [],
-    "exclude": [
-      "long-form narrative"
-    ],
-    "notes": "Keep reports concise."
+    "exclude": [],
+    "notes": ""
   }
 }

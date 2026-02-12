@@ -1,0 +1,24 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Profit or Loss,us-gaap_ProfitLoss,442588000.0,338301000.0,265945000.0,199223000.0,196346000.0,
+Change in foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-13355000.0,13810000.0,-27582000.0,-7402000.0,4998000.0,2458000.0
+Change in net unrealized gains (losses),us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax,919000.0,18029000.0,-33319000.0,-13368000.0,11249000.0,6260000.0
+Less - reclassification adjustment for net gains (losses) realized and included in net income,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax,-423000.0,13335000.0,,,-2469000.0,-429000.0
+"Net change (net of tax effect of $(342), $(4,130) and $4,483)",us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,496000.0,,,,,
+Available for sale net change,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,,,,,,5793000.0
+Less - reclassification adjustment for net gains (loss) realized and included in net income,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax,,,,,,-467000.0
+Change in unrealized losses,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,-3621000.0,,,,,
+Less - reclassification adjustment for net gains realized and included in net income,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,4520000.0,,,-1403000.0,-2095000.0,
+"Net change (net of tax effect of $10, $(1,096) and $1,505)",us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,899000.0,,,,,
+Total other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,-11960000.0,52145000.0,-71516000.0,-23077000.0,16637000.0,13317000.0
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,430628000.0,390446000.0,194429000.0,176146000.0,212983000.0,199221000.0
+Less - reclassification adjustment for net (losses) realized and included in net income,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,,7189000.0,-5928000.0,,
+Cash flow hedge net change,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,,,-11034000.0,-904000.0,2485000.0,5066000.0
+Change in unrealized gains,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,,,,5024000.0,,
+Change in unrealized gains (losses),us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,,-5300000.0,-18223000.0,,4954000.0,5495000.0
+Less - reclassification adjustment for net losses (gains) realized and included in net income,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax,,12271000.0,419000.0,,,
+"Net change (net of tax effect of ($1,096), $1,505 and $123)",us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,,8035000.0,,,,
+"Net change (net of tax effect of $2,012, $(1,246) and $(913))",us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,,,,-14771000.0,,
+"Net change (net of tax effect of ($4,130), $4,483 and $2,012)",us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,,30300000.0,,,,
+"Net change (net of tax effect of $4,483, $2,012 and $(1,246))",us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,,,-32900000.0,,,
+"Net change (net of tax effect of $(1,246), $(913) and $351)",us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax,,,,,9154000.0,
+Net Income,us-gaap_NetIncomeLoss,,,,,,185904000.0

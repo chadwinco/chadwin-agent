@@ -1,7 +1,7 @@
 # Research Workflow (LLM-First, Progressive)
 
 ## Objective
-Generate a concise investment write-up and scenario valuation from local company data by resolving the highest-impact investment questions in descending priority.
+Generate a decision-grade investment write-up and scenario valuation from local company data by resolving the highest-impact investment questions in descending priority and expressing conclusions through valuation pillars.
 
 ## Execution Mode (Read First)
 - This workflow is intentionally LLM-first and non-scripted.
@@ -63,19 +63,27 @@ Market baseline (analyst evidence):
 
 If analyst files are unavailable or sparse, say so explicitly and use filing-guidance plus historical ranges as fallback.
 
-## Step 3: Define the Key Investment Issues
-- Write 3-6 key issues that can materially change intrinsic value.
-- Include at least one disconfirming issue for each major thesis pillar (demand durability, margin durability, capital allocation, balance-sheet fragility, regulatory/event risk).
-- Rank issues by expected decision impact: `impact x uncertainty`.
+## Step 3: Build an Early Lever Map
+Before deep dives, write an initial 3-7 lever map with explicit valuation links:
+- `Lever`: what moves intrinsic value most.
+- `Direction`: what outcome improves or hurts value.
+- `Why material`: sensitivity to value per share / MOS.
+- `Current evidence quality`: high / medium / low.
+- `Current confidence`: 0-100%.
+- `Priority`: rank by `decision impact x uncertainty`.
 
-## Step 4: Progressive Resolution Loop
-For each issue (highest rank first), run this loop:
-1. Define the falsification question.
+This is your working research backlog. Update it every loop.
+Then select the top 3-5 levers as provisional valuation pillars and draft a one-line assumption mapping for each (which scenario input each lever controls most).
+
+## Step 4: Progressive Resolution Loop (Highest Impact First)
+For each unresolved high-priority lever, run this loop:
+1. Define the core test question (falsification + confirmation framing).
 2. Pull best local evidence first (filings/statements/transcripts).
 3. If still unresolved and impact is material, run targeted external checks using `references/source-quality-and-search.md`.
 4. For US historical SEC evidence, use `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
-5. Update issue status: `resolved`, `partially resolved`, or `open`.
-6. Update implication for assumptions (no change / tighten / widen / shift central case).
+5. Update lever status: `resolved`, `bounded`, or `open`.
+6. Update assumptions (no change / tighten / widen / shift central case) and log the valuation impact.
+7. Re-score confidence for that lever and estimate incremental insight from one more loop (`high`, `medium`, `low`).
 
 Mandatory event-risk sweep before final assumptions:
 - Check for signed/proposed M&A, take-private, spin-off, tender, or special-committee processes.
@@ -94,14 +102,31 @@ Mandatory event-risk sweep before final assumptions:
 - Compute valuation outputs and write `valuation/outputs.json`.
 - Draft `report.md` using `references/report-format.md`.
 - Keep report concise, decision-oriented, and explicit about what is resolved vs still uncertain.
+- Draft in narrative-first style:
+  - lead with the argument, not raw fact lists;
+  - for each pillar, show `claim -> evidence -> model input impact`;
+  - explain why assumptions are central estimates rather than arbitrary midpoints.
+- Include a `## Research Stop Gate` section in the report with:
+  - `Thesis confidence`,
+  - `Highest-impact levers`,
+  - `Levers resolved`,
+  - `Open thesis-critical levers`,
+  - `Diminishing returns from additional research`,
+  - `Research complete`,
+  - `Next best research focus`.
 
 ## Step 7: Goal Gate (Stop Rule)
 Stop when all conditions below are true:
 - Required outputs exist and are internally consistent.
-- The highest-impact issues are resolved or explicitly bounded with valuation sensitivity.
+- Highest-impact levers are resolved or explicitly bounded with valuation sensitivity.
 - Valuation assumptions are linked to evidence and reconciled with analyst-implied market expectations.
 - Margin-of-safety conclusion matches `valuation/outputs.json` and current price input.
-- Remaining open items are lower-impact monitoring items, not thesis-critical unknowns.
+- The write-up clearly explains the valuation pillars and how evidence translated into model assumptions and scenario ranges.
+- `Research Stop Gate` indicates:
+  - high thesis confidence,
+  - zero open thesis-critical levers,
+  - diminishing returns from additional research.
+- Remaining open items are monitoring items, not thesis-critical unknowns.
 - Every factual claim has local file-path citations.
 
 If any condition fails, continue the resolution loop instead of finalizing.

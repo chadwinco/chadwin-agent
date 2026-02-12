@@ -1,0 +1,49 @@
+{
+  "query": "NICE Ltd. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://finance.yahoo.com/quote/NICE/earnings-calls/",
+    "https://www.insidermonkey.com/blog/nice-ltd-nasdaqnice-q3-2025-earnings-call-transcript-1645561/",
+    "https://seekingalpha.com/article/4843201-nice-ltd-nice-q3-2025-earnings-call-transcript",
+    "https://www.msn.com/en-us/money/other/nice-ltd-nasdaq-nice-q2-2025-earnings-call-transcript/ar-AA1KAscv"
+  ],
+  "selected_transcript": {
+    "path": "/Users/chad/source/chadwin-codex/companies/US/NICE/data/filings/earnings-call-2025-11-14-insidermonkey.com.md",
+    "source_url": "https://www.insidermonkey.com/blog/nice-ltd-nasdaqnice-q3-2025-earnings-call-transcript-1645561/",
+    "published_date": "2025-11-14"
+  },
+  "attempts": [
+    {
+      "url": "https://finance.yahoo.com/quote/NICE/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/nice-ltd-nasdaqnice-q3-2025-earnings-call-transcript-1645561/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 45948,
+      "published_date": "2025-11-14",
+      "message": null
+    },
+    {
+      "url": "https://seekingalpha.com/article/4843201-nice-ltd-nice-q3-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.msn.com/en-us/money/other/nice-ltd-nasdaq-nice-q2-2025-earnings-call-transcript/ar-AA1KAscv",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    }
+  ]
+}

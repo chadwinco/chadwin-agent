@@ -11,6 +11,6 @@ Inputs:
 Instructions:
 - Lead with a clear verdict: `Attractive`, `Watch`, or `Avoid`.
 - Include base value/share, bull/bear range, current price, and base margin of safety.
-- Add 2-4 bullets on the core thesis, biggest resolved issue, and biggest remaining uncertainty.
-- Keep this section under 140 words.
+- Write one compact paragraph (roughly 120-180 words), not bullet fragments.
+- In that paragraph, cover core thesis, biggest resolved issue, biggest remaining uncertainty, and why the current MOS is decision-relevant.
 - Cite local file paths for factual claims.

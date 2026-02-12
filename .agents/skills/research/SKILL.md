@@ -1,6 +1,6 @@
 ---
 name: research
-description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it can route promising names to a falsification-focused follow-up run of `$run-llm-workflow`.
+description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it routes follow-up runs based on report confidence and diminishing-returns stop criteria (with legacy MoS routing available).
 ---
 
 # Research
@@ -33,7 +33,7 @@ python3 .agents/skills/research/scripts/run_research.py [--ticker <TICKER>] --as
 - If `next_action` is `done`, stop.
 - If `next_action` is `run_research`, run `$run-llm-workflow` for `resolved_ticker` and the same `asof` date.
 
-4. Optional promising-name follow-up routing (same skill, deeper focus):
+4. Follow-up routing (same skill, deeper focus):
 
 ```bash
 python3 .agents/skills/research/scripts/run_research.py --ticker <RESOLVED_TICKER> --asof <YYYY-MM-DD> --post-report-check
@@ -43,7 +43,7 @@ python3 .agents/skills/research/scripts/run_research.py --ticker <RESOLVED_TICKE
   - `resolved_ticker`
   - same `asof` date
   - `baseline_report_dir` from JSON output as the starting reference package
-  - `followup_focus` from JSON output (currently `falsification`)
+  - `followup_focus` from JSON output (typically highest-impact unresolved lever from the report gate)
 - If `next_action` is `done`, stop.
 
 5. When research is complete, remove ticker from queue:
@@ -73,9 +73,14 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <R
 
 - Post-report follow-up routing (`--post-report-check`):
   - Load latest report package for the same as-of date (`YYYY-MM-DD` or `YYYY-MM-DD-*`).
-  - Read base scenario `margin_of_safety` from `valuation/outputs.json`.
-  - If base MoS is greater than or equal to `--followup-mos-threshold` (default `0.25`) and report verdict is not `Avoid`, set `next_action` to `run_research` with `followup_focus=falsification`.
-  - Otherwise set `next_action` to `done`.
+  - Default mode (`--followup-mode confidence-gate`) reads the report `## Research Stop Gate` section and checks:
+    - `Research complete`,
+    - `Diminishing returns from additional research`,
+    - `Open thesis-critical levers`,
+    - `Thesis confidence` (vs `--followup-confidence-threshold`, default `0.80`).
+  - If the confidence gate passes, set `next_action` to `done`.
+  - If the confidence gate is not met, set `next_action` to `run_research` and carry forward `followup_focus` from `Next best research focus`.
+  - Legacy mode (`--followup-mode mos-threshold`) keeps prior MoS-based routing using `--followup-mos-threshold`.
 
 ## Options
 
@@ -91,7 +96,9 @@ python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <R
 - `--overwrite-assumptions`: Pass through to fetch scripts.
 - `--dry-run`: Emit decision without running fetch.
 - `--post-report-check`: Evaluate latest same-date report package and emit follow-up routing decision.
-- `--followup-mos-threshold <FLOAT>`: Base MoS threshold for auto follow-up routing (default `0.25`).
+- `--followup-mode confidence-gate|mos-threshold`: Follow-up routing method for `--post-report-check` (default: `confidence-gate`).
+- `--followup-confidence-threshold <FLOAT>`: Confidence threshold for `confidence-gate` mode (0-1, default `0.80`).
+- `--followup-mos-threshold <FLOAT>`: Base MoS threshold for legacy `mos-threshold` mode (default `0.25`).
 
 ## Validation Reference
 

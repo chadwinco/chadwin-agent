@@ -1,0 +1,15 @@
+label,concept,2025-09-30,2025-06-30
+"Exercise of vested common stock options, Shares",slde_SharebasedCompensationArrangementBySharebasedPaymentAwardExerciseOfVestedCommonStockOptionsShares,261250.0,27500.0
+"Exercise of vested common stock options, Value",slde_SharebasedCompensationArrangementBySharebasedPaymentAwardExerciseOfVestedCommonStockOptionsValue,360000.0,
+Other financing activities,slde_OtherFinancingActivitie,404000.0,-2512000.0
+"Vesting of RSUs, Shares",us-gaap_SharebasedCompensationArrangementBySharebasedPaymentAwardAcceleratedVestingNumber,144078.0,281573.0
+Vesting of RSUs,slde_ShareBasedCompensationArrangementByShareBasedPaymentAwardVestingValue,-1000.0,2000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,2956000.0,3000000.0
+Repurchase and retirement of common stock,slde_RepurchaseAndRetirementOfCommonStock,-20000000.0,
+"Repurchase and retirement of common stock, Shares",slde_RepurchaseAndRetirementOfCommonStockShares,-1406712.0,
+"Conversion of Preferred Stock to Common Stock as part of IPO, Shares",slde_ConversionOfPreferredStockToCommonStockAsPartOfIPOShares,,51374125.0
+"Conversion of Preferred Stock to Common Stock as part of IPO, Value",slde_ConversionOfPreferredStockToCommonStockValue,,514000.0
+"Initial Public Offering, Shares",us-gaap_StockIssuedDuringPeriodSharesNewIssues,,16666667.0
+"Initial Public Offering, Value",us-gaap_StockIssuedDuringPeriodValueNewIssues,,263500000.0
+Profit or Loss,us-gaap_ProfitLoss,110997000.0,70072000.0
+Other comprehensive gain (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,1443000.0,1551000.0

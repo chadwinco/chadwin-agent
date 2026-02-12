@@ -10,8 +10,10 @@ Inputs:
 
 Instructions:
 - List 3-5 risks ordered by expected impact on intrinsic value.
-- For each risk, include one disconfirming signal to monitor.
+- For each risk, include:
+  - one sentence on mechanism of damage to value,
+  - one sentence on disconfirming signal to monitor.
 - Emphasize balance sheet, margin compression, and demand risks where relevant.
 - Make clear which risk is still thesis-critical versus bounded by scenario ranges.
-- Keep each bullet to 1-2 sentences.
+- Keep each risk block concise.
 - Cite local file paths for factual claims.

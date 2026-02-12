@@ -1,0 +1,27 @@
+{
+  "ticker": "NICE",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 104.96,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 8120994418.861557,
+      "equity_value": 9283911418.861557,
+      "value_per_share": 141.72612308584797,
+      "margin_of_safety": 0.3502869958636432
+    },
+    "bull": {
+      "enterprise_value": 13190481162.383171,
+      "equity_value": 14353398162.383171,
+      "value_per_share": 219.11577813304385,
+      "margin_of_safety": 1.0876122154443966
+    },
+    "bear": {
+      "enterprise_value": 4527803448.388817,
+      "equity_value": 5690720448.388817,
+      "value_per_share": 86.87327036284947,
+      "margin_of_safety": -0.17232021376858353
+    }
+  }
+}

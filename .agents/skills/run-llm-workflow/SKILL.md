@@ -1,6 +1,6 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment report and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` using a progressive, issue-driven workflow that includes deep falsification when needed. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
+description: Produce a concise, LLM-written investment report and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` using a progressive, issue-driven workflow that starts with early key-lever mapping and continues until confidence is high and incremental research has diminishing returns. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
 ---
 
 # Run LLM Workflow
@@ -11,6 +11,11 @@ This is the canonical LLM-first research workflow.
 The target output is intentionally simple and auditable:
 1. A decision-oriented investment report.
 2. A transparent base/bull/bear valuation.
+
+The report style is narrative-first by default:
+- explain the few valuation pillars that matter most,
+- show how evidence changed (or did not change) assumptions,
+- avoid checklist-style fact dumps.
 
 The research process is progressive, not fixed-stage by default:
 - identify the highest-impact unresolved investment questions,
@@ -98,12 +103,14 @@ Market-expectation anchors (when available):
 1. Execute the progressive workflow in `references/research-workflow.md`.
 2. Build valuation assumptions and outputs using `references/valuation-method.md`, explicitly reconciling your assumptions with analyst-implied market expectations.
 3. Draft the report using `references/report-format.md`, honoring report-content preferences.
-4. Use `references/source-quality-and-search.md` for targeted external falsification when local files cannot resolve key issues.
+4. Use `references/source-quality-and-search.md` for targeted external checks when local files cannot resolve high-impact lever questions.
 5. For US SEC historical pulls, follow `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
 6. Record repeatable process learnings using `references/improvement-loop.md`.
 
 ## Constraints
 - Keep the report concise and decision-oriented.
+- Default to tight prose over fragmented bullets/tables when either form can work.
+- Make the valuation argument legible: each core pillar should connect evidence to specific model inputs.
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs a local file citation.
 - External claims must be cross-checked and traceable.
@@ -114,7 +121,7 @@ Market-expectation anchors (when available):
 - If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-llm-workflow`) and confirm the log has candidates.
 - If required data is missing, run the appropriate market fetch skill for that ticker/date (for example, `$fetch-us-company-data`).
 - If valuation looks inconsistent, re-check units and net-debt sign in `references/valuation-method.md`.
-- If the write-up is weak, rerun the goal gate in `references/research-workflow.md` and close every unresolved high-impact issue before finalizing.
+- If the write-up is weak, rerun the goal gate in `references/research-workflow.md` and close every unresolved high-impact lever before finalizing.
 
 ## Related References
 - `references/research-workflow.md`

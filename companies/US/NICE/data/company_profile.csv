@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+NICE,104.96,6690000000.0,0.24,,99.00 - 180.61,,,1602340.0,NICE Ltd.,USD,0001003935,US6536561086,653656108,Nasdaq Global Select Market,NASDAQ,Software - Application,https://nice.com,Scott Russell,Technology,Israel,8726,972 9 775 3151,13 Zarchin Street,P.O.B. 690,,,,false,true,false

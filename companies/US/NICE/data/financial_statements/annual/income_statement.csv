@@ -1,0 +1,20 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Revenue,us-gaap_Revenues,2735272000.0,2377508000.0,2181294000.0,1921150000.0,1648016000.0,1573912000.0
+Total Cost of Revenue,us-gaap_CostOfRevenue,-909524000.0,-768173000.0,-683688000.0,-624456000.0,-561952000.0,-531768000.0
+Gross Profit,us-gaap_GrossProfit,1825748000.0,1609335000.0,1497606000.0,1296694000.0,1086064000.0,1042144000.0
+Research and Development Expense,us-gaap_ResearchAndDevelopmentExpense,360607000.0,322708000.0,306073000.0,271187000.0,218182000.0,193718000.0
+General and Administrative Expense,us-gaap_GeneralAndAdministrativeExpense,276936000.0,252286000.0,246527000.0,225406000.0,180733000.0,168022000.0
+Selling Expense,us-gaap_SellingAndMarketingExpense,642251000.0,599114000.0,609833000.0,536192000.0,445102000.0,399304000.0
+Operating Expenses,us-gaap_OperatingExpenses,-1279794000.0,-1174108000.0,-1162433000.0,-1032785000.0,-844017000.0,-803427000.0
+Operating Income,us-gaap_OperatingIncomeLoss,545954000.0,435227000.0,335173000.0,263909000.0,242047000.0,238717000.0
+Nonoperating Income/Expense,us-gaap_NonoperatingIncomeExpense,58872000.0,22473000.0,10159000.0,-23290000.0,-4859000.0,-4444000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,604826000.0,457700000.0,345332000.0,240619000.0,237188000.0,234273000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,162238000.0,119399000.0,79387000.0,41396000.0,40842000.0,48369000.0
+Net Income,us-gaap_NetIncomeLoss,,,,,196673000.0,185904000.0
+Profit or Loss,us-gaap_ProfitLoss,442588000.0,338301000.0,265945000.0,199223000.0,196346000.0,
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,,,,,327000.0,
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,6.97,5.32,4.17,3.15,3.13,2.99
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,6.76,5.11,4.0,2.98,2.98,2.88
+Shares Outstanding (Basic),us-gaap_WeightedAverageNumberOfSharesOutstandingBasic,63483000.0,63590000.0,63790000.0,63189000.0,62710000.0,62120000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,65506000.0,66265000.0,66465000.0,66896000.0,65956000.0,64661000.0
+Depreciation and Amortization,us-gaap_AmortizationOfIntangibleAssets,,,,,,42383000.0

@@ -13,11 +13,13 @@ Inputs:
 
 Instructions:
 - Present base, bull, and bear assumptions clearly.
+- Start with a short paragraph that explains how the top valuation pillars translated into scenario inputs.
 - Use the three-stage structure (competitive-advantage period, fade period, terminal period).
 - Reconcile each scenario value/share against current price.
 - State margin of safety for each scenario.
 - Explain what has to go right for bull case and what drives bear case.
 - Explain why `stage1_years` and terminal assumptions are appropriate for the company.
 - Explicitly state where base assumptions align/diverge from analyst expectations and why.
+- Avoid writing this section as a pure number list; explain the causal chain from evidence to model output.
 - If results look extreme, sanity-check units, net debt sign, and share count.
 - Cite local file paths for factual claims.

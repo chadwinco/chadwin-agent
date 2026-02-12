@@ -1,0 +1,15 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Minority interest related to acquisition,us-gaap_NoncontrollingInterestIncreaseFromBusinessCombination,,,,,24901000.0,
+Treasury shares purchased,us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,48349000.0,46029000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,187101000.0,183302000.0,188888000.0,156373000.0,103464000.0,82033000.0
+Issuance of treasury shares under share-based compensation plan,nice_IssuanceOfTreasurySharesUnderShareBasedCompensationPlan,3063000.0,2573000.0,953000.0,4424000.0,8865000.0,3409000.0
+Treasury shares purchase,us-gaap_TreasuryStockValueAcquiredCostMethod,369093000.0,288546000.0,144944000.0,73064000.0,,
+Other comprehensive income,us-gaap_OtherComprehensiveIncomeLossNetOfTax,-11960000.0,52145000.0,-71516000.0,-23077000.0,16637000.0,
+Equity awards assumed for acquisitions,us-gaap_AdjustmentsToAdditionalPaidInCapitalOther,,13073000.0,,183000.0,538000.0,
+Dividends Paid to non-controlling interest,us-gaap_MinorityInterestDecreaseFromDistributionsToNoncontrollingInterestHolders,3036000.0,1771000.0,376000.0,1754000.0,,
+"Purchase of subsidiaries' shares from non-controlling, net",us-gaap_MinorityInterestDecreaseFromRedemptions,,,,12908000.0,,
+Net Income,us-gaap_NetIncomeLoss,439499000.0,336500000.0,265104000.0,199575000.0,196673000.0,185904000.0
+Net Income Attributable to Noncontrolling Interest,us-gaap_NetIncomeLossAttributableToNoncontrollingInterest,-3089000.0,-1801000.0,840000.0,-352000.0,327000.0,
+Other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,,,,13317000.0
+Exercise of share options,us-gaap_StockIssuedDuringPeriodValueStockOptionsExercised,,,,,,2019000.0
+"Equity component of convertible notes, net of issuance costs and deferred tax",us-gaap_AdjustmentsToAdditionalPaidInCapitalConvertibleDebtWithConversionFeature,,,,75000.0,28816000.0,
