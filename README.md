@@ -58,10 +58,14 @@ For example:
 - `Run $run-llm-workflow for HRMY as-of 2026-02-12 and focus on falsifying the key unresolved issues from the latest report`
 
 - Additional skills: 
+  - `$fetch-daily-sec-filings`: Fetches daily SEC filings for `10-K`, `10-Q`, `20-F`, `8-K`, `6-K`, and `S-1`, writing JSONL snapshots to `.agents/skills/fetch-daily-sec-filings/assets/<FORM>/YYYY-MM-DD.jsonl` (defaults to latest-complete filing day)
   - `$fetch-us-investment-ideas`: Generates a list of companies to research and writes them to the `idea-screens` directory
   - `$fetch-us-company-data`: Fetches comprehensive company information from the SEC and reputable third-party websites and writes it to a company folder in `companies`
   - `$run-llm-workflow`: Runs the LLM-driven workflow, which results in a valuation and written report inside the company folder in `companies`
   - `$manage-user-preferences`: Helper skill to update user preferences. These can also be manually updates at `user_preferences.json`
+
+Filing-driven idea workflow example:
+- `Run $fetch-daily-sec-filings for 2026-02-12, then use $fetch-us-investment-ideas to generate ideas seeded from those filing outputs`
 
 - Support for non-US markets will be available soon.
 
@@ -77,6 +81,7 @@ Any shell command execution is agent-facing and should happen inside a Skill wor
 
 Primary Skill docs:
 - `.agents/skills/chadwin-research/SKILL.md`
+- `.agents/skills/fetch-daily-sec-filings/SKILL.md`
 - `.agents/skills/fetch-us-investment-ideas/SKILL.md`
 - `.agents/skills/fetch-us-company-data/SKILL.md`
 - `.agents/skills/run-llm-workflow/SKILL.md`
@@ -86,6 +91,7 @@ Primary Skill docs:
 - `idea-screens/`: idea queue and generated idea files
 - `user_preferences.json`: persistent user preference profile
 - `improvement-log.md`: repo-level process improvement log
+- `.agents/skills/fetch-daily-sec-filings/assets/<FORM>/YYYY-MM-DD.jsonl`: per-form daily SEC filing snapshots used for filing-driven idea generation
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/`: country-code roots for company packages (`<EXCHANGE_COUNTRY>` must be uppercase ISO 3166-1 alpha-2, for example `US`, `JP`, `GB`)
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/`: local evidence inputs
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`: report and valuation outputs

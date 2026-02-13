@@ -35,6 +35,7 @@ Use one of these modes explicitly:
    - This is the semi-autonomous orchestrator.
    - It wraps idea selection, fetch, and research steps by calling other skills as needed.
 2. Manual control (advanced): direct skill invocation
+   - `$fetch-daily-sec-filings`
    - `$fetch-us-investment-ideas`
    - `$fetch-us-company-data`
    - `$run-llm-workflow`
@@ -44,15 +45,16 @@ Use one of these modes explicitly:
 If no specific lower-level control is requested, prefer `$chadwin-research`.
 
 ## Canonical Manual Order (When Not Using `$chadwin-research`)
-1. (Optional) Seed ideas: `$fetch-us-investment-ideas`
-2. Fetch company data by market:
+1. (Optional) Build filing-day seed universe: `$fetch-daily-sec-filings`
+2. (Optional) Seed ideas: `$fetch-us-investment-ideas`
+3. Fetch company data by market:
    - `$fetch-us-company-data` for US tickers
    - For non-US tickers, run the installed market-specific fetch skill under `.agents/skills/`
-3. Produce research outputs with progressive depth: `$run-llm-workflow`
-4. If high-impact issues remain, run another `$run-llm-workflow` pass until the stop rule is satisfied
-5. Validate artifacts and pass quality gate
-6. If present, remove completed ticker from `idea-screens/company-ideas-log.jsonl`
-7. Record repeatable process improvements in `improvement-log.md`
+4. Produce research outputs with progressive depth: `$run-llm-workflow`
+5. If high-impact issues remain, run another `$run-llm-workflow` pass until the stop rule is satisfied
+6. Validate artifacts and pass quality gate
+7. If present, remove completed ticker from `idea-screens/company-ideas-log.jsonl`
+8. Record repeatable process improvements in `improvement-log.md`
 
 ## Required Outputs Per Completed Run
 For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
@@ -121,3 +123,4 @@ Do not only patch a single report output when the issue is systemic.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.
 - Preserve existing user changes unless explicitly asked to alter them.
+- Filing snapshots from `$fetch-daily-sec-filings` live at `.agents/skills/fetch-daily-sec-filings/assets/<FORM>/YYYY-MM-DD.jsonl`.
