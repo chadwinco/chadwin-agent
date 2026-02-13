@@ -80,31 +80,12 @@ def _parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument(
-        "--followup-mode",
-        choices=["confidence-gate", "mos-threshold"],
-        default="confidence-gate",
-        help=(
-            "Routing mode for --post-report-check. "
-            "`confidence-gate` uses the report's Research Stop Gate section "
-            "(default). `mos-threshold` preserves legacy MoS-based routing."
-        ),
-    )
-    parser.add_argument(
         "--followup-confidence-threshold",
         type=float,
         default=0.80,
         help=(
             "Minimum thesis-confidence threshold (0-1) used by "
-            "--followup-mode confidence-gate (default: 0.80)."
-        ),
-    )
-    parser.add_argument(
-        "--followup-mos-threshold",
-        type=float,
-        default=0.25,
-        help=(
-            "Base-case margin-of-safety threshold for follow-up routing during "
-            "--post-report-check (default: 0.25)."
+            "--post-report-check (default: 0.80)."
         ),
     )
     parser.add_argument(
@@ -173,88 +154,59 @@ def _latest_report_for_asof(company_dir: Path, asof: str) -> Path | None:
     return latest_report_path
 
 
-def _extract_report_verdict(report_path: Path) -> str | None:
-    try:
-        text = report_path.read_text(encoding="utf-8")
-    except Exception:
-        return None
-
-    for raw_line in text.splitlines():
-        line = raw_line.strip()
-        if "verdict:" not in line.lower():
-            continue
-        _, _, value = line.partition(":")
-        verdict = value.strip()
-        if not verdict or "|" in verdict:
-            return None
-        verdict = verdict.replace("**", "").replace("*", "").replace("`", "").strip()
-        return verdict or None
-    return None
-
-
-def _normalize_verdict(verdict: str | None) -> str | None:
-    if verdict is None:
-        return None
-    normalized = verdict.strip().lower()
-    if normalized.startswith("attractive"):
-        return "attractive"
-    if normalized.startswith("watch"):
-        return "watch"
-    if normalized.startswith("avoid"):
-        return "avoid"
-    return normalized or None
-
-
-def _read_base_margin_of_safety(outputs_path: Path) -> float | None:
-    try:
-        payload = json.loads(outputs_path.read_text(encoding="utf-8"))
-    except Exception:
-        return None
-    scenarios = payload.get("scenarios") or {}
-    base = scenarios.get("base") or {}
-    value = base.get("margin_of_safety")
-    if isinstance(value, (int, float)):
-        return float(value)
-    return None
-
-
 def _parse_bool_token(value: str | None) -> bool | None:
     if value is None:
         return None
     normalized = value.strip().strip("`").lower()
+    normalized = normalized.replace("*", "")
     normalized = normalized.split("(", 1)[0].strip()
-    if normalized in {"yes", "y", "true", "1", "done", "complete"}:
+    if normalized in {"yes", "true"}:
         return True
-    if normalized in {"no", "n", "false", "0", "open", "incomplete"}:
+    if normalized in {"no", "false"}:
         return False
     return None
 
 
-def _parse_float_token(value: str | None) -> float | None:
+def _parse_confidence_pct(value: str | None) -> float | None:
     if value is None:
         return None
-    fraction_match = re.search(r"(-?\d+(?:\.\d+)?)\s*/\s*(\d+(?:\.\d+)?)", value)
-    if fraction_match:
-        numerator = float(fraction_match.group(1))
-        denominator = float(fraction_match.group(2))
-        if denominator == 0:
-            return None
-        return numerator / denominator
-
     number_match = re.search(r"-?\d+(?:\.\d+)?", value)
     if not number_match:
         return None
     try:
-        return float(number_match.group(0))
+        parsed = float(number_match.group(0))
+    except ValueError:
+        return None
+    if "%" not in value and 0.0 <= parsed <= 1.0:
+        parsed *= 100.0
+    return parsed
+
+
+def _parse_int_token(value: str | None) -> int | None:
+    if value is None:
+        return None
+    match = re.search(r"-?\d+", value)
+    if not match:
+        return None
+    try:
+        return int(match.group(0))
     except ValueError:
         return None
 
 
-def _parse_int_token(value: str | None) -> int | None:
-    parsed = _parse_float_token(value)
-    if parsed is None:
-        return None
-    return int(round(parsed))
+def _normalize_gate_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
+
+
+STOP_GATE_FIELD_MAP = {
+    "thesis confidence": "thesis_confidence_pct",
+    "highest impact levers": "highest_impact_levers",
+    "levers resolved": "levers_resolved",
+    "open thesis critical levers": "open_thesis_critical_levers",
+    "diminishing returns from additional research": "diminishing_returns",
+    "research complete": "research_complete",
+    "next best research focus": "next_best_research_focus",
+}
 
 
 def _extract_report_stop_gate(report_path: Path) -> dict[str, Any] | None:
@@ -272,74 +224,39 @@ def _extract_report_stop_gate(report_path: Path) -> dict[str, Any] | None:
     if start_idx is None:
         return None
 
-    section_lines: list[str] = []
-    list_started = False
+    raw_fields: dict[str, str] = {}
     for raw in lines[start_idx:]:
         stripped = raw.strip()
         if stripped.startswith("## "):
             break
-        if not stripped:
+        if not stripped or not (stripped.startswith("- ") or stripped.startswith("* ")):
             continue
-        if stripped.startswith("- ") or stripped.startswith("* "):
-            list_started = True
-            section_lines.append(stripped)
-            continue
-        if list_started:
-            break
-
-    parsed_fields: dict[str, str] = {}
-    for raw in section_lines:
-        line = raw
-        if line.startswith("- "):
-            line = line[2:].strip()
-        elif line.startswith("* "):
-            line = line[2:].strip()
-        elif line.startswith("-"):
-            line = line[1:].strip()
+        line = stripped[2:].strip()
         if ":" not in line:
             continue
         key, value = line.split(":", 1)
-        key_norm = re.sub(r"[^a-z0-9]+", " ", key.lower()).strip()
-        parsed_fields[key_norm] = value.strip().strip("`")
+        key_norm = _normalize_gate_key(key)
+        canonical = STOP_GATE_FIELD_MAP.get(key_norm)
+        if canonical:
+            raw_fields[canonical] = value.strip().strip("`")
 
-    def _value_for(substrings: tuple[str, ...]) -> str | None:
-        for key, value in parsed_fields.items():
-            if any(sub in key for sub in substrings):
-                return value
+    if not raw_fields:
         return None
-
-    confidence_raw = _value_for(("thesis confidence", "confidence"))
-    confidence_pct = _parse_float_token(confidence_raw)
-    if confidence_pct is not None and 0.0 <= confidence_pct <= 1.0:
-        confidence_pct = confidence_pct * 100.0
-
-    research_complete = _parse_bool_token(
-        _value_for(("research complete", "stop research", "research stop"))
-    )
-    continue_research = _parse_bool_token(_value_for(("continue research",)))
-    if research_complete is None and continue_research is not None:
-        research_complete = not continue_research
-
-    diminishing_returns = _parse_bool_token(
-        _value_for(("diminishing returns", "incremental insight low"))
-    )
 
     return {
         "section_found": True,
-        "thesis_confidence_pct": confidence_pct,
-        "highest_impact_levers": _parse_int_token(
-            _value_for(("highest impact levers",))
+        "thesis_confidence_pct": _parse_confidence_pct(
+            raw_fields.get("thesis_confidence_pct")
         ),
-        "levers_resolved": _parse_int_token(
-            _value_for(("levers resolved", "resolved levers"))
-        ),
+        "highest_impact_levers": _parse_int_token(raw_fields.get("highest_impact_levers")),
+        "levers_resolved": _parse_int_token(raw_fields.get("levers_resolved")),
         "open_thesis_critical_levers": _parse_int_token(
-            _value_for(("open thesis critical levers", "open critical levers"))
+            raw_fields.get("open_thesis_critical_levers")
         ),
-        "diminishing_returns": diminishing_returns,
-        "research_complete": research_complete,
-        "next_best_research_focus": _value_for(("next best research focus", "next focus")),
-        "raw_fields": parsed_fields,
+        "diminishing_returns": _parse_bool_token(raw_fields.get("diminishing_returns")),
+        "research_complete": _parse_bool_token(raw_fields.get("research_complete")),
+        "next_best_research_focus": raw_fields.get("next_best_research_focus"),
+        "raw_fields": raw_fields,
     }
 
 
@@ -347,8 +264,6 @@ def _post_report_decision(
     *,
     company_dir: Path,
     asof: str,
-    mos_threshold: float,
-    followup_mode: str,
     confidence_threshold: float,
 ) -> dict[str, Any]:
     report_path = _latest_report_for_asof(company_dir, asof)
@@ -361,93 +276,43 @@ def _post_report_decision(
         }
 
     report_dir = report_path.parent
-    outputs_path = report_dir / "valuation" / "outputs.json"
-    if not outputs_path.exists():
-        return {
-            "status": "error",
-            "reason": "missing_valuation_outputs",
-            "next_action": "done",
-            "asof": asof,
-            "baseline_report_dir": report_dir.name,
-            "report_path": str(report_path),
-            "valuation_outputs_path": str(outputs_path),
-        }
-
-    base_mos = _read_base_margin_of_safety(outputs_path)
-    if base_mos is None:
-        return {
-            "status": "error",
-            "reason": "missing_base_margin_of_safety",
-            "next_action": "done",
-            "asof": asof,
-            "baseline_report_dir": report_dir.name,
-            "report_path": str(report_path),
-            "valuation_outputs_path": str(outputs_path),
-        }
-
-    verdict_raw = _extract_report_verdict(report_path)
-    verdict_normalized = _normalize_verdict(verdict_raw)
-
     stop_gate = _extract_report_stop_gate(report_path)
-
-    promising = base_mos >= mos_threshold and verdict_normalized != "avoid"
-    followup_focus = "falsification"
-    confidence_gate_passed: bool | None = None
-
-    if followup_mode == "confidence-gate":
-        if stop_gate is None:
-            if verdict_normalized == "avoid":
-                next_action = "done"
-                reason = "report_verdict_avoid"
-            else:
-                next_action = "run_research"
-                reason = "missing_research_stop_gate"
-            followup_focus = "highest-impact-unresolved-lever"
-            confidence_gate_passed = False
-        else:
-            research_complete = stop_gate.get("research_complete")
-            diminishing_returns = stop_gate.get("diminishing_returns")
-            open_critical = stop_gate.get("open_thesis_critical_levers")
-            confidence_pct = stop_gate.get("thesis_confidence_pct")
-            confidence_required_pct = confidence_threshold * 100.0
-
-            confidence_ok = (
-                confidence_pct is None or confidence_pct >= confidence_required_pct
-            )
-            open_critical_ok = open_critical is None or open_critical == 0
-            diminishing_ok = diminishing_returns is True or diminishing_returns is None
-
-            confidence_gate_passed = bool(
-                research_complete is True
-                and confidence_ok
-                and open_critical_ok
-                and diminishing_ok
-            )
-
-            if confidence_gate_passed:
-                next_action = "done"
-                reason = "research_confidence_gate_passed"
-            elif verdict_normalized == "avoid" and research_complete is True:
-                next_action = "done"
-                reason = "report_verdict_avoid"
-            else:
-                next_action = "run_research"
-                reason = "research_confidence_gate_not_met"
-
-            followup_focus = (
-                str(stop_gate.get("next_best_research_focus") or "").strip()
-                or "highest-impact-unresolved-lever"
-            )
+    if stop_gate is None:
+        followup_focus = "highest-impact-unresolved-lever"
+        confidence_gate_passed = False
+        next_action = "run_research"
+        reason = "missing_research_stop_gate"
+        confidence_pct = None
+        open_critical = None
+        research_complete = None
+        diminishing_returns = None
     else:
-        if promising:
-            next_action = "run_research"
-            reason = "promising_report_requires_followup_research"
-        elif verdict_normalized == "avoid":
-            next_action = "done"
-            reason = "report_verdict_avoid"
-        else:
-            next_action = "done"
-            reason = "base_margin_of_safety_below_threshold"
+        confidence_pct = stop_gate.get("thesis_confidence_pct")
+        open_critical = stop_gate.get("open_thesis_critical_levers")
+        research_complete = stop_gate.get("research_complete")
+        diminishing_returns = stop_gate.get("diminishing_returns")
+        confidence_required_pct = confidence_threshold * 100.0
+
+        confidence_ok = (
+            isinstance(confidence_pct, (int, float))
+            and float(confidence_pct) >= confidence_required_pct
+        )
+        confidence_gate_passed = bool(
+            research_complete is True
+            and diminishing_returns is True
+            and open_critical == 0
+            and confidence_ok
+        )
+        next_action = "done" if confidence_gate_passed else "run_research"
+        reason = (
+            "research_confidence_gate_passed"
+            if confidence_gate_passed
+            else "research_confidence_gate_not_met"
+        )
+        followup_focus = (
+            str(stop_gate.get("next_best_research_focus") or "").strip()
+            or "highest-impact-unresolved-lever"
+        )
 
     result = {
         "status": "ok",
@@ -456,17 +321,14 @@ def _post_report_decision(
         "asof": asof,
         "baseline_report_dir": report_dir.name,
         "report_path": str(report_path),
-        "valuation_outputs_path": str(outputs_path),
-        "base_margin_of_safety": base_mos,
-        "followup_mode": followup_mode,
         "followup_confidence_threshold": confidence_threshold,
-        "followup_mos_threshold": mos_threshold,
-        "report_verdict": verdict_raw,
-        "report_verdict_normalized": verdict_normalized,
-        "promising": promising,
         "followup_focus": followup_focus,
         "research_stop_gate_found": stop_gate is not None,
         "confidence_gate_passed": confidence_gate_passed,
+        "thesis_confidence_pct": confidence_pct,
+        "open_thesis_critical_levers": open_critical,
+        "research_complete": research_complete,
+        "diminishing_returns": diminishing_returns,
     }
     if stop_gate is not None:
         result["research_stop_gate"] = stop_gate
@@ -717,8 +579,6 @@ def main() -> int:
         decision = _post_report_decision(
             company_dir=company_dir,
             asof=args.asof,
-            mos_threshold=args.followup_mos_threshold,
-            followup_mode=args.followup_mode,
             confidence_threshold=max(0.0, min(1.0, args.followup_confidence_threshold)),
         )
         decision.update(

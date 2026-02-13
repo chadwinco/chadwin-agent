@@ -57,16 +57,16 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Run `python chadwin-codex/.agents/skills/research/scripts/run_research.py --asof <YYYY-MM-DD> --dry-run --ideas-log <TEMP_JSONL_PATH>`.
 - Confirm the selected ticker is the non-biotech candidate.
 
-## 10. Post-report follow-up routing (confidence gate default)
+## 10. Post-report follow-up routing (confidence gate)
 - Run `$run-llm-workflow` for a ticker/date with a completed `valuation/outputs.json`.
 - Run:
   - `python chadwin-codex/.agents/skills/research/scripts/run_research.py --ticker <TICKER> --asof <YYYY-MM-DD> --post-report-check`
 - Confirm:
   - `baseline_report_dir` is populated.
-  - In default `confidence-gate` mode:
-    - `research_stop_gate_found` reflects whether report contains `## Research Stop Gate`.
-    - `next_action` is `done` only when confidence gate is passed.
-    - `followup_focus` is sourced from `Next best research focus` when `next_action` is `run_research`.
-  - In legacy `mos-threshold` mode (`--followup-mode mos-threshold`):
-    - `base_margin_of_safety` is read from `valuation/outputs.json`.
-    - `next_action` is `run_research` when base MoS is `>= 0.25` and verdict is not `Avoid`; otherwise `done`.
+  - `research_stop_gate_found` reflects whether report contains `## Research Stop Gate`.
+  - `next_action` is `done` only when gate conditions are all met:
+    - `research_complete = true`,
+    - `diminishing_returns = true`,
+    - `open_thesis_critical_levers = 0`,
+    - `thesis_confidence_pct >= followup_confidence_threshold * 100`.
+  - `followup_focus` is sourced from `Next best research focus` when `next_action` is `run_research`.

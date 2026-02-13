@@ -12,24 +12,8 @@ DEFAULT_PREFERENCES_RELATIVE_PATH = Path("preferences") / "user_preferences.json
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_NON_US = "non-us"
 TASK_RESEARCH = "run-llm-workflow"
+TASK_VALUES = {TASK_FETCH_US, TASK_FETCH_NON_US, TASK_RESEARCH}
 COUNTRY_DIR_BY_MARKET = {"us": "US", "non-us": "International"}
-
-TASK_ALIASES = {
-    TASK_FETCH_US: TASK_FETCH_US,
-    "fetch_us_company_data": TASK_FETCH_US,
-    "us": TASK_FETCH_US,
-    TASK_FETCH_NON_US: TASK_FETCH_NON_US,
-    "non_us": TASK_FETCH_NON_US,
-    "nonus": TASK_FETCH_NON_US,
-    "international": TASK_FETCH_NON_US,
-    "exus": TASK_FETCH_NON_US,
-    "ex-us": TASK_FETCH_NON_US,
-    TASK_RESEARCH: TASK_RESEARCH,
-    "run-company-research": TASK_RESEARCH,
-    "run_company_research": TASK_RESEARCH,
-    "run_llm_workflow": TASK_RESEARCH,
-    "research": TASK_RESEARCH,
-}
 
 
 def default_base_dir() -> Path:
@@ -89,32 +73,11 @@ def _normalized_token_set(value: Any) -> set[str]:
     return {item.lower() for item in _string_list(value)}
 
 
-_TAXONOMY_ALIASES: dict[str, set[str]] = {
-    "biotech": {"biotech", "biotechnology"},
-    "biotechnology": {"biotech", "biotechnology"},
-    "bank": {"bank", "banks", "banking"},
-    "banks": {"bank", "banks", "banking"},
-    "banking": {"bank", "banks", "banking"},
-    "pharma": {"pharma", "pharmaceutical", "pharmaceuticals"},
-    "pharmaceutical": {"pharma", "pharmaceutical", "pharmaceuticals"},
-    "pharmaceuticals": {"pharma", "pharmaceutical", "pharmaceuticals"},
-}
-
-
 def _normalize_taxonomy_text(value: Any) -> str:
     text = _clean_text(value).lower()
     text = re.sub(r"[^a-z0-9]+", " ", text)
     text = " ".join(text.split())
     return text
-
-
-def _expand_taxonomy_term(term: str) -> set[str]:
-    normalized = _normalize_taxonomy_text(term)
-    if not normalized:
-        return set()
-    expanded = {normalized}
-    expanded.update(_TAXONOMY_ALIASES.get(normalized, set()))
-    return expanded
 
 
 def _taxonomy_matches(candidate: str, preference: str) -> bool:
@@ -123,24 +86,32 @@ def _taxonomy_matches(candidate: str, preference: str) -> bool:
     if not candidate_norm or not preference_norm:
         return False
 
-    candidate_terms = _expand_taxonomy_term(candidate_norm)
-    preference_terms = _expand_taxonomy_term(preference_norm)
-    if candidate_terms & preference_terms:
+    if candidate_norm == preference_norm:
         return True
 
-    for preference_term in preference_terms:
-        pattern = rf"\b{re.escape(preference_term)}\b"
-        if re.search(pattern, candidate_norm) is not None:
-            return True
-    for candidate_term in candidate_terms:
-        pattern = rf"\b{re.escape(candidate_term)}\b"
-        if re.search(pattern, preference_norm) is not None:
-            return True
-
-    # Allow short-form taxonomy labels (e.g., "biotech" vs "biotechnology").
-    if len(preference_norm) >= 5 and candidate_norm.startswith(preference_norm):
+    # Support concise user preference labels (for example: biotech -> biotechnology).
+    if preference_norm in candidate_norm or candidate_norm in preference_norm:
         return True
-    if len(candidate_norm) >= 5 and preference_norm.startswith(candidate_norm):
+
+    candidate_tokens = set(candidate_norm.split())
+    preference_tokens = set(preference_norm.split())
+    if candidate_tokens & preference_tokens:
+        return True
+
+    def _stem(token: str) -> str:
+        if len(token) > 5 and token.endswith("ies"):
+            return token[:-3] + "y"
+        if len(token) > 5 and token.endswith("ing"):
+            return token[:-3]
+        if len(token) > 4 and token.endswith("es"):
+            return token[:-2]
+        if len(token) > 4 and token.endswith("s"):
+            return token[:-1]
+        return token
+
+    candidate_stems = {_stem(token) for token in candidate_tokens}
+    preference_stems = {_stem(token) for token in preference_tokens}
+    if candidate_stems & preference_stems:
         return True
     return False
 
@@ -160,8 +131,8 @@ def normalize_ticker(value: Any) -> str:
 
 
 def normalize_task(task: str) -> str:
-    normalized = TASK_ALIASES.get(_clean_text(task).lower())
-    if not normalized:
+    normalized = _clean_text(task).lower()
+    if normalized not in TASK_VALUES:
         raise ValueError(f"Unsupported task: {task}")
     return normalized
 
@@ -172,18 +143,7 @@ def normalize_market(value: Any) -> str | None:
         return None
     if normalized in {"us", "usa", "united states"}:
         return "us"
-    if normalized in {
-        "non-us",
-        "non us",
-        "non_us",
-        "nonus",
-        "international",
-        "intl",
-        "outside us",
-        "ex-us",
-        "ex us",
-        "exus",
-    }:
+    if normalized in {"non-us", "non us", "non_us", "international"}:
         return "non-us"
     return None
 
