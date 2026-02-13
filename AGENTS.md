@@ -13,11 +13,10 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 ## Non-Negotiable Operating Contract
 1. Execute tasks directly in the local workspace; do not stop at planning if execution is possible.
 2. Use skills in `.agents/skills/*/SKILL.md` as the authoritative workflows.
-3. Do not replace the LLM research workflow with a one-command deterministic analyzer.
-4. After every command or edit, inspect outputs for errors or inconsistencies and fix them immediately.
-5. Never leave known breakage behind; rerun affected steps until outputs are correct.
-6. Keep work traceable: explicit dates, explicit assumptions, explicit file references.
-7. Do not add deterministic wrappers for tasks the LLM can already do directly (for example generic web search/browsing, routine file reads/writes, or simple routing decisions).
+3. After every command or edit, inspect outputs for errors or inconsistencies and fix them immediately.
+4. Never leave known breakage behind; rerun affected steps until outputs are correct.
+5. Keep work traceable: explicit dates, explicit assumptions, explicit file references.
+6. Do not add deterministic wrappers for tasks the LLM can already do directly (for example generic web search/browsing, routine file reads/writes, or simple routing decisions).
 
 ## Skill Selection Protocol
 - Treat `$chadwin-research` as the default top-level skill for semi-autonomous runs.
@@ -34,7 +33,7 @@ Use one of these modes explicitly:
 
 1. Top-level (default): `$chadwin-research`
    - This is the semi-autonomous orchestrator.
-   - It wraps market selection, fetch, and research steps by calling other skills as needed.
+   - It wraps idea selection, fetch, and research steps by calling other skills as needed.
 2. Manual control (advanced): direct skill invocation
    - `$fetch-us-investment-ideas`
    - `$fetch-us-company-data`
@@ -50,9 +49,9 @@ If no specific lower-level control is requested, prefer `$chadwin-research`.
    - `$fetch-us-company-data` for US tickers
    - For non-US tickers, run the installed market-specific fetch skill under `.agents/skills/`
 3. Produce research outputs with progressive depth: `$run-llm-workflow`
-4. If high-impact issues remain, run another `$run-llm-workflow` pass focused on falsification until the stop rule is satisfied
+4. If high-impact issues remain, run another `$run-llm-workflow` pass until the stop rule is satisfied
 5. Validate artifacts and pass quality gate
-6. Remove completed ticker from `idea-screens/company-ideas-log.jsonl`
+6. If present, remove completed ticker from `idea-screens/company-ideas-log.jsonl`
 7. Record repeatable process improvements in `improvement-log.md`
 
 ## Required Outputs Per Completed Run
@@ -90,7 +89,6 @@ Do not defer known issues to a later run when they block correctness now.
 
 ## Evidence and Citation Discipline
 - Local files under `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/` are the primary evidence base.
-- Use only evidence dated on or before the selected as-of date.
 - Every factual claim in final write-ups must cite local file paths.
 - Prefer filings for core financial/forecast claims; use transcripts for supporting qualitative color.
 - Paraphrase source content; avoid verbatim copying.
@@ -107,8 +105,8 @@ Before marking done:
 
 ## Improvement Loop (Mandatory for Repeatable Issues)
 When you find a repeatable problem or process weakness:
-1. Append a concise row to `improvement-log.md`.
-2. Update the relevant skill reference under `.agents/skills/.../references/`.
+1. Update the relevant skill.
+2. Append a concise row to `improvement-log.md`.
 3. Validate with at least one end-to-end ticker run when process logic changes.
 
 Do not only patch a single report output when the issue is systemic.
