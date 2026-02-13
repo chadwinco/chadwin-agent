@@ -1,23 +1,37 @@
-# Data Dictionary (US / EDGAR)
+# US Fetch Data Contract and Dictionary (EDGAR)
 
-This repo expects company financial data under `companies/US/<TICKER>/data`. The pipeline uses these files and columns.
+This document is the single reference for fetch output expectations and column definitions for US company packages.
 
-## Required Files
+## Output Roots
+- Company data root: `companies/US/<TICKER>/data`
+- Bootstrap valuation output: `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+
+## Output Contract
+
+### Required Outputs
 - `company_profile.csv`
 - `financial_statements/annual/income_statement.csv`
 - `financial_statements/annual/balance_sheet.csv`
 - `financial_statements/annual/cash_flow_statement.csv`
 
-## Optional Files
-- `financial_statements/quarterly/` (full EDGAR statement exports)
-- `filings/` (10-K/10-Q/8-K markdown + earnings call transcripts)
-  - For recent IPOs without annual reports, registration forms such as `S-1`/`S-1-A` and `F-1`/`F-1-A` may be present instead.
-- `analyst_revenue_estimates.csv` (analyst revenue forecasts)
+### Optional Outputs
+- `financial_statements/quarterly/*.csv`
+- `filings/10-K-*.md` or `filings/20-F-*.md`
+- `filings/10-Q-*.md`, `filings/8-K-*.md`, `filings/6-K-*.md`
+- `filings/S-1-*.md`, `filings/S-1-A-*.md`, `filings/F-1-*.md`, `filings/F-1-A-*.md`
+- `filings/earnings-call-<YYYY-MM-DD>-<source>.md`
+- `analyst_revenue_estimates.csv`
 - `analyst_price_targets.csv`
 - `analyst_consensus.csv`
 - `analyst_eps_estimates.csv`
 - `analyst_eps_forward_pe_estimates.csv`
 - `analyst_ratings_actions_12m.csv`
+
+For recent IPOs without annual reports, registration forms such as `S-1`/`S-1-A` and `F-1`/`F-1-A` may be present instead of `10-K`/`20-F`.
+
+For `8-K`/`6-K`, markdown should include attachment sections (`### Attachment: ...`) when exhibit text is extractable.
+
+## File Dictionaries
 
 ### `company_profile.csv`
 - `symbol`, `companyName`, `currency`
@@ -28,13 +42,13 @@ This repo expects company financial data under `companies/US/<TICKER>/data`. The
 - `website`, `phone`, `address`, `city`, `state`, `zip`
 - `isEtf`, `isAdr`, `isActivelyTrading`
 
-Values may be blank when the source data is unavailable, but the column set should be present.
+Values may be blank when source data is unavailable, but the column set should be present.
 
 ### `analyst_revenue_estimates.csv`
 - `metric` (currently `revenue`)
 - `fiscalYear`
 - `high`, `avg`, `low` (forecast values in absolute dollars)
-- `highRaw`, `avgRaw`, `lowRaw` (raw page text; captures locked values like `Pro`)
+- `highRaw`, `avgRaw`, `lowRaw` (raw page text; captures locked values such as `Pro`)
 - `source` (URL)
 - `retrieved` (YYYY-MM-DD)
 
@@ -71,14 +85,14 @@ Values may be blank when the source data is unavailable, but the column set shou
 - `action`
 - `priceTarget`, `priceTargetOld`, `priceTargetNew`
 - `upsidePct`
-- `date` (`YYYY-MM-DD`)
+- `date` (YYYY-MM-DD)
 - `source` (URL)
 - `retrieved` (YYYY-MM-DD)
 
 ## Normalized Annual Frames (Pipeline Internal)
-The loader derives normalized annual frames from `financial_statements/annual/*.csv` with these columns:
+The loader derives normalized annual frames from `financial_statements/annual/*.csv`.
 
-### Income Frame
+### Income Frame Columns
 - `date`, `fiscalYear`, `period`
 - `revenue`
 - `grossProfit`
@@ -87,7 +101,7 @@ The loader derives normalized annual frames from `financial_statements/annual/*.
 - `netIncome`
 - `weightedAverageShsOut`, `weightedAverageShsOutDil`
 
-### Balance Sheet Frame
+### Balance Sheet Frame Columns
 - `date`, `fiscalYear`, `period`
 - `cashAndCashEquivalents`
 - `totalAssets`
@@ -95,42 +109,37 @@ The loader derives normalized annual frames from `financial_statements/annual/*.
 - `totalEquity`
 - `netDebt` (computed when source does not provide it)
 
-### Cash Flow Frame
+### Cash Flow Frame Columns
 - `date`, `fiscalYear`, `period`
 - `operatingCashFlow`
 - `capitalExpenditure`
 - `freeCashFlow` (computed when source does not provide it)
 
-## Derived Metrics (Definitions)
-- Revenue growth: year-over-year % change.
+## Derived Metrics
+- Revenue growth: year-over-year percent change.
 - Gross margin: `grossProfit / revenue`.
 - EBIT margin: `ebit / revenue`.
 - FCF margin: `freeCashFlow / revenue`.
 - ROIC: `NOPAT / Invested Capital`.
-  - `NOPAT = ebit * (1 - tax_rate)`.
-  - `tax_rate = incomeTaxExpense / incomeBeforeTax` (fallback to 21%).
-  - `Invested Capital = totalDebt + totalEquity - cashAndCashEquivalents`.
+- NOPAT: `ebit * (1 - tax_rate)`.
+- Tax rate: `incomeTaxExpense / incomeBeforeTax` (fallback 21%).
+- Invested Capital: `totalDebt + totalEquity - cashAndCashEquivalents`.
 - Reinvestment rate: `abs(capitalExpenditure) / revenue`.
 - Leverage: `netDebt / ebitda`.
 
-## EDGAR Financial Statement Exports
+## EDGAR Statement Exports
 When EDGAR data is fetched, the pipeline stores full statements in:
 - `companies/US/<TICKER>/data/financial_statements/annual/`
 - `companies/US/<TICKER>/data/financial_statements/quarterly/`
 
-Each directory contains:
+Each directory can include:
 - `income_statement.csv`
 - `balance_sheet.csv`
 - `cash_flow_statement.csv`
 - `statement_of_equity.csv`
 - `comprehensive_income.csv`
 
-These are the canonical statement sources used by the analysis workflow.
+These files are the canonical statement sources for downstream analysis.
 
-## Filings and Transcripts
-Filings and transcript markdown files are stored under:
-- `companies/US/<TICKER>/data/filings/`
-- `8-K`/`6-K` files should include `### Attachment: ...` sections for exhibit bodies when EdgarTools can extract the attachment text.
-
-## Date Alignment
-For each fiscal year, income, balance sheet, and cash flow rows should align on `fiscalYear` and be within the same `date` range. The quality checker flags mismatches.
+## Consistency Check
+For each fiscal year, income, balance sheet, and cash flow rows should align on `fiscalYear` and be within a consistent date range. The quality checker flags mismatches.

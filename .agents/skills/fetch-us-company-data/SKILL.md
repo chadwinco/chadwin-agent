@@ -69,7 +69,7 @@ Optional flags:
 - `--transcript-min-body-chars <N>` controls minimum extracted body length to accept transcript text (default `1000`).
 
 ### 4. Verify outputs
-Validate outputs described in `references/data-outputs.md` and `references/data-dictionary.md`, including:
+Validate outputs described in `references/data-dictionary.md`, including:
 - `companies/US/<TICKER>/data/financial_statements/annual/income_statement.csv`
 - `companies/US/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `companies/US/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
@@ -91,8 +91,7 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - If `--ticker` is omitted and no US queue candidate exists, run `$fetch-us-investment-ideas` first or pass a ticker explicitly.
 - If preferences exclude US market, update `preferences/user_preferences.json` or rerun with `--ignore-preferences`.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.
-- If annual statements fail to parse, inspect `companies/US/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-outputs.md`.
+- If annual statements fail to parse, inspect `companies/US/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-dictionary.md`.
 
 ## Related References
-- `references/data-outputs.md`
 - `references/data-dictionary.md`
