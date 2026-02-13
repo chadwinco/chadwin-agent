@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_LOG_RELATIVE_PATH = Path("idea-screens") / "company-ideas-log.jsonl"
-DEFAULT_PREFERENCES_RELATIVE_PATH = Path("preferences") / "user_preferences.json"
+DEFAULT_PREFERENCES_RELATIVE_PATH = Path("user_preferences.json")
 
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_NON_US = "non-us"

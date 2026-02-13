@@ -1,6 +1,6 @@
 ---
 name: manage-user-preferences
-description: Create or update `preferences/user_preferences.json` through an interactive conversation that captures market coverage, sector/industry preferences, strategy preferences, and report-content preferences.
+description: Create or update `user_preferences.json` through an interactive conversation that captures market coverage, sector/industry preferences, strategy preferences, and report-content preferences.
 ---
 
 # Manage User Preferences
@@ -10,7 +10,7 @@ description: Create or update `preferences/user_preferences.json` through an int
 Use this skill when a user wants to create or update persistent preference settings for idea selection and report style.
 
 Preference file:
-- `preferences/user_preferences.json`
+- `user_preferences.json`
 
 ## Execution Mode
 
@@ -20,7 +20,7 @@ This skill is intentionally LLM-operated.
 
 ## Workflow
 
-1. Read `preferences/user_preferences.json` if it exists; otherwise start from the output contract schema.
+1. Read `user_preferences.json` if it exists; otherwise start from the output contract schema.
 2. Ask Section 1 only: country markets of interest.
 3. Normalize Section 1 into `markets.included_countries`.
 4. Ask Section 2 only: sector and industry include/exclude preferences.
@@ -30,7 +30,7 @@ This skill is intentionally LLM-operated.
 8. Ask Section 4 only: report information preferences (`must_include`, `nice_to_have`, `exclude`).
 9. Normalize Section 4 into `report_preferences`.
 10. Confirm the final normalized summary with the user.
-11. Persist the updated JSON in `preferences/user_preferences.json`.
+11. Persist the updated JSON in `user_preferences.json`.
 12. Notify the user that the preference update is complete.
 
 Interaction rule:

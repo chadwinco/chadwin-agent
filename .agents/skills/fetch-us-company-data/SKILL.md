@@ -7,7 +7,7 @@ description: Fetch US/SEC-available filings, XBRL-based financial statements, an
 
 ## Overview
 Fetch filings, financials, analyst forecasts, and transcripts into `companies/US/<TICKER>/data` and bootstrap valuation assumptions in `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
-When present, `preferences/user_preferences.json` is respected by default for queue selection and US market guardrails.
+When present, `user_preferences.json` is respected by default for queue selection and US market guardrails.
 
 This skill keeps fetch logic inside the skill package (`scripts/`) so it is easier to share and update independently from the main codebase.
 
@@ -62,7 +62,7 @@ Optional flags:
 - `--identity "Name email@domain.com"` overrides `.env`.
 - `--overwrite-assumptions` replaces `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - `--ideas-log "<PATH>"` overrides the central queue log path (default `idea-screens/company-ideas-log.jsonl`).
-- `--preferences-path "<PATH>"` overrides preferences path (default `preferences/user_preferences.json`).
+- `--preferences-path "<PATH>"` overrides preferences path (default `user_preferences.json`).
 - `--ignore-preferences` disables preference-based queue filtering and market guardrails.
 - `--transcript-url "<URL>"` bypasses search and attempts extraction from one known transcript URL.
 - `--transcript-max-results <N>` controls search breadth for transcript candidates (default `20`).
@@ -89,7 +89,7 @@ Validate outputs described in `references/data-dictionary.md`, including:
 ## Troubleshooting
 - If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
 - If `--ticker` is omitted and no US queue candidate exists, run `$fetch-us-investment-ideas` first or pass a ticker explicitly.
-- If preferences exclude US market, update `preferences/user_preferences.json` or rerun with `--ignore-preferences`.
+- If preferences exclude US market, update `user_preferences.json` or rerun with `--ignore-preferences`.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.
 - If annual statements fail to parse, inspect `companies/US/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-dictionary.md`.
 

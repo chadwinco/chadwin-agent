@@ -28,7 +28,7 @@ Analyst/market expectation anchors (optional but prioritized when present):
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
 
 Optional controls:
-- `preferences/user_preferences.json`
+- `user_preferences.json`
 - `references/source-quality-and-search.md` for targeted external checks
 - `references/historical-sec-fetch.md` for US historical SEC pulls
 
@@ -46,7 +46,7 @@ Drafting assets:
 - Check recent local 8-K files for announced name or ticker changes; keep package paths on current ticker unless already effective, and disclose pending changes.
 - If ticker is not provided, pick from queue:
   - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow`
-- Load `preferences/user_preferences.json` when present and apply strategy/report preferences.
+- Load `user_preferences.json` when present and apply strategy/report preferences.
 - If local data is missing, stop and run the market fetch skill first.
 
 ## Step 2: Build the Fact Base and Market Baseline

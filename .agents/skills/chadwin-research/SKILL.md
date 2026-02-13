@@ -12,7 +12,7 @@ Use this as the default entrypoint for autonomous runs. It delegates to:
 - `$run-llm-workflow`
 
 Company packages are organized by exchange country under `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
-When present, `preferences/user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
+When present, `user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
 
 ## Workflow
 
@@ -62,7 +62,7 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 ## Behavior Contract
 
 - No ticker provided:
-  - Select from `idea-screens/company-ideas-log.jsonl`, filtered by `preferences/user_preferences.json` when present.
+  - Select from `idea-screens/company-ideas-log.jsonl`, filtered by `user_preferences.json` when present.
   - Use selected company's market to run the correct fetch script.
   - Set `next_action` to `run_research`.
 
@@ -92,7 +92,7 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 - `--identity "<NAME EMAIL>"`: EDGAR identity for US fetch runs.
 - `--isin <ISIN>`: Optional identifier used by non-US fetch scripts that accept it.
 - `--ideas-log <PATH>`: Override queue log path.
-- `--preferences-path <PATH>`: Override preferences path (default `preferences/user_preferences.json`).
+- `--preferences-path <PATH>`: Override preferences path (default `user_preferences.json`).
 - `--ignore-preferences`: Disable preference-based queue filtering and market guardrails.
 - `--overwrite-assumptions`: Pass through to fetch scripts.
 - `--dry-run`: Emit decision without running fetch.

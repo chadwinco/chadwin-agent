@@ -39,7 +39,7 @@ For example:
   - `$fetch-us-investment-ideas`: Generates a list of companies to research and writes them to the `idea-screens` directory
   - `$fetch-us-company-data`: Fetches comprehensive company information from the SEC and reputable third-party websites and writes it to a company folder in `companies`
   - `$run-llm-workflow`: Runs the LLM-driven workflow, which results in a valuation and written report inside the company folder in `companies`
-  - `$manage-user-preferences`: Helper skill to update user preferences. These can also be manually updates at `preferences/user_preferences.json`
+  - `$manage-user-preferences`: Helper skill to update user preferences. These can also be manually updates at `user_preferences.json`
 
 - Support for non-US markets will be available soon.
 
@@ -62,7 +62,7 @@ Primary Skill docs:
 
 ## Repository Layout
 - `idea-screens/`: idea queue and generated idea files
-- `preferences/user_preferences.json`: persistent user preference profile
+- `user_preferences.json`: persistent user preference profile
 - `improvement-log.md`: repo-level process improvement log
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/`: exchange-country roots for company packages
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/`: local evidence inputs

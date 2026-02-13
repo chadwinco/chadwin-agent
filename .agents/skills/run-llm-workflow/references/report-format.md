@@ -10,7 +10,7 @@ Default house style (when report preferences are empty):
 - Spend depth on 3-5 valuation pillars; avoid broad low-impact fact dumps.
 - Do not repeat basic company facts unless they change scenario assumptions or confidence.
 
-If `preferences/user_preferences.json` exists, prioritize `report_preferences.must_include`, then `nice_to_have`, and avoid items listed in `report_preferences.exclude` unless required for analytical integrity.
+If `user_preferences.json` exists, prioritize `report_preferences.must_include`, then `nice_to_have`, and avoid items listed in `report_preferences.exclude` unless required for analytical integrity.
 
 ```markdown
 # {Company Name} ({TICKER}) Investment Snapshot

@@ -90,7 +90,7 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--preferences-path",
-        help="Override preferences path (default: preferences/user_preferences.json).",
+        help="Override preferences path (default: user_preferences.json).",
     )
     parser.add_argument(
         "--ignore-preferences",

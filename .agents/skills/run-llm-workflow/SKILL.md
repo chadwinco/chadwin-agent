@@ -37,7 +37,7 @@ Use `<REPORT_DATE_DIR>` for outputs:
 ## Quick Start
 1. Resolve ticker and as-of date explicitly.
 2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
-3. Load `preferences/user_preferences.json` when present and apply:
+3. Load `user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
 4. Resolve the output directory from repo root:
@@ -114,7 +114,7 @@ Market-expectation anchors (when available):
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs a local file citation.
 - External claims must be cross-checked and traceable.
-- Do not violate explicit user exclusions in `preferences/user_preferences.json` unless the user explicitly asks to override.
+- Do not violate explicit user exclusions in `user_preferences.json` unless the user explicitly asks to override.
 
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.

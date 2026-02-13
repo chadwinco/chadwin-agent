@@ -53,7 +53,7 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Create a temporary JSONL queue with at least:
   - one US entry with `industry` set to `Biotechnology`
   - one US non-biotech entry (for example, `Consumer Electronics`)
-- Ensure `preferences/user_preferences.json` has `excluded_industries` including `biotech`.
+- Ensure `user_preferences.json` has `excluded_industries` including `biotech`.
 - Run `python chadwin-codex/.agents/skills/chadwin-research/scripts/run_research.py --asof <YYYY-MM-DD> --dry-run --ideas-log <TEMP_JSONL_PATH>`.
 - Confirm the selected ticker is the non-biotech candidate.
 

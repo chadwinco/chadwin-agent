@@ -1,7 +1,7 @@
 interface:
   display_name: "Fetch US Investment Ideas"
   short_description: "Generate US ticker ideas with short value-quality theses"
-  default_prompt: "Use $fetch-us-investment-ideas as an LLM-driven workflow: when flexibility is needed, use native web research directly to build structured US ticker ideas JSON; use the local Finviz helper script only as an optional bounded seed source. Apply preferences/user_preferences.json market and sector/industry filters by default, and append new tickers to the shared ideas log."
+  default_prompt: "Use $fetch-us-investment-ideas as an LLM-driven workflow: when flexibility is needed, use native web research directly to build structured US ticker ideas JSON; use the local Finviz helper script only as an optional bounded seed source. Apply user_preferences.json market and sector/industry filters by default, and append new tickers to the shared ideas log."
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"

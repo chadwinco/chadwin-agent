@@ -14,7 +14,7 @@ Use one of two paths per run:
 
 Each completed run appends newly discovered companies to `idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
 
-When present, apply `preferences/user_preferences.json` by default:
+When present, apply `user_preferences.json` by default:
 - US market guardrail (skip/fail if US is excluded)
 - sector/industry include/exclude filtering
 
@@ -93,12 +93,12 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 - `--compact`: emit minified JSON.
 - `--ideas-log`: override central queue log path (defaults to `idea-screens/company-ideas-log.jsonl`).
 - `--base-dir`: override repo root used for queue log resolution.
-- `--preferences-path`: override preferences path (default `preferences/user_preferences.json`).
+- `--preferences-path`: override preferences path (default `user_preferences.json`).
 - `--ignore-preferences`: ignore preference-based market/sector filters.
 
 ## Troubleshooting
 - If Finviz output is empty, loosen thresholds (for example raise `--max-pe` or lower `--min-roic`).
-- If preferences exclude US market, update `preferences/user_preferences.json` or rerun with `--ignore-preferences`.
+- If preferences exclude US market, update `user_preferences.json` or rerun with `--ignore-preferences`.
 - If requests fail intermittently, raise `--request-delay` and retry.
 - If script dependencies are missing, install from `requirements.txt`.
 
