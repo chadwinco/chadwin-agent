@@ -111,6 +111,9 @@ When you find a repeatable problem or process weakness:
 2. Append a concise row to `improvement-log.md`.
 3. Validate with at least one end-to-end ticker run when process logic changes.
 
+Only append rows for actual process improvements that were implemented.
+Do not add no-change introspection rows.
+
 Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions

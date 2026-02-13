@@ -141,4 +141,5 @@ If any condition fails, continue the resolution loop instead of finalizing.
   - identify any misunderstanding, avoidable error, or workflow friction;
   - classify root cause (one-off vs repeatable workflow gap);
   - apply the smallest concrete workflow/reference update in the same turn when the issue is repeatable or workflow-caused.
-- Record the introspection outcome in `docs/improvement-log.md` (including explicit no-change outcomes when no update is needed).
+- Record entries in `improvement-log.md` only when a real process/workflow improvement is implemented.
+- Do not add no-change introspection entries.

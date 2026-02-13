@@ -57,7 +57,7 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
   - `valuation/inputs.yaml`
   - `valuation/outputs.json`
 
-6. Run post-run introspection via `$run-llm-workflow` `references/improvement-loop.md` after every completed run, and apply workflow/reference updates in the same turn when repeatable workflow gaps are found.
+6. Run post-run introspection via `$run-llm-workflow` `references/improvement-loop.md` after every completed run, apply workflow/reference updates in the same turn when repeatable workflow gaps are found, and only append to `improvement-log.md` when an actual improvement is shipped (no no-change entries).
 
 ## Behavior Contract
 

@@ -8,8 +8,8 @@ Review the full run path before closing the task:
 - identify the root cause (one-off operator miss vs workflow/documentation gap);
 - decide whether a workflow/reference update would have prevented the issue.
 
-## 2. Log Learnings (Every Run)
-Append one row to `docs/improvement-log.md`:
+## 2. Log Only Real Improvements
+Append one row to `improvement-log.md` only when introspection results in a concrete, reusable workflow/process improvement:
 
 `| Date | Area | Observation | Action |`
 
@@ -21,7 +21,7 @@ Focus on accuracy and misunderstanding prevention:
 - command/path mistakes caused by ambiguous instructions
 - brittle parsing or formatting assumptions
 
-If no workflow change is needed, still log a concise no-change outcome.
+Do not add no-change rows.
 
 ## 3. Patch the Workflow in the Same Run
 When introspection finds a repeatable or workflow-caused issue, update one of:
@@ -36,4 +36,4 @@ Keep changes concrete and minimal.
 ## 4. Preserve Decision Traceability
 When assumptions change materially versus a prior run, explain why:
 - in the report valuation section
-- in the corresponding `docs/improvement-log.md` row
+- in the corresponding `improvement-log.md` row (when a real improvement entry is created)
