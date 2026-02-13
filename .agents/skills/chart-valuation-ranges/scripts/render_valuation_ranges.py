@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render latest US ticker margin-of-safety ranges into deterministic artifacts."""
+"""Render latest company margin-of-safety ranges into deterministic artifacts."""
 
 from __future__ import annotations
 
@@ -17,15 +17,21 @@ REPORT_DIR_RE = re.compile(r"^(?P<asof>\d{4}-\d{2}-\d{2})(?:-(?P<run>\d{2}))?$")
 
 @dataclass
 class ValuationRecord:
+    country: str
     ticker: str
     asof_date: str
     report_dir: str
+    report_path: str
     bear_mos: float
     base_mos: float
     bull_mos: float
     bear_value_per_share: float | None
     base_value_per_share: float | None
     bull_value_per_share: float | None
+
+    @property
+    def label(self) -> str:
+        return f"{self.country}/{self.ticker}"
 
 
 def repo_scoped_path(path: Path) -> str:
@@ -43,25 +49,29 @@ def repo_scoped_path(path: Path) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Scan companies/US for each ticker's latest report, then render a "
-            "margin-of-safety range chart (bear/base/bull)."
+            "Scan companies/<COUNTRY>/<TICKER> (or a single-country ticker root) "
+            "for each ticker's latest report, then render a margin-of-safety "
+            "range chart (bear/base/bull)."
         )
     )
     parser.add_argument(
         "--companies-root",
-        default="companies/US",
-        help="Path to US companies root (default: companies/US).",
+        default="companies",
+        help=(
+            "Path to companies root (default: companies). Can point to either "
+            "companies or a single-country folder such as companies/US."
+        ),
     )
     parser.add_argument(
         "--output-dir",
-        default=".agents/skills/chart-us-valuation-ranges/assets",
+        default=".agents/skills/chart-valuation-ranges/assets",
         help="Directory for generated files (default: skill assets folder).",
     )
     parser.add_argument(
         "--sort-by",
         choices=("ticker", "base", "spread"),
         default="base",
-        help="Sort rows by ticker, base margin, or spread (default: base).",
+        help="Sort rows by country+ticker, base margin, or spread (default: base).",
     )
     parser.add_argument(
         "--order",
@@ -77,7 +87,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--title",
-        default="US Margin of Safety Ranges (Latest Reports)",
+        default="Margin of Safety Ranges (Latest Reports)",
         help="Chart title.",
     )
     return parser.parse_args()
@@ -136,6 +146,29 @@ def load_outputs_json(report_dir: Path) -> dict | None:
     return None
 
 
+def iter_company_dirs(companies_root: Path) -> list[tuple[str, Path]]:
+    if not companies_root.exists():
+        return []
+
+    children = [child for child in sorted(companies_root.iterdir()) if child.is_dir()]
+    if not children:
+        return []
+
+    # Backward compatibility: allow --companies-root to point directly at
+    # a single-country ticker folder, e.g. companies/US.
+    if any((child / "reports").is_dir() for child in children):
+        country = companies_root.name.upper()
+        return [(country, child) for child in children]
+
+    company_dirs: list[tuple[str, Path]] = []
+    for country_dir in children:
+        country = country_dir.name.upper()
+        for company_dir in sorted(country_dir.iterdir()):
+            if company_dir.is_dir():
+                company_dirs.append((country, company_dir))
+    return company_dirs
+
+
 def collect_records(companies_root: Path) -> tuple[list[ValuationRecord], list[str]]:
     records: list[ValuationRecord] = []
     skipped: list[str] = []
@@ -143,23 +176,26 @@ def collect_records(companies_root: Path) -> tuple[list[ValuationRecord], list[s
     if not companies_root.exists():
         return records, [f"Missing companies root: {companies_root}"]
 
-    for company_dir in sorted(companies_root.iterdir()):
-        if not company_dir.is_dir():
-            continue
+    company_dirs = iter_company_dirs(companies_root)
+    if not company_dirs:
+        return records, [f"No company directories found under: {companies_root}"]
+
+    for country, company_dir in company_dirs:
         ticker = company_dir.name.upper()
+        label = f"{country}/{ticker}"
         reports_dir = company_dir / "reports"
         if not reports_dir.is_dir():
-            skipped.append(f"{ticker}: missing reports directory")
+            skipped.append(f"{label}: missing reports directory")
             continue
 
         report_dir = latest_report_dir(reports_dir)
         if report_dir is None:
-            skipped.append(f"{ticker}: no dated report folders")
+            skipped.append(f"{label}: no dated report folders")
             continue
 
         payload = load_outputs_json(report_dir)
         if payload is None:
-            skipped.append(f"{ticker}: missing or invalid valuation outputs JSON")
+            skipped.append(f"{label}: missing or invalid valuation outputs JSON")
             continue
 
         scenarios = payload.get("scenarios", {})
@@ -168,7 +204,7 @@ def collect_records(companies_root: Path) -> tuple[list[ValuationRecord], list[s
         bull_mos = parse_float(scenarios.get("bull", {}).get("margin_of_safety"))
 
         if bear_mos is None or base_mos is None or bull_mos is None:
-            skipped.append(f"{ticker}: missing one or more scenario margin_of_safety fields")
+            skipped.append(f"{label}: missing one or more scenario margin_of_safety fields")
             continue
 
         bear_value_per_share = parse_float(scenarios.get("bear", {}).get("value_per_share"))
@@ -183,9 +219,11 @@ def collect_records(companies_root: Path) -> tuple[list[ValuationRecord], list[s
 
         records.append(
             ValuationRecord(
+                country=country,
                 ticker=ticker,
                 asof_date=asof,
                 report_dir=report_dir.name,
+                report_path=repo_scoped_path(report_dir),
                 bear_mos=bear_mos,
                 base_mos=base_mos,
                 bull_mos=bull_mos,
@@ -201,7 +239,7 @@ def collect_records(companies_root: Path) -> tuple[list[ValuationRecord], list[s
 def sort_records(records: list[ValuationRecord], sort_by: str, order: str) -> list[ValuationRecord]:
     reverse = order == "desc"
     if sort_by == "ticker":
-        return sorted(records, key=lambda r: r.ticker, reverse=reverse)
+        return sorted(records, key=lambda r: (r.country, r.ticker), reverse=reverse)
     if sort_by == "spread":
         return sorted(records, key=lambda r: r.bull_mos - r.bear_mos, reverse=reverse)
     return sorted(records, key=lambda r: r.base_mos, reverse=reverse)
@@ -247,17 +285,18 @@ def tick_values(min_value: float, max_value: float, count: int = 7) -> list[floa
     return [min_value + i * step for i in range(count)]
 
 
-def build_svg(records: list[ValuationRecord], title: str) -> str:
+def build_svg(records: list[ValuationRecord], title: str, source_root: str) -> str:
     if not records:
         raise ValueError("No records to render.")
 
-    left_margin = 170
+    left_margin = 190
     right_margin = 220
     top_margin = 120
     row_height = 34
     row_gap = 14
     bottom_margin = 90
     width = 1600
+
     chart_height = len(records) * (row_height + row_gap)
     height = top_margin + chart_height + bottom_margin
     chart_left = left_margin
@@ -296,7 +335,7 @@ def build_svg(records: list[ValuationRecord], title: str) -> str:
     )
     parts.append(
         f'<text x="{chart_left}" y="78" font-size="15" font-family="Avenir Next,Segoe UI,Arial,sans-serif" '
-        f'fill="#4b5563">Generated {xml_escape(generated_at)} from latest report per ticker in companies/US</text>'
+        f'fill="#4b5563">Generated {xml_escape(generated_at)} from latest report per ticker in {xml_escape(source_root)}</text>'
     )
 
     legend_y = 100
@@ -342,7 +381,7 @@ def build_svg(records: list[ValuationRecord], title: str) -> str:
         label_y = y + 5
         row_bg = "#ffffff" if idx % 2 == 0 else "#f8fafc"
         parts.append(
-            f'<rect x="{chart_left - 120}" y="{y - row_height / 2}" width="{chart_right - (chart_left - 120)}" '
+            f'<rect x="{chart_left - 140}" y="{y - row_height / 2}" width="{chart_right - (chart_left - 140)}" '
             f'height="{row_height}" fill="{row_bg}" opacity="0.45"/>'
         )
 
@@ -365,8 +404,8 @@ def build_svg(records: list[ValuationRecord], title: str) -> str:
         )
 
         parts.append(
-            f'<text x="{chart_left - 130}" y="{label_y:.2f}" text-anchor="start" '
-            f'font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">{xml_escape(item.ticker)}</text>'
+            f'<text x="{chart_left - 150}" y="{label_y:.2f}" text-anchor="start" '
+            f'font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="600">{xml_escape(item.label)}</text>'
         )
         parts.append(
             f'<text x="{chart_right + 12}" y="{label_y:.2f}" text-anchor="start" '
@@ -411,18 +450,22 @@ def main() -> int:
     if args.limit > 0:
         ordered = ordered[: args.limit]
 
-    svg_path = output_dir / "us-valuation-ranges.svg"
-    json_path = output_dir / "us-valuation-ranges.json"
+    svg_path = output_dir / "valuation-ranges.svg"
+    json_path = output_dir / "valuation-ranges.json"
+    source_root = repo_scoped_path(companies_root)
 
-    svg_path.write_text(build_svg(ordered, args.title))
+    svg_path.write_text(build_svg(ordered, args.title, source_root))
 
     json_rows = []
     for item in ordered:
         json_rows.append(
             {
+                "country": item.country,
                 "ticker": item.ticker,
+                "label": item.label,
                 "asof_date": item.asof_date,
                 "report_dir": item.report_dir,
+                "report_path": item.report_path,
                 "bear_margin_of_safety": item.bear_mos,
                 "base_margin_of_safety": item.base_mos,
                 "bull_margin_of_safety": item.bull_mos,

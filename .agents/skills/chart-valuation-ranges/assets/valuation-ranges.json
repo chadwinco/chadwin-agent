@@ -1,8 +1,11 @@
 [
   {
+    "country": "US",
     "ticker": "NICE",
+    "label": "US/NICE",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12-01",
+    "report_path": "chadwin-codex/companies/US/NICE/reports/2026-02-12-01",
     "bear_margin_of_safety": -0.17232021376858353,
     "base_margin_of_safety": 0.3502869958636432,
     "bull_margin_of_safety": 1.0876122154443966,
@@ -11,9 +14,12 @@
     "bull_value_per_share": 219.11577813304385
   },
   {
+    "country": "US",
     "ticker": "SLDE",
+    "label": "US/SLDE",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12-01",
+    "report_path": "chadwin-codex/companies/US/SLDE/reports/2026-02-12-01",
     "bear_margin_of_safety": -0.6470996221543787,
     "base_margin_of_safety": 0.2666579531826603,
     "bull_margin_of_safety": 0.954682268410574,
@@ -22,9 +28,12 @@
     "bull_value_per_share": 31.88086779777646
   },
   {
+    "country": "US",
     "ticker": "SKYW",
+    "label": "US/SKYW",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/SKYW/reports/2026-02-12",
     "bear_margin_of_safety": -0.4516,
     "base_margin_of_safety": 0.2063,
     "bull_margin_of_safety": 0.8064,
@@ -33,9 +42,12 @@
     "bull_value_per_share": 188.9
   },
   {
+    "country": "US",
     "ticker": "FC",
+    "label": "US/FC",
     "asof_date": "2026-02-07",
     "report_dir": "2026-02-07",
+    "report_path": "chadwin-codex/companies/US/FC/reports/2026-02-07",
     "bear_margin_of_safety": -0.3382898671675222,
     "base_margin_of_safety": 0.19962371156222858,
     "bull_margin_of_safety": 0.9320105338072373,
@@ -44,9 +56,12 @@
     "bull_value_per_share": 37.65488530390305
   },
   {
+    "country": "US",
     "ticker": "ATGE",
+    "label": "US/ATGE",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/ATGE/reports/2026-02-12",
     "bear_margin_of_safety": -0.3279,
     "base_margin_of_safety": 0.1996,
     "bull_margin_of_safety": 0.9016,
@@ -55,9 +70,12 @@
     "bull_value_per_share": 180.97
   },
   {
+    "country": "US",
     "ticker": "ACIW",
+    "label": "US/ACIW",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/ACIW/reports/2026-02-12",
     "bear_margin_of_safety": -0.3129,
     "base_margin_of_safety": 0.1713,
     "bull_margin_of_safety": 0.8635,
@@ -66,9 +84,26 @@
     "bull_value_per_share": 75.16
   },
   {
+    "country": "US",
+    "ticker": "GL",
+    "label": "US/GL",
+    "asof_date": "2026-02-13",
+    "report_dir": "2026-02-13",
+    "report_path": "chadwin-codex/companies/US/GL/reports/2026-02-13",
+    "bear_margin_of_safety": -0.41027321002111716,
+    "base_margin_of_safety": 0.15672858139914592,
+    "bull_margin_of_safety": 0.9046228654915285,
+    "bear_value_per_share": 84.97963043595702,
+    "base_value_per_share": 166.68458857961693,
+    "bull_value_per_share": 274.45615491732923
+  },
+  {
+    "country": "US",
     "ticker": "PAYC",
+    "label": "US/PAYC",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12-02",
+    "report_path": "chadwin-codex/companies/US/PAYC/reports/2026-02-12-02",
     "bear_margin_of_safety": -0.4667,
     "base_margin_of_safety": 0.1549,
     "bull_margin_of_safety": 0.9029,
@@ -77,9 +112,12 @@
     "bull_value_per_share": 224.07
   },
   {
+    "country": "US",
     "ticker": "QLYS",
+    "label": "US/QLYS",
     "asof_date": "2026-02-10",
     "report_dir": "2026-02-10",
+    "report_path": "chadwin-codex/companies/US/QLYS/reports/2026-02-10",
     "bear_margin_of_safety": -0.36791566415924626,
     "base_margin_of_safety": 0.1296038126364527,
     "bull_margin_of_safety": 0.6158622275406871,
@@ -88,9 +126,12 @@
     "bull_value_per_share": 176.371362136066
   },
   {
+    "country": "US",
     "ticker": "LYFT",
+    "label": "US/LYFT",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12-02",
+    "report_path": "chadwin-codex/companies/US/LYFT/reports/2026-02-12-02",
     "bear_margin_of_safety": -0.5318,
     "base_margin_of_safety": 0.1077,
     "bull_margin_of_safety": 0.7672,
@@ -99,9 +140,26 @@
     "bull_value_per_share": 24.72
   },
   {
-    "ticker": "ANF",
+    "country": "US",
+    "ticker": "CROX",
+    "label": "US/CROX",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/CROX/reports/2026-02-12",
+    "bear_margin_of_safety": -0.3800649312170338,
+    "base_margin_of_safety": 0.10437105941133651,
+    "bull_margin_of_safety": 0.5978170838677102,
+    "bear_value_per_share": 61.43556531639195,
+    "base_value_per_share": 109.44317198766343,
+    "bull_value_per_share": 158.34367301129006
+  },
+  {
+    "country": "US",
+    "ticker": "ANF",
+    "label": "US/ANF",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/ANF/reports/2026-02-12",
     "bear_margin_of_safety": -0.4023,
     "base_margin_of_safety": 0.0847,
     "bull_margin_of_safety": 0.6115,
@@ -110,9 +168,26 @@
     "bull_value_per_share": 147.42
   },
   {
+    "country": "US",
+    "ticker": "LNC",
+    "label": "US/LNC",
+    "asof_date": "2026-02-13",
+    "report_dir": "2026-02-13",
+    "report_path": "chadwin-codex/companies/US/LNC/reports/2026-02-13",
+    "bear_margin_of_safety": -0.25954938508571224,
+    "base_margin_of_safety": 0.08446646744016162,
+    "bull_margin_of_safety": 0.5747613942407943,
+    "bear_value_per_share": 30.114126508564084,
+    "base_value_per_share": 44.105251230791374,
+    "bull_value_per_share": 64.0455459037731
+  },
+  {
+    "country": "US",
     "ticker": "BYD",
+    "label": "US/BYD",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/BYD/reports/2026-02-12",
     "bear_margin_of_safety": -0.562693268070575,
     "base_margin_of_safety": 0.053222952089375886,
     "bull_margin_of_safety": 0.6928636968957418,
@@ -121,20 +196,26 @@
     "bull_value_per_share": 139.8136127266193
   },
   {
-    "ticker": "LNC",
-    "asof_date": "2026-02-08",
-    "report_dir": "2026-02-08",
-    "bear_margin_of_safety": -0.26898663716031956,
-    "base_margin_of_safety": 0.046036706024819685,
-    "bull_margin_of_safety": 0.5504881260080374,
-    "bear_value_per_share": 29.467148656067522,
-    "base_value_per_share": 42.16573961986048,
-    "bull_value_per_share": 62.50017635938399
+    "country": "US",
+    "ticker": "TRV",
+    "label": "US/TRV",
+    "asof_date": "2026-02-13",
+    "report_dir": "2026-02-13",
+    "report_path": "chadwin-codex/companies/US/TRV/reports/2026-02-13",
+    "bear_margin_of_safety": -0.380793446105841,
+    "base_margin_of_safety": 0.04125855279041679,
+    "bull_margin_of_safety": 0.6453569492263536,
+    "bear_value_per_share": 184.1706053247397,
+    "base_value_per_share": 309.7015313564537,
+    "bull_value_per_share": 489.3785174083944
   },
   {
+    "country": "US",
     "ticker": "HRMY",
+    "label": "US/HRMY",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/HRMY/reports/2026-02-12",
     "bear_margin_of_safety": -0.3499,
     "base_margin_of_safety": 0.0174,
     "bull_margin_of_safety": 0.5742,
@@ -143,9 +224,12 @@
     "bull_value_per_share": 59.71
   },
   {
+    "country": "US",
     "ticker": "CARG",
+    "label": "US/CARG",
     "asof_date": "2026-02-10",
     "report_dir": "2026-02-10",
+    "report_path": "chadwin-codex/companies/US/CARG/reports/2026-02-10",
     "bear_margin_of_safety": -0.5397074475741437,
     "base_margin_of_safety": 0.009916755841524294,
     "bull_margin_of_safety": 0.4020413454759757,
@@ -154,9 +238,12 @@
     "bull_value_per_share": 39.97219875952007
   },
   {
+    "country": "US",
     "ticker": "CALM",
+    "label": "US/CALM",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/CALM/reports/2026-02-12",
     "bear_margin_of_safety": -0.5095652573228999,
     "base_margin_of_safety": 0.006318253226511361,
     "bull_margin_of_safety": 0.7171734943424808,
@@ -165,9 +252,26 @@
     "bull_value_per_share": 141.71832848808495
   },
   {
+    "country": "US",
+    "ticker": "BRK.B",
+    "label": "US/BRK.B",
+    "asof_date": "2026-02-12",
+    "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/BRK.B/reports/2026-02-12",
+    "bear_margin_of_safety": -0.3479,
+    "base_margin_of_safety": 0.003,
+    "bull_margin_of_safety": 0.2028,
+    "bear_value_per_share": 328.99,
+    "base_value_per_share": 506.03,
+    "bull_value_per_share": 606.84
+  },
+  {
+    "country": "US",
     "ticker": "BHF",
+    "label": "US/BHF",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12-02",
+    "report_path": "chadwin-codex/companies/US/BHF/reports/2026-02-12-02",
     "bear_margin_of_safety": -0.2631,
     "base_margin_of_safety": 0.0012,
     "bull_margin_of_safety": 0.0934,
@@ -176,9 +280,12 @@
     "bull_value_per_share": 70.09
   },
   {
+    "country": "US",
     "ticker": "SM",
+    "label": "US/SM",
     "asof_date": "2026-02-10",
     "report_dir": "2026-02-10",
+    "report_path": "chadwin-codex/companies/US/SM/reports/2026-02-10",
     "bear_margin_of_safety": -0.6192101089974424,
     "base_margin_of_safety": -0.009839909635640187,
     "bull_margin_of_safety": 0.7954309724541972,
@@ -187,9 +294,12 @@
     "bull_value_per_share": 38.13495385492715
   },
   {
+    "country": "US",
     "ticker": "FHI",
+    "label": "US/FHI",
     "asof_date": "2026-02-11",
     "report_dir": "2026-02-11",
+    "report_path": "chadwin-codex/companies/US/FHI/reports/2026-02-11",
     "bear_margin_of_safety": -0.5319958064020447,
     "base_margin_of_safety": -0.01702236215605879,
     "bull_margin_of_safety": 0.1319620500079639,
@@ -198,9 +308,12 @@
     "bull_value_per_share": 61.499498176932676
   },
   {
+    "country": "US",
     "ticker": "FIG",
+    "label": "US/FIG",
     "asof_date": "2026-02-07",
     "report_dir": "2026-02-07",
+    "report_path": "chadwin-codex/companies/US/FIG/reports/2026-02-07",
     "bear_margin_of_safety": -0.6691746230847004,
     "base_margin_of_safety": -0.03780058032685085,
     "bull_margin_of_safety": 0.5655468970982362,
@@ -209,9 +322,12 @@
     "bull_value_per_share": 34.426376267190214
   },
   {
+    "country": "US",
     "ticker": "TTD",
+    "label": "US/TTD",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/TTD/reports/2026-02-12",
     "bear_margin_of_safety": -0.48194028226087904,
     "base_margin_of_safety": -0.07686351400806268,
     "bull_margin_of_safety": 0.42957327347799623,
@@ -220,9 +336,12 @@
     "bull_value_per_share": 38.65566131484502
   },
   {
+    "country": "US",
     "ticker": "ASML",
+    "label": "US/ASML",
     "asof_date": "2026-02-07",
     "report_dir": "2026-02-07",
+    "report_path": "chadwin-codex/companies/US/ASML/reports/2026-02-07",
     "bear_margin_of_safety": -0.6033784279703713,
     "base_margin_of_safety": -0.08083154529385272,
     "bull_margin_of_safety": 0.05897277573374926,
@@ -231,9 +350,12 @@
     "bull_value_per_share": 1496.339121839545
   },
   {
+    "country": "US",
     "ticker": "LPLA",
+    "label": "US/LPLA",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12-01",
+    "report_path": "chadwin-codex/companies/US/LPLA/reports/2026-02-12-01",
     "bear_margin_of_safety": -0.503868792319879,
     "base_margin_of_safety": -0.09462343849153199,
     "bull_margin_of_safety": 0.3380779618919507,
@@ -242,9 +364,12 @@
     "bull_value_per_share": 453.166863353947
   },
   {
+    "country": "US",
     "ticker": "WHD",
+    "label": "US/WHD",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/WHD/reports/2026-02-12",
     "bear_margin_of_safety": -0.5528,
     "base_margin_of_safety": -0.2361,
     "bull_margin_of_safety": 0.1484,
@@ -253,9 +378,12 @@
     "bull_value_per_share": 65.85
   },
   {
+    "country": "US",
     "ticker": "BRC",
+    "label": "US/BRC",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/BRC/reports/2026-02-12",
     "bear_margin_of_safety": -0.551,
     "base_margin_of_safety": -0.2411,
     "bull_margin_of_safety": 0.0911,
@@ -264,9 +392,40 @@
     "bull_value_per_share": 103.23
   },
   {
+    "country": "JAPAN",
+    "ticker": "79740",
+    "label": "JAPAN/79740",
+    "asof_date": "2026-02-08",
+    "report_dir": "2026-02-08",
+    "report_path": "chadwin-codex/companies/Japan/79740/reports/2026-02-08",
+    "bear_margin_of_safety": -0.6054379418639864,
+    "base_margin_of_safety": -0.3218729077809056,
+    "bull_margin_of_safety": 0.16105522218461843,
+    "bear_value_per_share": 3330.4983327260907,
+    "base_value_per_share": 5724.070785421376,
+    "bull_value_per_share": 9800.467130460363
+  },
+  {
+    "country": "JAPAN",
+    "ticker": "99830",
+    "label": "JAPAN/99830",
+    "asof_date": "2026-02-08",
+    "report_dir": "2026-02-08",
+    "report_path": "chadwin-codex/companies/Japan/99830/reports/2026-02-08",
+    "bear_margin_of_safety": -0.7050473784118814,
+    "base_margin_of_safety": -0.3383144961541025,
+    "bull_margin_of_safety": 0.15947664554379726,
+    "bear_value_per_share": 18729.49147084553,
+    "base_value_per_share": 42017.02949421449,
+    "bull_value_per_share": 73626.76699203113
+  },
+  {
+    "country": "US",
     "ticker": "UPWK",
+    "label": "US/UPWK",
     "asof_date": "2026-02-10",
     "report_dir": "2026-02-10",
+    "report_path": "chadwin-codex/companies/US/UPWK/reports/2026-02-10",
     "bear_margin_of_safety": -0.7887511465555019,
     "base_margin_of_safety": -0.350962025441372,
     "bull_margin_of_safety": 0.3869430315929798,
@@ -275,9 +434,12 @@
     "bull_value_per_share": 26.06065956363209
   },
   {
+    "country": "US",
     "ticker": "ALL",
+    "label": "US/ALL",
     "asof_date": "2026-02-10",
     "report_dir": "2026-02-10",
+    "report_path": "chadwin-codex/companies/US/ALL/reports/2026-02-10",
     "bear_margin_of_safety": -0.6517206667837722,
     "base_margin_of_safety": -0.37287003951291386,
     "bull_margin_of_safety": 0.029985261893836768,
@@ -286,9 +448,12 @@
     "bull_value_per_share": 205.93525326305374
   },
   {
+    "country": "US",
     "ticker": "INTC",
+    "label": "US/INTC",
     "asof_date": "2026-02-12",
     "report_dir": "2026-02-12",
+    "report_path": "chadwin-codex/companies/US/INTC/reports/2026-02-12",
     "bear_margin_of_safety": -0.8778246410092763,
     "base_margin_of_safety": -0.4051653572050251,
     "bull_margin_of_safety": 0.1444927798429465,
@@ -297,9 +462,12 @@
     "bull_value_per_share": 53.45925774646403
   },
   {
+    "country": "US",
     "ticker": "CB",
+    "label": "US/CB",
     "asof_date": "2026-02-06",
     "report_dir": "2026-02-06",
+    "report_path": "chadwin-codex/companies/US/CB/reports/2026-02-06",
     "bear_margin_of_safety": -1.8962975649449128,
     "base_margin_of_safety": -0.598082059798813,
     "bull_margin_of_safety": -0.03693825577236159,
