@@ -26,7 +26,7 @@ python3 -m pip install -r requirements.txt
 If you will use US filing fetch workflows (`$research` on US tickers or `$fetch-us-company-data`), set EDGAR identity in `.env`:
 
 ```bash
-EDGAR_IDENTITY="Your Name your.email@example.com"
+EDGAR_IDENTITY="Your Name (your.email@example.com)"
 ```
 
 This is setup/bootstrap only. Day-to-day usage should still be done by asking Codex to run Skills.
