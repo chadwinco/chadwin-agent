@@ -79,9 +79,5 @@ Primary Skill docs:
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`: report and valuation outputs
 - `idea-screens/`: idea queue and generated idea files
 - `preferences/user_preferences.json`: persistent user preference profile
-- `docs/`: supporting docs and improvement log
+- `improvement-log.md`: repo-level process improvement log
 - `.agents/skills/`: Skill definitions, scripts, references, and assets
-
-## References
-- `chadwin-codex/docs/python-setup.md`
-- `chadwin-codex/docs/improvement-log.md`

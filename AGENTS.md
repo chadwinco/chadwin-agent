@@ -53,7 +53,7 @@ If no specific lower-level control is requested, prefer `$research`.
 4. If high-impact issues remain, run another `$run-llm-workflow` pass focused on falsification until the stop rule is satisfied
 5. Validate artifacts and pass quality gate
 6. Remove completed ticker from `idea-screens/company-ideas-log.jsonl`
-7. Record repeatable process improvements in `docs/improvement-log.md`
+7. Record repeatable process improvements in `improvement-log.md`
 
 ## Required Outputs Per Completed Run
 For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
@@ -107,7 +107,7 @@ Before marking done:
 
 ## Improvement Loop (Mandatory for Repeatable Issues)
 When you find a repeatable problem or process weakness:
-1. Append a concise row to `docs/improvement-log.md`.
+1. Append a concise row to `improvement-log.md`.
 2. Update the relevant skill reference under `.agents/skills/.../references/`.
 3. Validate with at least one end-to-end ticker run when process logic changes.
 
