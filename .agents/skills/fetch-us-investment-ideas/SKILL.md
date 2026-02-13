@@ -27,7 +27,7 @@ export FETCH_US_INVESTMENT_IDEAS_CLI="$FETCH_US_INVESTMENT_IDEAS_ROOT/scripts/fe
 ```
 
 ## Quick Start
-1. Follow `references/python-setup.md`.
+1. Ensure the repo one-time Python setup from `README.md` is complete and `.venv` is active.
 2. Choose path:
 - LLM web-research path: gather ideas with native web tools and write output JSON directly.
 - Finviz helper path:
@@ -103,4 +103,3 @@ Downstream consumers should read `ideas[*].ticker` and `ideas[*].thesis`.
 - If script dependencies are missing, install from `requirements.txt`.
 
 ## Related References
-- `references/python-setup.md`
