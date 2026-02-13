@@ -1,0 +1,76 @@
+{
+  "query": "Nasdaq, Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.msn.com/en-us/money/companies/nasdaq-inc-nasdaq-ndaq-q4-2025-earnings-call-transcript/ar-AA1Vk6WH",
+    "https://finance.yahoo.com/quote/NDAQ/earnings-calls/",
+    "https://ir.nasdaq.com/news-and-events/events-and-presentations",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-nasdaq-q3-2025-beats-forecasts-stock-rises-93CH-4299160",
+    "https://seekingalpha.com/article/4831436-nasdaq-inc-ndaq-q3-2025-earnings-call-transcript",
+    "https://www.nasdaq.com/articles/nasdaq-ndaq-q2-2025-earnings-call-transcript",
+    "https://www.insidermonkey.com/blog/nasdaq-inc-nasdaqndaq-q1-2025-earnings-call-transcript-1516510/"
+  ],
+  "selected_transcript": {
+    "path": "chadwin-codex/companies/US/NDAQ/data/filings/earnings-call-2025-04-25-insidermonkey.com.md",
+    "source_url": "https://www.insidermonkey.com/blog/nasdaq-inc-nasdaqndaq-q1-2025-earnings-call-transcript-1516510/",
+    "published_date": "2025-04-25"
+  },
+  "attempts": [
+    {
+      "url": "https://www.msn.com/en-us/money/companies/nasdaq-inc-nasdaq-ndaq-q4-2025-earnings-call-transcript/ar-AA1Vk6WH",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/NDAQ/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://ir.nasdaq.com/news-and-events/events-and-presentations",
+      "status": "fetch_error",
+      "http_status": null,
+      "body_length": 0,
+      "published_date": null,
+      "message": "The read operation timed out"
+    },
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-nasdaq-q3-2025-beats-forecasts-stock-rises-93CH-4299160",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4831436-nasdaq-inc-ndaq-q3-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.nasdaq.com/articles/nasdaq-ndaq-q2-2025-earnings-call-transcript",
+      "status": "body_too_short",
+      "http_status": 200,
+      "body_length": 448,
+      "published_date": null,
+      "message": "Extracted body shorter than 1000 characters."
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/nasdaq-inc-nasdaqndaq-q1-2025-earnings-call-transcript-1516510/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 61088,
+      "published_date": "2025-04-25",
+      "message": null
+    }
+  ]
+}

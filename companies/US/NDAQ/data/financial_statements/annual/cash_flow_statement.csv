@@ -1,0 +1,66 @@
+label,concept,2025-12-31,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
+Profit or Loss,us-gaap_ProfitLoss,1787000000.0,1115000000.0,1057000000.0,1123000000.0,,
+Depreciation and Amortization,us-gaap_DepreciationAndAmortization,632000000.0,613000000.0,323000000.0,258000000.0,278000000.0,202000000.0
+Share-based compensation,us-gaap_ShareBasedCompensation,165000000.0,141000000.0,122000000.0,106000000.0,90000000.0,87000000.0
+Deferred income tax expense (benefit),us-gaap_DeferredIncomeTaxExpenseBenefit,48000000.0,,,,,
+Extinguishment of debt and bridge fees,ndaq_ExtinguishmentOfDebtAndBridgeFees,5000000.0,3000000.0,25000000.0,,,
+Net gain on divestitures,us-gaap_GainLossOnSaleOfBusiness,-86000000.0,,,,,
+Non-cash restructuring charges,us-gaap_RestructuringCostsAndAssetImpairmentCharges,1000000.0,37000000.0,12000000.0,,,14000000.0
+Net (income) loss from unconsolidated investees,us-gaap_IncomeLossFromEquityMethodInvestments,-83000000.0,-16000000.0,7000000.0,,,
+Operating lease asset impairments,us-gaap_OperatingLeaseImpairmentLoss,0.0,0.0,13000000.0,,,
+Adenza purchase accounting adjustment,us-gaap_BusinessCombinationProvisionalInformationInitialAccountingIncompleteAdjustmentConsiderationTransferred,-0.0,32000000.0,,,,
+Other reconciling items included in net income,us-gaap_OtherNoncashIncomeExpense,21000000.0,35000000.0,30000000.0,28000000.0,6000000.0,18000000.0
+"Receivables, net",us-gaap_IncreaseDecreaseInReceivables,91000000.0,-193000000.0,3000000.0,-101000000.0,-6000000.0,-167000000.0
+Other assets,us-gaap_IncreaseDecreaseInOtherOperatingAssets,-96000000.0,-50000000.0,9000000.0,98000000.0,-140000000.0,26000000.0
+Accounts payable and accrued expenses,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,-6000000.0,-60000000.0,149000000.0,19000000.0,-17000000.0,5000000.0
+Section 31 fees payable to SEC,ndaq_IncreaseDecreaseInSection31FeesPayable,-319000000.0,235000000.0,-160000000.0,181000000.0,-162000000.0,92000000.0
+Accrued personnel costs,us-gaap_IncreaseDecreaseInEmployeeRelatedLiabilities,25000000.0,34000000.0,13000000.0,0.0,28000000.0,32000000.0
+Deferred revenue,us-gaap_IncreaseDecreaseInContractWithCustomerLiability,69000000.0,67000000.0,88000000.0,16000000.0,106000000.0,15000000.0
+Other liabilities,us-gaap_IncreaseDecreaseInOtherOperatingLiabilities,1000000.0,13000000.0,-63000000.0,-45000000.0,-278000000.0,-12000000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,2255000000.0,1939000000.0,1696000000.0,1706000000.0,1083000000.0,1252000000.0
+Purchases of securities,us-gaap_PaymentsToAcquireShortTermInvestments,-243000000.0,-206000000.0,-712000000.0,-322000000.0,-316000000.0,-283000000.0
+Proceeds from sales and redemptions of securities,us-gaap_ProceedsFromSaleMaturityAndCollectionOfShorttermInvestments,427000000.0,199000000.0,719000000.0,320000000.0,285000000.0,402000000.0
+"Proceeds from divestitures, net of cash divested",us-gaap_ProceedsFromDivestitureOfBusinessesNetOfCashDivested,140000000.0,,,,,
+Payments to Acquire Businesses,us-gaap_PaymentsToAcquireBusinessesNetOfCashAcquired,-0.0,-0.0,-5766000000.0,-41000000.0,-2430000000.0,-157000000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-266000000.0,-207000000.0,-158000000.0,-152000000.0,-163000000.0,-188000000.0
+"Investments related to default funds and margin deposits, net",ndaq_PaymentsForProceedsFromDefaultFundsAndMarginDeposits,-1080000000.0,-707000000.0,-74000000.0,211000000.0,-132000000.0,
+Other investing activities,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,-78000000.0,-32000000.0,-3000000.0,33000000.0,-87000000.0,-27000000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-1100000000.0,-953000000.0,-5994000000.0,49000000.0,-2653000000.0,-231000000.0
+Proceeds from (Repayments of) Commercial Paper,us-gaap_ProceedsFromRepaymentsOfCommercialPaper,0.0,-291000000.0,-371000000.0,238000000.0,420000000.0,-391000000.0
+Repayments of debt and credit commitment,us-gaap_RepaymentsOfLongTermDebt,-826000000.0,-521000000.0,-260000000.0,-1097000000.0,,
+"Proceeds from issuances of debt, net of issuance costs",us-gaap_ProceedsFromIssuanceOfSeniorLongTermDebt,0.0,0.0,5608000000.0,,,
+Repurchases of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-616000000.0,-145000000.0,-269000000.0,,-475000000.0,-222000000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,-601000000.0,-541000000.0,-441000000.0,-383000000.0,-350000000.0,-320000000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,-69000000.0,,,,,
+Default funds and margin deposits,ndaq_IncreaseDecreaseInDefaultFundContributionsAndMarginDeposits,-884000000.0,-1030000000.0,22000000.0,2440000000.0,,
+Other financing activities,us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,43000000.0,27000000.0,-1000000.0,1000000.0,7000000.0,3000000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-2953000000.0,-2561000000.0,4220000000.0,1036000000.0,1418000000.0,1383000000.0
+Effect of exchange rate changes on cash and cash equivalents and restricted cash and cash equivalents,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,726000000.0,-537000000.0,202000000.0,-1293000000.0,-331000000.0,16000000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,-1072000000.0,-2112000000.0,124000000.0,1498000000.0,-483000000.0,2420000000.0
+Payment of debt extinguishment cost and bridge fees,us-gaap_PaymentsOfDebtExtinguishmentCosts,,,-25000000.0,,,
+Proceeds from divestiture of businesses,us-gaap_ProceedsFromDivestitureOfBusinessesNetOfCashDivested,,,,,,0.0
+"Proceeds from divestiture of business, net of cash divested",us-gaap_ProceedsFromDivestitureOfBusinessesNetOfCashDivested,,,0.0,0.0,,
+Proceeds from Issuance of Common Stock,us-gaap_ProceedsFromIssuanceOfCommonStock,,,29000000.0,23000000.0,26000000.0,50000000.0
+Net Income,us-gaap_NetIncomeLoss,,,,,1187000000.0,933000000.0
+Net gain on divestiture of businesses,us-gaap_GainLossOnSaleOfBusiness,,,,,-84000000.0,-0.0
+Extinguishment of debt,us-gaap_GainsLossesOnExtinguishmentOfDebt,,,,16000000.0,33000000.0,36000000.0
+Net income from unconsolidated investees,us-gaap_IncomeLossFromEquityMethodInvestments,,,,-31000000.0,-52000000.0,-70000000.0
+Proceeds from sale of investment securities,us-gaap_ProceedsFromSaleAndMaturityOfTradingSecuritiesHeldforinvestment,,,,0.0,0.0,22000000.0
+Gain on sale of investment security,us-gaap_GainOnSaleOfInvestments,,,,,,-0.0
+"Proceeds from divestiture of businesses, net of cash divested",us-gaap_ProceedsFromDivestitureOfBusinessesNetOfCashDivested,,,,,190000000.0,
+Repayments of borrowings under our credit commitment and debt obligations,us-gaap_RepaymentsOfLongTermDebt,,,,,-804000000.0,-1468000000.0
+Reversal of certain Swedish tax benefits,us-gaap_IncomeTaxCreditsAndAdjustments,,,,,,0.0
+"Proceeds from issuances of debt, net of issuance costs and utilization of credit commitment",us-gaap_ProceedsFromIssuanceOfSeniorLongTermDebt,,,,541000000.0,826000000.0,
+Repurchase of Common Stock And ASR Agreement,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,-308000000.0,,
+Payment of debt extinguishment cost,us-gaap_PaymentsOfDebtExtinguishmentCosts,,,,-16000000.0,-33000000.0,-36000000.0
+Change in default fund contributions and margin deposits,ndaq_IncreaseDecreaseInDefaultFundContributionsAndMarginDeposits,,,,,2330000000.0,
+"Proceeds from issuances of long-term debt, net of issuance costs and utilization of credit commitment",us-gaap_ProceedsFromIssuanceOfSeniorLongTermDebt,,,,,,3807000000.0
+Payments related to employee shares withheld for taxes,ndaq_PaymentsRelatedToEmployeeSharesWithheldForTaxes,,-60000000.0,-72000000.0,-78000000.0,-61000000.0,-40000000.0
+Net gain on divestiture of business,us-gaap_GainLossOnSaleOfBusiness,,,-0.0,-0.0,,
+Interest paid,us-gaap_InterestPaidNet,354000000.0,405000000.0,177000000.0,116000000.0,,
+Income Tax Expense,us-gaap_IncomeTaxesPaidNet,373000000.0,358000000.0,254000000.0,274000000.0,501000000.0,290000000.0
+Deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,-67000000.0,68000000.0,38000000.0,94000000.0,41000000.0
+ASR agreement,ndaq_PaymentsForRepurchaseOfCommonStockAcceleratedShareRepurchase,,-0.0,-0.0,,,
+,,,,,,,
+Interest,us-gaap_InterestPaidNet,,,,,,97000000.0
+Cash paid for: Interest,us-gaap_InterestPaidNet,,,,,118000000.0,

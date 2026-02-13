@@ -1,0 +1,40 @@
+asof_date: '2026-02-13'
+currency: USD
+price: 79.65
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: '2025-12-31'
+  revenue: 8262000000.0
+  net_debt: 8400000000.0
+  diluted_shares: 569894024.0
+scenarios:
+  base:
+    revenue_growth_stage1: 0.075
+    fcf_margin_stage1: 0.25
+    discount_rate: 0.082
+    terminal_growth: 0.025
+    fcf_margin_terminal: 0.22
+    stage1_years: 11
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.09
+    fcf_margin_stage1: 0.26
+    discount_rate: 0.08
+    terminal_growth: 0.027
+    fcf_margin_terminal: 0.235
+    stage1_years: 12
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: 0.065
+    fcf_margin_stage1: 0.238
+    discount_rate: 0.089
+    terminal_growth: 0.02
+    fcf_margin_terminal: 0.208
+    stage1_years: 10
+    fade_years: 5
+notes: Assumptions anchored to 2025 annual filing economics (revenue growth, operating
+  leverage, cash conversion and debt profile), with analyst files used as expectation
+  cross-checks. Base case intentionally discounts the analyst average target because
+  leverage and integration/cycle sensitivity create downside convexity if market-services
+  or listing activity cools.
