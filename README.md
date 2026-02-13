@@ -23,7 +23,7 @@ source .venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
 
-If you will use US filing fetch workflows (`$research` on US tickers or `$fetch-us-company-data`), set EDGAR identity in `.env`:
+If you will use US filing fetch workflows (`$chadwin-research` on US tickers or `$fetch-us-company-data`), set EDGAR identity in `.env`:
 
 ```bash
 EDGAR_IDENTITY="Your Name (your.email@example.com)"
@@ -34,7 +34,7 @@ This is setup/bootstrap only. Day-to-day usage should still be done by asking Co
 ## How To Use It As A Human
 Use one of these Skill-level requests in Codex:
 
-- Default entrypoint: `$research`
+- Default entrypoint: `$chadwin-research`
 - Advanced manual control: `$fetch-us-investment-ideas`
 - Advanced manual control: `$fetch-us-company-data`
 - Advanced manual control: `$run-llm-workflow`
@@ -46,8 +46,8 @@ Use one of these Skill-level requests in Codex:
 Most skills now read `preferences/user_preferences.json` by default (market guardrails plus sector/industry and report-style preferences where applicable).
 
 Example requests you can give Codex:
-- `Run $research for AAPL as-of 2026-02-11.`
-- `Run $fetch-us-investment-ideas, then use $research with no ticker.`
+- `Run $chadwin-research for AAPL as-of 2026-02-11.`
+- `Run $fetch-us-investment-ideas, then use $chadwin-research with no ticker.`
 - `Run $run-llm-workflow for HRMY as-of 2026-02-12 and focus on falsifying the key unresolved issues from the latest same-date baseline report package.`
 - `Run $manage-user-preferences and ask me questions to build my profile.`
 
@@ -67,7 +67,7 @@ Skills are the authoritative workflow definitions and use scripts as bounded hel
 Any shell command execution is agent-facing and should happen inside a Skill workflow.
 
 Primary Skill docs:
-- `chadwin-codex/.agents/skills/research/SKILL.md`
+- `chadwin-codex/.agents/skills/chadwin-research/SKILL.md`
 - `chadwin-codex/.agents/skills/fetch-us-investment-ideas/SKILL.md`
 - `chadwin-codex/.agents/skills/fetch-us-company-data/SKILL.md`
 - `chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`

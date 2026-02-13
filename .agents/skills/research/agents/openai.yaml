@@ -1,7 +1,0 @@
-interface:
-  display_name: "Research"
-  short_description: "Orchestrate fetch + progressive report research runs"
-  default_prompt: "Use $research to select a company (respecting preferences/user_preferences.json by default), fetch the right market data, run $run-llm-workflow, and keep iterating until the report's Research Stop Gate indicates high confidence with diminishing returns from further work. Start each run by identifying the key valuation levers early, then deepen research on the highest-impact unresolved levers first. Ensure report output is narrative-first and pillar-based (claim -> evidence -> assumption mapping), not checklist-style snippets. Use `run_research.py --post-report-check` to route follow-up passes from the report's Research Stop Gate fields."
-  icon_small: "./assets/chadwin-icon.svg"
-  icon_large: "./assets/chadwin-icon.png"
-  brand_color: "#F43C00"

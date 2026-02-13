@@ -45,7 +45,7 @@ Drafting assets:
 - Confirm all evidence used is dated on or before as-of date.
 - Check recent local 8-K files for announced name or ticker changes; keep package paths on current ticker unless already effective, and disclose pending changes.
 - If ticker is not provided, pick from queue:
-  - `python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-llm-workflow`
+  - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow`
 - Load `preferences/user_preferences.json` when present and apply strategy/report preferences.
 - If local data is missing, stop and run the market fetch skill first.
 
@@ -135,7 +135,7 @@ If any condition fails, continue the resolution loop instead of finalizing.
 
 ## Step 8: Queue and Mandatory Post-Run Introspection
 - Remove ticker from queue only after Step 7 passes:
-  - `python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>`
+  - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>`
 - Run post-run introspection after every completed run using `references/improvement-loop.md`.
 - For each run, inspect the full execution path (including failed commands/retries and ambiguity points), then:
   - identify any misunderstanding, avoidable error, or workflow friction;

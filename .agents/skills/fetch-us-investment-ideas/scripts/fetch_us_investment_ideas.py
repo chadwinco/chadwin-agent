@@ -15,7 +15,7 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 
-QUEUE_SCRIPTS = Path(__file__).resolve().parents[2] / "research" / "scripts"
+QUEUE_SCRIPTS = Path(__file__).resolve().parents[2] / "chadwin-research" / "scripts"
 if str(QUEUE_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(QUEUE_SCRIPTS))
 

@@ -70,11 +70,11 @@ echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 6. After report completion and goal-gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
-Use the queue CLI owned by the `$research` skill from repo root:
+Use the queue CLI owned by the `$chadwin-research` skill from repo root:
 
 ```bash
-python3 .agents/skills/research/scripts/company_idea_queue.py pick --task run-llm-workflow
-python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>
 ```
 
 - If ticker is omitted, `pick` is the default selection source.

@@ -42,7 +42,7 @@ python3 "$FETCH_US_INVESTMENT_IDEAS_CLI" \
 4. Append new ideas to queue log if not already appended by script:
 
 ```bash
-python3 .agents/skills/research/scripts/company_idea_queue.py append-json \
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py append-json \
   --ideas-json idea-screens/$(date +%F)/us-investment-ideas.json \
   --source fetch-us-investment-ideas
 ```

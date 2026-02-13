@@ -20,9 +20,9 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 7. Do not add deterministic wrappers for tasks the LLM can already do directly (for example generic web search/browsing, routine file reads/writes, or simple routing decisions).
 
 ## Skill Selection Protocol
-- Treat `$research` as the default top-level skill for semi-autonomous runs.
+- Treat `$chadwin-research` as the default top-level skill for semi-autonomous runs.
 - If a user names a skill (for example, `$run-llm-workflow`) or the request clearly matches a skill's purpose, use that skill.
-- Direct use of non-`$research` skills means the user is intentionally taking tighter control of the workflow; execute exactly at that level.
+- Direct use of non-`$chadwin-research` skills means the user is intentionally taking tighter control of the workflow; execute exactly at that level.
 - Read the target `SKILL.md` first, then load only the references needed for the task.
 - Resolve relative paths in skill docs from that skill's directory first.
 - Prefer skill-provided scripts/assets/templates over re-creating equivalents.
@@ -32,7 +32,7 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 ## Canonical Entry Modes
 Use one of these modes explicitly:
 
-1. Top-level (default): `$research`
+1. Top-level (default): `$chadwin-research`
    - This is the semi-autonomous orchestrator.
    - It wraps market selection, fetch, and research steps by calling other skills as needed.
 2. Manual control (advanced): direct skill invocation
@@ -42,9 +42,9 @@ Use one of these modes explicitly:
    - `$manage-user-preferences`
    - Choosing these directly indicates the user wants finer-grained process control.
 
-If no specific lower-level control is requested, prefer `$research`.
+If no specific lower-level control is requested, prefer `$chadwin-research`.
 
-## Canonical Manual Order (When Not Using `$research`)
+## Canonical Manual Order (When Not Using `$chadwin-research`)
 1. (Optional) Seed ideas: `$fetch-us-investment-ideas`
 2. Fetch company data by market:
    - `$fetch-us-company-data` for US tickers

@@ -1,5 +1,5 @@
 ---
-name: research
+name: chadwin-research
 description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it routes follow-up runs using the report's Research Stop Gate confidence criteria.
 ---
 
@@ -19,7 +19,7 @@ When present, `preferences/user_preferences.json` is used by default to filter q
 1. Run the router script from repo root:
 
 ```bash
-python3 .agents/skills/research/scripts/run_research.py [--ticker <TICKER>] --asof <YYYY-MM-DD>
+python3 .agents/skills/chadwin-research/scripts/run_research.py [--ticker <TICKER>] --asof <YYYY-MM-DD>
 ```
 
 2. Read JSON output fields:
@@ -36,7 +36,7 @@ python3 .agents/skills/research/scripts/run_research.py [--ticker <TICKER>] --as
 4. Follow-up routing (same skill, deeper focus):
 
 ```bash
-python3 .agents/skills/research/scripts/run_research.py --ticker <RESOLVED_TICKER> --asof <YYYY-MM-DD> --post-report-check
+python3 .agents/skills/chadwin-research/scripts/run_research.py --ticker <RESOLVED_TICKER> --asof <YYYY-MM-DD> --post-report-check
 ```
 
 - If `next_action` is `run_research`, run `$run-llm-workflow` again using:
@@ -49,7 +49,7 @@ python3 .agents/skills/research/scripts/run_research.py --ticker <RESOLVED_TICKE
 5. When research is complete, remove ticker from queue:
 
 ```bash
-python3 .agents/skills/research/scripts/company_idea_queue.py remove --ticker <RESOLVED_TICKER>
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <RESOLVED_TICKER>
 ```
 
 - Remove only after required output files exist in the final report package:

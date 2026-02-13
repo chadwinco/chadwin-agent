@@ -1,6 +1,6 @@
 # Research Workflow Validation Scenarios
 
-Manual validation checks for the end-to-end `$research` workflow and its delegated skills.
+Manual validation checks for the end-to-end `$chadwin-research` workflow and its delegated skills.
 
 Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo root unless noted.
 
@@ -47,20 +47,20 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 - Confirm `idea-screens/company-ideas-log.jsonl` exists and includes appended entries.
 - Run `python chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --asof <YYYY-MM-DD>` with no `--ticker`.
 - Confirm it selects the next US ticker from the queue.
-- After completing `$run-llm-workflow`, run `python chadwin-codex/.agents/skills/research/scripts/company_idea_queue.py remove --ticker <TICKER>` and confirm the ticker is removed from `idea-screens/company-ideas-log.jsonl`.
+- After completing `$run-llm-workflow`, run `python chadwin-codex/.agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>` and confirm the ticker is removed from `idea-screens/company-ideas-log.jsonl`.
 
 ## 9. Preference synonym filtering
 - Create a temporary JSONL queue with at least:
   - one US entry with `industry` set to `Biotechnology`
   - one US non-biotech entry (for example, `Consumer Electronics`)
 - Ensure `preferences/user_preferences.json` has `excluded_industries` including `biotech`.
-- Run `python chadwin-codex/.agents/skills/research/scripts/run_research.py --asof <YYYY-MM-DD> --dry-run --ideas-log <TEMP_JSONL_PATH>`.
+- Run `python chadwin-codex/.agents/skills/chadwin-research/scripts/run_research.py --asof <YYYY-MM-DD> --dry-run --ideas-log <TEMP_JSONL_PATH>`.
 - Confirm the selected ticker is the non-biotech candidate.
 
 ## 10. Post-report follow-up routing (confidence gate)
 - Run `$run-llm-workflow` for a ticker/date with a completed `valuation/outputs.json`.
 - Run:
-  - `python chadwin-codex/.agents/skills/research/scripts/run_research.py --ticker <TICKER> --asof <YYYY-MM-DD> --post-report-check`
+  - `python chadwin-codex/.agents/skills/chadwin-research/scripts/run_research.py --ticker <TICKER> --asof <YYYY-MM-DD> --post-report-check`
 - Confirm:
   - `baseline_report_dir` is populated.
   - `research_stop_gate_found` reflects whether report contains `## Research Stop Gate`.

@@ -19,7 +19,7 @@ def _default_base_dir() -> Path:
 
 
 BASE_DIR = _default_base_dir()
-QUEUE_SCRIPTS = Path(__file__).resolve().parents[2] / "research" / "scripts"
+QUEUE_SCRIPTS = Path(__file__).resolve().parents[2] / "chadwin-research" / "scripts"
 
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
