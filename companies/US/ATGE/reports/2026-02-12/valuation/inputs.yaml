@@ -34,11 +34,11 @@ scenarios:
     stage1_years: 7
     fade_years: 4
 sources:
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/company_profile.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/financial_statements/annual/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/financial_statements/annual/balance_sheet.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/financial_statements/annual/cash_flow_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/financial_statements/quarterly/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/filings/10-Q-2026-01-28-0001104659-26-007415.md
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/filings/10-K-2025-08-07-0001558370-25-010780.md
-  - /Users/chad/source/chadwin-codex/companies/US/ATGE/data/filings/8-K-2026-02-06-0001104659-26-011611.md
+  - chadwin-codex/companies/US/ATGE/data/company_profile.csv
+  - chadwin-codex/companies/US/ATGE/data/financial_statements/annual/income_statement.csv
+  - chadwin-codex/companies/US/ATGE/data/financial_statements/annual/balance_sheet.csv
+  - chadwin-codex/companies/US/ATGE/data/financial_statements/annual/cash_flow_statement.csv
+  - chadwin-codex/companies/US/ATGE/data/financial_statements/quarterly/income_statement.csv
+  - chadwin-codex/companies/US/ATGE/data/filings/10-Q-2026-01-28-0001104659-26-007415.md
+  - chadwin-codex/companies/US/ATGE/data/filings/10-K-2025-08-07-0001558370-25-010780.md
+  - chadwin-codex/companies/US/ATGE/data/filings/8-K-2026-02-06-0001104659-26-011611.md

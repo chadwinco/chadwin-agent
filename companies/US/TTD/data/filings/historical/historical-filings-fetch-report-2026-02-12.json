@@ -9,7 +9,7 @@
   "limit_per_form": 6,
   "before": "2026-02-12",
   "after": null,
-  "output_dir": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical",
+  "output_dir": "chadwin-codex/companies/US/TTD/data/filings/historical",
   "identity_source": "env",
   "counts": {
     "10-K": 6,
@@ -22,126 +22,126 @@
       "ticker": "TTD",
       "form": "10-K",
       "filed_date": "2025-02-21",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2025-02-21-0001671933-25-000029.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2025-02-21-0001671933-25-000029.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-K",
       "filed_date": "2024-02-15",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2024-02-15-0001671933-24-000014.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2024-02-15-0001671933-24-000014.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-K",
       "filed_date": "2023-02-15",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2023-02-15-0001671933-23-000007.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2023-02-15-0001671933-23-000007.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-K",
       "filed_date": "2022-02-16",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2022-02-16-0001564590-22-005385.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2022-02-16-0001564590-22-005385.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-K",
       "filed_date": "2021-02-19",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2021-02-19-0001564590-21-006726.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2021-02-19-0001564590-21-006726.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-K",
       "filed_date": "2020-02-28",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2020-02-28-0001564590-20-007498.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2020-02-28-0001564590-20-007498.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-Q",
       "filed_date": "2025-11-06",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2025-11-06-0001671933-25-000144.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2025-11-06-0001671933-25-000144.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-Q",
       "filed_date": "2025-08-07",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2025-08-07-0001671933-25-000125.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2025-08-07-0001671933-25-000125.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-Q",
       "filed_date": "2025-05-08",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2025-05-08-0001671933-25-000062.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2025-05-08-0001671933-25-000062.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-Q",
       "filed_date": "2024-11-07",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2024-11-07-0001671933-24-000122.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2024-11-07-0001671933-24-000122.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-Q",
       "filed_date": "2024-08-08",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2024-08-08-0001671933-24-000090.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2024-08-08-0001671933-24-000090.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "10-Q",
       "filed_date": "2024-05-10",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2024-05-10-0001671933-24-000059.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/10-Q-2024-05-10-0001671933-24-000059.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "8-K",
       "filed_date": "2026-01-26",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2026-01-26-0001193125-26-021804.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2026-01-26-0001193125-26-021804.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "8-K",
       "filed_date": "2025-12-15",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-12-15-0001671933-25-000148.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-12-15-0001671933-25-000148.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "8-K",
       "filed_date": "2025-11-06",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-11-06-0001671933-25-000143.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-11-06-0001671933-25-000143.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "8-K",
       "filed_date": "2025-09-17",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-09-17-0001671933-25-000132.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-09-17-0001671933-25-000132.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "8-K",
       "filed_date": "2025-08-07",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-08-07-0001671933-25-000123.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-08-07-0001671933-25-000123.md",
       "status": "written"
     },
     {
       "ticker": "TTD",
       "form": "8-K",
       "filed_date": "2025-08-07",
-      "path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-08-07-0001671933-25-000122.md",
+      "path": "chadwin-codex/companies/US/TTD/data/filings/historical/8-K-2025-08-07-0001671933-25-000122.md",
       "status": "written"
     }
   ]

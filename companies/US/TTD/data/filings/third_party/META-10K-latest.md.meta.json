@@ -5,6 +5,6 @@
   "accession": "0001628280-26-003942",
   "identity_source": "env",
   "include_attachments": false,
-  "output_path": "/Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/third_party/META-10K-latest.md",
+  "output_path": "chadwin-codex/companies/US/TTD/data/filings/third_party/META-10K-latest.md",
   "generated_at": "2026-02-12T12:19:47Z"
 }

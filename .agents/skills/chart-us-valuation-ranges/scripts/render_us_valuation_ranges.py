@@ -28,6 +28,18 @@ class ValuationRecord:
     bull_value_per_share: float | None
 
 
+def repo_scoped_path(path: Path) -> str:
+    resolved = path.resolve()
+    for parent in resolved.parents:
+        if parent.name == "chadwin-codex":
+            relative = resolved.relative_to(parent)
+            relative_text = relative.as_posix()
+            if not relative_text or relative_text == ".":
+                return "chadwin-codex"
+            return f"chadwin-codex/{relative_text}"
+    return str(path)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -422,8 +434,8 @@ def main() -> int:
     json_path.write_text(json.dumps(json_rows, indent=2) + "\n")
 
     print(f"[OK] Rows rendered: {len(ordered)}")
-    print(f"[OK] SVG range chart: {svg_path}")
-    print(f"[OK] JSON data: {json_path}")
+    print(f"[OK] SVG range chart: {repo_scoped_path(svg_path)}")
+    print(f"[OK] JSON data: {repo_scoped_path(json_path)}")
 
     if skipped:
         print("[WARN] Skipped companies:")

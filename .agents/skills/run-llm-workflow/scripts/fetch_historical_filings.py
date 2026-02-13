@@ -22,6 +22,21 @@ def _default_base_dir() -> Path:
     return Path.cwd()
 
 
+def _repo_scoped_path(path: Path, base_dir: Path) -> str:
+    base = base_dir.resolve()
+    candidate = path if path.is_absolute() else (base / path)
+    resolved_candidate = candidate.resolve()
+    try:
+        relative = resolved_candidate.relative_to(base)
+    except ValueError:
+        return str(candidate)
+
+    relative_text = relative.as_posix()
+    if not relative_text or relative_text == ".":
+        return base.name
+    return f"{base.name}/{relative_text}"
+
+
 def _parse_iso_date(value: str | None) -> date | None:
     if not value:
         return None
@@ -313,7 +328,7 @@ def main() -> int:
                     "ticker": ticker,
                     "form": form,
                     "filed_date": filed_date.isoformat() if filed_date else None,
-                    "path": str(target),
+                    "path": _repo_scoped_path(target, base_dir=base_dir),
                     "status": write_status,
                 }
             )
@@ -329,7 +344,7 @@ def main() -> int:
         "limit_per_form": args.limit,
         "before": args.before.isoformat() if args.before else None,
         "after": args.after.isoformat() if args.after else None,
-        "output_dir": str(output_dir),
+        "output_dir": _repo_scoped_path(output_dir, base_dir=base_dir),
         "identity_source": identity_source,
         "counts": per_form_counts,
         "errors": errors,
@@ -337,7 +352,7 @@ def main() -> int:
     }
     report_path = output_dir / f"historical-filings-fetch-report-{date.today().isoformat()}.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    print(f"Report written: {report_path}")
+    print(f"Report written: {_repo_scoped_path(report_path, base_dir=base_dir)}")
 
     if not entries and errors:
         return 1

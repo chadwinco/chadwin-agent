@@ -34,10 +34,10 @@ scenarios:
     stage1_years: 6
     fade_years: 4
 sources:
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/data/company_profile.csv
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/data/financial_statements/quarterly/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/data/filings/10-Q-2025-11-04-0001104659-25-105962.md
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/data/filings/10-K-2025-02-25-0001558370-25-001441.md
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/data/filings/historical/10-Q-2024-10-29-0001558370-24-013803.md
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/data/filings/historical/10-K-2024-02-22-0001558370-24-001466.md
-  - /Users/chad/source/chadwin-codex/companies/US/HRMY/reports/2026-02-12/third-party-sources.md
+  - chadwin-codex/companies/US/HRMY/data/company_profile.csv
+  - chadwin-codex/companies/US/HRMY/data/financial_statements/quarterly/income_statement.csv
+  - chadwin-codex/companies/US/HRMY/data/filings/10-Q-2025-11-04-0001104659-25-105962.md
+  - chadwin-codex/companies/US/HRMY/data/filings/10-K-2025-02-25-0001558370-25-001441.md
+  - chadwin-codex/companies/US/HRMY/data/filings/historical/10-Q-2024-10-29-0001558370-24-013803.md
+  - chadwin-codex/companies/US/HRMY/data/filings/historical/10-K-2024-02-22-0001558370-24-001466.md
+  - chadwin-codex/companies/US/HRMY/reports/2026-02-12/third-party-sources.md

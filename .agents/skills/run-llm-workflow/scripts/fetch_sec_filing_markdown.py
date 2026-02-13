@@ -23,6 +23,21 @@ def _default_base_dir() -> Path:
     return Path.cwd()
 
 
+def _repo_scoped_path(path: Path, base_dir: Path) -> str:
+    base = base_dir.resolve()
+    candidate = path if path.is_absolute() else (base / path)
+    resolved_candidate = candidate.resolve()
+    try:
+        relative = resolved_candidate.relative_to(base)
+    except ValueError:
+        return str(candidate)
+
+    relative_text = relative.as_posix()
+    if not relative_text or relative_text == ".":
+        return base.name
+    return f"{base.name}/{relative_text}"
+
+
 def _parse_iso_date(value: str | None) -> date | None:
     if not value:
         return None
@@ -336,14 +351,14 @@ def main() -> int:
         "accession": str(accession) if accession else None,
         "identity_source": identity_source,
         "include_attachments": args.include_attachments,
-        "output_path": str(target),
+        "output_path": _repo_scoped_path(target, base_dir=base_dir),
         "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
     }
     meta_path = target.with_suffix(target.suffix + ".meta.json")
     meta_path.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 
-    print(f"Wrote filing markdown: {target}")
-    print(f"Wrote metadata: {meta_path}")
+    print(f"Wrote filing markdown: {_repo_scoped_path(target, base_dir=base_dir)}")
+    print(f"Wrote metadata: {_repo_scoped_path(meta_path, base_dir=base_dir)}")
     return 0
 
 

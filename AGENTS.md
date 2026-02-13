@@ -114,7 +114,7 @@ When you find a repeatable problem or process weakness:
 Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
-- Work from repo root: `/Users/chad/source/chadwin-codex`
+- Work from repo root: `chadwin-codex`
 - Store company packages by exchange country (for example `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
 - For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
 - Honor `preferences/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.

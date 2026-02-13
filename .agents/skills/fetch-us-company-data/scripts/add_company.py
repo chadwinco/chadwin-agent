@@ -42,6 +42,21 @@ from company_idea_queue_core import (  # noqa: E402
 COUNTRY_DIR = "US"
 
 
+def _repo_scoped_path(path: Path, base_dir: Path) -> str:
+    base = base_dir.resolve()
+    candidate = path if path.is_absolute() else (base / path)
+    resolved_candidate = candidate.resolve()
+    try:
+        relative = resolved_candidate.relative_to(base)
+    except ValueError:
+        return str(candidate)
+
+    relative_text = relative.as_posix()
+    if not relative_text or relative_text == ".":
+        return base.name
+    return f"{base.name}/{relative_text}"
+
+
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
     company_dir = base_dir / "companies" / COUNTRY_DIR / ticker
     (company_dir / "data").mkdir(parents=True, exist_ok=True)
@@ -260,6 +275,17 @@ def _load_analyst_estimates(data_dir: Path):
     return None
 
 
+def _transcript_report_payload(report_payload: dict, base_dir: Path) -> dict:
+    selected = report_payload.get("selected_transcript")
+    if not isinstance(selected, dict):
+        return report_payload
+
+    raw_path = selected.get("path")
+    if isinstance(raw_path, str) and raw_path.strip():
+        selected["path"] = _repo_scoped_path(Path(raw_path), base_dir=base_dir)
+    return report_payload
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Create or refresh a company data package and bootstrap valuation assumptions"
@@ -354,7 +380,10 @@ def main() -> None:
             saved = ", ".join(str(path.name) for path in forecast.generated_paths)
             print(f"Saved analyst forecast files: {saved}")
         else:
-            print(f"Saved analyst forecasts to {forecast.path}")
+            print(
+                "Saved analyst forecasts to "
+                f"{_repo_scoped_path(forecast.path, base_dir=base_dir)}"
+            )
     else:
         print("No analyst forecast data found.")
 
@@ -386,20 +415,14 @@ def main() -> None:
         min_body_chars=args.transcript_min_body_chars,
     )
     report_path = _transcript_report_path(data_dir, args.asof)
-    report_path.write_text(json.dumps(report.to_dict(), indent=2))
+    report_payload = _transcript_report_payload(report.to_dict(), base_dir=base_dir)
+    report_path.write_text(json.dumps(report_payload, indent=2))
     transcript = report.transcript
-    try:
-        report_rel = report_path.relative_to(base_dir)
-    except ValueError:
-        report_rel = report_path
-    print(f"Wrote transcript fetch report to {report_rel}")
+    print(f"Wrote transcript fetch report to {_repo_scoped_path(report_path, base_dir=base_dir)}")
 
     if transcript:
-        try:
-            transcript_rel = transcript.path.relative_to(base_dir)
-        except ValueError:
-            transcript_rel = transcript.path
-        print(f"Saved transcript to {transcript_rel} ({transcript.source_url})")
+        transcript_path = _repo_scoped_path(transcript.path, base_dir=base_dir)
+        print(f"Saved transcript to {transcript_path} ({transcript.source_url})")
     else:
         failed = [attempt.status for attempt in report.attempts if attempt.status != "success"]
         if failed:

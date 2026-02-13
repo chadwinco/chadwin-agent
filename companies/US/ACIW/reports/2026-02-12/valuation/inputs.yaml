@@ -34,10 +34,10 @@ scenarios:
     stage1_years: 8
     fade_years: 4
 sources:
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/company_profile.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/financial_statements/annual/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/financial_statements/annual/balance_sheet.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/financial_statements/annual/cash_flow_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/financial_statements/quarterly/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/filings/10-Q-2025-11-06-0000935036-25-000031.md
-  - /Users/chad/source/chadwin-codex/companies/US/ACIW/data/filings/10-K-2025-02-27-0000935036-25-000006.md
+  - chadwin-codex/companies/US/ACIW/data/company_profile.csv
+  - chadwin-codex/companies/US/ACIW/data/financial_statements/annual/income_statement.csv
+  - chadwin-codex/companies/US/ACIW/data/financial_statements/annual/balance_sheet.csv
+  - chadwin-codex/companies/US/ACIW/data/financial_statements/annual/cash_flow_statement.csv
+  - chadwin-codex/companies/US/ACIW/data/financial_statements/quarterly/income_statement.csv
+  - chadwin-codex/companies/US/ACIW/data/filings/10-Q-2025-11-06-0000935036-25-000031.md
+  - chadwin-codex/companies/US/ACIW/data/filings/10-K-2025-02-27-0000935036-25-000006.md

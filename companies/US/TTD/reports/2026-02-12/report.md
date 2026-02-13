@@ -16,7 +16,7 @@ _As of 2026-02-12 (Baseline package: 2026-02-08)_
 - Governance/execution risk increased with late-January 2026 CFO transition and a recent Nasdaq voting-rights reprimand event, supporting a higher required return than baseline.
 - External triangulation (peer filings + industry datasets) supports a view that ad demand remains structurally positive but macro-, privacy-, and concentration-sensitive, which is less favorable to downside-adjusted valuation than the baseline thesis assumed.
 
-Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-08/report.md; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-08/valuation/outputs.json; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/outputs.json; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-K-2025-02-21-0001671933-25-000029.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-Q-2025-11-06-0001671933-25-000144.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/8-K-2026-01-26-0001193125-26-021804.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/8-K-2025-12-15-0001671933-25-000148.md; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/third-party-sources.md
+Sources: chadwin-codex/companies/US/TTD/reports/2026-02-08/report.md; chadwin-codex/companies/US/TTD/reports/2026-02-08/valuation/outputs.json; chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/outputs.json; chadwin-codex/companies/US/TTD/data/filings/10-K-2025-02-21-0001671933-25-000029.md; chadwin-codex/companies/US/TTD/data/filings/10-Q-2025-11-06-0001671933-25-000144.md; chadwin-codex/companies/US/TTD/data/filings/8-K-2026-01-26-0001193125-26-021804.md; chadwin-codex/companies/US/TTD/data/filings/8-K-2025-12-15-0001671933-25-000148.md; chadwin-codex/companies/US/TTD/reports/2026-02-12/third-party-sources.md
 
 ## Thesis-Breaker Review
 | Hypothesis | Baseline Assumption | New Evidence | Status (Holds/Weakened/Broken) | Value Impact |
@@ -27,7 +27,7 @@ Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-08/re
 | Capital allocation quality | Buybacks effectively protect per-share economics | TTD itself discloses repurchases may not offset dilution and consume cash optionality | Weakened | Supports margin/discount conservatism |
 | Governance/execution stability | No near-term leadership/governance shock | Interim CFO appointment plus prior Nasdaq reprimand raise execution uncertainty | Weakened | Discount-rate increase (+50 bps in base) |
 
-Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-K-2025-02-21-0001671933-25-000029.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-Q-2025-11-06-0001671933-25-000144.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2023-02-15-0001671933-23-000007.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/8-K-2026-01-26-0001193125-26-021804.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/8-K-2025-12-15-0001671933-25-000148.md; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/third-party-sources.md
+Sources: chadwin-codex/companies/US/TTD/data/filings/10-K-2025-02-21-0001671933-25-000029.md; chadwin-codex/companies/US/TTD/data/filings/10-Q-2025-11-06-0001671933-25-000144.md; chadwin-codex/companies/US/TTD/data/filings/historical/10-K-2023-02-15-0001671933-23-000007.md; chadwin-codex/companies/US/TTD/data/filings/8-K-2026-01-26-0001193125-26-021804.md; chadwin-codex/companies/US/TTD/data/filings/8-K-2025-12-15-0001671933-25-000148.md; chadwin-codex/companies/US/TTD/reports/2026-02-12/third-party-sources.md
 
 ## Revised Financial and Valuation View
 | Scenario | Key Assumptions (Revised) | Value/Share (Revised) | Prior Value/Share | Delta |
@@ -38,7 +38,7 @@ Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-K-202
 
 The revised model keeps the same framework and base-year anchors but applies downside-evidence haircuts to growth and margin durability, plus a higher required return for governance/regulatory uncertainty. Under these revisions, base value falls below current price while bull upside remains meaningful only if execution and market conditions remain favorable.
 
-Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-08/valuation/inputs.yaml; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-08/valuation/outputs.json; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/inputs.yaml; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/outputs.json; /Users/chad/source/chadwin-codex/companies/US/TTD/data/company_profile.csv
+Sources: chadwin-codex/companies/US/TTD/reports/2026-02-08/valuation/inputs.yaml; chadwin-codex/companies/US/TTD/reports/2026-02-08/valuation/outputs.json; chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/inputs.yaml; chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/outputs.json; chadwin-codex/companies/US/TTD/data/company_profile.csv
 
 ## Residual Risks and Monitoring Signals
 1. Privacy/identity policy shock risk remains open.
@@ -52,9 +52,9 @@ Disconfirming signal to track: stable CFO succession outcome and clean control/g
 5. Competitive/market-structure pressure remains open.
 Disconfirming signal to track: stable or improving take-rate-like economics and durable client-spend expansion in open internet channels.
 
-Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-K-2025-02-21-0001671933-25-000029.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/10-Q-2025-11-06-0001671933-25-000144.md; /Users/chad/source/chadwin-codex/companies/US/TTD/data/filings/8-K-2026-01-26-0001193125-26-021804.md; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/third-party-sources.md
+Sources: chadwin-codex/companies/US/TTD/data/filings/10-K-2025-02-21-0001671933-25-000029.md; chadwin-codex/companies/US/TTD/data/filings/10-Q-2025-11-06-0001671933-25-000144.md; chadwin-codex/companies/US/TTD/data/filings/8-K-2026-01-26-0001193125-26-021804.md; chadwin-codex/companies/US/TTD/reports/2026-02-12/third-party-sources.md
 
 ## Conclusion
 The deep-dive falsification pass does not break TTD’s long-term franchise, but it does break confidence in the prior downside-adjusted valuation cushion at $27.04. With revised base intrinsic value at $24.96 and a wider adverse-case dispersion, the rating moves from Attractive to Watch pending evidence that growth/margins and governance execution are tracking above this more conservative path.
 
-Sources: /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/outputs.json; /Users/chad/source/chadwin-codex/companies/US/TTD/data/company_profile.csv; /Users/chad/source/chadwin-codex/companies/US/TTD/reports/2026-02-12/deep-dive-changes.md
+Sources: chadwin-codex/companies/US/TTD/reports/2026-02-12/valuation/outputs.json; chadwin-codex/companies/US/TTD/data/company_profile.csv; chadwin-codex/companies/US/TTD/reports/2026-02-12/deep-dive-changes.md

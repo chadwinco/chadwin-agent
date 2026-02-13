@@ -2,7 +2,7 @@
   "feed_url": "https://www.nintendo.co.jp/corporate/common/data/news_en.xml",
   "asof": "2026-02-08",
   "transcript": {
-    "path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/earnings-call-2026-02-03-nintendo-co-jp.md",
+    "path": "chadwin-codex/companies/79740/data/filings/earnings-call-2026-02-03-nintendo-co-jp.md",
     "source_url": "https://www.nintendo.co.jp/ir/pdf/2026/260204e.pdf",
     "published_date": "2026-02-03"
   },
@@ -13,7 +13,7 @@
       "released_date": "2026-02-03",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/earnings-call-2026-02-03-nintendo-co-jp.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/earnings-call-2026-02-03-nintendo-co-jp.md"
     },
     {
       "title": "Nine Months Financial Results Briefing for the Fiscal Year Ending March 2026 (Online) - Financial Results Explanatory Material (with Notes)",
@@ -21,7 +21,7 @@
       "released_date": "2026-02-03",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2026-02-03-nine-months-financial-results-briefing-for-the-fiscal-year-ending-march--260203-3e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2026-02-03-nine-months-financial-results-briefing-for-the-fiscal-year-ending-march--260203-3e.md"
     },
     {
       "title": "Financial Results Explanatory Material",
@@ -29,7 +29,7 @@
       "released_date": "2026-02-03",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2026-02-03-financial-results-explanatory-material-260203-2e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2026-02-03-financial-results-explanatory-material-260203-2e.md"
     },
     {
       "title": "Nine Months Earnings",
@@ -37,7 +37,7 @@
       "released_date": "2026-02-03",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2026-02-03-nine-months-earnings-260203e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2026-02-03-nine-months-earnings-260203e.md"
     },
     {
       "title": "Six Months Financial Results Briefing/ Corporate Management Policy Briefing for the Fiscal Year Ending March 2026 (Online) - Q & A",
@@ -45,7 +45,7 @@
       "released_date": "2025-11-05",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-11-05-six-months-financial-results-briefing-corporate-management-policy-briefi-251105-2e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-11-05-six-months-financial-results-briefing-corporate-management-policy-briefi-251105-2e.md"
     },
     {
       "title": "Six Months Financial Results Briefing/ Corporate Management Policy Briefing for the Fiscal Year Ending March 2026 (Online) - Presentation Material",
@@ -53,7 +53,7 @@
       "released_date": "2025-11-05",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-11-05-six-months-financial-results-briefing-corporate-management-policy-briefi-251105e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-11-05-six-months-financial-results-briefing-corporate-management-policy-briefi-251105e.md"
     },
     {
       "title": "Financial Results Explanatory Material (with Notes)",
@@ -61,7 +61,7 @@
       "released_date": "2025-11-04",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-financial-results-explanatory-material-with-notes-251104-4e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-financial-results-explanatory-material-with-notes-251104-4e.md"
     },
     {
       "title": "Notice of Dividend (end of 2nd quarter), Change in Dividend Policy, and Dividend (year-end) Forecast Modifications",
@@ -69,7 +69,7 @@
       "released_date": "2025-11-04",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-notice-of-dividend-end-of-2nd-quarter-change-in-dividend-policy-and-divi-251104-3e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-notice-of-dividend-end-of-2nd-quarter-change-in-dividend-policy-and-divi-251104-3e.md"
     },
     {
       "title": "Notice of Full-Year Financial Forecast Modifications",
@@ -77,7 +77,7 @@
       "released_date": "2025-11-04",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-notice-of-full-year-financial-forecast-modifications-251104-2e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-notice-of-full-year-financial-forecast-modifications-251104-2e.md"
     },
     {
       "title": "Six Months Earnings",
@@ -85,7 +85,7 @@
       "released_date": "2025-11-04",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-six-months-earnings-251104e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-11-04-six-months-earnings-251104e.md"
     },
     {
       "title": "Financial Results Explanatory Material (with Notes)",
@@ -93,7 +93,7 @@
       "released_date": "2025-08-01",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-08-01-financial-results-explanatory-material-with-notes-250801-2e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-08-01-financial-results-explanatory-material-with-notes-250801-2e.md"
     },
     {
       "title": "Three Months Earnings",
@@ -101,7 +101,7 @@
       "released_date": "2025-08-01",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-08-01-three-months-earnings-250801e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-08-01-three-months-earnings-250801e.md"
     },
     {
       "title": "Annual Report 2025",
@@ -109,7 +109,7 @@
       "released_date": "2025-07-07",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-07-07-annual-report-2025-annual2503e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-07-07-annual-report-2025-annual2503e.md"
     },
     {
       "title": "The 85th Annual General Meeting of Shareholders - Q & A",
@@ -117,7 +117,7 @@
       "released_date": "2025-06-27",
       "status": "success",
       "message": null,
-      "output_path": "/Users/chad/source/chadwin-codex/companies/79740/data/filings/ir-document-2025-06-27-the-85th-annual-general-meeting-of-shareholders-q-a-qa2506e.md"
+      "output_path": "chadwin-codex/companies/79740/data/filings/ir-document-2025-06-27-the-85th-annual-general-meeting-of-shareholders-q-a-qa2506e.md"
     }
   ]
 }

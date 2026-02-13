@@ -10,12 +10,12 @@ Use this repo inside Codex, by asking the agent to run Skills.
 - Humans are not expected to run raw bash commands to operate the repo.
 
 Agent operating rules and workflow contract are in:
-- `/Users/chad/source/chadwin-codex/AGENTS.md`
+- `chadwin-codex/AGENTS.md`
 
 ## One-Time Environment Setup (Human)
 These steps prepare the local Python environment so Codex Skills can run successfully.
 
-From repo root (`/Users/chad/source/chadwin-codex`):
+From repo root (`chadwin-codex`):
 
 ```bash
 python3 -m venv .venv
@@ -67,11 +67,11 @@ Skills are the authoritative workflow definitions and use scripts as bounded hel
 Any shell command execution is agent-facing and should happen inside a Skill workflow.
 
 Primary Skill docs:
-- `/Users/chad/source/chadwin-codex/.agents/skills/research/SKILL.md`
-- `/Users/chad/source/chadwin-codex/.agents/skills/fetch-us-investment-ideas/SKILL.md`
-- `/Users/chad/source/chadwin-codex/.agents/skills/fetch-us-company-data/SKILL.md`
-- `/Users/chad/source/chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`
-- `/Users/chad/source/chadwin-codex/.agents/skills/manage-user-preferences/SKILL.md`
+- `chadwin-codex/.agents/skills/research/SKILL.md`
+- `chadwin-codex/.agents/skills/fetch-us-investment-ideas/SKILL.md`
+- `chadwin-codex/.agents/skills/fetch-us-company-data/SKILL.md`
+- `chadwin-codex/.agents/skills/run-llm-workflow/SKILL.md`
+- `chadwin-codex/.agents/skills/manage-user-preferences/SKILL.md`
 
 ## Repository Layout
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/`: exchange-country roots for company packages
@@ -83,5 +83,5 @@ Primary Skill docs:
 - `.agents/skills/`: Skill definitions, scripts, references, and assets
 
 ## References
-- `/Users/chad/source/chadwin-codex/docs/python-setup.md`
-- `/Users/chad/source/chadwin-codex/docs/improvement-log.md`
+- `chadwin-codex/docs/python-setup.md`
+- `chadwin-codex/docs/improvement-log.md`

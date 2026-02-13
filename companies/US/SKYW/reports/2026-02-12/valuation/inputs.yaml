@@ -35,11 +35,11 @@ scenarios:
     stage1_years: 7
     fade_years: 4
 sources:
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/company_profile.csv
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/financial_statements/annual/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/financial_statements/annual/balance_sheet.csv
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/financial_statements/annual/cash_flow_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/financial_statements/quarterly/income_statement.csv
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/filings/10-Q-2025-10-31-0001104659-25-104919.md
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/filings/10-K-2025-02-13-0001558370-25-000943.md
-  - /Users/chad/source/chadwin-codex/companies/US/SKYW/data/filings/8-K-2026-01-29-0001104659-26-007962.md
+  - chadwin-codex/companies/US/SKYW/data/company_profile.csv
+  - chadwin-codex/companies/US/SKYW/data/financial_statements/annual/income_statement.csv
+  - chadwin-codex/companies/US/SKYW/data/financial_statements/annual/balance_sheet.csv
+  - chadwin-codex/companies/US/SKYW/data/financial_statements/annual/cash_flow_statement.csv
+  - chadwin-codex/companies/US/SKYW/data/financial_statements/quarterly/income_statement.csv
+  - chadwin-codex/companies/US/SKYW/data/filings/10-Q-2025-10-31-0001104659-25-104919.md
+  - chadwin-codex/companies/US/SKYW/data/filings/10-K-2025-02-13-0001558370-25-000943.md
+  - chadwin-codex/companies/US/SKYW/data/filings/8-K-2026-01-29-0001104659-26-007962.md

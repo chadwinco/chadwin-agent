@@ -55,6 +55,21 @@ VIEWS = (111, 121, 161)
 ROWS_PER_PAGE = 20
 
 
+def repo_scoped_path(path: Path, base_dir: Path) -> str:
+    base = base_dir.resolve()
+    candidate = path if path.is_absolute() else (base / path)
+    resolved_candidate = candidate.resolve()
+    try:
+        relative = resolved_candidate.relative_to(base)
+    except ValueError:
+        return str(candidate)
+
+    relative_text = relative.as_posix()
+    if not relative_text or relative_text == ".":
+        return base.name
+    return f"{base.name}/{relative_text}"
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -543,7 +558,11 @@ def main() -> int:
         ideas,
         args,
         preferences_applied=preferences_applied,
-        preferences_path=(str(resolved_preferences_path) if preferences_applied else None),
+        preferences_path=(
+            repo_scoped_path(resolved_preferences_path, base_dir=base_dir)
+            if preferences_applied
+            else None
+        ),
     )
     output_text = json.dumps(payload, indent=None if args.compact else 2)
 
