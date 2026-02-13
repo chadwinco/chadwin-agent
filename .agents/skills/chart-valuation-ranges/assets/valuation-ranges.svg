@@ -5,7 +5,7 @@
 </defs>
 <rect x="0" y="0" width="1600" height="1842" fill="url(#bg)"/>
 <text x="190" y="48" font-size="34" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#111827" font-weight="700">Margin of Safety Ranges (Latest Reports)</text>
-<text x="190" y="78" font-size="15" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#4b5563">Generated 2026-02-13 12:18 from latest report per ticker in chadwin-codex/companies</text>
+<text x="190" y="78" font-size="15" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#4b5563">Generated 2026-02-13 13:28 from latest report per ticker in chadwin-codex/companies</text>
 <circle cx="190" cy="100" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"/>
 <text x="202" y="105" font-size="14" font-family="Avenir Next,Segoe UI,Arial,sans-serif" fill="#374151">Bear MoS</text>
 <circle cx="340" cy="100" r="6" fill="#2563eb" stroke="#ffffff" stroke-width="1.5"/>
