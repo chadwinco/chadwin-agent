@@ -1,0 +1,40 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Profit or Loss,us-gaap_ProfitLoss,647000000.0,579000000.0,625000000.0,534000000.0,553000000.0,577000000.0,390000000.0,377000000.0,501000000.0,303000000.0,327000000.0,498000000.0
+Depreciation and Amortization,us-gaap_DepreciationAndAmortization,123000000.0,120000000.0,113000000.0,108000000.0,110000000.0,100000000.0,95000000.0,93000000.0,88000000.0,83000000.0,81000000.0,78000000.0
+Stock-based compensation,us-gaap_ShareBasedCompensation,,,56000000.0,,,53000000.0,46000000.0,50000000.0,47000000.0,46000000.0,38000000.0,46000000.0
+Deferred income taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,18000000.0,,,25000000.0,,,0.0,,,30000000.0
+Provision for credit losses on accounts receivable,us-gaap_ProvisionForDoubtfulAccounts,,,5000000.0,,,,,,,,,
+Gain on previously held/sold investments in non-consolidated affiliates,us-gaap_BusinessCombinationStepAcquisitionEquityInterestInAcquireeRemeasurementGain,0.0,,,,,,,,,,,
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,,,-16000000.0,,,-197000000.0,,,-51000000.0,,,-117000000.0
+Other current assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,12000000.0,,,49000000.0,,,74000000.0,,,-11000000.0
+Other assets,us-gaap_IncreaseDecreaseInOtherOperatingAssets,,,-19000000.0,,,-19000000.0,,,-21000000.0,,,-21000000.0
+Lease obligations,us-gaap_IncreaseDecreaseInOperatingLeaseLiability,,,-8000000.0,,,-7000000.0,,,-5000000.0,,,-2000000.0
+Accounts payable and accrued liabilities,us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,,,-292000000.0,,,-110000000.0,,,-178000000.0,,,-296000000.0
+Deferred revenue,mco_IncreaseDecreaseinContractwithCustomerLiabilityExcludingEffectofExchangeRate,,,261000000.0,,,308000000.0,,,296000000.0,,,290000000.0
+Uncertain tax positions and other non-current tax liabilities,mco_UnrecognizedTaxBenefitsAndOtherNonCurrentTaxLiabilitiesPeriodIncreaseDecrease,,,6000000.0,,,6000000.0,,,,,,
+Other liabilities,us-gaap_IncreaseDecreaseInOtherOperatingLiabilities,,,-7000000.0,,,-14000000.0,,,-24000000.0,,,-7000000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,757000000.0,,,775000000.0,,,608000000.0,,,470000000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-85000000.0,,,-78000000.0,,,-73000000.0,,,-59000000.0
+Purchases of investments,us-gaap_PaymentsToAcquireInvestments,,,-41000000.0,,,-50000000.0,,,-45000000.0,,,-46000000.0
+Sales and maturities of investments,us-gaap_ProceedsFromSaleMaturityAndCollectionsOfInvestments,,,551000000.0,,,46000000.0,,,55000000.0,,,27000000.0
+Purchases of investments in non-consolidated affiliates,us-gaap_PaymentsToAcquireInterestInSubsidiariesAndAffiliates,,,-10000000.0,,,-2000000.0,,,,,,
+Receipts from settlements of net investment hedges,us-gaap_ProceedsFromHedgeInvestingActivities,,,32000000.0,,,,,,,,,0.0
+Payments to Acquire Businesses,us-gaap_PaymentsToAcquireBusinessesNetOfCashAcquired,,,-223000000.0,,,-12000000.0,,,-0.0,,,-83000000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,224000000.0,,,-96000000.0,,,-63000000.0,,,-161000000.0
+Issuance of notes,us-gaap_ProceedsFromNotesPayable,,,,,,,,,0.0,,,491000000.0
+Repayment of notes,us-gaap_RepaymentsOfNotesPayable,,,-700000000.0,,,,,,,,,
+Proceeds from stock-based compensation plans,us-gaap_ProceedsFromStockPlans,,,23000000.0,,,20000000.0,,,11000000.0,,,8000000.0
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,,,-53000000.0,,,-53000000.0,,,-45000000.0,,,-58000000.0
+Treasury shares,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-373000000.0,,,-120000000.0,,,-41000000.0,,,-560000000.0
+Dividends,us-gaap_PaymentsOfDividendsCommonStock,,,-195000000.0,,,-155000000.0,,,-141000000.0,,,-130000000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,-1298000000.0,,,-308000000.0,,,-216000000.0,,,-352000000.0
+Effect of exchange rate changes on cash and cash equivalents,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,,,48000000.0,,,-25000000.0,,,21000000.0,,,-18000000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,-269000000.0,,,346000000.0,,,350000000.0,,,-61000000.0
+Non-cash restructuring charges,us-gaap_RestructuringCostsAndAssetImpairmentCharges,,,3000000.0,,,,,,,,,
+Gain on previously held equity method investments,us-gaap_BusinessCombinationStepAcquisitionEquityInterestInAcquireeRemeasurementGain,,,,7000000.0,,,,,,,,
+Payments for settlements of net investment hedges,us-gaap_PaymentsForHedgeInvestingActivities,,,,,,,,,,,,-0.0
+Unrecognized tax benefits and other non-current tax liabilities,mco_UnrecognizedTaxBenefitsAndOtherNonCurrentTaxLiabilitiesPeriodIncreaseDecrease,,,,,,,,,,,,-18000000.0
+Debt issuance costs and related fees,mco_PaymentsOfDebtIssuanceAndDebtExtinguishmentOrDebtPrepaymentCosts,,,,,,,,,-0.0,,,-5000000.0
+Expected credit losses,us-gaap_ProvisionForDoubtfulAccounts,,,,,,4000000.0,,,,,,
+Uncertain tax positions,mco_UnrecognizedTaxBenefitsAndOtherNonCurrentTaxLiabilitiesPeriodIncreaseDecrease,,,,,,,,,-119000000.0,,,
+Cash paid for ASR contract relating to shares retained by counterparty until final settlement,mco_AcceleratedShareRepurchaseProgramRemainingNotYetSettled,,,,,,,,,-0.0,,,-98000000.0

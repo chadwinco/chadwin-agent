@@ -1,0 +1,23 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Purchase of noncontrolling interest,us-gaap_MinorityInterestDecreaseFromRedemptions,,,,,17000000.0,12000000.0
+Profit or Loss,us-gaap_ProfitLoss,2059000000.0,1608000000.0,1374000000.0,2214000000.0,1777000000.0,1429000000.0
+Dividends,us-gaap_Dividends,653000000.0,575000000.0,521000000.0,466000000.0,424000000.0,383000000.0
+Stock-based compensation,us-gaap_AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,225000000.0,193000000.0,169000000.0,175000000.0,154000000.0,136000000.0
+"Shares issued for stock-based compensation plans at average cost, net",us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,-18000000.0,-19000000.0,-61000000.0,-40000000.0,-53000000.0,-32000000.0
+"Shares issued for stock-based compensation plans at average cost, net (in shares)",us-gaap_StockIssuedDuringPeriodSharesShareBasedCompensation,700000.0,800000.0,600000.0,700000.0,1400000.0,1600000.0
+Shares issued as consideration to acquire kompany,us-gaap_StockIssuedDuringPeriodValueAcquisitions,,,44000000.0,,,
+Shares issued as consideration to acquire kompany (in shares),us-gaap_StockIssuedDuringPeriodSharesAcquisitions,,,100000.0,,,
+"Noncontrolling Interest, Increase from Business Combination",us-gaap_NoncontrollingInterestIncreaseFromBusinessCombination,10000000.0,,,,,
+Treasury shares repurchased,us-gaap_TreasuryStockValueAcquiredCostMethod,1301000000.0,492000000.0,983000000.0,750000000.0,503000000.0,991000000.0
+Treasury shares repurchased (in shares),us-gaap_TreasuryStockSharesAcquired,2900000.0,1500000.0,3100000.0,2200000.0,2000000.0,5200000.0
+"Currency translation adjustment, net of net investment hedge activity",us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-90000000.0,80000000.0,-253000000.0,-51000000.0,74000000.0,33000000.0
+Net actuarial gains (losses) and prior service cost,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansNetUnamortizedGainLossArisingDuringPeriodNetOfTax,19000000.0,-6000000.0,0.0,55000000.0,,
+Amortization of prior service costs/ actuarial losses and settlement charge,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansNetOfTax,-2000000.0,-3000000.0,2000000.0,,,
+Net realized and unrealized gain (loss) on cash flow hedges,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,2000000.0,1000000.0,,,,
+Amortization of losses on cash flow hedges,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,,-2000000.0,,,
+Non-controlling interest resulting from majority acquisition of Vigeo Eiris,us-gaap_NoncontrollingInterestIncreaseFromBusinessCombination,,,,,,17000000.0
+Amortization of prior service costs and actuarial losses,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansNetOfTax,,,,14000000.0,6000000.0,2000000.0
+Net realized and unrealized gain on cash flow hedges,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTax,,,,2000000.0,-49000000.0,
+Net actuarial gains and prior service cost,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansNetUnamortizedGainLossArisingDuringPeriodNetOfTax,,,,,-32000000.0,
+Net actuarial gains (losses) and prior service costs,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansNetUnamortizedGainLossArisingDuringPeriodNetOfTax,,,,,,-24000000.0
+"Net Income (Loss), Including Portion Attributable to Nonredeemable Noncontrolling Interest",us-gaap_NetIncomeLossIncludingPortionAttributableToNonredeemableNoncontrollingInterest,,,,,1778000000.0,

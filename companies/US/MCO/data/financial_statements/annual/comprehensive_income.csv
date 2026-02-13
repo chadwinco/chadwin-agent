@@ -1,0 +1,56 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Profit or Loss,us-gaap_ProfitLoss,2059000000.0,1608000000.0,1374000000.0,2214000000.0,1777000000.0,1429000000.0
+Foreign currency translation adjustment - Pre Tax,mco_OtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentBeforeReclassificationAndTax,-309000000.0,213000000.0,-439000000.0,-303000000.0,361000000.0,-22000000.0
+Foreign currency translation adjustment - Tax,mco_OtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentBeforeReclassificationTax,-3000000.0,-1000000.0,2000000.0,11000000.0,-13000000.0,-1000000.0
+Foreign currency translation adjustment - Net of Tax,mco_OtherComprehensiveIncomeLossForeignCurrencyTranslationAdjustmentBeforeReclassificationNetOfTax,-312000000.0,212000000.0,-437000000.0,-292000000.0,348000000.0,-23000000.0
+Foreign currency translation adjustments - reclassification of losses included in net income - Pre Tax,mco_TranslationAdjustmentFunctionalToReportingCurrencyGainLossReclassifiedToEarningsBeforeTax,-0.0,0.0,-20000000.0,-0.0,-0.0,-32000000.0
+Foreign currency translation adjustments - reclassification of losses included in net income - Tax,mco_TranslationAdjustmentFunctionalToReportingCurrencyGainLossReclassifiedToEarningsReclassificationTax,-0.0,-0.0,-0.0,-0.0,-0.0,-0.0
+Foreign currency translation adjustments - reclassification of losses included in net income - Net of Tax,us-gaap_TranslationAdjustmentFunctionalToReportingCurrencyGainLossReclassifiedToEarningsNetOfTax,-0.0,-0.0,20000000.0,-0.0,-0.0,32000000.0
+Net (losses) gains on net investment hedges - Pre Tax,us-gaap_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossBeforeReclassificationAndTax,299000000.0,-177000000.0,219000000.0,319000000.0,-364000000.0,
+Net (losses) gains on net investment hedges - Tax,mco_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossBeforeReclassificationTax,-77000000.0,45000000.0,-55000000.0,-77000000.0,91000000.0,
+Net (losses) gains on net investment hedges - Net of Tax,mco_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossBeforeReclassificationNetOfTax,222000000.0,-132000000.0,164000000.0,242000000.0,-273000000.0,
+Net unrealized gains on available for sale securities - Pre Tax,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeReclassificationAdjustmentsAndTax,,,,,,0.0
+Net unrealized gains on available for sale securities - Tax,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesBeforeReclassificationAdjustmentsTax,,,,,,-0.0
+Net unrealized gains on available for sale securities - Net of Tax,us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentBeforeReclassificationAdjustmentsNetOfTax,,,,,,0.0
+Reclassification of gains included in net income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesBeforeTax,,,,,,0.0
+Reclassification of gains included in net income - Tax,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesTax,,,,,,-0.0
+Reclassification of gains included in net income - Net of Tax,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax,,,,,,-0.0
+Amortization of actuarial losses and prior service costs included in net income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossAmortizationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansForNetPriorServiceCostCreditBeforeTax,,,,,,3000000.0
+Amortization of actuarial losses and prior service costs included in net income - Tax,us-gaap_OtherComprehensiveIncomeLossAmortizationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansForNetPriorServiceCostCreditTax,,,,,,-1000000.0
+Amortization of actuarial losses and prior service costs included in net income - Net of Tax,us-gaap_OtherComprehensiveIncomeLossAmortizationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansForNetPriorServiceCostCreditNetOfTax,,,,,,2000000.0
+Net actuarial (loss)/gain arising during the period,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansNetUnamortizedGainLossArisingDuringPeriodBeforeTax,,,,,,-32000000.0
+Reclassification of losses included in net income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationBeforeTax,3000000.0,-2000000.0,-2000000.0,,,
+Reclassification of losses included in net income - Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationTax,1000000.0,1000000.0,-0.0,,,
+Reclassification of losses included in net income - Net of Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,-2000000.0,-1000000.0,-2000000.0,,,
+Amortization of actuarial losses/prior service costs and settlement charge included in net income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansBeforeTax,-2000000.0,-3000000.0,3000000.0,,,
+Amortization of actuarial losses and prior service costs and settlement charge included in net income - Tax,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansTax,0.0,-0.0,-1000000.0,5000000.0,2000000.0,
+Amortization of actuarial losses and prior service costs and settlement charge included in net income - Net of Tax,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansNetOfTax,-2000000.0,-3000000.0,2000000.0,14000000.0,6000000.0,
+Net actuarial (losses) gains and prior service costs - Pre Tax,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansNetUnamortizedGainLossArisingDuringPeriodBeforeTax,25000000.0,-8000000.0,-1000000.0,73000000.0,-42000000.0,
+Net actuarial (losses) gains and prior service costs - Tax,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansNetUnamortizedGainLossArisingDuringPeriodTax,-6000000.0,2000000.0,1000000.0,-18000000.0,,8000000.0
+Net actuarial (losses) gains and prior service costs - Net of Tax,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansNetUnamortizedGainLossArisingDuringPeriodNetOfTax,19000000.0,-6000000.0,0.0,55000000.0,-32000000.0,-24000000.0
+Total other comprehensive (loss) income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossBeforeTax,16000000.0,27000000.0,-196000000.0,108000000.0,-103000000.0,13000000.0
+Total other comprehensive (loss)income - Tax,us-gaap_OtherComprehensiveIncomeLossTax,-87000000.0,45000000.0,-53000000.0,-88000000.0,102000000.0,-2000000.0
+Total Other Comprehensive Income (Loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,-71000000.0,72000000.0,-249000000.0,20000000.0,,11000000.0
+Comprehensive Income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,1988000000.0,1680000000.0,1125000000.0,2234000000.0,1776000000.0,1440000000.0
+Less: comprehensive (loss) income attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,,,,2000000.0,8000000.0,
+"Net actuarial losses and prior service costs, tax",us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansNetUnamortizedGainLossArisingDuringPeriodTax,,,,,10000000.0,
+Total Other Comprehensive (Loss) Income,us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,,,-1000000.0,
+Net gains (losses) on net investment hedges - Pre Tax,us-gaap_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossBeforeReclassificationAndTax,,,,,,35000000.0
+"Net gains (losses) on net investment hedges, Tax",mco_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossBeforeReclassificationTax,,,,,,-9000000.0
+Net realized and unrealized gain (loss) on cash flow hedges - Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationTax,,,,,,-0.0
+"Net gains (losses) on net investment hedges, Net of Tax",mco_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossBeforeReclassificationNetOfTax,,,,,,26000000.0
+Net realized and unrealized gain (loss) on cash flow hedges - Pre Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAndTax,,,,,,0.0
+Net realized and unrealized gain (loss) on cash flow hedges - Net of Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,,,,,,0.0
+Less: comprehensive income (loss) attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,,,,,,-11000000.0
+Less: comprehensive loss attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,-0.0,4000000.0,16000000.0,,,
+Comprehensive Income Attributable to Moody’s,us-gaap_ComprehensiveIncomeNetOfTax,1988000000.0,1684000000.0,1141000000.0,2236000000.0,1784000000.0,1429000000.0
+Net losses on cash flow hedges - Net of Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,,,0.0,0.0,-51000000.0,
+Net losses on cash flow hedges - Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationTax,,,-0.0,-0.0,17000000.0,
+Net losses on cash flow hedges - Pre Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAndTax,,,0.0,0.0,-68000000.0,
+Net investment hedges - reclassification of gains included in net income - Net of Tax,mco_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossReclassificationNetofTax,,0.0,0.0,1000000.0,1000000.0,2000000.0
+Reclassification of (losses) gains included in net income - Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationTax,,,,-0.0,1000000.0,-0.0
+Net investment hedges - reclassification of gains included in net income - Tax,mco_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossReclassificationTax,,-0.0,-0.0,-1000000.0,-0.0,-1000000.0
+Reclassification of (losses) gains included in net income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationBeforeTax,,,,2000000.0,3000000.0,0.0
+Reclassification of (losses) gains included in net income - Net of Tax,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,,,-2000000.0,-2000000.0,0.0
+Net investment hedges - reclassification of gains included in net income - Pre Tax,us-gaap_OtherComprehensiveIncomeLossNetInvestmentHedgeGainLossReclassificationBeforeTax,,0.0,0.0,-2000000.0,-1000000.0,3000000.0
+"Amortization of actuarial losses and prior service costs and settlement charge included in net income, before tax",us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansBeforeTax,,,,19000000.0,8000000.0,
