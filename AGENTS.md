@@ -114,6 +114,7 @@ Do not only patch a single report output when the issue is systemic.
 ## Practical Conventions
 - Work from repo root: `chadwin-codex`
 - Store company packages by exchange country (for example `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
+- Under `companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
 - For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
 - Honor `user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.

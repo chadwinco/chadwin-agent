@@ -86,6 +86,6 @@ Primary Skill docs:
 - `idea-screens/`: idea queue and generated idea files
 - `user_preferences.json`: persistent user preference profile
 - `improvement-log.md`: repo-level process improvement log
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/`: exchange-country roots for company packages
+- `companies/<EXCHANGE_COUNTRY>/<TICKER>/`: country-code roots for company packages (`<EXCHANGE_COUNTRY>` must be uppercase ISO 3166-1 alpha-2, for example `US`, `JP`, `GB`)
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/`: local evidence inputs
 - `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`: report and valuation outputs
