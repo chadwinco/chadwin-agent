@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+TRV,297.43,64690000000.0,0.52,4.4,230.43 - 304.40,,,2063516.0,"Travelers Companies, Inc.",USD,0000086312,US89417E1091,89417E109,New York Stock Exchange,NYSE,Insurance - Property & Casualty,https://travelers.com,Alan Schnitzer,Financials,United States,34000,917-778-6000,385 Washington St,Saint Paul,MN,,,false,true,false

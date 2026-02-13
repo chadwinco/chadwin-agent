@@ -24,8 +24,8 @@ Foreign currency translation adjustment,us-gaap_OtherComprehensiveIncomeLossFore
 Funded status of employee benefit plans,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentNetOfTax,-2000000.0,-16000000.0,-59000000.0,47000000.0,61000000.0
 "Total other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,-1560000000.0,2876000000.0,-14109000000.0,-2490000000.0,3258000000.0
 Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,1715000000.0,2124000000.0,-16350000000.0,-1085000000.0,3757000000.0
-Unrealized investment gains (losses),lnc_OtherComprehensiveIncomeLossUnrealizedInvesmentGainsLosses,,,-14030000000.0,-2535000000.0,3192000000.0
 Income (loss) before taxes,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments,,,,,423000000.0
+Unrealized investment gains (losses),lnc_OtherComprehensiveIncomeLossUnrealizedInvesmentGainsLosses,,,-14030000000.0,-2535000000.0,3192000000.0
 Preferred stock dividends declared,us-gaap_PreferredStockDividendsAndOtherAdjustments,-91000000.0,,,,
 Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,3184000000.0,,,,
 Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,18.66,-4.92,-13.11,7.5,2.58

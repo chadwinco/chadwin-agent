@@ -1,0 +1,58 @@
+{
+  "query": "Globe Life Inc. earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-globe-life-q4-2025-misses-forecasts-stock-dips-93CH-4488535",
+    "https://investors.globelifeinsurance.com/MediaLibraries/GlobeLifeInvestorRelations/pdfs/conference-calls/Q2-2025-Globe-Life-Inc-Earnings-Call-Transcript-(-Final).pdf?ext=.pdf",
+    "https://finance.yahoo.com/quote/GL/earnings-calls/",
+    "https://seekingalpha.com/article/4866612-globe-life-inc-gl-q4-2025-earnings-call-transcript",
+    "https://www.insidermonkey.com/blog/globe-life-inc-nysegl-q3-2025-earnings-call-transcript-1633488/"
+  ],
+  "selected_transcript": {
+    "path": "chadwin-codex/companies/US/GL/data/filings/earnings-call-2025-10-25-insidermonkey.com.md",
+    "source_url": "https://www.insidermonkey.com/blog/globe-life-inc-nysegl-q3-2025-earnings-call-transcript-1633488/",
+    "published_date": "2025-10-25"
+  },
+  "attempts": [
+    {
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-globe-life-q4-2025-misses-forecasts-stock-dips-93CH-4488535",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://investors.globelifeinsurance.com/MediaLibraries/GlobeLifeInvestorRelations/pdfs/conference-calls/Q2-2025-Globe-Life-Inc-Earnings-Call-Transcript-(-Final).pdf?ext=.pdf",
+      "status": "parse_empty",
+      "http_status": 200,
+      "body_length": 0,
+      "published_date": null,
+      "message": "No supported content container found in HTML."
+    },
+    {
+      "url": "https://finance.yahoo.com/quote/GL/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://seekingalpha.com/article/4866612-globe-life-inc-gl-q4-2025-earnings-call-transcript",
+      "status": "http_error",
+      "http_status": 403,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.insidermonkey.com/blog/globe-life-inc-nysegl-q3-2025-earnings-call-transcript-1633488/",
+      "status": "success",
+      "http_status": 200,
+      "body_length": 63685,
+      "published_date": "2025-10-25",
+      "message": null
+    }
+  ]
+}

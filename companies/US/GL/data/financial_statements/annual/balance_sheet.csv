@@ -1,0 +1,48 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Cash and Cash Equivalents,us-gaap_Cash,165325000.0,103156000.0,92559000.0,92163000.0,94847000.0,75933000.0
+Other receivables,us-gaap_OtherReceivables,691907000.0,630223000.0,484887000.0,487443000.0,474180000.0,441662000.0
+Other Assets,us-gaap_OtherAssets,1391560000.0,832413000.0,760066000.0,782625000.0,739027000.0,583933000.0
+Total Assets,us-gaap_Assets,29076181000.0,28051499000.0,25537159000.0,29768048000.0,29046731000.0,25977460000.0
+Goodwill,us-gaap_Goodwill,490446000.0,481791000.0,481791000.0,481791000.0,441591000.0,441591000.0
+"Other long-term investments (includes: 2023—$795,583; 2022—$768,689 under the fair value option)",us-gaap_OtherLongTermInvestments,,835878000.0,,,,
+Short-term investments,us-gaap_ShortTermInvestments,85035000.0,81740000.0,114121000.0,69145000.0,107782000.0,38285000.0
+"Other long-term investments (includes: 2024—$986,766; 2023—$795,583 under the fair value option)",us-gaap_OtherLongTermInvestments,1235759000.0,,,,,
+Total investments,us-gaap_Investments,19571563000.0,19724043000.0,18208368000.0,22757991000.0,22452651000.0,19847271000.0
+"Fixed maturities—available for sale, at fair value (amortized cost: 2024—$18,835,809; 2023—$18,924,914, allowance for credit losses: 2024— $10,395; 2023— $7,115)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,17155012000.0,,,,,
+Mortgage loans,us-gaap_MortgageLoansOnRealEstateCommercialAndConsumerNet,396088000.0,279199000.0,,,,
+Policy loans,us-gaap_LoansInsurancePolicy,699669000.0,657020000.0,614866000.0,589634000.0,584379000.0,575492000.0
+Accrued investment income,us-gaap_AccruedInvestmentIncomeReceivable,269791000.0,270396000.0,259581000.0,251307000.0,248991000.0,245129000.0
+Deferred acquisition costs,us-gaap_DeferredPolicyAcquisitionCosts,6495589000.0,6009477000.0,5249907000.0,4914728000.0,4595444000.0,4341941000.0
+Commitments and Contingencies (Note 5),us-gaap_CommitmentsAndContingencies,,,,,,
+Preferred Stock,us-gaap_PreferredStockValue,0.0,0.0,0.0,0.0,0.0,0.0
+Treasury Stock Common Value,us-gaap_TreasuryStockCommonValue,-1292294000.0,-854283000.0,-789524000.0,-846659000.0,-772914000.0,-750624000.0
+"Fixed maturities—available for sale, at fair value (amortized cost: 2023—$18,924,914; 2022—$18,301,692, allowance for credit losses: 2023— $7,115; 2022— $0)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,17870206000.0,,,,
+Future policy benefits,us-gaap_LiabilityForFuturePolicyBenefits,,19460353000.0,16721846000.0,16034727000.0,15243536000.0,14508134000.0
+"Other long-term investments (includes: 2022—$768,689; 2021—$640,263 under the fair value option)",us-gaap_OtherLongTermInvestments,,,976016000.0,,,
+"Fixed maturities—available for sale, at fair value (amortized cost: 2022—$18,301,692; 2021—$17,805,309, allowance for credit losses: 2022— $0; 2021— $387)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,16503365000.0,,,
+Commitments and Contingencies (Note 6),us-gaap_CommitmentsAndContingencies,,,,,,
+"Other long-term investments (includes: 2021—$640,263; 2020—$385,038 under the fair value option)",us-gaap_OtherLongTermInvestments,,,,793925000.0,,
+"Other long-term investments (includes: 2020—$385,038; 2019—$185,851 under the fair value option)",us-gaap_OtherLongTermInvestments,,,,,546981000.0,
+"Other long-term investments (includes: 2019—$185,851; 2018—$108,241 under the fair value option)",us-gaap_OtherLongTermInvestments,,,,,,326347000.0
+"Fixed maturities—available for sale, at fair value (amortized cost: 2021—$17,805,309; 2020—$17,197,145, allowance for credit losses: 2021— $387; 2020— $3,346)",us-gaap_DebtSecuritiesAvailableForSaleExcludingAccruedInterest,,,,21305287000.0,,
+"Fixed maturities—available for sale, at fair value (amortized cost: 2020—$17,197,145; 2019—$16,415,776, allowance for credit losses: 2020— $3,346; 2019— $0)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,21213509000.0,
+"Fixed maturities—available for sale, at fair value (amortized cost: 2019—$16,415,776; 2018—$15,753,471)",us-gaap_AvailableForSaleSecuritiesDebtSecurities,,,,,,18907147000.0
+Assets related to discontinued operations,us-gaap_AssetsOfDisposalGroupIncludingDiscontinuedOperation,,,,,,0.0
+Unearned and advance premiums,us-gaap_UnearnedPremiums,,,,,,63709000.0
+Short Term Debt,us-gaap_ShortTermBorrowings,415401000.0,486113000.0,449103000.0,479644000.0,254918000.0,298738000.0
+"Future policy benefits at current discount rates: (at original discount rates: 2024—$17,552,564; 2023—$16,984,615)",us-gaap_LiabilityForFuturePolicyBenefits,18457263000.0,,,,,
+Unearned and advance premium,us-gaap_UnearnedPremiums,257631000.0,254567000.0,60742000.0,65472000.0,61728000.0,
+Policy claims and other benefits payable,us-gaap_LiabilityForClaimsAndClaimsAdjustmentExpense,532832000.0,514875000.0,430027000.0,412940000.0,399507000.0,365402000.0
+Other policyholders' funds,us-gaap_OtherPolicyholderFunds,468604000.0,236958000.0,123362000.0,98935000.0,97968000.0,96282000.0
+Current and deferred income taxes,us-gaap_AccruedIncomeTaxes,731255000.0,494639000.0,686172000.0,1765021000.0,1833723000.0,1476832000.0
+Total Liabilities,us-gaap_Liabilities,23770661000.0,23564696000.0,20641298000.0,21125242000.0,20275639000.0,18683153000.0
+Other Liabilities,us-gaap_OtherLiabilities,583424000.0,487632000.0,542094000.0,722009000.0,716373000.0,525068000.0
+Total policy liabilities,gl_PolicyholderAccountBalanceLiabilityForFuturePolicyBenefitsAndUnpaidClaimsAndClaimsAdjustmentExpense,19716330000.0,20466753000.0,17335977000.0,16612074000.0,15802739000.0,15033527000.0
+Long Term Debt,us-gaap_LongTermDebtNoncurrent,2324251000.0,1629559000.0,1627952000.0,1546494000.0,1667886000.0,1348988000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,29076181000.0,28051499000.0,25537159000.0,29768048000.0,29046731000.0,25977460000.0
+Common Stock,us-gaap_CommonStockValue,97218000.0,102218000.0,105218000.0,109218000.0,113218000.0,117218000.0
+Additional paid-in-capital,us-gaap_AdditionalPaidInCapital,527795000.0,532474000.0,529661000.0,520564000.0,527435000.0,531554000.0
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,8002521000.0,7478813000.0,6466220000.0,6182100000.0,5874109000.0,5551329000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-2029720000.0,-2772419000.0,-1415714000.0,2677583000.0,3029244000.0,1844830000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,5305520000.0,4486803000.0,4895861000.0,8642806000.0,8771092000.0,7294307000.0
+Liabilities related to discontinued operations,us-gaap_LiabilitiesOfDisposalGroupIncludingDiscontinuedOperation,,,,,,0.0

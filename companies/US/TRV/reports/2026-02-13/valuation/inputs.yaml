@@ -1,0 +1,47 @@
+asof_date: 2026-02-13
+ticker: TRV
+currency: USD
+price: 297.43
+model:
+  type: two-stage-residual-income
+base_year:
+  period_end: 2025-12-31
+  common_equity: 32894000000.0
+  shares_outstanding: 217496553.81098074
+notes: |
+  Residual-income valuation is used because Travelers is a property & casualty
+  insurer where underwriting cycle quality, reserve development, catastrophe
+  volatility, and capital returns determine equity value more directly than a
+  conventional FCF DCF.
+
+  Common equity is anchored to 2025-12-31 annual statements. Shares outstanding
+  is a market-implied proxy (marketCap / price) from company_profile.csv to keep
+  the per-share basis aligned to the same quote snapshot.
+
+  Assumptions are anchored to local evidence: FY2025 diluted EPS $27.43,
+  net income $6.29B, combined ratio 91.7%, catastrophe losses $3.69B,
+  and continued buyback authorization/execution. The base case keeps only a
+  modest MOS, consistent with Hold consensus and low-single-digit average target
+  upside.
+scenarios:
+  base:
+    roe_stage1: 0.205
+    payout_ratio: 0.35
+    cost_of_equity: 0.10
+    terminal_roe: 0.12
+    terminal_growth: 0.022
+    stage1_years: 7
+  bull:
+    roe_stage1: 0.23
+    payout_ratio: 0.33
+    cost_of_equity: 0.092
+    terminal_roe: 0.135
+    terminal_growth: 0.025
+    stage1_years: 8
+  bear:
+    roe_stage1: 0.17
+    payout_ratio: 0.40
+    cost_of_equity: 0.11
+    terminal_roe: 0.10
+    terminal_growth: 0.015
+    stage1_years: 6

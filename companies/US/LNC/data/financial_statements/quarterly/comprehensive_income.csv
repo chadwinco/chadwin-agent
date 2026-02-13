@@ -29,12 +29,12 @@ Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,2.15,3.88,-4.41,-3.29,5
 Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,2.12,3.8,-4.41,-3.29,5.11,6.93,4.79,2.94,-5.37,-15.17,1.34,0.58
 Cash Dividends Declared Per Common Share (in dollars per share),us-gaap_CommonStockDividendsPerShareDeclared,0.45,0.45,0.45,0.45,0.45,0.45,,,,,,
 Diluted Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersDiluted,,,,-562000000.0,884000000.0,1191000000.0,,,,,,
+Cash Dividends Declared Per Common Share,us-gaap_CommonStockDividendsPerShareDeclared,,,,,,,0.45,0.45,0.45,0.45,0.45,0.45
+Policyholder liability discount remeasurement gain (loss),us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentTaxParent,,,,,,,,,-202000000.0,,,
+Cash Dividends Declared Per Preferred Share,us-gaap_PreferredStockDividendsPerShareDeclared,,,,,,,1718.75,562.5,1254.69,,,
 Cash Dividends Declared Per Preferred Share (in dollars per share),us-gaap_PreferredStockDividendsPerShareDeclared,,,,1718.75,562.5,1718.75,,,,,,
 Impairment of intangibles,us-gaap_GoodwillAndIntangibleAssetImpairment,,,,,,,,,,634000000.0,,
 Spark program expense,lnc_StrategicDigitizationExpense,,,,,,,36000000.0,41000000.0,24000000.0,44000000.0,44000000.0,31000000.0
-Cash Dividends Declared Per Preferred Share,us-gaap_PreferredStockDividendsPerShareDeclared,,,,,,,1718.75,562.5,1254.69,,,
-Cash Dividends Declared Per Common Share,us-gaap_CommonStockDividendsPerShareDeclared,,,,,,,0.45,0.45,0.45,0.45,0.45,0.45
-Policyholder liability discount remeasurement gain (loss),us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentTaxParent,,,,,,,,,-202000000.0,,,
 Deferred units of LNC stock in our deferred compensation plans,us-gaap_UndistributedEarningsLossAllocatedToParticipatingSecuritiesBasic,,,,-0.0,-0.0,3000000.0,,2000000.0,-3000000.0,,,
 Amortization of deferred gain (loss) on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,,,12000000.0,12000000.0,,,,,,
 Amortization of deferred gain on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,,,,,-15000000.0,-9000000.0,-9000000.0,-18000000.0,-19000000.0,-19000000.0

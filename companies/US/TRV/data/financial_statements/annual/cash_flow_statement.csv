@@ -1,0 +1,43 @@
+label,concept,2025-12-31,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
+Net Income,us-gaap_NetIncomeLoss,6288000000.0,4999000000.0,2991000000.0,2842000000.0,3662000000.0,2697000000.0
+Net realized investment losses,us-gaap_RealizedInvestmentGainsLosses,-48000000.0,-30000000.0,,,,
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,680000000.0,715000000.0,722000000.0,826000000.0,870000000.0,789000000.0
+Deferred federal income tax expense (benefit),us-gaap_DeferredFederalIncomeTaxExpenseBenefit,210000000.0,,-163000000.0,-186000000.0,62000000.0,
+Amortization of deferred acquisition costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,-7266000000.0,-6973000000.0,6226000000.0,5515000000.0,5043000000.0,4773000000.0
+Equity in income from other investments,us-gaap_IncomeLossFromEquityMethodInvestments,-226000000.0,-294000000.0,-157000000.0,-336000000.0,-993000000.0,-130000000.0
+Premiums receivable,us-gaap_IncreaseDecreaseInPremiumsReceivable,-115000000.0,-859000000.0,-1341000000.0,-877000000.0,-258000000.0,94000000.0
+Reinsurance recoverables,us-gaap_IncreaseDecreaseInReinsuranceRecoverable,-137000000.0,111000000.0,-63000000.0,344000000.0,-101000000.0,-162000000.0
+Deferred acquisition costs,us-gaap_IncreaseDecreaseInDeferredPolicyAcquisitionCosts,-7373000000.0,-7173000000.0,-6689000000.0,-5824000000.0,-5227000000.0,-4854000000.0
+Claims and claim adjustment expense reserves,us-gaap_IncreaseDecreaseInLiabilityForClaimsAndClaimsAdjustmentExpenseReserve,3300000000.0,2680000000.0,2843000000.0,2050000000.0,2388000000.0,2622000000.0
+Unearned premium reserves,us-gaap_IncreaseDecreaseInUnearnedPremiums,584000000.0,1488000000.0,2590000000.0,1862000000.0,1249000000.0,592000000.0
+Other operating activities,us-gaap_OtherOperatingActivitiesCashFlowStatement,81000000.0,556000000.0,647000000.0,45000000.0,750000000.0,129000000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,10606000000.0,9074000000.0,7711000000.0,6465000000.0,7274000000.0,6519000000.0
+"Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,11660000000.0,8537000000.0,6371000000.0,6837000000.0,8852000000.0,7387000000.0
+"Proceeds from Sale of Debt Securities, ",us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt,832000000.0,1634000000.0,4981000000.0,5657000000.0,3165000000.0,3057000000.0
+Proceeds from Sale and Maturity of Other Investments,us-gaap_ProceedsFromSaleAndMaturityOfOtherInvestments,321000000.0,422000000.0,255000000.0,302000000.0,427000000.0,281000000.0
+Equity securities,us-gaap_ProceedsFromSaleOfEquitySecuritiesFvNi,-126000000.0,-124000000.0,-105000000.0,-136000000.0,-407000000.0,-112000000.0
+Real estate investments,us-gaap_ProceedsFromSaleOfRealEstateHeldforinvestment,-48000000.0,-48000000.0,-67000000.0,-41000000.0,-28000000.0,-113000000.0
+Fixed maturities,us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt,-18771000000.0,-17132000000.0,-15690000000.0,-15908000000.0,-18153000000.0,-14073000000.0
+Other investments,us-gaap_PaymentsToAcquireOtherInvestments,-346000000.0,-396000000.0,-495000000.0,-574000000.0,-520000000.0,-487000000.0
+Net sales (purchases) of short-term securities,us-gaap_PaymentsForProceedsFromAvailableforsaleSecuritiesShortterm,-945000000.0,370000000.0,-1664000000.0,355000000.0,1671000000.0,-566000000.0
+Securities transactions in the course of settlement,trv_SecuritiesTransactionsInCourseOfSettlement,144000000.0,56000000.0,-83000000.0,21000000.0,-19000000.0,-47000000.0
+Payments to Acquire Businesses,us-gaap_PaymentsToAcquireBusinessesNetOfCashAcquired,-0.0,-382000000.0,-0.0,-4000000.0,-38000000.0,
+Other investing activities,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,-533000000.0,-408000000.0,-462000000.0,-385000000.0,-279000000.0,-330000000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-7652000000.0,-7264000000.0,-6821000000.0,-3728000000.0,-5196000000.0,-4892000000.0
+Treasury stock acquired — share repurchase authorizations,us-gaap_PaymentsForRepurchaseOfCommonStock,-3004000000.0,-1003000000.0,-958000000.0,,,
+Tax Withholding for Share-Based Compensation,us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation,-127000000.0,-114000000.0,-64000000.0,-61000000.0,-44000000.0,-47000000.0
+Dividends paid to shareholders,us-gaap_PaymentsOfDividendsCommonStock,-979000000.0,-951000000.0,-908000000.0,-875000000.0,-869000000.0,-861000000.0
+Issuance of debt,us-gaap_ProceedsFromDebtNetOfIssuanceCosts,1233000000.0,0.0,738000000.0,0.0,739000000.0,490000000.0
+Issuance of common stock — employee share options,us-gaap_ProceedsFromStockOptionsExercised,214000000.0,321000000.0,141000000.0,,,
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-2663000000.0,-1747000000.0,-1051000000.0,-2669000000.0,-2037000000.0,-1416000000.0
+Effect of exchange rate changes on cash and restricted cash,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations,23000000.0,-14000000.0,,,,
+Effect of exchange rate changes on cash,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations,,,12000000.0,-30000000.0,-1000000.0,16000000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,314000000.0,49000000.0,-149000000.0,38000000.0,40000000.0,227000000.0
+Treasury stock acquired — share repurchase authorization,us-gaap_PaymentsForRepurchaseOfCommonStock,,,,-2000000000.0,-2156000000.0,-625000000.0
+Payment of debt,us-gaap_RepaymentsOfDebt,,,,-0.0,-0.0,-500000000.0
+Issuance of common stock -- employee share options,us-gaap_ProceedsFromStockOptionsExercised,,,,267000000.0,293000000.0,127000000.0
+Net realized investment gains,us-gaap_RealizedInvestmentGainsLosses,,,,,-171000000.0,-2000000.0
+Income Tax Expense,us-gaap_IncomeTaxesPaidNet,1274000000.0,1310000000.0,201000000.0,817000000.0,707000000.0,578000000.0
+Interest paid,us-gaap_InterestPaidNet,393000000.0,390000000.0,370000000.0,349000000.0,337000000.0,339000000.0
+Net realized investment (gains) losses,us-gaap_RealizedInvestmentGainsLosses,,,-105000000.0,-204000000.0,,
+Deferred federal income tax benefit,us-gaap_DeferredFederalIncomeTaxExpenseBenefit,,-152000000.0,,,,-29000000.0

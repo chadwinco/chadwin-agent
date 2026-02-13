@@ -1,0 +1,46 @@
+asof_date: 2026-02-13
+ticker: GL
+currency: USD
+price: 144.1
+model:
+  type: two-stage-residual-income
+base_year:
+  period_end: 2025-09-30
+  common_equity: 5689088000.0
+  shares_outstanding: 79597501.73490632
+notes: |
+  Residual-income valuation is used because Globe Life is a life insurer where
+  equity value is better anchored to book value growth and excess ROE over the
+  cost of equity than to free-cash-flow mechanics.
+
+  Common equity is anchored to the latest local quarterly balance-sheet export
+  (2025-09-30). Shares outstanding uses a market-implied proxy
+  (marketCap / price) from company_profile.csv to keep denominator alignment
+  with the same price snapshot.
+
+  Assumptions are anchored to local evidence: FY2025 net-income ROE of 20.9%
+  (8-K earnings release), buy-rated analyst consensus with average PT $166.67,
+  and continued premium/EPS growth trends. Cost-of-equity remains above long-run
+  growth to preserve downside room for capital and mortality-cycle risk.
+scenarios:
+  base:
+    roe_stage1: 0.215
+    payout_ratio: 0.33
+    cost_of_equity: 0.10
+    terminal_roe: 0.13
+    terminal_growth: 0.022
+    stage1_years: 7
+  bull:
+    roe_stage1: 0.245
+    payout_ratio: 0.30
+    cost_of_equity: 0.092
+    terminal_roe: 0.145
+    terminal_growth: 0.025
+    stage1_years: 8
+  bear:
+    roe_stage1: 0.17
+    payout_ratio: 0.38
+    cost_of_equity: 0.112
+    terminal_roe: 0.10
+    terminal_growth: 0.015
+    stage1_years: 6

@@ -23,6 +23,9 @@ Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,998000000.0,6130
 Preferred stock dividends declared,us-gaap_PreferredStockDividendsAndOtherAdjustments,-34000000.0,-11000000.0,-34000000.0,-34000000.0,-11000000.0,-34000000.0,-34000000.0,-11000000.0,-25000000.0,,,
 Basic Net Income Available to Common Shareholders,us-gaap_NetIncomeLossAvailableToCommonStockholdersBasic,411000000.0,688000000.0,-756000000.0,,,,819000000.0,502000000.0,-909000000.0,,,
 Cash Dividends Declared Per Common Share (in dollars per share),us-gaap_CommonStockDividendsPerShareDeclared,0.45,0.45,0.45,0.45,0.45,0.45,,,,,,
+Cash Dividends Declared Per Common Share,us-gaap_CommonStockDividendsPerShareDeclared,,,,,,,0.45,0.45,0.45,0.45,0.45,0.45
+Policyholder liability discount remeasurement gain (loss),us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentTaxParent,,,,,,,,,-202000000.0,,,
+Cash Dividends Declared Per Preferred Share,us-gaap_PreferredStockDividendsPerShareDeclared,,,,,,,1718.75,562.5,1254.69,,,
 Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,524000000.0,848000000.0,-949000000.0,-703000000.0,1096000000.0,1528000000.0,1034000000.0,602000000.0,-1170000000.0,-3137000000.0,269000000.0,92000000.0
 Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,-79000000.0,-149000000.0,227000000.0,175000000.0,-201000000.0,-306000000.0,-181000000.0,-91000000.0,289000000.0,563000000.0,-31000000.0,12000000.0
 Net Income,us-gaap_NetIncomeLoss,445000000.0,699000000.0,-722000000.0,-528000000.0,895000000.0,1222000000.0,853000000.0,511000000.0,-881000000.0,-2574000000.0,238000000.0,104000000.0
@@ -32,9 +35,6 @@ Impairment of intangibles,us-gaap_GoodwillAndIntangibleAssetImpairment,,,,,,,,,,
 Spark program expense,lnc_StrategicDigitizationExpense,,,,,,,36000000.0,41000000.0,24000000.0,44000000.0,44000000.0,31000000.0
 Amortization of deferred gain (loss) on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,,,12000000.0,12000000.0,,,,,,
 Amortization of deferred gain on business sold through reinsurance,lnc_AmortizationOfDeferredGainOnBusinessSoldThroughReinsurance,,,,,,,-15000000.0,-9000000.0,-9000000.0,-18000000.0,-19000000.0,-19000000.0
-Cash Dividends Declared Per Preferred Share,us-gaap_PreferredStockDividendsPerShareDeclared,,,,,,,1718.75,562.5,1254.69,,,
-Cash Dividends Declared Per Common Share,us-gaap_CommonStockDividendsPerShareDeclared,,,,,,,0.45,0.45,0.45,0.45,0.45,0.45
-Policyholder liability discount remeasurement gain (loss),us-gaap_OciLiabilityForFuturePolicyBenefitGainLossAfterReclassificationAdjustmentTaxParent,,,,,,,,,-202000000.0,,,
 Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,2.15,3.88,-4.41,-3.29,5.18,6.98,4.82,2.95,-5.35,-15.17,1.39,0.6
 Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,2.12,3.8,-4.41,-3.29,5.11,6.93,4.79,2.94,-5.37,-15.17,1.34,0.58
 Deferred units of LNC stock in our deferred compensation plans,us-gaap_UndistributedEarningsLossAllocatedToParticipatingSecuritiesBasic,,,,-0.0,-0.0,3000000.0,,2000000.0,-3000000.0,,,

@@ -1,0 +1,28 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Premium,us-gaap_PremiumsEarnedNet,,,,,,3595134000.0
+Revenue,us-gaap_PremiumsEarnedNet,5778069000.0,5447533000.0,5214906000.0,5112869000.0,4737921000.0,4527532000.0
+Net investment income,us-gaap_NetInvestmentIncome,1135631000.0,1056884000.0,987499000.0,952447000.0,927062000.0,910459000.0
+Realized gains (losses),us-gaap_RealizedInvestmentGainsLosses,-24188000.0,-65676000.0,-76548000.0,59319000.0,-4371000.0,20621000.0
+Other income,us-gaap_OtherIncome,354000.0,308000.0,1246000.0,1216000.0,1325000.0,1318000.0
+Total policyholder benefits,us-gaap_PolicyholderBenefitsAndClaimsIncurredNet,2894443000.0,2864251000.0,2865456000.0,2859616000.0,2572884000.0,2357349000.0
+Amortization of deferred acquisition costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,410001000.0,379700000.0,624407000.0,603838000.0,575770000.0,
+Amortization of deferred policy acquisition costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,,,,,,551726000.0
+"Commissions, premium taxes, and non-deferred acquisition costs",gl_NonDeferredAcquisitionCostsAndPremiumTaxes,600753000.0,559167000.0,374383000.0,331510000.0,304841000.0,298047000.0
+Other operating expense,us-gaap_OtherCostAndExpenseOperating,419143000.0,347833000.0,353954000.0,322029000.0,301038000.0,304825000.0
+Total benefits and expenses,us-gaap_BenefitsLossesAndExpenses,-4451432000.0,-4253267000.0,-4308595000.0,-4200479000.0,3841237000.0,
+Interest Expense,us-gaap_InterestExpense,127092000.0,102316000.0,90395000.0,83486000.0,86704000.0,84306000.0
+Total expenses,us-gaap_BenefitsLossesAndExpenses,,,,,,3596253000.0
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,1326637000.0,1194266000.0,906311000.0,912390000.0,896684000.0,931279000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,-255875000.0,-223511000.0,-166607000.0,-167431000.0,-164911000.0,-170397000.0
+Net Income from Continuing Operations,us-gaap_IncomeLossFromContinuingOperations,,,,744959000.0,731773000.0,760882000.0
+Net Income,us-gaap_NetIncomeLoss,1070762000.0,970755000.0,739704000.0,744959000.0,731773000.0,760790000.0
+"Income (loss) from discontinued operations, net of tax",us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,-0.0,,
+Continuing operations (in dollars per share),us-gaap_IncomeLossFromContinuingOperationsPerBasicShare,,,,7.22,6.82,6.83
+Discontinued operations (in dollars per share),us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxPerBasicShare,,,,0.0,0.0,0.0
+"Loss (income) from discontinued operations, net of income taxes",us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,,-0.0,92000.0
+Amount,us-gaap_PremiumsEarnedNet,,,,,3813905000.0,
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,11.99,10.21,7.55,7.3,6.9,6.97
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,11.94,10.07,7.47,7.22,6.82,6.83
+Life policyholder benefits,us-gaap_PolicyholderBenefitsAndClaimsIncurredLifeAndAnnuity,,2050789000.0,2045730000.0,2071810000.0,1809373000.0,1638053000.0
+Health policyholder benefits,us-gaap_PolicyholderBenefitsAndClaimsIncurredHealthCare,,776362000.0,791809000.0,758745000.0,733481000.0,687764000.0
+Other policyholder benefits,us-gaap_PolicyholderBenefitsAndClaimsIncurredOther,,37100000.0,27917000.0,29061000.0,30030000.0,31532000.0

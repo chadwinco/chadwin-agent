@@ -1,0 +1,44 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,1070762000.0,970755000.0,739704000.0,744959000.0,731773000.0,760790000.0
+Increase (decrease) in future policy benefits,us-gaap_IncreaseDecreaseInFuturePolicyBenefitReserves,731417000.0,834366000.0,828028000.0,854770000.0,798936000.0,661567000.0
+Increase (decrease) in other policy benefits,us-gaap_IncreaseDecreaseInOtherPolicyholderFunds,19268000.0,5448000.0,36784000.0,18144000.0,33810000.0,15900000.0
+Deferral of policy acquisition costs,gl_DeferralOfPolicyAcquisitionCostsGross,-913544000.0,-850169000.0,-960583000.0,-906247000.0,-822985000.0,-753661000.0
+Amortization of deferred acquisition costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,410001000.0,379700000.0,,,,
+Change in current and deferred income taxes,us-gaap_IncreaseDecreaseInDeferredIncomeTaxes,77930000.0,101448000.0,50718000.0,71919000.0,88157000.0,68588000.0
+Realized (gains) losses,us-gaap_GainLossOnSaleOfInvestments,24188000.0,65676000.0,76548000.0,-59319000.0,4371000.0,-20621000.0
+"Other, net",us-gaap_OtherNoncashIncomeExpense,-17582000.0,-24799000.0,26588000.0,109616000.0,66602000.0,62194000.0
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,1402440000.0,1482425000.0,1422194000.0,1437680000.0,1476434000.0,1363874000.0
+"Loss (income) from discontinued operations, net of income taxes",us-gaap_IncomeLossFromDiscontinuedOperationsNetOfTaxAttributableToReportingEntity,,,,-0.0,-0.0,92000.0
+Net cash provided from (used for) discontinued operations,us-gaap_CashProvidedByUsedInOperatingActivitiesDiscontinuedOperations,,,,0.0,0.0,17299000.0
+"Proceeds from Sale of Debt Securities, ",us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt,1207237000.0,602556000.0,390392000.0,116656000.0,52681000.0,79108000.0
+"Proceeds from Maturities, Prepayments and Calls of Securities",us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities,214442000.0,250652000.0,462002000.0,310991000.0,416321000.0,840222000.0
+Proceeds from Sale and Maturity of Other Investments,us-gaap_ProceedsFromSaleAndMaturityOfOtherInvestments,43362000.0,151262000.0,83151000.0,36346000.0,42990000.0,5134000.0
+Total investments sold or matured,us-gaap_ProceedsFromSaleMaturityAndCollectionsOfInvestments,1519198000.0,1048474000.0,935545000.0,463993000.0,511992000.0,924464000.0
+Mortgage loans,gl_ProceedsFromMaturitiesPrepaymentsAndCallsOfMortgages,174665000.0,158823000.0,,,,
+Fixed maturities—available for sale,us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt,1379238000.0,1536409000.0,1420220000.0,1004384000.0,1262434000.0,1552956000.0
+Other long-term investments,us-gaap_PaymentsToAcquireOtherInvestments,459660000.0,155700000.0,290482000.0,258296000.0,266230000.0,123332000.0
+Total investments acquired,us-gaap_PaymentsToAcquireInvestments,-2013563000.0,-1850932000.0,-1710702000.0,-1262680000.0,-1528664000.0,-1676288000.0
+Net (increase) decrease in policy loans,us-gaap_PaymentsForProceedsFromPolicyLoans,-42649000.0,-42154000.0,-25232000.0,-5255000.0,-8887000.0,-25426000.0
+Net (increase) decrease in short-term investments,us-gaap_PaymentsForProceedsFromShortTermInvestments,-3295000.0,32381000.0,-44976000.0,38637000.0,-69497000.0,34003000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,-71045000.0,-49553000.0,-27929000.0,-38244000.0,-41756000.0,-42203000.0
+Other investing activities,us-gaap_PaymentsForProceedsFromOtherInvestingActivities,96000.0,-0.0,-0.0,-56700000.0,-7051000.0,
+Investments in low-income housing interests,gl_InvestmentInLowIncomeHousingInterests,-30258000.0,-64365000.0,-69721000.0,-53121000.0,-37867000.0,-23893000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,-641516000.0,-926149000.0,-943015000.0,-913370000.0,-1181730000.0,-809311000.0
+Sale of other assets,us-gaap_ProceedsFromSaleOfOtherProductiveAssets,,,,,,32000.0
+Proceeds from Issuance of Common Stock,us-gaap_ProceedsFromIssuanceOfCommonStock,51786000.0,114080000.0,106592000.0,69826000.0,48093000.0,83163000.0
+Payments of Dividends,us-gaap_PaymentsOfDividends,-85485000.0,-84116000.0,-80547000.0,-80043000.0,-78192000.0,-74188000.0
+Repayment of debt,us-gaap_RepaymentsOfNotesPayable,-0.0,-165612000.0,-150000000.0,-300000000.0,-386875000.0,-6875000.0
+Proceeds from issuance of debt,us-gaap_ProceedsFromIssuanceOfDebt,530000000.0,,,,,0.0
+Payment for debt issuance costs,us-gaap_PaymentsOfDebtIssuanceCosts,-7253000.0,-757000.0,-5272000.0,-7687000.0,-5844000.0,-0.0
+Net borrowing (repayment) of commercial paper,us-gaap_ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess,-13878000.0,,,,,
+Proceeds from commercial paper with original maturities greater than 90 days,us-gaap_ProceedsFromShortTermDebtMaturingInMoreThanThreeMonths,484726000.0,,,,,
+Repayment of commercial paper with original maturities greater than 90 days,us-gaap_RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths,-372011000.0,,,,,
+Acquisition of treasury stock,us-gaap_PaymentsForRepurchaseOfCommonStock,-1002109000.0,-511100000.0,-454638000.0,-541435000.0,-443866000.0,-459569000.0
+Amounts paid to reinsurer,gl_AmountsPaidToReinsurerFinancingActivities,-413779000.0,,,,,
+Net receipts (payments) from deposit-type products,us-gaap_NetChangeAnnuitiesAndInvestmentCertificates,112168000.0,-96943000.0,-112791000.0,-64238000.0,-72928000.0,-121429000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,-715835000.0,-541487000.0,-492453000.0,-523603000.0,-274057000.0,-590508000.0
+Effect of foreign exchange rate changes on cash,us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,17080000.0,-4192000.0,13670000.0,-3391000.0,-1733000.0,-9148000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,62169000.0,10597000.0,396000.0,-2684000.0,18914000.0,-45093000.0
+Amortization of deferred policy acquisition costs,us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense,,,624407000.0,603838000.0,575770000.0,551726000.0
+Proceeds from (Repayments of) Commercial Paper,us-gaap_ProceedsFromRepaymentsOfCommercialPaper,,32961000.0,-46289000.0,74974000.0,-34445000.0,-11610000.0
+Proceeds from Issuance of Long-Term Debt,us-gaap_ProceedsFromIssuanceOfLongTermDebt,,170000000.0,250492000.0,325000000.0,700000000.0,

@@ -41,8 +41,8 @@ Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActiv
 Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,2436000000.0,22000000.0,,,
 "Net change in collateral on investments, derivatives and related settlements",lnc_NetChangeInCollateralOnInvestmentsDerivativesAndRelatedSettlements,,,-4070000000.0,3261000000.0,1474000000.0
 Payment related to modification or early extinguishment of debt,us-gaap_PaymentsOfDebtExtinguishmentCosts,,-0.0,,-8000000.0,
-"Withdrawals of fixed account values, including the fixed portion of variable",lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,-6913000000.0,-6607000000.0,-6113000000.0
 "Deposits of fixed account values, including the fixed portion of variable",lnc_DepositsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,15229000000.0,12639000000.0,14034000000.0
+"Withdrawals of fixed account values, including the fixed portion of variable",lnc_WithdrawalsOfFixedAccountValuesIncludingFixedPortionOfVariable,,,-6913000000.0,-6607000000.0,-6113000000.0
 Payments of Dividends,us-gaap_PaymentsOfDividends,,,-310000000.0,-319000000.0,-311000000.0
 "Net increase (decrease) in cash, invested cash and restricted cash",us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect,,,731000000.0,904000000.0,-855000000.0
 "Trading securities purchases, sales and maturities, net",us-gaap_ProceedsFromPaymentsForTradingSecurities,,,,-108000000.0,266000000.0

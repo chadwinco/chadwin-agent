@@ -1,0 +1,11 @@
+label,concept,2025-12-31,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
+Net Income,us-gaap_NetIncomeLoss,6288000000.0,4999000000.0,2991000000.0,2842000000.0,3662000000.0,2697000000.0
+Changes in net unrealized gains (losses) on investment securities having no credit losses recognized in the consolidated statement of income,us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentBeforeTaxPortionAttributableToParent,2744000000.0,-644000000.0,2249000000.0,-9276000000.0,-2115000000.0,2331000000.0
+Changes in net unrealized gains (losses) on investment securities having credit losses recognized in the consolidated statement of income,trv_ChangeInNetUnrealizedGainLossOnInvestmentSecuritiesHavingCreditLossesRecognizedInConsolidatedStatementOfIncomeBeforeTaxPortionAttributableToParent,3000000.0,5000000.0,1000000.0,-4000000.0,0.0,-9000000.0
+Net changes in benefit plan assets and obligations,us-gaap_OtherComprehensiveIncomeDefinedBenefitPlansAdjustmentBeforeTaxPortionAttributableToParent,-94000000.0,-296000000.0,-106000000.0,87000000.0,-455000000.0,-18000000.0
+Net changes in unrealized foreign currency translation,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationAdjustmentBeforeTaxPortionAttributableToParent,246000000.0,-232000000.0,138000000.0,-273000000.0,-11000000.0,12000000.0
+Other comprehensive income (loss) before income taxes,us-gaap_OtherComprehensiveIncomeLossBeforeTaxPortionAttributableToParent,3087000000.0,-575000000.0,2494000000.0,-9640000000.0,-1671000000.0,2352000000.0
+Income tax expense (benefit),us-gaap_OtherComprehensiveIncomeLossTaxPortionAttributableToParent1,-620000000.0,79000000.0,-520000000.0,2002000000.0,362000000.0,-490000000.0
+"Other comprehensive income (loss), net of taxes",us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,2467000000.0,-496000000.0,1974000000.0,-7638000000.0,-1309000000.0,1862000000.0
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,8755000000.0,,,,2353000000.0,4559000000.0
+Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,,4503000000.0,4965000000.0,-4796000000.0,,
