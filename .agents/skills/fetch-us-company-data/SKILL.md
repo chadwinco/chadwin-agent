@@ -28,7 +28,7 @@ export FETCH_US_COMPANY_DATA_CLI="$FETCH_US_COMPANY_DATA_ROOT/scripts/add_compan
 ```
 
 ## Quick Start
-1. Follow `references/python-setup.md`.
+1. Ensure the repo one-time Python setup from `README.md` is complete and `.venv` is active.
 2. Confirm as-of date with the user. Ticker is optional.
 3. Run the skill script from the repo root:
 
@@ -43,7 +43,7 @@ python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 4. Verify outputs.
 
 ### 1. Confirm prerequisites
-- Use `references/python-setup.md` for environment setup and dependencies.
+- Confirm repo one-time Python setup from `README.md` is complete and `.venv` is active.
 - Ensure `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) is set in `.env`, or pass `--identity`.
 
 ### 2. Resolve ticker and as-of date
@@ -94,6 +94,5 @@ Validate outputs described in `references/data-outputs.md` and `references/data-
 - If annual statements fail to parse, inspect `companies/US/<TICKER>/data/financial_statements/annual/*.csv` and review `references/data-outputs.md`.
 
 ## Related References
-- `references/python-setup.md`
 - `references/data-outputs.md`
 - `references/data-dictionary.md`
