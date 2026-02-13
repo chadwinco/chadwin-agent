@@ -3,8 +3,8 @@
 This document is the single reference for fetch output expectations and column definitions for US company packages.
 
 ## Output Roots
-- Company data root: `companies/US/<TICKER>/data`
-- Bootstrap valuation output: `companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
+- Company data root: `.chadwin-data/companies/US/<TICKER>/data`
+- Bootstrap valuation output: `.chadwin-data/companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Output Contract
 
@@ -129,8 +129,8 @@ The loader derives normalized annual frames from `financial_statements/annual/*.
 
 ## EDGAR Statement Exports
 When EDGAR data is fetched, the pipeline stores full statements in:
-- `companies/US/<TICKER>/data/financial_statements/annual/`
-- `companies/US/<TICKER>/data/financial_statements/quarterly/`
+- `.chadwin-data/companies/US/<TICKER>/data/financial_statements/annual/`
+- `.chadwin-data/companies/US/<TICKER>/data/financial_statements/quarterly/`
 
 Each directory can include:
 - `income_statement.csv`

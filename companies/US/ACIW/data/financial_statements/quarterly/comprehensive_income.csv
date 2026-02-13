@@ -1,8 +1,0 @@
-label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
-Net Income,us-gaap_NetIncomeLoss,91250000.0,12202000.0,58870000.0,81427000.0,30887000.0,-7751000.0,37911000.0,-6710000.0,-32308000.0,23117000.0,13342000.0,15490000.0
-Foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationAdjustmentNetOfTaxPortionAttributableToParent,-4318000.0,14651000.0,7879000.0,9109000.0,-2208000.0,-2404000.0,-6310000.0,2990000.0,3618000.0,-13459000.0,-12620000.0,-2100000.0
-Total other comprehensive income (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,-4318000.0,14651000.0,7879000.0,9109000.0,-2208000.0,-2404000.0,-6310000.0,2990000.0,3618000.0,,-12620000.0,
-Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,86932000.0,26853000.0,,,,,,,,9658000.0,722000.0,
-Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,,,66749000.0,90536000.0,28679000.0,,31601000.0,-3720000.0,-28690000.0,,,13390000.0
-Comprehensive loss,us-gaap_ComprehensiveIncomeNetOfTax,,,,,,-10155000.0,,,,,,
-Total other comprehensive loss,us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,,,,,,,,,,-13459000.0,,-2100000.0

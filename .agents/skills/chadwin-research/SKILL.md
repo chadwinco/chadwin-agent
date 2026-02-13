@@ -1,6 +1,6 @@
 ---
 name: chadwin-research
-description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it routes follow-up runs using the report's Research Stop Gate confidence criteria.
+description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `.chadwin-data/idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it routes follow-up runs using the report's Research Stop Gate confidence criteria.
 ---
 
 # Research
@@ -11,8 +11,8 @@ Use this as the default entrypoint for autonomous runs. It delegates to:
 - an installed market-specific fetch skill for non-US companies
 - `$run-llm-workflow`
 
-Company packages are organized by exchange country under `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
-When present, `user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
+Company packages are organized by exchange country under `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
+When present, `.chadwin-data/user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
 
 ## Workflow
 
@@ -62,7 +62,7 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 ## Behavior Contract
 
 - No ticker provided:
-  - Select from `idea-screens/company-ideas-log.jsonl`, filtered by `user_preferences.json` when present.
+  - Select from `.chadwin-data/idea-screens/company-ideas-log.jsonl`, filtered by `.chadwin-data/user_preferences.json` when present.
   - Use selected company's market to run the correct fetch script.
   - Set `next_action` to `run_research`.
 
@@ -92,7 +92,7 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 - `--identity "<NAME EMAIL>"`: EDGAR identity for US fetch runs.
 - `--isin <ISIN>`: Optional identifier used by non-US fetch scripts that accept it.
 - `--ideas-log <PATH>`: Override queue log path.
-- `--preferences-path <PATH>`: Override preferences path (default `user_preferences.json`).
+- `--preferences-path <PATH>`: Override preferences path (default `.chadwin-data/user_preferences.json`).
 - `--ignore-preferences`: Disable preference-based queue filtering and market guardrails.
 - `--overwrite-assumptions`: Pass through to fetch scripts.
 - `--dry-run`: Emit decision without running fetch.

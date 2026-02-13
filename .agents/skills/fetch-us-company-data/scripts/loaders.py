@@ -5,6 +5,9 @@ import re
 from pathlib import Path
 from typing import Dict
 
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
+COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+
 
 @dataclass
 class CompanyData:
@@ -313,7 +316,7 @@ def _normalize_share_counts(df):
 
 
 def _resolve_data_dir(base_dir: Path, ticker: str) -> Path:
-    companies_dir = base_dir / "companies"
+    companies_dir = base_dir / COMPANIES_ROOT_RELATIVE_PATH
     normalized = ticker.upper()
 
     direct_candidates = [

@@ -1,9 +1,0 @@
-label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31
-Issuance of preferred stock,us-gaap_StockIssuedDuringPeriodValueNewIssues,,,493000000.0,,
-Stock compensation/issued for benefit plans,us-gaap_StockIssuedDuringPeriodValueShareBasedCompensation,69000000.0,61000000.0,40000000.0,85000000.0,48000000.0
-Net Income,us-gaap_NetIncomeLoss,3275000000.0,-752000000.0,-2241000000.0,1405000000.0,499000000.0
-Retirement of common stock/cancellation of shares,us-gaap_StockRepurchasedAndRetiredDuringPeriodValue,,,231000000.0,432000000.0,128000000.0
-Preferred stock dividends declared,us-gaap_DividendsPreferredStockCash,91000000.0,82000000.0,,,
-Common stock dividends declared,us-gaap_DividendsCommonStockCash,317000000.0,312000000.0,311000000.0,322000000.0,317000000.0
-"Other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,-1560000000.0,2876000000.0,,,3258000000.0
-"Total other comprehensive income (loss), net of tax",us-gaap_OtherComprehensiveIncomeLossNetOfTax,,,-14109000000.0,-2490000000.0,

@@ -3,9 +3,9 @@
 Goal: Produce a concise, decision-oriented summary for the current price.
 
 Inputs:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
-- Local filing and transcript evidence from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
-- Current price from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
+- Local filing and transcript evidence from `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+- Current price from `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
 - Analyst consensus/target context from `analyst_consensus.csv` and `analyst_price_targets.csv` when available
 
 Instructions:

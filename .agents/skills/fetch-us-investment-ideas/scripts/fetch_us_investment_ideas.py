@@ -157,11 +157,14 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--ideas-log",
-        help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
+        help=(
+            "Override ideas log path "
+            "(default: .chadwin-data/idea-screens/company-ideas-log.jsonl)."
+        ),
     )
     parser.add_argument(
         "--preferences-path",
-        help="Override preferences path (default: user_preferences.json).",
+        help="Override preferences path (default: .chadwin-data/user_preferences.json).",
     )
     parser.add_argument(
         "--ignore-preferences",

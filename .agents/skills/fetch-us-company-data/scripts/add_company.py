@@ -10,10 +10,13 @@ from pathlib import Path
 
 import sys
 
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
+COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+
 
 def _default_base_dir() -> Path:
     for parent in Path(__file__).resolve().parents:
-        if (parent / "companies").exists() and (parent / ".agents" / "skills").exists():
+        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
             return parent
     return Path.cwd()
 
@@ -58,7 +61,7 @@ def _repo_scoped_path(path: Path, base_dir: Path) -> str:
 
 
 def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
-    company_dir = base_dir / "companies" / COUNTRY_DIR / ticker
+    company_dir = base_dir / COMPANIES_ROOT_RELATIVE_PATH / COUNTRY_DIR / ticker
     (company_dir / "data").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "filings").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "financial_statements").mkdir(parents=True, exist_ok=True)
@@ -299,7 +302,10 @@ def main() -> None:
     parser.add_argument("--asof", default=str(date.today()))
     parser.add_argument(
         "--ideas-log",
-        help="Override ideas log path (default: idea-screens/company-ideas-log.jsonl).",
+        help=(
+            "Override ideas log path "
+            "(default: .chadwin-data/idea-screens/company-ideas-log.jsonl)."
+        ),
     )
     parser.add_argument("--overwrite-assumptions", action="store_true")
     parser.add_argument(
@@ -320,7 +326,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--preferences-path",
-        help="Override preferences path (default: user_preferences.json).",
+        help="Override preferences path (default: .chadwin-data/user_preferences.json).",
     )
     parser.add_argument(
         "--ignore-preferences",
@@ -357,7 +363,7 @@ def main() -> None:
         )
         if not selected:
             raise SystemExit(
-                "No US company found in idea-screens/company-ideas-log.jsonl. "
+                "No US company found in .chadwin-data/idea-screens/company-ideas-log.jsonl. "
                 "Run fetch-us-investment-ideas first, relax preferences, or pass --ticker."
             )
         ticker = str(selected["ticker"]).upper()

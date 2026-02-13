@@ -1,7 +1,0 @@
-label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
-Net Income,us-gaap_NetIncomeLoss,577952000.0,620023000.0,639377000.0,463846000.0,-134700000.0,157636000.0
-Fair value adjustments to available-for-sale securities,us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,-165000.0,123000.0,,,,
-"Fair value adjustments to available-for-sale securities, net of tax",us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,,,-1258000.0,-330000.0,680000.0,535000.0
-Foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-1139000.0,161000.0,56000.0,,,
-Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,576648000.0,620307000.0,,,,158171000.0
-Comprehensive income (loss),us-gaap_ComprehensiveIncomeNetOfTax,,,638175000.0,463516000.0,-134020000.0,

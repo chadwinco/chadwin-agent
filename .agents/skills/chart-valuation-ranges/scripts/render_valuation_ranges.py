@@ -13,6 +13,8 @@ from pathlib import Path
 
 
 REPORT_DIR_RE = re.compile(r"^(?P<asof>\d{4}-\d{2}-\d{2})(?:-(?P<run>\d{2}))?$")
+DEFAULT_COMPANIES_ROOT = ".chadwin-data/companies"
+DEFAULT_OUTPUT_DIR = ".chadwin-data/valuation-ranges"
 
 
 @dataclass
@@ -49,23 +51,27 @@ def repo_scoped_path(path: Path) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Scan companies/<COUNTRY>/<TICKER> (or a single-country ticker root) "
+            "Scan .chadwin-data/companies/<COUNTRY>/<TICKER> "
+            "(or a single-country ticker root) "
             "for each ticker's latest report, then render a margin-of-safety "
             "range chart (bear/base/bull)."
         )
     )
     parser.add_argument(
         "--companies-root",
-        default="companies",
+        default=DEFAULT_COMPANIES_ROOT,
         help=(
-            "Path to companies root (default: companies). Can point to either "
-            "companies or a single-country folder such as companies/US."
+            f"Path to companies root (default: {DEFAULT_COMPANIES_ROOT}). "
+            "Can point to either the companies root or a single-country "
+            "folder such as .chadwin-data/companies/US."
         ),
     )
     parser.add_argument(
         "--output-dir",
-        default=".agents/skills/chart-valuation-ranges/assets",
-        help="Directory for generated files (default: skill assets folder).",
+        default=DEFAULT_OUTPUT_DIR,
+        help=(
+            f"Directory for generated files (default: {DEFAULT_OUTPUT_DIR})."
+        ),
     )
     parser.add_argument(
         "--sort-by",
@@ -155,7 +161,7 @@ def iter_company_dirs(companies_root: Path) -> list[tuple[str, Path]]:
         return []
 
     # Backward compatibility: allow --companies-root to point directly at
-    # a single-country ticker folder, e.g. companies/US.
+    # a single-country ticker folder, e.g. .chadwin-data/companies/US.
     if any((child / "reports").is_dir() for child in children):
         country = companies_root.name.upper()
         return [(country, child) for child in children]

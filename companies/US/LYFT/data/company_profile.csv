@@ -1,2 +1,0 @@
-symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
-LYFT,13.99,5570000000.0,1.9,,9.66 - 25.54,,,74485506.0,"Lyft, Inc.",USD,0001759509,US55087P1049,55087P104,Nasdaq Global Select Market,NASDAQ,Software - Application,https://lyft.com,John Risher,Technology,United States,3913,844-250-2773,"185 Berry Street, Suite 400",San Francisco,CA,,,false,true,false

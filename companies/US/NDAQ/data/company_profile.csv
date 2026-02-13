@@ -1,2 +1,0 @@
-symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
-NDAQ,79.65,45480000000.0,1.02,1.08,64.84 - 101.79,,,2637447.0,"Nasdaq, Inc.",USD,0001120193,US6311031081,631103108,Nasdaq Global Select Market,NASDAQ,Financial Data & Stock Exchanges,https://nasdaq.com,Adena Friedman,Financials,United States,9525,212-401-8700,151 W. 42Nd Street,New York,NY,,,false,true,false

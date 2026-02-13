@@ -3,8 +3,8 @@
 Goal: Quantify financial quality and cash generation durability.
 
 Inputs:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`.
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv` and `analyst_eps_estimates.csv` when available.
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`.
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv` and `analyst_eps_estimates.csv` when available.
 - Use the data dictionary from the fetch skill that generated the local company data (for example, `.agents/skills/fetch-us-company-data/references/data-dictionary.md`) for metric definitions.
 
 Instructions:

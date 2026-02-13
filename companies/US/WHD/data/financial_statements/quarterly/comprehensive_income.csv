@@ -1,6 +1,0 @@
-label,concept,2025-09-30,2025-06-30,2024-09-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-06-30,2022-03-31
-Profit or Loss,us-gaap_ProfitLoss,50188000.0,49047000.0,62437000.0,49815000.0,68019000.0,32459000.0,52288000.0,35780000.0,27083000.0
-Foreign currency translation adjustments,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,-120000.0,497000.0,769000.0,-803000.0,-670000.0,-445000.0,303000.0,-1367000.0,436000.0
-Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,50068000.0,49544000.0,63206000.0,49012000.0,67349000.0,32014000.0,52591000.0,34413000.0,27519000.0
-Less: comprehensive income attributable to non-controlling interest,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,-8546000.0,-8842000.0,-12678000.0,-10677000.0,-15319000.0,-7596000.0,-9477000.0,-8302000.0,-6576000.0
-Comprehensive income attributable to Cactus Inc.,us-gaap_ComprehensiveIncomeNetOfTax,41522000.0,40702000.0,50528000.0,38335000.0,52030000.0,24418000.0,43114000.0,26111000.0,20943000.0

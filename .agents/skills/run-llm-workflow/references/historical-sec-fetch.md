@@ -12,7 +12,7 @@ Helper scripts:
 - Pull older event filings around stress periods.
 
 ## Prerequisites
-- US package exists under `companies/US/<TICKER>/data`.
+- US package exists under `.chadwin-data/companies/US/<TICKER>/data`.
 - `EDGAR_IDENTITY` is set in `.env`.
 - Follow `references/sec-access-policy.md`.
 
@@ -44,11 +44,11 @@ python3 .agents/skills/run-llm-workflow/scripts/fetch_sec_filing_markdown.py \
   --ticker <PEER_TICKER> \
   --form 8-K \
   --filed-date <YYYY-MM-DD> \
-  --output-path companies/US/<PRIMARY_TICKER>/data/filings/third_party/<PEER_FILE>.md
+  --output-path .chadwin-data/companies/US/<PRIMARY_TICKER>/data/filings/third_party/<PEER_FILE>.md
 ```
 
 Default output location:
-- `companies/US/<TICKER>/data/filings/historical/`
+- `.chadwin-data/companies/US/<TICKER>/data/filings/historical/`
 
 ## Guardrails
 - Keep pull scope tight to the issue being tested.

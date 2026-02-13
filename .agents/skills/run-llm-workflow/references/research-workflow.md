@@ -13,22 +13,22 @@ Generate a decision-grade investment write-up and scenario valuation from local 
 
 ## Inputs
 Primary local inputs:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/income_statement.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/income_statement.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
 
 Analyst/market expectation anchors (optional but prioritized when present):
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_price_targets.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_price_targets.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
 
 Optional controls:
-- `user_preferences.json`
+- `.chadwin-data/user_preferences.json`
 - `references/source-quality-and-search.md` for targeted external checks
 - `references/historical-sec-fetch.md` for US historical SEC pulls
 
@@ -46,7 +46,7 @@ Drafting assets:
 - Check recent local 8-K files for announced name or ticker changes; keep package paths on current ticker unless already effective, and disclose pending changes.
 - If ticker is not provided, pick from queue:
   - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow`
-- Load `user_preferences.json` when present and apply strategy/report preferences.
+- Load `.chadwin-data/user_preferences.json` when present and apply strategy/report preferences.
 - If local data is missing, stop and run the market fetch skill first.
 
 ## Step 2: Build the Fact Base and Market Baseline

@@ -33,5 +33,5 @@ python3 .agents/skills/run-llm-workflow/scripts/fetch_sec_filing_markdown.py \
   --ticker <TICKER> \
   --form 8-K \
   --filed-date <YYYY-MM-DD> \
-  --output-path companies/US/<PRIMARY_TICKER>/data/filings/third_party/<NAME>.md
+  --output-path .chadwin-data/companies/US/<PRIMARY_TICKER>/data/filings/third_party/<NAME>.md
 ```

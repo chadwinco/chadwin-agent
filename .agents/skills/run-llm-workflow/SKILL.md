@@ -1,6 +1,6 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment report and scenario valuation from `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` using a progressive, issue-driven workflow that starts with early key-lever mapping and continues until confidence is high and incremental research has diminishing returns. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
+description: Produce a concise, LLM-written investment report and scenario valuation from `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data` using a progressive, issue-driven workflow that starts with early key-lever mapping and continues until confidence is high and incremental research has diminishing returns. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
 ---
 
 # Run LLM Workflow
@@ -36,14 +36,14 @@ Use `<REPORT_DATE_DIR>` for outputs:
 
 ## Quick Start
 1. Resolve ticker and as-of date explicitly.
-2. Ensure `companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
-3. Load `user_preferences.json` when present and apply:
+2. Ensure `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
+3. Load `.chadwin-data/user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
 4. Resolve the output directory from repo root:
 
 ```bash
-REPORTS_ROOT="companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
+REPORTS_ROOT=".chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
 ASOF_DATE="<YYYY-MM-DD>"
 PRIMARY_DIR="$REPORTS_ROOT/$ASOF_DATE"
 REPORT_DATE_DIR="$ASOF_DATE"
@@ -67,7 +67,7 @@ echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
 
 5. Work through `references/research-workflow.md` as an LLM task.
-6. After report completion and goal-gate pass, remove the researched ticker from `idea-screens/company-ideas-log.jsonl`.
+6. After report completion and goal-gate pass, remove the researched ticker from `.chadwin-data/idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
 Use the queue CLI owned by the `$chadwin-research` skill from repo root:
@@ -81,23 +81,23 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 - Run `remove` only after required outputs are finalized and the goal gate passes.
 
 ## Required Outputs
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/inputs.yaml`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/inputs.yaml`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
 
 ## Inputs to Prioritize
 Core local evidence:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
 
 Market-expectation anchors (when available):
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_price_targets.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_price_targets.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
 
 ## Workflow
 1. Execute the progressive workflow in `references/research-workflow.md`.
@@ -114,7 +114,7 @@ Market-expectation anchors (when available):
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs a local file citation.
 - External claims must be cross-checked and traceable.
-- Do not violate explicit user exclusions in `user_preferences.json` unless the user explicitly asks to override.
+- Do not violate explicit user exclusions in `.chadwin-data/user_preferences.json` unless the user explicitly asks to override.
 
 ## Troubleshooting
 - If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.

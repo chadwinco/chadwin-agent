@@ -14,6 +14,15 @@ from typing import Dict, Iterable, List, Optional, Tuple
 from edgar import get_company_tickers, get_filings, set_identity
 
 TARGET_FORMS: Tuple[str, ...] = ("10-K", "10-Q", "20-F", "8-K", "6-K", "S-1")
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
+DEFAULT_OUTPUT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "daily-sec-filings"
+
+
+def _default_base_dir() -> Path:
+    for parent in Path(__file__).resolve().parents:
+        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
+            return parent
+    return Path.cwd()
 
 
 def _parse_date(value: str) -> date:
@@ -219,7 +228,7 @@ def fetch_daily_sec_filings(
 
 
 def parse_args() -> argparse.Namespace:
-    default_output = Path(__file__).resolve().parents[1] / "assets"
+    default_output = _default_base_dir() / DEFAULT_OUTPUT_RELATIVE_PATH
     parser = argparse.ArgumentParser(
         description="Fetch daily SEC filings and write per-form JSONL files."
     )

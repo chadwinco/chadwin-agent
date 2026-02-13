@@ -15,10 +15,13 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     load_dotenv = None
 
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
+COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+
 
 def _default_base_dir() -> Path:
     for parent in Path(__file__).resolve().parents:
-        if (parent / "companies").exists() and (parent / ".agents" / "skills").exists():
+        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
             return parent
     return Path.cwd()
 
@@ -164,7 +167,7 @@ def _resolve_output_path(
         return candidate if candidate.is_absolute() else base_dir / candidate
     return (
         base_dir
-        / "companies"
+        / COMPANIES_ROOT_RELATIVE_PATH
         / "US"
         / ticker
         / "data"
@@ -225,7 +228,7 @@ def _parse_args() -> argparse.Namespace:
         "--output-path",
         help=(
             "Optional output path. Defaults to "
-            "companies/US/<TICKER>/data/filings/third_party/<auto-filename>.md"
+            ".chadwin-data/companies/US/<TICKER>/data/filings/third_party/<auto-filename>.md"
         ),
     )
     return parser.parse_args()

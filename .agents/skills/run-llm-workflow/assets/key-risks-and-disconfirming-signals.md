@@ -3,7 +3,7 @@
 Goal: Prioritize the top risks to cash generation and define how the thesis could be disproven.
 
 Inputs:
-- `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/10-K-*.md` risk factors
+- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/10-K-*.md` risk factors
 - Recent `10-Q-*.md` and earnings call transcript commentary
 - Financial trend analysis from the current report run
 - Any unresolved items from the progressive issue-resolution loop

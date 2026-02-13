@@ -1,8 +1,0 @@
-label,concept,2025-09-30,2025-06-30
-Net Income,us-gaap_NetIncomeLoss,110997000.0,70072000.0
-Unrealized gains (losses) on securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,2034000.0,2096000.0
-"Other comprehensive gain (loss), before tax",us-gaap_OtherComprehensiveIncomeLossBeforeTaxPortionAttributableToParent,2034000.0,2096000.0
-Income tax expense on other comprehensive gain (loss) on investments,slde_IncomeTaxExpenseOnOtherComprehensiveGainLossOnInvestments,-591000.0,-545000.0
-Income tax expense on other comprehensive gain (loss),us-gaap_OtherComprehensiveIncomeAvailableforsaleSecuritiesAdjustmentNetOfTaxPortionAttributableToParent,-591000.0,-545000.0
-Other comprehensive gain (loss),us-gaap_OtherComprehensiveIncomeLossNetOfTax,1443000.0,1551000.0
-Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,112440000.0,71623000.0

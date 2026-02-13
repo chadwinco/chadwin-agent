@@ -1,7 +1,7 @@
 interface:
   display_name: "Fetch US Company Data"
   short_description: "Fetch EDGAR filings and transcripts for US tickers"
-  default_prompt: "Use $fetch-us-company-data to pull EDGAR filings, financials, and the latest earnings call transcript for a US ticker (or omit ticker to auto-pick from the shared ideas log), respecting user_preferences.json by default."
+  default_prompt: "Use $fetch-us-company-data to pull EDGAR filings, financials, and the latest earnings call transcript for a US ticker (or omit ticker to auto-pick from the shared ideas log), respecting .chadwin-data/user_preferences.json by default."
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"

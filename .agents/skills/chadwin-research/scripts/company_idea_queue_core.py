@@ -6,8 +6,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-DEFAULT_LOG_RELATIVE_PATH = Path("idea-screens") / "company-ideas-log.jsonl"
-DEFAULT_PREFERENCES_RELATIVE_PATH = Path("user_preferences.json")
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
+DEFAULT_COMPANIES_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+DEFAULT_LOG_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "idea-screens" / "company-ideas-log.jsonl"
+DEFAULT_PREFERENCES_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "user_preferences.json"
 
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_NON_US = "non-us"
@@ -18,7 +20,7 @@ COUNTRY_DIR_BY_MARKET = {"us": "US", "non-us": "International"}
 
 def default_base_dir() -> Path:
     for parent in Path(__file__).resolve().parents:
-        if (parent / "companies").exists() and (parent / ".agents" / "skills").exists():
+        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
             return parent
     return Path.cwd()
 
@@ -366,7 +368,7 @@ def _task_market(task: str) -> str | None:
 
 
 def _company_data_exists(base_dir: Path, ticker: str, market: str | None = None) -> bool:
-    companies_dir = base_dir / "companies"
+    companies_dir = base_dir / DEFAULT_COMPANIES_RELATIVE_PATH
     if not companies_dir.exists():
         return False
 

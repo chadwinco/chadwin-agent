@@ -14,10 +14,13 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     load_dotenv = None
 
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
+COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+
 
 def _default_base_dir() -> Path:
     for parent in Path(__file__).resolve().parents:
-        if (parent / "companies").exists() and (parent / ".agents" / "skills").exists():
+        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
             return parent
     return Path.cwd()
 
@@ -104,7 +107,15 @@ def _resolve_output_dir(base_dir: Path, ticker: str, output_dir: str | None) -> 
     if output_dir:
         candidate = Path(output_dir)
         return candidate if candidate.is_absolute() else base_dir / candidate
-    return base_dir / "companies" / "US" / ticker / "data" / "filings" / "historical"
+    return (
+        base_dir
+        / COMPANIES_ROOT_RELATIVE_PATH
+        / "US"
+        / ticker
+        / "data"
+        / "filings"
+        / "historical"
+    )
 
 
 def _configured_edgar_identity(base_dir: Path) -> str | None:
@@ -217,7 +228,10 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--base-dir", default=str(_default_base_dir()))
     parser.add_argument(
         "--output-dir",
-        help="Optional output directory override. Defaults to companies/US/<TICKER>/data/filings/historical.",
+        help=(
+            "Optional output directory override. Defaults to "
+            ".chadwin-data/companies/US/<TICKER>/data/filings/historical."
+        ),
     )
     return parser.parse_args()
 
