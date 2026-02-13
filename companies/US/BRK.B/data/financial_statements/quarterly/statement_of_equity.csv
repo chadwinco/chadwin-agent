@@ -1,0 +1,7 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Accounting Standards Update [Extensible Enumeration],us-gaap_AccountingStandardsUpdateExtensibleList,,,,,,http://www.berkshirehathaway.com/20240331#AccountingStandardsUpdate202302Member,,,http://fasb.org/us-gaap/2022#AccountingStandardsUpdate201812Member,,,
+Profit or Loss,us-gaap_ProfitLoss,30864000000.0,12457000000.0,4672000000.0,26480000000.0,30498000000.0,12832000000.0,-12567000000.0,36199000000.0,35757000000.0,-2588000000.0,-43376000000.0,5585000000.0
+"Other comprehensive income, net",us-gaap_OtherComprehensiveIncomeLossNetOfTax,-632000000.0,1199000000.0,506000000.0,194000000.0,190000000.0,-310000000.0,-52000000.0,757000000.0,82000000.0,-2113000000.0,-1776000000.0,-404000000.0
+Acquisition of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,,,,,345000000.0,2573000000.0,1087000000.0,1303000000.0,4439000000.0,1191000000.0,1028000000.0,3111000000.0
+Transactions with noncontrolling interests,brka_IncreaseDecreaseThroughTransactionsWithNoncontrollingInterests,-67000000.0,,,,,,,,,-14000000.0,-1032000000.0,-135000000.0
+Transactions with noncontrolling interests and other,brka_IncreaseDecreaseThroughTransactionsWithNoncontrollingInterestsAndOther,,-122000000.0,-91000000.0,-2839000000.0,-157000000.0,454000000.0,-3348000000.0,-179000000.0,-4000000.0,,,

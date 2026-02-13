@@ -1,0 +1,27 @@
+{
+  "ticker": "CROX",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 99.1,
+  "method": "three-stage-dcf-fade",
+  "scenarios": {
+    "base": {
+      "enterprise_value": 7033226467.10726,
+      "equity_value": 5932695467.10726,
+      "value_per_share": 109.44317198766343,
+      "margin_of_safety": 0.10437105941133651
+    },
+    "bull": {
+      "enterprise_value": 9684024826.596012,
+      "equity_value": 8583493826.596012,
+      "value_per_share": 158.34367301129006,
+      "margin_of_safety": 0.5978170838677102
+    },
+    "bear": {
+      "enterprise_value": 4430830124.670975,
+      "equity_value": 3330299124.6709747,
+      "value_per_share": 61.43556531639195,
+      "margin_of_safety": -0.3800649312170338
+    }
+  }
+}

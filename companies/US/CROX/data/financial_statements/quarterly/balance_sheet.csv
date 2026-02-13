@@ -1,0 +1,50 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Cash and Cash Equivalents,us-gaap_CashAndCashEquivalentsAtCarryingValue,153970000.0,200611000.0,166460000.0,186122000.0,167734000.0,159286000.0,127320000.0,166235000.0,125687000.0,142971000.0,187352000.0,171969000.0
+Inventory,us-gaap_InventoryNet,397073000.0,405136000.0,391298000.0,367191000.0,376599000.0,391953000.0,390163000.0,436269000.0,476112000.0,513748000.0,501527000.0,407589000.0
+"Property, Plant and Equipment",us-gaap_PropertyPlantAndEquipmentNet,242139000.0,249145000.0,245814000.0,243358000.0,244067000.0,242859000.0,223061000.0,213844000.0,190492000.0,163374000.0,140278000.0,135649000.0
+Goodwill,us-gaap_Goodwill,404688000.0,404695000.0,711557000.0,711602000.0,711542000.0,711553000.0,711885000.0,711570000.0,711560000.0,714380000.0,714143000.0,642467000.0
+Intangible Assets,us-gaap_IntangibleAssetsNetExcludingGoodwill,1330514000.0,1335462000.0,1772981000.0,1783677000.0,1785303000.0,1787600000.0,1793704000.0,1795876000.0,1798918000.0,1802576000.0,1804067000.0,1895980000.0
+Accounts Payable,us-gaap_AccountsPayableCurrent,217269000.0,263339000.0,244881000.0,240891000.0,244853000.0,236289000.0,209890000.0,261909000.0,232383000.0,190097000.0,225302000.0,202919000.0
+Accounts Receivable,us-gaap_AccountsReceivableNetCurrent,335317000.0,417426000.0,445705000.0,361651000.0,420199000.0,481521000.0,391207000.0,409594000.0,418959000.0,397657000.0,423490000.0,375750000.0
+Short Term Debt,us-gaap_LongTermDebtCurrent,,,,0.0,0.0,0.0,20000000.0,20000000.0,32970000.0,20000000.0,25403000.0,25173000.0
+Other Non Current Assets,us-gaap_OtherAssetsNoncurrent,40182000.0,34645000.0,29148000.0,17053000.0,16014000.0,15530000.0,28539000.0,9650000.0,9302000.0,6241000.0,7001000.0,7123000.0
+Other receivables,us-gaap_AccountsAndOtherReceivablesNetCurrent,17232000.0,22192000.0,19703000.0,21618000.0,20282000.0,26352000.0,23419000.0,27991000.0,31481000.0,23560000.0,16742000.0,16599000.0
+Income taxes receivable,us-gaap_IncomeTaxesReceivable,6437000.0,6500000.0,4513000.0,2913000.0,2502000.0,2972000.0,3047000.0,2331000.0,3083000.0,2464000.0,2223000.0,24536000.0
+Prepaid Expenses,us-gaap_PrepaidExpenseAndOtherAssetsCurrent,61162000.0,49942000.0,46267000.0,50923000.0,39586000.0,44313000.0,44024000.0,58794000.0,59338000.0,42770000.0,36941000.0,42061000.0
+Total Current Assets,us-gaap_AssetsCurrent,971191000.0,1101807000.0,1073946000.0,990420000.0,1026904000.0,1106399000.0,979182000.0,1101216000.0,1114662000.0,1123172000.0,1168307000.0,1038538000.0
+Total Assets,us-gaap_Assets,4299764000.0,4450566000.0,5066116000.0,4713150000.0,4719798000.0,4795605000.0,4581364000.0,4603125000.0,4595635000.0,4543168000.0,4586642000.0,4470660000.0
+Restricted cash,us-gaap_RestrictedCashAndCashEquivalentsNoncurrent,3553000.0,3570000.0,3277000.0,3421000.0,3292000.0,3734000.0,3707000.0,3348000.0,3240000.0,2980000.0,3187000.0,3365000.0
+Right-of-use assets,us-gaap_OperatingLeaseRightOfUseAsset,343100000.0,349268000.0,335783000.0,303758000.0,292089000.0,280182000.0,313608000.0,228076000.0,233981000.0,248548000.0,236077000.0,199805000.0
+Deferred Tax Assets,us-gaap_DeferredIncomeTaxAssetsNet,964397000.0,971974000.0,893610000.0,659861000.0,640587000.0,647748000.0,527678000.0,539545000.0,533480000.0,481897000.0,513582000.0,547733000.0
+Other Non Current Liabilities,us-gaap_OtherLiabilitiesNoncurrent,4480000.0,4698000.0,4018000.0,3213000.0,3071000.0,3264000.0,2349000.0,2443000.0,2531000.0,2462000.0,2577000.0,2246000.0
+Total Liabilities,us-gaap_Liabilities,2936624000.0,3029429000.0,3096523000.0,2988032000.0,3066587000.0,3198550000.0,3381106000.0,3413435000.0,3627135000.0,3912366000.0,4094677000.0,4121490000.0
+Income taxes payable,us-gaap_AccruedIncomeTaxesCurrent,114740000.0,96021000.0,135574000.0,106753000.0,92550000.0,82247000.0,108716000.0,84845000.0,109632000.0,76990000.0,58702000.0,67310000.0
+Total Current Liabilities,us-gaap_LiabilitiesCurrent,691735000.0,714849000.0,705196000.0,692526000.0,686416000.0,628561000.0,647877000.0,665940000.0,634366000.0,571160000.0,602144000.0,530785000.0
+Accrued Liabilities,us-gaap_AccruedLiabilitiesCurrent,275395000.0,272571000.0,247048000.0,277982000.0,285095000.0,247268000.0,248160000.0,241530000.0,201821000.0,228971000.0,242754000.0,185969000.0
+Current operating lease liabilities,us-gaap_OperatingLeaseLiabilityCurrent,84331000.0,82918000.0,77693000.0,66900000.0,63918000.0,62757000.0,61111000.0,57656000.0,57560000.0,55102000.0,49983000.0,49414000.0
+Long-term income taxes payable,us-gaap_AccruedIncomeTaxesNoncurrent,617817000.0,618082000.0,601088000.0,572362000.0,557581000.0,558913000.0,226006000.0,231577000.0,228165000.0,204769000.0,216042000.0,226188000.0
+Long Term Debt,us-gaap_LongTermDebtNoncurrent,1318498000.0,1379112000.0,1481725000.0,1421952000.0,1529566000.0,1727153000.0,1918668000.0,2007485000.0,2250288000.0,2595767000.0,2743507000.0,2851256000.0
+Long-term operating lease liabilities,us-gaap_OperatingLeaseLiabilityNoncurrent,303059000.0,311549000.0,303284000.0,285155000.0,277112000.0,267785000.0,286910000.0,204088000.0,209817000.0,225395000.0,217586000.0,181065000.0
+Commitments and contingencies,us-gaap_CommitmentsAndContingencies,,,,,,,,,,,,
+"Deferred tax liabilities, net",us-gaap_DeferredIncomeTaxLiabilitiesNet,1035000.0,1139000.0,1212000.0,12824000.0,12841000.0,12874000.0,299296000.0,301902000.0,301968000.0,312813000.0,312821000.0,
+Long-term deferred tax liability,us-gaap_DeferredIncomeTaxLiabilitiesNet,,,,,,,,,,,,329950000.0
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.7 million and 110.4 million issued, 52.4 million and 56.5 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,111000.0,,,,,,,,,,,
+Treasury Stock Common Value,us-gaap_TreasuryStockCommonValue,-2858413000.0,-2653423000.0,-2518065000.0,-2226193000.0,-2071289000.0,-1894782000.0,-1863567000.0,-1707136000.0,-1705896000.0,-1695463000.0,-1690780000.0,-1690312000.0
+Additional paid-in capital,us-gaap_AdditionalPaidInCapitalCommonStock,888416000.0,879940000.0,868681000.0,851228000.0,844595000.0,834433000.0,821120000.0,813466000.0,805078000.0,791750000.0,783862000.0,774562000.0
+Retained Earnings,us-gaap_RetainedEarningsAccumulatedDeficit,3375473000.0,3229657000.0,3721939000.0,3192927000.0,2993126000.0,2764219000.0,2358179000.0,2181154000.0,1968742000.0,1681464000.0,1512115000.0,1351800000.0
+Accumulated Other Comprehensive Income/Loss,us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax,-42447000.0,-35148000.0,-103073000.0,-92954000.0,-113331000.0,-106925000.0,-115584000.0,-97904000.0,-99534000.0,-147058000.0,-113341000.0,-86989000.0
+Total Stockholders' Equity,us-gaap_StockholdersEquity,1363140000.0,1421137000.0,1969593000.0,1725118000.0,1653211000.0,1597055000.0,1200258000.0,1189690000.0,968500000.0,630802000.0,491965000.0,349170000.0
+Total Liabilities and Stockholders' Equity,us-gaap_LiabilitiesAndStockholdersEquity,4299764000.0,4450566000.0,5066116000.0,4713150000.0,4719798000.0,4795605000.0,4581364000.0,4603125000.0,4595635000.0,4543168000.0,4586642000.0,4470660000.0
+Restricted cash - current,us-gaap_RestrictedCashAndCashEquivalentsAtCarryingValue,,,,2000.0,2000.0,2000.0,2000.0,2000.0,2000.0,2000.0,32000.0,34000.0
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.0 million and 109.5 million issued, 60.8 million and 61.7 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,,110000.0,,,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 109.9 million and 109.5 million issued, 62.1 million and 61.7 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,,,110000.0,,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 109.3 million and 105.9 million issued, 61.6 million and 58.3 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,,,,,,109000.0,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.3 million and 110.1 million issued, 59.6 million and 60.5 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,110000.0,,,,,,,
+"Preferred stock, par value $0.001 per share, 5.0 million shares authorized including 1.0 million authorized as Series A Convertible Preferred Stock, none outstanding",us-gaap_PreferredStockValueOutstanding,,,,,,,,,,0.0,0.0,0.0
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.7 million and 110.4 million issued, 54.8 million and 56.5 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,111000.0,,,,,,,,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 109.5 million and 105.9 million issued, 61.7 million and 58.3 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,,,,,109000.0,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.6 million and 110.4 million issued, 56.1 million and 56.5 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,111000.0,,,,,,,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.3 million and 110.1 million issued, 60.7 million and 60.5 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,110000.0,,,,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 109.8 million and 109.5 million issued, 62.0 million and 61.7 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,,,,110000.0,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 110.4 million and 110.1 million issued, 58.5 million and 60.5 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,110000.0,,,,,,,,
+"Common stock, par value $0.001 per share, 250.0 million shares authorized, 109.2 million and 105.9 million issued, 61.6 million and 58.3 million outstanding, respectively",us-gaap_CommonStockValueOutstanding,,,,,,,,,,,,109000.0

@@ -1,0 +1,42 @@
+asof_date: 2026-02-12
+ticker: CROX
+currency: USD
+price: 99.1
+model:
+  type: three-stage-dcf-fade
+base_year:
+  period_end: 2025-12-31
+  revenue: 4041000000.0
+  net_debt: 1100531000.0
+  diluted_shares: 54208000.0
+notes: |
+  Base year is anchored to the FY2025 8-K press release package (revenue, cash, debt, diluted share count)
+  because FY2025 annual XBRL statements are not yet present in local annual CSVs as of 2026-02-12.
+  Net debt is computed as total borrowings (1,230,885, in thousands) minus cash and cash equivalents
+  (130,354, in thousands). Assumptions are reconciled to muted FY2026 guidance and analyst ranges,
+  with explicit downside for HEYDUDE/tariff execution risk.
+scenarios:
+  base:
+    revenue_growth_stage1: 0.02
+    fcf_margin_stage1: 0.17
+    discount_rate: 0.115
+    terminal_growth: 0.022
+    fcf_margin_terminal: 0.145
+    stage1_years: 7
+    fade_years: 5
+  bull:
+    revenue_growth_stage1: 0.04
+    fcf_margin_stage1: 0.185
+    discount_rate: 0.107
+    terminal_growth: 0.024
+    fcf_margin_terminal: 0.155
+    stage1_years: 8
+    fade_years: 5
+  bear:
+    revenue_growth_stage1: -0.005
+    fcf_margin_stage1: 0.14
+    discount_rate: 0.125
+    terminal_growth: 0.015
+    fcf_margin_terminal: 0.12
+    stage1_years: 6
+    fade_years: 4

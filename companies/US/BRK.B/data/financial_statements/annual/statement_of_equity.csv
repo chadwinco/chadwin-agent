@@ -1,0 +1,9 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Accounting Standards Update [Extensible Enumeration],us-gaap_AccountingStandardsUpdateExtensibleList,http://fasb.org/us-gaap/2024#AccountingStandardsUpdate202302Member,,,,,
+Profit or Loss,us-gaap_ProfitLoss,89561000000.0,97147000000.0,-22058000000.0,90807000000.0,43253000000.0,81792000000.0
+"Other comprehensive income, net",us-gaap_OtherComprehensiveIncomeLossNetOfTax,170000000.0,1318000000.0,-2625000000.0,234000000.0,1019000000.0,-198000000.0
+Acquisitions of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,2918000000.0,,,,,
+Acquisition of common stock,us-gaap_TreasuryStockValueAcquiredCostMethod,,8976000000.0,8031000000.0,26942000000.0,,
+Transactions with noncontrolling interests and other,brka_IncreaseDecreaseThroughTransactionsWithNoncontrollingInterestsAndOther,-2540000000.0,-3661000000.0,,,,
+Transactions with noncontrolling interests,brka_IncreaseDecreaseThroughTransactionsWithNoncontrollingInterests,,,-1599000000.0,-505000000.0,3617000000.0,-536000000.0
+Issuance (acquisition) of common stock,brka_SharesIssuedAndRepurchased,,,,,-24728000000.0,-4995000000.0

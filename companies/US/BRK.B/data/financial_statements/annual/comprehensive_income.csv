@@ -1,0 +1,18 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Profit or Loss,us-gaap_ProfitLoss,89561000000.0,97147000000.0,-22058000000.0,90807000000.0,43253000000.0,81792000000.0
+Unrealized gains (losses) on investments,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,-82000000.0,477000000.0,-713000000.0,,,
+Foreign currency translation,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,-1500000000.0,782000000.0,-2136000000.0,-1011000000.0,1284000000.0,323000000.0
+Long-duration insurance contract discount rate changes,us-gaap_OciLiabilityForFuturePolicyBenefitGainLossBeforeReclassificationAdjustmentAndTax,807000000.0,-237000000.0,,,,
+Defined benefit pension plans,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentBeforeTax,1628000000.0,578000000.0,-253000000.0,1775000000.0,-355000000.0,
+Applicable income taxes,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesTax,-350000000.0,-123000000.0,47000000.0,-457000000.0,74000000.0,155000000.0
+"Other, net",us-gaap_OtherComprehensiveIncomeOtherNetOfTax,-162000000.0,-101000000.0,250000000.0,100000000.0,-42000000.0,-48000000.0
+"Other comprehensive income, net",us-gaap_OtherComprehensiveIncomeLossNetOfTax,170000000.0,1318000000.0,-2625000000.0,234000000.0,1019000000.0,-198000000.0
+Comprehensive income,us-gaap_ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest,89731000000.0,98465000000.0,-24683000000.0,91041000000.0,44272000000.0,81594000000.0
+Comprehensive income attributable to noncontrolling interests,us-gaap_ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest,-557000000.0,-953000000.0,-700000000.0,-1030000000.0,-751000000.0,-405000000.0
+Comprehensive income attributable to Berkshire shareholders,us-gaap_ComprehensiveIncomeNetOfTax,89174000000.0,,,,,
+Comprehensive income attributable to Berkshire Hathaway shareholders,us-gaap_ComprehensiveIncomeNetOfTax,,97512000000.0,-25383000000.0,90011000000.0,43521000000.0,81189000000.0
+Net change in unrealized appreciation of investments,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,,,204000000.0
+Unrealized appreciation of investments,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,,74000000.0,
+Unrealized appreciation of fixed maturity securities,us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodBeforeTax,,,,-217000000.0,,
+Prior service cost and actuarial gains/losses of defined benefit pension plans,us-gaap_OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansAdjustmentBeforeTax,,,,,,-711000000.0
+Reclassification of investment appreciation in net earnings,us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesBeforeTax,,,,,,-62000000.0

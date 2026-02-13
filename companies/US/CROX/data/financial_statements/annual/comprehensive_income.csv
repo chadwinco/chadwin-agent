@@ -1,0 +1,12 @@
+label,concept,2024-12-31,2023-12-31,2022-12-31,2021-12-31,2020-12-31,2019-12-31
+Net Income,us-gaap_NetIncomeLoss,950071000.0,792566000.0,540159000.0,725694000.0,312861000.0,119497000.0
+Unrealized gains (losses) on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,936000.0,-281000.0,-576000.0,,,
+Reclassification adjustment for realized (gains) losses on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,-564000.0,,,,,
+Net increase (decrease) from derivatives designated as hedging instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTaxParent,372000.0,282000.0,,,,
+"Foreign currency gains (losses), net",us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,-37249000.0,7441000.0,-17929000.0,-20484000.0,2189000.0,-3659000.0
+Reclassification of foreign currency translation gain (loss) to income,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax,-0.0,,-8148000.0,,,
+Reclassification adjustment for realized gains (losses) on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,563000.0,,,,
+Reclassification of foreign currency translation (gain) loss to income,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax,,-0.0,,,,
+"Total comprehensive income, net of tax",us-gaap_ComprehensiveIncomeNetOfTax,913194000.0,800289000.0,513506000.0,,,
+Total comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,,,,705210000.0,314886000.0,115770000.0
+Reclassification of foreign currency translation loss to income,us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax,,,,-0.0,-164000.0,-68000.0

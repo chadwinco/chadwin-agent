@@ -1,0 +1,30 @@
+{
+  "ticker": "BRK.B",
+  "asof_date": "2026-02-12",
+  "currency": "USD",
+  "price": 504.53,
+  "method": "two-stage-residual-income",
+  "scenarios": {
+    "base": {
+      "equity_value": 1091680631902.73,
+      "value_per_share": 506.03,
+      "margin_of_safety": 0.003,
+      "book_value_per_share_start": 324.68,
+      "book_value_per_share_end_stage1": 905.42
+    },
+    "bull": {
+      "equity_value": 1309165583381.45,
+      "value_per_share": 606.84,
+      "margin_of_safety": 0.2028,
+      "book_value_per_share_start": 324.68,
+      "book_value_per_share_end_stage1": 938.65
+    },
+    "bear": {
+      "equity_value": 709745228539.65,
+      "value_per_share": 328.99,
+      "margin_of_safety": -0.3479,
+      "book_value_per_share_start": 324.68,
+      "book_value_per_share_end_stage1": 587.73
+    }
+  }
+}

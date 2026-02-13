@@ -1,0 +1,32 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net Income,us-gaap_NetIncomeLoss,145816000.0,-492282000.0,160103000.0,199801000.0,228907000.0,152454000.0,177025000.0,212412000.0,149543000.0,169349000.0,160315000.0,72760000.0
+Depreciation and amortization,us-gaap_DepreciationDepletionAndAmortization,20326000.0,19474000.0,18537000.0,18185000.0,17544000.0,16161000.0,14751000.0,12644000.0,13136000.0,9744000.0,8859000.0,7895000.0
+Operating lease cost,us-gaap_OperatingLeaseCost,26876000.0,25552000.0,24186000.0,21555000.0,20409000.0,20244000.0,20288000.0,18393000.0,18199000.0,17058000.0,16656000.0,14231000.0
+Share-based compensation,us-gaap_ShareBasedCompensation,,,8777000.0,,,7582000.0,,,7464000.0,,,8275000.0
+Asset impairment,us-gaap_AssetImpairmentCharges,0.0,738115000.0,0.0,0.0,0.0,,,,,,,
+Deferred taxes,us-gaap_DeferredIncomeTaxExpenseBenefit,,,13589000.0,,,,,,,,,
+Other non-cash items,us-gaap_OtherNoncashIncomeExpense,,,-355000.0,,,11950000.0,,,383000.0,,,9695000.0
+Accounts receivable,us-gaap_IncreaseDecreaseInAccountsReceivable,,,-183607000.0,,,-179899000.0,,,-122144000.0,,,-130661000.0
+Inventories,us-gaap_IncreaseDecreaseInInventories,,,-36633000.0,,,-8309000.0,,,-5220000.0,,,-28124000.0
+Prepaid expenses and other assets,us-gaap_IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,,,3516000.0,,,-7843000.0,,,-35859000.0,,,-14584000.0
+"Accounts payable, accrued expenses and other liabilities",us-gaap_IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,,,-71094000.0,,,-62563000.0,,,-31824000.0,,,6490000.0
+Right-of-use assets and operating lease liabilities,crox_IncreaseDecreaseInRightOfUseAssetsAndOperatingLeaseLiabilities,,,-23901000.0,,,-20265000.0,,,-17421000.0,,,-14742000.0
+Income taxes,us-gaap_IncreaseDecreaseInIncomeTaxesReceivable,,,19647000.0,,,18833000.0,,,33674000.0,,,
+Net Cash from Operating Activities,us-gaap_NetCashProvidedByUsedInOperatingActivities,,,-67235000.0,,,-27574000.0,,,9931000.0,,,-68765000.0
+"Payments for Property, Plant and Equipment",us-gaap_PaymentsToAcquirePropertyPlantAndEquipment,,,-15375000.0,,,-15750000.0,,,-27581000.0,,,-39786000.0
+Net Cash from Investing Activities,us-gaap_NetCashProvidedByUsedInInvestingActivities,,,-15375000.0,,,-15750000.0,,,-27581000.0,,,-2071466000.0
+Proceeds from borrowings,us-gaap_ProceedsFromNotesPayable,,,195000000.0,,,78156000.0,,,214634000.0,,,2240163000.0
+Repayments of borrowings,us-gaap_RepaymentsOfDebtAndCapitalLeaseObligations,,,-65000000.0,,,-16405000.0,,,-256000000.0,,,-85000000.0
+Repurchases of common stock for tax withholding,crox_PaymentForRepurchasesOfCommonStockForTaxWithholding,,,-3310000.0,,,-5913000.0,,,-10395000.0,,,-6288000.0
+Other,us-gaap_ProceedsFromPaymentsForOtherFinancingActivities,,,0.0,,,166000.0,,,0.0,,,95000.0
+Net Cash from Financing Activities,us-gaap_NetCashProvidedByUsedInFinancingActivities,,,65824000.0,,,54831000.0,,,-52306000.0,,,2099484000.0
+"Accrued purchases of property, equipment, and software",us-gaap_CapitalExpendituresIncurredButNotYetPaid,,,,,,,,,,,,9369000.0
+"Effect of exchange rate changes on cash, cash equivalents, and restricted cash",us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,,,2845000.0,,,-1582000.0,,,4000000.0,,,-810000.0
+Net Change in Cash,us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,,,-13941000.0,,,9925000.0,,,-65956000.0,,,-41557000.0
+Deferred debt issuance costs,us-gaap_PaymentsOfDebtIssuanceCosts,,,,,,-1173000.0,,,-545000.0,,,-49486000.0
+Asset impairments,us-gaap_AssetImpairmentCharges,,,,,,24081000.0,,,,,,
+Proceeds from notes issuance,us-gaap_ProceedsFromIssuanceOfDebt,,,,,,,,,,,,0.0
+Payments to Acquire Businesses,us-gaap_PaymentsToAcquireBusinessesNetOfCashAcquired,,,,,,,,,-0.0,,,-2031765000.0
+Repurchases of common stock,us-gaap_PaymentsForRepurchaseOfCommonStock,,,-60866000.0,,,,,,,,,-0.0
+Adjustment Holdback Amount,crox_NoncashOrPartNoncashAcquisitionContingentConsideration,,,,,,,,,,,,8500000.0
+Share issuance at acquisition,crox_NoncashOrPartNoncashAcquisitionSharesIssuedValue,,,,,,,,,,,,270396000.0

@@ -1,0 +1,18 @@
+{
+  "query": "Berkshire Hathaway Inc earnings call transcript",
+  "manual_url": null,
+  "candidate_urls": [
+    "https://finance.yahoo.com/quote/BRK-A/earnings-calls/"
+  ],
+  "selected_transcript": null,
+  "attempts": [
+    {
+      "url": "https://finance.yahoo.com/quote/BRK-A/earnings-calls/",
+      "status": "http_error",
+      "http_status": 404,
+      "body_length": 0,
+      "published_date": null,
+      "message": "HTTP Error 404: Not Found"
+    }
+  ]
+}

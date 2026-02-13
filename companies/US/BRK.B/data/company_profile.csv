@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+BRK.B,504.53,1080000000000.0001,0.7,,455.19 - 542.07,,,2717572.0,Berkshire Hathaway Inc,USD,0001067983,US0846707026,084670207,New York Stock Exchange,NYSE,Insurance - Diversified,https://berkshirehathaway.com,Gregory Abel,Financials,United States,392400,402-346-1400,3555 Farnam Street,Omaha,NE,,,false,true,false

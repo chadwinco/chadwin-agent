@@ -1,0 +1,2 @@
+symbol,price,marketCap,beta,lastDividend,range,change,changePercentage,volume,companyName,currency,cik,isin,cusip,exchangeFullName,exchange,industry,website,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,ipoDate,isEtf,isActivelyTrading,isAdr
+CROX,99.1,5140000000.0,1.55,,73.21 - 122.84,,,3374016.0,"Crocs, Inc.",USD,0001334036,US2270461096,227046109,Nasdaq Global Select Market,NASDAQ,Footwear & Accessories,https://crocs.com,Andrew Rees,Consumer Discretionary,United States,7910,303-848-7000,500 Eldorado Boulevard,Building 5,,,,false,true,false

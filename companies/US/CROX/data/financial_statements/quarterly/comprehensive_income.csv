@@ -1,0 +1,15 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Net Income,us-gaap_NetIncomeLoss,145816000.0,-492282000.0,160103000.0,199801000.0,228907000.0,152454000.0,177025000.0,212412000.0,149543000.0,169349000.0,160315000.0,72760000.0
+Unrealized gains (losses) on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,56000.0,-224000.0,,-429000.0,269000.0,426000.0,-363000.0,223000.0,-379000.0,568000.0,,
+Reclassification adjustment for realized losses (gains) on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,40000.0,,,,,,,,,,,
+Net increase (decrease) from derivatives designated as hedging instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTaxParent,96000.0,-40000.0,-396000.0,-364000.0,,256000.0,-116000.0,440000.0,4000.0,568000.0,,
+"Foreign currency translation (losses) gains, net",us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,-7395000.0,,,,,,,,,,,
+"Total comprehensive income (loss), net of tax",us-gaap_ComprehensiveIncomeNetOfTax,138517000.0,-424357000.0,,,,,,,,,,
+Reclassification adjustment for realized (gains) losses on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,184000.0,,65000.0,-256000.0,-170000.0,247000.0,217000.0,383000.0,,,
+"Foreign currency translation gains (losses), net",us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,67965000.0,29968000.0,20741000.0,-6419000.0,-11413000.0,,1190000.0,3953000.0,,-26352000.0,
+Unrealized gains on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAfterTax,,,23000.0,,,,,,,,,
+Reclassification adjustment for realized losses on derivative instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax,,,-419000.0,,,,,,,,,
+Total comprehensive income,us-gaap_ComprehensiveIncomeNetOfTax,,,,,,,,,,,133963000.0,62609000.0
+"Total comprehensive income, net of tax",us-gaap_ComprehensiveIncomeNetOfTax,,,189675000.0,220178000.0,222501000.0,141297000.0,159345000.0,214042000.0,153500000.0,135632000.0,,
+Net increase from derivatives designated as hedging instruments,us-gaap_OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTaxParent,,,,,13000.0,,,,,,,
+"Foreign currency translation losses, net",us-gaap_OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationGainLossArisingDuringPeriodNetOfTax,,,,,,,-17564000.0,,,-34285000.0,,-10151000.0

@@ -1,0 +1,24 @@
+label,concept,2025-09-30,2025-06-30,2025-03-31,2024-09-30,2024-06-30,2024-03-31,2023-09-30,2023-06-30,2023-03-31,2022-09-30,2022-06-30,2022-03-31
+Contract Revenue,us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax,996301000.0,1149373000.0,937333000.0,1062200000.0,1111502000.0,938633000.0,1045717000.0,1072367000.0,884166000.0,985094000.0,964581000.0,660148000.0
+Goodwill impairment,us-gaap_GoodwillImpairmentLoss,0.0,,,,,,,,,,,
+Asset impairments,us-gaap_OtherAssetImpairmentCharges,-0.0,,,,,,,,,,,
+Asset impairment,us-gaap_AssetImpairmentCharges,,738115000.0,,,,,,,,,,
+"Foreign currency gains (losses), net",us-gaap_ForeignCurrencyTransactionGainLossBeforeTax,2957000.0,434000.0,4873000.0,,-1323000.0,,,551000.0,-403000.0,-393000.0,,480000.0
+"Foreign currency losses, net",us-gaap_ForeignCurrencyTransactionGainLossBeforeTax,,,,-332000.0,,-2273000.0,-1770000.0,,,,-1202000.0,
+Interest income,us-gaap_InvestmentIncomeInterestAndDividend,531000.0,371000.0,333000.0,1366000.0,1126000.0,416000.0,506000.0,548000.0,171000.0,31000.0,86000.0,102000.0
+Cost of Goods and Services Sold,us-gaap_CostOfGoodsAndServicesSold,-413293000.0,-440537000.0,-395784000.0,-428861000.0,-429586000.0,-416556000.0,-464081000.0,-451060000.0,-407796000.0,-443792000.0,-466848000.0,-335224000.0
+Gross Profit,us-gaap_GrossProfit,583008000.0,708836000.0,541549000.0,633339000.0,681916000.0,522077000.0,581636000.0,621307000.0,476370000.0,541302000.0,497733000.0,324924000.0
+"Selling, General and Administrative Expense",us-gaap_SellingGeneralAndAdministrativeExpense,-375348000.0,-398237000.0,-318575000.0,-363510000.0,-356178000.0,-295648000.0,-307784000.0,-302818000.0,-241442000.0,-277239000.0,-249769000.0,-206247000.0
+Operating Income,us-gaap_OperatingIncomeLoss,207660000.0,-427516000.0,222974000.0,269829000.0,325738000.0,226429000.0,273852000.0,318489000.0,234928000.0,264063000.0,247964000.0,118677000.0
+Interest Expense,us-gaap_InterestExpense,,,,,,-30563000.0,-39207000.0,-43063000.0,-42637000.0,-34142000.0,-32963000.0,-19252000.0
+Interest Expense (non-operating),us-gaap_InterestExpenseNonoperating,-21711000.0,-22523000.0,-22766000.0,-26203000.0,-29161000.0,,,,,,,
+"Other income (expense), net",us-gaap_OtherNonoperatingIncomeExpense,-9000.0,,-475000.0,,,20000.0,24000.0,717000.0,,16000.0,419000.0,-947000.0
+"Other income, net",us-gaap_OtherNonoperatingIncomeExpense,,627000.0,,237000.0,45000.0,,,,,,,
+"Other expense, net",us-gaap_OtherNonoperatingIncomeExpense,,,,,,,,,-293000.0,,,
+Income Before Tax from Continuing Operations,us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,189428000.0,-448607000.0,204939000.0,244897000.0,296425000.0,194029000.0,233405000.0,277242000.0,191766000.0,229575000.0,214304000.0,99060000.0
+Income Tax Expense,us-gaap_IncomeTaxExpenseBenefit,-43612000.0,-43675000.0,-44836000.0,-45096000.0,-67518000.0,-41575000.0,-56380000.0,-64830000.0,-42223000.0,-60226000.0,-53989000.0,-26300000.0
+Net Income,us-gaap_NetIncomeLoss,145816000.0,-492282000.0,160103000.0,199801000.0,228907000.0,152454000.0,177025000.0,212412000.0,149543000.0,169349000.0,160315000.0,72760000.0
+Earnings Per Share (Basic),us-gaap_EarningsPerShareBasic,2.72,-8.82,2.85,3.38,3.79,2.52,2.9,3.42,2.42,2.75,2.6,1.22
+Earnings Per Share (Diluted),us-gaap_EarningsPerShareDiluted,2.7,-8.82,2.83,3.36,3.77,2.5,2.87,3.39,2.39,2.72,2.58,1.19
+Basic (in shares),us-gaap_WeightedAverageNumberOfSharesIssuedBasic,53641000.0,55783000.0,56110000.0,59046000.0,60320000.0,60564000.0,61143000.0,62037000.0,61836000.0,61693000.0,61590000.0,59823000.0
+Shares Outstanding (Diluted),us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding,53989000.0,55783000.0,56502000.0,59501000.0,60766000.0,61054000.0,61615000.0,62603000.0,62629000.0,62367000.0,62236000.0,60896000.0
