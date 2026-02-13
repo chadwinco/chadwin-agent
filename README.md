@@ -9,11 +9,33 @@ These steps prepare the local Python environment so Codex Skills can run success
 
 From repo root:
 
+If `python3 -m venv .venv` fails with `No module named venv`, install Python's `venv` support first:
+
+```bash
+# macOS (Homebrew; `venv` is included with Python)
+brew install python
+
+# Debian/Ubuntu (`venv` is a separate package)
+sudo apt update && sudo apt install -y python3-venv
+
+# Fedora/RHEL/CentOS (`venv` is included with python3)
+sudo dnf install -y python3
+
+# Arch Linux (`venv` is included with python)
+sudo pacman -S python
+```
+
+Then create and activate the virtual environment:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
+
+If macOS still uses the wrong interpreter after `brew install python`, run Homebrew Python explicitly:
+- Apple Silicon: `/opt/homebrew/bin/python3 -m venv .venv`
+- Intel: `/usr/local/bin/python3 -m venv .venv`
 
 You should also configure your identity in `.env` to comply with the rules of the SEC EDGAR API, which is used to fetch financial information:
 
