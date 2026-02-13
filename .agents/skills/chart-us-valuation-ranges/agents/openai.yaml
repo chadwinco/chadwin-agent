@@ -2,3 +2,6 @@ interface:
   display_name: "US Valuation Range Chart"
   short_description: "Chart latest US base/bull/bear valuation ranges"
   default_prompt: "Use $chart-us-valuation-ranges to graph the latest US base/bull/bear valuation ranges from companies/US."
+  icon_small: "./assets/chadwin-icon.svg"
+  icon_large: "./assets/chadwin-icon.png"
+  brand_color: "#F43C00"
