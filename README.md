@@ -40,7 +40,7 @@ If macOS still uses the wrong interpreter after `brew install python`, run Homeb
 You should also configure your identity in `.env` to comply with the rules of the SEC EDGAR API, which is used to fetch financial information:
 
 ```bash
-EDGAR_IDENTITY="Your Name (your.email@example.com)"
+EDGAR_IDENTITY="Your Name <your.email@example.com>"
 ```
 
 ## How To Use Chadwin Codex
