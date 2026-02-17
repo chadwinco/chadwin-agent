@@ -39,7 +39,7 @@ Interaction rule:
 Normalization rules:
 - Markets:
   - Prefer `US`, `Non-US`, and `Global` for broad buckets.
-  - Keep explicit country names when the user is specific (for example `Sweden`, `Japan`).
+  - Countries must always be represented as ISO 3166-1 alpha-2 uppercase codes (for example `SE`, `JP`, `GB`), never full country names.
 - Section keys:
   - `sector_and_industry_preferences`: `preferred_sectors`, `preferred_industries`, `excluded_sectors`, `excluded_industries`, `notes`
   - `investment_strategy_preferences`: `preferred_strategies`, `excluded_strategies`, `notes`
