@@ -54,6 +54,27 @@ Then set:
 EDGAR_IDENTITY="Your Name your.email@example.com"
 ```
 
+Data artifacts are written to `<DATA_ROOT>`:
+- `CHADWIN_DATA_DIR` when set.
+- Otherwise OS default app-data location:
+  - macOS: `~/Library/Application Support/Chadwin`
+  - Linux: `${XDG_DATA_HOME:-~/.local/share}/Chadwin`
+  - Windows: `%APPDATA%/Chadwin`
+
+Repo-local `.chadwin-data` is no longer used.
+
+Optional one-time bootstrap:
+
+```bash
+.venv/bin/python .agents/skills/setup-chadwin-data/scripts/setup_chadwin_data_dirs.py
+```
+
+This bootstrap is intentionally minimal:
+- creates `<DATA_ROOT>/`
+- initializes `<DATA_ROOT>/user_preferences.json`
+
+Other skills create and manage their own data folders/files under `<DATA_ROOT>`.
+
 ## Discover and Use Skills
 List available repo-local skills:
 
@@ -70,14 +91,14 @@ sed -n '1,220p' .agents/skills/<skill-name>/SKILL.md
 If an orchestrator skill is installed, use it for semi-autonomous runs. If not, compose manual runs from available lower-level skills (idea generation, data fetch, research/reporting, preferences).
 
 ## Required Outputs Per Completed Research Run
-For `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`, a run is complete only when these files exist:
+For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`, a run is complete only when these files exist:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
 
 ## Repository Layout
 - `.agents/skills/`: skill definitions, scripts, references, and assets
-- `.chadwin-data/idea-screens/`: queue and generated idea files
-- `.chadwin-data/user_preferences.json`: persistent preference profile
-- `.chadwin-data/improvement-log.md`: process improvement log
-- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/`: company evidence and reports
+- `<DATA_ROOT>/idea-screens/`: queue and generated idea files
+- `<DATA_ROOT>/user_preferences.json`: persistent preference profile
+- `<DATA_ROOT>/improvement-log.md`: process improvement log
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/`: company evidence and reports

@@ -3,10 +3,10 @@
 Goal: Explain how the company makes money, why returns may persist, and what could weaken the model.
 
 Inputs:
-- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/10-K-*.md` or `20-F-*.md`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/10-K-*.md` or `20-F-*.md`
 - Latest `10-Q-*.md` and earnings call transcript, if available
-- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
-- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv` (optional expectation-shift context)
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv` (optional expectation-shift context)
 
 Instructions:
 - Write 2-3 short, tightly argued paragraphs.

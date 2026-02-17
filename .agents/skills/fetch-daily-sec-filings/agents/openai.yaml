@@ -1,7 +1,7 @@
 interface:
   display_name: "Fetch Daily SEC Filings"
   short_description: "Fetch per-form, per-day SEC filing JSONL lists."
-  default_prompt: "Use $fetch-daily-sec-filings to fetch per-form daily SEC filings (default latest-complete day) for 10-K, 10-Q, 20-F, 8-K, 6-K, and S-1 into .chadwin-data/daily-sec-filings JSONL files."
+  default_prompt: "Use $fetch-daily-sec-filings to fetch per-form daily SEC filings (default latest-complete day) for 10-K, 10-Q, 20-F, 8-K, 6-K, and S-1 into <DATA_ROOT>/daily-sec-filings JSONL files."
 
 dependencies:
   python_packages:

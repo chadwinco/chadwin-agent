@@ -5,8 +5,7 @@ import re
 from pathlib import Path
 from typing import Dict
 
-DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
-COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+from data_paths import resolve_data_root
 
 
 @dataclass
@@ -316,8 +315,8 @@ def _normalize_share_counts(df):
         df[col] = adjusted
 
 
-def _resolve_data_dir(base_dir: Path, ticker: str) -> Path:
-    companies_dir = base_dir / COMPANIES_ROOT_RELATIVE_PATH
+def _resolve_data_dir(ticker: str) -> Path:
+    companies_dir = resolve_data_root() / "companies"
     normalized = ticker.upper()
 
     direct_candidates = [
@@ -352,8 +351,8 @@ def _resolve_data_dir(base_dir: Path, ticker: str) -> Path:
     )
 
 
-def load_company_data(base_dir: Path, ticker: str) -> CompanyData:
-    data_dir = _resolve_data_dir(base_dir, ticker)
+def load_company_data(ticker: str) -> CompanyData:
+    data_dir = _resolve_data_dir(ticker)
 
     profile = _load_csv(data_dir / "company_profile.csv")
     currency = ""

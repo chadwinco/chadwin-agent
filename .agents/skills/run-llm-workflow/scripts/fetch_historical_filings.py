@@ -14,15 +14,11 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     load_dotenv = None
 
-DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
-COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+from data_paths import detect_repo_root, resolve_data_root
 
 
 def _default_base_dir() -> Path:
-    for parent in Path(__file__).resolve().parents:
-        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
-            return parent
-    return Path.cwd()
+    return detect_repo_root(Path(__file__).resolve())
 
 
 def _repo_scoped_path(path: Path, base_dir: Path) -> str:
@@ -108,8 +104,8 @@ def _resolve_output_dir(base_dir: Path, ticker: str, output_dir: str | None) -> 
         candidate = Path(output_dir)
         return candidate if candidate.is_absolute() else base_dir / candidate
     return (
-        base_dir
-        / COMPANIES_ROOT_RELATIVE_PATH
+        resolve_data_root()
+        / "companies"
         / "US"
         / ticker
         / "data"
@@ -230,7 +226,7 @@ def _parse_args() -> argparse.Namespace:
         "--output-dir",
         help=(
             "Optional output directory override. Defaults to "
-            ".chadwin-data/companies/US/<TICKER>/data/filings/historical."
+            "<DATA_ROOT>/companies/US/<TICKER>/data/filings/historical."
         ),
     )
     return parser.parse_args()

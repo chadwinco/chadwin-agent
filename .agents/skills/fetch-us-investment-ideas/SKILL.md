@@ -11,11 +11,11 @@ This skill is LLM-driven. Do not force all idea generation through one determini
 Use one of three paths per run:
 - LLM web-research path (default when user asks for flexibility): use the LLM's native web browsing/search capability directly, then emit structured JSON.
 - Finviz helper path (optional): run `scripts/fetch_us_investment_ideas.py` when a deterministic value/quality seed list is useful.
-- SEC filing-driven path (optional): use `.chadwin-data/daily-sec-filings/*/*.jsonl` as the seed universe when the user requests ideas anchored to filing activity on specific dates/forms.
+- SEC filing-driven path (optional): use `<DATA_ROOT>/daily-sec-filings/*/*.jsonl` as the seed universe when the user requests ideas anchored to filing activity on specific dates/forms.
 
-Each completed run appends newly discovered companies to `.chadwin-data/idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
+Each completed run appends newly discovered companies to `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
 
-When present, apply `.chadwin-data/user_preferences.json` by default:
+When present, apply `<DATA_ROOT>/user_preferences.json` by default:
 - US market guardrail (skip/fail if US is excluded)
 - sector/industry include/exclude filtering
 
@@ -36,13 +36,13 @@ export FETCH_US_INVESTMENT_IDEAS_CLI="$FETCH_US_INVESTMENT_IDEAS_ROOT/scripts/fe
 ```bash
 python3 "$FETCH_US_INVESTMENT_IDEAS_CLI" \
   --limit 25 \
-  --output .chadwin-data/idea-screens/$(date +%F)/us-investment-ideas.json
+  --output <DATA_ROOT>/idea-screens/$(date +%F)/us-investment-ideas.json
 ```
 - SEC filing-driven path:
   - Reuse existing filing snapshots when available:
 
 ```bash
-ls .chadwin-data/daily-sec-filings/*/2026-02-12.jsonl
+ls <DATA_ROOT>/daily-sec-filings/*/2026-02-12.jsonl
 ```
 
   - If requested dates are missing, generate filing data first:
@@ -57,7 +57,7 @@ ls .chadwin-data/daily-sec-filings/*/2026-02-12.jsonl
 
 ```bash
 python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py append-json \
-  --ideas-json .chadwin-data/idea-screens/$(date +%F)/us-investment-ideas.json \
+  --ideas-json <DATA_ROOT>/idea-screens/$(date +%F)/us-investment-ideas.json \
   --source fetch-us-investment-ideas
 ```
 
@@ -96,14 +96,14 @@ When filings are used as idea foundation, include this optional block:
   "dates": ["2026-02-12"],
   "forms": ["10-K", "10-Q", "20-F", "8-K", "6-K", "S-1"],
   "files": [
-    ".chadwin-data/daily-sec-filings/8-K/2026-02-12.jsonl"
+    "<DATA_ROOT>/daily-sec-filings/8-K/2026-02-12.jsonl"
   ]
 }
 ```
 
 ## SEC Filing Data Contract
 `fetch-daily-sec-filings` outputs one JSONL file per form per day at:
-- `.chadwin-data/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`
 
 Each JSONL line has:
 - `company_name`
@@ -118,14 +118,14 @@ Each JSONL line has:
 - If user asked for deterministic screening, use the Finviz helper script.
 - If user asked for filing-date- or filing-form-driven ideas, use SEC filing-driven path:
   - Resolve requested dates/forms.
-  - Reuse existing JSONL files in `.chadwin-data/daily-sec-filings`.
+  - Reuse existing JSONL files in `<DATA_ROOT>/daily-sec-filings`.
   - If missing, invoke `$fetch-daily-sec-filings` for those dates, then continue.
   - Use filing activity as ticker seed universe, then add concise thesis for each selected idea.
 2. Keep exchange scope to NASDAQ/NYSE/AMEX unless explicitly asked to broaden.
 3. Apply preferences unless user overrides.
 4. Write output JSON for deterministic handoff.
 5. Verify non-empty `ideas`, with `ticker` + `thesis` per entry.
-6. Confirm queue append in `.chadwin-data/idea-screens/company-ideas-log.jsonl`.
+6. Confirm queue append in `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
 
 ## Key Flags (Finviz helper script)
 - `--limit`: max number of returned ideas.
@@ -135,14 +135,14 @@ Each JSONL line has:
 - `--min-roe`, `--min-roic`, `--min-operating-margin`, `--min-profit-margin`, `--max-debt-to-equity`: quality gates.
 - `--output`: write JSON to file.
 - `--compact`: emit minified JSON.
-- `--ideas-log`: override central queue log path (defaults to `.chadwin-data/idea-screens/company-ideas-log.jsonl`).
+- `--ideas-log`: override central queue log path (defaults to `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`).
 - `--base-dir`: override repo root used for queue log resolution.
-- `--preferences-path`: override preferences path (default `.chadwin-data/user_preferences.json`).
+- `--preferences-path`: override preferences path (default `<DATA_ROOT>/user_preferences.json`).
 - `--ignore-preferences`: ignore preference-based market/sector filters.
 
 ## Troubleshooting
 - If Finviz output is empty, loosen thresholds (for example raise `--max-pe` or lower `--min-roic`).
-- If preferences exclude US market, update `.chadwin-data/user_preferences.json` or rerun with `--ignore-preferences`.
+- If preferences exclude US market, update `<DATA_ROOT>/user_preferences.json` or rerun with `--ignore-preferences`.
 - If requests fail intermittently, raise `--request-delay` and retry.
 - If script dependencies are missing, install the packages listed in `agents/openai.yaml`.
 

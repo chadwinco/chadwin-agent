@@ -16,8 +16,8 @@ Run from repo root:
 ```
 
 Generated files:
-- `.chadwin-data/valuation-ranges/valuation-ranges.svg`
-- `.chadwin-data/valuation-ranges/valuation-ranges.json`
+- `<DATA_ROOT>/valuation-ranges/valuation-ranges.svg`
+- `<DATA_ROOT>/valuation-ranges/valuation-ranges.json`
 
 ## Workflow
 1. Run the script.
@@ -25,8 +25,8 @@ Generated files:
 3. Use the generated SVG in chat and the JSON for deterministic row values.
 
 ## Selection Rules
-- Enumerate all company directories under `.chadwin-data/companies/<COUNTRY>/<TICKER>`.
-- Backward-compatible mode: if `--companies-root` points to a single-country folder (for example `.chadwin-data/companies/US`), treat direct children as ticker folders.
+- Enumerate all company directories under `<DATA_ROOT>/companies/<COUNTRY>/<TICKER>`.
+- Backward-compatible mode: if `--companies-root` points to a single-country folder (for example `<DATA_ROOT>/companies/US`), treat direct children as ticker folders.
 - For each ticker, inspect `reports/` and choose the latest folder matching:
   - `YYYY-MM-DD`
   - `YYYY-MM-DD-01`, `YYYY-MM-DD-02`, etc.
@@ -52,7 +52,7 @@ Generated files:
 
 Supported options:
 - `--companies-root` (default `companies`)
-- `--output-dir` (default `.chadwin-data/valuation-ranges`)
+- `--output-dir` (default `<DATA_ROOT>/valuation-ranges`)
 - `--sort-by` (`ticker|base|spread`)
 - `--order` (`asc|desc`)
 - `--limit` (`0` means no limit)

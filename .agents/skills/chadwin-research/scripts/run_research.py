@@ -13,15 +13,15 @@ from typing import Any
 
 from company_idea_queue_core import (
     COUNTRY_DIR_BY_MARKET,
-    DATA_ROOT_RELATIVE_PATH,
-    DEFAULT_COMPANIES_RELATIVE_PATH,
     TASK_RESEARCH,
+    default_base_dir,
     detect_market,
     load_user_preferences,
     market_is_allowed,
     pick_next_company,
     queue_key,
     read_queue_entries,
+    resolve_companies_root,
     resolve_preferences_path,
 )
 
@@ -33,10 +33,7 @@ class ReportStatus:
 
 
 def _default_base_dir() -> Path:
-    for parent in Path(__file__).resolve().parents:
-        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
-            return parent
-    return Path.cwd()
+    return default_base_dir()
 
 
 def _parse_args() -> argparse.Namespace:
@@ -53,7 +50,7 @@ def _parse_args() -> argparse.Namespace:
         "--ideas-log",
         help=(
             "Override ideas log path "
-            "(default: .chadwin-data/idea-screens/company-ideas-log.jsonl)."
+            "(default: <DATA_ROOT>/idea-screens/company-ideas-log.jsonl)."
         ),
     )
     parser.add_argument("--identity", help="EDGAR identity for US fetch.")
@@ -95,7 +92,7 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--preferences-path",
-        help="Override preferences path (default: .chadwin-data/user_preferences.json).",
+        help="Override preferences path (default: <DATA_ROOT>/user_preferences.json).",
     )
     parser.add_argument(
         "--ignore-preferences",
@@ -360,7 +357,7 @@ def _profile_exchange(company_dir: Path) -> str | None:
 
 
 def _matching_company_dirs(base_dir: Path, ticker: str) -> list[Path]:
-    companies_dir = base_dir / DEFAULT_COMPANIES_RELATIVE_PATH
+    companies_dir = resolve_companies_root()
     if not companies_dir.exists():
         return []
 
@@ -392,7 +389,7 @@ def _matching_company_dirs(base_dir: Path, ticker: str) -> list[Path]:
 
 def _default_company_dir(base_dir: Path, ticker: str, market: str) -> Path:
     country_dir = COUNTRY_DIR_BY_MARKET.get(market, "US")
-    return base_dir / DEFAULT_COMPANIES_RELATIVE_PATH / country_dir / ticker
+    return resolve_companies_root() / country_dir / ticker
 
 
 def _queue_market(base_dir: Path, ticker: str, ideas_log: str | None) -> str | None:
@@ -500,7 +497,7 @@ def _pick_from_queue(
     )
     if not selected:
         raise SystemExit(
-            "No company available in .chadwin-data/idea-screens/company-ideas-log.jsonl. "
+            "No company available in <DATA_ROOT>/idea-screens/company-ideas-log.jsonl. "
             "Run fetch-us-investment-ideas first, relax preferences, or pass --ticker."
         )
     return selected

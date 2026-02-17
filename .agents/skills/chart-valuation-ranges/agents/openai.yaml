@@ -1,7 +1,7 @@
 interface:
   display_name: "Valuation Range Chart"
   short_description: "Chart latest base/bull/bear valuation ranges across all country folders"
-  default_prompt: "Use $chart-valuation-ranges to graph the latest base/bull/bear valuation ranges from all .chadwin-data/companies folders in a single chart."
+  default_prompt: "Use $chart-valuation-ranges to graph the latest base/bull/bear valuation ranges from all <DATA_ROOT>/companies folders in a single chart."
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"

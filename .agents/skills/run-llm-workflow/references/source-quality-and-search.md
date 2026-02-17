@@ -44,7 +44,7 @@ Use narrow, purpose-built queries. Avoid generic narrative searching.
 
 ## 4. External Source Logging
 When external sources materially affect assumptions, write:
-- `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/third-party-sources.md`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/third-party-sources.md`
 
 Suggested table:
 

@@ -21,13 +21,13 @@ except Exception:  # pragma: no cover - optional dependency
     BeautifulSoup = None
 
 from loaders import _require_pandas
+from data_paths import detect_repo_root
 
 
 PAGE_DIV_PATTERN = re.compile(
     r'<div\s+align\s*=\s*([\'"])center\1\s*>\s*(\d+)\s*</div>',
     re.IGNORECASE,
 )
-DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
 
 
 @dataclass
@@ -38,10 +38,7 @@ class FilingSummary:
 
 
 def _default_base_dir() -> Path:
-    for parent in Path(__file__).resolve().parents:
-        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
-            return parent
-    return Path.cwd()
+    return detect_repo_root(Path(__file__).resolve())
 
 
 def ensure_edgar_identity(identity: Optional[str] = None, base_dir: Optional[Path] = None) -> str:

@@ -10,6 +10,21 @@ It is intentionally different from a traditional app:
 
 If you are acting as an agent in this repo, treat successful end-to-end delivery as your responsibility.
 
+## Data Root Convention
+`<DATA_ROOT>` resolves to:
+- `CHADWIN_DATA_DIR` when set.
+- Otherwise OS default app data location:
+  - macOS: `~/Library/Application Support/Chadwin`
+  - Linux: `${XDG_DATA_HOME:-~/.local/share}/Chadwin`
+  - Windows: `%APPDATA%/Chadwin`
+
+Do not use repo-local `.chadwin-data` paths.
+
+Ownership rule:
+- `setup-chadwin-data` creates only `<DATA_ROOT>/` and `<DATA_ROOT>/user_preferences.json`.
+- Every other skill must create and own its own subdirectories/files under `<DATA_ROOT>` as needed.
+- Do not assume other skills are installed when creating directories.
+
 ## Non-Negotiable Operating Contract
 1. Execute tasks directly in the local workspace; do not stop at planning if execution is possible.
 2. Use skills in `.agents/skills/*/SKILL.md` as the authoritative workflows.
@@ -50,11 +65,11 @@ If no orchestrator skill is installed, use manual control with the capability-eq
 4. Produce research outputs with progressive depth using the installed research/report skill.
 5. If high-impact issues remain, run another research-skill pass until the stop rule is satisfied.
 6. Validate artifacts and pass quality gate
-7. If present, remove completed ticker from `.chadwin-data/idea-screens/company-ideas-log.jsonl`
-8. Record repeatable process improvements in `.chadwin-data/improvement-log.md`
+7. If present, remove completed ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`
+8. Record repeatable process improvements in `<DATA_ROOT>/improvement-log.md`
 
 ## Required Outputs Per Completed Run
-For `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
+For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
@@ -87,7 +102,7 @@ For each major step:
 Do not defer known issues to a later run when they block correctness now.
 
 ## Evidence and Citation Discipline
-- Local files under `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/` are the primary evidence base.
+- Local files under `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/` are the primary evidence base.
 - Every factual claim in final write-ups must cite local file paths.
 - Prefer filings for core financial/forecast claims; use transcripts for supporting qualitative color.
 - Paraphrase source content; avoid verbatim copying.
@@ -104,7 +119,7 @@ Before marking done:
 ## Improvement Loop (Mandatory for Repeatable Issues)
 When you find a repeatable problem or process weakness:
 1. Update the relevant skill.
-2. Append a concise row to `.chadwin-data/improvement-log.md`.
+2. Append a concise row to `<DATA_ROOT>/improvement-log.md`.
 3. Validate with at least one end-to-end ticker run when process logic changes.
 
 Only append rows for actual process improvements that were implemented.
@@ -114,12 +129,12 @@ Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
 - Work from repo root: `chadwin-codex`
-- Store company packages by exchange country (for example `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
-- Under `.chadwin-data/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
+- Store company packages by exchange country (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
+- Under `<DATA_ROOT>/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
 - For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
-- Honor `.chadwin-data/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
+- Honor `<DATA_ROOT>/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.
 - Preserve existing user changes unless explicitly asked to alter them.
-- Filing snapshots should follow the active filing-feed skill contract (for example, when installed: `.chadwin-data/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`).
+- Filing snapshots should follow the active filing-feed skill contract (for example, when installed: `<DATA_ROOT>/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`).

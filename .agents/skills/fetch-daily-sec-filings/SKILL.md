@@ -1,6 +1,6 @@
 ---
 name: fetch-daily-sec-filings
-description: Fetch daily SEC filing lists for 10-K, 10-Q, 20-F, 8-K, 6-K, and S-1 and write them to .chadwin-data/daily-sec-filings/FORM/YYYY-MM-DD.jsonl with company name, ticker, form type, filing date, and accession number. Use when you need a deterministic business-day filing feed, a historical backfill of filing events, or machine-readable per-form filing snapshots for downstream workflows.
+description: Fetch daily SEC filing lists for 10-K, 10-Q, 20-F, 8-K, 6-K, and S-1 and write them to <DATA_ROOT>/daily-sec-filings/FORM/YYYY-MM-DD.jsonl with company name, ticker, form type, filing date, and accession number. Use when you need a deterministic business-day filing feed, a historical backfill of filing events, or machine-readable per-form filing snapshots for downstream workflows.
 ---
 
 # Fetch Daily SEC Filings
@@ -14,7 +14,7 @@ Generate daily JSON snapshots from EDGAR using `edgartools` for these forms only
 - `6-K`
 - `S-1`
 
-Write one JSONL file per business day per form to `.chadwin-data/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`.
+Write one JSONL file per business day per form to `<DATA_ROOT>/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`.
 
 ## Quick Start
 Run from repo root:
@@ -64,16 +64,16 @@ Pass identity directly when needed:
 - `--date-mode` (optional): `latest-complete` or `today`; used only when no explicit date args are passed
 - `--lookback-days` (optional): backward scan depth for `latest-complete` mode (default `14`)
 - `--identity` (optional): SEC User-Agent identity string; if omitted, use `EDGAR_IDENTITY` or `SEC_IDENTITY_EMAIL` from repo `.env`
-- `--output-root` (optional): output directory; defaults to `.chadwin-data/daily-sec-filings`
+- `--output-root` (optional): output directory; defaults to `<DATA_ROOT>/daily-sec-filings`
 - If no date argument is provided, default mode is `latest-complete`.
 
 ## Output Layout
-- `.chadwin-data/daily-sec-filings/10-K/YYYY-MM-DD.jsonl`
-- `.chadwin-data/daily-sec-filings/10-Q/YYYY-MM-DD.jsonl`
-- `.chadwin-data/daily-sec-filings/20-F/YYYY-MM-DD.jsonl`
-- `.chadwin-data/daily-sec-filings/8-K/YYYY-MM-DD.jsonl`
-- `.chadwin-data/daily-sec-filings/6-K/YYYY-MM-DD.jsonl`
-- `.chadwin-data/daily-sec-filings/S-1/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/10-K/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/10-Q/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/20-F/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/8-K/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/6-K/YYYY-MM-DD.jsonl`
+- `<DATA_ROOT>/daily-sec-filings/S-1/YYYY-MM-DD.jsonl`
 
 Each JSONL line is one filing object with:
 - `company_name`

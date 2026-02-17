@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -18,16 +19,49 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     load_dotenv = None
 
+APP_DATA_DIR_NAME = "Chadwin"
+DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
+REPO_MARKER_RELATIVE_PATH = Path(".agents") / "skills"
+
 TARGET_FORMS: Tuple[str, ...] = ("10-K", "10-Q", "20-F", "8-K", "6-K", "S-1")
-DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
-DEFAULT_OUTPUT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "daily-sec-filings"
+
+
+def _detect_repo_root(start: Path | None = None) -> Path:
+    candidate = (start or Path.cwd()).resolve()
+    if candidate.is_file():
+        candidate = candidate.parent
+    for parent in [candidate, *candidate.parents]:
+        if (parent / REPO_MARKER_RELATIVE_PATH).exists():
+            return parent
+    return Path.cwd().resolve()
+
+
+def _default_data_root() -> Path:
+    if os.name == "nt":
+        appdata = os.getenv("APPDATA")
+        if appdata:
+            return Path(appdata) / APP_DATA_DIR_NAME
+        return Path.home() / "AppData" / "Roaming" / APP_DATA_DIR_NAME
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Application Support" / APP_DATA_DIR_NAME
+    xdg_data_home = os.getenv("XDG_DATA_HOME")
+    if xdg_data_home:
+        return Path(xdg_data_home).expanduser() / APP_DATA_DIR_NAME
+    return Path.home() / ".local" / "share" / APP_DATA_DIR_NAME
+
+
+def _resolve_data_root() -> Path:
+    configured = os.getenv(DATA_ROOT_ENV_VAR, "").strip()
+    if configured:
+        path = Path(configured).expanduser()
+        if path.is_absolute():
+            return path
+        return (Path.cwd() / path).resolve()
+    return _default_data_root()
 
 
 def _default_base_dir() -> Path:
-    for parent in Path(__file__).resolve().parents:
-        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
-            return parent
-    return Path.cwd()
+    return _detect_repo_root(Path(__file__).resolve())
 
 
 def _parse_date(value: str) -> date:
@@ -236,7 +270,7 @@ def fetch_daily_sec_filings(
 
 
 def parse_args() -> argparse.Namespace:
-    default_output = _default_base_dir() / DEFAULT_OUTPUT_RELATIVE_PATH
+    default_output = _resolve_data_root() / "daily-sec-filings"
     parser = argparse.ArgumentParser(
         description="Fetch daily SEC filings and write per-form JSONL files."
     )

@@ -6,15 +6,17 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import re
+import sys
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 
+APP_DATA_DIR_NAME = "Chadwin"
+DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 
 REPORT_DIR_RE = re.compile(r"^(?P<asof>\d{4}-\d{2}-\d{2})(?:-(?P<run>\d{2}))?$")
-DEFAULT_COMPANIES_ROOT = ".chadwin-data/companies"
-DEFAULT_OUTPUT_DIR = ".chadwin-data/valuation-ranges"
 
 
 @dataclass
@@ -48,10 +50,36 @@ def repo_scoped_path(path: Path) -> str:
     return str(path)
 
 
+def _default_data_root() -> Path:
+    if os.name == "nt":
+        appdata = os.getenv("APPDATA")
+        if appdata:
+            return Path(appdata) / APP_DATA_DIR_NAME
+        return Path.home() / "AppData" / "Roaming" / APP_DATA_DIR_NAME
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Application Support" / APP_DATA_DIR_NAME
+    xdg_data_home = os.getenv("XDG_DATA_HOME")
+    if xdg_data_home:
+        return Path(xdg_data_home).expanduser() / APP_DATA_DIR_NAME
+    return Path.home() / ".local" / "share" / APP_DATA_DIR_NAME
+
+
+def _resolve_data_root() -> Path:
+    configured = os.getenv(DATA_ROOT_ENV_VAR, "").strip()
+    if configured:
+        path = Path(configured).expanduser()
+        if path.is_absolute():
+            return path
+        return (Path.cwd() / path).resolve()
+    return _default_data_root()
+
+
 def parse_args() -> argparse.Namespace:
+    default_companies_root = _resolve_data_root() / "companies"
+    default_output_dir = _resolve_data_root() / "valuation-ranges"
     parser = argparse.ArgumentParser(
         description=(
-            "Scan .chadwin-data/companies/<COUNTRY>/<TICKER> "
+            "Scan <DATA_ROOT>/companies/<COUNTRY>/<TICKER> "
             "(or a single-country ticker root) "
             "for each ticker's latest report, then render a margin-of-safety "
             "range chart (bear/base/bull)."
@@ -59,18 +87,18 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--companies-root",
-        default=DEFAULT_COMPANIES_ROOT,
+        default=str(default_companies_root),
         help=(
-            f"Path to companies root (default: {DEFAULT_COMPANIES_ROOT}). "
+            f"Path to companies root (default: {default_companies_root}). "
             "Can point to either the companies root or a single-country "
-            "folder such as .chadwin-data/companies/US."
+            "folder such as <DATA_ROOT>/companies/US."
         ),
     )
     parser.add_argument(
         "--output-dir",
-        default=DEFAULT_OUTPUT_DIR,
+        default=str(default_output_dir),
         help=(
-            f"Directory for generated files (default: {DEFAULT_OUTPUT_DIR})."
+            f"Directory for generated files (default: {default_output_dir})."
         ),
     )
     parser.add_argument(
@@ -160,8 +188,7 @@ def iter_company_dirs(companies_root: Path) -> list[tuple[str, Path]]:
     if not children:
         return []
 
-    # Backward compatibility: allow --companies-root to point directly at
-    # a single-country ticker folder, e.g. .chadwin-data/companies/US.
+    # Allow --companies-root to point directly at a single-country ticker folder.
     if any((child / "reports").is_dir() for child in children):
         country = companies_root.name.upper()
         return [(country, child) for child in children]

@@ -1,15 +1,19 @@
 from __future__ import annotations
 
 import json
+import os
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
-DEFAULT_COMPANIES_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
-DEFAULT_LOG_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "idea-screens" / "company-ideas-log.jsonl"
-DEFAULT_PREFERENCES_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "user_preferences.json"
+APP_DATA_DIR_NAME = "Chadwin"
+DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
+REPO_MARKER_RELATIVE_PATH = Path(".agents") / "skills"
+DEFAULT_COMPANIES_SUBPATH = Path("companies")
+DEFAULT_LOG_SUBPATH = Path("idea-screens") / "company-ideas-log.jsonl"
+DEFAULT_PREFERENCES_SUBPATH = Path("user_preferences.json")
 
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_NON_US = "non-us"
@@ -18,16 +22,51 @@ TASK_VALUES = {TASK_FETCH_US, TASK_FETCH_NON_US, TASK_RESEARCH}
 COUNTRY_DIR_BY_MARKET = {"us": "US", "non-us": "International"}
 
 
-def default_base_dir() -> Path:
-    for parent in Path(__file__).resolve().parents:
-        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
+def _detect_repo_root(start: Path | None = None) -> Path:
+    candidate = (start or Path.cwd()).resolve()
+    if candidate.is_file():
+        candidate = candidate.parent
+    for parent in [candidate, *candidate.parents]:
+        if (parent / REPO_MARKER_RELATIVE_PATH).exists():
             return parent
-    return Path.cwd()
+    return Path.cwd().resolve()
+
+
+def _default_data_root() -> Path:
+    if os.name == "nt":
+        appdata = os.getenv("APPDATA")
+        if appdata:
+            return Path(appdata) / APP_DATA_DIR_NAME
+        return Path.home() / "AppData" / "Roaming" / APP_DATA_DIR_NAME
+    if sys.platform == "darwin":
+        return Path.home() / "Library" / "Application Support" / APP_DATA_DIR_NAME
+    xdg_data_home = os.getenv("XDG_DATA_HOME")
+    if xdg_data_home:
+        return Path(xdg_data_home).expanduser() / APP_DATA_DIR_NAME
+    return Path.home() / ".local" / "share" / APP_DATA_DIR_NAME
+
+
+def _resolve_data_root() -> Path:
+    configured = os.getenv(DATA_ROOT_ENV_VAR, "").strip()
+    if configured:
+        path = Path(configured).expanduser()
+        if path.is_absolute():
+            return path
+        return (Path.cwd() / path).resolve()
+    return _default_data_root()
+
+
+def default_base_dir() -> Path:
+    return _detect_repo_root(Path(__file__).resolve())
+
+
+def resolve_companies_root() -> Path:
+    return _resolve_data_root() / DEFAULT_COMPANIES_SUBPATH
 
 
 def resolve_log_path(base_dir: Path, ideas_log: str | Path | None = None) -> Path:
     if ideas_log is None:
-        return base_dir / DEFAULT_LOG_RELATIVE_PATH
+        return _resolve_data_root() / DEFAULT_LOG_SUBPATH
     path = Path(ideas_log)
     if path.is_absolute():
         return path
@@ -38,7 +77,7 @@ def resolve_preferences_path(
     base_dir: Path, preferences_path: str | Path | None = None
 ) -> Path:
     if preferences_path is None:
-        return base_dir / DEFAULT_PREFERENCES_RELATIVE_PATH
+        return _resolve_data_root() / DEFAULT_PREFERENCES_SUBPATH
     path = Path(preferences_path)
     if path.is_absolute():
         return path
@@ -368,7 +407,7 @@ def _task_market(task: str) -> str | None:
 
 
 def _company_data_exists(base_dir: Path, ticker: str, market: str | None = None) -> bool:
-    companies_dir = base_dir / DEFAULT_COMPANIES_RELATIVE_PATH
+    companies_dir = resolve_companies_root()
     if not companies_dir.exists():
         return False
 

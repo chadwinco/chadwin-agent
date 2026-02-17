@@ -10,15 +10,11 @@ from pathlib import Path
 
 import sys
 
-DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
-COMPANIES_ROOT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "companies"
+from data_paths import detect_repo_root, resolve_data_root
 
 
 def _default_base_dir() -> Path:
-    for parent in Path(__file__).resolve().parents:
-        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
-            return parent
-    return Path.cwd()
+    return detect_repo_root(Path(__file__).resolve())
 
 
 BASE_DIR = _default_base_dir()
@@ -60,8 +56,8 @@ def _repo_scoped_path(path: Path, base_dir: Path) -> str:
     return f"{base.name}/{relative_text}"
 
 
-def _ensure_dirs(base_dir: Path, ticker: str) -> Path:
-    company_dir = base_dir / COMPANIES_ROOT_RELATIVE_PATH / COUNTRY_DIR / ticker
+def _ensure_dirs(ticker: str) -> Path:
+    company_dir = resolve_data_root() / "companies" / COUNTRY_DIR / ticker
     (company_dir / "data").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "filings").mkdir(parents=True, exist_ok=True)
     (company_dir / "data" / "financial_statements").mkdir(parents=True, exist_ok=True)
@@ -304,7 +300,7 @@ def main() -> None:
         "--ideas-log",
         help=(
             "Override ideas log path "
-            "(default: .chadwin-data/idea-screens/company-ideas-log.jsonl)."
+            "(default: <DATA_ROOT>/idea-screens/company-ideas-log.jsonl)."
         ),
     )
     parser.add_argument("--overwrite-assumptions", action="store_true")
@@ -326,7 +322,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--preferences-path",
-        help="Override preferences path (default: .chadwin-data/user_preferences.json).",
+        help="Override preferences path (default: <DATA_ROOT>/user_preferences.json).",
     )
     parser.add_argument(
         "--ignore-preferences",
@@ -363,14 +359,14 @@ def main() -> None:
         )
         if not selected:
             raise SystemExit(
-                "No US company found in .chadwin-data/idea-screens/company-ideas-log.jsonl. "
+                "No US company found in <DATA_ROOT>/idea-screens/company-ideas-log.jsonl. "
                 "Run fetch-us-investment-ideas first, relax preferences, or pass --ticker."
             )
         ticker = str(selected["ticker"]).upper()
         queued_at = selected.get("queued_at_utc") or "unknown"
         print(f"No --ticker provided. Selected {ticker} from ideas log (queued_at_utc={queued_at}).")
 
-    company_dir = _ensure_dirs(base_dir, ticker)
+    company_dir = _ensure_dirs(ticker)
     data_dir = company_dir / "data"
 
     print(f"Fetching filings for {ticker}...")
@@ -398,7 +394,7 @@ def main() -> None:
     analyst_estimates = None
     company_name = _company_name_from_profile(data_dir)
     try:
-        data = load_company_data(base_dir, ticker)
+        data = load_company_data(ticker)
         metrics = compute_metrics(data)
         analyst_estimates = data.analyst_estimates
         if not data.profile.empty and "companyName" in data.profile.columns:

@@ -29,12 +29,12 @@ def _build_parser() -> argparse.ArgumentParser:
         "--ideas-log",
         help=(
             "Override ideas log path "
-            "(default: .chadwin-data/idea-screens/company-ideas-log.jsonl)."
+            "(default: <DATA_ROOT>/idea-screens/company-ideas-log.jsonl)."
         ),
     )
     parser.add_argument(
         "--preferences-path",
-        help="Override preferences path (default: .chadwin-data/user_preferences.json).",
+        help="Override preferences path (default: <DATA_ROOT>/user_preferences.json).",
     )
     parser.add_argument(
         "--ignore-preferences",

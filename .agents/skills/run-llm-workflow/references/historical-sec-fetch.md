@@ -12,7 +12,7 @@ Helper scripts:
 - Pull older event filings around stress periods.
 
 ## Prerequisites
-- US package exists under `.chadwin-data/companies/US/<TICKER>/data`.
+- US package exists under `<DATA_ROOT>/companies/US/<TICKER>/data`.
 - SEC helper deps listed in `../agents/openai.yaml` are installed.
 - `EDGAR_IDENTITY` is set in repo `.env`.
 - Follow `references/sec-access-policy.md`.
@@ -45,11 +45,11 @@ python3 .agents/skills/run-llm-workflow/scripts/fetch_sec_filing_markdown.py \
   --ticker <PEER_TICKER> \
   --form 8-K \
   --filed-date <YYYY-MM-DD> \
-  --output-path .chadwin-data/companies/US/<PRIMARY_TICKER>/data/filings/third_party/<PEER_FILE>.md
+  --output-path <DATA_ROOT>/companies/US/<PRIMARY_TICKER>/data/filings/third_party/<PEER_FILE>.md
 ```
 
 Default output location:
-- `.chadwin-data/companies/US/<TICKER>/data/filings/historical/`
+- `<DATA_ROOT>/companies/US/<TICKER>/data/filings/historical/`
 
 ## Guardrails
 - Keep pull scope tight to the issue being tested.
