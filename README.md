@@ -7,73 +7,23 @@ Deterministic code lives inside skills (`.agents/skills/*`) and is used as bound
 Agent operating contract and workflow rules are defined in `AGENTS.md`.
 
 ## One-Time Setup
-From repo root:
+Setup should begin with the `chadwin-setup` skill:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install --upgrade pip
+sed -n '1,260p' .agents/skills/chadwin-setup/SKILL.md
 ```
 
-If `python3 -m venv .venv` fails with `No module named venv`, install Python venv support first:
+This skill is the canonical setup entrypoint and includes:
+- Python `.venv` creation and troubleshooting
+- per-skill dependency installation guidance
+- `.env` + `EDGAR_IDENTITY` setup
+- `<DATA_ROOT>` bootstrap behavior and commands
+
+If you only need the data-root bootstrap command directly:
 
 ```bash
-# macOS (Homebrew; venv is included)
-brew install python
-
-# Debian/Ubuntu
-sudo apt update && sudo apt install -y python3-venv
-
-# Fedora/RHEL/CentOS
-sudo dnf install -y python3
-
-# Arch Linux
-sudo pacman -S python
+.venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py
 ```
-
-## Install Dependencies By Skill
-Dependencies are owned by the skill that uses them.
-
-For each skill you plan to run, install the packages listed in:
-- `.agents/skills/<skill-name>/agents/openai.yaml` under `dependencies.python_packages`
-
-## Environment Variables
-SEC/EDGAR skills require an identity string.
-
-Use a repo-level `.env` file for shared skill configuration.
-
-Template:
-
-```bash
-cp .env.example .env
-```
-
-Then set:
-
-```bash
-EDGAR_IDENTITY="Your Name your.email@example.com"
-```
-
-Data artifacts are written to `<DATA_ROOT>`:
-- `CHADWIN_DATA_DIR` when set.
-- Otherwise OS default app-data location:
-  - macOS: `~/Library/Application Support/Chadwin`
-  - Linux: `${XDG_DATA_HOME:-~/.local/share}/Chadwin`
-  - Windows: `%APPDATA%/Chadwin`
-
-Repo-local `.chadwin-data` is no longer used.
-
-Optional one-time bootstrap:
-
-```bash
-.venv/bin/python .agents/skills/setup-chadwin-data/scripts/setup_chadwin_data_dirs.py
-```
-
-This bootstrap is intentionally minimal:
-- creates `<DATA_ROOT>/`
-- initializes `<DATA_ROOT>/user_preferences.json`
-
-Other skills create and manage their own data folders/files under `<DATA_ROOT>`.
 
 ## Discover and Use Skills
 List available repo-local skills:

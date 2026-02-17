@@ -1,4 +1,0 @@
-interface:
-  display_name: "Setup Chadwin Data"
-  short_description: "Create Chadwin data root and initialize user preferences."
-  default_prompt: "Use $setup-chadwin-data to initialize <DATA_ROOT> with minimal shared bootstrap only (data root + user_preferences.json)."

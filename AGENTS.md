@@ -21,7 +21,7 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 Do not use repo-local `.chadwin-data` paths.
 
 Ownership rule:
-- `setup-chadwin-data` creates only `<DATA_ROOT>/` and `<DATA_ROOT>/user_preferences.json`.
+- `chadwin-setup` creates only `<DATA_ROOT>/` and `<DATA_ROOT>/user_preferences.json`.
 - Every other skill must create and own its own subdirectories/files under `<DATA_ROOT>` as needed.
 - Do not assume other skills are installed when creating directories.
 
