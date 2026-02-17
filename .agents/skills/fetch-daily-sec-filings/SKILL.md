@@ -18,6 +18,8 @@ Write one JSONL file per business day per form to `.chadwin-data/daily-sec-filin
 
 ## Quick Start
 Run from repo root:
+- Ensure dependencies listed in `agents/openai.yaml` are installed.
+- Then run:
 
 ```bash
 .venv/bin/python .agents/skills/fetch-daily-sec-filings/scripts/fetch_daily_sec_filings.py
@@ -61,7 +63,7 @@ Pass identity directly when needed:
 - `--end-date` (optional): `YYYY-MM-DD`, defaults to `--start-date`
 - `--date-mode` (optional): `latest-complete` or `today`; used only when no explicit date args are passed
 - `--lookback-days` (optional): backward scan depth for `latest-complete` mode (default `14`)
-- `--identity` (optional): SEC User-Agent identity string; if omitted, use `EDGAR_IDENTITY` or `SEC_IDENTITY_EMAIL`
+- `--identity` (optional): SEC User-Agent identity string; if omitted, use `EDGAR_IDENTITY` or `SEC_IDENTITY_EMAIL` from repo `.env`
 - `--output-root` (optional): output directory; defaults to `.chadwin-data/daily-sec-filings`
 - If no date argument is provided, default mode is `latest-complete`.
 

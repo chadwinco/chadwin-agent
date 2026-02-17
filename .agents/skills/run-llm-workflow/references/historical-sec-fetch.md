@@ -13,7 +13,8 @@ Helper scripts:
 
 ## Prerequisites
 - US package exists under `.chadwin-data/companies/US/<TICKER>/data`.
-- `EDGAR_IDENTITY` is set in `.env`.
+- SEC helper deps listed in `../agents/openai.yaml` are installed.
+- `EDGAR_IDENTITY` is set in repo `.env`.
 - Follow `references/sec-access-policy.md`.
 
 ## Command Examples

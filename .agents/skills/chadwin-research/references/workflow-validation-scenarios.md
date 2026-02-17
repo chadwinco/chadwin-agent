@@ -7,7 +7,9 @@ Use explicit as-of dates (for example, `2026-02-11`) and run commands from repo 
 ## 1. End-to-end run for PEP
 - `python3 -m venv chadwin-codex/.venv`
 - `source chadwin-codex/.venv/bin/activate`
-- `python -m pip install -r chadwin-codex/requirements.txt`
+- Install packages listed under `dependencies.python_packages` in:
+  - `chadwin-codex/.agents/skills/fetch-us-company-data/agents/openai.yaml`
+  - `chadwin-codex/.agents/skills/run-llm-workflow/agents/openai.yaml`
 - `python chadwin-codex/.agents/skills/fetch-us-company-data/scripts/add_company.py --ticker PEP --asof <YYYY-MM-DD>`
 - Run `$run-llm-workflow` for `PEP` as of `<YYYY-MM-DD>`.
 - Confirm these artifacts exist:

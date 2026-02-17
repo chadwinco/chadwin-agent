@@ -13,6 +13,11 @@ from typing import Dict, Iterable, List, Optional, Tuple
 
 from edgar import get_company_tickers, get_filings, set_identity
 
+try:
+    from dotenv import load_dotenv  # type: ignore
+except Exception:  # pragma: no cover - optional dependency
+    load_dotenv = None
+
 TARGET_FORMS: Tuple[str, ...] = ("10-K", "10-Q", "20-F", "8-K", "6-K", "S-1")
 DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
 DEFAULT_OUTPUT_RELATIVE_PATH = DATA_ROOT_RELATIVE_PATH / "daily-sec-filings"
@@ -76,7 +81,10 @@ def _build_primary_ticker_lookup() -> Dict[int, str]:
     return lookup
 
 
-def _resolve_identity(cli_identity: Optional[str]) -> str:
+def _resolve_identity(cli_identity: Optional[str], base_dir: Path) -> str:
+    if load_dotenv:
+        load_dotenv(base_dir / ".env")
+
     identity = (
         (cli_identity or "").strip()
         or os.getenv("EDGAR_IDENTITY", "").strip()
@@ -84,7 +92,7 @@ def _resolve_identity(cli_identity: Optional[str]) -> str:
     )
     if not identity:
         raise SystemExit(
-            "SEC identity is required. Set EDGAR_IDENTITY or SEC_IDENTITY_EMAIL, "
+            "SEC identity is required. Set EDGAR_IDENTITY or SEC_IDENTITY_EMAIL in repo .env, "
             "or pass --identity."
         )
     return identity
@@ -274,7 +282,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    identity = _resolve_identity(args.identity)
+    base_dir = _default_base_dir()
+    identity = _resolve_identity(args.identity, base_dir=base_dir)
     set_identity(identity)
     start_date, end_date = _resolve_date_window(args)
     output_root = args.output_root.resolve()

@@ -374,10 +374,10 @@ def main() -> None:
     data_dir = company_dir / "data"
 
     print(f"Fetching filings for {ticker}...")
-    fetch_company_filings(ticker, data_dir, identity=args.identity)
+    fetch_company_filings(ticker, data_dir, identity=args.identity, base_dir=base_dir)
 
     print(f"Fetching financial statements for {ticker}...")
-    fetch_company_financials(ticker, data_dir, identity=args.identity)
+    fetch_company_financials(ticker, data_dir, identity=args.identity, base_dir=base_dir)
 
     print(f"Fetching analyst forecast datasets for {ticker}...")
     forecast = fetch_analyst_forecasts(ticker, data_dir)

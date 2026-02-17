@@ -19,9 +19,10 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 6. Do not add deterministic wrappers for tasks the LLM can already do directly (for example generic web search/browsing, routine file reads/writes, or simple routing decisions).
 
 ## Skill Selection Protocol
-- Treat `$chadwin-research` as the default top-level skill for semi-autonomous runs.
+- Discover available skills from `.agents/skills/*/SKILL.md` (and installed skill locations when relevant) before selecting a workflow.
 - If a user names a skill (for example, `$run-llm-workflow`) or the request clearly matches a skill's purpose, use that skill.
-- Direct use of non-`$chadwin-research` skills means the user is intentionally taking tighter control of the workflow; execute exactly at that level.
+- If no skill is named, prefer an installed orchestrator skill when one exists; otherwise compose the smallest set of concrete skills needed for the request.
+- Direct invocation of a lower-level skill means the user is intentionally taking tighter control; execute exactly at that level.
 - Read the target `SKILL.md` first, then load only the references needed for the task.
 - Resolve relative paths in skill docs from that skill's directory first.
 - Prefer skill-provided scripts/assets/templates over re-creating equivalents.
@@ -31,33 +32,29 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 ## Canonical Entry Modes
 Use one of these modes explicitly:
 
-1. Top-level (default): `$chadwin-research`
-   - This is the semi-autonomous orchestrator.
-   - It wraps idea selection, fetch, and research steps by calling other skills as needed.
+1. Orchestrator mode (default when available)
+   - Use a semi-autonomous orchestrator skill if one is installed.
+   - The orchestrator should handle idea selection, fetch, and research routing by delegating to lower-level skills.
 2. Manual control (advanced): direct skill invocation
-   - `$fetch-daily-sec-filings`
-   - `$fetch-us-investment-ideas`
-   - `$fetch-us-company-data`
-   - `$run-llm-workflow`
-   - `$manage-user-preferences`
+   - Use explicit lower-level skills for filing feeds, idea seeding, company-data fetches, report generation, and preferences.
    - Choosing these directly indicates the user wants finer-grained process control.
 
-If no specific lower-level control is requested, prefer `$chadwin-research`.
+If no orchestrator skill is installed, use manual control with the capability-equivalent skills that are available.
 
-## Canonical Manual Order (When Not Using `$chadwin-research`)
-1. (Optional) Build filing-day seed universe: `$fetch-daily-sec-filings`
-2. (Optional) Seed ideas: `$fetch-us-investment-ideas`
-3. Fetch company data by market:
-   - `$fetch-us-company-data` for US tickers
-   - For non-US tickers, run the installed market-specific fetch skill under `.agents/skills/`
-4. Produce research outputs with progressive depth: `$run-llm-workflow`
-5. If high-impact issues remain, run another `$run-llm-workflow` pass until the stop rule is satisfied
+## Canonical Manual Order (When Not Using an Orchestrator Skill)
+1. (Optional) Build filing-day seed universe with the installed filing-feed skill.
+2. (Optional) Seed ideas with the installed idea-generation skill.
+3. Fetch company data with the market-appropriate fetch skill:
+   - Use the installed US fetch skill for US tickers.
+   - For non-US tickers, use the installed market-specific fetch skill under `.agents/skills/` (or other installed skill path).
+4. Produce research outputs with progressive depth using the installed research/report skill.
+5. If high-impact issues remain, run another research-skill pass until the stop rule is satisfied.
 6. Validate artifacts and pass quality gate
-7. If present, remove completed ticker from `idea-screens/company-ideas-log.jsonl`
-8. Record repeatable process improvements in `improvement-log.md`
+7. If present, remove completed ticker from `.chadwin-data/idea-screens/company-ideas-log.jsonl`
+8. Record repeatable process improvements in `.chadwin-data/improvement-log.md`
 
 ## Required Outputs Per Completed Run
-For `companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
+For `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
@@ -90,7 +87,7 @@ For each major step:
 Do not defer known issues to a later run when they block correctness now.
 
 ## Evidence and Citation Discipline
-- Local files under `companies/<EXCHANGE_COUNTRY>/<TICKER>/data/` are the primary evidence base.
+- Local files under `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/` are the primary evidence base.
 - Every factual claim in final write-ups must cite local file paths.
 - Prefer filings for core financial/forecast claims; use transcripts for supporting qualitative color.
 - Paraphrase source content; avoid verbatim copying.
@@ -102,13 +99,12 @@ Before marking done:
 - Valuation method matches business model (DCF vs residual-income where applicable).
 - Base/bull/bear assumptions are explicit and defensible.
 - Margin-of-safety conclusion reconciles with valuation outputs and current price input.
-- Run-LLM workflow quality checklist is satisfied:
-  - `.agents/skills/run-llm-workflow/references/research-workflow.md`
+- Active research-skill quality checklist is satisfied (for example, when installed: `.agents/skills/run-llm-workflow/references/research-workflow.md`).
 
 ## Improvement Loop (Mandatory for Repeatable Issues)
 When you find a repeatable problem or process weakness:
 1. Update the relevant skill.
-2. Append a concise row to `improvement-log.md`.
+2. Append a concise row to `.chadwin-data/improvement-log.md`.
 3. Validate with at least one end-to-end ticker run when process logic changes.
 
 Only append rows for actual process improvements that were implemented.
@@ -118,12 +114,12 @@ Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
 - Work from repo root: `chadwin-codex`
-- Store company packages by exchange country (for example `companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
-- Under `companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
+- Store company packages by exchange country (for example `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
+- Under `.chadwin-data/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
 - For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
-- Honor `user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
+- Honor `.chadwin-data/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.
 - Preserve existing user changes unless explicitly asked to alter them.
-- Filing snapshots from `$fetch-daily-sec-filings` live at `.agents/skills/fetch-daily-sec-filings/assets/<FORM>/YYYY-MM-DD.jsonl`.
+- Filing snapshots should follow the active filing-feed skill contract (for example, when installed: `.chadwin-data/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`).

@@ -28,7 +28,7 @@ export FETCH_US_COMPANY_DATA_CLI="$FETCH_US_COMPANY_DATA_ROOT/scripts/add_compan
 ```
 
 ## Quick Start
-1. Ensure the repo one-time Python setup from `README.md` is complete and `.venv` is active.
+1. Ensure `.venv` is active and install this skill's dependencies from `agents/openai.yaml` (`dependencies.python_packages`).
 2. Confirm as-of date with the user. Ticker is optional.
 3. Run the skill script from the repo root:
 
@@ -43,8 +43,8 @@ python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 4. Verify outputs.
 
 ### 1. Confirm prerequisites
-- Confirm repo one-time Python setup from `README.md` is complete and `.venv` is active.
-- Ensure `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) is set in `.env`, or pass `--identity`.
+- Confirm `.venv` is active and this skill's `agents/openai.yaml` dependencies are installed.
+- Ensure `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) is set in repo `.env`, or pass `--identity`.
 
 ### 2. Resolve ticker and as-of date
 - If `--ticker` is provided, use it.
@@ -59,7 +59,7 @@ python3 "$FETCH_US_COMPANY_DATA_CLI" --asof <YYYY-MM-DD> [--ticker <TICKER>]
 ```
 
 Optional flags:
-- `--identity "Name email@domain.com"` overrides `.env`.
+- `--identity "Name email@domain.com"` overrides repo `.env` identity.
 - `--overwrite-assumptions` replaces `.chadwin-data/companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`.
 - `--ideas-log "<PATH>"` overrides the central queue log path (default `.chadwin-data/idea-screens/company-ideas-log.jsonl`).
 - `--preferences-path "<PATH>"` overrides preferences path (default `.chadwin-data/user_preferences.json`).
@@ -87,7 +87,7 @@ Validate outputs described in `references/data-dictionary.md`, including:
 - `.chadwin-data/companies/US/<TICKER>/reports/<YYYY-MM-DD>/valuation/inputs.yaml`
 
 ## Troubleshooting
-- If EDGAR identity errors appear, set `EDGAR_IDENTITY` in `.env` or pass `--identity`.
+- If EDGAR identity errors appear, set `EDGAR_IDENTITY` in repo `.env` or pass `--identity`.
 - If `--ticker` is omitted and no US queue candidate exists, run `$fetch-us-investment-ideas` first or pass a ticker explicitly.
 - If preferences exclude US market, update `.chadwin-data/user_preferences.json` or rerun with `--ignore-preferences`.
 - If transcript fetching returns nothing, ensure `beautifulsoup4` is installed and retry later.

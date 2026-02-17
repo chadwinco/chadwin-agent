@@ -28,7 +28,7 @@ export FETCH_US_INVESTMENT_IDEAS_CLI="$FETCH_US_INVESTMENT_IDEAS_ROOT/scripts/fe
 ```
 
 ## Quick Start
-1. Ensure the repo one-time Python setup from `README.md` is complete and `.venv` is active.
+1. Ensure `.venv` is active and install this skill's optional script dependencies from `agents/openai.yaml` (`dependencies.python_packages`).
 2. Choose path:
 - LLM web-research path: gather ideas with native web tools and write output JSON directly.
 - Finviz helper path:
@@ -144,7 +144,7 @@ Each JSONL line has:
 - If Finviz output is empty, loosen thresholds (for example raise `--max-pe` or lower `--min-roic`).
 - If preferences exclude US market, update `.chadwin-data/user_preferences.json` or rerun with `--ignore-preferences`.
 - If requests fail intermittently, raise `--request-delay` and retry.
-- If script dependencies are missing, install from `requirements.txt`.
+- If script dependencies are missing, install the packages listed in `agents/openai.yaml`.
 
 ## Related References
 - `.agents/skills/fetch-daily-sec-filings/SKILL.md`

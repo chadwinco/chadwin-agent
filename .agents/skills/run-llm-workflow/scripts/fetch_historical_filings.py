@@ -140,7 +140,7 @@ def _resolve_edgar_identity(
         ):
             raise RuntimeError(
                 "Provided --identity differs from configured EDGAR_IDENTITY. "
-                "Use the configured .env identity or pass --allow-identity-override."
+                "Use the configured repo .env identity or pass --allow-identity-override."
             )
         source = "identity-override" if configured_identity and requested != configured_identity else "identity-arg"
         return requested, source
@@ -149,7 +149,7 @@ def _resolve_edgar_identity(
         return configured_identity, "env"
 
     raise RuntimeError(
-        "EDGAR_IDENTITY (or SEC_IDENTITY_EMAIL) is not set in environment/.env and no --identity was provided."
+        "EDGAR_IDENTITY (or SEC_IDENTITY_EMAIL) is not set in repo .env and no --identity was provided."
     )
 
 
@@ -221,7 +221,7 @@ def _parse_args() -> argparse.Namespace:
         "--allow-identity-override",
         action="store_true",
         help=(
-            "Allow --identity to differ from configured EDGAR_IDENTITY in .env. "
+            "Allow --identity to differ from configured EDGAR_IDENTITY in repo .env. "
             "Use sparingly for explicit operational reasons."
         ),
     )

@@ -5,3 +5,12 @@ interface:
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"
+
+dependencies:
+  python_packages:
+    - "pandas>=2.0"
+    - "pyyaml>=6.0"
+    - "edgartools>=4.6.3"
+    - "hishel<1.0.0"
+    - "python-dotenv>=1.0.0"
+    - "beautifulsoup4>=4.12"

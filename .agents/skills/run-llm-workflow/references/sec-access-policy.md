@@ -7,7 +7,8 @@ Use these rules whenever this workflow pulls SEC evidence.
 - Use skill-provided SEC helpers only:
   - `.agents/skills/run-llm-workflow/scripts/fetch_historical_filings.py`
   - `.agents/skills/run-llm-workflow/scripts/fetch_sec_filing_markdown.py`
-- Default SEC identity source must be `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) from `.env`.
+- Install helper dependencies listed in `.agents/skills/run-llm-workflow/agents/openai.yaml`.
+- Default SEC identity source must be `EDGAR_IDENTITY` (or `SEC_IDENTITY_EMAIL`) from repo `.env`.
 - Identity overrides are exceptional and must be explicit and auditable using `--allow-identity-override`.
 
 ## Why

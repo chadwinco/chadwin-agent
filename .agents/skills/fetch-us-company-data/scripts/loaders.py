@@ -25,7 +25,8 @@ def _require_pandas():
         import pandas as pd  # type: ignore
     except ImportError as exc:  # pragma: no cover - runtime guard
         raise ImportError(
-            "pandas is required. Install with `python3 -m pip install -r requirements.txt`."
+            "pandas is required. Install with "
+            "packages listed in `.agents/skills/fetch-us-company-data/agents/openai.yaml`."
         ) from exc
     return pd
 

@@ -5,3 +5,7 @@ interface:
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"
+
+dependencies:
+  python_packages:
+    - "beautifulsoup4>=4.12"

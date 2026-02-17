@@ -37,10 +37,12 @@ Use `<REPORT_DATE_DIR>` for outputs:
 ## Quick Start
 1. Resolve ticker and as-of date explicitly.
 2. Ensure `.chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
-3. Load `.chadwin-data/user_preferences.json` when present and apply:
+3. If you plan to use optional SEC helper scripts in this skill, install helper dependencies listed in `agents/openai.yaml`.
+
+4. Load `.chadwin-data/user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
-4. Resolve the output directory from repo root:
+5. Resolve the output directory from repo root:
 
 ```bash
 REPORTS_ROOT=".chadwin-data/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
@@ -66,8 +68,8 @@ mkdir -p "$REPORT_DIR/valuation"
 echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
 
-5. Work through `references/research-workflow.md` as an LLM task.
-6. After report completion and goal-gate pass, remove the researched ticker from `.chadwin-data/idea-screens/company-ideas-log.jsonl`.
+6. Work through `references/research-workflow.md` as an LLM task.
+7. After report completion and goal-gate pass, remove the researched ticker from `.chadwin-data/idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
 Use the queue CLI owned by the `$chadwin-research` skill from repo root:

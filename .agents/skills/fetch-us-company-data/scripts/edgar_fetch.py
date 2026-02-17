@@ -27,6 +27,7 @@ PAGE_DIV_PATTERN = re.compile(
     r'<div\s+align\s*=\s*([\'"])center\1\s*>\s*(\d+)\s*</div>',
     re.IGNORECASE,
 )
+DATA_ROOT_RELATIVE_PATH = Path(".chadwin-data")
 
 
 @dataclass
@@ -36,16 +37,24 @@ class FilingSummary:
     path: Path
 
 
-def ensure_edgar_identity(identity: Optional[str] = None) -> str:
+def _default_base_dir() -> Path:
+    for parent in Path(__file__).resolve().parents:
+        if (parent / DATA_ROOT_RELATIVE_PATH).exists() and (parent / ".agents" / "skills").exists():
+            return parent
+    return Path.cwd()
+
+
+def ensure_edgar_identity(identity: Optional[str] = None, base_dir: Optional[Path] = None) -> str:
     from edgar import set_identity  # type: ignore
 
+    resolved_base_dir = base_dir or _default_base_dir()
     if load_dotenv:
-        load_dotenv()
+        load_dotenv(resolved_base_dir / ".env")
 
     identity_value = identity or os.getenv("EDGAR_IDENTITY") or os.getenv("SEC_IDENTITY_EMAIL")
     if not identity_value:
         raise RuntimeError(
-            "EDGAR_IDENTITY is not set. Add it to .env or pass --identity."
+            "EDGAR_IDENTITY is not set in repo .env. Add it there or pass --identity."
         )
 
     set_identity(identity_value)
@@ -325,8 +334,9 @@ def fetch_company_filings(
     ticker: str,
     data_dir: Path,
     identity: Optional[str] = None,
+    base_dir: Optional[Path] = None,
 ) -> List[FilingSummary]:
-    ensure_edgar_identity(identity)
+    ensure_edgar_identity(identity, base_dir=base_dir)
     from edgar import Company  # type: ignore
 
     company = Company(ticker)
@@ -1073,7 +1083,8 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
     if BeautifulSoup is None:
         raise ImportError(
             "beautifulsoup4 is required to build company_profile.csv. "
-            "Install dependencies with `python -m pip install -r requirements.txt`."
+            "Install dependencies with "
+            "packages listed in `.agents/skills/fetch-us-company-data/agents/openai.yaml`."
         )
 
     data = getattr(company, "data", None)
@@ -1226,8 +1237,13 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
     df.to_csv(data_dir / "company_profile.csv", index=False)
 
 
-def fetch_company_financials(ticker: str, data_dir: Path, identity: Optional[str] = None) -> None:
-    ensure_edgar_identity(identity)
+def fetch_company_financials(
+    ticker: str,
+    data_dir: Path,
+    identity: Optional[str] = None,
+    base_dir: Optional[Path] = None,
+) -> None:
+    ensure_edgar_identity(identity, base_dir=base_dir)
     from edgar import Company  # type: ignore
     from edgar.xbrl import XBRLS  # type: ignore
 
