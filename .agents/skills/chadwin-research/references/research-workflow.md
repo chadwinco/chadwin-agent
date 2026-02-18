@@ -81,6 +81,7 @@ For each unresolved high-priority lever, run this loop:
 Mandatory event-risk sweep before final assumptions:
 - Check for signed/proposed M&A, take-private, spin-off, tender, or special-committee processes.
 - If signed deal exists, use event-risk framing (deal-cap upside, break-risk downside) before relying on standalone compounding assumptions.
+- Verify current-report coverage is recent enough for event-risk checks (for US names, ensure `8-K` evidence covers at least the last 6 months); if local filings only include the latest annual filing and no recent current reports, run a targeted fetch before finalizing assumptions.
 
 ## Step 4: Build and Reconcile Market Baseline
 Create/update market baseline using available analyst files and fetched expectations data:
