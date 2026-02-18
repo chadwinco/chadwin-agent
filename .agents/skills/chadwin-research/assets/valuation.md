@@ -22,4 +22,4 @@ Instructions:
 - Explicitly state where base assumptions align/diverge from analyst expectations and why.
 - Avoid writing this section as a pure number list; explain the causal chain from evidence to model output.
 - If results look extreme, sanity-check units, net debt sign, and share count.
-- Cite local file paths for factual claims.
+- Cite factual claims with ticker-root local paths (for example, `AMZN/data/...`).

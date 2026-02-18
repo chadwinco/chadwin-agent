@@ -55,7 +55,7 @@ Suggested table:
 ```
 
 ## 5. Claim-Citation Rule
-- Final report claims must cite local file paths.
+- Final report claims must cite local file paths in ticker-root format (`<TICKER>/...`).
 - For external claims used in report conclusions, cite:
   - the local source log path (if created), and
   - the URL entry captured in that log.

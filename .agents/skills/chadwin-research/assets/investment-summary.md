@@ -13,4 +13,4 @@ Instructions:
 - Include base value/share, bull/bear range, current price, and base margin of safety.
 - Write one compact paragraph (roughly 120-180 words), not bullet fragments.
 - In that paragraph, cover core thesis, biggest resolved issue, biggest remaining uncertainty, and why the current MOS is decision-relevant.
-- Cite local file paths for factual claims.
+- Cite factual claims with ticker-root local paths (for example, `AMZN/data/...`).

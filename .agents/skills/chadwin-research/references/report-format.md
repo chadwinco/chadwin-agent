@@ -12,6 +12,10 @@ Default house style (when report preferences are empty):
 
 If `<DATA_ROOT>/user_preferences.json` exists, prioritize `report_preferences.must_include`, then `nice_to_have`, and avoid items listed in `report_preferences.exclude` unless required for analytical integrity.
 
+Citation format (required):
+- For factual claims, use local-path citations in ticker-root format: `[Source: `<TICKER>/...`]`.
+- Example: `[Source: `AMZN/data/financial_statements/annual/cash_flow_statement.csv`]`.
+
 ```markdown
 # {Company Name} ({TICKER}) Investment Snapshot
 

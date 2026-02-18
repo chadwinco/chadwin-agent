@@ -16,4 +16,4 @@ Instructions:
 - Emphasize balance sheet, margin compression, and demand risks where relevant.
 - Make clear which risk is still thesis-critical versus bounded by scenario ranges.
 - Keep each risk block concise.
-- Cite local file paths for factual claims.
+- Cite factual claims with ticker-root local paths (for example, `AMZN/data/...`).

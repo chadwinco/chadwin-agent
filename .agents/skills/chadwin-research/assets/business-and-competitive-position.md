@@ -15,4 +15,4 @@ Instructions:
 - Highlight one area where market expectations look ahead/behind fundamentals if evidence supports it.
 - End with one sentence linking business evidence to valuation durability (or fragility).
 - Avoid generic moat language; tie every claim to concrete evidence.
-- Cite local file paths for factual claims.
+- Cite factual claims with ticker-root local paths (for example, `AMZN/data/...`).

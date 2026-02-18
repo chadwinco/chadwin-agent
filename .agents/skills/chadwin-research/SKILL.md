@@ -132,6 +132,7 @@ Market-expectation anchors (fetch on demand when needed):
 - Make the valuation argument legible: each core pillar should connect evidence to specific model inputs.
 - Paraphrase source text; no verbatim copying from filings or transcripts.
 - Every factual claim needs local file-path citations.
+- Citation path format is ticker-root only: start every cited path at `<TICKER>/...` (for example, `[Source: `AMZN/data/financial_statements/annual/cash_flow_statement.csv`]`).
 - External claims must be cross-checked and traceable.
 - Do not violate explicit user exclusions in `<DATA_ROOT>/user_preferences.json` unless the user explicitly asks to override.
 

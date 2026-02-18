@@ -123,7 +123,7 @@ If analyst data is unavailable, say so explicitly and use filing guidance plus h
 
 ## Step 7: Citation and Consistency Check
 Before final gate:
-- Every factual claim must cite local file paths.
+- Every factual claim must cite local file paths in ticker-root format (for example, `[Source: `AMZN/data/financial_statements/annual/cash_flow_statement.csv`]`).
 - Ensure date consistency against as-of date.
 - Ensure valuation outputs reconcile with narrative conclusions.
 - Ensure margin-of-safety statement matches `valuation/outputs.json` and current price input.

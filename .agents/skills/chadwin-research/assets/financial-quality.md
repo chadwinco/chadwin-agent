@@ -15,4 +15,4 @@ Instructions:
 - Compare historical trend direction versus analyst forward expectations; flag the largest mismatch.
 - Flag one metric that would most likely signal thesis deterioration.
 - After presenting core metrics, add a short paragraph on how financial-quality evidence maps into valuation assumptions (for example margin, discount rate, fade length).
-- Cite local file paths for factual claims.
+- Cite factual claims with ticker-root local paths (for example, `AMZN/data/...`).
