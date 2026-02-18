@@ -34,18 +34,19 @@ Controls and references:
 - `references/historical-sec-fetch.md`
 
 Drafting assets:
-- `.agents/skills/run-llm-workflow/assets/investment-summary.md`
-- `.agents/skills/run-llm-workflow/assets/business-and-competitive-position.md`
-- `.agents/skills/run-llm-workflow/assets/financial-quality.md`
-- `.agents/skills/run-llm-workflow/assets/valuation.md`
-- `.agents/skills/run-llm-workflow/assets/key-risks-and-disconfirming-signals.md`
-- `.agents/skills/run-llm-workflow/assets/conclusion.md`
+- `.agents/skills/chadwin-research/assets/investment-summary.md`
+- `.agents/skills/chadwin-research/assets/business-and-competitive-position.md`
+- `.agents/skills/chadwin-research/assets/financial-quality.md`
+- `.agents/skills/chadwin-research/assets/valuation.md`
+- `.agents/skills/chadwin-research/assets/key-risks-and-disconfirming-signals.md`
+- `.agents/skills/chadwin-research/assets/conclusion.md`
 
 ## Step 1: Confirm Scope and Build an Initial Evidence Map
 - Confirm ticker and as-of date explicitly.
 - Confirm all evidence used is dated on or before as-of date.
 - If ticker is missing, pick from queue:
-  - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow`
+  - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research`
+- If queue is empty or stale for the active objective, run `$fetch-us-investment-ideas`, append ideas to queue, and pick again.
 - Load `<DATA_ROOT>/user_preferences.json` when present and apply strategy/report preferences.
 - Create an evidence map from currently available files:
   - what is already available,

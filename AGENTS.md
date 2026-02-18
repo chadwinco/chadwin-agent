@@ -18,8 +18,6 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
   - Linux: `${XDG_DATA_HOME:-~/.local/share}/Chadwin`
   - Windows: `%APPDATA%/Chadwin`
 
-Do not use repo-local `.chadwin-data` paths.
-
 The canonical shared contract is defined in `DATA_CONTRACT.md`.
 
 Ownership rule:
@@ -42,7 +40,7 @@ Ownership rule:
 
 ## Skill Selection Protocol
 - Discover available skills from `.agents/skills/*/SKILL.md` (and installed skill locations when relevant) before selecting a workflow.
-- If a user names a skill (for example, `$run-llm-workflow`) or the request clearly matches a skill's purpose, use that skill.
+- If a user names a skill (for example, `$chadwin-research`) or the request clearly matches a skill's purpose, use that skill.
 - If no skill is named, prefer an installed orchestrator skill when one exists; otherwise compose the smallest set of concrete skills needed for the request.
 - Direct invocation of a lower-level skill means the user is intentionally taking tighter control; execute exactly at that level.
 - Read the target `SKILL.md` first, then load only the references needed for the task.
@@ -121,7 +119,7 @@ Before marking done:
 - Valuation method matches business model (DCF vs residual-income where applicable).
 - Base/bull/bear assumptions are explicit and defensible.
 - Margin-of-safety conclusion reconciles with valuation outputs and current price input.
-- Active research-skill quality checklist is satisfied (for example, when installed: `.agents/skills/run-llm-workflow/references/research-workflow.md`).
+- Active research-skill quality checklist is satisfied (for example, when installed: `.agents/skills/chadwin-research/references/research-workflow.md`).
 - Shared data contract validation passes:
   - `.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py`
 

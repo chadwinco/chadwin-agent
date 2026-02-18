@@ -17,7 +17,7 @@ DEFAULT_PREFERENCES_SUBPATH = Path("user_preferences.json")
 
 TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_NON_US = "non-us"
-TASK_RESEARCH = "run-llm-workflow"
+TASK_RESEARCH = "chadwin-research"
 TASK_VALUES = {TASK_FETCH_US, TASK_FETCH_NON_US, TASK_RESEARCH}
 COUNTRY_DIR_BY_MARKET = {"us": "US"}
 ISO_COUNTRY_RE = re.compile(r"^[A-Z]{2}$")

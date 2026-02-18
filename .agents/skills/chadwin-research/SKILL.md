@@ -1,108 +1,147 @@
 ---
 name: chadwin-research
-description: Thin orchestration wrapper for fetch + research + progressive escalation. Use when you want one entrypoint that (1) auto-selects a company from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl` when no ticker is provided, fetches market-appropriate data, and runs research, or (2) when a ticker is provided, determines market (US vs non-US), checks existing company data/report freshness, fetches if needed, and skips research only when no new data was fetched and the latest report is already current. After initial report generation, it routes follow-up runs using the report's Research Stop Gate confidence criteria.
+description: Produce a concise, LLM-written investment report and scenario valuation using a progressive, issue-driven workflow that fetches evidence on demand as uncertainties are discovered. Use for creating or refreshing `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
 ---
 
-# Research
+# Run LLM Workflow
 
 ## Overview
-Use this as the default entrypoint for autonomous runs. It delegates to:
-- `$fetch-us-company-data`
-- an installed market-specific fetch skill for non-US companies
-- `$run-llm-workflow`
+This is the canonical LLM-first research workflow.
 
-Company packages are organized by exchange country under `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
-When present, `<DATA_ROOT>/user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
-Shared primitives and naming rules are defined in `DATA_CONTRACT.md`; non-US writes must use ISO country-code folders.
+Target output:
+1. A decision-oriented investment report.
+2. A transparent base/bull/bear valuation.
+
+Core operating model:
+- research is progressive and issue-driven,
+- data fetch is on-demand inside the research loop,
+- stop when thesis-critical uncertainty is resolved and additional work has diminishing returns.
+
+Do not require a fully populated data package before starting.
+
+## Execution Mode (Required)
+- Execute this skill by reasoning through the workflow and writing outputs.
+- Do not look for or invent a single `scripts/*.py` command that completes the report.
+- Helper commands are fine for extraction or arithmetic, but they do not replace the LLM workflow.
+- The task is complete only when all required output files are written and the goal gate in `references/research-workflow.md` passes.
+
+## Data Acquisition Model (Required)
+- Treat data acquisition as part of research, not a separate prerequisite stage.
+- For US SEC evidence, use `$fetch-us-company-data` as the default fetch operator.
+- For missing ticker selection or fresh idea generation, use `$fetch-us-investment-ideas`.
+- Preferred inter-skill communication is natural language objective statements.
+- Use deterministic wrapper requests only when reproducibility or replay is needed.
+
+Natural-language fetch example:
+- "For MSFT as of 2026-02-18, fetch the latest 10-K, all later 10-Q filings, relevant 8-K filings with attachments, and Form 4 transactions for the last 6 months. Save artifacts under the company data path."
+
+## Report Directory Convention
+Use `<REPORT_DATE_DIR>` for outputs:
+- First run for an as-of date: `YYYY-MM-DD`
+- Additional runs for that same as-of date: `YYYY-MM-DD-01`, then `YYYY-MM-DD-02`, etc.
+- Exception: if `reports/YYYY-MM-DD/valuation/inputs.yaml` already exists and the package is incomplete (missing `report.md` or `valuation/outputs.json`), continue writing into `YYYY-MM-DD` instead of creating a suffixed directory.
+
+## Quick Start
+1. Resolve ticker and as-of date explicitly.
+If ticker is omitted, pick from queue:
+
+```bash
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research
+```
+
+If queue has no suitable ticker or user asks for fresh ideas, run `$fetch-us-investment-ideas`, append ideas to queue, then pick again.
+2. Load `<DATA_ROOT>/user_preferences.json` when present and apply:
+   - strategy preferences to framing and valuation emphasis
+   - report preferences to section emphasis/content inclusion
+3. Resolve the output directory from repo root:
+
+```bash
+REPORTS_ROOT="<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
+ASOF_DATE="<YYYY-MM-DD>"
+PRIMARY_DIR="$REPORTS_ROOT/$ASOF_DATE"
+REPORT_DATE_DIR="$ASOF_DATE"
+if [ -d "$PRIMARY_DIR" ]; then
+  # Resume incomplete package when valuation inputs exist but outputs are incomplete.
+  if [ -f "$PRIMARY_DIR/valuation/inputs.yaml" ] && [ ! -f "$PRIMARY_DIR/report.md" ]; then
+    REPORT_DATE_DIR="$ASOF_DATE"
+  elif [ -f "$PRIMARY_DIR/valuation/inputs.yaml" ] && [ ! -f "$PRIMARY_DIR/valuation/outputs.json" ]; then
+    REPORT_DATE_DIR="$ASOF_DATE"
+  else
+    IDX=1
+    while [ -e "$REPORTS_ROOT/${ASOF_DATE}-$(printf '%02d' "$IDX")" ]; do
+      IDX=$((IDX + 1))
+    done
+    REPORT_DATE_DIR="${ASOF_DATE}-$(printf '%02d' "$IDX")"
+  fi
+fi
+REPORT_DIR="$REPORTS_ROOT/$REPORT_DATE_DIR"
+mkdir -p "$REPORT_DIR/valuation"
+echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
+```
+
+4. Execute `references/research-workflow.md`.
+5. Fetch additional evidence on demand whenever a thesis-critical uncertainty is blocked by missing data.
+6. After goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
+
+## Queue Helpers
+Use the queue CLI in this skill from repo root:
+
+```bash
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research
+python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>
+```
+
+- If ticker is omitted, `pick` is the default selection source.
+- Run `remove` only after required outputs are finalized and the goal gate passes.
+
+## Required Outputs
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/inputs.yaml`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
+
+## Inputs to Prioritize
+Existing local evidence (if present):
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
+
+Market-expectation anchors (fetch on demand when needed):
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_price_targets.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
 
 ## Workflow
+1. Execute the progressive loop in `references/research-workflow.md`.
+2. Build valuation assumptions and outputs using `references/valuation-method.md`, reconciling assumptions with available market expectations.
+3. Draft the report using `references/report-format.md`, honoring report-content preferences.
+4. Use `references/source-quality-and-search.md` for targeted external checks when local and fetched filing evidence cannot resolve high-impact questions.
+5. For US SEC deep/history pulls, follow `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
+6. Run mandatory post-run introspection using `references/improvement-loop.md`, apply same-run workflow/reference updates when introspection finds repeatable or workflow-caused issues, and log to `improvement-log.md` only when a real improvement is implemented.
 
-1. Run the router script from repo root:
+## Constraints
+- Keep the report concise and decision-oriented.
+- Default to tight prose over fragmented bullets/tables when either form can work.
+- Make the valuation argument legible: each core pillar should connect evidence to specific model inputs.
+- Paraphrase source text; no verbatim copying from filings or transcripts.
+- Every factual claim needs local file-path citations.
+- External claims must be cross-checked and traceable.
+- Do not violate explicit user exclusions in `<DATA_ROOT>/user_preferences.json` unless the user explicitly asks to override.
 
-```bash
-python3 .agents/skills/chadwin-research/scripts/run_research.py [--ticker <TICKER>] --asof <YYYY-MM-DD>
-```
+## Troubleshooting
+- If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow.
+- If no ticker was supplied and queue selection fails, run `$fetch-us-investment-ideas`, append to queue, then rerun the queue helper (`pick --task chadwin-research`).
+- If a lever is blocked by missing evidence, run a focused fetch via `$fetch-us-company-data` and continue the same research loop.
+- If valuation looks inconsistent, re-check units and net-debt sign in `references/valuation-method.md`.
+- If write-up quality is weak, rerun the goal gate in `references/research-workflow.md` and close every unresolved high-impact lever before finalizing.
 
-2. Read JSON output fields:
-- `resolved_ticker`
-- `market`
-- `new_data_fetched`
-- `next_action`
-- `reason`
-
-3. Follow decision:
-- If `next_action` is `done`, stop.
-- If `next_action` is `run_research`, run `$run-llm-workflow` for `resolved_ticker` and the same `asof` date.
-
-4. Follow-up routing (same skill, deeper focus):
-
-```bash
-python3 .agents/skills/chadwin-research/scripts/run_research.py --ticker <RESOLVED_TICKER> --asof <YYYY-MM-DD> --post-report-check
-```
-
-- If `next_action` is `run_research`, run `$run-llm-workflow` again using:
-  - `resolved_ticker`
-  - same `asof` date
-  - `baseline_report_dir` from JSON output as the starting reference package
-  - `followup_focus` from JSON output (typically highest-impact unresolved lever from the report gate)
-- If `next_action` is `done`, stop.
-
-5. When research is complete, remove ticker from queue:
-
-```bash
-python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <RESOLVED_TICKER>
-```
-
-- Remove only after required output files exist in the final report package:
-  - `report.md`
-  - `valuation/inputs.yaml`
-  - `valuation/outputs.json`
-
-6. Run post-run introspection via `$run-llm-workflow` `references/improvement-loop.md` after every completed run, apply workflow/reference updates in the same turn when repeatable workflow gaps are found, and only append to `improvement-log.md` when an actual improvement is shipped (no no-change entries).
-
-## Behavior Contract
-
-- No ticker provided:
-  - Select from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`, filtered by `<DATA_ROOT>/user_preferences.json` when present.
-  - When available, honor queue `exchange_country` metadata to resolve non-US company package location.
-  - Use selected company's market to run the correct fetch script.
-  - Set `next_action` to `run_research`.
-
-- Ticker provided:
-  - Infer market from existing company profile, queue metadata, and ticker pattern.
-  - For non-US tickers without an existing company package, queue metadata must include `exchange_country` (ISO alpha-2) so the canonical company path can be resolved.
-  - If preferences exclude inferred market, return an error (unless `--ignore-preferences` is set).
-  - Run correct fetch script for that market.
-  - If no new data was fetched and an up-to-date report already exists, set `next_action` to `done`.
-  - Otherwise set `next_action` to `run_research`.
-
-- Post-report follow-up routing (`--post-report-check`):
-  - Load latest report package for the same as-of date (`YYYY-MM-DD` or `YYYY-MM-DD-*`).
-  - Read the report `## Research Stop Gate` section and check:
-    - `Research complete: Yes`
-    - `Diminishing returns from additional research: Yes`
-    - `Open thesis-critical levers: 0`
-    - `Thesis confidence` vs `--followup-confidence-threshold` (default `0.80`)
-  - If the confidence gate passes, set `next_action` to `done`.
-  - If the confidence gate is not met, set `next_action` to `run_research` and carry forward `followup_focus` from `Next best research focus`.
-
-## Options
-
-- `--ticker <TICKER>`: Optional explicit ticker/identifier.
-- `--asof <YYYY-MM-DD>`: As-of date (default: today).
-- `--market us|non-us`: Optional override if market inference is ambiguous.
-- `--fetch-script <PATH>`: Optional override path to a market fetch `add_company.py` script.
-- `--identity "<NAME EMAIL>"`: EDGAR identity for US fetch runs.
-- `--isin <ISIN>`: Optional identifier used by non-US fetch scripts that accept it.
-- `--ideas-log <PATH>`: Override queue log path.
-- `--preferences-path <PATH>`: Override preferences path (default `<DATA_ROOT>/user_preferences.json`).
-- `--ignore-preferences`: Disable preference-based queue filtering and market guardrails.
-- `--overwrite-assumptions`: Pass through to fetch scripts.
-- `--dry-run`: Emit decision without running fetch.
-- `--post-report-check`: Evaluate latest same-date report package and emit follow-up routing decision.
-- `--followup-confidence-threshold <FLOAT>`: Confidence threshold for post-report confidence gating (0-1, default `0.80`).
-
-## Validation Reference
-
-- For end-to-end manual checks (fetch, research, valuation artifacts, queue behavior), use:
-  - `references/workflow-validation-scenarios.md`
+## Related References
+- `references/research-workflow.md`
+- `references/report-format.md`
+- `references/valuation-method.md`
+- `references/source-quality-and-search.md`
+- `references/sec-access-policy.md`
+- `references/historical-sec-fetch.md`
+- `references/improvement-loop.md`

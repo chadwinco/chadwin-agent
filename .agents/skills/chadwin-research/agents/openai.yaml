@@ -1,7 +1,16 @@
 interface:
   display_name: "Chadwin Research"
-  short_description: "Orchestrate fetch + progressive report research runs"
-  default_prompt: "Use $chadwin-research to select a company (respecting <DATA_ROOT>/user_preferences.json by default), fetch the right market data, run $run-llm-workflow, and keep iterating until the report's Research Stop Gate indicates high confidence with diminishing returns from further work. Start each run by identifying the key valuation levers early, then deepen research on the highest-impact unresolved levers first. Ensure report output is narrative-first and pillar-based (claim -> evidence -> assumption mapping), not checklist-style snippets. Use `run_research.py --post-report-check` to route follow-up passes from the report's Research Stop Gate fields."
+  short_description: "Progressive LLM-first report + valuation workflow with lever mapping and confidence stop gate"
+  default_prompt: "Use $chadwin-research for <TICKER> as of <YYYY-MM-DD>. If ticker is omitted, pick from the shared ideas log; if no suitable idea exists or the user asks for fresh ideas, invoke $fetch-us-investment-ideas first, then continue. Run a progressive issue-driven process where research and data acquisition are integrated: map high-impact valuation levers early, investigate each with local evidence first, and when a lever is blocked by missing US SEC data, invoke $fetch-us-company-data with a focused natural-language fetch objective before continuing. Keep iterating until thesis-critical uncertainty is resolved and additional work has diminishing returns. Write report.md in narrative-first style centered on 3-5 valuation pillars, explicitly linking claim -> evidence -> model-assumption impact. Include a Research Stop Gate section so follow-up routing can decide whether to continue or stop. Resolve report directory by first reusing `reports/YYYY-MM-DD` when it already has `valuation/inputs.yaml` but is missing `report.md` or `valuation/outputs.json`, and only use `YYYY-MM-DD-01`, `-02`, etc. for additional same-day runs after a complete package exists. Produce report.md plus valuation inputs/outputs, then remove the completed ticker from the queue."
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"
+
+dependencies:
+  tools:
+    - type: "skill"
+      value: "fetch-us-company-data"
+      description: "US SEC/EDGAR fetch operator for on-demand filing, facts, and XBRL data acquisition during research."
+    - type: "skill"
+      value: "fetch-us-investment-ideas"
+      description: "Idea-generation operator used when ticker is omitted or the user asks for fresh US ideas."
