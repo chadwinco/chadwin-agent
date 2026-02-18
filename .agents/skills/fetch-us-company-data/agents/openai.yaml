@@ -1,7 +1,7 @@
 interface:
   display_name: "Fetch US Company Data"
-  short_description: "Fetch EDGAR filings and transcripts for US tickers"
-  default_prompt: "Use $fetch-us-company-data to pull EDGAR filings, financials, and the latest earnings call transcript for a US ticker (or omit ticker to auto-pick from the shared ideas log), respecting <DATA_ROOT>/user_preferences.json by default."
+  short_description: "Flexible edgartools wrapper for US/SEC data pulls"
+  default_prompt: "Use $fetch-us-company-data as an LLM-first edgartools operator. Prefer plain-language fetch requests (for example: latest 10-K plus subsequent 10-Qs, Form 4 transactions, entity facts, XBRL statements, attachments). Use scripts/edgartools_wrapper.py for deterministic execution."
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"

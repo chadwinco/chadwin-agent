@@ -1,6 +1,8 @@
 # US Fetch Data Contract and Dictionary (EDGAR)
 
-This document is the single reference for fetch output expectations and column definitions for US company packages.
+This document describes an optional canonical output schema for US company packages.
+
+When using wrapper-mode fetches (`scripts/edgartools_wrapper.py`), outputs are caller-defined and may not match this schema unless explicitly requested.
 
 ## Output Roots
 - Company data root: `<DATA_ROOT>/companies/US/<TICKER>/data`
