@@ -264,6 +264,43 @@ def _list_filings(filings) -> List:
         return []
 
 
+def _normalized_form(value) -> str:
+    return str(value or "").strip().upper()
+
+
+def _is_amended_form(form_text: str) -> bool:
+    normalized = _normalized_form(form_text)
+    return normalized.endswith("/A") or normalized.endswith("-A")
+
+
+def _filter_form_matches(
+    filings,
+    *,
+    requested_form: str,
+    prefer_non_amended: bool = True,
+) -> List:
+    requested = _normalized_form(requested_form)
+    entries = _list_filings(filings)
+    if not entries:
+        return []
+
+    exact = [
+        filing
+        for filing in entries
+        if _normalized_form(getattr(filing, "form", "")) == requested
+    ]
+    candidates = exact or entries
+    if not prefer_non_amended or _is_amended_form(requested):
+        return candidates
+
+    non_amended = [
+        filing
+        for filing in candidates
+        if not _is_amended_form(_normalized_form(getattr(filing, "form", "")))
+    ]
+    return non_amended or candidates
+
+
 def _latest_filing(filings):
     if filings is None:
         return None
@@ -359,7 +396,13 @@ def fetch_company_filings(
             continue
 
         try:
-            latest_filing = _latest_filing(company.get_filings(form=form))
+            latest_filing = _latest_filing(
+                _filter_form_matches(
+                    company.get_filings(form=form),
+                    requested_form=form,
+                    prefer_non_amended=True,
+                )
+            )
         except Exception:
             latest_filing = None
         if not latest_filing:
@@ -378,7 +421,11 @@ def fetch_company_filings(
 
     if not is_fpi:
         try:
-            all_10qs = list(company.get_filings(form="10-Q"))
+            all_10qs = _filter_form_matches(
+                company.get_filings(form="10-Q"),
+                requested_form="10-Q",
+                prefer_non_amended=True,
+            )
         except Exception:
             all_10qs = []
 
@@ -866,7 +913,11 @@ def _normalize_filings(filings) -> List:
 
 def _latest_n_filings(company, form: str, n: int) -> List:
     try:
-        return _normalize_filings(company.latest(form, n=n))
+        return _filter_form_matches(
+            company.latest(form, n=n),
+            requested_form=form,
+            prefer_non_amended=True,
+        )
     except Exception:
         return []
 
