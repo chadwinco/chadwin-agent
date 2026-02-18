@@ -1,4 +1,4 @@
-# Research Workflow (LLM-First, Progressive, Fetch-On-Demand)
+# Research Workflow (LLM-First, Progressive, Baseline + Fetch-On-Demand)
 
 ## Objective
 Generate a decision-grade investment write-up and scenario valuation by resolving the highest-impact investment questions in descending priority, fetching evidence as needed, and expressing conclusions through valuation pillars.
@@ -41,13 +41,18 @@ Drafting assets:
 - `.agents/skills/chadwin-research/assets/key-risks-and-disconfirming-signals.md`
 - `.agents/skills/chadwin-research/assets/conclusion.md`
 
-## Step 1: Confirm Scope and Build an Initial Evidence Map
+## Step 1: Confirm Scope, Run Baseline Filing Fetch, and Build an Initial Evidence Map
 - Confirm ticker and as-of date explicitly.
 - Confirm all evidence used is dated on or before as-of date.
 - If ticker is missing, pick from queue:
   - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research`
 - If queue is empty or stale for the active objective, run `$fetch-us-investment-ideas`, append ideas to queue, and pick again.
 - Load `<DATA_ROOT>/user_preferences.json` when present and apply strategy/report preferences.
+- Run baseline filing fetch coverage before deep lever analysis:
+  - latest `10-K` (or latest `20-F` for FPIs),
+  - all `10-Q` filings since latest `10-K` (US issuers),
+  - all `8-K` (or `6-K` for FPIs) filings since the most recent annual or quarterly filing above.
+- Include attachments when available and enforce the as-of cutoff on baseline pulls.
 - Create an evidence map from currently available files:
   - what is already available,
   - what appears stale,
@@ -71,6 +76,7 @@ For each unresolved high-priority lever, run this loop:
 2. Pull best local evidence first.
 3. If evidence is insufficient and impact is material, fetch targeted evidence on demand.
    - US SEC retrieval default: `$fetch-us-company-data` using a plain-language objective.
+   - Keep baseline filing coverage complete first, then request lever-specific incremental fetches.
    - Keep fetch requests focused to the active lever; avoid broad undirected pulls.
    - Enforce as-of cutoff in every fetch objective.
 4. Validate fetched artifacts (date bounds, relevance, parse quality, duplicates).

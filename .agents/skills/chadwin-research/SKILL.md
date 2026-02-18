@@ -14,7 +14,7 @@ Target output:
 
 Core operating model:
 - research is progressive and issue-driven,
-- data fetch is on-demand inside the research loop,
+- begin with a baseline filing fetch bundle, then fetch additional evidence on demand inside the research loop,
 - stop when thesis-critical uncertainty is resolved and additional work has diminishing returns.
 
 Do not require a fully populated data package before starting.
@@ -27,13 +27,17 @@ Do not require a fully populated data package before starting.
 
 ## Data Acquisition Model (Required)
 - Treat data acquisition as part of research, not a separate prerequisite stage.
+- Start each run with this baseline filing coverage (before deeper lever work):
+  - latest `10-K` (or latest `20-F` for FPIs),
+  - all `10-Q` filings since the latest `10-K` (US issuers),
+  - all `8-K` (or `6-K` for FPIs) filings since the most recent annual or quarterly filing in that set.
 - For US SEC evidence, use `$fetch-us-company-data` as the default fetch operator.
 - For missing ticker selection or fresh idea generation, use `$fetch-us-investment-ideas`.
 - Preferred inter-skill communication is natural language objective statements.
 - Use deterministic wrapper requests only when reproducibility or replay is needed.
 
-Natural-language fetch example:
-- "For MSFT as of 2026-02-18, fetch the latest 10-K, all later 10-Q filings, relevant 8-K filings with attachments, and Form 4 transactions for the last 6 months. Save artifacts under the company data path."
+Natural-language baseline fetch example:
+- "For MSFT as of 2026-02-18, fetch latest 10-K, all 10-Qs filed after that 10-K, and all 8-Ks since the most recent of those periodic filings (with attachments). Save artifacts under the company data path."
 
 ## Report Directory Convention
 Use `<REPORT_DATE_DIR>` for outputs:
@@ -79,9 +83,10 @@ mkdir -p "$REPORT_DIR/valuation"
 echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
 
-4. Execute `references/research-workflow.md`.
-5. Fetch additional evidence on demand whenever a thesis-critical uncertainty is blocked by missing data.
-6. After goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
+4. Run the baseline filing fetch bundle described above (`10-K/20-F`, post-10-K `10-Q`s, then `8-K/6-K`s since latest periodic filing), honoring the as-of cutoff.
+5. Execute `references/research-workflow.md`.
+6. Fetch additional evidence on demand whenever a thesis-critical uncertainty is blocked by missing data.
+7. After goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
 Use the queue CLI in this skill from repo root:
