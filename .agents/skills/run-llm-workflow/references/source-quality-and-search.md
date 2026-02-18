@@ -12,7 +12,7 @@ Use this source hierarchy:
 - Official counterparty filings (major customers/suppliers)
 
 SEC execution rule:
-- For SEC retrieval, use the skill SEC helper scripts and configured identity. Do not use ad-hoc direct `sec.gov` HTTP calls.
+- For SEC retrieval, use `$fetch-us-company-data` and configured identity. Do not use ad-hoc direct `sec.gov` HTTP calls.
 
 2. High-quality secondary sources
 - Industry bodies and audited industry datasets

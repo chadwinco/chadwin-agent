@@ -1,25 +1,25 @@
-# Research Workflow (LLM-First, Progressive)
+# Research Workflow (LLM-First, Progressive, Fetch-On-Demand)
 
 ## Objective
-Generate a decision-grade investment write-up and scenario valuation from local company data by resolving the highest-impact investment questions in descending priority and expressing conclusions through valuation pillars.
+Generate a decision-grade investment write-up and scenario valuation by resolving the highest-impact investment questions in descending priority, fetching evidence as needed, and expressing conclusions through valuation pillars.
 
 ## Execution Mode (Read First)
 - This workflow is intentionally LLM-first and non-scripted.
 - Do not treat this as a one-command pipeline.
 - Use shell/Python snippets only as helpers for extraction or arithmetic.
-- Completion requires writing all required outputs and passing the goal gate in Step 7.
-- Before ad-hoc helper commands, verify path targets exist from repo root (`pwd`, `test -d .agents`, `test -d companies`).
-- For file discovery, prefer `rg --files <path>` before targeted `rg -n ... <path>` so searches fail less often on guessed directories.
+- Completion requires writing all required outputs and passing the goal gate in Step 8.
+- Before ad-hoc helper commands, verify path targets exist from repo root (`pwd`, `test -d .agents`).
+- For file discovery, prefer `rg --files <path>` before targeted `rg -n ... <path>`.
 
 ## Inputs
-Primary local inputs:
+Initial local evidence (may be partial):
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/income_statement.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/balance_sheet.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/cash_flow_statement.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
 
-Analyst/market expectation anchors (optional but prioritized when present):
+Market-expectation anchors (optional; fetch when useful):
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
@@ -27,10 +27,11 @@ Analyst/market expectation anchors (optional but prioritized when present):
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_consensus.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
 
-Optional controls:
+Controls and references:
 - `<DATA_ROOT>/user_preferences.json`
-- `references/source-quality-and-search.md` for targeted external checks
-- `references/historical-sec-fetch.md` for US historical SEC pulls
+- `references/source-quality-and-search.md`
+- `references/sec-access-policy.md`
+- `references/historical-sec-fetch.md`
 
 Drafting assets:
 - `.agents/skills/run-llm-workflow/assets/investment-summary.md`
@@ -40,106 +41,102 @@ Drafting assets:
 - `.agents/skills/run-llm-workflow/assets/key-risks-and-disconfirming-signals.md`
 - `.agents/skills/run-llm-workflow/assets/conclusion.md`
 
-## Step 1: Confirm Scope and Data Fitness
+## Step 1: Confirm Scope and Build an Initial Evidence Map
 - Confirm ticker and as-of date explicitly.
 - Confirm all evidence used is dated on or before as-of date.
-- Check recent local 8-K files for announced name or ticker changes; keep package paths on current ticker unless already effective, and disclose pending changes.
-- If ticker is not provided, pick from queue:
+- If ticker is missing, pick from queue:
   - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow`
 - Load `<DATA_ROOT>/user_preferences.json` when present and apply strategy/report preferences.
-- If local data is missing, stop and run the market fetch skill first.
+- Create an evidence map from currently available files:
+  - what is already available,
+  - what appears stale,
+  - what is missing for thesis-critical questions.
 
-## Step 2: Build the Fact Base and Market Baseline
-Create two baselines before drafting conclusions.
+## Step 2: Build an Early Lever Map and Data-Need Backlog
+Before deep dives, write an initial 3-7 lever map:
+- `Lever`
+- `Direction`
+- `Why material`
+- `Current evidence quality` (high/medium/low)
+- `Current confidence` (0-100%)
+- `Priority` (`decision impact x uncertainty`)
+- `Evidence needed next`
 
-Operating baseline (company evidence):
-- Business model, segment mix, and key economics from filings.
-- Financial trend summary from annual statements.
+Use this as a working backlog. Update continuously.
 
-Market baseline (analyst evidence):
-- Consensus stance and analyst count (`analyst_consensus.csv`).
-- Price target range and implied upside/downside (`analyst_price_targets.csv`).
-- Near-term revenue and EPS trajectory (`analyst_revenue_estimates.csv`, `analyst_eps_estimates.csv`).
-- Implied valuation sentiment via forward P/E (`analyst_eps_forward_pe_estimates.csv`).
-- Revision momentum from rating/target actions (`analyst_ratings_actions_12m.csv`).
-
-If analyst files are unavailable or sparse, say so explicitly and use filing-guidance plus historical ranges as fallback.
-
-## Step 3: Build an Early Lever Map
-Before deep dives, write an initial 3-7 lever map with explicit valuation links:
-- `Lever`: what moves intrinsic value most.
-- `Direction`: what outcome improves or hurts value.
-- `Why material`: sensitivity to value per share / MOS.
-- `Current evidence quality`: high / medium / low.
-- `Current confidence`: 0-100%.
-- `Priority`: rank by `decision impact x uncertainty`.
-
-This is your working research backlog. Update it every loop.
-Then select the top 3-5 levers as provisional valuation pillars and draft a one-line assumption mapping for each (which scenario input each lever controls most).
-
-## Step 4: Progressive Resolution Loop (Highest Impact First)
+## Step 3: Progressive Resolution Loop (Research + Fetch)
 For each unresolved high-priority lever, run this loop:
 1. Define the core test question (falsification + confirmation framing).
-2. Pull best local evidence first (filings/statements/transcripts).
-3. If still unresolved and impact is material, run targeted external checks using `references/source-quality-and-search.md`.
-4. For US historical SEC evidence, use `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
+2. Pull best local evidence first.
+3. If evidence is insufficient and impact is material, fetch targeted evidence on demand.
+   - US SEC retrieval default: `$fetch-us-company-data` using a plain-language objective.
+   - Keep fetch requests focused to the active lever; avoid broad undirected pulls.
+   - Enforce as-of cutoff in every fetch objective.
+4. Validate fetched artifacts (date bounds, relevance, parse quality, duplicates).
 5. Update lever status: `resolved`, `bounded`, or `open`.
-6. Update assumptions (no change / tighten / widen / shift central case) and log the valuation impact.
-7. Re-score confidence for that lever and estimate incremental insight from one more loop (`high`, `medium`, `low`).
+6. Update assumptions (no change / tighten / widen / shift central case) and log valuation impact.
+7. Re-score confidence and estimate incremental value of one more loop (`high`/`medium`/`low`).
 
 Mandatory event-risk sweep before final assumptions:
 - Check for signed/proposed M&A, take-private, spin-off, tender, or special-committee processes.
-- If signed deal exists, model event-risk framing (deal-cap upside, break-risk downside) before relying on standalone compounding assumptions.
+- If signed deal exists, use event-risk framing (deal-cap upside, break-risk downside) before relying on standalone compounding assumptions.
+
+## Step 4: Build and Reconcile Market Baseline
+Create/update market baseline using available analyst files and fetched expectations data:
+- consensus stance and analyst count,
+- target range and implied upside/downside,
+- near-term revenue/EPS trajectory,
+- revisions and momentum.
+
+If analyst data is unavailable, say so explicitly and use filing guidance plus historical ranges as fallback.
 
 ## Step 5: Build and Reconcile Valuation Inputs
 - Create `valuation/inputs.yaml` using `references/valuation-method.md`.
 - Match model to economics (`three-stage-dcf-fade` vs `two-stage-residual-income`).
 - Make base/bull/bear assumptions explicit and evidence-backed.
-- Reconcile assumptions against analyst baseline:
-  - show where base case aligns with consensus,
-  - and where it differs, state why with evidence.
-- If analyst revisions conflict with management guidance or filing evidence, explain which source set is leading and why.
+- Reconcile assumptions against market baseline:
+  - where base case aligns,
+  - where it differs and why.
 
 ## Step 6: Compute Outputs and Draft Report
 - Compute valuation outputs and write `valuation/outputs.json`.
 - Draft `report.md` using `references/report-format.md`.
-- Keep report concise, decision-oriented, and explicit about what is resolved vs still uncertain.
-- Draft in narrative-first style:
-  - lead with the argument, not raw fact lists;
-  - for each pillar, show `claim -> evidence -> model input impact`;
-  - explain why assumptions are central estimates rather than arbitrary midpoints.
-- Include a `## Research Stop Gate` section in the report with:
-  - `Thesis confidence`,
-  - `Highest-impact levers`,
-  - `Levers resolved`,
-  - `Open thesis-critical levers`,
-  - `Diminishing returns from additional research`,
-  - `Research complete`,
-  - `Next best research focus`.
+- Keep report concise and decision-oriented.
+- Use narrative-first argument structure:
+  - `claim -> evidence -> model input impact`.
+- Include `## Research Stop Gate` with:
+  - `Thesis confidence`
+  - `Highest-impact levers`
+  - `Levers resolved`
+  - `Open thesis-critical levers`
+  - `Diminishing returns from additional research`
+  - `Research complete`
+  - `Next best research focus`
 
-## Step 7: Goal Gate (Stop Rule)
-Stop when all conditions below are true:
+## Step 7: Citation and Consistency Check
+Before final gate:
+- Every factual claim must cite local file paths.
+- Ensure date consistency against as-of date.
+- Ensure valuation outputs reconcile with narrative conclusions.
+- Ensure margin-of-safety statement matches `valuation/outputs.json` and current price input.
+
+## Step 8: Goal Gate (Stop Rule)
+Stop when all are true:
 - Required outputs exist and are internally consistent.
-- Highest-impact levers are resolved or explicitly bounded with valuation sensitivity.
-- Valuation assumptions are linked to evidence and reconciled with analyst-implied market expectations.
-- Margin-of-safety conclusion matches `valuation/outputs.json` and current price input.
-- The write-up clearly explains the valuation pillars and how evidence translated into model assumptions and scenario ranges.
+- Highest-impact levers are resolved or bounded with sensitivity.
+- Assumptions are evidence-linked and reconciled vs available market expectations.
+- Margin-of-safety conclusion matches valuation outputs.
 - `Research Stop Gate` indicates:
   - high thesis confidence,
   - zero open thesis-critical levers,
   - diminishing returns from additional research.
 - Remaining open items are monitoring items, not thesis-critical unknowns.
-- Every factual claim has local file-path citations.
 
-If any condition fails, continue the resolution loop instead of finalizing.
+If any condition fails, continue Step 3 instead of finalizing.
 
-## Step 8: Queue and Mandatory Post-Run Introspection
-- Remove ticker from queue only after Step 7 passes:
+## Step 9: Queue and Mandatory Post-Run Introspection
+- Remove ticker from queue only after Step 8 passes:
   - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>`
-- Run post-run introspection after every completed run using `references/improvement-loop.md`.
-- For each run, inspect the full execution path (including failed commands/retries and ambiguity points), then:
-  - identify any misunderstanding, avoidable error, or workflow friction;
-  - classify root cause (one-off vs repeatable workflow gap);
-  - apply the smallest concrete workflow/reference update in the same turn when the issue is repeatable or workflow-caused.
-- Record entries in `improvement-log.md` only when a real process/workflow improvement is implemented.
-- Do not add no-change introspection entries.
+- Run post-run introspection using `references/improvement-loop.md`.
+- Apply smallest same-run workflow/reference improvement when repeatable workflow gaps are found.
+- Record in `improvement-log.md` only when a real process improvement is implemented.

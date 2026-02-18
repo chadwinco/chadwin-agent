@@ -1,6 +1,6 @@
 ---
 name: run-llm-workflow
-description: Produce a concise, LLM-written investment report and scenario valuation from `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data` using a progressive, issue-driven workflow that starts with early key-lever mapping and continues until confidence is high and incremental research has diminishing returns. Use after running the market-appropriate fetch skill (for example, `$fetch-us-company-data`) when creating or refreshing `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
+description: Produce a concise, LLM-written investment report and scenario valuation using a progressive, issue-driven workflow that fetches evidence on demand as uncertainties are discovered. Use for creating or refreshing `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/report.md` and valuation files.
 ---
 
 # Run LLM Workflow
@@ -8,25 +8,31 @@ description: Produce a concise, LLM-written investment report and scenario valua
 ## Overview
 This is the canonical LLM-first research workflow.
 
-The target output is intentionally simple and auditable:
+Target output:
 1. A decision-oriented investment report.
 2. A transparent base/bull/bear valuation.
 
-The report style is narrative-first by default:
-- explain the few valuation pillars that matter most,
-- show how evidence changed (or did not change) assumptions,
-- avoid checklist-style fact dumps.
+Core operating model:
+- research is progressive and issue-driven,
+- data fetch is on-demand inside the research loop,
+- stop when thesis-critical uncertainty is resolved and additional work has diminishing returns.
 
-The research process is progressive, not fixed-stage by default:
-- identify the highest-impact unresolved investment questions,
-- investigate them to required depth,
-- stop when key decision points are resolved to expert-level confidence.
+Do not require a fully populated data package before starting.
 
 ## Execution Mode (Required)
 - Execute this skill by reasoning through the workflow and writing outputs.
 - Do not look for or invent a single `scripts/*.py` command that completes the report.
 - Helper commands are fine for extraction or arithmetic, but they do not replace the LLM workflow.
 - The task is complete only when all required output files are written and the goal gate in `references/research-workflow.md` passes.
+
+## Data Acquisition Model (Required)
+- Treat data acquisition as part of research, not a separate prerequisite stage.
+- For US SEC evidence, use `$fetch-us-company-data` as the default fetch operator.
+- Preferred inter-skill communication is natural language objective statements.
+- Use deterministic wrapper requests only when reproducibility or replay is needed.
+
+Natural-language fetch example:
+- "For MSFT as of 2026-02-18, fetch the latest 10-K, all later 10-Q filings, relevant 8-K filings with attachments, and Form 4 transactions for the last 6 months. Save artifacts under the company data path."
 
 ## Report Directory Convention
 Use `<REPORT_DATE_DIR>` for outputs:
@@ -36,13 +42,10 @@ Use `<REPORT_DATE_DIR>` for outputs:
 
 ## Quick Start
 1. Resolve ticker and as-of date explicitly.
-2. Ensure `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data` is populated. If not, run the appropriate market fetch skill first (for example, `$fetch-us-company-data`).
-3. If you plan to use optional SEC helper scripts in this skill, install helper dependencies listed in `agents/openai.yaml`.
-
-4. Load `<DATA_ROOT>/user_preferences.json` when present and apply:
+2. Load `<DATA_ROOT>/user_preferences.json` when present and apply:
    - strategy preferences to framing and valuation emphasis
    - report preferences to section emphasis/content inclusion
-5. Resolve the output directory from repo root:
+3. Resolve the output directory from repo root:
 
 ```bash
 REPORTS_ROOT="<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports"
@@ -50,7 +53,7 @@ ASOF_DATE="<YYYY-MM-DD>"
 PRIMARY_DIR="$REPORTS_ROOT/$ASOF_DATE"
 REPORT_DATE_DIR="$ASOF_DATE"
 if [ -d "$PRIMARY_DIR" ]; then
-  # Resume fetch-bootstrap package if valuation inputs exist but outputs are incomplete.
+  # Resume incomplete package when valuation inputs exist but outputs are incomplete.
   if [ -f "$PRIMARY_DIR/valuation/inputs.yaml" ] && [ ! -f "$PRIMARY_DIR/report.md" ]; then
     REPORT_DATE_DIR="$ASOF_DATE"
   elif [ -f "$PRIMARY_DIR/valuation/inputs.yaml" ] && [ ! -f "$PRIMARY_DIR/valuation/outputs.json" ]; then
@@ -68,11 +71,12 @@ mkdir -p "$REPORT_DIR/valuation"
 echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 ```
 
-6. Work through `references/research-workflow.md` as an LLM task.
-7. After report completion and goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
+4. Execute `references/research-workflow.md`.
+5. Fetch additional evidence on demand whenever a thesis-critical uncertainty is blocked by missing data.
+6. After goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
 
 ## Queue Helpers
-Use the queue CLI owned by the `$chadwin-research` skill from repo root:
+Use the queue CLI owned by `$chadwin-research` from repo root:
 
 ```bash
 python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task run-llm-workflow
@@ -88,12 +92,12 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/valuation/outputs.json`
 
 ## Inputs to Prioritize
-Core local evidence:
+Existing local evidence (if present):
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/company_profile.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/financial_statements/annual/*.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/filings/*.md`
 
-Market-expectation anchors (when available):
+Market-expectation anchors (fetch on demand when needed):
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_revenue_estimates.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_estimates.csv`
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_eps_forward_pe_estimates.csv`
@@ -102,28 +106,28 @@ Market-expectation anchors (when available):
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/analyst_ratings_actions_12m.csv`
 
 ## Workflow
-1. Execute the progressive workflow in `references/research-workflow.md`.
-2. Build valuation assumptions and outputs using `references/valuation-method.md`, explicitly reconciling your assumptions with analyst-implied market expectations.
+1. Execute the progressive loop in `references/research-workflow.md`.
+2. Build valuation assumptions and outputs using `references/valuation-method.md`, reconciling assumptions with available market expectations.
 3. Draft the report using `references/report-format.md`, honoring report-content preferences.
-4. Use `references/source-quality-and-search.md` for targeted external checks when local files cannot resolve high-impact lever questions.
-5. For US SEC historical pulls, follow `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
-6. Run mandatory post-run introspection using `references/improvement-loop.md`, apply same-run workflow/reference updates when introspection finds repeatable or workflow-caused issues, and log to `improvement-log.md` only when a real improvement is implemented (no no-change entries).
+4. Use `references/source-quality-and-search.md` for targeted external checks when local and fetched filing evidence cannot resolve high-impact questions.
+5. For US SEC deep/history pulls, follow `references/sec-access-policy.md` and `references/historical-sec-fetch.md`.
+6. Run mandatory post-run introspection using `references/improvement-loop.md`, apply same-run workflow/reference updates when introspection finds repeatable or workflow-caused issues, and log to `improvement-log.md` only when a real improvement is implemented.
 
 ## Constraints
 - Keep the report concise and decision-oriented.
 - Default to tight prose over fragmented bullets/tables when either form can work.
 - Make the valuation argument legible: each core pillar should connect evidence to specific model inputs.
 - Paraphrase source text; no verbatim copying from filings or transcripts.
-- Every factual claim needs a local file citation.
+- Every factual claim needs local file-path citations.
 - External claims must be cross-checked and traceable.
 - Do not violate explicit user exclusions in `<DATA_ROOT>/user_preferences.json` unless the user explicitly asks to override.
 
 ## Troubleshooting
-- If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow in `references/research-workflow.md`.
+- If you are looking for a one-command analyzer (for example, `scripts/analyze_company.py`), stop and return to the LLM workflow.
 - If no ticker was supplied and queue selection fails, run the queue helper (`pick --task run-llm-workflow`) and confirm the log has candidates.
-- If required data is missing, run the appropriate market fetch skill for that ticker/date (for example, `$fetch-us-company-data`).
+- If a lever is blocked by missing evidence, run a focused fetch via `$fetch-us-company-data` and continue the same research loop.
 - If valuation looks inconsistent, re-check units and net-debt sign in `references/valuation-method.md`.
-- If the write-up is weak, rerun the goal gate in `references/research-workflow.md` and close every unresolved high-impact lever before finalizing.
+- If write-up quality is weak, rerun the goal gate in `references/research-workflow.md` and close every unresolved high-impact lever before finalizing.
 
 ## Related References
 - `references/research-workflow.md`

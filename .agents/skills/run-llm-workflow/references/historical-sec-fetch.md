@@ -1,57 +1,35 @@
-# Historical SEC Fetch (US, Optional)
+# Historical SEC Fetch (US, Optional, On-Demand)
 
-Use this when recent filings are insufficient to resolve a high-impact issue.
+Use this when currently available filings are insufficient to resolve a high-impact issue.
 
-Helper scripts:
-- `.agents/skills/run-llm-workflow/scripts/fetch_historical_filings.py`
-- `.agents/skills/run-llm-workflow/scripts/fetch_sec_filing_markdown.py`
+Default operator:
+- `$fetch-us-company-data`
 
 ## Typical Use Cases
-- Check margin/disclosure behavior in prior downturns.
-- Test repeat-pattern risk in accounting, guidance, or governance.
+- Test margin/disclosure behavior in prior downturns.
+- Check repeat-pattern risk in accounting, guidance, or governance.
 - Pull older event filings around stress periods.
+- Build insider-trading context (Form 4) around key thesis turns.
 
 ## Prerequisites
-- US package exists under `<DATA_ROOT>/companies/US/<TICKER>/data`.
-- SEC helper deps listed in `../agents/openai.yaml` are installed.
-- `EDGAR_IDENTITY` is set in repo `.env`.
+- SEC identity is configured in repo `.env` (`EDGAR_IDENTITY` or `SEC_IDENTITY_EMAIL`).
 - Follow `references/sec-access-policy.md`.
+- Keep requests bounded by as-of date.
 
-## Command Examples
-Pull last 6 filings per form through cutoff date:
+## Natural-Language Request Patterns
+Historical periodic/event set:
+- "For `<TICKER>` as of `<YYYY-MM-DD>`, fetch historical `10-K`, `10-Q`, and `8-K` filings before cutoff; prioritize the last 6-10 filings per form; include attachments when relevant."
 
-```bash
-python3 .agents/skills/run-llm-workflow/scripts/fetch_historical_filings.py \
-  --ticker <TICKER> \
-  --forms 10-K,10-Q,8-K \
-  --limit 6 \
-  --before <YYYY-MM-DD>
-```
+Older annual-only set:
+- "For `<TICKER>`, fetch prior `10-K` history before `<YYYY-MM-DD>` to analyze long-cycle margin behavior."
 
-Pull older annual filings only:
+Single targeted filing:
+- "Fetch `<TICKER>` `<FORM>` filed on `<YYYY-MM-DD>` and save markdown under `<DATA_ROOT>/companies/US/<PRIMARY_TICKER>/data/filings/third_party/`."
 
-```bash
-python3 .agents/skills/run-llm-workflow/scripts/fetch_historical_filings.py \
-  --ticker <TICKER> \
-  --forms 10-K \
-  --limit 10 \
-  --before <YYYY-MM-DD>
-```
-
-Pull one specific filing into local markdown:
-
-```bash
-python3 .agents/skills/run-llm-workflow/scripts/fetch_sec_filing_markdown.py \
-  --ticker <PEER_TICKER> \
-  --form 8-K \
-  --filed-date <YYYY-MM-DD> \
-  --output-path <DATA_ROOT>/companies/US/<PRIMARY_TICKER>/data/filings/third_party/<PEER_FILE>.md
-```
-
-Default output location:
-- `<DATA_ROOT>/companies/US/<TICKER>/data/filings/historical/`
+Insider history:
+- "For `<TICKER>`, fetch Form 4 data for the last `<N>` months ending `<YYYY-MM-DD>` and export transactions to CSV."
 
 ## Guardrails
-- Keep pull scope tight to the issue being tested.
+- Keep pull scope tight to the active issue being tested.
 - Do not include evidence after the as-of date.
-- Treat fetched files as candidate evidence; validate relevance before using.
+- Validate fetched files for relevance before using them in assumptions.
