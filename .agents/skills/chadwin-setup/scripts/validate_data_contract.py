@@ -15,7 +15,8 @@ APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
-IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
+SCREENER_RESULTS_FILENAME = "screener-results.jsonl"
+LEGACY_IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
 IMPROVEMENT_LOG_PATH = Path("improvement-log.md")
 PREFERENCES_PATH = Path("user_preferences.json")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2}$")
@@ -187,7 +188,7 @@ def _validate_preferences(path: Path, issues: list[ValidationIssue]) -> None:
         )
 
 
-def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
+def _validate_screener_results_file(path: Path, issues: list[ValidationIssue]) -> None:
     for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
         line = raw_line.strip()
         if not line:
@@ -198,7 +199,7 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_invalid_jsonl",
+                code="screener_results_invalid_jsonl",
                 path=path,
                 message=f"Line {line_number}: invalid JSON ({exc}).",
             )
@@ -208,7 +209,7 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_non_object_entry",
+                code="screener_results_non_object_entry",
                 path=path,
                 message=f"Line {line_number}: entry must be a JSON object.",
             )
@@ -219,7 +220,7 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_invalid_ticker",
+                code="screener_results_invalid_ticker",
                 path=path,
                 message=f"Line {line_number}: invalid ticker value {payload.get('ticker')!r}.",
             )
@@ -229,7 +230,7 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_invalid_market",
+                code="screener_results_invalid_market",
                 path=path,
                 message=f"Line {line_number}: `market` must be `us` or `non-us`.",
             )
@@ -240,7 +241,7 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_exchange_country_not_uppercase",
+                code="screener_results_exchange_country_not_uppercase",
                 path=path,
                 message=f"Line {line_number}: `exchange_country` must use uppercase ISO alpha-2.",
             )
@@ -248,7 +249,7 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_invalid_exchange_country",
+                code="screener_results_invalid_exchange_country",
                 path=path,
                 message=f"Line {line_number}: `exchange_country` must be ISO alpha-2 when present.",
             )
@@ -256,10 +257,20 @@ def _validate_ideas_log(path: Path, issues: list[ValidationIssue]) -> None:
             _append_issue(
                 issues,
                 severity="error",
-                code="ideas_log_market_country_mismatch",
+                code="screener_results_market_country_mismatch",
                 path=path,
                 message=f"Line {line_number}: US market entry cannot use exchange_country={country}.",
             )
+
+
+def _iter_screener_results_files(idea_screens_dir: Path) -> list[Path]:
+    files = [
+        candidate
+        for candidate in idea_screens_dir.rglob(SCREENER_RESULTS_FILENAME)
+        if candidate.is_file()
+    ]
+    files.sort()
+    return files
 
 
 def _validate_report_dir(report_dir: Path, issues: list[ValidationIssue]) -> None:
@@ -395,7 +406,6 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
     required_paths: list[tuple[Path, str, str]] = [
         (data_root / PREFERENCES_PATH, "file", "Missing required shared file `user_preferences.json`."),
         (data_root / IDEA_SCREENS_SUBDIR, "dir", "Missing required shared directory `idea-screens/`."),
-        (data_root / IDEAS_LOG_PATH, "file", "Missing required shared file `idea-screens/company-ideas-log.jsonl`."),
         (data_root / COMPANIES_SUBDIR, "dir", "Missing required shared directory `companies/`."),
         (data_root / IMPROVEMENT_LOG_PATH, "file", "Missing required shared file `improvement-log.md`."),
     ]
@@ -415,9 +425,23 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
     if preferences_path.is_file():
         _validate_preferences(preferences_path, issues)
 
-    ideas_log_path = data_root / IDEAS_LOG_PATH
-    if ideas_log_path.is_file():
-        _validate_ideas_log(ideas_log_path, issues)
+    idea_screens_dir = data_root / IDEA_SCREENS_SUBDIR
+    if idea_screens_dir.is_dir():
+        for results_file in _iter_screener_results_files(idea_screens_dir):
+            _validate_screener_results_file(results_file, issues)
+
+    legacy_ideas_log_path = data_root / LEGACY_IDEAS_LOG_PATH
+    if legacy_ideas_log_path.is_file():
+        _append_issue(
+            issues,
+            severity="warning",
+            code="legacy_ideas_log_present",
+            path=legacy_ideas_log_path,
+            message=(
+                "Legacy queue file detected. Prefer per-screen files at "
+                "`idea-screens/**/screener-results.jsonl`."
+            ),
+        )
 
     companies_root = data_root / COMPANIES_SUBDIR
     if companies_root.is_dir():

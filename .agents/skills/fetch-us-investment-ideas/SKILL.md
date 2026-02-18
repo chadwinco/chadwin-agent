@@ -13,7 +13,7 @@ Use one of three paths per run:
 - Finviz helper path (optional): run `scripts/fetch_us_investment_ideas.py` when a deterministic value/quality seed list is useful.
 - SEC filing-driven path (optional): use `<DATA_ROOT>/daily-sec-filings/*/*.jsonl` as the seed universe when the user requests ideas anchored to filing activity on specific dates/forms.
 
-Each completed run appends newly discovered companies to `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl` so downstream skills can run without an explicitly provided ticker.
+Each completed run appends newly discovered companies to a per-screen queue file at `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl` so downstream skills can choose among distinct screen lists.
 
 When present, apply `<DATA_ROOT>/user_preferences.json` by default:
 - US market guardrail (skip/fail if US is excluded)
@@ -125,7 +125,7 @@ Each JSONL line has:
 3. Apply preferences unless user overrides.
 4. Write output JSON for deterministic handoff.
 5. Verify non-empty `ideas`, with `ticker` + `thesis` per entry.
-6. Confirm queue append in `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
+6. Confirm queue append in `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl`.
 
 ## Key Flags (Finviz helper script)
 - `--limit`: max number of returned ideas.
@@ -135,7 +135,7 @@ Each JSONL line has:
 - `--min-roe`, `--min-roic`, `--min-operating-margin`, `--min-profit-margin`, `--max-debt-to-equity`: quality gates.
 - `--output`: write JSON to file.
 - `--compact`: emit minified JSON.
-- `--ideas-log`: override central queue log path (defaults to `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`).
+- `--ideas-log`: override screener results path (file or directory; defaults to `<DATA_ROOT>/idea-screens/**/screener-results.jsonl`).
 - `--base-dir`: override repo root used for queue log resolution.
 - `--preferences-path`: override preferences path (default `<DATA_ROOT>/user_preferences.json`).
 - `--ignore-preferences`: ignore preference-based market/sector filters.

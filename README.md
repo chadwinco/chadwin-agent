@@ -55,7 +55,7 @@ For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>
 
 ## Repository Layout
 - `.agents/skills/`: skill definitions, scripts, references, and assets
-- `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`: central screener/idea queue primitive
+- `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl`: per-screen idea queue primitives
 - `<DATA_ROOT>/user_preferences.json`: persistent preference profile
 - `<DATA_ROOT>/improvement-log.md`: process improvement log
 - `<DATA_ROOT>/companies/`: company package root

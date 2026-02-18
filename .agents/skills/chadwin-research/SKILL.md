@@ -86,7 +86,7 @@ echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 4. Run the baseline filing fetch bundle described above (`10-K/20-F`, post-10-K `10-Q`s, then `8-K/6-K`s since latest periodic filing), honoring the as-of cutoff.
 5. Execute `references/research-workflow.md`.
 6. Fetch additional evidence on demand whenever a thesis-critical uncertainty is blocked by missing data.
-7. After goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`.
+7. After goal-gate pass, remove the researched ticker from `<DATA_ROOT>/idea-screens/**/screener-results.jsonl`.
 
 ## Queue Helpers
 Use the queue CLI in this skill from repo root:

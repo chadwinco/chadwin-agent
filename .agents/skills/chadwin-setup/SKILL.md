@@ -92,7 +92,7 @@ Validate the shared data contract:
 Creates:
 - `<DATA_ROOT>/`
 - `<DATA_ROOT>/user_preferences.json` (canonical scaffold with empty preferences)
-- `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl` (shared ideas queue primitive)
+- `<DATA_ROOT>/idea-screens/` (shared screener-results root)
 - `<DATA_ROOT>/companies/` (company package root)
 - `<DATA_ROOT>/improvement-log.md` (process improvement ledger)
 

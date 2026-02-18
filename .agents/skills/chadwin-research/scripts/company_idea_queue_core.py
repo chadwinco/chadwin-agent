@@ -12,7 +12,8 @@ APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 REPO_MARKER_RELATIVE_PATH = Path(".agents") / "skills"
 DEFAULT_COMPANIES_SUBPATH = Path("companies")
-DEFAULT_LOG_SUBPATH = Path("idea-screens") / "company-ideas-log.jsonl"
+DEFAULT_IDEA_SCREENS_SUBPATH = Path("idea-screens")
+SCREENER_RESULTS_FILENAME = "screener-results.jsonl"
 DEFAULT_PREFERENCES_SUBPATH = Path("user_preferences.json")
 
 TASK_FETCH_US = "fetch-us-company-data"
@@ -65,13 +66,49 @@ def resolve_companies_root() -> Path:
     return _resolve_data_root() / DEFAULT_COMPANIES_SUBPATH
 
 
-def resolve_log_path(base_dir: Path, ideas_log: str | Path | None = None) -> Path:
-    if ideas_log is None:
-        return _resolve_data_root() / DEFAULT_LOG_SUBPATH
-    path = Path(ideas_log)
+def resolve_idea_screens_root() -> Path:
+    return _resolve_data_root() / DEFAULT_IDEA_SCREENS_SUBPATH
+
+
+def _resolve_path(base_dir: Path, value: str | Path) -> Path:
+    path = Path(value)
     if path.is_absolute():
         return path
     return base_dir / path
+
+
+def _looks_like_directory_override(path: Path) -> bool:
+    return path.suffix == "" and path.name != SCREENER_RESULTS_FILENAME
+
+
+def _default_screener_results_path(
+    *,
+    base_dir: Path,
+    source_output: str | None = None,
+) -> Path:
+    resolved_source_output = _clean_text(source_output)
+    if resolved_source_output:
+        source_output_path = _resolve_path(base_dir, resolved_source_output)
+        if source_output_path.suffix:
+            return source_output_path.parent / source_output_path.stem / SCREENER_RESULTS_FILENAME
+        return source_output_path / SCREENER_RESULTS_FILENAME
+
+    date_dir = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    return resolve_idea_screens_root() / date_dir / SCREENER_RESULTS_FILENAME
+
+
+def resolve_log_path(
+    base_dir: Path,
+    ideas_log: str | Path | None = None,
+    *,
+    source_output: str | None = None,
+) -> Path:
+    if ideas_log is not None:
+        path = _resolve_path(base_dir, ideas_log)
+        if path.is_dir() or _looks_like_directory_override(path):
+            return path / SCREENER_RESULTS_FILENAME
+        return path
+    return _default_screener_results_path(base_dir=base_dir, source_output=source_output)
 
 
 def resolve_preferences_path(
@@ -330,8 +367,64 @@ def detect_market(ticker: Any, exchange: Any = None) -> str | None:
     return None
 
 
-def read_queue_entries(base_dir: Path, ideas_log: str | Path | None = None) -> list[dict[str, Any]]:
-    path = resolve_log_path(base_dir, ideas_log)
+def _path_sort_key(path: Path) -> tuple[float, str]:
+    try:
+        mtime = path.stat().st_mtime
+    except OSError:
+        mtime = 0.0
+    return (mtime, str(path))
+
+
+def _list_screener_results_paths(
+    base_dir: Path,
+    ideas_log: str | Path | None = None,
+) -> list[Path]:
+    if ideas_log is not None:
+        path = _resolve_path(base_dir, ideas_log)
+        if path.is_dir():
+            paths = [candidate for candidate in path.rglob(SCREENER_RESULTS_FILENAME) if candidate.is_file()]
+            paths.sort(key=_path_sort_key, reverse=True)
+            return paths
+        if path.is_file():
+            return [path]
+        return []
+
+    idea_screens_root = resolve_idea_screens_root()
+    if not idea_screens_root.exists():
+        return []
+
+    paths = [
+        candidate
+        for candidate in idea_screens_root.rglob(SCREENER_RESULTS_FILENAME)
+        if candidate.is_file()
+    ]
+    paths.sort(key=_path_sort_key, reverse=True)
+    return paths
+
+
+def _normalize_queue_entry(payload: Any) -> dict[str, Any] | None:
+    if not isinstance(payload, dict):
+        return None
+
+    ticker = normalize_ticker(payload.get("ticker"))
+    if not ticker:
+        return None
+
+    normalized = dict(payload)
+    normalized["ticker"] = ticker
+    normalized["sector"] = _clean_text(payload.get("sector"))
+    normalized["industry"] = _clean_text(payload.get("industry"))
+    normalized["market"] = normalize_market(payload.get("market")) or detect_market(
+        ticker=ticker,
+        exchange=payload.get("exchange"),
+    )
+    normalized["exchange_country"] = normalize_country_code(payload.get("exchange_country"))
+    if normalized["exchange_country"] is None and normalized["market"] == "us":
+        normalized["exchange_country"] = "US"
+    return normalized
+
+
+def _read_entries_from_path(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
 
@@ -344,22 +437,26 @@ def read_queue_entries(base_dir: Path, ideas_log: str | Path | None = None) -> l
             payload = json.loads(line)
         except json.JSONDecodeError:
             continue
+        normalized = _normalize_queue_entry(payload)
+        if normalized:
+            entries.append(normalized)
+    return entries
 
-        ticker = normalize_ticker(payload.get("ticker"))
-        if not ticker:
-            continue
 
-        payload["ticker"] = ticker
-        payload["sector"] = _clean_text(payload.get("sector"))
-        payload["industry"] = _clean_text(payload.get("industry"))
-        payload["market"] = normalize_market(payload.get("market")) or detect_market(
-            ticker=ticker,
-            exchange=payload.get("exchange"),
-        )
-        payload["exchange_country"] = normalize_country_code(payload.get("exchange_country"))
-        if payload["exchange_country"] is None and payload["market"] == "us":
-            payload["exchange_country"] = "US"
-        entries.append(payload)
+def read_queue_entries(base_dir: Path, ideas_log: str | Path | None = None) -> list[dict[str, Any]]:
+    paths = _list_screener_results_paths(base_dir, ideas_log)
+    if not paths:
+        return []
+
+    entries: list[dict[str, Any]] = []
+    seen_keys: set[str] = set()
+    for path in paths:
+        for entry in _read_entries_from_path(path):
+            key = queue_key(entry.get("ticker"))
+            if key in seen_keys:
+                continue
+            seen_keys.add(key)
+            entries.append(entry)
     return entries
 
 
@@ -381,9 +478,10 @@ def append_new_ideas(
     source_output: str | None = None,
     ideas_log: str | Path | None = None,
 ) -> int:
-    path = resolve_log_path(base_dir, ideas_log)
-    entries = read_queue_entries(base_dir, ideas_log)
-    existing_keys = {queue_key(entry.get("ticker")) for entry in entries}
+    path = resolve_log_path(base_dir, ideas_log, source_output=source_output)
+    all_entries = read_queue_entries(base_dir, ideas_log)
+    existing_keys = {queue_key(entry.get("ticker")) for entry in all_entries}
+    entries_for_target_path = _read_entries_from_path(path)
 
     appended = 0
     queued_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -423,12 +521,12 @@ def append_new_ideas(
             "queued_at_utc": queued_at,
             "source_output": _clean_text(source_output),
         }
-        entries.append(entry)
+        entries_for_target_path.append(entry)
         existing_keys.add(key)
         appended += 1
 
     if appended:
-        _write_queue_entries(path, entries)
+        _write_queue_entries(path, entries_for_target_path)
     elif not path.exists():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.touch()
@@ -537,15 +635,24 @@ def remove_company(
     ticker: str,
     ideas_log: str | Path | None = None,
 ) -> int:
-    path = resolve_log_path(base_dir, ideas_log)
-    if not path.exists():
-        return 0
-
-    entries = read_queue_entries(base_dir, ideas_log)
     target_key = queue_key(ticker)
+    if ideas_log is None:
+        paths = _list_screener_results_paths(base_dir, None)
+    else:
+        resolved = _resolve_path(base_dir, ideas_log)
+        if resolved.is_dir() or _looks_like_directory_override(resolved):
+            paths = _list_screener_results_paths(base_dir, ideas_log)
+        elif resolved.is_file():
+            paths = [resolved]
+        else:
+            paths = []
 
-    kept = [entry for entry in entries if queue_key(entry.get("ticker")) != target_key]
-    removed_count = len(entries) - len(kept)
-    if removed_count:
-        _write_queue_entries(path, kept)
+    removed_count = 0
+    for path in paths:
+        entries = _read_entries_from_path(path)
+        kept = [entry for entry in entries if queue_key(entry.get("ticker")) != target_key]
+        removed = len(entries) - len(kept)
+        if removed:
+            _write_queue_entries(path, kept)
+            removed_count += removed
     return removed_count

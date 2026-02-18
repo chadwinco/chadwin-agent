@@ -13,7 +13,6 @@ APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
-IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
 IMPROVEMENT_LOG_PATH = Path("improvement-log.md")
 
 
@@ -99,11 +98,6 @@ def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
             encoding="utf-8",
         )
         created_files.append(preferences_path)
-
-    ideas_log_path = data_root / IDEAS_LOG_PATH
-    if not ideas_log_path.exists():
-        ideas_log_path.write_text("", encoding="utf-8")
-        created_files.append(ideas_log_path)
 
     improvement_log_path = data_root / IMPROVEMENT_LOG_PATH
     if not improvement_log_path.exists():

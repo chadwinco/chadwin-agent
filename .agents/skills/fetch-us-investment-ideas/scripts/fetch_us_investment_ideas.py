@@ -151,15 +151,15 @@ def parse_args() -> argparse.Namespace:
         "--base-dir",
         default=str(default_base_dir()),
         help=(
-            "Repository root used for the central company ideas log "
+            "Repository root used for screener result queue paths "
             "(default: auto-detected)."
         ),
     )
     parser.add_argument(
         "--ideas-log",
         help=(
-            "Override ideas log path "
-            "(default: <DATA_ROOT>/idea-screens/company-ideas-log.jsonl)."
+            "Override screener results path "
+            "(file or directory; defaults to <DATA_ROOT>/idea-screens/**/screener-results.jsonl)."
         ),
     )
     parser.add_argument(

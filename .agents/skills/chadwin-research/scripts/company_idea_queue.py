@@ -21,15 +21,15 @@ from company_idea_queue_core import (  # noqa: E402
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Manage the central company-ideas queue used by fetch and research skills."
+            "Manage company-ideas queue entries sourced from screener result files."
         )
     )
     parser.add_argument("--base-dir", default=str(default_base_dir()))
     parser.add_argument(
         "--ideas-log",
         help=(
-            "Override ideas log path "
-            "(default: <DATA_ROOT>/idea-screens/company-ideas-log.jsonl)."
+            "Override screener results path "
+            "(file or directory; defaults to <DATA_ROOT>/idea-screens/**/screener-results.jsonl)."
         ),
     )
     parser.add_argument(
@@ -100,7 +100,7 @@ def main() -> int:
             respect_preferences=not args.ignore_preferences,
         )
         if not entry:
-            print("No matching company found in the ideas log.", file=sys.stderr)
+            print("No matching company found in screener results.", file=sys.stderr)
             return 1
         print(json.dumps(entry, indent=2))
         return 0

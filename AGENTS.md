@@ -24,7 +24,7 @@ Ownership rule:
 - `chadwin-setup` creates shared primitives only:
   - `<DATA_ROOT>/`
   - `<DATA_ROOT>/user_preferences.json`
-  - `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`
+  - `<DATA_ROOT>/idea-screens/`
   - `<DATA_ROOT>/companies/`
   - `<DATA_ROOT>/improvement-log.md`
 - Every other skill may create and own additional subdirectories/files under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
@@ -70,7 +70,7 @@ If no orchestrator skill is installed, use manual control with the capability-eq
 4. Produce research outputs with progressive depth using the installed research/report skill.
 5. If high-impact issues remain, run another research-skill pass until the stop rule is satisfied.
 6. Validate artifacts and pass quality gate
-7. If present, remove completed ticker from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`
+7. If present, remove completed ticker from screener result files at `<DATA_ROOT>/idea-screens/**/screener-results.jsonl`
 8. Record repeatable process improvements in `<DATA_ROOT>/improvement-log.md`
 
 ## Required Outputs Per Completed Run

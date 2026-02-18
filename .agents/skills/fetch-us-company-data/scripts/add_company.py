@@ -290,7 +290,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--ticker",
-        help="US ticker symbol. If omitted, pick the next US company from the ideas log.",
+        help="US ticker symbol. If omitted, pick the next US company from screener results.",
     )
     parser.add_argument("--identity", help="EDGAR identity string: 'Name email@domain.com'")
     parser.add_argument("--base-dir", default=str(BASE_DIR))
@@ -298,8 +298,8 @@ def main() -> None:
     parser.add_argument(
         "--ideas-log",
         help=(
-            "Override ideas log path "
-            "(default: <DATA_ROOT>/idea-screens/company-ideas-log.jsonl)."
+            "Override screener results path "
+            "(file or directory; defaults to <DATA_ROOT>/idea-screens/**/screener-results.jsonl)."
         ),
     )
     parser.add_argument("--overwrite-assumptions", action="store_true")
@@ -358,12 +358,15 @@ def main() -> None:
         )
         if not selected:
             raise SystemExit(
-                "No US company found in <DATA_ROOT>/idea-screens/company-ideas-log.jsonl. "
+                "No US company found in <DATA_ROOT>/idea-screens/**/screener-results.jsonl. "
                 "Run fetch-us-investment-ideas first, relax preferences, or pass --ticker."
             )
         ticker = str(selected["ticker"]).upper()
         queued_at = selected.get("queued_at_utc") or "unknown"
-        print(f"No --ticker provided. Selected {ticker} from ideas log (queued_at_utc={queued_at}).")
+        print(
+            f"No --ticker provided. Selected {ticker} from screener results "
+            f"(queued_at_utc={queued_at})."
+        )
 
     company_dir = _ensure_dirs(ticker)
     data_dir = company_dir / "data"

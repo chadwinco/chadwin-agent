@@ -18,7 +18,7 @@ Goal: skills are swappable as long as they preserve these primitives.
 These paths are reserved and must remain valid:
 
 - `<DATA_ROOT>/user_preferences.json`
-- `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`
+- `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`
 - `<DATA_ROOT>/improvement-log.md`
 
@@ -49,7 +49,11 @@ A completed run must contain:
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
 
-## Queue Primitive (`company-ideas-log.jsonl`)
+## Screener Results Primitive (`idea-screens/**/screener-results.jsonl`)
+
+Each screener run must write one JSONL result file inside its own run folder:
+
+- `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl`
 
 One JSON object per line.
 
