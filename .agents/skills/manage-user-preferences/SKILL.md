@@ -38,8 +38,9 @@ Interaction rule:
 
 Normalization rules:
 - Markets:
-  - Prefer `US`, `Non-US`, and `Global` for broad buckets.
-  - Countries must always be represented as ISO 3166-1 alpha-2 uppercase codes (for example `SE`, `JP`, `GB`), never full country names.
+  - `markets.included_countries` accepts ISO 3166-1 alpha-2 uppercase country codes only (for example `US`, `SE`, `JP`, `GB`).
+  - Normalize country names to ISO codes before saving (never save full country names).
+  - Do not save broad-market tokens such as `NON-US` or `GLOBAL`.
 - Section keys:
   - `sector_and_industry_preferences`: `preferred_sectors`, `preferred_industries`, `excluded_sectors`, `excluded_industries`, `notes`
   - `investment_strategy_preferences`: `preferred_strategies`, `excluded_strategies`, `notes`
@@ -58,4 +59,4 @@ The saved JSON must include:
 - `report_preferences`
 - `updated_at_utc`
 
-Use concise plain-language values in arrays (for example: `"US"`, `"Non-US"`, `"oil"`, `"biotech"`, `"value long"`).
+Use concise plain-language values in arrays (for example: `"US"`, `"JP"`, `"oil"`, `"biotech"`, `"value long"`).

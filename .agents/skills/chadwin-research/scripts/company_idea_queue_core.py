@@ -19,7 +19,8 @@ TASK_FETCH_US = "fetch-us-company-data"
 TASK_FETCH_NON_US = "non-us"
 TASK_RESEARCH = "run-llm-workflow"
 TASK_VALUES = {TASK_FETCH_US, TASK_FETCH_NON_US, TASK_RESEARCH}
-COUNTRY_DIR_BY_MARKET = {"us": "US", "non-us": "International"}
+COUNTRY_DIR_BY_MARKET = {"us": "US"}
+ISO_COUNTRY_RE = re.compile(r"^[A-Z]{2}$")
 
 
 def _detect_repo_root(start: Path | None = None) -> Path:
@@ -182,10 +183,19 @@ def normalize_market(value: Any) -> str | None:
     normalized = _clean_text(value).lower()
     if not normalized:
         return None
-    if normalized in {"us", "usa", "united states"}:
+    if normalized == "us":
         return "us"
-    if normalized in {"non-us", "non us", "non_us", "international"}:
+    if normalized == "non-us":
         return "non-us"
+    return None
+
+
+def normalize_country_code(value: Any) -> str | None:
+    normalized = _clean_text(value).upper()
+    if not normalized:
+        return None
+    if ISO_COUNTRY_RE.match(normalized):
+        return normalized
     return None
 
 
@@ -206,7 +216,7 @@ def load_user_preferences(
     return {}
 
 
-def preferred_markets(preferences: dict[str, Any] | None) -> set[str]:
+def preferred_countries(preferences: dict[str, Any] | None) -> set[str]:
     if not isinstance(preferences, dict):
         return set()
     markets = preferences.get("markets")
@@ -215,20 +225,39 @@ def preferred_markets(preferences: dict[str, Any] | None) -> set[str]:
 
     selected: set[str] = set()
     for country in _string_list(markets.get("included_countries")):
-        normalized = normalize_market(country)
-        if normalized in {"us", "non-us"}:
-            selected.add(normalized)
+        country_code = normalize_country_code(country)
+        if country_code:
+            selected.add(country_code)
     return selected
 
 
-def market_is_allowed(market: Any, preferences: dict[str, Any] | None) -> bool:
-    selected = preferred_markets(preferences)
-    if not selected:
+def market_is_allowed(
+    market: Any,
+    preferences: dict[str, Any] | None,
+    exchange_country: Any = None,
+) -> bool:
+    selected_countries = preferred_countries(preferences)
+    if not selected_countries:
         return True
+
     normalized = normalize_market(market)
     if normalized is None:
         return True
-    return normalized in selected
+
+    if normalized == "us":
+        return "US" in selected_countries
+
+    allowed_non_us = {country for country in selected_countries if country != "US"}
+    if not allowed_non_us:
+        return False
+
+    country_code = normalize_country_code(exchange_country)
+    if country_code:
+        return country_code in allowed_non_us
+
+    # With explicit country preferences, unknown non-US country metadata does
+    # not satisfy the filter.
+    return False
 
 
 def matches_sector_industry_preferences(
@@ -327,6 +356,9 @@ def read_queue_entries(base_dir: Path, ideas_log: str | Path | None = None) -> l
             ticker=ticker,
             exchange=payload.get("exchange"),
         )
+        payload["exchange_country"] = normalize_country_code(payload.get("exchange_country"))
+        if payload["exchange_country"] is None and payload["market"] == "us":
+            payload["exchange_country"] = "US"
         entries.append(payload)
     return entries
 
@@ -371,6 +403,12 @@ def append_new_ideas(
         if market is None:
             continue
 
+        exchange_country = normalize_country_code(idea.get("exchange_country"))
+        if market == "us":
+            exchange_country = "US"
+        elif exchange_country == "US":
+            exchange_country = None
+
         entry = {
             "ticker": ticker,
             "company": _clean_text(idea.get("company")),
@@ -378,6 +416,7 @@ def append_new_ideas(
             "sector": _clean_text(idea.get("sector")),
             "industry": _clean_text(idea.get("industry")),
             "market": market,
+            "exchange_country": exchange_country,
             "thesis": _clean_text(idea.get("thesis")),
             "source": _clean_text(source),
             "generated_at_utc": _clean_text(generated_at_utc),
@@ -406,44 +445,37 @@ def _task_market(task: str) -> str | None:
     return None
 
 
-def _company_data_exists(base_dir: Path, ticker: str, market: str | None = None) -> bool:
+def _company_data_exists(
+    ticker: str,
+    market: str | None = None,
+    exchange_country: str | None = None,
+) -> bool:
     companies_dir = resolve_companies_root()
     if not companies_dir.exists():
         return False
 
     normalized_ticker = normalize_ticker(ticker)
     normalized_market = normalize_market(market)
+    normalized_country = normalize_country_code(exchange_country)
     candidates: list[Path] = []
 
-    if normalized_market:
+    if normalized_country:
+        candidates.append(companies_dir / normalized_country / normalized_ticker / "data")
+    elif normalized_market:
         country_dir = COUNTRY_DIR_BY_MARKET.get(normalized_market)
         if country_dir:
             candidates.append(companies_dir / country_dir / normalized_ticker / "data")
-
-    candidates.extend(
-        [
-            companies_dir / "US" / normalized_ticker / "data",
-            companies_dir / "International" / normalized_ticker / "data",
-            companies_dir / normalized_ticker / "data",  # legacy flat layout fallback
-        ]
-    )
 
     for candidate in candidates:
         if candidate.exists():
             return True
 
-    for entry in companies_dir.iterdir():
-        if not entry.is_dir():
+    for country_dir in companies_dir.iterdir():
+        if not country_dir.is_dir():
             continue
-        if entry.name.upper() == normalized_ticker and (entry / "data").exists():
+        canonical = country_dir / normalized_ticker / "data"
+        if canonical.exists():
             return True
-        for nested in entry.iterdir():
-            if (
-                nested.is_dir()
-                and nested.name.upper() == normalized_ticker
-                and (nested / "data").exists()
-            ):
-                return True
     return False
 
 
@@ -473,7 +505,11 @@ def pick_next_company(
         candidates = [
             entry
             for entry in candidates
-            if market_is_allowed(entry.get("market"), preferences)
+            if market_is_allowed(
+                entry.get("market"),
+                preferences,
+                entry.get("exchange_country"),
+            )
             and matches_sector_industry_preferences(entry, preferences)
         ]
     if not candidates:
@@ -483,7 +519,11 @@ def pick_next_company(
         candidates_with_data = [
             entry
             for entry in candidates
-            if _company_data_exists(base_dir, str(entry.get("ticker") or ""), entry.get("market"))
+            if _company_data_exists(
+                str(entry.get("ticker") or ""),
+                entry.get("market"),
+                str(entry.get("exchange_country") or ""),
+            )
         ]
         if candidates_with_data:
             return candidates_with_data[0]

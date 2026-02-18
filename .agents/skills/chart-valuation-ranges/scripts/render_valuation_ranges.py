@@ -80,7 +80,6 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Scan <DATA_ROOT>/companies/<COUNTRY>/<TICKER> "
-            "(or a single-country ticker root) "
             "for each ticker's latest report, then render a margin-of-safety "
             "range chart (bear/base/bull)."
         )
@@ -89,9 +88,7 @@ def parse_args() -> argparse.Namespace:
         "--companies-root",
         default=str(default_companies_root),
         help=(
-            f"Path to companies root (default: {default_companies_root}). "
-            "Can point to either the companies root or a single-country "
-            "folder such as <DATA_ROOT>/companies/US."
+            f"Path to companies root (default: {default_companies_root})."
         ),
     )
     parser.add_argument(
@@ -169,14 +166,12 @@ def parse_float(value: object) -> float | None:
 
 
 def load_outputs_json(report_dir: Path) -> dict | None:
-    valuation_dir = report_dir / "valuation"
-    for filename in ("outputs.json", "output.json"):
-        candidate = valuation_dir / filename
-        if candidate.exists():
-            try:
-                return json.loads(candidate.read_text())
-            except json.JSONDecodeError:
-                return None
+    candidate = report_dir / "valuation" / "outputs.json"
+    if candidate.exists():
+        try:
+            return json.loads(candidate.read_text())
+        except json.JSONDecodeError:
+            return None
     return None
 
 
@@ -187,11 +182,6 @@ def iter_company_dirs(companies_root: Path) -> list[tuple[str, Path]]:
     children = [child for child in sorted(companies_root.iterdir()) if child.is_dir()]
     if not children:
         return []
-
-    # Allow --companies-root to point directly at a single-country ticker folder.
-    if any((child / "reports").is_dir() for child in children):
-        country = companies_root.name.upper()
-        return [(country, child) for child in children]
 
     company_dirs: list[tuple[str, Path]] = []
     for country_dir in children:

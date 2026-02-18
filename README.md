@@ -5,6 +5,7 @@ This repository is a skill-first, Codex-operated equity research system.
 Deterministic code lives inside skills (`.agents/skills/*`) and is used as bounded helpers. The LLM agent remains responsible for workflow control, sanity checks, and final output quality.
 
 Agent operating contract and workflow rules are defined in `AGENTS.md`.
+Shared data primitives and extension rules are defined in `DATA_CONTRACT.md`.
 
 ## One-Time Setup
 Setup should begin with the `chadwin-setup` skill:
@@ -23,6 +24,12 @@ If you only need the data-root bootstrap command directly:
 
 ```bash
 .venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py
+```
+
+Validate shared data-contract compliance:
+
+```bash
+.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py
 ```
 
 ## Discover and Use Skills
@@ -48,7 +55,8 @@ For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>
 
 ## Repository Layout
 - `.agents/skills/`: skill definitions, scripts, references, and assets
-- `<DATA_ROOT>/idea-screens/`: queue and generated idea files
+- `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`: central screener/idea queue primitive
 - `<DATA_ROOT>/user_preferences.json`: persistent preference profile
 - `<DATA_ROOT>/improvement-log.md`: process improvement log
+- `<DATA_ROOT>/companies/`: company package root
 - `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/`: company evidence and reports

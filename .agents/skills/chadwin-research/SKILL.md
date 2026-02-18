@@ -13,6 +13,7 @@ Use this as the default entrypoint for autonomous runs. It delegates to:
 
 Company packages are organized by exchange country under `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`.
 When present, `<DATA_ROOT>/user_preferences.json` is used by default to filter queue picks (market + sector/industry) and guard against running excluded markets.
+Shared primitives and naming rules are defined in `DATA_CONTRACT.md`; non-US writes must use ISO country-code folders.
 
 ## Workflow
 
@@ -63,11 +64,13 @@ python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --t
 
 - No ticker provided:
   - Select from `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`, filtered by `<DATA_ROOT>/user_preferences.json` when present.
+  - When available, honor queue `exchange_country` metadata to resolve non-US company package location.
   - Use selected company's market to run the correct fetch script.
   - Set `next_action` to `run_research`.
 
 - Ticker provided:
   - Infer market from existing company profile, queue metadata, and ticker pattern.
+  - For non-US tickers without an existing company package, queue metadata must include `exchange_country` (ISO alpha-2) so the canonical company path can be resolved.
   - If preferences exclude inferred market, return an error (unless `--ignore-preferences` is set).
   - Run correct fetch script for that market.
   - If no new data was fetched and an up-to-date report already exists, set `next_action` to `done`.

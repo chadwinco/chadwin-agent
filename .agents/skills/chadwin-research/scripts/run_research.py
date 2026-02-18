@@ -12,12 +12,12 @@ from pathlib import Path
 from typing import Any
 
 from company_idea_queue_core import (
-    COUNTRY_DIR_BY_MARKET,
     TASK_RESEARCH,
     default_base_dir,
     detect_market,
     load_user_preferences,
     market_is_allowed,
+    normalize_country_code,
     pick_next_company,
     queue_key,
     read_queue_entries,
@@ -387,18 +387,48 @@ def _matching_company_dirs(base_dir: Path, ticker: str) -> list[Path]:
     return matches
 
 
-def _default_company_dir(base_dir: Path, ticker: str, market: str) -> Path:
-    country_dir = COUNTRY_DIR_BY_MARKET.get(market, "US")
-    return resolve_companies_root() / country_dir / ticker
+def _default_company_dir(
+    base_dir: Path,
+    ticker: str,
+    market: str,
+    exchange_country: str | None = None,
+) -> Path:
+    companies_root = resolve_companies_root()
+    if market == "us":
+        return companies_root / "US" / ticker
+
+    normalized_country = normalize_country_code(exchange_country)
+    if normalized_country:
+        return companies_root / normalized_country / ticker
+
+    raise ValueError("exchange_country_required_for_non_us")
+
+
+def _queue_entry(base_dir: Path, ticker: str, ideas_log: str | None) -> dict[str, Any] | None:
+    for entry in read_queue_entries(base_dir=base_dir, ideas_log=ideas_log):
+        if queue_key(entry.get("ticker")) == queue_key(ticker):
+            return entry
+    return None
 
 
 def _queue_market(base_dir: Path, ticker: str, ideas_log: str | None) -> str | None:
-    for entry in read_queue_entries(base_dir=base_dir, ideas_log=ideas_log):
-        if queue_key(entry.get("ticker")) == queue_key(ticker):
-            market = str(entry.get("market") or "").strip().lower()
-            if market in {"us", "non-us"}:
-                return market
+    entry = _queue_entry(base_dir, ticker, ideas_log)
+    if entry:
+        market = str(entry.get("market") or "").strip().lower()
+        if market in {"us", "non-us"}:
+            return market
     return None
+
+
+def _queue_exchange_country(base_dir: Path, ticker: str, ideas_log: str | None) -> str | None:
+    entry = _queue_entry(base_dir, ticker, ideas_log)
+    if not entry:
+        return None
+    return normalize_country_code(entry.get("exchange_country"))
+
+
+def _company_dir_exchange_country(company_dir: Path) -> str | None:
+    return normalize_country_code(company_dir.parent.name)
 
 
 def _infer_market(
@@ -514,6 +544,7 @@ def main() -> int:
     base_dir = Path(args.base_dir).resolve()
     explicit_ticker = bool(args.ticker)
     ticker_input = (args.ticker or "").strip().upper()
+    exchange_country_hint: str | None = None
     preferences_applied = not args.ignore_preferences
     resolved_preferences_path = resolve_preferences_path(
         base_dir=base_dir,
@@ -545,7 +576,16 @@ def main() -> int:
             ideas_log=args.ideas_log,
             override=args.market,
         )
-        if preferences_applied and not market_is_allowed(market, preferences):
+        exchange_country_hint = _queue_exchange_country(
+            base_dir=base_dir,
+            ticker=ticker_input,
+            ideas_log=args.ideas_log,
+        )
+        if preferences_applied and not market_is_allowed(
+            market,
+            preferences,
+            exchange_country_hint,
+        ):
             result = {
                 "status": "error",
                 "reason": "market_excluded_by_preferences",
@@ -559,16 +599,33 @@ def main() -> int:
             return 2
 
         matches = _matching_company_dirs(base_dir, ticker_input)
-        company_dir = (
-            matches[0]
-            if matches
-            else _default_company_dir(base_dir, ticker_input, market)
-        )
+        if matches:
+            company_dir = matches[0]
+        else:
+            try:
+                company_dir = _default_company_dir(
+                    base_dir,
+                    ticker_input,
+                    market,
+                    exchange_country_hint,
+                )
+            except ValueError:
+                result = {
+                    "status": "error",
+                    "reason": "missing_exchange_country_for_non_us",
+                    "market": market,
+                    "ticker_input": ticker_input,
+                    "next_action": "done",
+                    "asof": args.asof,
+                }
+                print(json.dumps(result, indent=2))
+                return 2
         if not company_dir.exists():
             result = {
                 "status": "error",
                 "reason": "company_package_not_found",
                 "market": market,
+                "exchange_country": exchange_country_hint,
                 "ticker_input": ticker_input,
                 "resolved_ticker": ticker_input,
                 "company_dir": str(company_dir),
@@ -586,6 +643,8 @@ def main() -> int:
         decision.update(
             {
                 "market": market,
+                "exchange_country": _company_dir_exchange_country(company_dir)
+                or exchange_country_hint,
                 "ticker_input": ticker_input,
                 "resolved_ticker": company_dir.name.upper(),
                 "explicit_ticker": explicit_ticker,
@@ -609,6 +668,7 @@ def main() -> int:
         )
         ticker_input = str(queued["ticker"]).strip().upper()
         market = str(queued.get("market") or "").strip().lower()
+        exchange_country_hint = normalize_country_code(queued.get("exchange_country"))
         if market not in {"us", "non-us"}:
             market = _infer_market(
                 base_dir=base_dir,
@@ -627,8 +687,17 @@ def main() -> int:
             ideas_log=args.ideas_log,
             override=args.market,
         )
+        exchange_country_hint = _queue_exchange_country(
+            base_dir=base_dir,
+            ticker=ticker_input,
+            ideas_log=args.ideas_log,
+        )
 
-    if preferences_applied and not market_is_allowed(market, preferences):
+    if preferences_applied and not market_is_allowed(
+        market,
+        preferences,
+        exchange_country_hint,
+    ):
         result = {
             "status": "error",
             "reason": "market_excluded_by_preferences",
@@ -641,11 +710,29 @@ def main() -> int:
         return 2
 
     before_matches = _matching_company_dirs(base_dir, ticker_input)
-    before_company_dir = (
-        before_matches[0]
-        if before_matches
-        else _default_company_dir(base_dir, ticker_input, market)
-    )
+    if before_matches:
+        before_company_dir = before_matches[0]
+    else:
+        try:
+            before_company_dir = _default_company_dir(
+                base_dir,
+                ticker_input,
+                market,
+                exchange_country_hint,
+            )
+        except ValueError:
+            result = {
+                "status": "error",
+                "reason": "missing_exchange_country_for_non_us",
+                "market": market,
+                "ticker_input": ticker_input,
+                "preferences_applied": preferences_applied,
+                "preferences_path": (
+                    str(resolved_preferences_path) if preferences_applied else None
+                ),
+            }
+            print(json.dumps(result, indent=2))
+            return 2
     before_data_mtime = _max_mtime(before_company_dir / "data")
 
     fetch_return_code = 0
@@ -708,6 +795,9 @@ def main() -> int:
     after_matches = _matching_company_dirs(base_dir, ticker_input)
     after_company_dir = after_matches[0] if after_matches else before_company_dir
     resolved_ticker = after_company_dir.name.upper()
+    resolved_exchange_country = (
+        _company_dir_exchange_country(after_company_dir) or exchange_country_hint
+    )
     after_data_mtime = _max_mtime(after_company_dir / "data")
     after_report = _latest_report_status(after_company_dir)
 
@@ -742,6 +832,7 @@ def main() -> int:
     result = {
         "status": "ok",
         "market": market,
+        "exchange_country": resolved_exchange_country,
         "ticker_input": ticker_input,
         "resolved_ticker": resolved_ticker,
         "asof": args.asof,

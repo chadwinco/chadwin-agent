@@ -1,15 +1,16 @@
 ---
 name: chadwin-setup
-description: One-time setup entrypoint for Chadwin: bootstrap Python `.venv`, install skill dependencies, configure `.env`, and initialize the minimal shared `<DATA_ROOT>` artifacts.
+description: One-time setup entrypoint for Chadwin: bootstrap Python `.venv`, install skill dependencies, configure `.env`, and initialize shared `<DATA_ROOT>` primitives.
 ---
 
 # Chadwin Setup
 
 ## Overview
 Run this skill first on a new machine or worktree.
-It centralizes one-time setup and then performs the minimal shared `<DATA_ROOT>` bootstrap.
+It centralizes one-time setup and then performs the shared `<DATA_ROOT>` bootstrap.
+The canonical shared-path contract is documented in `DATA_CONTRACT.md`.
 
-This skill intentionally does not create data folders owned by other skills.
+This skill creates only shared primitives and does not create skill-specific data packages.
 
 `<DATA_ROOT>` resolution:
 - `CHADWIN_DATA_DIR` when set
@@ -65,7 +66,7 @@ EDGAR_IDENTITY="Your Name your.email@example.com"
 ```
 
 ## Bootstrap `<DATA_ROOT>`
-Create the minimal shared bootstrap:
+Create the shared primitive bootstrap:
 
 ```bash
 .venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py
@@ -77,6 +78,12 @@ Print the resolved data root without creating anything:
 .venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py --print-only
 ```
 
+Validate the shared data contract:
+
+```bash
+.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py
+```
+
 ## Inputs
 - `--data-root` (optional): explicit override path
 - `--print-only` (optional): dry resolution-only mode
@@ -85,5 +92,8 @@ Print the resolved data root without creating anything:
 Creates:
 - `<DATA_ROOT>/`
 - `<DATA_ROOT>/user_preferences.json` (canonical scaffold with empty preferences)
+- `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl` (shared ideas queue primitive)
+- `<DATA_ROOT>/companies/` (company package root)
+- `<DATA_ROOT>/improvement-log.md` (process improvement ledger)
 
-Each data-producing skill is responsible for creating and maintaining its own subdirectories/files under `<DATA_ROOT>`.
+Each data-producing skill is responsible for creating and maintaining its own additional subdirectories/files under `<DATA_ROOT>`.

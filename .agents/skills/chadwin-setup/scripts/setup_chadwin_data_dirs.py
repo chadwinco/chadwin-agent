@@ -11,6 +11,10 @@ from typing import Any
 
 APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
+IDEA_SCREENS_SUBDIR = Path("idea-screens")
+COMPANIES_SUBDIR = Path("companies")
+IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
+IMPROVEMENT_LOG_PATH = Path("improvement-log.md")
 
 
 def default_data_root() -> Path:
@@ -66,14 +70,28 @@ def default_preferences_payload() -> dict[str, Any]:
     }
 
 
+def default_improvement_log() -> str:
+    return (
+        "# Chadwin Improvement Log\n\n"
+        "| Date (UTC) | Skill | Change | Validation |\n"
+        "|---|---|---|---|\n"
+    )
+
+
 def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
     created_dirs: list[Path] = []
-    if not data_root.exists():
-        data_root.mkdir(parents=True, exist_ok=True)
-        created_dirs.append(data_root)
+    for directory in (
+        data_root,
+        data_root / IDEA_SCREENS_SUBDIR,
+        data_root / COMPANIES_SUBDIR,
+    ):
+        if directory.exists():
+            continue
+        directory.mkdir(parents=True, exist_ok=True)
+        created_dirs.append(directory)
 
-    preferences_path = data_root / "user_preferences.json"
     created_files: list[Path] = []
+    preferences_path = data_root / "user_preferences.json"
     if not preferences_path.exists():
         payload = default_preferences_payload()
         preferences_path.write_text(
@@ -82,12 +100,22 @@ def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
         )
         created_files.append(preferences_path)
 
+    ideas_log_path = data_root / IDEAS_LOG_PATH
+    if not ideas_log_path.exists():
+        ideas_log_path.write_text("", encoding="utf-8")
+        created_files.append(ideas_log_path)
+
+    improvement_log_path = data_root / IMPROVEMENT_LOG_PATH
+    if not improvement_log_path.exists():
+        improvement_log_path.write_text(default_improvement_log(), encoding="utf-8")
+        created_files.append(improvement_log_path)
+
     return created_dirs, created_files
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Create Chadwin data root and initialize user preferences."
+        description="Create Chadwin data root and initialize shared data primitives."
     )
     parser.add_argument(
         "--data-root",

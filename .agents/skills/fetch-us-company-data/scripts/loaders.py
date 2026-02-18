@@ -320,9 +320,7 @@ def _resolve_data_dir(ticker: str) -> Path:
     normalized = ticker.upper()
 
     direct_candidates = [
-        companies_dir / "US" / ticker / "data",
-        companies_dir / "International" / ticker / "data",
-        companies_dir / ticker / "data",  # legacy flat layout fallback
+        companies_dir / "US" / normalized / "data",
     ]
     for candidate in direct_candidates:
         if candidate.exists():
@@ -345,9 +343,9 @@ def _resolve_data_dir(ticker: str) -> Path:
 
     raise FileNotFoundError(
         "Missing data directory for "
-        f"{ticker}. Expected one of: "
-        f"{companies_dir / 'US' / ticker / 'data'}, "
-        f"{companies_dir / 'International' / ticker / 'data'}."
+        f"{ticker}. Expected canonical layout under "
+        f"{companies_dir / '<COUNTRY>' / normalized / 'data'} "
+        "with country as ISO alpha-2 (for example US, JP, GB)."
     )
 
 
@@ -360,8 +358,6 @@ def load_company_data(ticker: str) -> CompanyData:
         currency = str(profile.iloc[0].get("currency") or "")
 
     financials_annual_dir = data_dir / "financial_statements" / "annual"
-    if not financials_annual_dir.exists():
-        financials_annual_dir = data_dir / "financials" / "annual"
     income = None
     balance = None
     cashflow = None
@@ -380,17 +376,6 @@ def load_company_data(ticker: str) -> CompanyData:
         if cash_path.exists():
             cash_df = _load_csv(cash_path)
             cashflow = _build_cash_from_financials(cash_df, ticker, "FY", currency)
-
-    legacy_income_path = data_dir / "income_statement_annual.csv"
-    legacy_balance_path = data_dir / "balance_sheet_annual.csv"
-    legacy_cashflow_path = data_dir / "cash_flow_statement_annual.csv"
-
-    if (income is None or income.empty) and legacy_income_path.exists():
-        income = _load_csv(legacy_income_path)
-    if (balance is None or balance.empty) and legacy_balance_path.exists():
-        balance = _load_csv(legacy_balance_path)
-    if (cashflow is None or cashflow.empty) and legacy_cashflow_path.exists():
-        cashflow = _load_csv(legacy_cashflow_path)
 
     if income is None or income.empty:
         raise FileNotFoundError(
@@ -429,7 +414,6 @@ def load_company_data(ticker: str) -> CompanyData:
     ratios_path = data_dir / "ratios.csv"
     analyst_estimates_candidates = [
         data_dir / "analyst_revenue_estimates.csv",
-        data_dir / "analyst_estimates.csv",  # legacy filename
     ]
 
     key_metrics = _load_csv(key_metrics_path) if key_metrics_path.exists() else None

@@ -20,10 +20,17 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
 
 Do not use repo-local `.chadwin-data` paths.
 
+The canonical shared contract is defined in `DATA_CONTRACT.md`.
+
 Ownership rule:
-- `chadwin-setup` creates only `<DATA_ROOT>/` and `<DATA_ROOT>/user_preferences.json`.
-- Every other skill must create and own its own subdirectories/files under `<DATA_ROOT>` as needed.
-- Do not assume other skills are installed when creating directories.
+- `chadwin-setup` creates shared primitives only:
+  - `<DATA_ROOT>/`
+  - `<DATA_ROOT>/user_preferences.json`
+  - `<DATA_ROOT>/idea-screens/company-ideas-log.jsonl`
+  - `<DATA_ROOT>/companies/`
+  - `<DATA_ROOT>/improvement-log.md`
+- Every other skill may create and own additional subdirectories/files under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
+- Do not assume other non-required skills are installed when creating directories.
 
 ## Non-Negotiable Operating Contract
 1. Execute tasks directly in the local workspace; do not stop at planning if execution is possible.
@@ -115,6 +122,8 @@ Before marking done:
 - Base/bull/bear assumptions are explicit and defensible.
 - Margin-of-safety conclusion reconciles with valuation outputs and current price input.
 - Active research-skill quality checklist is satisfied (for example, when installed: `.agents/skills/run-llm-workflow/references/research-workflow.md`).
+- Shared data contract validation passes:
+  - `.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py`
 
 ## Improvement Loop (Mandatory for Repeatable Issues)
 When you find a repeatable problem or process weakness:
@@ -131,6 +140,7 @@ Do not only patch a single report output when the issue is systemic.
 - Work from repo root: `chadwin-codex`
 - Store company packages by exchange country (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
 - Under `<DATA_ROOT>/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
+- Use only canonical company layout paths: `<DATA_ROOT>/companies/<ISO_ALPHA2_COUNTRY>/<TICKER>/...`.
 - For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
 - Honor `<DATA_ROOT>/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.

@@ -229,9 +229,6 @@ def _write_daily_files(
         for day_value in business_days:
             day_key = day_value.isoformat()
             out_path = form_dir / f"{day_key}.jsonl"
-            legacy_json_path = form_dir / f"{day_key}.json"
-            if legacy_json_path.exists():
-                legacy_json_path.unlink()
 
             payload = sorted(records.get((day_key, form), []), key=_record_sort_key)
             with out_path.open("w", encoding="utf-8") as handle:

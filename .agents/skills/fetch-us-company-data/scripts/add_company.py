@@ -258,7 +258,6 @@ def _company_name_from_profile(data_dir: Path) -> str | None:
 def _load_analyst_estimates(data_dir: Path):
     paths = [
         data_dir / "analyst_revenue_estimates.csv",
-        data_dir / "analyst_estimates.csv",  # legacy filename
     ]
     try:
         import pandas as pd  # type: ignore
