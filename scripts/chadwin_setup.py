@@ -11,7 +11,6 @@ import shutil
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 from urllib.parse import urlparse, urlunparse
 
 
@@ -71,39 +70,12 @@ def _repo_root(start: Path) -> Path:
     return start.resolve()
 
 
-def _normalize_repo(repo: str) -> str:
-    raw = repo.strip()
-    if raw.startswith("git@github.com:"):
-        path = raw.split(":", 1)[1]
-        if path.endswith(".git"):
-            path = path[:-4]
-        return f"github.com/{path}"
-    if raw.startswith("https://") or raw.startswith("http://"):
-        parsed = urlparse(raw)
-        host = parsed.netloc.split("@")[-1]
-        path = parsed.path.strip("/")
-        if path.endswith(".git"):
-            path = path[:-4]
-        return f"{host}/{path}"
-    return raw.removesuffix(".git")
-
-
-def _repo_to_https_url(repo: str) -> str:
-    normalized = _normalize_repo(repo)
-    if normalized.startswith("github.com/"):
-        owner_repo = normalized.split("github.com/", 1)[1]
-        return f"https://github.com/{owner_repo}.git"
-    if normalized.count("/") == 1:
-        return f"https://github.com/{normalized}.git"
-    return repo
-
-
-def _inject_github_token(url: str, token: str | None) -> str:
+def _inject_github_token(repo: str, token: str | None) -> str:
     if not token:
-        return url
-    parsed = urlparse(url)
+        return repo
+    parsed = urlparse(repo)
     if parsed.scheme != "https" or parsed.hostname != "github.com":
-        return url
+        return repo
     netloc = f"x-access-token:{token}@{parsed.netloc}"
     return urlunparse(parsed._replace(netloc=netloc))
 
@@ -164,13 +136,12 @@ def _ensure_tool(tool: str) -> None:
         raise SystemExit(f"Required tool not found in PATH: {tool}")
 
 
-def _ensure_venv(venv_dir: Path) -> tuple[Path, Path]:
+def _ensure_venv(venv_dir: Path) -> Path:
     py = venv_dir / "bin" / "python"
-    pip = venv_dir / "bin" / "pip"
     if not py.exists():
         _run(["python3", "-m", "venv", str(venv_dir)])
     _run([str(py), "-m", "pip", "install", "--upgrade", "pip"])
-    return py, pip
+    return py
 
 
 def _is_git_repo(path: Path) -> bool:
@@ -204,18 +175,17 @@ def _apply_skill_subpath(skill_root: Path, subpath: str) -> Path:
 
 
 def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | None, dry_run: bool) -> None:
-    normalized_expected = _normalize_repo(spec.repo)
     target_dir = skills_dir / _safe_local_name(spec.name)
-    clone_url = _repo_to_https_url(spec.repo)
-    auth_clone_url = _inject_github_token(clone_url, token)
+    clean_clone_source = _strip_credentials(spec.repo)
+    auth_clone_source = _inject_github_token(clean_clone_source, token)
 
     if not target_dir.exists():
         if dry_run:
             _print(f"[dry-run] would clone {spec.repo}@{spec.ref} -> {target_dir}")
             return
         skills_dir.mkdir(parents=True, exist_ok=True)
-        _run(["git", "clone", auth_clone_url, str(target_dir)])
-        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", _strip_credentials(clone_url)])
+        _run(["git", "clone", auth_clone_source, str(target_dir)])
+        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
         _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
         _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
         return
@@ -227,15 +197,15 @@ def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | No
             return
         target_dir.rename(backup)
         _print(f"Moved non-git skill dir to backup: {backup}")
-        _run(["git", "clone", auth_clone_url, str(target_dir)])
-        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", _strip_credentials(clone_url)])
+        _run(["git", "clone", auth_clone_source, str(target_dir)])
+        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
         _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
         _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
         return
 
     existing_origin = _origin_url(target_dir)
-    normalized_existing = _normalize_repo(existing_origin) if existing_origin else None
-    if normalized_existing != normalized_expected:
+    cleaned_existing_origin = _strip_credentials(existing_origin) if existing_origin else None
+    if cleaned_existing_origin != clean_clone_source:
         backup = _backup_path(target_dir)
         if dry_run:
             _print(
@@ -245,8 +215,8 @@ def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | No
             return
         target_dir.rename(backup)
         _print(f"Moved mismatched skill dir to backup: {backup}")
-        _run(["git", "clone", auth_clone_url, str(target_dir)])
-        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", _strip_credentials(clone_url)])
+        _run(["git", "clone", auth_clone_source, str(target_dir)])
+        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
         _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
         _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
         return
@@ -255,99 +225,12 @@ def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | No
         _print(f"[dry-run] would update {spec.name} to {spec.ref} at {target_dir}")
         return
 
-    if token:
-        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", auth_clone_url])
+    if auth_clone_source != clean_clone_source:
+        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", auth_clone_source])
     _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
     _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
     _run(["git", "-C", str(target_dir), "reset", "--hard", spec.ref])
-    _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", _strip_credentials(clone_url)])
-
-
-def _strip_optional_quotes(value: str) -> str:
-    item = value.strip()
-    if len(item) >= 2 and item[0] == item[-1] and item[0] in {"'", '"'}:
-        return item[1:-1].strip()
-    return item
-
-
-def _parse_python_packages_block(text: str) -> list[str]:
-    dependencies_indent: int | None = None
-    python_packages_indent: int | None = None
-    packages: list[str] = []
-
-    for raw_line in text.splitlines():
-        line = raw_line.rstrip()
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        indent = len(line) - len(line.lstrip(" "))
-
-        if dependencies_indent is None:
-            if stripped == "dependencies:":
-                dependencies_indent = indent
-            continue
-
-        if python_packages_indent is None:
-            if indent <= dependencies_indent:
-                dependencies_indent = None
-                continue
-            if stripped.startswith("python_packages:"):
-                python_packages_indent = indent
-                inline = stripped.split(":", 1)[1].strip()
-                if inline.startswith("[") and inline.endswith("]"):
-                    body = inline[1:-1].strip()
-                    if body:
-                        for part in body.split(","):
-                            candidate = _strip_optional_quotes(part)
-                            if candidate:
-                                packages.append(candidate)
-                continue
-            continue
-
-        if indent <= python_packages_indent and not stripped.startswith("-"):
-            python_packages_indent = None
-            continue
-
-        if stripped.startswith("-"):
-            candidate = _strip_optional_quotes(stripped[1:].strip())
-            if candidate:
-                packages.append(candidate)
-
-    return packages
-
-
-def _extract_python_packages_from_skill(skill_root: Path) -> list[str]:
-    openai_yaml = skill_root / "agents" / "openai.yaml"
-    if not openai_yaml.exists():
-        return []
-
-    text = openai_yaml.read_text(encoding="utf-8")
-    try:
-        import yaml  # type: ignore
-
-        payload = yaml.safe_load(text)  # type: ignore[attr-defined]
-        if isinstance(payload, dict):
-            dependencies = payload.get("dependencies")
-            if isinstance(dependencies, dict):
-                packages = dependencies.get("python_packages")
-                if isinstance(packages, list) and all(isinstance(x, str) for x in packages):
-                    return [x.strip() for x in packages if x.strip()]
-    except Exception:
-        pass
-
-    return _parse_python_packages_block(text)
-
-
-def _collect_python_packages(skill_roots: Iterable[Path]) -> list[str]:
-    seen: set[str] = set()
-    packages: list[str] = []
-    for skill_root in skill_roots:
-        for pkg in _extract_python_packages_from_skill(skill_root):
-            if pkg in seen:
-                continue
-            seen.add(pkg)
-            packages.append(pkg)
-    return packages
+    _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
 
 
 def _load_env_identity(app_root: Path) -> str | None:
@@ -393,7 +276,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Install/update required Chadwin skills from skills.lock.json, "
-            "install required Python packages, and bootstrap <DATA_ROOT>."
+            "and bootstrap <DATA_ROOT>."
         )
     )
     parser.add_argument(
@@ -469,13 +352,11 @@ def main() -> int:
     if args.dry_run:
         _print(f"[dry-run] would ensure venv: {venv_dir}")
         py = venv_dir / "bin" / "python"
-        pip = venv_dir / "bin" / "pip"
     else:
-        py, pip = _ensure_venv(venv_dir)
+        py = _ensure_venv(venv_dir)
 
     token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")
     skills_dir = Path(env["CHADWIN_SKILLS_DIR"])
-    resolved_skill_roots: list[Path] = []
 
     for spec in specs:
         _clone_or_update_skill(skills_dir=skills_dir, spec=spec, token=token, dry_run=args.dry_run)
@@ -487,17 +368,6 @@ def main() -> int:
             raise SystemExit(
                 f"Installed skill {spec.name} is invalid: SKILL.md not found at {resolved_root}"
             )
-        resolved_skill_roots.append(resolved_root)
-
-    if args.dry_run:
-        _print(
-            "[dry-run] would install Python packages declared in each installed skill's "
-            "agents/openai.yaml"
-        )
-    else:
-        packages = _collect_python_packages(resolved_skill_roots)
-        if packages:
-            _run([str(pip), "install", *packages])
 
     if not args.skip_data_bootstrap:
         setup_spec = next((spec for spec in specs if spec.name == "chadwin-setup"), None)

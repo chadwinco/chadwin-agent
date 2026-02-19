@@ -136,7 +136,7 @@ Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
 - Work from repo root: `chadwin-codex`
-- Use `python3 scripts/bootstrap_chadwin.py` as the canonical setup/install entrypoint for new machines and fresh worktrees.
+- Use `python3 scripts/chadwin_setup.py` as the canonical setup/install entrypoint for new machines and fresh worktrees.
 - Store company packages by exchange country (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
 - Under `<DATA_ROOT>/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
 - Use only canonical company layout paths: `<DATA_ROOT>/companies/<ISO_ALPHA2_COUNTRY>/<TICKER>/...`.

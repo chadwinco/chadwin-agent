@@ -16,25 +16,24 @@ Shared data primitives and extension rules are defined in `DATA_CONTRACT.md`.
 Run bootstrap from repo root:
 
 ```bash
-python3 scripts/bootstrap_chadwin.py
+python3 scripts/chadwin_setup.py
 ```
 
 If EDGAR identity is not already set in environment or `.env`, pass it explicitly:
 
 ```bash
-python3 scripts/bootstrap_chadwin.py --edgar-identity "Your Name your.email@example.com"
+python3 scripts/chadwin_setup.py --edgar-identity "Your Name your.email@example.com"
 ```
 
 Bootstrap responsibilities:
 - ensure app `.venv` exists
 - install/update required skills from `skills.lock.json` into `$CODEX_HOME/skills`
-- install required Python packages declared by installed skills in `agents/openai.yaml`
 - run installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
 
 Dry-run planning:
 
 ```bash
-python3 scripts/bootstrap_chadwin.py --dry-run
+python3 scripts/chadwin_setup.py --dry-run
 ```
 
 ## Skill Manifest
@@ -42,6 +41,7 @@ The canonical release contract is `skills.lock.json`.
 
 It defines:
 - required skills + pinned refs
+- full git clone sources per skill (URL, SSH, or filesystem path)
 - deprecated skills excluded from install
 
 Current deprecated skills:
