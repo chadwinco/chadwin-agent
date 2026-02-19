@@ -5,31 +5,31 @@
     {
       "name": "chadwin-setup",
       "repo": "https://github.com/chadwinco/chadwin-setup.git",
-      "ref": "main",
+      "ref": "v0.1.0",
       "path": "."
     },
     {
       "name": "fetch-us-company-data",
       "repo": "https://github.com/chadwinco/fetch-us-company-data.git",
-      "ref": "main",
+      "ref": "v0.1.0",
       "path": "."
     },
     {
       "name": "fetch-us-investment-ideas",
       "repo": "https://github.com/chadwinco/fetch-us-investment-ideas.git",
-      "ref": "main",
+      "ref": "v0.1.0",
       "path": "."
     },
     {
       "name": "chadwin-research",
       "repo": "https://github.com/chadwinco/chadwin-research.git",
-      "ref": "main",
+      "ref": "v0.1.0",
       "path": "."
     },
     {
       "name": "chadwin-preferences",
       "repo": "https://github.com/chadwinco/chadwin-preferences.git",
-      "ref": "main",
+      "ref": "v0.1.0",
       "path": "."
     }
   ]

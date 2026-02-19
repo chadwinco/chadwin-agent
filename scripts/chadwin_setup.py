@@ -70,6 +70,25 @@ def _repo_root(start: Path) -> Path:
     return start.resolve()
 
 
+def _is_floating_ref(ref: str) -> bool:
+    return ref.lower() in FLOATING_REFS
+
+
+def _resolved_ref(ref: str) -> str:
+    lower = ref.lower()
+    if lower == "head":
+        return "origin/HEAD"
+    if _is_floating_ref(ref):
+        return f"origin/{ref}"
+    return ref
+
+
+def _target_ref(ref: str, latest: bool) -> str:
+    if latest:
+        return "origin/HEAD"
+    return _resolved_ref(ref)
+
+
 def _inject_github_token(repo: str, token: str | None) -> str:
     if not token:
         return repo
@@ -174,20 +193,33 @@ def _apply_skill_subpath(skill_root: Path, subpath: str) -> Path:
     return resolved
 
 
-def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | None, dry_run: bool) -> None:
+def _clone_or_update_skill(
+    *,
+    skills_dir: Path,
+    spec: SkillSpec,
+    token: str | None,
+    latest: bool,
+    dry_run: bool,
+) -> None:
     target_dir = skills_dir / _safe_local_name(spec.name)
     clean_clone_source = _strip_credentials(spec.repo)
     auth_clone_source = _inject_github_token(clean_clone_source, token)
+    hard_reset_ref = _target_ref(spec.ref, latest)
+    checkout_ref = spec.ref if not latest else "origin/HEAD"
 
     if not target_dir.exists():
         if dry_run:
-            _print(f"[dry-run] would clone {spec.repo}@{spec.ref} -> {target_dir}")
+            _print(
+                f"[dry-run] would clone {spec.repo}@{spec.ref} and reset to {hard_reset_ref} "
+                f"-> {target_dir}"
+            )
             return
         skills_dir.mkdir(parents=True, exist_ok=True)
         _run(["git", "clone", auth_clone_source, str(target_dir)])
         _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
         _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
-        _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
+        _run(["git", "-C", str(target_dir), "checkout", "--force", checkout_ref])
+        _run(["git", "-C", str(target_dir), "reset", "--hard", hard_reset_ref])
         return
 
     if not _is_git_repo(target_dir):
@@ -200,7 +232,8 @@ def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | No
         _run(["git", "clone", auth_clone_source, str(target_dir)])
         _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
         _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
-        _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
+        _run(["git", "-C", str(target_dir), "checkout", "--force", checkout_ref])
+        _run(["git", "-C", str(target_dir), "reset", "--hard", hard_reset_ref])
         return
 
     existing_origin = _origin_url(target_dir)
@@ -218,19 +251,82 @@ def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | No
         _run(["git", "clone", auth_clone_source, str(target_dir)])
         _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
         _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
-        _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
+        _run(["git", "-C", str(target_dir), "checkout", "--force", checkout_ref])
+        _run(["git", "-C", str(target_dir), "reset", "--hard", hard_reset_ref])
         return
 
     if dry_run:
-        _print(f"[dry-run] would update {spec.name} to {spec.ref} at {target_dir}")
+        _print(
+            f"[dry-run] would update {spec.name} to {spec.ref} and reset to {hard_reset_ref} "
+            f"at {target_dir}"
+        )
         return
 
     if auth_clone_source != clean_clone_source:
         _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", auth_clone_source])
-    _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
-    _run(["git", "-C", str(target_dir), "checkout", "--force", spec.ref])
-    _run(["git", "-C", str(target_dir), "reset", "--hard", spec.ref])
-    _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
+    try:
+        _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
+        _run(["git", "-C", str(target_dir), "checkout", "--force", checkout_ref])
+        _run(["git", "-C", str(target_dir), "reset", "--hard", hard_reset_ref])
+    finally:
+        if auth_clone_source != clean_clone_source:
+            _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
+
+
+def _resolve_commit(path: Path, ref: str) -> str | None:
+    try:
+        value = _capture(["git", "-C", str(path), "rev-parse", ref])
+    except RuntimeError:
+        return None
+    return value or None
+
+
+def _check_skill(
+    *,
+    skills_dir: Path,
+    spec: SkillSpec,
+    token: str | None,
+    latest: bool,
+) -> tuple[bool, str]:
+    target_dir = skills_dir / _safe_local_name(spec.name)
+    clean_clone_source = _strip_credentials(spec.repo)
+    auth_clone_source = _inject_github_token(clean_clone_source, token)
+
+    if not target_dir.exists():
+        return False, f"missing install at {target_dir}"
+    if not _is_git_repo(target_dir):
+        return False, "installed path is not a git repository"
+
+    existing_origin = _origin_url(target_dir)
+    cleaned_existing_origin = _strip_credentials(existing_origin) if existing_origin else None
+    if cleaned_existing_origin != clean_clone_source:
+        return (
+            False,
+            f"origin mismatch (found: {existing_origin or '<none>'}, expected: {clean_clone_source})",
+        )
+
+    if auth_clone_source != clean_clone_source:
+        _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", auth_clone_source])
+    try:
+        _run(["git", "-C", str(target_dir), "fetch", "--tags", "--prune", "origin"])
+        desired_ref = _target_ref(spec.ref, latest)
+        desired_commit = _resolve_commit(target_dir, desired_ref)
+        local_commit = _resolve_commit(target_dir, "HEAD")
+    finally:
+        if auth_clone_source != clean_clone_source:
+            _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", clean_clone_source])
+
+    if desired_commit is None:
+        return False, f"unable to resolve target ref {desired_ref}"
+    if local_commit is None:
+        return False, "unable to resolve local HEAD"
+
+    if local_commit == desired_commit:
+        return True, f"up-to-date ({local_commit[:7]})"
+    return (
+        False,
+        f"outdated local={local_commit[:7]} target={desired_commit[:7]} ({desired_ref})",
+    )
 
 
 def _load_env_identity(app_root: Path) -> str | None:
@@ -275,8 +371,8 @@ def parse_args() -> argparse.Namespace:
     repo_root = _repo_root(Path.cwd())
     parser = argparse.ArgumentParser(
         description=(
-            "Install/update required Chadwin skills from skills.lock.json, "
-            "and bootstrap <DATA_ROOT>."
+            "Install/update required Chadwin skills from skills.lock.json and bootstrap "
+            "<DATA_ROOT>."
         )
     )
     parser.add_argument(
@@ -304,6 +400,19 @@ def parse_args() -> argparse.Namespace:
         help="Validate manifest and print planned actions without mutating state.",
     )
     parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Check whether installed skills match the selected manifest target refs.",
+    )
+    parser.add_argument(
+        "--latest",
+        action="store_true",
+        help=(
+            "Ignore manifest refs and align each skill repo to its remote default branch tip "
+            "(origin/HEAD)."
+        ),
+    )
+    parser.add_argument(
         "--skip-data-bootstrap",
         action="store_true",
         help="Skip running setup_chadwin_data_dirs.py and validate_data_contract.py.",
@@ -313,6 +422,9 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.check and args.dry_run:
+        raise SystemExit("--check cannot be combined with --dry-run")
+
     manifest_path = Path(args.manifest).expanduser().resolve()
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
@@ -321,13 +433,15 @@ def main() -> int:
     codex_home = Path(args.codex_home).expanduser().resolve()
 
     _ensure_tool("git")
-    _ensure_tool("python3")
+    if not args.check:
+        _ensure_tool("python3")
 
     requires_identity, specs, deprecated = _parse_manifest(manifest_path)
     _print(f"Manifest: {manifest_path}")
+    _print(f"Mode: {'latest' if args.latest else 'locked'}")
     _print(f"Required skills: {', '.join(spec.name for spec in specs)}")
-    floating = [spec.name for spec in specs if spec.ref.lower() in FLOATING_REFS]
-    if floating:
+    floating = [spec.name for spec in specs if _is_floating_ref(spec.ref)]
+    if floating and not args.latest:
         _print(
             "WARNING: floating refs detected in manifest "
             f"({', '.join(floating)}). Prefer pinned tags or SHAs for reproducible releases."
@@ -338,6 +452,29 @@ def main() -> int:
     env = dict(os.environ)
     env["CHADWIN_APP_ROOT"] = str(app_root)
     env["CHADWIN_SKILLS_DIR"] = str(codex_home / "skills")
+
+    token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")
+    skills_dir = Path(env["CHADWIN_SKILLS_DIR"])
+
+    if args.check:
+        all_current = True
+        for spec in specs:
+            is_current, detail = _check_skill(
+                skills_dir=skills_dir,
+                spec=spec,
+                token=token,
+                latest=args.latest,
+            )
+            if is_current:
+                _print(f"[OK] {spec.name}: {detail}")
+            else:
+                _print(f"[OUTDATED] {spec.name}: {detail}")
+                all_current = False
+        if all_current:
+            _print("All skills are up to date with manifest refs.")
+            return 0
+        _print("One or more skills are not aligned with manifest refs.")
+        return 2
 
     identity = _require_edgar_identity(
         required=requires_identity,
@@ -355,11 +492,14 @@ def main() -> int:
     else:
         py = _ensure_venv(venv_dir)
 
-    token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")
-    skills_dir = Path(env["CHADWIN_SKILLS_DIR"])
-
     for spec in specs:
-        _clone_or_update_skill(skills_dir=skills_dir, spec=spec, token=token, dry_run=args.dry_run)
+        _clone_or_update_skill(
+            skills_dir=skills_dir,
+            spec=spec,
+            token=token,
+            latest=args.latest,
+            dry_run=args.dry_run,
+        )
 
         if args.dry_run:
             continue

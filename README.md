@@ -19,6 +19,8 @@ Run bootstrap from repo root:
 python3 scripts/chadwin_setup.py
 ```
 
+Default bootstrap mode uses locked refs from `skills.lock.json`.
+
 If EDGAR identity is not already set in environment or `.env`, pass it explicitly:
 
 ```bash
@@ -36,17 +38,31 @@ Dry-run planning:
 python3 scripts/chadwin_setup.py --dry-run
 ```
 
+Install/update using latest default branch tip for each skill repo:
+
+```bash
+python3 scripts/chadwin_setup.py --latest
+```
+
+Check whether installed skills are aligned with locked refs:
+
+```bash
+python3 scripts/chadwin_setup.py --check
+```
+
+Check against latest default-branch tips:
+
+```bash
+python3 scripts/chadwin_setup.py --check --latest
+```
+
 ## Skill Manifest
-The canonical release contract is `skills.lock.json`.
+The release contract is `skills.lock.json`.
 
 It defines:
 - required skills + pinned refs
 - full git clone sources per skill (URL, SSH, or filesystem path)
 - deprecated skills excluded from install
-
-Current deprecated skills:
-- `fetch-daily-sec-filings`
-- `chart-valuation-ranges`
 
 ## Discover Installed Skills
 List installed skills:
