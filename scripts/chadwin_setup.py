@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bootstrap Chadwin by installing required skills and initializing data root."""
+"""Install/update locked skills, then delegate shared data bootstrap to chadwin-setup."""
 
 from __future__ import annotations
 
@@ -23,6 +23,7 @@ class SkillSpec:
 
 
 FLOATING_REFS = {"main", "master", "head"}
+SETUP_SKILL_NAME = "chadwin-setup"
 
 
 def _print(msg: str) -> None:
@@ -329,6 +330,43 @@ def _check_skill(
     )
 
 
+def _require_setup_skill(specs: list[SkillSpec]) -> SkillSpec:
+    setup_spec = next((spec for spec in specs if spec.name == SETUP_SKILL_NAME), None)
+    if setup_spec is None:
+        raise SystemExit(
+            f"Manifest must include {SETUP_SKILL_NAME} so bootstrap can delegate shared "
+            "data-root setup to the installed skill."
+        )
+    return setup_spec
+
+
+def _delegate_data_bootstrap(
+    *,
+    setup_spec: SkillSpec,
+    skills_dir: Path,
+    py: Path,
+    env: dict[str, str],
+    app_root: Path,
+    dry_run: bool,
+) -> None:
+    setup_root = _apply_skill_subpath(skills_dir / _safe_local_name(setup_spec.name), setup_spec.path)
+    setup_script = setup_root / "scripts" / "setup_chadwin_data_dirs.py"
+    validate_script = setup_root / "scripts" / "validate_data_contract.py"
+
+    if dry_run:
+        _print(f"[dry-run] would run: {py} {setup_script}")
+        _print(f"[dry-run] would run: {py} {validate_script}")
+        return
+
+    if not setup_script.exists() or not validate_script.exists():
+        raise SystemExit(
+            "chadwin-setup scripts missing. Expected both setup_chadwin_data_dirs.py and "
+            "validate_data_contract.py"
+        )
+    _run([str(py), str(setup_script)], env=env, cwd=app_root)
+    _run([str(py), str(validate_script)], env=env, cwd=app_root)
+
+
 def _load_env_identity(app_root: Path) -> str | None:
     env_path = app_root / ".env"
     if not env_path.exists():
@@ -371,8 +409,8 @@ def parse_args() -> argparse.Namespace:
     repo_root = _repo_root(Path.cwd())
     parser = argparse.ArgumentParser(
         description=(
-            "Install/update required Chadwin skills from skills.lock.json and bootstrap "
-            "<DATA_ROOT>."
+            "Install/update required Chadwin skills from skills.lock.json, then delegate "
+            "shared <DATA_ROOT> bootstrap to installed chadwin-setup."
         )
     )
     parser.add_argument(
@@ -415,7 +453,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--skip-data-bootstrap",
         action="store_true",
-        help="Skip running setup_chadwin_data_dirs.py and validate_data_contract.py.",
+        help=(
+            "Skip delegating shared data bootstrap/validation to the installed chadwin-setup "
+            "skill."
+        ),
     )
     return parser.parse_args()
 
@@ -437,9 +478,14 @@ def main() -> int:
         _ensure_tool("python3")
 
     requires_identity, specs, deprecated = _parse_manifest(manifest_path)
+    setup_spec = _require_setup_skill(specs)
     _print(f"Manifest: {manifest_path}")
     _print(f"Mode: {'latest' if args.latest else 'locked'}")
     _print(f"Required skills: {', '.join(spec.name for spec in specs)}")
+    _print(
+        "Ownership: scripts/chadwin_setup.py installs/updates skills; installed chadwin-setup "
+        "owns shared data-root bootstrap and contract validation."
+    )
     floating = [spec.name for spec in specs if _is_floating_ref(spec.ref)]
     if floating and not args.latest:
         _print(
@@ -510,24 +556,14 @@ def main() -> int:
             )
 
     if not args.skip_data_bootstrap:
-        setup_spec = next((spec for spec in specs if spec.name == "chadwin-setup"), None)
-        if setup_spec is None:
-            raise SystemExit("Manifest must include chadwin-setup when data bootstrap is enabled")
-
-        setup_root = _apply_skill_subpath(skills_dir / _safe_local_name(setup_spec.name), setup_spec.path)
-        setup_script = setup_root / "scripts" / "setup_chadwin_data_dirs.py"
-        validate_script = setup_root / "scripts" / "validate_data_contract.py"
-        if args.dry_run:
-            _print(f"[dry-run] would run: {py} {setup_script}")
-            _print(f"[dry-run] would run: {py} {validate_script}")
-        else:
-            if not setup_script.exists() or not validate_script.exists():
-                raise SystemExit(
-                    "chadwin-setup scripts missing. Expected both setup_chadwin_data_dirs.py and "
-                    "validate_data_contract.py"
-                )
-            _run([str(py), str(setup_script)], env=env, cwd=app_root)
-            _run([str(py), str(validate_script)], env=env, cwd=app_root)
+        _delegate_data_bootstrap(
+            setup_spec=setup_spec,
+            skills_dir=skills_dir,
+            py=py,
+            env=env,
+            app_root=app_root,
+            dry_run=args.dry_run,
+        )
 
     _print("Bootstrap completed successfully.")
     return 0

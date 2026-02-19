@@ -23,6 +23,13 @@ This file defines repository-level rules:
 - top-level setup entrypoints,
 - cross-skill operating behavior.
 
+Setup ownership split:
+- `scripts/chadwin_setup.py` is the control-plane installer/delegator only:
+  - install/update skills from `skills.lock.json`
+  - delegate shared data-root bootstrap and contract validation to installed `chadwin-setup`
+- installed `chadwin-setup` skill is the runtime owner for shared setup workflow and `<DATA_ROOT>` primitive creation/validation.
+- Do not duplicate setup workflow logic in app-repo docs/scripts when it already belongs to `chadwin-setup`.
+
 ## Data Root Convention
 `<DATA_ROOT>` resolves to:
 - `CHADWIN_DATA_DIR` when set.
@@ -127,15 +134,18 @@ Validate shared contract compliance with:
 
 ## Getting Started
 1. Work from repository root: `chadwin-codex`.
-2. Create/refresh local setup with:
+2. If the user asks to begin setup (for example, "let's get started"), run:
 
 ```bash
 python3 scripts/chadwin_setup.py
 ```
 
-3. Use `.venv` for Python commands.
-4. Follow the relevant skill `SKILL.md` for any task-specific workflow.
-5. Run the shared contract validator after setup and after any contract-affecting changes.
+3. Treat this command as the required handoff step:
+   - it fetches/updates `chadwin-setup` and other locked skills first,
+   - then executes setup/validation via the installed `chadwin-setup` skill scripts.
+4. Use `.venv` for Python commands.
+5. Follow the relevant skill `SKILL.md` for any task-specific workflow.
+6. Run the shared contract validator after setup and after any contract-affecting changes.
 
 ## General Ways of Working
 - Execute tasks directly in the workspace; do not stop at planning when execution is possible.

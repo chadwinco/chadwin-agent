@@ -12,6 +12,19 @@ Operational skills are installed into Codex skill storage (`$CODEX_HOME/skills`,
 Agent operating contract and workflow rules are defined in `AGENTS.md`.
 Shared data primitives and extension rules are defined in `DATA_CONTRACT.md`.
 
+## Setup Ownership Split
+Responsibility is intentionally split to avoid duplication:
+- `scripts/chadwin_setup.py` (app repo control plane):
+  - ensures `.venv` exists
+  - installs/updates skills listed in `skills.lock.json` into `$CODEX_HOME/skills`
+  - delegates shared `<DATA_ROOT>` bootstrap and contract validation to installed `chadwin-setup`
+- `chadwin-setup` skill (skill repo runtime owner):
+  - defines setup workflow and setup policy
+  - owns shared primitive creation under `<DATA_ROOT>`
+  - owns shared data-contract validation behavior
+
+Do not reimplement shared data bootstrap logic in app-repo scripts beyond delegating to the installed skill.
+
 ## One-Time Bootstrap
 Run bootstrap from repo root:
 
@@ -30,7 +43,9 @@ python3 scripts/chadwin_setup.py --edgar-identity "Your Name your.email@example.
 Bootstrap responsibilities:
 - ensure app `.venv` exists
 - install/update required skills from `skills.lock.json` into `$CODEX_HOME/skills`
-- run installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
+- delegate to installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
+
+Inside Codex, if the user asks to start fresh (for example, "let's get started"), run `python3 scripts/chadwin_setup.py` first, then proceed with skill workflows.
 
 Dry-run planning:
 
