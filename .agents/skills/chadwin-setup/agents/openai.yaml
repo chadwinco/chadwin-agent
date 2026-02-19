@@ -1,4 +1,0 @@
-interface:
-  display_name: "Chadwin Setup"
-  short_description: "Run one-time Python/.venv setup and initialize shared data-root primitives."
-  default_prompt: "Use $chadwin-setup to bootstrap Python/.venv setup, environment prerequisites, shared <DATA_ROOT> primitives, and contract validation."

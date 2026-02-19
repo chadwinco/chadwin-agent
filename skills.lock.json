@@ -6,49 +6,31 @@
       "name": "chadwin-setup",
       "repo": "chadwinco/chadwin-setup",
       "ref": "main",
-      "path": ".",
-      "python_packages": []
+      "path": "."
     },
     {
       "name": "fetch-us-company-data",
       "repo": "chadwinco/fetch-us-company-data",
       "ref": "main",
-      "path": ".",
-      "python_packages": [
-        "pandas>=2.0",
-        "pyyaml>=6.0",
-        "edgartools>=4.6.3",
-        "hishel<1.0.0",
-        "python-dotenv>=1.0.0",
-        "beautifulsoup4>=4.12"
-      ]
+      "path": "."
     },
     {
       "name": "fetch-us-investment-ideas",
       "repo": "chadwinco/fetch-us-investment-ideas",
       "ref": "main",
-      "path": ".",
-      "python_packages": [
-        "beautifulsoup4>=4.12"
-      ]
+      "path": "."
     },
     {
       "name": "chadwin-research",
       "repo": "chadwinco/chadwin-research",
       "ref": "main",
-      "path": ".",
-      "python_packages": []
+      "path": "."
     },
     {
-      "name": "manage-user-preferences",
-      "repo": "chadwinco/manage-user-preferences",
+      "name": "chadwin-preferences",
+      "repo": "chadwinco/chadwin-preferences",
       "ref": "main",
-      "path": ".",
-      "python_packages": []
+      "path": "."
     }
-  ],
-  "deprecated_skills": [
-    "fetch-daily-sec-filings",
-    "chart-valuation-ranges"
   ]
 }

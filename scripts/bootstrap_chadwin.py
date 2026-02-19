@@ -21,7 +21,6 @@ class SkillSpec:
     repo: str
     ref: str
     path: str
-    python_packages: list[str]
 
 
 FLOATING_REFS = {"main", "master", "head"}
@@ -137,7 +136,6 @@ def _parse_manifest(path: Path) -> tuple[bool, list[SkillSpec], list[str]]:
         repo = str(raw.get("repo", "")).strip()
         ref = str(raw.get("ref", "")).strip() or "main"
         path_value = str(raw.get("path", ".")).strip() or "."
-        pkg_value = raw.get("python_packages", [])
 
         if not name or not repo:
             raise SystemExit(f"Invalid skill entry at index {idx}: `name` and `repo` are required")
@@ -145,16 +143,12 @@ def _parse_manifest(path: Path) -> tuple[bool, list[SkillSpec], list[str]]:
             raise SystemExit(f"Duplicate skill name in manifest: {name}")
         seen_names.add(name)
 
-        if not isinstance(pkg_value, list) or not all(isinstance(x, str) for x in pkg_value):
-            raise SystemExit(f"Invalid `python_packages` for skill {name}: expected list[str]")
-
         skills.append(
             SkillSpec(
                 name=name,
                 repo=repo,
                 ref=ref,
                 path=path_value,
-                python_packages=[x.strip() for x in pkg_value if x.strip()],
             )
         )
 
@@ -269,11 +263,86 @@ def _clone_or_update_skill(*, skills_dir: Path, spec: SkillSpec, token: str | No
     _run(["git", "-C", str(target_dir), "remote", "set-url", "origin", _strip_credentials(clone_url)])
 
 
-def _collect_python_packages(specs: Iterable[SkillSpec]) -> list[str]:
+def _strip_optional_quotes(value: str) -> str:
+    item = value.strip()
+    if len(item) >= 2 and item[0] == item[-1] and item[0] in {"'", '"'}:
+        return item[1:-1].strip()
+    return item
+
+
+def _parse_python_packages_block(text: str) -> list[str]:
+    dependencies_indent: int | None = None
+    python_packages_indent: int | None = None
+    packages: list[str] = []
+
+    for raw_line in text.splitlines():
+        line = raw_line.rstrip()
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        indent = len(line) - len(line.lstrip(" "))
+
+        if dependencies_indent is None:
+            if stripped == "dependencies:":
+                dependencies_indent = indent
+            continue
+
+        if python_packages_indent is None:
+            if indent <= dependencies_indent:
+                dependencies_indent = None
+                continue
+            if stripped.startswith("python_packages:"):
+                python_packages_indent = indent
+                inline = stripped.split(":", 1)[1].strip()
+                if inline.startswith("[") and inline.endswith("]"):
+                    body = inline[1:-1].strip()
+                    if body:
+                        for part in body.split(","):
+                            candidate = _strip_optional_quotes(part)
+                            if candidate:
+                                packages.append(candidate)
+                continue
+            continue
+
+        if indent <= python_packages_indent and not stripped.startswith("-"):
+            python_packages_indent = None
+            continue
+
+        if stripped.startswith("-"):
+            candidate = _strip_optional_quotes(stripped[1:].strip())
+            if candidate:
+                packages.append(candidate)
+
+    return packages
+
+
+def _extract_python_packages_from_skill(skill_root: Path) -> list[str]:
+    openai_yaml = skill_root / "agents" / "openai.yaml"
+    if not openai_yaml.exists():
+        return []
+
+    text = openai_yaml.read_text(encoding="utf-8")
+    try:
+        import yaml  # type: ignore
+
+        payload = yaml.safe_load(text)  # type: ignore[attr-defined]
+        if isinstance(payload, dict):
+            dependencies = payload.get("dependencies")
+            if isinstance(dependencies, dict):
+                packages = dependencies.get("python_packages")
+                if isinstance(packages, list) and all(isinstance(x, str) for x in packages):
+                    return [x.strip() for x in packages if x.strip()]
+    except Exception:
+        pass
+
+    return _parse_python_packages_block(text)
+
+
+def _collect_python_packages(skill_roots: Iterable[Path]) -> list[str]:
     seen: set[str] = set()
     packages: list[str] = []
-    for spec in specs:
-        for pkg in spec.python_packages:
+    for skill_root in skill_roots:
+        for pkg in _extract_python_packages_from_skill(skill_root):
             if pkg in seen:
                 continue
             seen.add(pkg)
@@ -406,6 +475,7 @@ def main() -> int:
 
     token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")
     skills_dir = Path(env["CHADWIN_SKILLS_DIR"])
+    resolved_skill_roots: list[Path] = []
 
     for spec in specs:
         _clone_or_update_skill(skills_dir=skills_dir, spec=spec, token=token, dry_run=args.dry_run)
@@ -417,12 +487,16 @@ def main() -> int:
             raise SystemExit(
                 f"Installed skill {spec.name} is invalid: SKILL.md not found at {resolved_root}"
             )
+        resolved_skill_roots.append(resolved_root)
 
-    packages = _collect_python_packages(specs)
-    if packages:
-        if args.dry_run:
-            _print(f"[dry-run] would install Python packages into {venv_dir}: {', '.join(packages)}")
-        else:
+    if args.dry_run:
+        _print(
+            "[dry-run] would install Python packages declared in each installed skill's "
+            "agents/openai.yaml"
+        )
+    else:
+        packages = _collect_python_packages(resolved_skill_roots)
+        if packages:
             _run([str(pip), "install", *packages])
 
     if not args.skip_data_bootstrap:

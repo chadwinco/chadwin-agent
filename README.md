@@ -28,7 +28,7 @@ python3 scripts/bootstrap_chadwin.py --edgar-identity "Your Name your.email@exam
 Bootstrap responsibilities:
 - ensure app `.venv` exists
 - install/update required skills from `skills.lock.json` into `$CODEX_HOME/skills`
-- install required Python packages from manifest
+- install required Python packages declared by installed skills in `agents/openai.yaml`
 - run installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
 
 Dry-run planning:
@@ -42,7 +42,6 @@ The canonical release contract is `skills.lock.json`.
 
 It defines:
 - required skills + pinned refs
-- per-skill Python dependency packages
 - deprecated skills excluded from install
 
 Current deprecated skills:
