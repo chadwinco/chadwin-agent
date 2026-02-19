@@ -1,5 +1,19 @@
 # AGENTS.md
 
+## Table of Contents
+- [Project Identity](#project-identity)
+- [Data Root Convention](#data-root-convention)
+- [Shared Data Contract](#shared-data-contract)
+- [Non-Negotiable Operating Contract](#non-negotiable-operating-contract)
+- [Skill Selection Protocol](#skill-selection-protocol)
+- [Required Outputs Per Completed Run](#required-outputs-per-completed-run)
+- [LLM-First Execution Rules](#llm-first-execution-rules)
+- [Real-Time Error Handling Loop](#real-time-error-handling-loop)
+- [Evidence and Citation Discipline](#evidence-and-citation-discipline)
+- [Quality Gate Requirements](#quality-gate-requirements)
+- [Improvement Loop (Mandatory for Repeatable Issues)](#improvement-loop-mandatory-for-repeatable-issues)
+- [Practical Conventions](#practical-conventions)
+
 ## Project Identity
 This repository is a local, Codex-operated equity research system.
 
@@ -18,7 +32,7 @@ If you are acting as an agent in this repo, treat successful end-to-end delivery
   - Linux: `${XDG_DATA_HOME:-~/.local/share}/Chadwin`
   - Windows: `%APPDATA%/Chadwin`
 
-The canonical shared contract is defined in `DATA_CONTRACT.md`.
+This file is the canonical shared contract and operating guide.
 
 Ownership rule:
 - `chadwin-setup` creates shared primitives only:
@@ -29,6 +43,93 @@ Ownership rule:
   - `<DATA_ROOT>/improvement-log.md`
 - Every other skill may create and own additional subdirectories/files under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
 - Do not assume other non-required skills are installed when creating directories.
+
+## Shared Data Contract
+This section defines the shared local-data primitives that all skills must respect.
+
+Goal: skills are swappable as long as they preserve these primitives.
+
+### Required Shared Primitives
+These paths are reserved and must remain valid:
+- `<DATA_ROOT>/user_preferences.json`
+- `<DATA_ROOT>/idea-screens/`
+- `<DATA_ROOT>/companies/`
+- `<DATA_ROOT>/improvement-log.md`
+
+### Company Package Primitive
+Each company package lives at:
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/`
+
+Rules:
+- `<EXCHANGE_COUNTRY>` must be uppercase ISO 3166-1 alpha-2 for the country where the company's exchange is located (for example `US`, `JP`, `GB`).
+- Company package should contain:
+  - `data/`
+  - `reports/`
+
+### Research Run Primitive
+Each report run instance lives at:
+- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`
+
+`<REPORT_DATE_DIR>` must match:
+- `YYYY-MM-DD`
+- `YYYY-MM-DD-##` (for additional runs on the same as-of date)
+
+A completed run must contain:
+- `report.md`
+- `valuation/inputs.yaml`
+- `valuation/outputs.json`
+
+### Screener Results Primitive (`idea-screens/**/screener-results.jsonl`)
+Each screener run must write one JSONL result file inside its own run folder:
+- `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl`
+
+One JSON object per line.
+
+Required fields:
+- `ticker`
+- `exchange_country` (ISO alpha-2 for the country where the company's exchange is located; use `US` for US listings)
+
+Recommended fields:
+- `company`
+- `exchange`
+- `sector`
+- `industry`
+- `thesis`
+- `source`
+- `generated_at_utc`
+- `queued_at_utc`
+- `source_output`
+
+### Preferences Primitive (`user_preferences.json`)
+Required top-level keys:
+- `markets`
+- `sector_and_industry_preferences`
+- `investment_strategy_preferences`
+- `report_preferences`
+- `updated_at_utc`
+
+`markets.included_countries` accepts:
+- ISO 3166-1 alpha-2 uppercase country codes only (for example `US`, `JP`, `GB`).
+
+### Skill Extension Rules
+Skills may store additional data if they do not violate shared primitives.
+
+Allowed extension zones:
+- New top-level namespaces under `<DATA_ROOT>/<skill-or-purpose>/...`
+- Additional files under company packages (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/data/<custom>/...`)
+- Additional files under report packages (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/<custom>/...`)
+
+Not allowed:
+- Renaming or repurposing required shared primitive paths.
+- Writing non-canonical valuation output files such as `valuation/output.json`.
+- Overwriting completed report packages.
+
+### Validation
+Validate contract compliance with:
+
+```bash
+.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/validate_data_contract.py"
+```
 
 ## Non-Negotiable Operating Contract
 1. Execute tasks directly in the local workspace; do not stop at planning if execution is possible.
@@ -48,30 +149,6 @@ Ownership rule:
 - Prefer skill-provided scripts/assets/templates over re-creating equivalents.
 - If multiple skills apply, use the smallest set that covers the request and execute in explicit order.
 - If a skill is missing or blocked, state the issue briefly and continue with the closest valid fallback.
-
-## Canonical Entry Modes
-Use one of these modes explicitly:
-
-1. Orchestrator mode (default when available)
-   - Use a semi-autonomous orchestrator skill if one is installed.
-   - The orchestrator should handle idea selection, fetch, and research routing by delegating to lower-level skills.
-2. Manual control (advanced): direct skill invocation
-   - Use explicit lower-level skills for filing feeds, idea seeding, company-data fetches, report generation, and preferences.
-   - Choosing these directly indicates the user wants finer-grained process control.
-
-If no orchestrator skill is installed, use manual control with the capability-equivalent skills that are available.
-
-## Canonical Manual Order (When Not Using an Orchestrator Skill)
-1. (Optional) Build a filing-day seed universe from existing local filing snapshots when available.
-2. (Optional) Seed ideas with the installed idea-generation skill.
-3. Fetch company data with the market-appropriate fetch skill:
-   - Use the installed US fetch skill for US tickers.
-   - For non-US tickers, use the installed market-specific fetch skill under `${CODEX_HOME:-/.codex}/skills/`.
-4. Produce research outputs with progressive depth using the installed research/report skill.
-5. If high-impact issues remain, run another research-skill pass until the stop rule is satisfied.
-6. Validate artifacts and pass quality gate
-7. If present, remove completed ticker from screener result files at `<DATA_ROOT>/idea-screens/**/screener-results.jsonl`
-8. Record repeatable process improvements in `<DATA_ROOT>/improvement-log.md`
 
 ## Required Outputs Per Completed Run
 For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`:
@@ -137,13 +214,12 @@ Do not only patch a single report output when the issue is systemic.
 ## Practical Conventions
 - Work from repo root: `chadwin-codex`
 - Use `python3 scripts/chadwin_setup.py` as the canonical setup/install entrypoint for new machines and fresh worktrees (locked refs by default; use `--latest` only when intentionally tracking latest skill branches).
-- Store company packages by exchange country (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
+- Store company packages by exchange country code (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY_CODE>/<TICKER>/...`).
 - Under `<DATA_ROOT>/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
-- Use only canonical company layout paths: `<DATA_ROOT>/companies/<ISO_ALPHA2_COUNTRY>/<TICKER>/...`.
+- Use only canonical company layout paths: `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY_CODE>/<TICKER>/...`.
 - For report outputs, never overwrite a completed report package; allocate the next `reports/<REPORT_DATE_DIR>` directory for that as-of date. If `reports/YYYY-MM-DD` is an incomplete fetch-bootstrap package (has `valuation/inputs.yaml` but missing `report.md` or `valuation/outputs.json`), finish that package first.
 - Honor `<DATA_ROOT>/user_preferences.json` in queue selection and reporting unless the user explicitly asks to override.
 - Use `.venv` for Python execution.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.
 - Preserve existing user changes unless explicitly asked to alter them.
-- If a filing-feed skill is installed, its outputs should follow that skill's active contract.
