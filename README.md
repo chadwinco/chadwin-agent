@@ -1,76 +1,41 @@
 # Chadwin Codex Research
 
-This repository is a Codex-operated, skill-first equity research system.
+Chadwin Codex is a practical, LLM-operated equity research app.  
+The goal is simple: open the repo in Codex, ask for research, and get structured outputs that are consistent and reusable.
 
-The app repo is a thin control plane:
-- bootstrap/install orchestration
-- release-pinned skill manifest
-- global operating contract and shared data contract docs
+What this app gives you:
+- a stable control plane for installing and updating research skills
+- a shared data contract so reports and valuation artifacts land in predictable paths
+- an LLM-first workflow where the agent owns end-to-end execution quality
 
-Operational skills are installed into Codex skill storage (`$CODEX_HOME/skills`, default `~/.codex/skills`).
+Detailed operator rules and setup command reference live in `AGENTS.md`.
 
-Agent operating contract and workflow rules are defined in `AGENTS.md`.
+## How to Use
 
-## Setup
-- `scripts/chadwin_setup.py` (app repo control plane):
-  - ensures `.venv` exists
-  - installs/updates skills listed in `skills.lock.json` into `$CODEX_HOME/skills`
-  - delegates shared `<DATA_ROOT>` bootstrap and contract validation to installed `chadwin-setup`
-- `chadwin-setup` skill (skill repo runtime owner):
-  - defines setup workflow and setup policy
-  - owns shared primitive creation under `<DATA_ROOT>`
-  - owns shared data-contract validation behavior
+### 1. Open in Codex
+Open this repository in Codex desktop and work from the repo root.
 
-## One-Time Bootstrap
-Run bootstrap from repo root:
+### 2. Ask the LLM to set things up
+In chat, use a simple request like:
 
-```bash
-python3 scripts/chadwin_setup.py
+```text
+Let's get started.
 ```
 
-Default bootstrap mode uses locked refs from `skills.lock.json`.
+The agent should run the setup workflow (`scripts/chadwin_setup.py`) and ensure skills + shared data primitives are ready before research work starts.
 
-If EDGAR identity is not already set in environment or `.env`, pass it explicitly:
+### 3. Run research with the `Chadwin Research` skill
 
-```bash
-python3 scripts/chadwin_setup.py --edgar-identity "Your Name your.email@example.com"
+Example request:
+
+```text
+$chadwin-research Screen for consumer cyclical companies with high ROE. Run research on the top three most promising ideas from the screen
 ```
 
-Bootstrap responsibilities:
-- ensure app `.venv` exists
-- install/update required skills from `skills.lock.json` into `$CODEX_HOME/skills`
-- delegate to installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
+## Default Skills (User Experience)
 
-Inside Codex, if the user asks to start fresh (for example, "let's get started"), run `python3 scripts/chadwin_setup.py` first, then proceed with skill workflows.
-
-Dry-run planning:
-
-```bash
-python3 scripts/chadwin_setup.py --dry-run
-```
-
-Install/update using latest default branch tip for each skill repo:
-
-```bash
-python3 scripts/chadwin_setup.py --latest
-```
-
-Check whether installed skills are aligned with locked refs:
-
-```bash
-python3 scripts/chadwin_setup.py --check
-```
-
-Check against latest default-branch tips:
-
-```bash
-python3 scripts/chadwin_setup.py --check --latest
-```
-
-## Skill Manifest
-The release contract is `skills.lock.json`.
-
-It defines:
-- required skills + pinned refs
-- full git clone sources per skill (URL, SSH, or filesystem path)
-- deprecated skills excluded from install
+- `chadwin-setup`: makes initial setup reliable by creating required shared data primitives and validating the shared contract.
+- `chadwin-research`: produces a concise investment report plus scenario valuation artifacts in canonical report folders.
+- `fetch-us-investment-ideas`: generates lists of US stock ideas based on flexible criteria
+- `fetch-us-company-data`: retrieves targeted SEC/EDGAR company data as part of the research process
+- `chadwin-preferences`: captures your market, strategy, and report-format preferences into a single reusable profile.
