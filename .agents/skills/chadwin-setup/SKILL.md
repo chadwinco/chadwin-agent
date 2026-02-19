@@ -48,18 +48,12 @@ sudo pacman -S python
 Dependencies are owned by the skill that uses them.
 
 For each skill you plan to run, install the packages listed in:
-- `.agents/skills/<skill-name>/agents/openai.yaml` under `dependencies.python_packages`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/<skill-name>/agents/openai.yaml` under `dependencies.python_packages`
 
 ## Configure Environment Variables
 SEC/EDGAR skills require an identity string.
 
-Use a repo-level `.env` file:
-
-```bash
-cp .env.example .env
-```
-
-Set:
+Use or create a repo-level `.env` file and set:
 
 ```bash
 EDGAR_IDENTITY="Your Name your.email@example.com"
@@ -69,19 +63,19 @@ EDGAR_IDENTITY="Your Name your.email@example.com"
 Create the shared primitive bootstrap:
 
 ```bash
-.venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py
+.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/setup_chadwin_data_dirs.py"
 ```
 
 Print the resolved data root without creating anything:
 
 ```bash
-.venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py --print-only
+.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/setup_chadwin_data_dirs.py" --print-only
 ```
 
 Validate the shared data contract:
 
 ```bash
-.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py
+.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/validate_data_contract.py"
 ```
 
 ## Inputs

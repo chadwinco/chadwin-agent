@@ -7,10 +7,25 @@ from pathlib import Path
 
 APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
+APP_ROOT_ENV_VAR = "CHADWIN_APP_ROOT"
 REPO_MARKER_RELATIVE_PATH = Path(".agents") / "skills"
 
 
+def _configured_app_root() -> Path | None:
+    configured = os.getenv(APP_ROOT_ENV_VAR, "").strip()
+    if not configured:
+        return None
+    path = Path(configured).expanduser()
+    if not path.is_absolute():
+        path = (Path.cwd() / path).resolve()
+    return path if path.exists() else None
+
+
 def detect_repo_root(start: Path | None = None) -> Path:
+    configured = _configured_app_root()
+    if configured is not None:
+        return configured
+
     candidate = (start or Path.cwd()).resolve()
     if candidate.is_file():
         candidate = candidate.parent

@@ -25,7 +25,7 @@ def _require_pandas():
     except ImportError as exc:  # pragma: no cover - runtime guard
         raise ImportError(
             "pandas is required. Install with "
-            "packages listed in `.agents/skills/fetch-us-company-data/agents/openai.yaml`."
+            "packages listed in `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/fetch-us-company-data/agents/openai.yaml`."
         ) from exc
     return pd
 

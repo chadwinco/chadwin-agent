@@ -32,14 +32,14 @@ Ownership rule:
 
 ## Non-Negotiable Operating Contract
 1. Execute tasks directly in the local workspace; do not stop at planning if execution is possible.
-2. Use skills in `.agents/skills/*/SKILL.md` as the authoritative workflows.
+2. Use installed skills in `${CODEX_HOME:-/.codex}/skills/*/SKILL.md` as the authoritative workflows.
 3. After every command or edit, inspect outputs for errors or inconsistencies and fix them immediately.
 4. Never leave known breakage behind; rerun affected steps until outputs are correct.
 5. Keep work traceable: explicit dates, explicit assumptions, explicit file references.
 6. Do not add deterministic wrappers for tasks the LLM can already do directly (for example generic web search/browsing, routine file reads/writes, or simple routing decisions).
 
 ## Skill Selection Protocol
-- Discover available skills from `.agents/skills/*/SKILL.md` (and installed skill locations when relevant) before selecting a workflow.
+- Discover available skills from `${CODEX_HOME:-/.codex}/skills/*/SKILL.md` before selecting a workflow.
 - If a user names a skill (for example, `$chadwin-research`) or the request clearly matches a skill's purpose, use that skill.
 - If no skill is named, prefer an installed orchestrator skill when one exists; otherwise compose the smallest set of concrete skills needed for the request.
 - Direct invocation of a lower-level skill means the user is intentionally taking tighter control; execute exactly at that level.
@@ -62,11 +62,11 @@ Use one of these modes explicitly:
 If no orchestrator skill is installed, use manual control with the capability-equivalent skills that are available.
 
 ## Canonical Manual Order (When Not Using an Orchestrator Skill)
-1. (Optional) Build filing-day seed universe with the installed filing-feed skill.
+1. (Optional) Build a filing-day seed universe from existing local filing snapshots when available.
 2. (Optional) Seed ideas with the installed idea-generation skill.
 3. Fetch company data with the market-appropriate fetch skill:
    - Use the installed US fetch skill for US tickers.
-   - For non-US tickers, use the installed market-specific fetch skill under `.agents/skills/` (or other installed skill path).
+   - For non-US tickers, use the installed market-specific fetch skill under `${CODEX_HOME:-/.codex}/skills/`.
 4. Produce research outputs with progressive depth using the installed research/report skill.
 5. If high-impact issues remain, run another research-skill pass until the stop rule is satisfied.
 6. Validate artifacts and pass quality gate
@@ -119,9 +119,9 @@ Before marking done:
 - Valuation method matches business model (DCF vs residual-income where applicable).
 - Base/bull/bear assumptions are explicit and defensible.
 - Margin-of-safety conclusion reconciles with valuation outputs and current price input.
-- Active research-skill quality checklist is satisfied (for example, when installed: `.agents/skills/chadwin-research/references/research-workflow.md`).
+- Active research-skill quality checklist is satisfied (for example, when installed: `${CODEX_HOME:-/.codex}/skills/chadwin-research/references/research-workflow.md`).
 - Shared data contract validation passes:
-  - `.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py`
+  - `.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/validate_data_contract.py"`
 
 ## Improvement Loop (Mandatory for Repeatable Issues)
 When you find a repeatable problem or process weakness:
@@ -136,6 +136,7 @@ Do not only patch a single report output when the issue is systemic.
 
 ## Practical Conventions
 - Work from repo root: `chadwin-codex`
+- Use `python3 scripts/bootstrap_chadwin.py` as the canonical setup/install entrypoint for new machines and fresh worktrees.
 - Store company packages by exchange country (for example `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/...`).
 - Under `<DATA_ROOT>/companies/`, country folders must use uppercase ISO 3166-1 alpha-2 codes (for example `US`, `JP`, `GB`), not exchange names or 3-letter country codes.
 - Use only canonical company layout paths: `<DATA_ROOT>/companies/<ISO_ALPHA2_COUNTRY>/<TICKER>/...`.
@@ -145,4 +146,4 @@ Do not only patch a single report output when the issue is systemic.
 - Prefer `rg`/`rg --files` for search.
 - Keep changes minimal, concrete, and auditable.
 - Preserve existing user changes unless explicitly asked to alter them.
-- Filing snapshots should follow the active filing-feed skill contract (for example, when installed: `<DATA_ROOT>/daily-sec-filings/<FORM>/YYYY-MM-DD.jsonl`).
+- If a filing-feed skill is installed, its outputs should follow that skill's active contract.

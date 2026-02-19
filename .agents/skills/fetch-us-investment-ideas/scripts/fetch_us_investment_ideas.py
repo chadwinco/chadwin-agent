@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 import urllib.parse
@@ -15,7 +16,38 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 
-QUEUE_SCRIPTS = Path(__file__).resolve().parents[2] / "chadwin-research" / "scripts"
+SKILLS_DIR_ENV_VAR = "CHADWIN_SKILLS_DIR"
+
+
+def _resolve_queue_scripts_dir() -> Path:
+    candidates: list[Path] = []
+
+    configured = os.getenv(SKILLS_DIR_ENV_VAR, "").strip()
+    if configured:
+        configured_path = Path(configured).expanduser()
+        if not configured_path.is_absolute():
+            configured_path = (Path.cwd() / configured_path).resolve()
+        candidates.append(configured_path / "chadwin-research" / "scripts")
+
+    codex_home = os.getenv("CODEX_HOME", "").strip()
+    if codex_home:
+        candidates.append(Path(codex_home).expanduser() / "skills" / "chadwin-research" / "scripts")
+
+    # Sibling-skill fallback when this skill is installed into a skills root.
+    candidates.append(Path(__file__).resolve().parents[2] / "chadwin-research" / "scripts")
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    checked = ", ".join(str(path) for path in candidates)
+    raise RuntimeError(
+        "Unable to locate chadwin-research queue scripts. "
+        f"Checked: {checked}. Set {SKILLS_DIR_ENV_VAR} when skills are installed elsewhere."
+    )
+
+
+QUEUE_SCRIPTS = _resolve_queue_scripts_dir()
 if str(QUEUE_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(QUEUE_SCRIPTS))
 

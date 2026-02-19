@@ -105,5 +105,5 @@ Not allowed:
 Validate contract compliance with:
 
 ```bash
-.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py
+.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/validate_data_contract.py"
 ```

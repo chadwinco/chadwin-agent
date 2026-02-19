@@ -21,18 +21,18 @@ Natural-language request example:
 - "Fetch the latest 10-K for AAPL, then all 10-Q filings after that 10-K, include filing markdown plus XBRL statements, and also fetch last 6 months of Form 4 filings as CSV."
 
 ## Skill Paths (set once)
-Repo-local:
-
-```bash
-export FETCH_US_COMPANY_DATA_ROOT=".agents/skills/fetch-us-company-data"
-export FETCH_US_COMPANY_DATA_WRAPPER="$FETCH_US_COMPANY_DATA_ROOT/scripts/edgartools_wrapper.py"
-```
-
-Installed skill:
+Installed skill (default):
 
 ```bash
 export CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 export FETCH_US_COMPANY_DATA_ROOT="$CODEX_HOME/skills/fetch-us-company-data"
+export FETCH_US_COMPANY_DATA_WRAPPER="$FETCH_US_COMPANY_DATA_ROOT/scripts/edgartools_wrapper.py"
+```
+
+Standalone clone (development):
+
+```bash
+export FETCH_US_COMPANY_DATA_ROOT="/path/to/fetch-us-company-data"
 export FETCH_US_COMPANY_DATA_WRAPPER="$FETCH_US_COMPANY_DATA_ROOT/scripts/edgartools_wrapper.py"
 ```
 

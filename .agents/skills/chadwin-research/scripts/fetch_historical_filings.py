@@ -16,6 +16,8 @@ except Exception:  # pragma: no cover - optional dependency
 
 from data_paths import detect_repo_root, resolve_data_root
 
+SKILLS_DIR_ENV_VAR = "CHADWIN_SKILLS_DIR"
+
 
 def _default_base_dir() -> Path:
     return detect_repo_root(Path(__file__).resolve())
@@ -149,16 +151,36 @@ def _resolve_edgar_identity(
     )
 
 
+def _resolve_skills_root(base_dir: Path) -> Path:
+    configured = os.getenv(SKILLS_DIR_ENV_VAR, "").strip()
+    if configured:
+        path = Path(configured).expanduser()
+        if not path.is_absolute():
+            path = (Path.cwd() / path).resolve()
+        return path
+
+    codex_home = os.getenv("CODEX_HOME", "").strip()
+    if codex_home:
+        return Path(codex_home).expanduser() / "skills"
+
+    script_neighbor = Path(__file__).resolve().parents[2]
+    if script_neighbor.exists():
+        return script_neighbor
+
+    legacy_local = base_dir / ".agents" / "skills"
+    if legacy_local.exists():
+        return legacy_local
+
+    return Path.home() / ".codex" / "skills"
+
+
 def _load_fetch_helpers(base_dir: Path):
-    helper_dir = (
-        base_dir
-        / ".agents"
-        / "skills"
-        / "fetch-us-company-data"
-        / "scripts"
-    )
+    helper_dir = _resolve_skills_root(base_dir) / "fetch-us-company-data" / "scripts"
     if not helper_dir.exists():
-        raise RuntimeError(f"Helper path not found: {helper_dir}")
+        raise RuntimeError(
+            "Helper path not found for fetch-us-company-data. "
+            f"Checked: {helper_dir}. Set {SKILLS_DIR_ENV_VAR} if skills are installed elsewhere."
+        )
     if str(helper_dir) not in sys.path:
         sys.path.insert(0, str(helper_dir))
 

@@ -35,7 +35,7 @@ Use this when caller explicitly wants deterministic replay or a saved request ar
 ## CLI
 
 ```bash
-python3 .agents/skills/fetch-us-company-data/scripts/edgartools_wrapper.py \
+python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/fetch-us-company-data/scripts/edgartools_wrapper.py" \
   --request-file <request.json|request.yaml> \
   [--identity "Name email@domain.com"] \
   [--output-root <PATH>] \

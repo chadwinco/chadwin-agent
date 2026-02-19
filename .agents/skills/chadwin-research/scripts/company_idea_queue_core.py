@@ -10,6 +10,7 @@ from typing import Any
 
 APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
+APP_ROOT_ENV_VAR = "CHADWIN_APP_ROOT"
 REPO_MARKER_RELATIVE_PATH = Path(".agents") / "skills"
 DEFAULT_COMPANIES_SUBPATH = Path("companies")
 DEFAULT_IDEA_SCREENS_SUBPATH = Path("idea-screens")
@@ -25,6 +26,14 @@ ISO_COUNTRY_RE = re.compile(r"^[A-Z]{2}$")
 
 
 def _detect_repo_root(start: Path | None = None) -> Path:
+    configured = os.getenv(APP_ROOT_ENV_VAR, "").strip()
+    if configured:
+        configured_path = Path(configured).expanduser()
+        if not configured_path.is_absolute():
+            configured_path = (Path.cwd() / configured_path).resolve()
+        if configured_path.exists():
+            return configured_path
+
     candidate = (start or Path.cwd()).resolve()
     if candidate.is_file():
         candidate = candidate.parent

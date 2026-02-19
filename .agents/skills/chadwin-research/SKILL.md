@@ -50,7 +50,7 @@ Use `<REPORT_DATE_DIR>` for outputs:
 If ticker is omitted, pick from queue:
 
 ```bash
-python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research
+python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/scripts/company_idea_queue.py" pick --task chadwin-research
 ```
 
 If queue has no suitable ticker or user asks for fresh ideas, run `$fetch-us-investment-ideas`, append ideas to queue, then pick again.
@@ -92,8 +92,8 @@ echo "Using REPORT_DATE_DIR=$REPORT_DATE_DIR"
 Use the queue CLI in this skill from repo root:
 
 ```bash
-python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research
-python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>
+python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/scripts/company_idea_queue.py" pick --task chadwin-research
+python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/scripts/company_idea_queue.py" remove --ticker <TICKER>
 ```
 
 - If ticker is omitted, `pick` is the default selection source.

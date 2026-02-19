@@ -8,7 +8,7 @@ Generate a decision-grade investment write-up and scenario valuation by resolvin
 - Do not treat this as a one-command pipeline.
 - Use shell/Python snippets only as helpers for extraction or arithmetic.
 - Completion requires writing all required outputs and passing the goal gate in Step 8.
-- Before ad-hoc helper commands, verify path targets exist from repo root (`pwd`, `test -d .agents`).
+- Before ad-hoc helper commands, verify path targets exist from repo root (`pwd`, `test -d "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}"`).
 - For file discovery, prefer `rg --files <path>` before targeted `rg -n ... <path>`.
 
 ## Inputs
@@ -34,18 +34,18 @@ Controls and references:
 - `references/historical-sec-fetch.md`
 
 Drafting assets:
-- `.agents/skills/chadwin-research/assets/investment-summary.md`
-- `.agents/skills/chadwin-research/assets/business-and-competitive-position.md`
-- `.agents/skills/chadwin-research/assets/financial-quality.md`
-- `.agents/skills/chadwin-research/assets/valuation.md`
-- `.agents/skills/chadwin-research/assets/key-risks-and-disconfirming-signals.md`
-- `.agents/skills/chadwin-research/assets/conclusion.md`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/assets/investment-summary.md`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/assets/business-and-competitive-position.md`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/assets/financial-quality.md`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/assets/valuation.md`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/assets/key-risks-and-disconfirming-signals.md`
+- `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/assets/conclusion.md`
 
 ## Step 1: Confirm Scope, Run Baseline Filing Fetch, and Build an Initial Evidence Map
 - Confirm ticker and as-of date explicitly.
 - Confirm all evidence used is dated on or before as-of date.
 - If ticker is missing, pick from queue:
-  - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py pick --task chadwin-research`
+  - `python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/scripts/company_idea_queue.py" pick --task chadwin-research`
 - If queue is empty or stale for the active objective, run `$fetch-us-investment-ideas`, append ideas to queue, and pick again.
 - Load `<DATA_ROOT>/user_preferences.json` when present and apply strategy/report preferences.
 - Run baseline filing fetch coverage before deep lever analysis:
@@ -144,7 +144,7 @@ If any condition fails, continue Step 3 instead of finalizing.
 
 ## Step 9: Queue and Mandatory Post-Run Introspection
 - Remove ticker from queue only after Step 8 passes:
-  - `python3 .agents/skills/chadwin-research/scripts/company_idea_queue.py remove --ticker <TICKER>`
+  - `python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-research/scripts/company_idea_queue.py" remove --ticker <TICKER>`
 - Run post-run introspection using `references/improvement-loop.md`.
 - Apply smallest same-run workflow/reference improvement when repeatable workflow gaps are found.
 - Record in `improvement-log.md` only when a real process improvement is implemented.

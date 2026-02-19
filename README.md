@@ -1,62 +1,69 @@
 # Chadwin Codex Research
 
-This repository is a skill-first, Codex-operated equity research system.
+This repository is a Codex-operated, skill-first equity research system.
 
-Deterministic code lives inside skills (`.agents/skills/*`) and is used as bounded helpers. The LLM agent remains responsible for workflow control, sanity checks, and final output quality.
+The app repo is a thin control plane:
+- bootstrap/install orchestration
+- release-pinned skill manifest
+- global operating contract and shared data contract docs
+
+Operational skills are installed into Codex skill storage (`$CODEX_HOME/skills`, default `~/.codex/skills`), not kept as app-local runtime dependencies.
 
 Agent operating contract and workflow rules are defined in `AGENTS.md`.
 Shared data primitives and extension rules are defined in `DATA_CONTRACT.md`.
 
-## One-Time Setup
-Setup should begin with the `chadwin-setup` skill:
+## One-Time Bootstrap
+Run bootstrap from repo root:
 
 ```bash
-sed -n '1,260p' .agents/skills/chadwin-setup/SKILL.md
+python3 scripts/bootstrap_chadwin.py
 ```
 
-This skill is the canonical setup entrypoint and includes:
-- Python `.venv` creation and troubleshooting
-- per-skill dependency installation guidance
-- `.env` + `EDGAR_IDENTITY` setup
-- `<DATA_ROOT>` bootstrap behavior and commands
-
-If you only need the data-root bootstrap command directly:
+If EDGAR identity is not already set in environment or `.env`, pass it explicitly:
 
 ```bash
-.venv/bin/python .agents/skills/chadwin-setup/scripts/setup_chadwin_data_dirs.py
+python3 scripts/bootstrap_chadwin.py --edgar-identity "Your Name your.email@example.com"
 ```
 
-Validate shared data-contract compliance:
+Bootstrap responsibilities:
+- ensure app `.venv` exists
+- install/update required skills from `skills.lock.json` into `$CODEX_HOME/skills`
+- install required Python packages from manifest
+- run installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
+
+Dry-run planning:
 
 ```bash
-.venv/bin/python .agents/skills/chadwin-setup/scripts/validate_data_contract.py
+python3 scripts/bootstrap_chadwin.py --dry-run
 ```
 
-## Discover and Use Skills
-List available repo-local skills:
+## Skill Manifest
+The canonical release contract is `skills.lock.json`.
+
+It defines:
+- required skills + pinned refs
+- per-skill Python dependency packages
+- deprecated skills excluded from install
+
+Current deprecated skills:
+- `fetch-daily-sec-filings`
+- `chart-valuation-ranges`
+
+## Discover Installed Skills
+List installed skills:
 
 ```bash
-find .agents/skills -mindepth 1 -maxdepth 1 -type d | sort
+find "${CODEX_HOME:-$HOME/.codex}/skills" -mindepth 1 -maxdepth 1 -type d | sort
 ```
 
-For each skill you intend to run, read its workflow first:
+Read a skill workflow:
 
 ```bash
-sed -n '1,220p' .agents/skills/<skill-name>/SKILL.md
+sed -n '1,220p' "${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md"
 ```
-
-If an orchestrator skill is installed, use it for semi-autonomous runs. If not, compose manual runs from available lower-level skills (idea generation, data fetch, research/reporting, preferences).
 
 ## Required Outputs Per Completed Research Run
 For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`, a run is complete only when these files exist:
 - `report.md`
 - `valuation/inputs.yaml`
 - `valuation/outputs.json`
-
-## Repository Layout
-- `.agents/skills/`: skill definitions, scripts, references, and assets
-- `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl`: per-screen idea queue primitives
-- `<DATA_ROOT>/user_preferences.json`: persistent preference profile
-- `<DATA_ROOT>/improvement-log.md`: process improvement log
-- `<DATA_ROOT>/companies/`: company package root
-- `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/`: company evidence and reports

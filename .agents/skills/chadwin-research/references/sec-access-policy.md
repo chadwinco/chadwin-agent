@@ -25,7 +25,7 @@ When a lever is blocked, request focused evidence from `$fetch-us-company-data`,
 If strict replay is needed, run the fetch skill wrapper explicitly:
 
 ```bash
-python3 .agents/skills/fetch-us-company-data/scripts/edgartools_wrapper.py \
+python3 "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/fetch-us-company-data/scripts/edgartools_wrapper.py" \
   --request-file <request.json> \
   --pretty
 ```

@@ -1132,7 +1132,7 @@ def _write_company_profile(company, data_dir: Path, ticker: str, currency: str):
         raise ImportError(
             "beautifulsoup4 is required to build company_profile.csv. "
             "Install dependencies with "
-            "packages listed in `.agents/skills/fetch-us-company-data/agents/openai.yaml`."
+            "packages listed in `${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/fetch-us-company-data/agents/openai.yaml`."
         )
 
     data = getattr(company, "data", None)
