@@ -7,13 +7,11 @@ The app repo is a thin control plane:
 - release-pinned skill manifest
 - global operating contract and shared data contract docs
 
-Operational skills are installed into Codex skill storage (`$CODEX_HOME/skills`, default `~/.codex/skills`), not kept as app-local runtime dependencies.
+Operational skills are installed into Codex skill storage (`$CODEX_HOME/skills`, default `~/.codex/skills`).
 
 Agent operating contract and workflow rules are defined in `AGENTS.md`.
-Shared data primitives and extension rules are defined in `DATA_CONTRACT.md`.
 
-## Setup Ownership Split
-Responsibility is intentionally split to avoid duplication:
+## Setup
 - `scripts/chadwin_setup.py` (app repo control plane):
   - ensures `.venv` exists
   - installs/updates skills listed in `skills.lock.json` into `$CODEX_HOME/skills`
@@ -22,8 +20,6 @@ Responsibility is intentionally split to avoid duplication:
   - defines setup workflow and setup policy
   - owns shared primitive creation under `<DATA_ROOT>`
   - owns shared data-contract validation behavior
-
-Do not reimplement shared data bootstrap logic in app-repo scripts beyond delegating to the installed skill.
 
 ## One-Time Bootstrap
 Run bootstrap from repo root:
@@ -78,22 +74,3 @@ It defines:
 - required skills + pinned refs
 - full git clone sources per skill (URL, SSH, or filesystem path)
 - deprecated skills excluded from install
-
-## Discover Installed Skills
-List installed skills:
-
-```bash
-find "${CODEX_HOME:-$HOME/.codex}/skills" -mindepth 1 -maxdepth 1 -type d | sort
-```
-
-Read a skill workflow:
-
-```bash
-sed -n '1,220p' "${CODEX_HOME:-$HOME/.codex}/skills/<skill-name>/SKILL.md"
-```
-
-## Required Outputs Per Completed Research Run
-For `<DATA_ROOT>/companies/<EXCHANGE_COUNTRY>/<TICKER>/reports/<REPORT_DATE_DIR>/`, a run is complete only when these files exist:
-- `report.md`
-- `valuation/inputs.yaml`
-- `valuation/outputs.json`
