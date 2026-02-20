@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install/update locked skills, then delegate shared data bootstrap to chadwin-setup."""
+"""Install/update core Chadwin skills, then run shared data bootstrap/validation."""
 
 from __future__ import annotations
 
@@ -24,6 +24,8 @@ class SkillSpec:
 
 FLOATING_REFS = {"main", "master", "head"}
 SETUP_SKILL_NAME = "chadwin-setup"
+SCRIPT_PATH = Path(__file__).resolve()
+SETUP_SKILL_ROOT = SCRIPT_PATH.parents[1]
 
 
 def _print(msg: str) -> None:
@@ -328,28 +330,16 @@ def _check_skill(
     )
 
 
-def _require_setup_skill(specs: list[SkillSpec]) -> SkillSpec:
-    setup_spec = next((spec for spec in specs if spec.name == SETUP_SKILL_NAME), None)
-    if setup_spec is None:
-        raise SystemExit(
-            f"Manifest must include {SETUP_SKILL_NAME} so bootstrap can delegate shared "
-            "data-root setup to the installed skill."
-        )
-    return setup_spec
-
-
 def _delegate_data_bootstrap(
     *,
-    setup_spec: SkillSpec,
-    skills_dir: Path,
+    setup_skill_root: Path,
     py: Path,
     env: dict[str, str],
     app_root: Path,
     dry_run: bool,
 ) -> None:
-    setup_root = _apply_skill_subpath(skills_dir / _safe_local_name(setup_spec.name), setup_spec.path)
-    setup_script = setup_root / "scripts" / "setup_chadwin_data_dirs.py"
-    validate_script = setup_root / "scripts" / "validate_data_contract.py"
+    setup_script = setup_skill_root / "scripts" / "setup_chadwin_data_dirs.py"
+    validate_script = setup_skill_root / "scripts" / "validate_data_contract.py"
 
     if dry_run:
         _print(f"[dry-run] would run: {py} {setup_script}")
@@ -420,21 +410,24 @@ def _upsert_edgar_identity(app_root: Path, identity: str) -> Path:
 
 
 def parse_args() -> argparse.Namespace:
-    repo_root = _repo_root(Path.cwd())
+    default_app_root = _repo_root(Path.cwd())
     parser = argparse.ArgumentParser(
         description=(
-            "Install/update required Chadwin skills from skills.lock.json, then delegate "
-            "shared <DATA_ROOT> bootstrap to installed chadwin-setup."
+            "Install/update core skills from bundled chadwin-setup assets/skills.lock.json and then run "
+            "shared <DATA_ROOT> bootstrap + validation."
         )
     )
     parser.add_argument(
         "--manifest",
-        default=str(repo_root / "skills.lock.json"),
-        help="Path to skills.lock.json (default: repo-root/skills.lock.json)",
+        default=str(SETUP_SKILL_ROOT / "assets" / "skills.lock.json"),
+        help=(
+            "Path to core skills manifest "
+            "(default: .agents/skills/chadwin-setup/assets/skills.lock.json)"
+        ),
     )
     parser.add_argument(
         "--app-root",
-        default=str(repo_root),
+        default=str(default_app_root),
         help="Application workspace root (default: detected git repo root)",
     )
     parser.add_argument(
@@ -471,7 +464,7 @@ def parse_args() -> argparse.Namespace:
         "--skip-data-bootstrap",
         action="store_true",
         help=(
-            "Skip delegating shared data bootstrap/validation to the installed chadwin-setup "
+            "Skip delegating shared data bootstrap/validation to the bundled chadwin-setup "
             "skill."
         ),
     )
@@ -495,13 +488,17 @@ def main() -> int:
         _ensure_tool("python3")
 
     specs, deprecated = _parse_manifest(manifest_path)
-    setup_spec = _require_setup_skill(specs)
+    if any(spec.name == SETUP_SKILL_NAME for spec in specs):
+        raise SystemExit(
+            "Manifest must list external core skills only. "
+            f"Remove `{SETUP_SKILL_NAME}` from {manifest_path}."
+        )
     _print(f"Manifest: {manifest_path}")
     _print(f"Mode: {'latest' if args.latest else 'locked'}")
-    _print(f"Required skills: {', '.join(spec.name for spec in specs)}")
+    _print(f"Core skills: {', '.join(spec.name for spec in specs)}")
     _print(
-        "Ownership: scripts/chadwin_setup.py installs/updates skills; installed chadwin-setup "
-        "owns shared data-root bootstrap and contract validation."
+        "Ownership: bundled chadwin-setup owns core-skill install/update, shared data-root "
+        "bootstrap, and data-contract validation."
     )
     floating = [spec.name for spec in specs if _is_floating_ref(spec.ref)]
     if floating and not args.latest:
@@ -553,9 +550,9 @@ def main() -> int:
                 _print(f"[OUTDATED] {spec.name}: {detail}")
                 all_current = False
         if all_current:
-            _print("All skills are up to date with manifest refs.")
+            _print("All core skills are up to date with manifest refs.")
             return 0
-        _print("One or more skills are not aligned with manifest refs.")
+        _print("One or more core skills are not aligned with manifest refs.")
         return 2
 
     venv_dir = app_root / ".venv"
@@ -584,8 +581,7 @@ def main() -> int:
 
     if not args.skip_data_bootstrap:
         _delegate_data_bootstrap(
-            setup_spec=setup_spec,
-            skills_dir=skills_dir,
+            setup_skill_root=SETUP_SKILL_ROOT,
             py=py,
             env=env,
             app_root=app_root,

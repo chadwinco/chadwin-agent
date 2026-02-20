@@ -1,0 +1,93 @@
+---
+name: chadwin-setup
+description: "Chadwin setup control plane: install/update core skills, bootstrap app `.venv`/`.env`, and validate shared `<DATA_ROOT>` primitives."
+---
+
+# Chadwin Setup
+
+## Overview
+Run this skill first on a new machine or worktree.
+
+This skill is the setup control plane. It owns:
+- core skill manifest (`assets/skills.lock.json`) in this bundled skill directory
+- install/update/check of core external skills under `$CHADWIN_SKILLS_DIR`
+- app `.venv` bootstrap
+- optional EDGAR identity upsert into app `.env`
+- shared `<DATA_ROOT>` primitive creation and contract validation
+
+This skill creates only shared primitives and does not create company-specific data packages.
+
+`<DATA_ROOT>` resolution:
+- `CHADWIN_DATA_DIR` when set
+- otherwise OS app-data default:
+  - macOS: `~/Library/Application Support/Chadwin`
+  - Linux: `${XDG_DATA_HOME:-~/.local/share}/Chadwin`
+  - Windows: `%APPDATA%/Chadwin`
+
+## Shared Contract Guardrails
+- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.json`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`, `<DATA_ROOT>/improvement-log.md`.
+- Do not create company-specific `data/` or `reports/` packages in this setup step.
+- Do not rename or repurpose shared primitive paths.
+- Keep setup policy in this skill; do not duplicate installer logic in app repos.
+
+## Setup Entrypoint
+From app repo root:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
+```
+
+## Core Manifest
+`.agents/skills/chadwin-setup/assets/skills.lock.json` defines distributed core external skills.
+
+Rules:
+- use pinned tags or commit SHAs for default operation
+- do not use floating refs for release/default pins
+- list external skills only (do not include `chadwin-setup` itself)
+
+## Command Reference
+Default install/update using locked refs:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
+```
+
+Dry run:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run
+```
+
+Check installed core skills against locked refs:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check
+```
+
+Check against latest default-branch tips:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check --latest
+```
+
+Install/update using latest default-branch tips:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --latest
+```
+
+Write/update EDGAR identity in app `.env`:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity "Full Name email@example.com"
+```
+
+## Output
+Creates/ensures:
+- app `.venv`
+- core external skills under `$CHADWIN_SKILLS_DIR`
+- `<DATA_ROOT>/`
+- `<DATA_ROOT>/user_preferences.json`
+- `<DATA_ROOT>/idea-screens/`
+- `<DATA_ROOT>/companies/`
+- `<DATA_ROOT>/improvement-log.md`

@@ -8,7 +8,7 @@
 - [Getting Started](#getting-started)
 - [Setup Command Reference](#setup-command-reference)
 - [Skill Freshness Policy](#skill-freshness-policy)
-- [Skill Manifest](#skill-manifest)
+- [Core Skill Manifest](#core-skill-manifest)
 - [General Ways of Working](#general-ways-of-working)
 - [Completion and Validation](#completion-and-validation)
 
@@ -27,10 +27,11 @@ This file defines repository-level rules:
 - cross-skill operating behavior.
 
 Setup ownership split:
-- `scripts/chadwin_setup.py` is the control-plane installer/delegator only:
-  - install/update skills from `skills.lock.json`
-  - delegate shared data-root bootstrap and contract validation to installed `chadwin-setup`
-- installed `chadwin-setup` skill is the runtime owner for shared setup workflow and `<DATA_ROOT>` primitive creation/validation.
+- `chadwin-codex` bundles `chadwin-setup` at `.agents/skills/chadwin-setup`.
+- bundled `chadwin-setup` owns setup control-plane behavior:
+  - core skill manifest and install/update/check workflow
+  - shared data-root bootstrap
+  - shared data-contract validation
 - Do not duplicate setup workflow logic in app-repo docs/scripts when it already belongs to `chadwin-setup`.
 
 ## Data Root Convention
@@ -132,7 +133,7 @@ Not allowed:
 Validate shared contract compliance with:
 
 ```bash
-.venv/bin/python "${CHADWIN_SKILLS_DIR:-${CODEX_HOME:-$HOME/.codex}/skills}/chadwin-setup/scripts/validate_data_contract.py"
+.venv/bin/python ".agents/skills/chadwin-setup/scripts/validate_data_contract.py"
 ```
 
 ## Getting Started
@@ -140,24 +141,24 @@ Validate shared contract compliance with:
 2. If the user asks to begin setup (for example, "let's get started"), run:
 
 ```bash
-python3 scripts/chadwin_setup.py
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 ```
 
-3. Treat this command as the required handoff step:
-   - it fetches/updates `chadwin-setup` and other locked skills first,
-   - then executes setup/validation via the installed `chadwin-setup` skill scripts.
+3. Treat this as the required setup handoff:
+   - the human uses natural-language chat prompts only,
+   - the LLM executes this bundled setup entrypoint and all required follow-on commands.
 4. Use `.venv` for Python commands.
 5. Follow the relevant skill `SKILL.md` for any task-specific workflow.
 6. Run the shared contract validator after setup and after any contract-affecting changes.
 
 ## Setup Command Reference
-Run bootstrap from repo root:
+Primary setup entrypoint from repo root:
 
 ```bash
-python3 scripts/chadwin_setup.py
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 ```
 
-Default bootstrap mode uses locked refs from `skills.lock.json`.
+Default setup mode uses locked refs from `.agents/skills/chadwin-setup/assets/skills.lock.json`.
 
 Bootstrap does not require EDGAR identity. Configure it as part of onboarding:
 - ask the user for SEC identity in the form `Full Name email@example.com`,
@@ -170,36 +171,36 @@ EDGAR_IDENTITY="Full Name email@example.com"
 Optional shortcut (also writes/updates repo `.env`):
 
 ```bash
-python3 scripts/chadwin_setup.py --edgar-identity "Full Name email@example.com"
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity "Full Name email@example.com"
 ```
 
 Bootstrap responsibilities:
 - ensure app `.venv` exists
-- install/update required skills from `skills.lock.json` into `$CODEX_HOME/skills`
-- delegate to installed `chadwin-setup` scripts for `<DATA_ROOT>` bootstrap + validation
+- install/update required core external skills from `.agents/skills/chadwin-setup/assets/skills.lock.json` into `$CODEX_HOME/skills`
+- run `chadwin-setup` shared `<DATA_ROOT>` bootstrap + validation scripts
 
 Dry-run planning:
 
 ```bash
-python3 scripts/chadwin_setup.py --dry-run
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run
 ```
 
-Install/update using latest default branch tip for each skill repo:
+Install/update using latest default branch tip for each core skill repo:
 
 ```bash
-python3 scripts/chadwin_setup.py --latest
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --latest
 ```
 
-Check whether installed skills are aligned with locked refs:
+Check whether installed core skills are aligned with locked refs:
 
 ```bash
-python3 scripts/chadwin_setup.py --check
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check
 ```
 
 Check against latest default-branch tips:
 
 ```bash
-python3 scripts/chadwin_setup.py --check --latest
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check --latest
 ```
 
 `--check` cannot be combined with `--dry-run`.
@@ -208,15 +209,15 @@ python3 scripts/chadwin_setup.py --check --latest
 Goal: keep installs reproducible while still detecting upstream updates.
 
 Baseline rules:
-- Keep `skills.lock.json` on pinned tags or commit SHAs for normal operation.
-- Do not use floating refs (`main`, `master`, `head`) in `skills.lock.json` for release/default workflows.
-- Use `python3 scripts/chadwin_setup.py` for normal install/update (locked mode).
+- Keep `.agents/skills/chadwin-setup/assets/skills.lock.json` on pinned tags or commit SHAs for normal operation.
+- Do not use floating refs (`main`, `master`, `head`) in the locked manifest for release/default workflows.
+- Use `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"` for normal install/update (locked mode).
 
 Periodic drift check:
 - Run this at least weekly, or at session start when check recency is unknown:
 
 ```bash
-python3 scripts/chadwin_setup.py --check --latest
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check --latest
 ```
 
 - Exit `0`: installed skills match remote default-branch tips.
@@ -226,24 +227,24 @@ Promotion flow (latest -> locked):
 1. Evaluate latest skill tips:
 
 ```bash
-python3 scripts/chadwin_setup.py --latest
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --latest
 ```
 
 2. Run required smoke checks and shared contract validation.
-3. If accepted, update `skills.lock.json` to new pinned refs (prefer tags; use SHAs when tags are unavailable).
+3. If accepted, update `.agents/skills/chadwin-setup/assets/skills.lock.json` to new pinned refs (prefer tags; use SHAs when tags are unavailable).
 4. Re-run locked bootstrap:
 
 ```bash
-python3 scripts/chadwin_setup.py
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 ```
 
-## Skill Manifest
-The release contract is `skills.lock.json`.
+## Core Skill Manifest
+The distributed core-skill release contract is `.agents/skills/chadwin-setup/assets/skills.lock.json`.
 
 It defines:
-- required skills + pinned refs
+- required core external skills + pinned refs
 - full git clone sources per skill (URL, SSH, or filesystem path)
-- deprecated skills excluded from install
+- optional deprecated skills excluded from install
 
 ## General Ways of Working
 - Execute tasks directly in the workspace; do not stop at planning when execution is possible.
