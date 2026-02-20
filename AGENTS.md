@@ -159,7 +159,8 @@ Primary setup entrypoint from repo root:
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 ```
 
-Default setup mode uses locked refs from `.agents/skills/chadwin-setup/assets/skills.lock.json`.
+Default setup mode follows refs from `.agents/skills/chadwin-setup/assets/skills.lock.json`.
+Repository default is floating `main` refs, so each setup run syncs skills to the latest `origin/main` commit.
 
 Bootstrap does not require EDGAR identity. Configure it as part of onboarding:
 - ask the user for SEC identity in the form `Full Name <email@example.com>`,
@@ -186,13 +187,13 @@ Dry-run planning:
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run
 ```
 
-Install/update using latest default branch tip for each core skill repo:
+Install/update using each repo's default branch tip (ignores manifest refs):
 
 ```bash
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --latest
 ```
 
-Check whether installed core skills are aligned with locked refs:
+Check whether installed core skills are aligned with manifest refs (default: `main`):
 
 ```bash
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check
@@ -207,43 +208,39 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check --latest
 `--check` cannot be combined with `--dry-run`.
 
 ## Skill Freshness Policy
-Goal: keep installs reproducible while still detecting upstream updates.
+Goal: keep clients current with upstream skill changes while still supporting optional reproducible releases.
 
 Baseline rules:
-- Keep `.agents/skills/chadwin-setup/assets/skills.lock.json` on pinned tags or commit SHAs for normal operation.
-- Do not use floating refs (`main`, `master`, `head`) in the locked manifest for release/default workflows.
-- Use `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"` for normal install/update (locked mode).
+- Keep `.agents/skills/chadwin-setup/assets/skills.lock.json` on floating `main` refs for normal operation.
+- Use `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"` at session start (or when session-start recency is unknown) to sync each core external skill to the latest `origin/main` commit.
+- Tagged releases are still allowed; use pinned tags or commit SHAs only when intentionally creating a release snapshot.
 
 Periodic drift check:
-- Run this at least weekly, or at session start when check recency is unknown:
+- Run this when you need an explicit status check without mutating state:
 
 ```bash
-python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check --latest
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check
 ```
 
-- Exit `0`: installed skills match remote default-branch tips.
-- Exit `2`: one or more skills are behind latest; summarize which skills drifted and ask the user whether to stay locked or evaluate an update.
+- Exit `0`: installed skills match manifest refs (default `main`).
+- Exit `2`: one or more skills are behind manifest refs; summarize which skills drifted and run setup sync.
 
-Promotion flow (latest -> locked):
-1. Evaluate latest skill tips:
-
-```bash
-python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --latest
-```
-
+Optional release snapshot flow (main -> pinned):
+1. Pin `.agents/skills/chadwin-setup/assets/skills.lock.json` refs to tags or SHAs for the intended release snapshot.
 2. Run required smoke checks and shared contract validation.
-3. If accepted, update `.agents/skills/chadwin-setup/assets/skills.lock.json` to new pinned refs (prefer tags; use SHAs when tags are unavailable).
-4. Re-run locked bootstrap:
+3. Re-run setup with the pinned manifest for validation:
 
 ```bash
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 ```
 
+4. Restore refs to `main` after release validation if you are returning to default latest-sync behavior.
+
 ## Core Skill Manifest
 The distributed core-skill release contract is `.agents/skills/chadwin-setup/assets/skills.lock.json`.
 
 It defines:
-- required core external skills + pinned refs
+- required core external skills + git refs (default `main`; optional pinned tags/SHAs for release snapshots)
 - full git clone sources per skill (URL, SSH, or filesystem path)
 - optional deprecated skills excluded from install
 

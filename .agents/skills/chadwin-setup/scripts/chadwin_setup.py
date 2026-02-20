@@ -523,18 +523,26 @@ def main() -> int:
             f"Remove bundled skills from {manifest_path}: {', '.join(bundled_in_manifest)}."
         )
     _print(f"Manifest: {manifest_path}")
-    _print(f"Mode: {'latest' if args.latest else 'locked'}")
+    _print(f"Mode: {'latest (origin/HEAD)' if args.latest else 'manifest refs'}")
     _print(f"Core external skills: {', '.join(spec.name for spec in specs)}")
     _print(
         "Ownership: bundled chadwin-setup owns core external skill install/update, shared "
         "data-root bootstrap, and data-contract validation."
     )
-    floating = [spec.name for spec in specs if _is_floating_ref(spec.ref)]
+    floating = [spec for spec in specs if _is_floating_ref(spec.ref)]
     if floating and not args.latest:
-        _print(
-            "WARNING: floating refs detected in manifest "
-            f"({', '.join(floating)}). Prefer pinned tags or SHAs for reproducible releases."
-        )
+        floating_non_main = [spec.name for spec in floating if spec.ref.lower() != "main"]
+        if floating_non_main:
+            _print(
+                "WARNING: floating refs detected in manifest outside `main` "
+                f"({', '.join(floating_non_main)}). Prefer `main` for default latest sync "
+                "or pinned tags/SHAs for release snapshots."
+            )
+        else:
+            _print(
+                "Info: manifest refs are floating `main`; setup will sync each skill to "
+                "latest `origin/main`."
+            )
     if deprecated:
         _print(f"Deprecated (not installed): {', '.join(deprecated)}")
 
