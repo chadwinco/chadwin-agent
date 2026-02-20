@@ -32,7 +32,7 @@ The app uses a few core skills to run screeners and carry out deep research on i
 - `chadwin-research`: Deep research skill for producing fundamental equity research. This is the default entry point for fetching new ideas and generating research.
 - `fetch-us-investment-ideas`: Generates lists of US stock ideas based on flexible criteria. It can be invoked via the `$chadwin-research` skill, in order to fetch new ideas and carry out research on them in one request.
 - `fetch-us-company-data`: Retrieves targeted SEC/EDGAR company data as part of the research process. This is heavily used by the `$chadwin-research` skill to fetch and store data needed for company research.
-- `chadwin-preferences`: Captures your market, strategy, and report-format preferences. Skills will respect these preferences, but they can also be overriden in the chat.
-- `chadwin-setup`: Setup bundled in this repo at. Installs/updates core external skills, bootstraps app `.venv`, and validates shared data primitives.
+- `chadwin-preferences`: Bundled in this repo at `.agents/skills/chadwin-preferences`. Captures your market, strategy, and report-format preferences. Skills will respect these preferences, but they can also be overridden in chat.
+- `chadwin-setup`: Bundled in this repo at `.agents/skills/chadwin-setup`. Installs/updates core external skills, bootstraps app `.venv`, and validates shared data primitives.
 
 Detailed operator rules and setup command reference live in `AGENTS.md`.

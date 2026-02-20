@@ -23,9 +23,10 @@ class SkillSpec:
 
 
 FLOATING_REFS = {"main", "master", "head"}
-SETUP_SKILL_NAME = "chadwin-setup"
+BUNDLED_SKILL_NAMES = frozenset({"chadwin-setup", "chadwin-preferences"})
 SCRIPT_PATH = Path(__file__).resolve()
 SETUP_SKILL_ROOT = SCRIPT_PATH.parents[1]
+BUNDLED_SKILLS_ROOT = SETUP_SKILL_ROOT.parent
 
 
 def _print(msg: str) -> None:
@@ -192,6 +193,19 @@ def _apply_skill_subpath(skill_root: Path, subpath: str) -> Path:
     if not str(resolved).startswith(str(skill_root.resolve())):
         raise SystemExit(f"Skill path escapes repo root: {subpath}")
     return resolved
+
+
+def _require_bundled_skills() -> None:
+    missing: list[str] = []
+    for skill_name in sorted(BUNDLED_SKILL_NAMES):
+        skill_root = BUNDLED_SKILLS_ROOT / skill_name
+        if not (skill_root / "SKILL.md").exists():
+            missing.append(str(skill_root))
+    if missing:
+        raise SystemExit(
+            "Missing bundled required skills. Expected SKILL.md at: "
+            + ", ".join(missing)
+        )
 
 
 def _clone_or_update_skill(
@@ -413,7 +427,8 @@ def parse_args() -> argparse.Namespace:
     default_app_root = _repo_root(Path.cwd())
     parser = argparse.ArgumentParser(
         description=(
-            "Install/update core skills from bundled chadwin-setup assets/skills.lock.json and then run "
+            "Install/update core external skills from bundled chadwin-setup "
+            "assets/skills.lock.json and then run "
             "shared <DATA_ROOT> bootstrap + validation."
         )
     )
@@ -476,6 +491,8 @@ def main() -> int:
     if args.check and args.dry_run:
         raise SystemExit("--check cannot be combined with --dry-run")
 
+    _require_bundled_skills()
+
     manifest_path = Path(args.manifest).expanduser().resolve()
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
@@ -488,17 +505,18 @@ def main() -> int:
         _ensure_tool("python3")
 
     specs, deprecated = _parse_manifest(manifest_path)
-    if any(spec.name == SETUP_SKILL_NAME for spec in specs):
+    bundled_in_manifest = sorted(spec.name for spec in specs if spec.name in BUNDLED_SKILL_NAMES)
+    if bundled_in_manifest:
         raise SystemExit(
             "Manifest must list external core skills only. "
-            f"Remove `{SETUP_SKILL_NAME}` from {manifest_path}."
+            f"Remove bundled skills from {manifest_path}: {', '.join(bundled_in_manifest)}."
         )
     _print(f"Manifest: {manifest_path}")
     _print(f"Mode: {'latest' if args.latest else 'locked'}")
-    _print(f"Core skills: {', '.join(spec.name for spec in specs)}")
+    _print(f"Core external skills: {', '.join(spec.name for spec in specs)}")
     _print(
-        "Ownership: bundled chadwin-setup owns core-skill install/update, shared data-root "
-        "bootstrap, and data-contract validation."
+        "Ownership: bundled chadwin-setup owns core external skill install/update, shared "
+        "data-root bootstrap, and data-contract validation."
     )
     floating = [spec.name for spec in specs if _is_floating_ref(spec.ref)]
     if floating and not args.latest:
@@ -550,9 +568,9 @@ def main() -> int:
                 _print(f"[OUTDATED] {spec.name}: {detail}")
                 all_current = False
         if all_current:
-            _print("All core skills are up to date with manifest refs.")
+            _print("All core external skills are up to date with manifest refs.")
             return 0
-        _print("One or more core skills are not aligned with manifest refs.")
+        _print("One or more core external skills are not aligned with manifest refs.")
         return 2
 
     venv_dir = app_root / ".venv"

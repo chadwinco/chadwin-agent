@@ -1,12 +1,6 @@
 {
   "skills": [
     {
-      "name": "chadwin-preferences",
-      "repo": "https://github.com/chadwinco/chadwin-preferences.git",
-      "ref": "v0.1.0",
-      "path": "."
-    },
-    {
       "name": "chadwin-research",
       "repo": "https://github.com/chadwinco/chadwin-research.git",
       "ref": "v0.1.0",

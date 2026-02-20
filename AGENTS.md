@@ -28,8 +28,9 @@ This file defines repository-level rules:
 
 Setup ownership split:
 - `chadwin-codex` bundles `chadwin-setup` at `.agents/skills/chadwin-setup`.
+- `chadwin-codex` bundles `chadwin-preferences` at `.agents/skills/chadwin-preferences`.
 - bundled `chadwin-setup` owns setup control-plane behavior:
-  - core skill manifest and install/update/check workflow
+  - core external skill manifest and install/update/check workflow
   - shared data-root bootstrap
   - shared data-contract validation
 - Do not duplicate setup workflow logic in app-repo docs/scripts when it already belongs to `chadwin-setup`.
@@ -176,7 +177,7 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity
 
 Bootstrap responsibilities:
 - ensure app `.venv` exists
-- install/update required core external skills from `.agents/skills/chadwin-setup/assets/skills.lock.json` into `$CODEX_HOME/skills`
+- install/update required core external skills from `.agents/skills/chadwin-setup/assets/skills.lock.json` into `$CODEX_HOME/skills` (bundled skills are excluded from this manifest)
 - run `chadwin-setup` shared `<DATA_ROOT>` bootstrap + validation scripts
 
 Dry-run planning:
@@ -245,6 +246,8 @@ It defines:
 - required core external skills + pinned refs
 - full git clone sources per skill (URL, SSH, or filesystem path)
 - optional deprecated skills excluded from install
+
+Bundled required skills live in `.agents/skills/` and must not be listed in the external manifest.
 
 ## General Ways of Working
 - Execute tasks directly in the workspace; do not stop at planning when execution is possible.

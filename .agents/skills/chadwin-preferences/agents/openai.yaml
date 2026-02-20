@@ -1,0 +1,7 @@
+interface:
+  display_name: "Chadwin Preferences"
+  short_description: "Create or update the persistent Chadwin preferences profile"
+  default_prompt: "Use $manage-user-preferences to run a 4-section interview one section at a time, normalize each response with LLM judgment into <DATA_ROOT>/user_preferences.json (no deterministic parser scripts), and notify me when the update is complete."
+  icon_small: "./assets/chadwin-icon.svg"
+  icon_large: "./assets/chadwin-icon.png"
+  brand_color: "#F43C00"

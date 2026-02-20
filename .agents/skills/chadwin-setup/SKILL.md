@@ -15,6 +15,8 @@ This skill is the setup control plane. It owns:
 - optional EDGAR identity upsert into app `.env`
 - shared `<DATA_ROOT>` primitive creation and contract validation
 
+Bundled required skills (`chadwin-setup`, `chadwin-preferences`) are shipped in `.agents/skills/` and are not installed from the external manifest.
+
 This skill creates only shared primitives and does not create company-specific data packages.
 
 `<DATA_ROOT>` resolution:
@@ -43,7 +45,7 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 Rules:
 - use pinned tags or commit SHAs for default operation
 - do not use floating refs for release/default pins
-- list external skills only (do not include `chadwin-setup` itself)
+- list external skills only (do not include bundled skills from `.agents/skills/`)
 
 ## Command Reference
 Default install/update using locked refs:
