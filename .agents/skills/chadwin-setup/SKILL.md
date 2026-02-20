@@ -81,7 +81,7 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --latest
 Write/update EDGAR identity in app `.env`:
 
 ```bash
-python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity "Full Name email@example.com"
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity "Full Name <email@example.com>"
 ```
 
 ## Output

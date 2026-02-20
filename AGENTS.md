@@ -162,17 +162,17 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 Default setup mode uses locked refs from `.agents/skills/chadwin-setup/assets/skills.lock.json`.
 
 Bootstrap does not require EDGAR identity. Configure it as part of onboarding:
-- ask the user for SEC identity in the form `Full Name email@example.com`,
+- ask the user for SEC identity in the form `Full Name <email@example.com>`,
 - write it to repo `.env` as:
 
 ```bash
-EDGAR_IDENTITY="Full Name email@example.com"
+EDGAR_IDENTITY="Full Name <email@example.com>"
 ```
 
 Optional shortcut (also writes/updates repo `.env`):
 
 ```bash
-python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity "Full Name email@example.com"
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity "Full Name <email@example.com>"
 ```
 
 Bootstrap responsibilities:

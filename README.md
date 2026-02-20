@@ -13,7 +13,7 @@ Let's get started.
 
 The agent should handle all setup actions from chat prompts; users are not expected to run shell commands directly.
 
-If SEC/EDGAR data is needed and `EDGAR_IDENTITY` is not present in repo `.env`, the agent should ask for your name/email and add it.
+If SEC/EDGAR data is needed and `EDGAR_IDENTITY` is not present in repo `.env`, the agent should ask for your SEC identity in the form `Full Name <email@example.com>` and add it.
 
 ```bash
 EDGAR_IDENTITY="Full Name <email@example.com>"

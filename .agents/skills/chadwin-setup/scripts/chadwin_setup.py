@@ -7,6 +7,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -27,6 +28,7 @@ BUNDLED_SKILL_NAMES = frozenset({"chadwin-setup", "chadwin-preferences"})
 SCRIPT_PATH = Path(__file__).resolve()
 SETUP_SKILL_ROOT = SCRIPT_PATH.parents[1]
 BUNDLED_SKILLS_ROOT = SETUP_SKILL_ROOT.parent
+EDGAR_IDENTITY_RE = re.compile(r"^.+<[^<>\s@]+@[^<>\s@]+>$")
 
 
 def _print(msg: str) -> None:
@@ -193,6 +195,15 @@ def _apply_skill_subpath(skill_root: Path, subpath: str) -> Path:
     if not str(resolved).startswith(str(skill_root.resolve())):
         raise SystemExit(f"Skill path escapes repo root: {subpath}")
     return resolved
+
+
+def _validate_edgar_identity_format(identity: str) -> None:
+    normalized = identity.strip()
+    if EDGAR_IDENTITY_RE.match(normalized):
+        return
+    raise SystemExit(
+        "Invalid EDGAR identity format. Expected: `Full Name <email@example.com>`."
+    )
 
 
 def _require_bundled_skills() -> None:
@@ -453,7 +464,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--edgar-identity",
         help=(
-            "Optional SEC identity string (for example: 'Name email@domain.com'). "
+            "Optional SEC identity string (for example: 'Full Name <email@example.com>'). "
             "If provided, write/update EDGAR_IDENTITY in repo .env."
         ),
     )
@@ -533,6 +544,7 @@ def main() -> int:
 
     if args.edgar_identity and args.edgar_identity.strip():
         normalized_identity = args.edgar_identity.strip()
+        _validate_edgar_identity_format(normalized_identity)
         env["EDGAR_IDENTITY"] = normalized_identity
         env_path = app_root / ".env"
         if args.dry_run or args.check:
@@ -547,7 +559,7 @@ def main() -> int:
         _print(
             "NOTE: EDGAR identity is not configured. SEC fetch workflows will need "
             f"`EDGAR_IDENTITY` in {app_root / '.env'}. During onboarding, ask the user for "
-            "name/email and write that value to `.env`."
+            "`Full Name <email@example.com>` and write that value to `.env`."
         )
 
     token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")

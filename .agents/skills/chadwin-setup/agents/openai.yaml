@@ -1,4 +1,4 @@
 interface:
   display_name: "Chadwin Setup"
   short_description: "Use bundled setup control plane to install/update core skills and bootstrap shared primitives."
-  default_prompt: "Use bundled $chadwin-setup to install/update core external skills from its local manifest, bootstrap app .venv/.env prerequisites, and run shared <DATA_ROOT> contract setup + validation."
+  default_prompt: "Use bundled $chadwin-setup to install/update core external skills from its local manifest, bootstrap app .venv/.env prerequisites, and run shared <DATA_ROOT> contract setup + validation. If EDGAR identity is missing, ask for it in the form Full Name <email@example.com>."
