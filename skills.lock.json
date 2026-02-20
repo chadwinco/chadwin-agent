@@ -7,14 +7,8 @@
       "path": "."
     },
     {
-      "name": "fetch-us-company-data",
-      "repo": "https://github.com/chadwinco/fetch-us-company-data.git",
-      "ref": "v0.1.0",
-      "path": "."
-    },
-    {
-      "name": "fetch-us-investment-ideas",
-      "repo": "https://github.com/chadwinco/fetch-us-investment-ideas.git",
+      "name": "chadwin-preferences",
+      "repo": "https://github.com/chadwinco/chadwin-preferences.git",
       "ref": "v0.1.0",
       "path": "."
     },
@@ -25,8 +19,14 @@
       "path": "."
     },
     {
-      "name": "chadwin-preferences",
-      "repo": "https://github.com/chadwinco/chadwin-preferences.git",
+      "name": "fetch-us-company-data",
+      "repo": "https://github.com/chadwinco/fetch-us-company-data.git",
+      "ref": "v0.1.0",
+      "path": "."
+    },
+    {
+      "name": "fetch-us-investment-ideas",
+      "repo": "https://github.com/chadwinco/fetch-us-investment-ideas.git",
       "ref": "v0.1.0",
       "path": "."
     }
