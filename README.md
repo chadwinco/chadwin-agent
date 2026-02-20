@@ -24,6 +24,18 @@ Let's get started.
 
 The agent should run the setup workflow (`scripts/chadwin_setup.py`) and ensure skills + shared data primitives are ready before research work starts.
 
+If SEC/EDGAR data is needed and `EDGAR_IDENTITY` is not present in repo `.env`, the agent should ask for your name/email and add:
+
+```bash
+EDGAR_IDENTITY="Full Name email@example.com"
+```
+
+Optional shortcut:
+
+```bash
+python3 scripts/chadwin_setup.py --edgar-identity "Full Name email@example.com"
+```
+
 ### 3. Run research with the `Chadwin Research` skill
 
 Example request:

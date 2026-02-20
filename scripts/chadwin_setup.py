@@ -108,12 +108,10 @@ def _strip_credentials(url: str) -> str:
     return urlunparse(parsed._replace(netloc=netloc))
 
 
-def _parse_manifest(path: Path) -> tuple[bool, list[SkillSpec], list[str]]:
+def _parse_manifest(path: Path) -> tuple[list[SkillSpec], list[str]]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise SystemExit(f"Invalid manifest (expected object): {path}")
-
-    requires_edgar_identity = bool(payload.get("requires_edgar_identity", False))
 
     raw_skills = payload.get("skills")
     if not isinstance(raw_skills, list):
@@ -148,7 +146,7 @@ def _parse_manifest(path: Path) -> tuple[bool, list[SkillSpec], list[str]]:
     if not isinstance(deprecated, list) or not all(isinstance(x, str) for x in deprecated):
         raise SystemExit("Invalid manifest: `deprecated_skills` must be list[str]")
 
-    return requires_edgar_identity, skills, [x.strip() for x in deprecated if x.strip()]
+    return skills, [x.strip() for x in deprecated if x.strip()]
 
 
 def _ensure_tool(tool: str) -> None:
@@ -384,25 +382,41 @@ def _load_env_identity(app_root: Path) -> str | None:
     return None
 
 
-def _require_edgar_identity(
-    *,
-    required: bool,
-    explicit_identity: str | None,
-    env: dict[str, str],
-    app_root: Path,
-) -> str | None:
-    identity = (explicit_identity or "").strip()
-    if not identity:
-        identity = env.get("EDGAR_IDENTITY", "").strip() or env.get("SEC_IDENTITY_EMAIL", "").strip()
-    if not identity:
-        identity = _load_env_identity(app_root) or ""
-    if required and not identity:
-        raise SystemExit(
-            "EDGAR identity is required by this manifest. Provide --edgar-identity, set "
-            "EDGAR_IDENTITY/SEC_IDENTITY_EMAIL in the environment, or set EDGAR_IDENTITY in "
-            f"{app_root / '.env'}."
-        )
-    return identity or None
+def _configured_edgar_identity(env: dict[str, str], app_root: Path) -> str | None:
+    identity = env.get("EDGAR_IDENTITY", "").strip() or env.get("SEC_IDENTITY_EMAIL", "").strip()
+    if identity:
+        return identity
+    return _load_env_identity(app_root)
+
+
+def _upsert_edgar_identity(app_root: Path, identity: str) -> Path:
+    env_path = app_root / ".env"
+    escaped = identity.replace("\\", "\\\\").replace('"', '\\"')
+    new_line = f'EDGAR_IDENTITY="{escaped}"'
+
+    existing_lines: list[str] = []
+    if env_path.exists():
+        existing_lines = env_path.read_text(encoding="utf-8").splitlines()
+
+    updated_lines: list[str] = []
+    replaced = False
+    for raw in existing_lines:
+        line = raw.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key = line.split("=", 1)[0].strip()
+            if key == "EDGAR_IDENTITY":
+                updated_lines.append(new_line)
+                replaced = True
+                continue
+        updated_lines.append(raw)
+
+    if not replaced:
+        if updated_lines and updated_lines[-1].strip():
+            updated_lines.append("")
+        updated_lines.append(new_line)
+
+    env_path.write_text("\n".join(updated_lines) + "\n", encoding="utf-8")
+    return env_path
 
 
 def parse_args() -> argparse.Namespace:
@@ -430,7 +444,10 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--edgar-identity",
-        help="SEC identity string (for example: 'Name email@domain.com').",
+        help=(
+            "Optional SEC identity string (for example: 'Name email@domain.com'). "
+            "If provided, write/update EDGAR_IDENTITY in repo .env."
+        ),
     )
     parser.add_argument(
         "--dry-run",
@@ -477,7 +494,7 @@ def main() -> int:
     if not args.check:
         _ensure_tool("python3")
 
-    requires_identity, specs, deprecated = _parse_manifest(manifest_path)
+    specs, deprecated = _parse_manifest(manifest_path)
     setup_spec = _require_setup_skill(specs)
     _print(f"Manifest: {manifest_path}")
     _print(f"Mode: {'latest' if args.latest else 'locked'}")
@@ -498,6 +515,25 @@ def main() -> int:
     env = dict(os.environ)
     env["CHADWIN_APP_ROOT"] = str(app_root)
     env["CHADWIN_SKILLS_DIR"] = str(codex_home / "skills")
+
+    if args.edgar_identity and args.edgar_identity.strip():
+        normalized_identity = args.edgar_identity.strip()
+        env["EDGAR_IDENTITY"] = normalized_identity
+        env_path = app_root / ".env"
+        if args.dry_run or args.check:
+            mode = "dry-run" if args.dry_run else "check"
+            _print(f"[{mode}] would write EDGAR identity to {env_path}")
+        else:
+            persisted_path = _upsert_edgar_identity(app_root=app_root, identity=normalized_identity)
+            _print(f"Persisted EDGAR identity to {persisted_path}")
+
+    configured_identity = _configured_edgar_identity(env=env, app_root=app_root)
+    if not configured_identity:
+        _print(
+            "NOTE: EDGAR identity is not configured. SEC fetch workflows will need "
+            f"`EDGAR_IDENTITY` in {app_root / '.env'}. During onboarding, ask the user for "
+            "name/email and write that value to `.env`."
+        )
 
     token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")
     skills_dir = Path(env["CHADWIN_SKILLS_DIR"])
@@ -521,15 +557,6 @@ def main() -> int:
             return 0
         _print("One or more skills are not aligned with manifest refs.")
         return 2
-
-    identity = _require_edgar_identity(
-        required=requires_identity,
-        explicit_identity=args.edgar_identity,
-        env=env,
-        app_root=app_root,
-    )
-    if identity:
-        env["EDGAR_IDENTITY"] = identity
 
     venv_dir = app_root / ".venv"
     if args.dry_run:

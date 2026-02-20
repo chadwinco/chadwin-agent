@@ -1,6 +1,5 @@
 {
   "version": 1,
-  "requires_edgar_identity": true,
   "skills": [
     {
       "name": "chadwin-setup",
