@@ -7,6 +7,7 @@
 - [Shared Data Contract](#shared-data-contract)
 - [Getting Started](#getting-started)
 - [Setup Command Reference](#setup-command-reference)
+- [Skill Freshness Policy](#skill-freshness-policy)
 - [Skill Manifest](#skill-manifest)
 - [General Ways of Working](#general-ways-of-working)
 - [Completion and Validation](#completion-and-validation)
@@ -202,6 +203,39 @@ python3 scripts/chadwin_setup.py --check --latest
 ```
 
 `--check` cannot be combined with `--dry-run`.
+
+## Skill Freshness Policy
+Goal: keep installs reproducible while still detecting upstream updates.
+
+Baseline rules:
+- Keep `skills.lock.json` on pinned tags or commit SHAs for normal operation.
+- Do not use floating refs (`main`, `master`, `head`) in `skills.lock.json` for release/default workflows.
+- Use `python3 scripts/chadwin_setup.py` for normal install/update (locked mode).
+
+Periodic drift check:
+- Run this at least weekly, or at session start when check recency is unknown:
+
+```bash
+python3 scripts/chadwin_setup.py --check --latest
+```
+
+- Exit `0`: installed skills match remote default-branch tips.
+- Exit `2`: one or more skills are behind latest; summarize which skills drifted and ask the user whether to stay locked or evaluate an update.
+
+Promotion flow (latest -> locked):
+1. Evaluate latest skill tips:
+
+```bash
+python3 scripts/chadwin_setup.py --latest
+```
+
+2. Run required smoke checks and shared contract validation.
+3. If accepted, update `skills.lock.json` to new pinned refs (prefer tags; use SHAs when tags are unavailable).
+4. Re-run locked bootstrap:
+
+```bash
+python3 scripts/chadwin_setup.py
+```
 
 ## Skill Manifest
 The release contract is `skills.lock.json`.
