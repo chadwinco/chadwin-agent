@@ -1,4 +1,4 @@
-# Chadwin Agent Research
+# Chadwin Agent
 
 Chadwin Agent is an LLM-operated equity research app for Codex and Claude Code. It allows rigorous stock research through natural language prompts.
 
