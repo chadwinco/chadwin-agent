@@ -27,8 +27,9 @@ This file defines repository-level rules:
 - cross-skill operating behavior.
 
 Setup ownership split:
-- `chadwin-codex` bundles `chadwin-setup` at `.agents/skills/chadwin-setup`.
-- `chadwin-codex` bundles `chadwin-preferences` at `.agents/skills/chadwin-preferences`.
+- `chadwin-agent` bundles `chadwin-setup` at `.agents/skills/chadwin-setup`.
+- `chadwin-agent` bundles `chadwin-preferences` at `.agents/skills/chadwin-preferences`.
+- project-local Claude mirrors are tracked under `.claude/skills/` and synced from `.agents/skills/`.
 - bundled `chadwin-setup` owns setup control-plane behavior:
   - core external skill manifest and install/update/check workflow
   - shared data-root bootstrap
@@ -138,7 +139,7 @@ Validate shared contract compliance with:
 ```
 
 ## Getting Started
-1. Work from repository root: `chadwin-codex`.
+1. Work from repository root: `chadwin-agent`.
 2. If the user asks to begin setup (for example, "let's get started"), run:
 
 ```bash
@@ -178,8 +179,24 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity
 
 Bootstrap responsibilities:
 - ensure app `.venv` exists
-- install/update required core external skills from `.agents/skills/chadwin-setup/assets/skills.lock.json` into `$CODEX_HOME/skills` (bundled skills are excluded from this manifest)
+- install/update required core external skills from `.agents/skills/chadwin-setup/assets/skills.lock.json` into selected runtime targets (default both `~/.codex/skills` and `~/.claude/skills`; bundled skills are excluded from this manifest)
+- sync bundled project skills from `.agents/skills/` to `.claude/skills/`
 - run `chadwin-setup` shared `<DATA_ROOT>` bootstrap + validation scripts
+
+Runtime target controls:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --runtime-target both
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --runtime-target codex
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --runtime-target claude
+```
+
+Runtime path overrides:
+
+```bash
+export CHADWIN_CODEX_SKILLS_DIR="$HOME/.codex/skills"
+export CHADWIN_CLAUDE_SKILLS_DIR="$HOME/.claude/skills"
+```
 
 Dry-run planning:
 
