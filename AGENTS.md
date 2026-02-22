@@ -162,6 +162,9 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
 
 Default setup mode follows refs from `.agents/skills/chadwin-setup/assets/skills.lock.json`.
 Repository default is floating `main` refs, so each setup run syncs skills to the latest `origin/main` commit.
+Setup also self-updates the app workspace:
+- git clone installs: fetch + fast-forward pull on the default branch when the worktree is clean
+- downloaded archive installs: initialize `.git`, attach official origin, and align to the remote default branch
 
 Bootstrap does not require EDGAR identity. Configure it as part of onboarding:
 - ask the user for SEC identity in the form `Full Name <email@example.com>`,
@@ -178,6 +181,7 @@ python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --edgar-identity
 ```
 
 Bootstrap responsibilities:
+- self-update app workspace from `https://github.com/chadwinco/chadwin-agent` when safe (or initialize git metadata for downloaded copies)
 - ensure app `.venv` exists
 - install/update required core external skills from `.agents/skills/chadwin-setup/assets/skills.lock.json` into selected runtime targets (default both `~/.codex/skills` and `~/.claude/skills`; bundled skills are excluded from this manifest)
 - sync bundled project skills from `.agents/skills/` to `.claude/skills/`
@@ -202,6 +206,12 @@ Dry-run planning:
 
 ```bash
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run
+```
+
+Skip app workspace self-update:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --skip-self-update
 ```
 
 Install/update using each repo's default branch tip (ignores manifest refs):

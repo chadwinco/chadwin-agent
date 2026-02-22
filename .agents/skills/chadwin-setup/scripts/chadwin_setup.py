@@ -10,6 +10,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlparse, urlunparse
@@ -29,6 +30,9 @@ SCRIPT_PATH = Path(__file__).resolve()
 SETUP_SKILL_ROOT = SCRIPT_PATH.parents[1]
 BUNDLED_SKILLS_ROOT = SETUP_SKILL_ROOT.parent
 EDGAR_IDENTITY_RE = re.compile(r"^.+<[^<>\s@]+@[^<>\s@]+>$")
+APP_REPO_URL = "https://github.com/chadwinco/chadwin-agent.git"
+APP_REPO_CANONICAL = "github.com/chadwinco/chadwin-agent"
+APP_BOOTSTRAP_PRESERVE_FILES = (".env",)
 
 
 def _print(msg: str) -> None:
@@ -111,6 +115,251 @@ def _strip_credentials(url: str) -> str:
         return url
     netloc = parsed.netloc.split("@", 1)[1]
     return urlunparse(parsed._replace(netloc=netloc))
+
+
+def _canonical_repo_id(repo: str) -> str | None:
+    raw = _strip_credentials(repo.strip())
+    if not raw:
+        return None
+
+    # Handle scp-like forms: git@github.com:owner/repo.git
+    if raw.startswith("git@") and ":" in raw:
+        host_part, path_part = raw.split(":", 1)
+        if "@" not in host_part:
+            return None
+        host = host_part.split("@", 1)[1].strip().lower()
+        path = path_part.strip().strip("/").lower()
+        if path.endswith(".git"):
+            path = path[:-4]
+        if not host or not path:
+            return None
+        return f"{host}/{path}"
+
+    parsed = urlparse(raw)
+    if not parsed.hostname:
+        return None
+    host = parsed.hostname.lower()
+    path = parsed.path.strip("/").lower()
+    if path.endswith(".git"):
+        path = path[:-4]
+    if not path:
+        return host
+    return f"{host}/{path}"
+
+
+def _is_official_app_repo(remote_url: str | None) -> bool:
+    if not remote_url:
+        return False
+    return _canonical_repo_id(remote_url) == APP_REPO_CANONICAL
+
+
+def _best_python() -> str:
+    return shutil.which("python3") or sys.executable or "python3"
+
+
+def _set_origin_head(path: Path) -> None:
+    cmd = ["git", "-C", str(path), "remote", "set-head", "origin", "--auto"]
+    rendered = " ".join(_redact_arg(item) for item in cmd)
+    _print(f"$ {rendered}")
+    subprocess.run(
+        cmd,
+        check=False,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+
+
+def _default_remote_branch(path: Path) -> str:
+    try:
+        value = _capture(["git", "-C", str(path), "symbolic-ref", "--short", "refs/remotes/origin/HEAD"])
+    except RuntimeError:
+        return "main"
+    prefix = "origin/"
+    if not value.startswith(prefix):
+        return "main"
+    branch = value[len(prefix) :].strip()
+    return branch or "main"
+
+
+def _current_branch(path: Path) -> str | None:
+    try:
+        value = _capture(["git", "-C", str(path), "rev-parse", "--abbrev-ref", "HEAD"])
+    except RuntimeError:
+        return None
+    return value or None
+
+
+def _working_tree_is_clean(path: Path) -> bool:
+    status = _capture(["git", "-C", str(path), "status", "--porcelain"])
+    return not status.strip()
+
+
+def _can_fast_forward(path: Path, target_ref: str) -> bool:
+    cmd = ["git", "-C", str(path), "merge-base", "--is-ancestor", "HEAD", target_ref]
+    rendered = " ".join(_redact_arg(item) for item in cmd)
+    _print(f"$ {rendered}")
+    proc = subprocess.run(
+        cmd,
+        check=False,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    if proc.returncode == 0:
+        return True
+    if proc.returncode == 1:
+        return False
+    stderr = (proc.stderr or "").strip()
+    raise SystemExit(stderr or f"Failed command: {rendered}")
+
+
+def _preserve_local_files(path: Path, relpaths: tuple[str, ...]) -> dict[str, bytes]:
+    preserved: dict[str, bytes] = {}
+    for relpath in relpaths:
+        candidate = path / relpath
+        if candidate.exists() and candidate.is_file():
+            preserved[relpath] = candidate.read_bytes()
+    return preserved
+
+
+def _restore_local_files(path: Path, preserved: dict[str, bytes]) -> None:
+    for relpath, content in preserved.items():
+        candidate = path / relpath
+        candidate.parent.mkdir(parents=True, exist_ok=True)
+        candidate.write_bytes(content)
+
+
+def _bootstrap_git_repo_from_download(
+    *,
+    app_root: Path,
+    dry_run: bool,
+    check: bool,
+) -> tuple[bool, bool]:
+    if check:
+        _print(
+            "[CHECK][OUTDATED] App workspace has no .git metadata. "
+            f"Would initialize git and align to {APP_REPO_URL}."
+        )
+        return False, False
+    if dry_run:
+        _print(
+            "[dry-run] app workspace has no .git metadata; "
+            f"would initialize git and align to {APP_REPO_URL}"
+        )
+        return False, False
+
+    preserved = _preserve_local_files(app_root, APP_BOOTSTRAP_PRESERVE_FILES)
+    _run(["git", "-C", str(app_root), "init"])
+    if _origin_url(app_root):
+        _run(["git", "-C", str(app_root), "remote", "set-url", "origin", APP_REPO_URL])
+    else:
+        _run(["git", "-C", str(app_root), "remote", "add", "origin", APP_REPO_URL])
+    _run(["git", "-C", str(app_root), "fetch", "--tags", "--prune", "origin"])
+    _set_origin_head(app_root)
+    default_branch = _default_remote_branch(app_root)
+    target_ref = f"origin/{default_branch}"
+    if _resolve_commit(app_root, target_ref) is None:
+        raise SystemExit(f"Unable to resolve app target ref: {target_ref}")
+    _run(
+        [
+            "git",
+            "-C",
+            str(app_root),
+            "checkout",
+            "--force",
+            "-B",
+            default_branch,
+            target_ref,
+        ]
+    )
+    _restore_local_files(app_root, preserved)
+    _print(
+        "App workspace conversion completed: initialized git metadata and aligned "
+        f"to {target_ref}."
+    )
+    return True, True
+
+
+def _self_update_app_repo(
+    *,
+    app_root: Path,
+    dry_run: bool,
+    check: bool,
+) -> tuple[bool, bool]:
+    if not _is_git_repo(app_root):
+        return _bootstrap_git_repo_from_download(
+            app_root=app_root,
+            dry_run=dry_run,
+            check=check,
+        )
+
+    origin = _origin_url(app_root)
+    if not origin:
+        _print("App repo self-update skipped: no origin remote configured.")
+        return True, False
+    if not _is_official_app_repo(origin):
+        _print(
+            "App repo self-update skipped: origin is not the official chadwin-agent repo "
+            f"({origin})."
+        )
+        return True, False
+
+    if dry_run:
+        _print(
+            "[dry-run] would check app repo origin and fast-forward the default branch "
+            "when safe."
+        )
+        return True, False
+
+    _run(["git", "-C", str(app_root), "fetch", "--tags", "--prune", "origin"])
+    _set_origin_head(app_root)
+    default_branch = _default_remote_branch(app_root)
+    target_ref = f"origin/{default_branch}"
+
+    local_commit = _resolve_commit(app_root, "HEAD")
+    target_commit = _resolve_commit(app_root, target_ref)
+    if local_commit is None or target_commit is None:
+        raise SystemExit(
+            "Unable to resolve app repository commits "
+            f"(local={local_commit}, target={target_ref})."
+        )
+
+    if local_commit == target_commit:
+        _print(f"App repo self-update: up to date ({local_commit[:7]}).")
+        return True, False
+
+    _print(
+        f"App repo update available: local={local_commit[:7]} target={target_commit[:7]} "
+        f"({target_ref})."
+    )
+    if check:
+        _print("[CHECK][OUTDATED] App repo is behind remote default branch.")
+        return False, False
+
+    current_branch = _current_branch(app_root)
+    if not current_branch or current_branch == "HEAD":
+        _print("App repo self-update skipped: detached HEAD.")
+        return False, False
+    if current_branch != default_branch:
+        _print(
+            f"App repo self-update skipped: current branch is {current_branch}, "
+            f"default branch is {default_branch}."
+        )
+        return False, False
+    if not _working_tree_is_clean(app_root):
+        _print("App repo self-update skipped: working tree has local changes.")
+        return False, False
+    if not _can_fast_forward(app_root, target_ref):
+        _print("App repo self-update skipped: local branch has diverged from remote.")
+        return False, False
+
+    _run(["git", "-C", str(app_root), "pull", "--ff-only", "origin", default_branch])
+    _print(
+        "App repo self-update completed: fast-forwarded "
+        f"{current_branch} to {target_ref}."
+    )
+    return True, True
 
 
 def _parse_manifest(path: Path) -> tuple[list[SkillSpec], list[str]]:
@@ -494,6 +743,14 @@ def parse_args() -> argparse.Namespace:
         help="Application workspace root (default: detected git repo root)",
     )
     parser.add_argument(
+        "--skip-self-update",
+        action="store_true",
+        help=(
+            "Skip app workspace self-update. By default setup checks for app updates, "
+            "fast-forwards git clones, and initializes git metadata for downloaded copies."
+        ),
+    )
+    parser.add_argument(
         "--runtime-target",
         choices=("both", "codex", "claude"),
         default="both",
@@ -550,13 +807,35 @@ def main() -> int:
     if args.check and args.dry_run:
         raise SystemExit("--check cannot be combined with --dry-run")
 
+    app_root = Path(args.app_root).expanduser().resolve()
+
+    _ensure_tool("git")
+    _ensure_tool("python3")
+
+    app_repo_current = True
+    app_repo_updated = False
+    if args.skip_self_update:
+        _print("App repo self-update skipped via --skip-self-update.")
+    else:
+        app_repo_current, app_repo_updated = _self_update_app_repo(
+            app_root=app_root,
+            dry_run=args.dry_run,
+            check=args.check,
+        )
+        if app_repo_updated and not args.check and not args.dry_run:
+            _print("App repo changed during self-update; restarting setup with latest code.")
+            python = _best_python()
+            cmd = [python, str(SCRIPT_PATH), *sys.argv[1:]]
+            rendered = " ".join(_redact_arg(item) for item in cmd)
+            _print(f"$ {rendered}")
+            os.execv(python, cmd)
+
     _require_bundled_skills()
 
     manifest_path = Path(args.manifest).expanduser().resolve()
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
 
-    app_root = Path(args.app_root).expanduser().resolve()
     codex_skills_dir = Path(args.codex_skills_dir).expanduser().resolve()
     claude_skills_dir = Path(args.claude_skills_dir).expanduser().resolve()
     runtime_skills_dirs = _resolve_runtime_skills_dirs(
@@ -564,9 +843,6 @@ def main() -> int:
         codex_skills_dir=codex_skills_dir,
         claude_skills_dir=claude_skills_dir,
     )
-
-    _ensure_tool("git")
-    _ensure_tool("python3")
 
     specs, deprecated = _parse_manifest(manifest_path)
     bundled_in_manifest = sorted(spec.name for spec in specs if spec.name in BUNDLED_SKILL_NAMES)
@@ -632,7 +908,7 @@ def main() -> int:
     token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN")
 
     if args.check:
-        all_current = True
+        all_current = app_repo_current
         for runtime_name, skills_dir in runtime_skills_dirs.items():
             _print(f"Checking target [{runtime_name}] at {skills_dir}")
             for spec in specs:
@@ -649,16 +925,19 @@ def main() -> int:
                     all_current = False
         _sync_project_skills(
             setup_skill_root=SETUP_SKILL_ROOT,
-            py=Path(shutil.which("python3") or "python3"),
+            py=Path(_best_python()),
             env=env,
             app_root=app_root,
             dry_run=False,
             check=True,
         )
         if all_current:
-            _print("All selected runtime skill targets are up to date with manifest refs.")
+            _print("App repo and selected runtime skill targets are up to date.")
             return 0
-        _print("One or more selected runtime skill targets are not aligned with manifest refs.")
+        _print(
+            "App repo and/or one or more selected runtime skill targets are not aligned "
+            "with expected refs."
+        )
         return 2
 
     venv_dir = app_root / ".venv"
@@ -691,7 +970,7 @@ def main() -> int:
 
     _sync_project_skills(
         setup_skill_root=SETUP_SKILL_ROOT,
-        py=py if not args.dry_run else Path(shutil.which("python3") or "python3"),
+        py=py if not args.dry_run else Path(_best_python()),
         env=env,
         app_root=app_root,
         dry_run=args.dry_run,

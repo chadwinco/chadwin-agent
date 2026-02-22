@@ -10,6 +10,7 @@ Run this skill first on a new machine or worktree.
 
 This skill is the setup control plane. It owns:
 - core skill manifest (`assets/skills.lock.json`) in this bundled skill directory
+- app workspace self-update (git clones fast-forward; downloaded copies initialize `.git` + align to official remote)
 - install/update/check of core external skills for Codex and Claude runtime targets
 - project skill mirror sync from `.agents/skills/` to `.claude/skills/`
 - app `.venv` bootstrap
@@ -74,6 +75,12 @@ Dry run:
 
 ```bash
 python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run
+```
+
+Skip app workspace self-update:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --skip-self-update
 ```
 
 Check installed core skills against locked refs:
