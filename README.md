@@ -19,6 +19,28 @@ If SEC/EDGAR data is needed and `EDGAR_IDENTITY` is not present in repo `.env`, 
 EDGAR_IDENTITY="Full Name <email@example.com>"
 ```
 
+### Keeping the app and skills up to date
+
+Setup keeps both the app workspace and skills current automatically whenever setup runs.
+
+Automatic behavior:
+- App repo self-update:
+  - If the workspace is a git clone of `chadwin-agent`, setup fetches and fast-forwards the default branch when safe.
+  - If the workspace was downloaded as an archive (no `.git`), setup initializes git metadata, connects to the official GitHub remote, and aligns to the default branch.
+- Core external skills update: setup syncs required core skills to the refs in `.agents/skills/chadwin-setup/assets/skills.lock.json` (default floating `main`).
+- Bundled skill mirror sync: setup syncs `.agents/skills/*` into `.claude/skills/*`.
+
+Manual invocation:
+
+```bash
+python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
+```
+
+Useful manual options:
+- Check drift only (no mutation): `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check`
+- Plan only (dry run): `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run`
+- Skip app self-update if needed: `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --skip-self-update`
+
 ### 2. Run research with the `Chadwin Research` skill
 
 Example requests:
