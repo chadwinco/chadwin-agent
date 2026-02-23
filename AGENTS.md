@@ -94,6 +94,9 @@ Report directory allocation rule:
 Each screener run writes one JSONL queue file in its own run folder:
 - `<DATA_ROOT>/idea-screens/<SCREEN_RUN_ID>/screener-results.jsonl`
 
+`<SCREEN_RUN_ID>` must match strict format:
+- `YYYY-MM-DD-HHMMSS`
+
 One JSON object per line.
 
 Required fields:
@@ -106,10 +109,15 @@ Recommended fields:
 - `sector`
 - `industry`
 - `thesis`
-- `source`
-- `generated_at_utc`
-- `queued_at_utc`
-- `source_output`
+- `market`
+
+Current screener behavior note:
+- `fetch-us-investment-ideas` is LLM-first (Finviz-first with web-search fallback when needed) and targets `screener-results.jsonl` as the final durable output.
+- Sidecar files (for example `finviz-candidates.json` or temporary selection payloads) are helper artifacts and must not be treated as required downstream primitives.
+
+Legacy row compatibility:
+- Historical rows may contain metadata fields such as `source`, `generated_at_utc`, `queued_at_utc`, or `source_output`.
+- New rows should not rely on those metadata fields being present.
 
 ### Preferences Primitive (`user_preferences.json`)
 Required top-level keys:
