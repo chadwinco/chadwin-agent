@@ -50,7 +50,6 @@ Ownership rule:
   - `<DATA_ROOT>/user_preferences.json`
   - `<DATA_ROOT>/idea-screens/`
   - `<DATA_ROOT>/companies/`
-  - `<DATA_ROOT>/improvement-log.md`
 - Other skills may create additional files/directories under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
 
 ## Shared Data Contract
@@ -61,7 +60,6 @@ These paths are reserved and must remain valid:
 - `<DATA_ROOT>/user_preferences.json`
 - `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`
-- `<DATA_ROOT>/improvement-log.md`
 
 ### Company Package Primitive
 Each company package lives at:
@@ -296,7 +294,3 @@ A task is not done until:
 - requested artifacts are present and internally consistent,
 - affected shared contract rules are still satisfied,
 - the shared contract validator passes.
-
-When a repeatable process issue is found:
-- update the owning skill or reference,
-- append the implemented improvement to `<DATA_ROOT>/improvement-log.md`.

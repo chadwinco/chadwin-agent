@@ -13,7 +13,6 @@ APP_DATA_DIR_NAME = "Chadwin"
 DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
-IMPROVEMENT_LOG_PATH = Path("improvement-log.md")
 
 
 def default_data_root() -> Path:
@@ -69,14 +68,6 @@ def default_preferences_payload() -> dict[str, Any]:
     }
 
 
-def default_improvement_log() -> str:
-    return (
-        "# Chadwin Improvement Log\n\n"
-        "| Date (UTC) | Skill | Change | Validation |\n"
-        "|---|---|---|---|\n"
-    )
-
-
 def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
     created_dirs: list[Path] = []
     for directory in (
@@ -98,11 +89,6 @@ def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
             encoding="utf-8",
         )
         created_files.append(preferences_path)
-
-    improvement_log_path = data_root / IMPROVEMENT_LOG_PATH
-    if not improvement_log_path.exists():
-        improvement_log_path.write_text(default_improvement_log(), encoding="utf-8")
-        created_files.append(improvement_log_path)
 
     return created_dirs, created_files
 
