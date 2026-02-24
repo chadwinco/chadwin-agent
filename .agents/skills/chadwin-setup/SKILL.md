@@ -29,7 +29,7 @@ This skill creates only shared primitives and does not create company-specific d
   - Windows: `%APPDATA%/Chadwin`
 
 ## Shared Contract Guardrails
-- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.json`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`, `<DATA_ROOT>/improvement-log.md`.
+- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.json`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`.
 - Do not create company-specific `data/` or `reports/` packages in this setup step.
 - Do not rename or repurpose shared primitive paths.
 - Keep setup policy in this skill; do not duplicate installer logic in app repos.
@@ -117,4 +117,3 @@ Creates/ensures:
 - `<DATA_ROOT>/user_preferences.json`
 - `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`
-- `<DATA_ROOT>/improvement-log.md`

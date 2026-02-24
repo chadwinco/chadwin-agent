@@ -69,14 +69,6 @@ def default_preferences_payload() -> dict[str, Any]:
     return payload
 
 
-def default_improvement_log() -> str:
-    return (
-        "# Chadwin Improvement Log\n\n"
-        "| Date (UTC) | Skill | Change | Validation |\n"
-        "|---|---|---|---|\n"
-    )
-
-
 def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
     created_dirs: list[Path] = []
     for directory in (
@@ -99,11 +91,6 @@ def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
             encoding="utf-8",
         )
         created_files.append(preferences_path)
-
-    improvement_log_path = data_root / IMPROVEMENT_LOG_PATH
-    if not improvement_log_path.exists():
-        improvement_log_path.write_text(default_improvement_log(), encoding="utf-8")
-        created_files.append(improvement_log_path)
 
     return created_dirs, created_files
 

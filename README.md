@@ -1,64 +1,44 @@
 # Chadwin Agent
 
-Chadwin Agent is an LLM-operated equity research app for Codex and Claude Code. It allows rigorous stock research through natural language prompts.
+Chadwin Agent is a stock market research app designed to be run in Codex and Claude Code.
 
-## How to Use
-
-### 1. Ask the LLM to set things up
-Open this repository in Codex desktop or Claude Code and use a simple request like:
+## 1. Get the agent setup
+Clone the repo, open in Codex or Claude Code, and prompt it to get things setup:
 
 ```text
-Let's get started.
+Let's get started
 ```
 
-The agent should handle setup actions from chat prompts; users are not expected to run shell commands directly.
+During setup, the agent will ask for your name and email address in order to call the SEC EDGAR API, which requires the name and email address of the person making the requests. This information is kept on your machine and only used for these API calls.
 
-If SEC/EDGAR data is needed and `EDGAR_IDENTITY` is not present in repo `.env`, the agent should ask for your SEC identity in the form `Full Name <email@example.com>` and add it.
-
-```bash
-EDGAR_IDENTITY="Full Name <email@example.com>"
-```
-
-### Keeping the app and skills up to date
-
-Setup keeps both the app workspace and skills current automatically whenever setup runs.
-
-Automatic behavior:
-- App repo self-update:
-  - If the workspace is a git clone of `chadwin-agent`, setup fetches and fast-forwards the default branch when safe.
-  - If the workspace was downloaded as an archive (no `.git`), setup initializes git metadata, connects to the official GitHub remote, and aligns to the default branch.
-- Core external skills update: setup syncs required core skills to the refs in `.agents/skills/chadwin-setup/assets/skills.lock.json` (default floating `main`).
-- Bundled skill mirror sync: setup syncs `.agents/skills/*` into `.claude/skills/*`.
-
-Manual invocation:
-
-```bash
-python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py"
-```
-
-Useful manual options:
-- Check drift only (no mutation): `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --check`
-- Plan only (dry run): `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --dry-run`
-- Skip app self-update if needed: `python3 ".agents/skills/chadwin-setup/scripts/chadwin_setup.py" --skip-self-update`
-
-### 2. Run research with the `Chadwin Research` skill
-
-Example requests:
+## 2. Run research
+Research is done with the `Chadwin Research` skill. It's extremely flexible and designed to handle simple requests like:
 
 ```text
-$chadwin-research Screen for consumer cyclical companies with high ROE. Run research on the top three most promising ideas from the screen.
+Do deep research on ASML including fair value estimates.
 ```
+
+Or more complex requests like this:
 
 ```text
-Invoke the chadwin-research skill to screen consumer cyclical companies with high ROE, then run deep research on the top three ideas.
+Screen for consumer cyclical companies with high ROIC. Run deep research on the top three most promising ideas from the screen.
 ```
 
-The app uses a few core skills to run screeners and carry out deep research on individual companies:
+The `Chadwin Research` skill makes use of helper skills to carry out specific parts of the research:
 
-- `chadwin-research`: Deep research skill for producing fundamental equity research. This is the default entry point for fetching new ideas and generating research.
-- `fetch-us-investment-ideas`: Generates lists of US stock ideas based on flexible criteria. It can be invoked from `chadwin-research` in one request.
-- `fetch-us-company-data`: Retrieves targeted SEC/EDGAR company data for research workflows.
-- `chadwin-preferences`: Bundled in this repo at `.agents/skills/chadwin-preferences` and mirrored at `.claude/skills/chadwin-preferences`.
-- `chadwin-setup`: Bundled in this repo at `.agents/skills/chadwin-setup` and mirrored at `.claude/skills/chadwin-setup`.
+- `fetch-us-investment-ideas`: Generates lists of US stock ideas based on flexible criteria.
+- `fetch-us-company-data`: Retrieves SEC filings, analyst forecasts, and general company information.
 
-Detailed operator rules and setup command reference live in `AGENTS.md`.
+These skills can be accessed directly, but it's usually more powerful to use the `Chadwin Research` skill, which will invoke these skills when needed.
+
+## 3. Personalize the agent
+You can set preferences, whether it's certain industries to be excluded from screeners, preferences on what topics the reports cover, and more.
+
+Simply use the `chadwin-preferences` skill with a message about your preferences. The agent will remember these preferences for all future research.
+
+## 4. Keeping things up-to-date
+In general, the agent will keep itself up-to-date by fetching the latest version from GitHub at the start of a session. You can also force this by making a request like:
+
+```text
+Update the app
+```

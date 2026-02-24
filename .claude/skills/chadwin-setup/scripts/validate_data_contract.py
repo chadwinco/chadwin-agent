@@ -17,7 +17,6 @@ IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
 SCREENER_RESULTS_FILENAME = "screener-results.jsonl"
 LEGACY_IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
-IMPROVEMENT_LOG_PATH = Path("improvement-log.md")
 PREFERENCES_PATH = Path("user_preferences.json")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2}$")
 REPORT_DIR_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(?:-\d{2})?$")
@@ -407,7 +406,6 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
         (data_root / PREFERENCES_PATH, "file", "Missing required shared file `user_preferences.json`."),
         (data_root / IDEA_SCREENS_SUBDIR, "dir", "Missing required shared directory `idea-screens/`."),
         (data_root / COMPANIES_SUBDIR, "dir", "Missing required shared directory `companies/`."),
-        (data_root / IMPROVEMENT_LOG_PATH, "file", "Missing required shared file `improvement-log.md`."),
     ]
 
     for path, kind, message in required_paths:
