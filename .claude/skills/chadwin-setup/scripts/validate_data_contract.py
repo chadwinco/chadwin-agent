@@ -17,18 +17,11 @@ IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
 SCREENER_RESULTS_FILENAME = "screener-results.jsonl"
 LEGACY_IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
-PREFERENCES_PATH = Path("user_preferences.json")
+LEGACY_PREFERENCES_JSON_PATH = Path("user_preferences.json")
+PREFERENCES_PATH = Path("user_preferences.md")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2}$")
 REPORT_DIR_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(?:-\d{2})?$")
 TICKER_RE = re.compile(r"^[A-Z0-9][A-Z0-9.\-]*$")
-
-REQUIRED_PREFERENCES_KEYS = {
-    "markets",
-    "sector_and_industry_preferences",
-    "investment_strategy_preferences",
-    "report_preferences",
-    "updated_at_utc",
-}
 MARKET_TOKENS = {"us", "non-us"}
 
 
@@ -90,101 +83,6 @@ def _is_iso_country_code(value: Any) -> bool:
     if value is None:
         return False
     return bool(COUNTRY_CODE_RE.match(str(value).strip().upper()))
-
-
-def _validate_preferences(path: Path, issues: list[ValidationIssue]) -> None:
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        _append_issue(
-            issues,
-            severity="error",
-            code="preferences_invalid_json",
-            path=path,
-            message=f"Unable to parse JSON: {exc}",
-        )
-        return
-
-    if not isinstance(payload, dict):
-        _append_issue(
-            issues,
-            severity="error",
-            code="preferences_not_object",
-            path=path,
-            message="`user_preferences.json` must contain a JSON object.",
-        )
-        return
-
-    missing = sorted(REQUIRED_PREFERENCES_KEYS - set(payload.keys()))
-    if missing:
-        _append_issue(
-            issues,
-            severity="error",
-            code="preferences_missing_keys",
-            path=path,
-            message=f"Missing required top-level keys: {', '.join(missing)}",
-        )
-
-    markets = payload.get("markets")
-    if not isinstance(markets, dict):
-        _append_issue(
-            issues,
-            severity="error",
-            code="preferences_markets_not_object",
-            path=path,
-            message="`markets` must be a JSON object.",
-        )
-        return
-
-    included = markets.get("included_countries")
-    if included is None:
-        return
-    if not isinstance(included, list):
-        _append_issue(
-            issues,
-            severity="error",
-            code="preferences_included_countries_not_list",
-            path=path,
-            message="`markets.included_countries` must be a list.",
-        )
-        return
-
-    for idx, raw in enumerate(included, start=1):
-        raw_token = str(raw).strip()
-        token = raw_token.upper()
-        if not token:
-            _append_issue(
-                issues,
-                severity="error",
-                code="preferences_empty_country_token",
-                path=path,
-                message=f"`markets.included_countries[{idx}]` is empty.",
-            )
-            continue
-        if raw_token != token:
-            _append_issue(
-                issues,
-                severity="error",
-                code="preferences_country_token_not_uppercase",
-                path=path,
-                message=(
-                    f"`markets.included_countries[{idx}]={raw!r}` must be uppercase ISO "
-                    "alpha-2 (for example `US`, `JP`, `GB`)."
-                ),
-            )
-            continue
-        if _is_iso_country_code(token):
-            continue
-        _append_issue(
-            issues,
-            severity="error",
-            code="preferences_invalid_country_token",
-            path=path,
-            message=(
-                f"`markets.included_countries[{idx}]={raw!r}` is invalid. "
-                "Use ISO 3166-1 alpha-2 uppercase country codes only (for example US, JP, GB)."
-            ),
-        )
 
 
 def _validate_screener_results_file(path: Path, issues: list[ValidationIssue]) -> None:
@@ -403,7 +301,7 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
         return issues
 
     required_paths: list[tuple[Path, str, str]] = [
-        (data_root / PREFERENCES_PATH, "file", "Missing required shared file `user_preferences.json`."),
+        (data_root / PREFERENCES_PATH, "file", "Missing required shared file `user_preferences.md`."),
         (data_root / IDEA_SCREENS_SUBDIR, "dir", "Missing required shared directory `idea-screens/`."),
         (data_root / COMPANIES_SUBDIR, "dir", "Missing required shared directory `companies/`."),
     ]
@@ -419,9 +317,18 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
                 message=message,
             )
 
-    preferences_path = data_root / PREFERENCES_PATH
-    if preferences_path.is_file():
-        _validate_preferences(preferences_path, issues)
+    legacy_preferences_json_path = data_root / LEGACY_PREFERENCES_JSON_PATH
+    if legacy_preferences_json_path.is_file():
+        _append_issue(
+            issues,
+            severity="warning",
+            code="legacy_preferences_json_present",
+            path=legacy_preferences_json_path,
+            message=(
+                "Legacy preferences file detected. Current primitive is "
+                "`user_preferences.md`."
+            ),
+        )
 
     idea_screens_dir = data_root / IDEA_SCREENS_SUBDIR
     if idea_screens_dir.is_dir():

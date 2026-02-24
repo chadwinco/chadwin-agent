@@ -29,11 +29,11 @@ This skill creates only shared primitives and does not create company-specific d
   - Windows: `%APPDATA%/Chadwin`
 
 ## Shared Contract Guardrails
-- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.json`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`.
+- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.md`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`.
 - Do not create company-specific `data/` or `reports/` packages in this setup step.
 - Do not rename or repurpose shared primitive paths.
 - Keep setup policy in this skill; do not duplicate installer logic in app repos.
-- Treat preference schema/content as owned by `chadwin-preferences`; setup only bootstraps the file from that skill's canonical template.
+- Treat preference content as owned by `chadwin-preferences`; setup only bootstraps an empty markdown file.
 
 ## Setup Entrypoint
 From app repo root:
@@ -114,6 +114,6 @@ Creates/ensures:
 - core external skills under selected runtime targets
 - project-local `.claude/skills/*` mirrors for bundled skills
 - `<DATA_ROOT>/`
-- `<DATA_ROOT>/user_preferences.json`
+- `<DATA_ROOT>/user_preferences.md` (empty file at bootstrap)
 - `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`

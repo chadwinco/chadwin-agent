@@ -34,7 +34,7 @@ These skills can be accessed directly, but it's usually more powerful to use the
 ## 3. Personalize the agent
 You can set preferences, whether it's certain industries to be excluded from screeners, preferences on what topics the reports cover, and more.
 
-Simply use the `chadwin-preferences` skill with a message about your preferences. The agent will remember these preferences for all future research.
+Simply use the `chadwin-preferences` skill with a message about your preferences. Preferences are stored in free-form markdown (`<DATA_ROOT>/user_preferences.md`) and can be updated conversationally at any time.
 
 ## 4. Keeping things up-to-date
 In general, the agent will keep itself up-to-date by fetching the latest version from GitHub at the start of a session. You can also force this by making a request like:

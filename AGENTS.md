@@ -47,11 +47,10 @@ Setup ownership split:
 Ownership rule:
 - `chadwin-setup` creates shared primitives only:
   - `<DATA_ROOT>/`
-  - `<DATA_ROOT>/user_preferences.json`
+  - `<DATA_ROOT>/user_preferences.md`
   - `<DATA_ROOT>/idea-screens/`
   - `<DATA_ROOT>/companies/`
-  - `<DATA_ROOT>/improvement-log.md`
-- `chadwin-preferences` owns the canonical default schema for `<DATA_ROOT>/user_preferences.json`; setup bootstraps the file using that schema but does not own preference semantics.
+- `chadwin-preferences` owns preference content in `<DATA_ROOT>/user_preferences.md`; setup bootstraps the file as empty markdown and does not own preference semantics.
 - Other skills may create additional files/directories under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
 
 ## Shared Data Contract
@@ -59,7 +58,7 @@ Goal: skills remain swappable as long as these primitives and path rules stay st
 
 ### Required Shared Primitives
 These paths are reserved and must remain valid:
-- `<DATA_ROOT>/user_preferences.json`
+- `<DATA_ROOT>/user_preferences.md`
 - `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`
 
@@ -119,15 +118,10 @@ Legacy row compatibility:
 - Historical rows may contain metadata fields such as `source`, `generated_at_utc`, `queued_at_utc`, or `source_output`.
 - New rows should not rely on those metadata fields being present.
 
-### Preferences Primitive (`user_preferences.json`)
-Required top-level keys:
-- `markets`
-- `sector_and_industry_preferences`
-- `investment_strategy_preferences`
-- `report_preferences`
-- `updated_at_utc`
-
-`markets.included_countries` accepts ISO 3166-1 alpha-2 uppercase country codes only.
+### Preferences Primitive (`user_preferences.md`)
+- Preference content is free-form markdown/plain text.
+- Empty content is valid, especially immediately after setup bootstrap.
+- Do not enforce a fixed schema, required headings, or JSON structure.
 
 ### Skill Extension Rules
 Allowed:
