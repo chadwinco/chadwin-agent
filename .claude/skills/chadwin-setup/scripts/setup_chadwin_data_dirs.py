@@ -14,6 +14,12 @@ DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
 IMPROVEMENT_LOG_PATH = Path("improvement-log.md")
+PREFERENCES_TEMPLATE_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "chadwin-preferences"
+    / "assets"
+    / "user_preferences.template.json"
+)
 
 
 def default_data_root() -> Path:
@@ -45,28 +51,22 @@ def resolve_data_root(cli_data_root: str | None) -> Path:
 
 
 def default_preferences_payload() -> dict[str, Any]:
-    return {
-        "markets": {"included_countries": []},
-        "sector_and_industry_preferences": {
-            "preferred_sectors": [],
-            "preferred_industries": [],
-            "excluded_sectors": [],
-            "excluded_industries": [],
-            "notes": "",
-        },
-        "investment_strategy_preferences": {
-            "preferred_strategies": [],
-            "excluded_strategies": [],
-            "notes": "",
-        },
-        "report_preferences": {
-            "must_include": [],
-            "nice_to_have": [],
-            "exclude": [],
-            "notes": "",
-        },
-        "updated_at_utc": None,
-    }
+    try:
+        payload = json.loads(PREFERENCES_TEMPLATE_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise SystemExit(
+            f"Missing preferences template at {PREFERENCES_TEMPLATE_PATH}."
+        ) from exc
+    except json.JSONDecodeError as exc:
+        raise SystemExit(
+            f"Invalid JSON in preferences template {PREFERENCES_TEMPLATE_PATH}: {exc}"
+        ) from exc
+
+    if not isinstance(payload, dict):
+        raise SystemExit(
+            f"Preferences template must be a JSON object: {PREFERENCES_TEMPLATE_PATH}"
+        )
+    return payload
 
 
 def default_improvement_log() -> str:
@@ -91,6 +91,7 @@ def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
 
     created_files: list[Path] = []
     preferences_path = data_root / "user_preferences.json"
+    # Setup only bootstraps missing preferences; preference semantics are owned elsewhere.
     if not preferences_path.exists():
         payload = default_preferences_payload()
         preferences_path.write_text(

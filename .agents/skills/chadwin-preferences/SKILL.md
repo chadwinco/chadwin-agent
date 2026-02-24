@@ -12,11 +12,16 @@ Use this skill when a user wants to create or update persistent preference setti
 Preference file:
 - `<DATA_ROOT>/user_preferences.json`
 
+Schema bootstrap template owned by this skill:
+- `.agents/skills/chadwin-preferences/assets/user_preferences.template.json`
+
 ## Shared Contract Guardrails
 - Update only `<DATA_ROOT>/user_preferences.json`; do not move or rename this file.
 - Keep required top-level keys present after every write: `markets`, `sector_and_industry_preferences`, `investment_strategy_preferences`, `report_preferences`, `updated_at_utc`.
 - Keep `markets.included_countries` as uppercase ISO 3166-1 alpha-2 codes only.
 - Preserve compatibility with other skills by writing valid JSON and keeping section key names exactly as specified below.
+- Owns the canonical default preferences schema used during setup bootstrap.
+- No legacy migration layer: treat the current schema as authoritative and make direct breaking updates when schema changes.
 
 ## Execution Mode
 
@@ -26,7 +31,7 @@ This skill is intentionally LLM-operated.
 
 ## Workflow
 
-1. Read `<DATA_ROOT>/user_preferences.json` if it exists; otherwise start from the output contract schema.
+1. Read `<DATA_ROOT>/user_preferences.json` if it exists; otherwise start from the canonical template schema.
 2. Ask Section 1 only: country markets of interest.
 3. Normalize Section 1 into `markets.included_countries`.
 4. Ask Section 2 only: sector and industry include/exclude preferences.

@@ -33,6 +33,7 @@ This skill creates only shared primitives and does not create company-specific d
 - Do not create company-specific `data/` or `reports/` packages in this setup step.
 - Do not rename or repurpose shared primitive paths.
 - Keep setup policy in this skill; do not duplicate installer logic in app repos.
+- Treat preference schema/content as owned by `chadwin-preferences`; setup only bootstraps the file from that skill's canonical template.
 
 ## Setup Entrypoint
 From app repo root:

@@ -51,6 +51,7 @@ Ownership rule:
   - `<DATA_ROOT>/idea-screens/`
   - `<DATA_ROOT>/companies/`
   - `<DATA_ROOT>/improvement-log.md`
+- `chadwin-preferences` owns the canonical default schema for `<DATA_ROOT>/user_preferences.json`; setup bootstraps the file using that schema but does not own preference semantics.
 - Other skills may create additional files/directories under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
 
 ## Shared Data Contract
