@@ -1,7 +1,7 @@
 interface:
   display_name: "Chadwin Activity Log"
   short_description: "Append high-level timestamped activity entries to <DATA_ROOT>/activity-log.md"
-  default_prompt: "Use $chadwin-activity-log to append one concise markdown entry to <DATA_ROOT>/activity-log.md for this major activity. Keep it high-level, include a UTC ISO-8601 timestamp, and preserve append-only behavior (never edit previous entries)."
+  default_prompt: "Use $chadwin-activity-log to append one concise markdown entry to <DATA_ROOT>/activity-log.md for this major activity. Keep it high-level, include a UTC ISO-8601 timestamp, preserve append-only behavior (never edit previous entries), and write exactly one summary bullet under the timestamp header."
   icon_small: "./assets/chadwin-icon.svg"
   icon_large: "./assets/chadwin-icon.png"
   brand_color: "#F43C00"

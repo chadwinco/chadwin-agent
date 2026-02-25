@@ -34,15 +34,13 @@ Append entries using this shape:
 
 ```markdown
 ## 2026-02-25T19:40:00Z | <activity-type>
-- Summary: <1-3 sentence high-level outcome>
-- Context: <optional brief context such as ticker, screen id, or user ask>
-- Artifacts: <optional file paths or "None">
+- <1-3 sentence high-level outcome>
 ```
 
 Formatting rules:
 - Use UTC ISO-8601 with trailing `Z` for timestamps.
 - `activity-type` examples: `chadwin-research`, `fetch-us-company-data`, `fetch-us-investment-ideas`, `preferences-update`, `chat`.
-- Omit optional bullets when they do not add value.
+- Write exactly one summary bullet under each timestamp header.
 
 ## Workflow
 1. Read `<DATA_ROOT>/activity-log.md` if it exists.
