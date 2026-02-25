@@ -29,6 +29,7 @@ This file defines repository-level rules:
 Setup ownership split:
 - `chadwin-agent` bundles `chadwin-setup` at `.agents/skills/chadwin-setup`.
 - `chadwin-agent` bundles `chadwin-preferences` at `.agents/skills/chadwin-preferences`.
+- `chadwin-agent` bundles `chadwin-activity-log` at `.agents/skills/chadwin-activity-log`.
 - project-local Claude mirrors are tracked under `.claude/skills/` and synced from `.agents/skills/`.
 - bundled `chadwin-setup` owns setup control-plane behavior:
   - core external skill manifest and install/update/check workflow
@@ -48,9 +49,11 @@ Ownership rule:
 - `chadwin-setup` creates shared primitives only:
   - `<DATA_ROOT>/`
   - `<DATA_ROOT>/user_preferences.md`
+  - `<DATA_ROOT>/activity-log.md`
   - `<DATA_ROOT>/idea-screens/`
   - `<DATA_ROOT>/companies/`
 - `chadwin-preferences` owns preference content in `<DATA_ROOT>/user_preferences.md`; setup bootstraps the file as empty markdown and does not own preference semantics.
+- `chadwin-activity-log` owns append-only entries in `<DATA_ROOT>/activity-log.md`.
 - Other skills may create additional files/directories under `<DATA_ROOT>`, but must not repurpose or break shared primitives.
 
 ## Shared Data Contract
@@ -59,6 +62,7 @@ Goal: skills remain swappable as long as these primitives and path rules stay st
 ### Required Shared Primitives
 These paths are reserved and must remain valid:
 - `<DATA_ROOT>/user_preferences.md`
+- `<DATA_ROOT>/activity-log.md`
 - `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`
 
@@ -122,6 +126,17 @@ Legacy row compatibility:
 - Preference content is free-form markdown/plain text.
 - Empty content is valid, especially immediately after setup bootstrap.
 - Do not enforce a fixed schema, required headings, or JSON structure.
+
+### Activity Log Primitive (`activity-log.md`)
+- Log content is free-form markdown/plain text.
+- Entries are append-only and should remain high-level.
+- Include a timestamp in each entry.
+- Do not include verbose chain-of-thought or long intermediate reasoning traces.
+
+### Centralized Activity Logging Policy
+- The active orchestrator for a user request appends exactly one log entry via `chadwin-activity-log` after each major user-visible activity completes.
+- Helper skills invoked as implementation steps do not append their own log entries unless they were directly user-invoked.
+- Keep logging behavior centralized in this file; do not duplicate per-skill "append activity log" workflow steps.
 
 ### Skill Extension Rules
 Allowed:
@@ -279,6 +294,7 @@ Bundled required skills live in `.agents/skills/` and must not be listed in the 
 - Execute tasks directly in the workspace; do not stop at planning when execution is possible.
 - Treat skill docs as authoritative for skill behavior; do not duplicate or invent alternate workflows here.
 - Treat scripts and shell commands as helpers, not substitutes for reasoning.
+- Follow the centralized activity logging policy above; avoid adding duplicated per-skill logging steps.
 - Keep work traceable: explicit dates, assumptions, and file references.
 - After each command/edit, review outputs for errors and correct issues immediately.
 - Keep changes minimal and auditable.

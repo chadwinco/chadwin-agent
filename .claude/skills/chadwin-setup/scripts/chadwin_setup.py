@@ -25,7 +25,9 @@ class SkillSpec:
 
 
 FLOATING_REFS = {"main", "master", "head"}
-BUNDLED_SKILL_NAMES = frozenset({"chadwin-setup", "chadwin-preferences"})
+BUNDLED_SKILL_NAMES = frozenset(
+    {"chadwin-setup", "chadwin-preferences", "chadwin-activity-log"}
+)
 SCRIPT_PATH = Path(__file__).resolve()
 SETUP_SKILL_ROOT = SCRIPT_PATH.parents[1]
 BUNDLED_SKILLS_ROOT = SETUP_SKILL_ROOT.parent

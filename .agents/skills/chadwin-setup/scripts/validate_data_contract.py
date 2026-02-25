@@ -19,6 +19,7 @@ SCREENER_RESULTS_FILENAME = "screener-results.jsonl"
 LEGACY_IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
 LEGACY_PREFERENCES_JSON_PATH = Path("user_preferences.json")
 PREFERENCES_PATH = Path("user_preferences.md")
+ACTIVITY_LOG_PATH = Path("activity-log.md")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2}$")
 REPORT_DIR_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(?:-\d{2})?$")
 TICKER_RE = re.compile(r"^[A-Z0-9][A-Z0-9.\-]*$")
@@ -302,6 +303,7 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
 
     required_paths: list[tuple[Path, str, str]] = [
         (data_root / PREFERENCES_PATH, "file", "Missing required shared file `user_preferences.md`."),
+        (data_root / ACTIVITY_LOG_PATH, "file", "Missing required shared file `activity-log.md`."),
         (data_root / IDEA_SCREENS_SUBDIR, "dir", "Missing required shared directory `idea-screens/`."),
         (data_root / COMPANIES_SUBDIR, "dir", "Missing required shared directory `companies/`."),
     ]

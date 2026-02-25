@@ -12,6 +12,7 @@ DATA_ROOT_ENV_VAR = "CHADWIN_DATA_DIR"
 IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
 PREFERENCES_PATH = Path("user_preferences.md")
+ACTIVITY_LOG_PATH = Path("activity-log.md")
 
 
 def default_data_root() -> Path:
@@ -60,6 +61,11 @@ def ensure_data_layout(data_root: Path) -> tuple[list[Path], list[Path]]:
     if not preferences_path.exists():
         preferences_path.write_text("", encoding="utf-8")
         created_files.append(preferences_path)
+
+    activity_log_path = data_root / ACTIVITY_LOG_PATH
+    if not activity_log_path.exists():
+        activity_log_path.write_text("# Chadwin Activity Log\n\n", encoding="utf-8")
+        created_files.append(activity_log_path)
 
     return created_dirs, created_files
 

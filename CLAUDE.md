@@ -15,3 +15,4 @@ Skill locations:
 Shared contract:
 - Follow `AGENTS.md` for `<DATA_ROOT>` conventions, shared path primitives, and validation requirements.
 - Run `.venv/bin/python ".agents/skills/chadwin-setup/scripts/validate_data_contract.py"` after setup and contract-affecting changes.
+- For major user-visible activities, append a concise timestamped entry to `<DATA_ROOT>/activity-log.md` via `chadwin-activity-log`.

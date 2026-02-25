@@ -17,7 +17,7 @@ This skill is the setup control plane. It owns:
 - optional EDGAR identity upsert into app `.env`
 - shared `<DATA_ROOT>` primitive creation and contract validation
 
-Bundled required skills (`chadwin-setup`, `chadwin-preferences`) are shipped in `.agents/skills/` and are not installed from the external manifest.
+Bundled required skills (`chadwin-setup`, `chadwin-preferences`, `chadwin-activity-log`) are shipped in `.agents/skills/` and are not installed from the external manifest.
 
 This skill creates only shared primitives and does not create company-specific data packages.
 
@@ -29,7 +29,7 @@ This skill creates only shared primitives and does not create company-specific d
   - Windows: `%APPDATA%/Chadwin`
 
 ## Shared Contract Guardrails
-- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.md`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`.
+- Create only shared primitives from this skill: `<DATA_ROOT>/`, `<DATA_ROOT>/user_preferences.md`, `<DATA_ROOT>/activity-log.md`, `<DATA_ROOT>/idea-screens/`, `<DATA_ROOT>/companies/`.
 - Do not create company-specific `data/` or `reports/` packages in this setup step.
 - Do not rename or repurpose shared primitive paths.
 - Keep setup policy in this skill; do not duplicate installer logic in app repos.
@@ -115,5 +115,6 @@ Creates/ensures:
 - project-local `.claude/skills/*` mirrors for bundled skills
 - `<DATA_ROOT>/`
 - `<DATA_ROOT>/user_preferences.md` (empty file at bootstrap)
+- `<DATA_ROOT>/activity-log.md` (append-only activity journal file)
 - `<DATA_ROOT>/idea-screens/`
 - `<DATA_ROOT>/companies/`
