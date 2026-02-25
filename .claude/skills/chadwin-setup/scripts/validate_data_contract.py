@@ -17,7 +17,6 @@ IDEA_SCREENS_SUBDIR = Path("idea-screens")
 COMPANIES_SUBDIR = Path("companies")
 SCREENER_RESULTS_FILENAME = "screener-results.jsonl"
 LEGACY_IDEAS_LOG_PATH = IDEA_SCREENS_SUBDIR / "company-ideas-log.jsonl"
-LEGACY_PREFERENCES_JSON_PATH = Path("user_preferences.json")
 PREFERENCES_PATH = Path("user_preferences.md")
 ACTIVITY_LOG_PATH = Path("activity-log.md")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2}$")
@@ -318,19 +317,6 @@ def validate_data_contract(data_root: Path) -> list[ValidationIssue]:
                 path=path,
                 message=message,
             )
-
-    legacy_preferences_json_path = data_root / LEGACY_PREFERENCES_JSON_PATH
-    if legacy_preferences_json_path.is_file():
-        _append_issue(
-            issues,
-            severity="warning",
-            code="legacy_preferences_json_present",
-            path=legacy_preferences_json_path,
-            message=(
-                "Legacy preferences file detected. Current primitive is "
-                "`user_preferences.md`."
-            ),
-        )
 
     idea_screens_dir = data_root / IDEA_SCREENS_SUBDIR
     if idea_screens_dir.is_dir():
